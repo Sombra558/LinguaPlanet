@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Idioma extends Model
 {
     protected $fillable = [
-        'idioma','diminutivo','src',
+        'idioma','diminutivo','src','video','nombreURL',
     ];
 }

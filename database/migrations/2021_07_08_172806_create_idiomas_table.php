@@ -16,6 +16,7 @@ class CreateIdiomasTable extends Migration
         Schema::create('idiomas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('idioma',25);
+            $table->string('nombreURL',25);
             $table->string('src')->nullable();
             $table->string('video')->nullable();
             $table->string('diminutivo',3);
