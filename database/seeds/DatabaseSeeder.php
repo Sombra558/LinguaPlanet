@@ -32,5 +32,7 @@ class DatabaseSeeder extends Seeder
         $user->assignRole('Padre');
         $user->markEmailAsVerified();
         $this->call(IdiomaTableSeeder::class);
+        $this->call(MembresiaTableSeeder::class);
+        $this->call(PlanTableSeeder::class);
     }
 }

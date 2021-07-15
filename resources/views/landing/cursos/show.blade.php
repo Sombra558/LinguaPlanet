@@ -1,6 +1,6 @@
-@extends('layouts.public')
+@extends('layouts.publicdetalle')
 
 @section('content')
- show
+    <curso-show-component :idiomas="{{$idiomas}}" :idioma="{{$idioma}}"></curso-show-component>
 
 @endsection
