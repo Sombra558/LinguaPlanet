@@ -1,10 +1,10 @@
-<form  class="mx-2" id="paypal" method="POST" enctype="multipart/form-data">
+<form  action="{{ route('paypal-payment') }}" class="mx-2" id="paypal" method="POST" enctype="multipart/form-data">
                    @csrf
-                
-                    <input class="form-control input-novedades mb-3" style="border-radius:8px;" type="text" name="direccion" placeholder="direccion" require>
                     <input type="hidden" name="currency" value="usd">
-             
-                    <small>Serás redirigido a la página de pago de PayPal.</small>
+                    <input type="hidden" name="plan_id" value="{{$plan->id}}">
+                    <input type="hidden" name="value" value="{{$plan->precio}}">
+                    <input type="submit" value="Completar pago con paypal">
+                    <small>Estas muy cerca de aprender mejorar la educación de tu niño </small>
                   
                     
 </form>

@@ -3,7 +3,20 @@
 @section('content')
 <div class="container mb-5">
            <br><br><br><br>
-           <h2 class="pl-4" style="font-family: 'TitilliumWeb-SemiBold';">Verificacion de Pedido</h2>
+           <div class="row">
+                        <div class="col">
+                                <span>Plan seleccionado</span>
+                                {{$plan->nombre}}
+
+                        </div>
+                        <div class="col">
+                                <span>total</span>
+                                {{$plan->precio}}
+                        </div>
+           </div>
+           <div>
+                <h5>¿Tienes un cupon de descuento?</h5>
+           </div>
            <div class="row m-0 justify-content-between">
                         <div class="col-sm-12 col-md-5" class="form-group" id="toggler">
                                 <div id="efectivoCollapse" class="collapse" data-parent="#toggler" >

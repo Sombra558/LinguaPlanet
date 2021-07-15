@@ -2077,15 +2077,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "payment-check-selected",
   data: function data() {
@@ -38668,7 +38659,7 @@ var render = function() {
                 }
               },
               [
-                _c("span", [_vm._v("Transferencia Bancaria")]),
+                _c("span", [_vm._v("Pagar con Stripe")]),
                 _vm._v(" "),
                 _c("input", {
                   staticClass: "position-relative",
@@ -38713,39 +38704,6 @@ var render = function() {
                   }
                 })
               ]
-            ),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass:
-                  "btn d-flex m-2 col-12 py-3 row m-0 justify-content-between align-items-center",
-                staticStyle: {
-                  "font-family": "'TitilliumWeb-SemiBold'",
-                  background: "#FFFEF9",
-                  "box-shadow": "0px 1px 9px rgba(0, 0, 0, 0.15)",
-                  "border-radius": "12px"
-                },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.definir("paypalCollapse")
-                  }
-                }
-              },
-              [
-                _c("span", [_vm._v("ATHMÓVIL")]),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "position-relative",
-                  attrs: {
-                    type: "radio",
-                    name: "payment_platform",
-                    value: "paypal",
-                    required: ""
-                  }
-                })
-              ]
             )
           ]
         )
@@ -38786,7 +38744,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Cambiar")]
+                      [_vm._v("Seleccionar otro pago")]
                     )
                   ]
                 ),
@@ -38831,7 +38789,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Cambiar")]
+                      [_vm._v("Seleccionar otro pago")]
                     )
                   ]
                 ),
@@ -38860,7 +38818,7 @@ var staticRenderFns = [
           "border-radius": "12px"
         }
       },
-      [_c("span", [_vm._v("Transferencia")])]
+      [_c("span", [_vm._v("Stripe")])]
     )
   },
   function() {
@@ -52855,19 +52813,19 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
-Vue.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
+Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
 Vue.component('footer-component', __webpack_require__(/*! ./Landing/Templades/Footer/footer */ "./resources/js/Landing/Templades/Footer/footer.vue")["default"]);
 Vue.component('footerdos-component', __webpack_require__(/*! ./Landing/Templades/Footer/footer2 */ "./resources/js/Landing/Templades/Footer/footer2.vue")["default"]);
 Vue.component('cursos-component', __webpack_require__(/*! ./Landing/Cursos/Cursos */ "./resources/js/Landing/Cursos/Cursos.vue")["default"]);
 Vue.component('curso-show-component', __webpack_require__(/*! ./Landing/Cursos/Show */ "./resources/js/Landing/Cursos/Show.vue")["default"]);
 Vue.component('membresia-show-component', __webpack_require__(/*! ./Landing/Membresia/show */ "./resources/js/Landing/Membresia/show.vue")["default"]);
 Vue.component('payment-collase', __webpack_require__(/*! ./Landing/PaymentUtils/checkpayment */ "./resources/js/Landing/PaymentUtils/checkpayment.vue")["default"]);
-var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
+var store = new vuex__WEBPACK_IMPORTED_MODULE_0__["default"].Store({
   state: {
     user: null,
     paymentselected: null
