@@ -3,6 +3,7 @@
 @section('content')
 <div class="container mb-5">
            <br><br><br><br>
+           <proccess></proccess>
            <div class="row">
                         <div class="col">
                                 <span>Plan seleccionado</span>

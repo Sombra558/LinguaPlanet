@@ -62,8 +62,6 @@ class PayPalService
         $approve = $orderLinks->where('rel', 'approve')->first();
 
         session()->put('approvalId', $order->id);
-        session()->put('articulos', $request->articulos);
-        session()->put('direccion', $request->direccion);
       
         return redirect($approve->href);
     }
@@ -80,76 +78,10 @@ class PayPalService
             $amount = $payment->value;
             $currency = $payment->currency_code;
             
-            $solicitud = SolicitudPedido::create([
-                'estado' => 'verificado',
-                'direccion' => session()->get('direccion'),
-                'articulos' =>session()->get('articulos'),
-                'cnumero' => $transactionId,
-                'user_id' => Auth::user()->id,
-                'fecha_de_solicitud' => Carbon::now()->subDay()->toDateString(),
-                'precio_con_descuento' => $amount,
-                'precion_sin_descuento' => $amount,
-                'tipo' => "Paypal",
-            ]);
-            $pedidos = collect();
-            $cursos = collect();
-            $articulos = json_decode(session()->get('articulos'));
-            foreach ($articulos as $articulo) {
-                if ($articulo->tipo==='curso') {
-                    $cursos->push($articulo);
-                }else{
-                    $pedidos->push($articulo);
-                }
-            }
-            foreach ($cursos as $curso) {
-                $cursoori=Curso::find($curso->horariosdis[0]->curso_id);
-                if ($curso->tipopago==='cuotas') {
-              
-                    $sole=SolicitudArticuloCompra::create([
-                        'user_id' => $solicitud->user_id,
-                        'curso_id' =>  $cursoori->id,
-                        'precio_con_descuento' => $curso->admision,
-                        'precion_sin_descuento' => $curso->precio,
-                        'fecha_de_solicitud' => Carbon::now()->subDay()->toDateString(),
-                        'articulo_type' => 'Curso',
-                        'comprobante' => $solicitud->cnumero,
-                        'tipo' => 'cuotas',
-                        'estado' => "verificado",
-        
-                    ]);
-                 
-                    event(new CompraArticulo($curso,$solicitud->user_id,$curso->precio,1));
-                }else{
-                   
-                    $sole=SolicitudArticuloCompra::create([
-                        'user_id' => $solicitud->user_id,
-                        'curso_id' =>  $cursoori->id,
-                        'precio_con_descuento' => $curso->precio,
-                        'precion_sin_descuento' => $curso->precio,
-                        'fecha_de_solicitud' => Carbon::now()->subDay()->toDateString(),
-                        'articulo_type' => 'Curso',
-                        'comprobante' => $solicitud->cnumero,
-                        'tipo' => 'contado',
-                        'estado' => "verificado",
-        
-                    ]);
-                    event(new CompraArticulo($curso,$solicitud->user_id,$curso->precio,0));
-                }
-            }
-            if ($pedidos->count()>0) {
-                SolicitudPedidoUser::create([
-                    'solicitud_pedido_id' => $solicitud->id,
-                    'articulos'=>json_encode($pedidos),
-                    'codigo' => str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT),
-                ]);
-              
-            }
-            
-            
+          
+                       
     
-            return redirect()
-                ->route('home')
-                ->withSuccess(['payment' => "Thanks, {$name}. We received your {$amount}{$currency} payment."]);
+            return view('Landing.Comprar.Completado', compact('transactionId'));
         }
 
         return redirect()
