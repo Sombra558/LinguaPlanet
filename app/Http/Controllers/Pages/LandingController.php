@@ -22,7 +22,7 @@ class LandingController extends Controller
 
         return view('landing.cursos.cursos',compact('idiomas'));
     }
-        public function CursosShow($nombreURL){
+    public function CursosShow($nombreURL){
             $idiomas=Idioma::get();
             $idioma = Idioma::where('nombreURL',$nombreURL)->first();
                 if ($idioma) {

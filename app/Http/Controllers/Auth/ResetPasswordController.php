@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use App\Models\Idioma\Idioma;
 
 class ResetPasswordController extends Controller
 {
@@ -27,4 +28,15 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    public function showResetForm(Request $request, $token = null)
+    {   
+        $idiomas=Idioma::get();
+        
+        return view('auth.passwords.reset')->with([
+            'token' => $token,
+            'email' => $request->email,
+            'idiomas' => $idiomas,
+        ]);
+    }
 }

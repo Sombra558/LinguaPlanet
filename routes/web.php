@@ -8,3 +8,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/courses', 'Pages\LandingController@cursos')->name('courses.index');
+
+

@@ -24,74 +24,61 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<body @if(request()->routeIs('courses.index')) style="background-color: #31348B;" @endif>
+    <div class="d-flex h-screen flex-column justify-content-between">
+        
+        @include('layouts.navbar')
+
+        <div id="app">
+            <main class="py-4">
+                @yield('content')                
+            </main>
+        </div>
+        <footer class="courses-footer">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                    
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                       <li class="nav-item" >
-                       <select class="form-control changeLang">
-                       @foreach($idiomas as $idioma)   
-                       <option value="{{$idioma->diminutivo}}" {{ session()->get('locale') == $idioma->diminutivo ? 'selected' : '' }}>{{$idioma->idioma}}</option>
-                        @endforeach
-                              
-                        </select>
-                       </li>
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-2 d-flex justify-content-center p-0">
+                        <img class="send-link-success" src="{{ asset('storage/images/white-logo.svg') }}" alt="Enlace de recuperacion enviado">
+                    </div>                
+                    <div class="col-sm-12 col-md-12 col-lg-10 d-flex justify-content-around p-0">
+                        <ul class="second-footer footer-list pl-0">
+                            <li><h5><strong>{{ __('About us') }}</strong></h5></li>
+                            <li>{{ __('Mission') }}</li>
+                            <li> {{ __('Courses') }}</li>
+                            <li>{{ __('Teaching') }}</li>
+                            <li>{{ __('Contact') }}</li>
+                        </ul>
+                        <ul class="second-footer footer-list">
+                            <li><h5><strong>{{ __('Learn') }}</strong></h5></li>
+                            <li>{{ __('Learn English') }}</li>
+                            <li> {{ __('Learn Spanish') }}</li>
+                            <li>{{ __('Learn French') }}</li>
+                            <li>{{ __('Learn Croatian') }}</li>
+                        </ul>
+                        <ul class="second-footer footer-list">
+                            <li><h5><strong>{{ __('Social') }}</strong></h5></li>
+                            <li>{{ __('Facebook') }}</li>
+                            <li> {{ __('Instagram') }}</li>
+                            <li>{{ __('Linkedin') }}</li>
+                            <li>{{ __('Twitter') }}</li>
+                        </ul>
+                        <ul class="second-footer footer-list">
+                            <li><h5><strong>{{ __('Legal') }}</strong></h5></li>
+                            <li>{{ __('Terms of use') }}</li>
+                            <li> {{ __('Privacy policy') }}</li>
+                            <li>{{ __('Cookies policy') }}</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 d-flex flex-column text-center">
+                        <hr class="second-footer-divider mb-0">
+                        <h6 class="my-4">
+                            ©{{ Date('Y') }} Lingua Planet. {{ __('All rights reserved') }}
+                        </h6>
+                    </div> 
                 </div>
             </div>
-        </nav>
-    <div id="app">
-     
-
-        <main class="py-4">
-            @yield('content')
-            
-        </main>
-        <footerdos-component></footerdos-component>
-    </div>
-  
+        </footer>
+    </div>  
 </body>
 <script type="text/javascript">
   
