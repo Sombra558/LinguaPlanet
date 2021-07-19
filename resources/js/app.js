@@ -14,7 +14,6 @@ Vue.component('footer-component', require('./Landing/Templades/Footer/footer').d
 
 Vue.component('footerdos-component', require('./Landing/Templades/Footer/footer2').default);
 
-
 Vue.component('cursos-component', require('./Landing/Cursos/Cursos').default);
 Vue.component('curso-show-component', require('./Landing/Cursos/Show').default);
 Vue.component('membresia-show-component', require('./Landing/Membresia/show').default);

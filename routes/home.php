@@ -8,4 +8,7 @@ Route::post('/paypal-payments', 'PaypalController@pay')->middleware(['auth'])->n
 Route::get('/payments/approval', 'PaypalController@approval')->middleware(['auth'])->name('approval');
 Route::get('/payments/cancelled', 'PaypalController@cancelled')->middleware(['auth'])->name('cancelled');
 
+Route::get('lang/change', 'LangController@change')->name('changeLang');
+Auth::routes();
+
 

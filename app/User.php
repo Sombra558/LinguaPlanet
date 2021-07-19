@@ -19,4 +19,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function planes()
+    {
+      return $this->belongsToMany('App\Models\Membresia\Plan')->withPivot('available');
+    }
 }

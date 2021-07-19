@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.Padres.padre')
 
 @section('content')
 <div class="container">
@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                   <a href="/home/perfil-user/create">Nuevo Perfil</a>
                 </div>
             </div>
         </div>

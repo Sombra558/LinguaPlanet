@@ -9,11 +9,8 @@ use App\Helpers\General\CollectionHelper;
 use Illuminate\Support\Facades\Auth;
 use App\Services\PayPalService;
 use App\Traits\ConsumesExternalServices;
-use App\Models\Solicitudes\SolicitudArticuloCompra;
-use App\Models\Solicitudes\SolicitudPedido;
-use App\Models\Solicitudes\SolicitudArticuloCompraCuotas;
-use App\Models\Solicitudes\SolicitudPedidoUser;
-use App\Events\CompraArticulo;
+use App\Models\Solicitudes\PlanUser;
+use App\Models\Membresia\Plan;
 use Carbon\Carbon;
 
 class PayPalService
@@ -62,7 +59,7 @@ class PayPalService
         $approve = $orderLinks->where('rel', 'approve')->first();
 
         session()->put('approvalId', $order->id);
-      
+        session()->put('plan_id', $request->plan_id);
         return redirect($approve->href);
     }
 
@@ -71,14 +68,21 @@ class PayPalService
         
         if (session()->has('approvalId')) {
             $approvalId = session()->get('approvalId');
+            $plan_id = session()->get('plan_id');
             $payment = $this->capturePayment($approvalId);
             $name = $payment->payer->name->given_name;
             $transactionId=$payment->purchase_units[0]->payments->captures[0]->id;
             $payment = $payment->purchase_units[0]->payments->captures[0]->amount;
             $amount = $payment->value;
             $currency = $payment->currency_code;
-            
-          
+            $plan =Plan::find($plan_id);
+            $solicitud = PlanUser::create([
+                'comprobante' => $transactionId,
+                'plan_id' => $plan_id,
+                'available' => $plan->stock,
+                'user_id' => Auth::user()->id,
+                'tipo' => "Paypal",
+            ]);
                        
     
             return view('Landing.Comprar.Completado', compact('transactionId'));
