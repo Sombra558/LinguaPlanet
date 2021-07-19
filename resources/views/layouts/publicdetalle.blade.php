@@ -40,7 +40,7 @@
                     <div class="col-sm-12 col-md-12 col-lg-2 d-flex justify-content-center p-0">
                         <img class="send-link-success" src="{{ asset('storage/images/white-logo.svg') }}" alt="Enlace de recuperacion enviado">
                     </div>                
-                    <div class="col-sm-12 col-md-12 col-lg-10 d-flex justify-content-around p-0">
+                    <div class="links-container-footer col-sm-12 col-md-12 col-lg-10 d-flex justify-content-around p-0">
                         <ul class="second-footer footer-list pl-0">
                             <li><h5><strong>{{ __('About us') }}</strong></h5></li>
                             <li>{{ __('Mission') }}</li>
@@ -72,7 +72,7 @@
                     <div class="col-sm-12 col-md-12 col-lg-12 d-flex flex-column text-center">
                         <hr class="second-footer-divider mb-0">
                         <h6 class="my-4">
-                            ©{{ Date('Y') }} Lingua Planet. {{ __('All rights reserved') }}
+                            ©{{ Date('Y') }} Lingua Planet. {{ __('All rights reserved.') }}
                         </h6>
                     </div> 
                 </div>

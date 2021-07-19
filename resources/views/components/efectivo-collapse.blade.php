@@ -1,13 +1,31 @@
 <form  id="transferencia" method="post"  enctype="multipart/form-data" class="mx-2">
     @csrf
- 
-    <input class="form-control input-novedades mb-3" style="border-radius:8px;" type="text" name="direccion" placeholder="direccion" require>
-    <input class="form-control input-novedades mb-3" style="border-radius:8px;" type="text" name="cnumero" placeholder="numero de comprobante" require>
+    <div class="input-primary d-flex flex-row align-items-center mb-4">
+        <div class="input-group-prepend pl-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 5.25L12 13.5L3 5.25" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 5.25H21V18C21 18.1989 20.921 18.3897 20.7803 18.5303C20.6397 18.671 20.4489 18.75 20.25 18.75H3.75C3.55109 18.75 3.36032 18.671 3.21967 18.5303C3.07902 18.3897 3 18.1989 3 18V5.25Z" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10.3638 12L3.23145 18.538" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20.7692 18.5381L13.6367 12" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <input class="form-input input-novedades" type="text" name="direccion" placeholder="direccion" require>
+    </div>
+    <div class="input-primary d-flex flex-row align-items-center mb-4">
+        <div class="input-group-prepend pl-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 5.25L12 13.5L3 5.25" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 5.25H21V18C21 18.1989 20.921 18.3897 20.7803 18.5303C20.6397 18.671 20.4489 18.75 20.25 18.75H3.75C3.55109 18.75 3.36032 18.671 3.21967 18.5303C3.07902 18.3897 3 18.1989 3 18V5.25Z" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10.3638 12L3.23145 18.538" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20.7692 18.5381L13.6367 12" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <input class="form-input input-novedades" type="text" name="cnumero" placeholder="numero de comprobante" require>
+    </div>
     <div>
-        <input type="file"  name="img_deposito" id="file-u" class="input-file" style="position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0;">
-            <label for="file-u" class="btn btn-tertiary js-labelFile row justify-content-center align-items-center mx-0 w-100" style=" height:2.5rem; background: #ECF2EE; border:none; border-radius: 8px;">
-                <i class="icon fa fa-check"></i>
-                <span class="js-fileName mt-5" style="color:#768079;">Subir comprobante</span>
-            </label>
+        <input type="file" name="img_deposito" id="file-u" class="input-file" style="position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0;">
+        <label for="file-u" class="btn btn-block btn-success py-2">
+            <span class="h4 bold">Subir comprobante</span>
+        </label>
     </div>
 </form>

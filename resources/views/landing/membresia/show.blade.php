@@ -1,6 +1,9 @@
-@extends('layouts.comprar')
+@extends('layouts.public')
 
 @section('content')
-    <membresia-show-component :idiomas="{{$idiomas}}" :membresia="{{$membresia}}"></membresia-show-component>
-
+	<div class="container mb-5">
+		<div class="row">
+			<membresia-show-component :idiomas="{{$idiomas}}" :membresia="{{$membresia}}"></membresia-show-component>
+		</div>
+	</div>
 @endsection
