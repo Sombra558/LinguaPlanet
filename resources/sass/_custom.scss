@@ -1,0 +1,483 @@
+.h-screen {
+  height: 100vh;
+}
+
+body {
+	margin : 0;
+	font-family: 'Poppins', sans-serif;
+}
+
+.w-20 {
+	width : 20% !important;
+}
+
+.w-35 {
+	width : 35% !important;
+}
+
+.w-40 {
+	width : 40% !important;
+}
+
+.w-80 {
+	width : 80% !important;
+}
+
+.color-gray {
+	color : $gray;
+}
+
+.color-plomo {
+	color : $plomo;
+}
+
+.color-yellow {
+	color: $yellow;
+}
+
+// /- Ocultos al cargar
+.carousel { 
+	display: none;
+}
+
+.mobile-display {
+	display : none;
+}
+//-/
+
+/* Navbar styles*/
+/*.navbar {
+	height : 100px;
+	font-family: 'Poppins';
+}*/
+
+.navbar-toggler {
+	border : 0;
+}
+
+.navbar .logo {
+	width: 90px;
+	height: 90px;
+}
+
+.mr-auto {
+	color: #31348B;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 24px;
+}
+
+.mr-auto {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.nav-link {
+	color: #31348B !important;
+}
+
+.btn-nav-signUp {
+	border-radius : 8px;
+	width : 110px;
+	height: 36px;
+	text-align: center;
+	font-size: 13px;
+	background-color : #E4032F;
+	color : white !important;
+}
+
+.btn-nav-signIn {
+	background: #FFFFFF;
+	width : 110px;
+	height: 36px;
+	font-size: 13px;
+	text-align: center;
+	border: 1px solid $gray;
+	box-sizing: border-box;
+	box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+}
+/* END - Navbar styles*/
+
+.login-title {
+	background-image: url('../storage/images/login-title.png');
+	background-size: 100% 100%;
+}
+
+.register-title {
+	background-image: url('../storage/images/register-title.png');
+	background-size: 100% 100%;
+}
+
+/* Inputs */
+
+.btn {
+	border-radius: 8px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.btn-primary-red {
+	border-radius: 8px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.input-primary {
+	border: 1px solid $primary;
+	box-sizing: border-box;
+	border-radius: 12px;
+}
+
+.form-input { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	width: 100%;
+    border: 0px;
+    border-radius: 12px;
+    padding: 12px 16px;
+}
+
+.form-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+			color: $primary;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 16px;
+			line-height: 24px;
+}
+
+.form-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+			color: $primary;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 16px;
+			line-height: 24px;
+}
+
+.form-input::-ms-input-placeholder { /* Microsoft Edge */
+			color: $primary;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 16px;
+			line-height: 24px;
+}
+
+.form-input {
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 24px;
+	color : $primary;
+}
+
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+			font-style: normal;
+			font-weight: bold;
+			font-size: 16px;
+			line-height: 24px;
+}
+
+.form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+			font-style: normal;
+			font-weight: bold;
+			font-size: 16px;
+			line-height: 24px;
+}
+
+.form-control::-ms-input-placeholder { /* Microsoft Edge */
+			font-style: normal;
+			font-weight: bold;
+			font-size: 16px;
+			line-height: 24px;
+}
+/* END-  Inputs */
+
+.send-link-success {
+	width: 110px;
+	height: 170px;
+}
+
+h1 {
+	font-style: normal;
+	font-weight: 700;
+	font-size: 29px;
+	line-height: 30px;
+}
+
+h2 {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 25px;
+	line-height: 30px;
+}
+
+h3 {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 30px;
+}
+
+h4 {
+	font-style: normal;
+	font-weight: 300;
+	font-size: 17px;
+	line-height: 30px;
+}
+
+h5 {
+	font-style: normal;
+	font-weight: 200;
+	font-size: 13px;
+	line-height: 30px;
+}
+
+h1.courses-title {
+	color : #FFF;
+}
+
+h1 span.courses-span {
+	color : #FAB500
+}
+
+span.membership-span {
+	color : $primary-red
+}
+
+h1.course-show-header {
+	font-size: 25px;
+}
+
+.bold {
+	font-weight : bold;
+}
+
+.mini-flag-img {
+	opacity: 0.5;
+}
+
+.mini-flag-img.active {
+	opacity: 1;
+}
+
+.iz-10 {
+	width: 10%;
+	height: 10%;
+}
+
+.iz-25 {
+	width: 25%;
+	height: 25%;
+}
+
+.iz-35 {
+	width: 35%;
+	height: 35%;
+}
+
+.iz-50 {
+	width: 50%;
+	height: 50%;
+}
+
+.video-container {
+	margin-bottom: 1.8rem;
+}
+
+.frame-video {
+	width : 60%;
+	height : 400px;
+}
+
+.flag-img {
+	border: 1px solid #FFFFFF;
+	box-sizing: border-box;
+	border-radius: 16px;
+}
+
+.card-rounded {
+    background: #FFFEF9;
+    box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    padding: 1em;
+}
+
+.card .flag-img {
+	opacity: 0.86;
+	margin: 1rem;
+	width: 25%;
+	height: 25%;
+}
+
+.card-course-deck {
+	background: $primary;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 20px;
+	color : #FFF;
+}
+
+.card-course-deck .card-body {
+	padding-top: 2.3rem;
+	padding-bottom: 3rem;
+}
+
+.card-course-deck .btn-buy {
+	border-radius: 10px;
+	width : 80%;
+}
+
+.card-course-deck .btn-buy h1 {
+	font-weight: bold;
+	font-size: 20px !important;
+}
+
+.card-course-carrousel {
+	background: #31348B;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 20px;
+	color : #FFF;
+}
+
+.card-course-carrousel .card-body {
+	padding-top: 2.3rem;
+	padding-bottom: 6rem;
+}
+
+.card-course-carrousel .btn-buy {
+	border-radius: 8px;
+	padding: 0.8rem 2rem 0.8rem 2rem;
+}
+
+.card-course-carrousel .btn-buy h1 {
+	font-weight: bold;
+	font-size: 30px !important;
+}
+
+.gray-back {
+	background-color: $lighter-gray;
+	border: 0;
+}
+
+.nav-tabs .nav-link {
+	border-color: #31348B !important;
+}
+
+.nav-tabs .nav-link.active {
+	background-color: #31348B !important;
+	color: #FFF !important;
+}
+
+.card-membership-mobile {
+	background: #FFFFFF;
+	box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	margin: 1.5rem;
+	padding: 2rem 1rem 2rem 1rem;
+}
+
+.card-membership-mobile ul{
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	line-height: 21px;
+	color: $plomo;
+}
+
+/* Footer styles*/
+footer,
+.footer-link {
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 24px;
+	color: $gray;
+}
+
+.footer-list > li {
+	list-style: none;
+}
+
+.footer-divider {
+	border: 1px solid $gray;
+	width: 85%;
+}
+
+.second-footer-divider {
+	border: 1px solid $gray;
+	padding : 0;
+	width: 90%;
+}
+
+footer.courses-footer {
+	padding-top: 20px;
+	background-color : #31348B;
+	color: #FFFFFF;
+}
+
+/* END - Footer styles*/
+
+/* Media queries styles*/
+@media (max-width: 425px){
+
+	.title-login {
+		display : none;
+	}
+
+	.register-login {
+		display : none;
+	}
+
+	.reset-pw-link {
+		margin-top: 1.8em;
+	}
+
+	.links-container-footer {
+		flex-direction: column !important;
+		text-align: center;
+	}
+
+	.links-container-footer ul {
+		padding: 0 !important;
+	}
+
+	.frame-video {
+		width : 100%;
+	}
+
+	.card-deck-courses {
+		display : none;
+	}
+
+	.carousel {
+		display : inherit;
+	}
+
+	.web-display {
+		display : none;
+	}
+
+	.mobile-display {
+		display : inherit;
+	}
+}
+
+@media (max-width: 768px){
+
+	footer.courses-footer ul {
+		padding-left : 20px;
+	}
+
+	.card-deck-courses {
+		display : none;
+	}
+
+	.carousel {
+		display : inherit;
+	}
+
+}
+/* END - Media queries styles*/
