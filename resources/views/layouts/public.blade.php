@@ -55,7 +55,7 @@
             </ul>
             <hr class="footer-divider mb-0">
             <h6 class="my-4">
-                ©{{ Date('Y') }} Lingua Planet. {{ __('All rights reserved') }}
+                ©{{ Date('Y') }} Lingua Planet. {{ __('All rights reserved.') }}
             </h6>
         </footer>
     </div>

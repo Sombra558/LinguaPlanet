@@ -9,4 +9,8 @@ class Plan extends Model
     protected $fillable = [
         'nombre','precio','membresia_id','stock','nombreURL'
     ];
+
+    public function membresia() {
+    	return $this->belongsTo(Membresia::class);
+    }
 }

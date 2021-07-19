@@ -38,22 +38,24 @@ class LandingController extends Controller
             $idiomas=Idioma::get();
             $membresia = Membresia::where('nombreURL',$nombreURL)->first();
                 if ($membresia) {
-                    $membresia->load(['planes']);
-           
+                    $membresia->load(['planes', 'idioma']);
+                    
                     return view('Landing.membresia.show', compact('membresia','idiomas'));
                 }else {
                     return view('errors.404');
                 }
         }
+
         public function payment($nombreURL){
             $idiomas=Idioma::get();
-            $plan = Plan::where('nombreURL',$nombreURL)->first();
-                if ($plan) {
-                 
-           
-                    return view('Landing.Comprar.Confirma', compact('plan','idiomas'));
-                }else {
-                    return view('errors.404');
-                }
+            $plan = Plan::where('nombreURL',$nombreURL)
+                        ->with('membresia.idioma:id,diminutivo,idioma')
+                        ->first();
+                        
+            if ($plan) {
+                return view('Landing.Comprar.Confirma', compact('plan','idiomas'));
+            }else {
+                return view('errors.404');
+            }
         }
 }
