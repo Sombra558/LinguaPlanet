@@ -1,4 +1,4 @@
-@extends('layouts.Padres.padre')
+@extends('layouts.public')
 
 @section('content')
 <div class="container">

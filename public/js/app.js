@@ -1964,6 +1964,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "curso-show-component",
   props: ["idioma", "idiomas"]
@@ -1980,6 +2019,126 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2062,21 +2221,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "payment-check-selected",
   data: function data() {
@@ -2116,6 +2260,27 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6635,6 +6800,25 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Landing/Membresia/show.vue?vue&type=style&index=0&id=3a5f66d2&lang=scss&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Landing/Membresia/show.vue?vue&type=style&index=0&id=3a5f66d2&lang=scss&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".li-benefits[data-v-3a5f66d2] {\n  text-indent: -4px;\n  margin-left: -2em;\n  font-size: 0.8rem;\n  line-height: 40px;\n}\n.span-payment-methods[data-v-3a5f66d2] {\n  font-size: 0.85rem;\n}\n.select-subtitle[data-v-3a5f66d2] {\n  font-size: 0.8rem;\n  font-weight: 500;\n  line-height: 20px;\n}\n.card-membership-web[data-v-3a5f66d2] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\n}\n.card-membership-web .card-header[data-v-3a5f66d2] {\n  border-radius: 12px 12px 0 0;\n}\n.price-web[data-v-3a5f66d2] {\n  font-style: normal;\n  font-weight: 500;\n  font-size: 30px;\n  line-height: 48px;\n  margin-bottom: 0;\n}\n.price-mobile[data-v-3a5f66d2] {\n  font-style: normal;\n  font-weight: 700;\n  font-size: 32px;\n  line-height: 48px;\n}\n.card-membership-mobile ul li[data-v-3a5f66d2] {\n  margin: 15px 0 0 0;\n}\n.membership-details[data-v-3a5f66d2] {\n  padding: 0;\n}\n.membership-details li[data-v-3a5f66d2] {\n  list-style: none;\n  border-bottom: 1px solid #B5B5BB;\n}\n.membership-details li h4[data-v-3a5f66d2] {\n  font-size: 1rem;\n  font-weight: 500;\n}\n.w-24[data-v-3a5f66d2] {\n  width: 24% !important;\n}\n.w-38[data-v-3a5f66d2] {\n  width: 38% !important;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Landing/PaymentUtils/checkpayment.vue?vue&type=style&index=0&id=6feb5108&lang=scss&scoped=true&":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Landing/PaymentUtils/checkpayment.vue?vue&type=style&index=0&id=6feb5108&lang=scss&scoped=true& ***!
@@ -6647,7 +6831,26 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".btn-registro[data-v-6feb5108] {\n  background: #01872B;\n  color: #fff;\n  font-family: \"TitilliumWeb-SemiBold\";\n  border-radius: 8px;\n  transition: ease all 0.3s;\n  transform: scale(1);\n}", ""]);
+exports.push([module.i, ".btn-registro[data-v-6feb5108] {\n  transition: ease all 0.3s;\n  transform: scale(1);\n}\ninput[type=radio][data-v-6feb5108] {\n  border: 0.1em solid red;\n  box-sizing: border-box;\n}\n.iz[data-v-6feb5108] {\n  width: 80px;\n  height: 38px;\n}\n.iz-lg[data-v-6feb5108] {\n  width: 115px;\n  height: 50px;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Landing/PaymentUtils/paymetprocess.vue?vue&type=style&index=0&id=107001ad&lang=scss&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Landing/PaymentUtils/paymetprocess.vue?vue&type=style&index=0&id=107001ad&lang=scss&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".line1[data-v-107001ad] {\n  position: relative;\n  left: -16px;\n  top: 8px;\n  width: 220%;\n}\n.line2[data-v-107001ad] {\n  position: relative;\n  left: -31px;\n  top: 8px;\n  width: 220%;\n}", ""]);
 
 // exports
 
@@ -37870,6 +38073,36 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Landing/Membresia/show.vue?vue&type=style&index=0&id=3a5f66d2&lang=scss&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Landing/Membresia/show.vue?vue&type=style&index=0&id=3a5f66d2&lang=scss&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./show.vue?vue&type=style&index=0&id=3a5f66d2&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Landing/Membresia/show.vue?vue&type=style&index=0&id=3a5f66d2&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Landing/PaymentUtils/checkpayment.vue?vue&type=style&index=0&id=6feb5108&lang=scss&scoped=true&":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Landing/PaymentUtils/checkpayment.vue?vue&type=style&index=0&id=6feb5108&lang=scss&scoped=true& ***!
@@ -37879,6 +38112,36 @@ process.umask = function() { return 0; };
 
 
 var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./checkpayment.vue?vue&type=style&index=0&id=6feb5108&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Landing/PaymentUtils/checkpayment.vue?vue&type=style&index=0&id=6feb5108&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Landing/PaymentUtils/paymetprocess.vue?vue&type=style&index=0&id=107001ad&lang=scss&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Landing/PaymentUtils/paymetprocess.vue?vue&type=style&index=0&id=107001ad&lang=scss&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./paymetprocess.vue?vue&type=style&index=0&id=107001ad&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Landing/PaymentUtils/paymetprocess.vue?vue&type=style&index=0&id=107001ad&lang=scss&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -38539,22 +38802,35 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    {
+      staticClass:
+        "col-12 text-center d-flex flex-column justify-content-center"
+    },
     [
-      _c("h2", [_vm._v("Un tour por el mundo")]),
+      _c("h1", { staticClass: "m-0" }, [_vm._v("Un tour por el mundo")]),
       _vm._v(" "),
-      _vm._l(_vm.idiomas, function(idio) {
-        return _c("div", { key: idio.id }, [
-          _vm._v("\n            " + _vm._s(idio.idioma) + "\n        ")
-        ])
-      }),
+      _c(
+        "div",
+        { staticClass: "d-flex justify-content-center my-4" },
+        _vm._l(_vm.idiomas, function(idio) {
+          return _c("a", { attrs: { href: "/cursos/" + idio.nombreURL } }, [
+            _c("img", {
+              key: "lang" + idio.id,
+              class: [
+                "mx-1 mini-flag-img",
+                idio.diminutivo === _vm.idioma.diminutivo ? "active" : null
+              ],
+              attrs: { src: "/storage/images/" + idio.diminutivo + ".svg" }
+            })
+          ])
+        }),
+        0
+      ),
       _vm._v(" "),
-      _c("a", { attrs: { href: "/cursos" } }, [_vm._v("Regresar")]),
-      _vm._v(" "),
-      _c("div", [
+      _c("div", { staticClass: "video-container" }, [
         _c("iframe", {
+          staticClass: "frame-video",
           attrs: {
-            width: "300",
-            height: "300",
             src: _vm.idioma.video + "?autoplay=1",
             webkitallowfullscreen: "",
             mozallowfullscreen: "",
@@ -38564,30 +38840,221 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c("h2", [_vm._v("Tus hijos aprenden francés con lingua planet")]),
+      _c("h1", { staticClass: "course-show-header mb-4" }, [
+        _vm._v(
+          "Tus hijos aprenden " +
+            _vm._s(_vm.idioma.idioma) +
+            " con lingua planet"
+        )
+      ]),
       _vm._v(" "),
-      _vm._l(_vm.idioma.membresias, function(membresia) {
-        return _c("div", { key: membresia.id }, [
-          _c("div", [
-            _c("h3", [_vm._v(_vm._s(membresia.nombre))]),
-            _vm._v(" "),
-            _c("div", [
-              _vm._v(
-                "\n                " + _vm._s(membresia.tipo) + "\n            "
+      _c(
+        "div",
+        { staticClass: "card-deck card-deck-courses" },
+        _vm._l(_vm.idioma.membresias, function(membresia, key) {
+          return _c("div", { staticClass: "card card-course-deck mx-3" }, [
+            _c("div", { staticClass: "card-body d-flex flex-column" }, [
+              _c("img", {
+                staticClass: "flag-img mx-auto",
+                attrs: {
+                  src:
+                    "/storage/images/" + _vm.idioma.diminutivo + "-square.svg",
+                  alt: "lingua planet france"
+                }
+              }),
+              _vm._v(" "),
+              _c("h1", { staticClass: "mb-0" }, [
+                _vm._v(_vm._s(membresia.nombre))
+              ]),
+              _vm._v(" "),
+              _c("h2", [_vm._v("Pago " + _vm._s(membresia.tipo))]),
+              _vm._v(" "),
+              _vm._m(0, true),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-buy btn-success mx-auto",
+                  attrs: { href: "/membresia/" + membresia.nombreURL }
+                },
+                [_c("h2", { staticClass: "mb-0 bold" }, [_vm._v("Comprar")])]
               )
-            ]),
-            _vm._v(" "),
-            _c("a", { attrs: { href: "/membresia/" + membresia.nombreURL } }, [
-              _vm._v("Comprar")
             ])
           ])
-        ])
-      })
-    ],
-    2
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "carousel slide",
+          attrs: {
+            id: "carouselExampleIndicators",
+            "data-ride": "false",
+            "data-interval": "false"
+          }
+        },
+        [
+          _c(
+            "ol",
+            { staticClass: "carousel-indicators" },
+            _vm._l(_vm.idioma.membresias, function(membresia, key) {
+              return _c("li", {
+                class: { active: key === 0 },
+                attrs: {
+                  "data-target": "#carouselExampleIndicators",
+                  "data-slide-to": key
+                }
+              })
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "carousel-inner" },
+            _vm._l(_vm.idioma.membresias, function(membresia, key) {
+              return _c(
+                "div",
+                {
+                  key: "card" + membresia.id,
+                  class: ["carousel-item", key === 0 ? "active" : null]
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "card card-course-carrousel mx-3" },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "card-body d-flex flex-column" },
+                        [
+                          _c("img", {
+                            staticClass: "flag-img mx-auto",
+                            attrs: {
+                              src:
+                                "/storage/images/" +
+                                _vm.idioma.diminutivo +
+                                "-square.svg",
+                              alt: "lingua planet france"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("h1", { staticClass: "mb-0" }, [
+                            _vm._v(_vm._s(membresia.nombre))
+                          ]),
+                          _vm._v(" "),
+                          _c("h2", [_vm._v("Pago " + _vm._s(membresia.tipo))]),
+                          _vm._v(" "),
+                          _vm._m(1, true),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-buy btn-success",
+                              attrs: {
+                                href: "/membresia/" + membresia.nombreURL
+                              }
+                            },
+                            [
+                              _c("h1", { staticClass: "mb-0" }, [
+                                _vm._v("Comprar")
+                              ])
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _vm._m(3)
+        ]
+      )
+    ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mt-4 mb-3" }, [
+      _c("h3", { staticClass: "bold" }, [_vm._v("Tendrás acceso a:")]),
+      _vm._v(" "),
+      _c("h3", [_vm._v("Dashboard de seguimiento")]),
+      _vm._v(" "),
+      _c("h3", [_vm._v("Clases offline")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mt-5 mb-4" }, [
+      _c("h3", { staticClass: "bold" }, [_vm._v("Tendrás acceso a:")]),
+      _vm._v(" "),
+      _c("h3", [_vm._v("Dashboard de seguimiento")]),
+      _vm._v(" "),
+      _c("h3", [_vm._v("Clases offline")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-prev",
+        attrs: {
+          href: "#carouselExampleIndicators",
+          role: "button",
+          "data-slide": "prev"
+        }
+      },
+      [
+        _c("span", {
+          staticClass: "carousel-control-prev-icon",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-next",
+        attrs: {
+          href: "#carouselExampleIndicators",
+          role: "button",
+          "data-slide": "next"
+        }
+      },
+      [
+        _c("span", {
+          staticClass: "carousel-control-next-icon",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -38609,58 +39076,537 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h2", [
-      _vm._v(
-        "Enseñamos idiomas a través del juego ¿Qué esperas para que tus hijos inicien?"
-      )
-    ]),
+  return _c("div", { staticClass: "col" }, [
+    _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-3" }, [
-        _c("h3", [_vm._v(_vm._s(_vm.membresia.nombre))]),
-        _vm._v(" "),
-        _c("span", [_vm._v("Selecciona tu plan y comienza aprender.")]),
-        _vm._v(" "),
-        _c("span", [_vm._v("Aceptamos múltiples métodos de pago.")])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-9 row" },
-        _vm._l(_vm.membresia.planes, function(plan) {
-          return _c("div", { key: plan.id, staticClass: "col" }, [
-            _c("h4", [_vm._v(_vm._s(plan.nombre))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(plan.precio))]),
-            _vm._v(" "),
-            _c("strong", [_vm._v(_vm._s(plan.tipo))]),
-            _vm._v(" "),
-            _c("ul", [
-              _c("li", [
-                _vm._v(_vm._s(plan.stock) + " "),
-                plan.stock === 1
-                  ? _c("span", [_vm._v("perfil ")])
-                  : _c("span", [_vm._v("perfiles ")]),
-                _vm._v("  de estudiante en la plataforma.")
+    _c("div", { staticClass: "web-display" }, [
+      _c("div", { staticClass: "row mt-4" }, [
+        _c("div", { staticClass: "col-3" }, [
+          _c("div", { staticClass: "card h-100 gray-back" }, [
+            _c("div", { staticClass: "card-body py-3 d-flex flex-column" }, [
+              _c("div", { staticClass: "col px-0" }, [
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "d-flex mb-2 align-items-center justify-content-center"
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "mx-1 iz-10 mini-flag-img active",
+                      attrs: {
+                        src:
+                          "/storage/images/" +
+                          _vm.membresia.idioma.diminutivo +
+                          ".svg",
+                        alt: "membresia idioma"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("h3", { staticClass: "bold mb-0 ml-2" }, [
+                      _vm._v(_vm._s(_vm.membresia.nombre))
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("h4", { staticClass: "px-3 select-subtitle" }, [
+                  _vm._v("Selecciona tu membresía y comienza aprender.")
+                ])
               ]),
               _vm._v(" "),
-              _c("li", [_vm._v("Certificado de finalización.")]),
-              _vm._v(" "),
-              _c("li", [_vm._v("Clases nuevas semanales.")])
-            ]),
-            _vm._v(" "),
-            _c("a", { attrs: { href: "/comprar/plan/" + plan.nombreURL } }, [
-              _vm._v("Comprar")
+              _vm._m(1)
             ])
           ])
-        }),
-        0
-      )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-9" }, [
+          _c(
+            "div",
+            { staticClass: "card-deck" },
+            _vm._l(_vm.membresia.planes, function(plan, key) {
+              return _c(
+                "div",
+                { staticClass: "card card-membership-web mx-3" },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "card-header bg-primary text-white border-0 text-center py-3"
+                    },
+                    [_vm._v(_vm._s(plan.nombre))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "card-body px-1 d-flex flex-column text-center"
+                    },
+                    [
+                      _c("span", { staticClass: "price-web" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(
+                              plan.precio.toLocaleString("de-DE", {
+                                style: "currency",
+                                currency: "USD"
+                              })
+                            ) +
+                            "\n                            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "h4" }, [
+                        _vm._v("Pago " + _vm._s(plan.tipo))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(2, true),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn w-50 btn-primary-red mx-auto",
+                          attrs: { href: "/comprar/plan/" + plan.nombreURL }
+                        },
+                        [_c("h3", { staticClass: "mb-0" }, [_vm._v("Comprar")])]
+                      )
+                    ]
+                  )
+                ]
+              )
+            }),
+            0
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(3)
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "mobile-display" }, [
+      _c("div", { staticClass: "card gray-back" }, [
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "col" }, [
+            _c(
+              "span",
+              {
+                staticClass: "d-flex align-items-center justify-content-center"
+              },
+              [
+                _c("img", {
+                  staticClass: "mx-1 mini-flag-img active",
+                  attrs: {
+                    src:
+                      "/storage/images/" +
+                      _vm.membresia.idioma.diminutivo +
+                      ".svg",
+                    alt: "membresia idioma"
+                  }
+                }),
+                _vm._v(" "),
+                _c("h1", { staticClass: "mb-0 ml-3" }, [
+                  _vm._v(_vm._s(_vm.membresia.nombre))
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("h3", { staticClass: "text-center" }, [
+              _vm._v("Selecciona tu membresía y comienza aprender.")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("nav", [
+          _c(
+            "div",
+            {
+              staticClass: "nav nav-tabs d-flex text-center",
+              attrs: { id: "nav-tab", role: "tablist" }
+            },
+            _vm._l(_vm.membresia.planes, function(plan, key) {
+              return _c(
+                "a",
+                {
+                  class: ["nav-link flex-fill", key === 0 ? "active" : null],
+                  attrs: {
+                    id: "nav-" + plan.id + "-tab",
+                    "data-toggle": "tab",
+                    href: "#nav-" + plan.id,
+                    role: "tab",
+                    "aria-controls": "#nav-" + plan.id,
+                    "aria-selected": key === 0 ? true : false
+                  }
+                },
+                [_vm._v(_vm._s(plan.nombre))]
+              )
+            }),
+            0
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "tab-content bg-white",
+            attrs: { id: "nav-tabContent" }
+          },
+          _vm._l(_vm.membresia.planes, function(plan, key) {
+            return _c(
+              "div",
+              {
+                class: ["tab-pane fade", key === 0 ? "show active" : null],
+                attrs: {
+                  id: "nav-" + plan.id,
+                  role: "tabpanel",
+                  "aria-labelledby": "nav-" + plan.id + "-tab"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "card-membership-mobile text-center" },
+                  [
+                    _c("div", { staticClass: "d-flex flex-column" }, [
+                      _c("span", { staticClass: "price-mobile" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(
+                              plan.precio.toLocaleString("de-DE", {
+                                style: "currency",
+                                currency: "USD"
+                              })
+                            ) +
+                            "\n                            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "h4" }, [
+                        _vm._v("Pago " + _vm._s(plan.tipo))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(4, true)
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-primary-red px-5 mt-3 mb-2",
+                        attrs: { href: "" }
+                      },
+                      [_vm._v("Comprar")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(5, true)
+              ]
+            )
+          }),
+          0
+        )
+      ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row d-flex justify-content-center" }, [
+      _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-12 col-xs-12" }, [
+        _c("h2", { staticClass: "text-center" }, [
+          _c("span", { staticClass: "membership-span" }, [
+            _vm._v("Enseñamos idiomas")
+          ]),
+          _vm._v(" a través del juego ¿Qué esperas para que tus hijos inicien?")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col px-0" }, [
+      _c("span", { staticClass: "d-flex mb-2 span-payment-methods" }, [
+        _vm._v(
+          "\n                                Aceptamos múltiples metodos de pago.\n                            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "mx-1",
+        attrs: {
+          src: "/storage/images/stripe-logo.svg",
+          alt: "membresia idioma"
+        }
+      }),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "mx-1",
+        attrs: {
+          src: "/storage/images/paypal-logo.svg",
+          alt: "membresia idioma"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "text-left w-80 mx-auto mt-4" }, [
+      _c("li", { staticClass: "li-benefits text-secondary" }, [
+        _c("span", { staticClass: "text-primary bold" }, [_vm._v("1 perfil")]),
+        _vm._v(" de estudiante en la plataforma.")
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "li-benefits text-secondary" }, [
+        _vm._v("Certificado de finalización.")
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "li-benefits text-secondary" }, [
+        _vm._v("Clases nuevas semanales.")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }, [
+        _c("ul", { staticClass: "membership-details text-left mx-auto mt-4" }, [
+          _c("li", { staticClass: "d-flex align-items-center p-2" }, [
+            _c("div", { staticClass: "w-24" }, [
+              _c("h4", { staticClass: "mb-0" }, [
+                _vm._v("Estudiantes con acceso a la plataforma")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-38 text-center p-3" }, [
+              _c("span", { staticClass: "h4 bold" }, [_vm._v("1")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-38 text-center p-3" }, [
+              _c("span", { staticClass: "h4 bold" }, [_vm._v("1")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "d-flex align-items-center p-2" }, [
+            _c("div", { staticClass: "w-24" }, [
+              _c("h4", { staticClass: "mb-0" }, [
+                _vm._v("Panel de monitoreo para padres")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-38 text-center" }, [
+              _c("img", {
+                staticClass: "mx-1",
+                attrs: { src: "/storage/images/check.svg" }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-38 text-center" }, [
+              _c("img", {
+                staticClass: "mx-1",
+                attrs: { src: "/storage/images/check.svg" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "d-flex align-items-center p-2" }, [
+            _c("div", { staticClass: "w-24" }, [
+              _c("h4", { staticClass: "mb-0" }, [
+                _vm._v("Clases nuevas semanales")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-38 text-center" }, [
+              _c("img", {
+                staticClass: "mx-1",
+                attrs: { src: "/storage/images/check.svg" }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-38 text-center" }, [
+              _c("img", {
+                staticClass: "mx-1",
+                attrs: { src: "/storage/images/check.svg" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "d-flex align-items-center p-2" }, [
+            _c("div", { staticClass: "w-24" }, [
+              _c("h4", { staticClass: "mb-0" }, [_vm._v("Juegos educativos")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-38 text-center" }, [
+              _c("img", {
+                staticClass: "mx-1",
+                attrs: { src: "/storage/images/check.svg" }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-38 text-center" }, [
+              _c("img", {
+                staticClass: "mx-1",
+                attrs: { src: "/storage/images/check.svg" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "d-flex align-items-center p-2" }, [
+            _c("div", { staticClass: "w-24" }, [
+              _c("h4", { staticClass: "mb-0" }, [
+                _vm._v("Certificado de finalización")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-38 text-center" }, [
+              _c("img", {
+                staticClass: "mx-1",
+                attrs: { src: "/storage/images/check.svg" }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-38 text-center" }, [
+              _c("img", {
+                staticClass: "mx-1",
+                attrs: { src: "/storage/images/check.svg" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "d-flex align-items-center p-2" }, [
+            _c("div", { staticClass: "w-24" }, [
+              _c("h4", { staticClass: "mb-0" }, [_vm._v("Clases en full HD")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-38 text-center" }, [
+              _c("img", {
+                staticClass: "mx-1",
+                attrs: { src: "/storage/images/check.svg" }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-38 text-center" }, [
+              _c("img", {
+                staticClass: "mx-1",
+                attrs: { src: "/storage/images/check.svg" }
+              })
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "text-left w-80 mx-auto" }, [
+      _c("li", [
+        _c("span", { staticClass: "text-primary bold" }, [_vm._v("1 perfil")]),
+        _vm._v(" de estudiante en la plataforma.")
+      ]),
+      _vm._v(" "),
+      _c("li", [_vm._v("Certificado de finalización.")]),
+      _vm._v(" "),
+      _c("li", [_vm._v("Clases nuevas semanales.")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "membership-details mx-4" }, [
+      _c("li", { staticClass: "d-flex align-items-center py-2" }, [
+        _c("div", { staticClass: "w-75" }, [
+          _c("h3", { staticClass: "mb-0" }, [
+            _vm._v("Estudiantes con acceso a la plataforma")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-25 text-center p-4" }, [
+          _c("span", { staticClass: "h4 bold" }, [_vm._v("1")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "d-flex align-items-center py-2" }, [
+        _c("div", { staticClass: "w-75" }, [
+          _c("h3", { staticClass: "mb-0" }, [
+            _vm._v("Panel de monitoreo para padres")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-25 text-center" }, [
+          _c("img", {
+            staticClass: "mx-1",
+            attrs: { src: "/storage/images/check.svg" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "d-flex align-items-center py-2" }, [
+        _c("div", { staticClass: "w-75" }, [
+          _c("h3", { staticClass: "mb-0" }, [_vm._v("Clases nuevas semanales")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-25 text-center p-4" }, [
+          _c("img", {
+            staticClass: "mx-1",
+            attrs: { src: "/storage/images/check.svg" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "d-flex align-items-center py-2" }, [
+        _c("div", { staticClass: "w-75" }, [
+          _c("h3", { staticClass: "mb-0" }, [_vm._v("Juegos educativos")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-25 text-center p-4" }, [
+          _c("img", {
+            staticClass: "mx-1",
+            attrs: { src: "/storage/images/check.svg" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "d-flex align-items-center py-2" }, [
+        _c("div", { staticClass: "w-75" }, [
+          _c("h3", { staticClass: "mb-0" }, [
+            _vm._v("Certificado de finalización")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-25 text-center p-4" }, [
+          _c("img", {
+            staticClass: "mx-1",
+            attrs: { src: "/storage/images/check.svg" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "d-flex align-items-center py-2" }, [
+        _c("div", { staticClass: "w-75" }, [
+          _c("h3", { staticClass: "mb-0" }, [_vm._v("Clases en full HD")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-25 text-center p-4" }, [
+          _c("img", {
+            staticClass: "mx-1",
+            attrs: { src: "/storage/images/check.svg" }
+          })
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -38695,13 +39641,7 @@ var render = function() {
               "label",
               {
                 staticClass:
-                  "btn d-flex m-2 col-12 py-3 row m-0 justify-content-between align-items-center",
-                staticStyle: {
-                  "font-family": "'TitilliumWeb-SemiBold'",
-                  background: "#FFFEF9",
-                  "box-shadow": "0px 1px 9px rgba(0, 0, 0, 0.15)",
-                  "border-radius": "12px"
-                },
+                  "btn d-flex m-2 col-12 py-2 row m-0 justify-content-between align-items-center",
                 on: {
                   click: function($event) {
                     $event.preventDefault()
@@ -38709,32 +39649,14 @@ var render = function() {
                   }
                 }
               },
-              [
-                _c("span", [_vm._v("Pagar con Stripe")]),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "position-relative",
-                  attrs: {
-                    type: "radio",
-                    name: "payment_platform",
-                    value: "efectivo",
-                    required: ""
-                  }
-                })
-              ]
+              [_vm._m(0), _vm._v(" "), _vm._m(1)]
             ),
             _vm._v(" "),
             _c(
               "label",
               {
                 staticClass:
-                  "btn d-flex m-2 col-12 py-3 row m-0 justify-content-between align-items-center",
-                staticStyle: {
-                  "font-family": "'TitilliumWeb-SemiBold'",
-                  background: "#FFFEF9",
-                  "box-shadow": "0px 1px 9px rgba(0, 0, 0, 0.15)",
-                  "border-radius": "12px"
-                },
+                  "btn d-flex m-2 col-12 py-2 row m-0 justify-content-between align-items-center",
                 on: {
                   click: function($event) {
                     $event.preventDefault()
@@ -38742,112 +39664,49 @@ var render = function() {
                   }
                 }
               },
-              [
-                _c("span", [_vm._v("Paypal")]),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "position-relative",
-                  attrs: {
-                    type: "radio",
-                    name: "payment_platform",
-                    value: "transferencia",
-                    required: ""
-                  }
-                })
-              ]
+              [_vm._m(2), _vm._v(" "), _vm._m(3)]
             )
           ]
         )
       : _c("div", [
-          _vm.paymentmetod === "efectivoCollapse"
-            ? _c("div", { staticClass: "row m-0" }, [
+          _c("div", { staticClass: "d-flex flex-column align-items-center" }, [
+            _vm.paymentmetod === "efectivoCollapse"
+              ? _c("img", {
+                  staticClass: "iz-lg",
+                  attrs: { src: "/storage/images/stripe-logo.svg" }
+                })
+              : _vm.paymentmetod === "transferenciabancariaCollapse"
+              ? _c("img", {
+                  staticClass: "iz-lg",
+                  attrs: { src: "/storage/images/paypal-logo.svg" }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "card-rounded m-2 w-100 py-3 d-flex justify-content-between align-items-center"
+              },
+              [
+                _c("span", [_vm._v("Metodo de pago agregado")]),
+                _vm._v(" "),
                 _c(
-                  "div",
+                  "button",
                   {
-                    staticClass:
-                      "m-2 w-100 py-3 row justify-content-between align-items-center",
-                    staticStyle: {
-                      "font-family": "'TitilliumWeb-SemiBold'",
-                      background: "#FFFEF9",
-                      "box-shadow": "0px 1px 9px rgba(0, 0, 0, 0.15)",
-                      "border-radius": "12px"
+                    staticClass: "btn btn-success btn-registro",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.cambiar()
+                      }
                     }
                   },
-                  [
-                    _c(
-                      "p",
-                      {
-                        staticClass: "m-0",
-                        staticStyle: { "padding-left": "15px" }
-                      },
-                      [_vm._v("Metodo de pago agregado")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-registro",
-                        staticStyle: { "margin-right": "15px" },
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            return _vm.cambiar()
-                          }
-                        }
-                      },
-                      [_vm._v("Seleccionar otro pago")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _vm._m(0)
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.paymentmetod === "transferenciabancariaCollapse"
-            ? _c("div", { staticClass: "row m-0" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "m-2 w-100 py-3 row justify-content-between align-items-center",
-                    staticStyle: {
-                      "font-family": "'TitilliumWeb-SemiBold'",
-                      background: "#FFFEF9",
-                      "box-shadow": "0px 1px 9px rgba(0, 0, 0, 0.15)",
-                      "border-radius": "12px"
-                    }
-                  },
-                  [
-                    _c(
-                      "p",
-                      {
-                        staticClass: "m-0",
-                        staticStyle: { "padding-left": "15px" }
-                      },
-                      [_vm._v("Metodo de pago agregado")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-registro",
-                        staticStyle: { "margin-right": "15px" },
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            return _vm.cambiar()
-                          }
-                        }
-                      },
-                      [_vm._v("Seleccionar otro pago")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _vm._m(1)
-              ])
-            : _vm._e()
+                  [_vm._v("Seleccionar otro pago")]
+                )
+              ]
+            )
+          ])
         ])
   ])
 }
@@ -38856,41 +39715,59 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "m-2 py-3 row justify-content-between align-items-center w-100",
-        staticStyle: {
-          "font-family": "'TitilliumWeb-SemiBold'",
-          padding: "0 15px",
-          background: "#FFFEF9",
-          "box-shadow": "0px 1px 9px rgba(0, 0, 0, 0.15)",
-          "border-radius": "12px"
+    return _c("div", [
+      _c("input", {
+        staticClass: "position-relative",
+        attrs: {
+          type: "radio",
+          name: "payment_platform",
+          value: "efectivo",
+          required: ""
         }
-      },
-      [_c("span", [_vm._v("Stripe")])]
-    )
+      }),
+      _vm._v(" "),
+      _c("span", { staticClass: "h5" }, [_vm._v("Pagar con Stripe")])
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "m-2 py-3 row justify-content-between align-items-center w-100",
-        staticStyle: {
-          "font-family": "'TitilliumWeb-SemiBold'",
-          padding: "0 15px",
-          background: "#FFFEF9",
-          "box-shadow": "0px 1px 9px rgba(0, 0, 0, 0.15)",
-          "border-radius": "12px"
+    return _c("div", [
+      _c("img", {
+        staticClass: "iz",
+        attrs: { src: "/storage/images/stripe-logo.svg" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("input", {
+        staticClass: "position-relative",
+        attrs: {
+          type: "radio",
+          name: "payment_platform",
+          value: "transferencia",
+          required: ""
         }
-      },
-      [_c("span", [_vm._v("Paypal")])]
-    )
+      }),
+      _vm._v(" "),
+      _c("span", { staticClass: "h5" }, [_vm._v("Paypal")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("img", {
+        staticClass: "iz",
+        attrs: { src: "/storage/images/paypal-logo.svg" }
+      })
+    ])
   }
 ]
 render._withStripped = true
@@ -38914,7 +39791,80 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    " + _vm._s(_vm.process) + "\n")])
+  return _c("div", { staticClass: "row justify-content-center" }, [
+    _c(
+      "div",
+      {
+        staticClass:
+          "col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-center"
+      },
+      [
+        _c("div", { staticClass: "d-flex" }, [
+          _c("div", { staticClass: "text-center" }, [
+            _c("img", {
+              staticClass: "mx-1 mb-2 iz-35 active",
+              attrs: {
+                src:
+                  "/storage/images/ellipse-" +
+                  (_vm.process >= 33.3 ? "filled" : "outlined") +
+                  ".svg"
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "h6 d-block" }, [
+              _vm._v("Seleccione el curso")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("img", {
+              staticClass: "line1",
+              attrs: { src: "/storage/images/line.svg" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "text-center" }, [
+            _c("img", {
+              staticClass: "mx-1 mb-2 iz-35 active",
+              attrs: {
+                src:
+                  "/storage/images/ellipse-" +
+                  (_vm.process >= 66.6 ? "filled" : "outlined") +
+                  ".svg"
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "h6 d-block" }, [
+              _vm._v("Seleccione el tipo de pago")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("img", {
+              staticClass: "line2",
+              attrs: { src: "/storage/images/line.svg" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "text-center" }, [
+            _c("img", {
+              staticClass: "mx-1 mb-2 iz-35 active",
+              attrs: {
+                src:
+                  "/storage/images/ellipse-" +
+                  (_vm.process === 100 ? "filled" : "outlined") +
+                  ".svg"
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "h6 d-block" }, [
+              _vm._v("Confirma tu pago")
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -52596,7 +53546,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _show_vue_vue_type_template_id_3a5f66d2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./show.vue?vue&type=template&id=3a5f66d2&scoped=true& */ "./resources/js/Landing/Membresia/show.vue?vue&type=template&id=3a5f66d2&scoped=true&");
 /* harmony import */ var _show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./show.vue?vue&type=script&lang=js& */ "./resources/js/Landing/Membresia/show.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _show_vue_vue_type_style_index_0_id_3a5f66d2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./show.vue?vue&type=style&index=0&id=3a5f66d2&lang=scss&scoped=true& */ "./resources/js/Landing/Membresia/show.vue?vue&type=style&index=0&id=3a5f66d2&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -52604,7 +53556,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _show_vue_vue_type_template_id_3a5f66d2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
   _show_vue_vue_type_template_id_3a5f66d2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -52633,6 +53585,22 @@ component.options.__file = "resources/js/Landing/Membresia/show.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./show.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Landing/Membresia/show.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Landing/Membresia/show.vue?vue&type=style&index=0&id=3a5f66d2&lang=scss&scoped=true&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/Landing/Membresia/show.vue?vue&type=style&index=0&id=3a5f66d2&lang=scss&scoped=true& ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_style_index_0_id_3a5f66d2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./show.vue?vue&type=style&index=0&id=3a5f66d2&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Landing/Membresia/show.vue?vue&type=style&index=0&id=3a5f66d2&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_style_index_0_id_3a5f66d2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_style_index_0_id_3a5f66d2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_style_index_0_id_3a5f66d2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_style_index_0_id_3a5f66d2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
 
 /***/ }),
 
@@ -52752,7 +53720,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _paymetprocess_vue_vue_type_template_id_107001ad_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./paymetprocess.vue?vue&type=template&id=107001ad&scoped=true& */ "./resources/js/Landing/PaymentUtils/paymetprocess.vue?vue&type=template&id=107001ad&scoped=true&");
 /* harmony import */ var _paymetprocess_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./paymetprocess.vue?vue&type=script&lang=js& */ "./resources/js/Landing/PaymentUtils/paymetprocess.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _paymetprocess_vue_vue_type_style_index_0_id_107001ad_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./paymetprocess.vue?vue&type=style&index=0&id=107001ad&lang=scss&scoped=true& */ "./resources/js/Landing/PaymentUtils/paymetprocess.vue?vue&type=style&index=0&id=107001ad&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -52760,7 +53730,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _paymetprocess_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _paymetprocess_vue_vue_type_template_id_107001ad_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
   _paymetprocess_vue_vue_type_template_id_107001ad_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -52789,6 +53759,22 @@ component.options.__file = "resources/js/Landing/PaymentUtils/paymetprocess.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_paymetprocess_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./paymetprocess.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Landing/PaymentUtils/paymetprocess.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_paymetprocess_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Landing/PaymentUtils/paymetprocess.vue?vue&type=style&index=0&id=107001ad&lang=scss&scoped=true&":
+/*!***********************************************************************************************************************!*\
+  !*** ./resources/js/Landing/PaymentUtils/paymetprocess.vue?vue&type=style&index=0&id=107001ad&lang=scss&scoped=true& ***!
+  \***********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_paymetprocess_vue_vue_type_style_index_0_id_107001ad_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./paymetprocess.vue?vue&type=style&index=0&id=107001ad&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Landing/PaymentUtils/paymetprocess.vue?vue&type=style&index=0&id=107001ad&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_paymetprocess_vue_vue_type_style_index_0_id_107001ad_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_paymetprocess_vue_vue_type_style_index_0_id_107001ad_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_paymetprocess_vue_vue_type_style_index_0_id_107001ad_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_paymetprocess_vue_vue_type_style_index_0_id_107001ad_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
 
 /***/ }),
 

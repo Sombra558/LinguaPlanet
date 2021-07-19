@@ -13,4 +13,8 @@ class Membresia extends Model
     public function planes(){
         return $this->hasMany('App\Models\Membresia\Plan');
     }
+
+    public function idioma() {
+    	return $this->belongsTo('App\Models\Idioma\Idioma');
+    }
 }
