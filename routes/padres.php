@@ -2,7 +2,7 @@
 
 Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
     Route::get('/', 'Padres\PadresViewController@home');
-    Route::get('/detalles-avances', 'Padres\PadresViewController@detallespadre');
+    Route::get('/detalles-avances/cursos', 'Padres\PadresViewController@detallespadrecursos');
 
 
 
