@@ -26,4 +26,16 @@ class PadresViewController extends Controller
         }]);
         return view('Padres.Home.home',compact('user'));
     }
+
+    public function detallespadre()
+    {
+        $user=Auth::user()->load(['perfiles'=>function($q)
+        {
+            return $q->with('animal');
+        }]);
+        return view('Padres.Detalles.index',compact('user'));
+    }
+
+
+    
 }

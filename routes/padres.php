@@ -2,6 +2,10 @@
 
 Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
     Route::get('/', 'Padres\PadresViewController@home');
+    Route::get('/detalles-avances', 'Padres\PadresViewController@detallespadre');
+
+
+
     Route::resource('/perfil-user', 'Padres\PerfilEstudiante');
    
     /* Route::group(['prefix' => 'app/{id}/{nombreURL}','middleware' => ['HasCourseDocente']], function () {

@@ -1936,6 +1936,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "myperfiles-component",
@@ -39222,23 +39227,29 @@ var render = function() {
       ? _c("h2", [_vm._v("Como quieres ingresar")])
       : _c("h2", [_vm._v("Crea un perfil de estudiante")]),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "row" },
-      [
-        _vm._l(_vm.user.perfiles, function(perf) {
-          return _c(
-            "div",
-            { key: perf.id, staticClass: "col" },
-            [_c("PerfilCard", { attrs: { perfil: perf } })],
-            1
-          )
-        }),
-        _vm._v(" "),
-        _vm._m(0)
-      ],
-      2
-    )
+    _vm.user.perfiles.length > 0
+      ? _c(
+          "div",
+          { staticClass: "row" },
+          [
+            _vm._l(_vm.user.perfiles, function(perf) {
+              return _c(
+                "div",
+                { key: perf.id, staticClass: "col" },
+                [_c("PerfilCard", { attrs: { perfil: perf } })],
+                1
+              )
+            }),
+            _vm._v(" "),
+            _vm._m(0)
+          ],
+          2
+        )
+      : _c("div", { staticClass: "row" }, [
+          _c("a", { attrs: { href: "/home/perfil-user/create" } }, [
+            _vm._v("+")
+          ])
+        ])
   ])
 }
 var staticRenderFns = [
