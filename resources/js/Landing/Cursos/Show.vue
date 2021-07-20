@@ -19,16 +19,16 @@
         <h1 class="course-show-header mb-4">Tus hijos aprenden {{ idioma.idioma }} con lingua planet</h1>
         <div class="card-deck card-deck-courses">
             <div v-for="(membresia, key) in idioma.membresias" class="card card-course-deck mx-3">
-                <div class="card-body d-flex flex-column">
-                    <img class="flag-img mx-auto" :src="`/storage/images/${idioma.diminutivo}-square.svg`" alt="lingua planet france">
-                    <h1 class="mb-0">{{ membresia.nombre }}</h1>
-                    <h2>Pago {{ membresia.tipo }}</h2>
-                    <div class="mt-4 mb-3">
-                        <h3 class="bold">Tendrás acceso a:</h3>
-                        <h3>Dashboard de seguimiento</h3>
-                        <h3>Clases offline</h3>
+                <div class="card-body d-flex flex-column px-1">
+                    <img class="flag-img mx-auto" :src="`/storage/images/${idioma.diminutivo}-square.svg`" :alt="`lingua planet ${idioma.idioma}`">
+                    <span class="h3 bold">{{ membresia.nombre }}</span>
+                    <h3>Pago {{ membresia.tipo }}</h3>
+                    <div class="mt-4 mb-3 lh">
+                        <span class="h5">Tendrás acceso a:</span>
+                        <h4>Dashboard de seguimiento</h4>
+                        <h4>Clases offline</h4>
                     </div>
-                    <a :href="`/membresia/${membresia.nombreURL}`" class="btn btn-buy btn-success mx-auto"><h2 class="mb-0 bold">Comprar</h2></a>
+                    <a :href="`/membresia/${membresia.nombreURL}`" class="btn btn-buy btn-success mx-auto"><span class="h4 bold mb-0">Comprar</span></a>
                 </div>
             </div>
         </div>
@@ -73,5 +73,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .lh {
+        line-height: 4;
+    }
 </style>
