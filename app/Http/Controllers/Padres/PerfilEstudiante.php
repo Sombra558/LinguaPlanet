@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Padres;
 
 use App\Http\Controllers\Controller;
+use App\Models\Animals\Animal;
+use App\Models\PerfilEstudiante\PerfilEstudianteUser;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class PerfilEstudiante extends Controller
@@ -24,7 +27,8 @@ class PerfilEstudiante extends Controller
      */
     public function create()
     {
-        return view('Padres.PerfilUser.create');
+        $animals=Animal::get();
+        return view('Padres.PerfilUser.create',compact('animals'));
     }
 
     /**
@@ -35,15 +39,23 @@ class PerfilEstudiante extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'apodo' => ['required'],
+            'f_nacimiento' => ['required'],
+            'animal_id' => ['required'],
+        ];
+        $request->validate($rules);
+        $perfil = PerfilEstudianteUser::create([
+            'apodo' => $request['apodo'],
+            'animal_id' => $request['animal_id'],
+            'f_nacimiento' => $request['f_nacimiento'],
+            'color' => $request['color'],
+            'hobby' => $request['hobby'],
+            'user_id' => Auth::user()->id,
+        ]);
+        return $perfil;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //

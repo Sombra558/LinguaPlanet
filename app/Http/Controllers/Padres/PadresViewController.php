@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Padres;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class PadresViewController extends Controller
@@ -19,7 +20,10 @@ class PadresViewController extends Controller
      */
     public function home()
     {
-
-        return view('Padres.Home.home');
+        $user=Auth::user()->load(['perfiles'=>function($q)
+        {
+            return $q->with('animal');
+        }]);
+        return view('Padres.Home.home',compact('user'));
     }
 }

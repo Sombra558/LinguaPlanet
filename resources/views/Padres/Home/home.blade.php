@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('layouts.Padres.padre')
 
 @section('content')
 <div class="container">
@@ -13,8 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                   <a href="/home/perfil-user/create">Nuevo Perfil</a>
+                    <home-component :user="{{$user}}" ></home-component>
+                  
                 </div>
             </div>
         </div>

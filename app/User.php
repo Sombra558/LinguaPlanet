@@ -23,4 +23,8 @@ class User extends Authenticatable
     {
       return $this->belongsToMany('App\Models\Membresia\Plan')->withPivot('available');
     }
+    public function perfiles()
+    {
+        return $this->hasMany('App\Models\PerfilEstudiante\PerfilEstudianteUser','user_id');
+    }
 }

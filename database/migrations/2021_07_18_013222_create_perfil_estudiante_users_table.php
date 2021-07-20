@@ -16,10 +16,13 @@ class CreatePerfilEstudianteUsersTable extends Migration
         Schema::create('perfil_estudiante_users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('hobby');
-            $table->string('apodo');
+            $table->string('apodo',20);
+            $table->string('color',20);
             $table->date('f_nacimiento')->nullable();
             $table->unsignedbigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedbigInteger('animal_id');
+            $table->foreign('animal_id')->references('id')->on('animals')->onDelete('cascade');
             $table->timestamps();
         });
     }
