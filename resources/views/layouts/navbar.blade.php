@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="navbar navbar-expand-md navbar-light bg-white">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ asset('storage/images/logo.svg') }}" class="logo" alt="Lingua Planet Logo">
+            <img style="width: 90px; height: 90px;" src="{{ asset('storage/images/logo.svg') }}" class="logo" alt="Lingua Planet Logo">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-icon">
@@ -16,16 +16,16 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item" >
-                    <a class="nav-link" href="#">{{ __('Home') }}</a>
+                    <a class="nav-link" href="#"><span class="h6 bold">{{ __('Home') }}</span></a>
                 </li>
                 <li class="nav-item" >
-                    <a class="nav-link" href="{{ route('courses.index') }}">{{ __('Courses') }}</a>
+                    <a class="nav-link" href="{{ route('courses.index') }}"><span class="h6 bold">{{ __('Courses') }}</span></a>
                 </li>
                 <li class="nav-item" >
-                    <a class="nav-link" href="#">{{ __('About') }}</a>
+                    <a class="nav-link" href="#"><span class="h6 bold">{{ __('About') }}</span></a>
                 </li>
                 <li class="nav-item" >
-                    <a class="nav-link" href="#">{{ __('Contact us') }}</a>
+                    <a class="nav-link" href="#"><span class="h6 bold">{{ __('Contact us') }}</span></a>
                 </li>
             </ul>
             <!-- Right Side Of Navbar -->

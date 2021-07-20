@@ -28,8 +28,8 @@
                     </div>
                 </div>
                 <div class="col-9">
-                    <div class="card-deck">
-                        <div v-for="(plan, key) in membresia.planes" class="card card-membership-web mx-3">
+                    <div class="card-deck" style="overflow-x: auto;">
+                        <div v-for="(plan, key) in membresia.planes" class="card card-membership-web w-25 mx-3">
                             <div class="card-header bg-primary text-white border-0 text-center py-3">{{ plan.nombre }}</div>
                             <div class="card-body px-1 d-flex flex-column text-center">
                                 <span class="price-web">
@@ -41,7 +41,8 @@
                                     <li class="li-benefits text-secondary">Certificado de finalización.</li>
                                     <li class="li-benefits text-secondary">Clases nuevas semanales.</li>
                                 </ul>
-                                <a :href="`/comprar/plan/${plan.nombreURL}`" class="btn w-50 btn-primary-red mx-auto"><h3 class="mb-0">Comprar</h3></a>
+                                <a :href="`/comprar/plan/${plan.nombreURL}`" class="btn w-40 py-2 btn-primary-red mx-auto">
+                                <span class="h5 bold mb-0">Comprar</span></a>
                             </div>
                         </div>
                     </div>
@@ -157,7 +158,7 @@
 </script>
 
 <style lang="scss" scoped>
-    
+
     .li-benefits {
         text-indent : -4px;
         margin-left : -2em;
