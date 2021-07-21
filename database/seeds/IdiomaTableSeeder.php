@@ -14,7 +14,7 @@ class IdiomaTableSeeder extends Seeder
         Idioma::create([
             'idioma' => "Español",
             'video' => "https://www.youtube.com/embed/GZ7xHi8AIjM",
-            'nombreURL' => "espanol",
+            'nombreURL' => "spanish",
             'diminutivo' => "es",
         ]);  
         Idioma::create([
