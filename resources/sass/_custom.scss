@@ -102,6 +102,7 @@ body {
 /* END - Navbar styles*/
 
 .login-title {
+<<<<<<< HEAD
 	background-image: url('../storage/images/login-title.svg');
 	background-size: 100% 127% ;
 	height: 500px;
@@ -114,6 +115,15 @@ body {
 
 .register-title h1{
 	margin-bottom: 6.5rem;
+=======
+	background-image: url('../storage/images/login-title.png');
+	background-size: 100% 100%;
+}
+
+.register-title {
+	background-image: url('../storage/images/register-title.png');
+	background-size: 100% 100%;
+>>>>>>> master
 }
 
 /* Inputs */
@@ -279,11 +289,14 @@ h1.course-show-header {
 	height: 25%;
 }
 
+<<<<<<< HEAD
 .iz-30 {
 	width: 30%;
 	height: 30%;
 }
 
+=======
+>>>>>>> master
 .iz-35 {
 	width: 35%;
 	height: 35%;
@@ -294,11 +307,14 @@ h1.course-show-header {
 	height: 50%;
 }
 
+<<<<<<< HEAD
 .iz-60 {
 	width: 60%;
 	height: 60%;
 }
 
+=======
+>>>>>>> master
 .video-container {
 	margin-bottom: 1.8rem;
 }
@@ -324,6 +340,11 @@ h1.course-show-header {
 .card .flag-img {
 	opacity: 0.86;
 	margin: 1rem;
+<<<<<<< HEAD
+=======
+	width: 25%;
+	height: 25%;
+>>>>>>> master
 }
 
 .card-course-deck {
@@ -405,7 +426,6 @@ h1.course-show-header {
 	flex-direction : row !important;
 	justify-content : start !important;
 }
-
 /* Footer styles*/
 footer,
 .footer-link {
@@ -448,11 +468,18 @@ footer.courses-footer {
 	border-radius : 50px;
 	background: transparent;
 }
-
 /* END - Footer styles*/
 
 /* Media queries styles*/
 @media (max-width: 425px){
+
+	.title-login {
+		display : none;
+	}
+
+	.register-login {
+		display : none;
+	}
 
 	.reset-pw-link {
 		margin-top: 1.8em;
@@ -496,7 +523,6 @@ footer.courses-footer {
         transition : left 0.4s;
         z-index : 1041;
     }
-
 }
 
 @media (max-width: 768px){

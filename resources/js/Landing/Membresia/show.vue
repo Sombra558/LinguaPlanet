@@ -158,7 +158,6 @@
 </script>
 
 <style lang="scss" scoped>
-
     .li-benefits {
         text-indent : -4px;
         margin-left : -2em;

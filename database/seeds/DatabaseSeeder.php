@@ -34,5 +34,8 @@ class DatabaseSeeder extends Seeder
         $this->call(IdiomaTableSeeder::class);
         $this->call(MembresiaTableSeeder::class);
         $this->call(PlanTableSeeder::class);
+        $this->call(AnimalsTableSeeder::class);
+        $this->call(CursosTableSeeder::class);
+        $this->call(MembresiaCursoTableSeeder::class);
     }
 }

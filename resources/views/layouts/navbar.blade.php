@@ -16,16 +16,16 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item" >
-                    <a class="nav-link" href="#"><span class="h6 bold">{{ __('Home') }}</span></a>
+                    <a class="nav-link" href="#">{{ __('Home') }}</a>
                 </li>
                 <li class="nav-item" >
-                    <a class="nav-link" href="{{ route('courses.index') }}"><span class="h6 bold">{{ __('Courses') }}</span></a>
+                    <a class="nav-link" href="{{ route('courses.index') }}">{{ __('Courses') }}</a>
                 </li>
                 <li class="nav-item" >
-                    <a class="nav-link" href="#"><span class="h6 bold">{{ __('About') }}</span></a>
+                    <a class="nav-link" href="#">{{ __('About') }}</a>
                 </li>
                 <li class="nav-item" >
-                    <a class="nav-link" href="#"><span class="h6 bold">{{ __('Contact us') }}</span></a>
+                    <a class="nav-link" href="#">{{ __('Contact us') }}</a>
                 </li>
             </ul>
             <!-- Right Side Of Navbar -->

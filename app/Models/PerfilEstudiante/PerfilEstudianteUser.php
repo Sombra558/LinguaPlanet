@@ -6,7 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class PerfilEstudianteUser extends Model
 {
-    protected $fillable = [
-        'user_id','hobby','f_nacimiento','apodo',
-    ];
+  protected $fillable = [
+      'user_id','hobby','f_nacimiento','apodo','animal_id','color',
+  ];
+
+  public function animal(){
+      return $this->belongsTo('App\Models\Animals\Animal');
+  }
+  
+  public function planes()
+  {
+    return $this->belongsToMany('App\Models\Solicitudes\PlanUser','perfil_estudiante_user_plan','plan_user_id','perfil_estudiante_user_id');
+  }
 }

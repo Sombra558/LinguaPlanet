@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+<<<<<<< HEAD
     <div class="row">
         <div class="col-12 text-center">
         <h3 class="bold mt-4">Crea un perfil de estudiante</h3>
@@ -19,5 +20,24 @@
                 </a>
             </div>
     </div>    
+=======
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <home-component :user="{{$user}}" ></home-component>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+>>>>>>> master
 </div>
 @endsection

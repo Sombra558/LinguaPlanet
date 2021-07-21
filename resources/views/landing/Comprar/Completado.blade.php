@@ -16,7 +16,7 @@
 	        		<span class="h6 d-block color-plomo">Codigo de corfirmación</span>
 		        	<span class="h4 color-plomo">{{$transactionId}}</span>
 	        	</div>
-	        	<a class="btn btn-success w-25" href="#">Continuar</a>
+	        	<a class="btn btn-success w-25" href="/home">Continuar</a>
 			</div>          	
 		</div>		
 	</div>
