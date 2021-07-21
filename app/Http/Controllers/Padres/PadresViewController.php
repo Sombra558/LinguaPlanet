@@ -50,6 +50,10 @@ class PadresViewController extends Controller
         return view('Padres.Detalles.Membresias.index',compact('user'));
     }
 
-
+    public function perfil()
+    {
+        $user=Auth::user();
+        return view('Padres.Perfil.perfil',compact('user'));
+    }
     
 }
