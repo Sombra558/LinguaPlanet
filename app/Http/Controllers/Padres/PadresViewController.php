@@ -40,8 +40,14 @@ class PadresViewController extends Controller
         $user=Auth::user()->load(['perfiles'=>function($q)
         {
             return $q->with('animal');
-        },'planes']);
-        return view('Padres.Detalles.index',compact('user'));
+        },'planes'=>function($q)
+        {
+            return $q->with(['membresia'=>function($k)
+            {
+                return $k->with('idioma');
+            }]);
+        }]);
+        return view('Padres.Detalles.Membresias.index',compact('user'));
     }
 
 

@@ -12,7 +12,7 @@
         </div>
          <div class="col-5">
                 <h3>{{user.name}} {{user.lastname}}</h3>
-                <span>Membresias Activas {{user.planes.length}}</span>
+                <a href="/home/detalles-pagos/membresias">Membresias Activas {{user.planes.length}}</a>
                 <a href="/home/certificados">Certificados</a>
                 <a href="/home/detalles-avances/cursos">Progreso</a>
         </div>
