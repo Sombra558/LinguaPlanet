@@ -31,7 +31,7 @@ class PadresViewController extends Controller
     {
         $user=Auth::user()->load(['perfiles'=>function($q)
         {
-            return $q->with('animal');
+            return $q->with('animal','planes');
         },'planes'=>function($q)
         {
             return $q->with(['membresia'=>function($k)

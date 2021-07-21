@@ -12,4 +12,8 @@ class PerfilEstudianteUser extends Model
     public function animal(){
         return $this->belongsTo('App\Models\Animals\Animal');
       }
+    public function planes()
+      {
+        return $this->belongsToMany('App\Models\Solicitudes\PlanUser','perfil_estudiante_user_plan','plan_user_id','perfil_estudiante_user_id');
+      }
 }
