@@ -12,12 +12,6 @@ class PadresViewController extends Controller
     {
         $this->middleware('auth');
     }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function home()
     {
         $user=Auth::user()->load(['perfiles'=>function($q)
@@ -26,12 +20,11 @@ class PadresViewController extends Controller
         }]);
         return view('Padres.Home.home',compact('user'));
     }
-
     public function detallespadrecursos()
     {
         $user=Auth::user()->load(['perfiles'=>function($q)
         {
-            return $q->with('animal');
+            return $q->with('animal','cursos');
         },'planes']);
         return view('Padres.Detalles.Cursos.index',compact('user'));
     }
@@ -44,12 +37,11 @@ class PadresViewController extends Controller
         {
             return $q->with(['membresia'=>function($k)
             {
-                return $k->with('idioma');
+                return $k->with('idioma','cursos');
             }]);
         }]);
         return view('Padres.Detalles.Membresias.index',compact('user'));
     }
-
     public function perfil()
     {
         $user=Auth::user();

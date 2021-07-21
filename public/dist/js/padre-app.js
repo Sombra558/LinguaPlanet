@@ -2133,6 +2133,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "pago-card",
   props: ['pago']
@@ -40182,7 +40184,17 @@ var render = function() {
     _c("h2", [_vm._v(_vm._s(_vm.pago.created_at))]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "col" }, [
+        _c("h3", [_vm._v("Cursos")]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          _vm._l(_vm.pago.membresia.cursos, function(curso) {
+            return _c("li", { key: curso.id }, [_vm._v(_vm._s(curso.titulo))])
+          }),
+          0
+        )
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "col" }, [
         _c("h3", [_vm._v("Precio")]),
@@ -40207,14 +40219,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col" }, [_c("h3", [_vm._v("Cursos")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

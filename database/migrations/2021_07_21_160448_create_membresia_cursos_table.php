@@ -13,7 +13,7 @@ class CreateMembresiaCursosTable extends Migration
      */
     public function up()
     {
-        Schema::create('membresia_cursos', function (Blueprint $table) {
+        Schema::create('curso_membresia', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedbigInteger('membresia_id');
             $table->foreign('membresia_id')->references('id')->on('membresias')->onDelete('cascade');

@@ -17,4 +17,8 @@ class Membresia extends Model
     public function idioma() {
     	return $this->belongsTo('App\Models\Idioma\Idioma');
     }
+    public function cursos()
+    {
+      return $this->belongsToMany('App\Models\Cursos\Curso')->withPivot('membresia_id');
+    }
 }
