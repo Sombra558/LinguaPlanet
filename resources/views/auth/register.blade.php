@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 register-title">
-            {{-- <h1>{{ __('messages.title-login') }}</h1> --}}
+    <div class="row justify-content-center">
+        <div class="col-md-6 register-title d-flex justify-content-center align-items-center">
+            <h1 class="w-50">Aprende a través del juego</h1>
         </div>
-        <div class="col-md-6">
-            <h1 class="text-center">{{ __('Create a new account') }}</h1>
+        <div class="col-md-6 py-5 gray-back">
+            <h2 class="bold mb-4 text-center">{{ __('Create a new account') }}</h2>
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <form method="POST" action="{{ route('register') }}">

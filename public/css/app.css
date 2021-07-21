@@ -11218,13 +11218,18 @@ body {
 /* END - Navbar styles*/
 
 .login-title {
-  background-image: url(/images/login-title.png?25cf665695d808f64d1c3d380f94432b);
-  background-size: 100% 100%;
+  background-image: url(/images/login-title.svg?85ed76e22ea9fb767170d1991fb30cff);
+  background-size: 100% 127%;
+  height: 500px;
 }
 
 .register-title {
-  background-image: url(/images/register-title.png?0070640899b7ca2f0765a7640f853b3d);
-  background-size: 100% 100%;
+  background-image: url(/images/register-title.svg?7269ab1c7a108a4fce426eb3dd1e73aa);
+  background-size: 198% 123%;
+}
+
+.register-title h1 {
+  margin-bottom: 6.5rem;
 }
 
 /* Inputs */
@@ -11432,6 +11437,11 @@ h1.course-show-header {
   height: 25%;
 }
 
+.iz-30 {
+  width: 30%;
+  height: 30%;
+}
+
 .iz-35 {
   width: 35%;
   height: 35%;
@@ -11440,6 +11450,11 @@ h1.course-show-header {
 .iz-50 {
   width: 50%;
   height: 50%;
+}
+
+.iz-60 {
+  width: 60%;
+  height: 60%;
 }
 
 .video-container {
@@ -11575,19 +11590,23 @@ footer.courses-footer {
   color: #FFFFFF;
 }
 
+.img-btn {
+  border: none;
+  border-radius: 50px;
+  background: transparent;
+}
+
+.btn-logout {
+  border: none;
+  border-radius: 50px;
+  background: transparent;
+}
+
 /* END - Footer styles*/
 
 /* Media queries styles*/
 
 @media (max-width: 425px) {
-  .title-login {
-    display: none;
-  }
-
-  .register-login {
-    display: none;
-  }
-
   .reset-pw-link {
     margin-top: 1.8em;
   }
@@ -11620,11 +11639,28 @@ footer.courses-footer {
   .mobile-display {
     display: inherit;
   }
+
+  .left-panel {
+    width: 100%;
+    height: 137%;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    transition: left 0.4s;
+  }
 }
 
 @media (max-width: 768px) {
   footer.courses-footer ul {
     padding-left: 20px;
+  }
+
+  .register-title {
+    display: none !important;
+  }
+
+  .login-title {
+    display: none !important;
   }
 
   .card-deck-courses {
@@ -11633,6 +11669,17 @@ footer.courses-footer {
 
   .carousel {
     display: inherit;
+  }
+}
+
+@media (min-width: 426px) {
+  .left-panel {
+    width: 40%;
+    height: 137%;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    transition: left 0.4s;
   }
 }
 

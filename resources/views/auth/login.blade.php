@@ -2,13 +2,15 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 login-title">
-            {{-- <h1>{{ __('messages.title-login') }}</h1> --}}
+    <div class="row d-flex justify-content-center">
+        <div class="col-6 login-title d-flex justify-content-center align-items-center">
+            <h1 class="w-75">
+                Ingresa a tu cuenta de <span class="text-primary-red">Lingua Planet</span>
+            </h1>
         </div>
-        <div class="col-md-6">
-            <h2 class="text-center">{{ __('Login') }}</h2>
-            <div class="card-body">
+        <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center">
+            <section class="login-form">
+                <h2 class="text-center">{{ __('Login') }}</h2>
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="form-group row">
@@ -94,14 +96,14 @@
                     </div>
                 </form>
                 <div class="col-12">
-                    <div class="row">
+                    <div class="row mt-4">
                         <div class="col-12 text-center">
                             <p class="my-0">¿Aún no tienes una cuenta?</p>
                             <a href="{{ route('register') }}"><strong><u>Crea una aquí</u></strong></a>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>    
 </div>
