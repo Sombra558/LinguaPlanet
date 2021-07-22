@@ -40,11 +40,25 @@
                         <a class="nav-link btn-nav-signIn" href="{{ route('login') }}">{{ __('Sign in') }}</a>
                     </li>
                     <li class="nav-item" >
-                        <select class="form-control changeLang">
-                            @foreach($idiomas as $idioma)   
-                                <option value="{{$idioma->diminutivo}}" {{ session()->get('locale') == $idioma->diminutivo ? 'selected' : '' }}>{{$idioma->idioma}}</option>
-                            @endforeach
-                        </select>
+                        @php
+                        $banderaselected="/img/Banderas/Spain.png";
+                                 foreach($idiomas as $idioma){
+                                     if(session()->get('locale') == $idioma->diminutivo){
+                                        $banderaselected=$idioma->src;
+                                     }
+                                 }
+
+                        @endphp
+                        <div class="contenedor-padre">
+                            <img class="banderaselected" src="{{$banderaselected}}" alt="badera">
+                            <select class="form-control changeLang">
+                                @foreach($idiomas as $idioma)   
+                            
+                                    <option value="{{$idioma->diminutivo}}" {{ session()->get('locale') == $idioma->diminutivo ? 'selected' : '' }}>{{$idioma->diminutivo}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                       
                     </li>
                 @else
                     <li class="nav-item dropdown">

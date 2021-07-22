@@ -58,7 +58,14 @@ class PerfilEstudiante extends Controller
     
     public function show($id)
     {
-        //
+        $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
+            return $q->with(['plan'=>function($k){
+                return $k->with(['membresia'=>function($j){
+                    return $j->with(['cursos','idioma']);
+                }]);
+            }]);
+        },'animal']);
+        return view('Padres.PerfilUser.show',compact('perfil'));
     }
 
     /**

@@ -23,6 +23,17 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+    .contenedor-padre{
+            display:flex;
+            justify-content: space-between;
+        }
+        .banderaselected{
+            width: 58.03px;
+            height: 36.39px;
+            border-radius:50%;
+        }
+    </style>
 </head>
 <body @if(request()->routeIs('courses.index')) style="background-color: #31348B;" @endif>
     <div class="d-flex h-screen flex-column justify-content-between">

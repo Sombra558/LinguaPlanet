@@ -19,6 +19,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .contenedor-padre{
+            display:flex;
+            justify-content: space-between;
+        }
+        .banderaselected{
+            width: 58.03px;
+            height: 36.39px;
+            border-radius:50%;
+        }
+    </style>
 </head>
 <body>
     <div class="d-flex h-screen flex-column justify-content-between">
