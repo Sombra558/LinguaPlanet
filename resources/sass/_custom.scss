@@ -102,28 +102,18 @@ body {
 /* END - Navbar styles*/
 
 .login-title {
-<<<<<<< HEAD
-	background-image: url('../storage/images/login-title.svg');
+	background-image: url('/images/login-title.svg');
 	background-size: 100% 127% ;
 	height: 500px;
 }
 
 .register-title {
-	background-image: url('../storage/images/register-title.svg');
+	background-image: url('/images/register-title.svg');
 	background-size : 198% 123%;
 }
 
 .register-title h1{
 	margin-bottom: 6.5rem;
-=======
-	background-image: url('../storage/images/login-title.png');
-	background-size: 100% 100%;
-}
-
-.register-title {
-	background-image: url('../storage/images/register-title.png');
-	background-size: 100% 100%;
->>>>>>> master
 }
 
 /* Inputs */
@@ -145,9 +135,9 @@ body {
 }
 
 .input-primary {
-	border: 1px solid $primary;
+	border: 1px solid $primary !important;
 	box-sizing: border-box;
-	border-radius: 12px;
+	border-radius: 8px;
 }
 
 .form-input { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -289,14 +279,11 @@ h1.course-show-header {
 	height: 25%;
 }
 
-<<<<<<< HEAD
 .iz-30 {
 	width: 30%;
 	height: 30%;
 }
 
-=======
->>>>>>> master
 .iz-35 {
 	width: 35%;
 	height: 35%;
@@ -307,14 +294,11 @@ h1.course-show-header {
 	height: 50%;
 }
 
-<<<<<<< HEAD
 .iz-60 {
 	width: 60%;
 	height: 60%;
 }
 
-=======
->>>>>>> master
 .video-container {
 	margin-bottom: 1.8rem;
 }
@@ -340,11 +324,8 @@ h1.course-show-header {
 .card .flag-img {
 	opacity: 0.86;
 	margin: 1rem;
-<<<<<<< HEAD
-=======
 	width: 25%;
 	height: 25%;
->>>>>>> master
 }
 
 .card-course-deck {
@@ -463,11 +444,22 @@ footer.courses-footer {
 	background: transparent;
 }
 
+.transparent-button {
+	border : none;
+	border-radius : 50px;
+	background: transparent;
+}
+
 .btn-logout {
 	border : none;
 	border-radius : 50px;
 	background: transparent;
 }
+
+button.active {
+	background-color : $primary;        
+}
+
 /* END - Footer styles*/
 
 /* Media queries styles*/
@@ -560,6 +552,14 @@ footer.courses-footer {
         transition : left 0.4s;
         z-index : 1041;
     }
+
+}
+
+@media (min-width: 769px){
+
+	.divAdd-profile img {
+		width : 10%;
+	}
 
 }
 /* END - Media queries styles*/

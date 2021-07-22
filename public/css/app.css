@@ -11218,13 +11218,13 @@ body {
 /* END - Navbar styles*/
 
 .login-title {
-  background-image: url(/images/login-title.svg?85ed76e22ea9fb767170d1991fb30cff);
+  background-image: url("/images/login-title.svg");
   background-size: 100% 127%;
   height: 500px;
 }
 
 .register-title {
-  background-image: url(/images/register-title.svg?7269ab1c7a108a4fce426eb3dd1e73aa);
+  background-image: url("/images/register-title.svg");
   background-size: 198% 123%;
 }
 
@@ -11251,9 +11251,9 @@ body {
 }
 
 .input-primary {
-  border: 1px solid #31348B;
+  border: 1px solid #31348B !important;
   box-sizing: border-box;
-  border-radius: 12px;
+  border-radius: 8px;
 }
 
 .form-input {
@@ -11482,6 +11482,8 @@ h1.course-show-header {
 .card .flag-img {
   opacity: 0.86;
   margin: 1rem;
+  width: 25%;
+  height: 25%;
 }
 
 .card-course-deck {
@@ -11602,10 +11604,20 @@ footer.courses-footer {
   background: transparent;
 }
 
+.transparent-button {
+  border: none;
+  border-radius: 50px;
+  background: transparent;
+}
+
 .btn-logout {
   border: none;
   border-radius: 50px;
   background: transparent;
+}
+
+button.active {
+  background-color: #31348B;
 }
 
 /* END - Footer styles*/
@@ -11613,6 +11625,14 @@ footer.courses-footer {
 /* Media queries styles*/
 
 @media (max-width: 425px) {
+  .title-login {
+    display: none;
+  }
+
+  .register-login {
+    display: none;
+  }
+
   .reset-pw-link {
     margin-top: 1.8em;
   }
@@ -11688,6 +11708,12 @@ footer.courses-footer {
     left: -100%;
     transition: left 0.4s;
     z-index: 1041;
+  }
+}
+
+@media (min-width: 769px) {
+  .divAdd-profile img {
+    width: 10%;
   }
 }
 

@@ -85,7 +85,7 @@
             </form>
         </nav>
         <div id="padre-app" class="h-100">
-            <main class="py-4 d-flex flex-column">
+            <main class="d-flex flex-column">
                 @yield('content')
             </main>
         </div>
