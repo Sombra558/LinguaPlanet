@@ -13,7 +13,7 @@ Vue.component('pagos-padre-component', require('./Detalles/Membresias/index').de
 Vue.component('perfil-padre-component', require('./Perfil/perfil').default);
 //perfil estudiante (Hijo)
 Vue.component('create-perfiluser', require('./PerfilUser/create').default);
-Vue.component('show-perfiluser', require('./PerfilUser/show').default);
+
 
 const app = new Vue({
     el: '#padre-app',

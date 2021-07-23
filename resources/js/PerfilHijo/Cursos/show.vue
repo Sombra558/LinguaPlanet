@@ -1,13 +1,13 @@
 <template>
     <div>
-        detalle de perfil
+       aplication
     </div>
 </template>
 
 <script>
     export default {
-        name:"perfiluser-show-component",
-        props:['perfil'],
+        name:"show-curso-component",
+        props:['curso','perfil','idioma'],
     }
 </script>
 

@@ -10,7 +10,7 @@
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{{ asset('dist/js/padre-app.js') }}" defer></script>
+    <script src="{{ asset('dist/js/hijo-app.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -84,7 +84,7 @@
                 @csrf
             </form>
         </nav>
-        <div id="padre-app" class="h-100">
+        <div id="hijo-app" class="h-100">
             <main class="d-flex flex-column">
                 @yield('content')
             </main>
