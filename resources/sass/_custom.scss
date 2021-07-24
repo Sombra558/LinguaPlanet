@@ -2,6 +2,10 @@
   height: 100vh;
 }
 
+.logout-image {
+	display : none;
+}
+
 body {
 	margin : 0;
 	font-family: 'Poppins', sans-serif;
@@ -17,6 +21,10 @@ body {
 
 .w-40 {
 	width : 40% !important;
+}
+
+.w-45 {
+	width : 45% !important;
 }
 
 .w-80 {
@@ -37,7 +45,7 @@ body {
 
 // /- Ocultos al cargar
 .carousel { 
-	display: none;
+	// display: none;
 }
 
 .mobile-display {
@@ -261,42 +269,40 @@ h1.course-show-header {
 	font-weight : bold;
 }
 
-.mini-flag-img {
-	opacity: 0.5;
-}
-
-.mini-flag-img.active {
-	opacity: 1;
-}
-
 .iz-10 {
 	width: 10%;
-	height: 10%;
+}
+
+.iz-15 {
+	width: 15%;
 }
 
 .iz-25 {
 	width: 25%;
-	height: 25%;
 }
 
 .iz-30 {
 	width: 30%;
-	height: 30%;
 }
 
 .iz-35 {
 	width: 35%;
-	height: 35%;
 }
 
 .iz-50 {
 	width: 50%;
-	height: 50%;
 }
 
 .iz-60 {
 	width: 60%;
-	height: 60%;
+}
+
+.iz-70 {
+	width: 70%;
+}
+
+.iz-100 {
+	width: 100%;
 }
 
 .video-container {
@@ -324,15 +330,13 @@ h1.course-show-header {
 .card .flag-img {
 	opacity: 0.86;
 	margin: 1rem;
-	width: 25%;
-	height: 25%;
+	width: 60px;
+	height: 60px;
 }
 
 .card-course-deck {
-	background: $primary;
 	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 	border-radius: 20px;
-	color : #FFF;
 }
 
 .card-course-deck .card-body {
@@ -351,10 +355,8 @@ h1.course-show-header {
 }
 
 .card-course-carrousel {
-	background: #31348B;
 	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 	border-radius: 20px;
-	color : #FFF;
 }
 
 .card-course-carrousel .card-body {
@@ -465,6 +467,14 @@ button.active {
 /* Media queries styles*/
 @media (max-width: 425px){
 
+	.logout-image {
+		display : inherit;
+	}
+
+	.span-logout {
+		display : none;
+	}
+
 	.title-login {
 		display : none;
 	}
@@ -533,10 +543,6 @@ button.active {
 
 	.card-deck-courses {
 		display : none;
-	}
-
-	.carousel {
-		display : inherit;
 	}
 
 }

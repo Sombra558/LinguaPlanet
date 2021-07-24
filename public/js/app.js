@@ -2003,9 +2003,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "curso-show-component",
-  props: ["idioma", "idiomas"]
+  props: ["idioma", "idiomas"],
+  data: function data() {
+    return {
+      keysArray: Object.keys(this.idioma.membresias)
+    };
+  },
+  methods: {
+    offsetCarousel: function offsetCarousel(start) {
+      return this.idioma.membresias.slice(start, parseInt(start) + 3);
+    }
+  }
 });
 
 /***/ }),
@@ -2171,9 +2200,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "menbresua-sow",
-  props: ['idiomas', 'membresia']
+  props: ['idiomas', 'membresia'],
+  data: function data() {
+    return {
+      keysArray: Object.keys(this.membresia.planes),
+      screenWidth: window.innerWidth,
+      limit: 3
+    };
+  },
+  mounted: function mounted() {
+    var thisComponent = this;
+
+    window.onresize = function () {
+      return thisComponent.screenWidth = window.innerWidth;
+    };
+  },
+  methods: {
+    offsetCarousel: function offsetCarousel(start) {
+      if (this.screenWidth <= 768) this.limit = 1;else if (this.screenWidth <= 1024) this.limit = 2;else this.limit = 3;
+      return this.membresia.planes.slice(start, parseInt(start) + this.limit);
+    }
+  }
 });
 
 /***/ }),
@@ -6813,7 +6881,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".lh[data-v-6e45ef0f] {\n  line-height: 4;\n}", ""]);
+exports.push([module.i, ".lh[data-v-6e45ef0f] {\n  line-height: 4;\n}\n.mini-flag-img[data-v-6e45ef0f] {\n  opacity: 0.5;\n}\n.mini-flag-img.active[data-v-6e45ef0f] {\n  opacity: 1;\n  width: 113%;\n  border: 3px solid black;\n  border-radius: 50px;\n}\n.card.card-course-carrousel[data-v-6e45ef0f]:hover {\n  background-color: #31348B;\n  transition: background-color 0.3s linear;\n}\n.card.card-course-carrousel:hover div[data-v-6e45ef0f] {\n  color: white !important;\n}\n.card-body div[data-v-6e45ef0f] {\n  color: #606060;\n}\n.carousel-indicators[data-v-6e45ef0f] {\n  position: absolute;\n  top: 0%;\n  bottom: 100%;\n}\n.carousel-control-icon[data-v-6e45ef0f] {\n  background-color: #31348B;\n  padding: 20px;\n  border-radius: 10px;\n}\n.carousel-indicators li[data-v-6e45ef0f] {\n  background-color: #31348B;\n}", ""]);
 
 // exports
 
@@ -6832,7 +6900,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".li-benefits[data-v-3a5f66d2] {\n  text-indent: -4px;\n  margin-left: -2em;\n  font-size: 0.8rem;\n  line-height: 40px;\n}\n.span-payment-methods[data-v-3a5f66d2] {\n  font-size: 0.85rem;\n}\n.select-subtitle[data-v-3a5f66d2] {\n  font-size: 0.8rem;\n  font-weight: 500;\n  line-height: 20px;\n}\n.card-membership-web[data-v-3a5f66d2] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\n}\n.card-membership-web .card-header[data-v-3a5f66d2] {\n  border-radius: 12px 12px 0 0;\n}\n.price-web[data-v-3a5f66d2] {\n  font-style: normal;\n  font-weight: 500;\n  font-size: 30px;\n  line-height: 48px;\n  margin-bottom: 0;\n}\n.price-mobile[data-v-3a5f66d2] {\n  font-style: normal;\n  font-weight: 700;\n  font-size: 32px;\n  line-height: 48px;\n}\n.card-membership-mobile ul li[data-v-3a5f66d2] {\n  margin: 15px 0 0 0;\n}\n.membership-details[data-v-3a5f66d2] {\n  padding: 0;\n}\n.membership-details li[data-v-3a5f66d2] {\n  list-style: none;\n  border-bottom: 1px solid #B5B5BB;\n}\n.membership-details li h4[data-v-3a5f66d2] {\n  font-size: 1rem;\n  font-weight: 500;\n}\n.w-24[data-v-3a5f66d2] {\n  width: 24% !important;\n}\n.w-38[data-v-3a5f66d2] {\n  width: 38% !important;\n}", ""]);
+exports.push([module.i, ".li-benefits[data-v-3a5f66d2] {\n  text-indent: -4px;\n  margin-left: -2em;\n  font-size: 0.8rem;\n  line-height: 40px;\n}\n.span-payment-methods[data-v-3a5f66d2] {\n  font-size: 0.85rem;\n}\n.select-subtitle[data-v-3a5f66d2] {\n  font-size: 0.8rem;\n  font-weight: 500;\n  line-height: 20px;\n}\n.card-membership-web[data-v-3a5f66d2] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\n}\n.card-membership-web .card-header[data-v-3a5f66d2] {\n  background-color: #31348B;\n  color: white;\n  border-radius: 12px 12px 0 0;\n  transition: background-color 0.3s linear;\n}\n.card-membership-web:hover .card-header[data-v-3a5f66d2] {\n  background-color: #FAB500;\n  color: #31348B;\n}\n.price-web[data-v-3a5f66d2] {\n  font-style: normal;\n  font-weight: 500;\n  font-size: 30px;\n  line-height: 48px;\n  margin-bottom: 0;\n}\n.price-mobile[data-v-3a5f66d2] {\n  font-style: normal;\n  font-weight: 700;\n  font-size: 32px;\n  line-height: 48px;\n}\n.card-membership-mobile ul li[data-v-3a5f66d2] {\n  margin: 15px 0 0 0;\n}\n.membership-details[data-v-3a5f66d2] {\n  padding: 0;\n}\n.membership-details li[data-v-3a5f66d2] {\n  list-style: none;\n  border-bottom: 1px solid #B5B5BB;\n}\n.membership-details li h4[data-v-3a5f66d2] {\n  font-size: 1rem;\n  font-weight: 500;\n}\n.w-24[data-v-3a5f66d2] {\n  width: 24% !important;\n}\n.w-38[data-v-3a5f66d2] {\n  width: 38% !important;\n}\n.carousel-indicators[data-v-3a5f66d2] {\n  position: absolute;\n  top: 0%;\n  bottom: 100%;\n}\n.carousel-control-icon[data-v-3a5f66d2] {\n  background-color: #31348B;\n  padding: 20px;\n  border-radius: 10px;\n}\n.carousel-indicators li[data-v-3a5f66d2] {\n  background-color: #31348B;\n}", ""]);
 
 // exports
 
@@ -38863,16 +38931,23 @@ var render = function() {
         "div",
         { staticClass: "d-flex justify-content-center my-4" },
         _vm._l(_vm.idiomas, function(idio) {
-          return _c("a", { attrs: { href: "/cursos/" + idio.nombreURL } }, [
-            _c("img", {
-              key: "lang" + idio.id,
-              class: [
-                "mx-1 mini-flag-img",
-                idio.diminutivo === _vm.idioma.diminutivo ? "active" : null
-              ],
-              attrs: { src: "/storage/images/" + idio.diminutivo + ".svg" }
-            })
-          ])
+          return _c(
+            "a",
+            {
+              staticClass: "mx-1",
+              attrs: { href: "/cursos/" + idio.nombreURL }
+            },
+            [
+              _c("img", {
+                key: "lang" + idio.id,
+                class: [
+                  "mini-flag-img iz-100",
+                  idio.diminutivo === _vm.idioma.diminutivo ? "active" : null
+                ],
+                attrs: { src: "/storage/images/" + idio.diminutivo + ".svg" }
+              })
+            ]
+          )
         }),
         0
       ),
@@ -38900,51 +38975,10 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "card-deck card-deck-courses" },
-        _vm._l(_vm.idioma.membresias, function(membresia, key) {
-          return _c("div", { staticClass: "card card-course-deck mx-3" }, [
-            _c("div", { staticClass: "card-body d-flex flex-column px-1" }, [
-              _c("img", {
-                staticClass: "flag-img mx-auto",
-                attrs: {
-                  src:
-                    "/storage/images/" + _vm.idioma.diminutivo + "-square.svg",
-                  alt: "lingua planet " + _vm.idioma.idioma
-                }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "h3 bold" }, [
-                _vm._v(_vm._s(membresia.nombre))
-              ]),
-              _vm._v(" "),
-              _c("h3", [_vm._v("Pago " + _vm._s(membresia.tipo))]),
-              _vm._v(" "),
-              _vm._m(0, true),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-buy btn-success mx-auto",
-                  attrs: { href: "/membresia/" + membresia.nombreURL }
-                },
-                [
-                  _c("span", { staticClass: "h4 bold mb-0" }, [
-                    _vm._v("Comprar")
-                  ])
-                ]
-              )
-            ])
-          ])
-        }),
-        0
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
         {
-          staticClass: "carousel slide",
+          staticClass: "carousel slide mobile-display pt-4",
           attrs: {
-            id: "carouselExampleIndicators",
+            id: "carouselMIndicators",
             "data-ride": "false",
             "data-interval": "false"
           }
@@ -38953,12 +38987,12 @@ var render = function() {
           _c(
             "ol",
             { staticClass: "carousel-indicators" },
-            _vm._l(_vm.idioma.membresias, function(membresia, key) {
+            _vm._l(_vm.idioma.membresias, function(membresia, index) {
               return _c("li", {
-                class: { active: key === 0 },
+                class: { active: index === 0 },
                 attrs: {
-                  "data-target": "#carouselExampleIndicators",
-                  "data-slide-to": key
+                  "data-target": "#carouselMIndicators",
+                  "data-slide-to": "mCard" + index
                 }
               })
             }),
@@ -38968,12 +39002,12 @@ var render = function() {
           _c(
             "div",
             { staticClass: "carousel-inner" },
-            _vm._l(_vm.idioma.membresias, function(membresia, key) {
+            _vm._l(_vm.idioma.membresias, function(membresia, index) {
               return _c(
                 "div",
                 {
-                  key: "card" + membresia.id,
-                  class: ["carousel-item", key === 0 ? "active" : null]
+                  key: "mCard" + index,
+                  class: ["carousel-item", index === 0 ? "active" : null]
                 },
                 [
                   _c(
@@ -39001,7 +39035,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("h2", [_vm._v("Pago " + _vm._s(membresia.tipo))]),
                           _vm._v(" "),
-                          _vm._m(1, true),
+                          _vm._m(0, true),
                           _vm._v(" "),
                           _c(
                             "a",
@@ -39027,27 +39061,137 @@ var render = function() {
             0
           ),
           _vm._v(" "),
-          _vm._m(2),
+          _vm._m(1),
           _vm._v(" "),
-          _vm._m(3)
+          _vm._m(2)
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "carousel slide web-display pt-4",
+          attrs: {
+            id: "carouselWIndicators",
+            "data-ride": "false",
+            "data-interval": "false"
+          }
+        },
+        [
+          _c(
+            "ol",
+            { staticClass: "web-display carousel-indicators" },
+            _vm._l(
+              _vm.keysArray.filter(function(e) {
+                return e % 3 === 0
+              }),
+              function(key, index) {
+                return _c("li", {
+                  class: { active: index === 0 },
+                  attrs: {
+                    "data-target": "#carouselWIndicators",
+                    "data-slide-to": "wCard" + index
+                  }
+                })
+              }
+            ),
+            0
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "carousel-inner" },
+            _vm._l(
+              _vm.keysArray.filter(function(e) {
+                return e % 3 === 0
+              }),
+              function(key, index) {
+                return _c(
+                  "div",
+                  {
+                    key: "wCard" + index,
+                    class: ["carousel-item", index === 0 ? "active" : null]
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "row justify-content-center" },
+                      _vm._l(_vm.offsetCarousel(key), function(
+                        membresia,
+                        index2
+                      ) {
+                        return _c(
+                          "div",
+                          {
+                            staticClass: "card card-course-carrousel mx-3",
+                            staticStyle: { width: "15rem" }
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "card-body d-flex flex-column" },
+                              [
+                                _c("img", {
+                                  staticClass: "flag-img mx-auto",
+                                  attrs: {
+                                    src:
+                                      "/storage/images/" +
+                                      _vm.idioma.diminutivo +
+                                      "-square.svg",
+                                    alt: "lingua planet " + _vm.idioma.idioma
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "h3 bold" }, [
+                                  _vm._v(_vm._s(membresia.nombre))
+                                ]),
+                                _vm._v(" "),
+                                _c("h3", [
+                                  _vm._v("Pago " + _vm._s(membresia.tipo))
+                                ]),
+                                _vm._v(" "),
+                                _vm._m(3, true),
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass:
+                                      "btn btn-buy btn-success mx-auto",
+                                    attrs: {
+                                      href: "/membresia/" + membresia.nombreURL
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      { staticClass: "h4 bold mb-0" },
+                                      [_vm._v("Comprar")]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ]
+                )
+              }
+            ),
+            0
+          ),
+          _vm._v(" "),
+          _vm._m(4),
+          _vm._v(" "),
+          _vm._m(5)
         ]
       )
     ]
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mt-4 mb-3 lh" }, [
-      _c("span", { staticClass: "h5" }, [_vm._v("Tendrás acceso a:")]),
-      _vm._v(" "),
-      _c("h4", [_vm._v("Dashboard de seguimiento")]),
-      _vm._v(" "),
-      _c("h4", [_vm._v("Clases offline")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -39069,14 +39213,14 @@ var staticRenderFns = [
       {
         staticClass: "carousel-control-prev",
         attrs: {
-          href: "#carouselExampleIndicators",
+          href: "#carouselMIndicators",
           role: "button",
           "data-slide": "prev"
         }
       },
       [
         _c("span", {
-          staticClass: "carousel-control-prev-icon",
+          staticClass: "carousel-control-prev-icon carousel-control-icon",
           attrs: { "aria-hidden": "true" }
         }),
         _vm._v(" "),
@@ -39093,14 +39237,74 @@ var staticRenderFns = [
       {
         staticClass: "carousel-control-next",
         attrs: {
-          href: "#carouselExampleIndicators",
+          href: "#carouselMIndicators",
           role: "button",
           "data-slide": "next"
         }
       },
       [
         _c("span", {
-          staticClass: "carousel-control-next-icon",
+          staticClass: "carousel-control-next-icon carousel-control-icon",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mt-4 mb-3 lh" }, [
+      _c("span", { staticClass: "h5" }, [_vm._v("Tendrás acceso a:")]),
+      _vm._v(" "),
+      _c("h4", [_vm._v("Dashboard de seguimiento")]),
+      _vm._v(" "),
+      _c("h4", [_vm._v("Clases offline")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-prev",
+        attrs: {
+          href: "#carouselWIndicators",
+          role: "button",
+          "data-slide": "prev"
+        }
+      },
+      [
+        _c("span", {
+          staticClass: "carousel-control-prev-icon carousel-control-icon",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-next",
+        attrs: {
+          href: "#carouselWIndicators",
+          role: "button",
+          "data-slide": "next"
+        }
+      },
+      [
+        _c("span", {
+          staticClass: "carousel-control-next-icon carousel-control-icon",
           attrs: { "aria-hidden": "true" }
         }),
         _vm._v(" "),
@@ -39133,114 +39337,201 @@ var render = function() {
   return _c("div", { staticClass: "col" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "web-display" }, [
-      _c("div", { staticClass: "row mt-4" }, [
-        _c("div", { staticClass: "col-3" }, [
-          _c("div", { staticClass: "card h-100 gray-back" }, [
-            _c("div", { staticClass: "card-body py-3 d-flex flex-column" }, [
-              _c("div", { staticClass: "col px-0" }, [
+    _vm.screenWidth >= 768
+      ? _c("div", { staticClass: "web-display" }, [
+          _c("div", { staticClass: "row mt-4" }, [
+            _c("div", { staticClass: "col-3" }, [
+              _c("div", { staticClass: "card h-100 gray-back" }, [
                 _c(
-                  "span",
-                  {
-                    staticClass:
-                      "d-flex mb-2 align-items-center justify-content-center"
-                  },
+                  "div",
+                  { staticClass: "card-body py-3 d-flex flex-column" },
                   [
-                    _c("img", {
-                      staticClass: "mx-1 iz-10 mini-flag-img active",
-                      attrs: {
-                        src:
-                          "/storage/images/" +
-                          _vm.membresia.idioma.diminutivo +
-                          ".svg",
-                        alt: "membresia idioma"
-                      }
-                    }),
+                    _c("div", { staticClass: "col px-0" }, [
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "d-flex mb-2 align-items-center justify-content-center"
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "mx-1 iz-10 mini-flag-img active",
+                            attrs: {
+                              src:
+                                "/storage/images/" +
+                                _vm.membresia.idioma.diminutivo +
+                                ".svg",
+                              alt: "membresia idioma"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("h3", { staticClass: "bold mb-0 ml-2" }, [
+                            _vm._v(_vm._s(_vm.membresia.nombre))
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("h4", { staticClass: "px-3 select-subtitle" }, [
+                        _vm._v("Selecciona tu membresía y comienza aprender.")
+                      ])
+                    ]),
                     _vm._v(" "),
-                    _c("h3", { staticClass: "bold mb-0 ml-2" }, [
-                      _vm._v(_vm._s(_vm.membresia.nombre))
-                    ])
+                    _vm._m(1)
                   ]
-                ),
-                _vm._v(" "),
-                _c("h4", { staticClass: "px-3 select-subtitle" }, [
-                  _vm._v("Selecciona tu membresía y comienza aprender.")
-                ])
-              ]),
-              _vm._v(" "),
-              _vm._m(1)
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-9" }, [
-          _c(
-            "div",
-            { staticClass: "card-deck", staticStyle: { "overflow-x": "auto" } },
-            _vm._l(_vm.membresia.planes, function(plan, key) {
-              return _c(
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-9" }, [
+              _c(
                 "div",
-                { staticClass: "card card-membership-web w-25 mx-3" },
+                {
+                  staticClass: "carousel slide web-display pt-4",
+                  attrs: {
+                    id: "carouselWIndicators",
+                    "data-ride": "false",
+                    "data-interval": "false"
+                  }
+                },
                 [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "card-header bg-primary text-white border-0 text-center py-3"
-                    },
-                    [_vm._v(_vm._s(plan.nombre))]
-                  ),
+                  _c("div", { staticClass: "carousel-indicators" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c(
+                      "ol",
+                      { staticClass: "web-display carousel-indicators" },
+                      _vm._l(
+                        _vm.keysArray.filter(function(e) {
+                          return e % _vm.limit === 0
+                        }),
+                        function(key, index) {
+                          return _c("li", {
+                            class: { active: index === 0 },
+                            attrs: {
+                              "data-target": "#carouselWIndicators",
+                              "data-slide-to": "wCard" + index
+                            }
+                          })
+                        }
+                      ),
+                      0
+                    ),
+                    _vm._v(" "),
+                    _vm._m(3)
+                  ]),
                   _vm._v(" "),
                   _c(
                     "div",
-                    {
-                      staticClass:
-                        "card-body px-1 d-flex flex-column text-center"
-                    },
-                    [
-                      _c("span", { staticClass: "price-web" }, [
-                        _vm._v(
-                          "\n                                " +
-                            _vm._s(
-                              plan.precio.toLocaleString("de-DE", {
-                                style: "currency",
-                                currency: "USD"
-                              })
-                            ) +
-                            "\n                            "
+                    { staticClass: "carousel-inner" },
+                    _vm._l(
+                      _vm.keysArray.filter(function(e) {
+                        return e % _vm.limit === 0
+                      }),
+                      function(key, index) {
+                        return _c(
+                          "div",
+                          {
+                            key: "wCard" + index,
+                            class: [
+                              "carousel-item",
+                              index === 0 ? "active" : null
+                            ]
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "row justify-content-center" },
+                              _vm._l(_vm.offsetCarousel(key), function(plan) {
+                                return _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "card card-membership-web mx-3",
+                                    staticStyle: { width: "15rem" }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "card-header border-0 text-center py-3"
+                                      },
+                                      [_vm._v(_vm._s(plan.nombre))]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "card-body px-1 d-flex flex-column text-center"
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          { staticClass: "price-web" },
+                                          [
+                                            _vm._v(
+                                              "\n                                            " +
+                                                _vm._s(
+                                                  plan.precio.toLocaleString(
+                                                    "de-DE",
+                                                    {
+                                                      style: "currency",
+                                                      currency: "USD"
+                                                    }
+                                                  )
+                                                ) +
+                                                "\n                                        "
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("span", { staticClass: "h4" }, [
+                                          _vm._v("Pago " + _vm._s(plan.tipo))
+                                        ]),
+                                        _vm._v(" "),
+                                        _vm._m(4, true),
+                                        _vm._v(" "),
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "btn w-50 py-2 btn-primary-red mx-auto",
+                                            attrs: {
+                                              href:
+                                                "/comprar/plan/" +
+                                                plan.nombreURL
+                                            }
+                                          },
+                                          [
+                                            _c(
+                                              "span",
+                                              { staticClass: "h5 bold mb-0" },
+                                              [_vm._v("Comprar")]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          ]
                         )
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "h4" }, [
-                        _vm._v("Pago " + _vm._s(plan.tipo))
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(2, true),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn w-40 py-2 btn-primary-red mx-auto",
-                          attrs: { href: "/comprar/plan/" + plan.nombreURL }
-                        },
-                        [
-                          _c("span", { staticClass: "h5 bold mb-0" }, [
-                            _vm._v("Comprar")
-                          ])
-                        ]
-                      )
-                    ]
+                      }
+                    ),
+                    0
                   )
                 ]
               )
-            }),
-            0
-          )
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(5)
         ])
-      ]),
-      _vm._v(" "),
-      _vm._m(3)
-    ]),
+      : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "mobile-display" }, [
       _c("div", { staticClass: "card gray-back" }, [
@@ -39343,7 +39634,7 @@ var render = function() {
                         _vm._v("Pago " + _vm._s(plan.tipo))
                       ]),
                       _vm._v(" "),
-                      _vm._m(4, true)
+                      _vm._m(6, true)
                     ]),
                     _vm._v(" "),
                     _c(
@@ -39357,7 +39648,7 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _vm._m(5, true)
+                _vm._m(7, true)
               ]
             )
           }),
@@ -39410,6 +39701,54 @@ var staticRenderFns = [
         }
       })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-prev",
+        attrs: {
+          href: "#carouselWIndicators",
+          role: "button",
+          "data-slide": "prev"
+        }
+      },
+      [
+        _c("span", {
+          staticClass: "carousel-control-prev-icon carousel-control-icon",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-next",
+        attrs: {
+          href: "#carouselWIndicators",
+          role: "button",
+          "data-slide": "next"
+        }
+      },
+      [
+        _c("span", {
+          staticClass: "carousel-control-next-icon carousel-control-icon",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
+      ]
+    )
   },
   function() {
     var _vm = this

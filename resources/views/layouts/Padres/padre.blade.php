@@ -75,9 +75,10 @@
                     @if(!request()->routeIs('perfil-user.create'))
                         <button class="w-10 btn-logout" onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
-                        <img src="{{ asset('storage/images/logout.svg') }}">
+                            <img class="logout-image" src="{{ asset('images/logout.svg') }}">
+                            <span class="text-primary-red span-logout">Cerrar sesión</span>
+                        </button>    
                     @endif
-                </button>    
                 </div>                
             </div>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -85,10 +86,33 @@
             </form>
         </nav>
         <div id="padre-app" class="h-100">
-            <main class="d-flex flex-column">
+            <main class="d-flex flex-column mb-5">
                 @yield('content')
             </main>
         </div>
+        <footer class="d-flex flex-column align-items-center justify-content-center">
+            <ul class="footer-list d-flex flex-row justify-content-around w-50 mb-0">
+                <li>
+                    <a class="footer-link" href="#">{{ __('Home') }}</a>
+                </li>
+                <li>
+                    <a class="footer-link" href="#">{{ __('Courses') }}</a>
+                </li>
+                <li>
+                    <a class="footer-link" href="#">{{ __('About') }}</a>
+                </li>
+                <li>
+                    <a class="footer-link" href="#">{{ __('Cookies policies') }}</a>
+                </li>
+                <li>
+                    <a class="footer-link" href="#">{{ __('Terms of use') }}</a>
+                </li>
+            </ul>
+            <hr class="footer-divider mb-0">
+            <h6 class="my-4">
+                ©{{ Date('Y') }} Lingua Planet. {{ __('All rights reserved.') }}
+            </h6>
+        </footer>
         <div class="left-panel container bg-primary">
             <div class="row py-3">
                 <div class="col-12 text-right">
@@ -114,29 +138,6 @@
                 </div>
             </div>
         </div>
-        <footer class="d-flex flex-column align-items-center justify-content-center">
-            <ul class="footer-list d-flex flex-row justify-content-around w-50 mb-0">
-                <li>
-                    <a class="footer-link" href="#">{{ __('Home') }}</a>
-                </li>
-                <li>
-                    <a class="footer-link" href="#">{{ __('Courses') }}</a>
-                </li>
-                <li>
-                    <a class="footer-link" href="#">{{ __('About') }}</a>
-                </li>
-                <li>
-                    <a class="footer-link" href="#">{{ __('Cookies policies') }}</a>
-                </li>
-                <li>
-                    <a class="footer-link" href="#">{{ __('Terms of use') }}</a>
-                </li>
-            </ul>
-            <hr class="footer-divider mb-0">
-            <h6 class="my-4">
-                ©{{ Date('Y') }} Lingua Planet. {{ __('All rights reserved.') }}
-            </h6>
-        </footer>
     </div>
     <script type="text/javascript">
         $('.toggle-father-details').on('click', (e) => {
