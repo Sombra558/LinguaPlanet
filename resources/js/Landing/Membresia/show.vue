@@ -5,7 +5,7 @@
                 <h2 class="text-center"><span class="membership-span">Enseñamos idiomas</span> a través del juego ¿Qué esperas para que tus hijos inicien?</h2>
             </div>
         </div>
-        <div class="web-display">
+        <div v-if="screenWidth >= 768" class="web-display">
             <div class="row mt-4">
                 <div class="col-3">
                     <div class="card h-100 gray-back">
@@ -28,21 +28,40 @@
                     </div>
                 </div>
                 <div class="col-9">
-                    <div class="card-deck" style="overflow-x: auto;">
-                        <div v-for="(plan, key) in membresia.planes" class="card card-membership-web w-25 mx-3">
-                            <div class="card-header bg-primary text-white border-0 text-center py-3">{{ plan.nombre }}</div>
-                            <div class="card-body px-1 d-flex flex-column text-center">
-                                <span class="price-web">
-                                    {{ plan.precio.toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) }}
-                                </span>
-                                <span class="h4">Pago {{ plan.tipo }}</span>
-                                <ul class="text-left w-80 mx-auto mt-4">
-                                    <li class="li-benefits text-secondary"><span class="text-primary bold">1 perfil</span> de estudiante en la plataforma.</li>
-                                    <li class="li-benefits text-secondary">Certificado de finalización.</li>
-                                    <li class="li-benefits text-secondary">Clases nuevas semanales.</li>
-                                </ul>
-                                <a :href="`/comprar/plan/${plan.nombreURL}`" class="btn w-40 py-2 btn-primary-red mx-auto">
-                                <span class="h5 bold mb-0">Comprar</span></a>
+                    <div id="carouselWIndicators" class="carousel slide web-display pt-4" data-ride="false" data-interval="false">
+                        <div class="carousel-indicators">
+                            <a class="carousel-control-prev" href="#carouselWIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon carousel-control-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <ol class="web-display carousel-indicators">
+                                <li v-for="(key, index) in keysArray.filter(e => e % limit === 0 )" data-target="#carouselWIndicators" :data-slide-to="'wCard'+index" :class="{ 'active' : index === 0 }"></li>
+                            </ol>
+                            <a class="carousel-control-next" href="#carouselWIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon carousel-control-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>                            
+                        </div>
+                        <div class="carousel-inner">
+                            <div v-for="(key, index) in keysArray.filter(e => e % limit === 0 )" :key="'wCard'+index" :class="[ 'carousel-item', index === 0 ? 'active' : null ]">
+                                <div class="row justify-content-center">
+                                    <div v-for="(plan) in offsetCarousel(key)" class="card card-membership-web mx-3" style="width : 15rem;">
+                                        <div class="card-header border-0 text-center py-3">{{ plan.nombre }}</div>
+                                        <div class="card-body px-1 d-flex flex-column text-center">
+                                            <span class="price-web">
+                                                {{ plan.precio.toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) }}
+                                            </span>
+                                            <span class="h4">Pago {{ plan.tipo }}</span>
+                                            <ul class="text-left w-80 mx-auto mt-4">
+                                                <li class="li-benefits text-secondary"><span class="text-primary bold">1 perfil</span> de estudiante en la plataforma.</li>
+                                                <li class="li-benefits text-secondary">Certificado de finalización.</li>
+                                                <li class="li-benefits text-secondary">Clases nuevas semanales.</li>
+                                            </ul>
+                                            <a :href="`/comprar/plan/${plan.nombreURL}`" class="btn w-50 py-2 btn-primary-red mx-auto">
+                                            <span class="h5 bold mb-0">Comprar</span></a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -153,7 +172,27 @@
 <script>
     export default {
         name:"menbresua-sow",
-        props:['idiomas','membresia']
+        props:['idiomas','membresia'],
+        data() {
+            return {
+                keysArray : Object.keys(this.membresia.planes),
+                screenWidth : window.innerWidth,
+                limit : 3,
+            }
+        },
+        mounted() {
+            let thisComponent = this;
+            window.onresize = () => thisComponent.screenWidth = window.innerWidth;
+        },
+        methods: {
+            offsetCarousel : function(start) {
+                if(this.screenWidth <= 768) this.limit = 1;
+                else if(this.screenWidth <= 1024) this.limit = 2;
+                else this.limit = 3
+
+                return this.membresia.planes.slice(start, ( parseInt(start) + this.limit ));
+            }
+        }
     }
 </script>
 
@@ -181,7 +220,15 @@
     }
 
     .card-membership-web .card-header {
+        background-color : #31348B;
+        color : white;
         border-radius: 12px 12px 0 0;
+        transition: background-color 0.3s linear;
+    }
+
+    .card-membership-web:hover .card-header {
+        background-color: #FAB500;
+        color : #31348B;
     }
 
     .price-web {
@@ -223,5 +270,21 @@
 
     .w-38 {
         width : 38% !important;
+    }
+
+        .carousel-indicators {
+        position : absolute;
+        top : 0%;
+        bottom : 100%;
+    }
+
+    .carousel-control-icon {
+        background-color : #31348B;
+        padding : 20px;
+        border-radius : 10px;
+    }
+
+    .carousel-indicators li {
+        background-color : #31348B;
     }
 </style>
