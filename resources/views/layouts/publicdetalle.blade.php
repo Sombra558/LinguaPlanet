@@ -30,8 +30,11 @@
         @include('layouts.navbar')
 
         <div id="app">
-            <main class="py-4">
-                @yield('content')                
+            <main class="py-4" @if(request()->routeIs('courses.index')) style="position: relative;" @endif>
+                @unless(!request()->routeIs('courses.index'))
+                    @include('layouts.Padres.background-stars')
+                @endunless
+                @yield('content')
             </main>
         </div>
         <footer class="courses-footer">
@@ -81,12 +84,12 @@
     </div>  
 </body>
 <script type="text/javascript">
-  
+
     var url = "{{ route('changeLang') }}";
-  
+
     $(".changeLang").change(function(){
         window.location.href = url + "?lang="+ $(this).val();
     });
-  
+    
 </script>
 </html>

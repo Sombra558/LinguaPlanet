@@ -1,8 +1,6 @@
 <template>
-    <div>
-        <div v-for="pago in pagos" :key="pago.id">
-            <PagoCard :pago="pago" />
-        </div>
+    <div class="col-12">
+        <PagoCard v-for="pago in pagos" :key="pago.id" :pago="pago"/>
     </div>
 </template>
 

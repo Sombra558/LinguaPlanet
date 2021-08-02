@@ -172,7 +172,7 @@
 <script>
     export default {
         name:"menbresua-sow",
-        props:['idiomas','membresia'],
+        props:['membresia'],
         data() {
             return {
                 keysArray : Object.keys(this.membresia.planes),

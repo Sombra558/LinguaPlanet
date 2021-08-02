@@ -6,6 +6,18 @@
 	display : none;
 }
 
+.globe-profile {
+	display : flex;
+	justify-content: center;
+	align-items: center;
+	width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    background-color: $primary;
+    color : white;
+    font-size : 20px;
+}
+
 body {
 	margin : 0;
 	font-family: 'Poppins', sans-serif;
@@ -36,7 +48,7 @@ body {
 }
 
 .color-plomo {
-	color : $plomo;
+	color : $plomo !important;
 }
 
 .color-yellow {
@@ -44,20 +56,32 @@ body {
 }
 
 // /- Ocultos al cargar
-.carousel { 
-	// display: none;
-}
-
 .mobile-display {
 	display : none;
 }
 //-/
 
-/* Navbar styles*/
-/*.navbar {
-	height : 100px;
-	font-family: 'Poppins';
-}*/
+.dropdown-menu-right :first-child::after {
+	content: "";
+    background: #B5B5BB;
+    position: absolute;
+    top: 61px;
+    left: 22px;
+    height: 1px;
+    width: 87%;
+    opacity: 0.1;
+}
+
+.dropdown-menu-right a:last-child::after {
+	content: "";
+    background: #B5B5BB;
+    position: absolute;
+    bottom: 39px;
+    left: 22px;
+    height: 2px;
+    width: 87%;
+    opacity: 0.2;
+}
 
 .navbar-toggler {
 	border : 0;
@@ -80,10 +104,6 @@ body {
 	width: 100%;
 	display: flex;
 	justify-content: space-evenly;
-}
-
-.nav-link {
-	color: #31348B !important;
 }
 
 .btn-nav-signUp {
@@ -207,6 +227,35 @@ body {
 			font-size: 16px;
 			line-height: 24px;
 }
+
+.l-select {
+	background: #F8F8F8;
+	border-radius: 25px;
+	border : none;
+	padding: 0.5rem;
+    padding-left: 15px;
+    padding-right: 25px;
+    color : $primary;
+}
+
+.l-select:hover {
+	text-decoration : none;
+}
+
+.months {
+	padding-left : 30%;
+}
+
+.months:before {
+	content: "";
+    background-image: url('/images/calendar.svg');
+    background-repeat : no-repeat;
+    position: absolute;
+    bottom: 1px;
+    left: 15px;
+    height: 100%;
+    width: 100%;
+}
 /* END-  Inputs */
 
 .send-link-success {
@@ -247,14 +296,6 @@ h5 {
 	font-weight: 200;
 	font-size: 13px;
 	line-height: 30px;
-}
-
-h1.courses-title {
-	color : #FFF;
-}
-
-h1 span.courses-span {
-	color : #FAB500
 }
 
 span.membership-span {
@@ -375,7 +416,7 @@ h1.course-show-header {
 }
 
 .gray-back {
-	background-color: $lighter-gray;
+	background-color: $off-white;
 	border: 0;
 }
 

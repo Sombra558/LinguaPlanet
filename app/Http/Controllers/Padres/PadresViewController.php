@@ -26,6 +26,22 @@ class PadresViewController extends Controller
         }]);
         return view('Padres.Home.home',compact('user'));
     }
+    
+    public function detalleIndividualpadrecursos()
+    {
+        $user=Auth::user()->load(['perfiles'=>function($q)
+        {
+            return $q->with('animal','planes');
+        },'planes'=>function($q)
+        {
+            return $q->with(['membresia'=>function($k)
+            {
+                return $k->with('idioma','cursos');
+            }]);
+        }]);
+        
+        return view('Padres.Detalles.Cursos.individual',compact('user'));
+    }
 
     public function detallespadrecursos()
     {
@@ -40,6 +56,21 @@ class PadresViewController extends Controller
             }]);
         }]);
         return view('Padres.Detalles.Cursos.index',compact('user'));
+    }
+
+    public function detallesProgreso()
+    {
+        $user=Auth::user()->load(['perfiles'=>function($q)
+        {
+            return $q->with('animal','planes');
+        },'planes'=>function($q)
+        {
+            return $q->with(['membresia'=>function($k)
+            {
+                return $k->with('idioma','cursos');
+            }]);
+        }]);
+        return view('Padres.Detalles.Cursos.progreso',compact('user'));
     }
 
     public function detallespadremembresias()
@@ -57,10 +88,39 @@ class PadresViewController extends Controller
         return view('Padres.Detalles.Membresias.index',compact('user'));
     }
 
+    public function editarMembresia($plan_id)
+    {   
+        $plan = Auth::user()
+                    ->planes()
+                    ->with(['membresia'=>function($k) {
+                        return $k->with('idioma', 'planes');
+                    }])
+                    ->get()
+                    ->find($plan_id);
+        
+        return view('Padres.Detalles.Membresias.editar', compact('plan'));
+    }
+
     public function perfil()
     {
         $user=Auth::user();
         return view('Padres.Perfil.perfil',compact('user'));
+    }
+
+    public function certificados()
+    {
+        $user=Auth::user()->load(['perfiles'=>function($q)
+        {
+            return $q->with('animal','planes');
+        },'planes'=>function($q)
+        {
+            return $q->with(['membresia'=>function($k)
+            {
+                return $k->with('idioma','cursos');
+            }]);
+        }]);
+        
+        return view('Padres.Detalles.Cursos.certificados',compact('user'));
     }
     
 }

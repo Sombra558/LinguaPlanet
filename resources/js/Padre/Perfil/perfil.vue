@@ -1,99 +1,132 @@
 <template>
-    <div class="contenedor-nav-ocho">
-        <form @submit.prevent="tabselected==='data' ? actualziardatos() : guardarpassword()" id="perfil-form" class="row m-0">
-            <div class="col-sm-12 col-md-4">
-                <div class="fonto-seccion" style="box-shadow: 0px 1px 9px rgba(118, 128, 121, 0.25); min-height:23rem;">
-                    <img class="img-profile mb-3" id="imgprev" :src="user.img ? '/storage/'+user.img :'/img/user/user_min.jpg'" alt="user-img">
-                    <input type="file" style="opacity:0" name="img" id="assetsFieldHandle" 
-                                    class="overflow-hidden position-absolute inputFile" @change="onChange" ref="file" accept=".pdf,.jpg,.jpeg,.png"/>
-                                
-                                    <label for="assetsFieldHandle" class="block cursor-pointer" v-if="this.filelist == null">
-                                    <div class="row flex-column align-items-center m-0" >
-                                     
-                                        <span class="arrastre" style="font-family: 'TitilliumWeb-Regular'; ">Arrastra aquí tu imagen de perfil o <span style="font-family: 'TitilliumWeb-Regular'; color:#01872B;">sube una foto</span></span>
+    <div class="container mt-5 pt-5">
+        <div class="row py-4 justify-content-center">
+            <div class="card col-11">
+                <div class="row justify-content-center">
+                    <div class="col-sm-12 col-md-10 col-lg-10">
+                        <ul class="nav nav-pills mb-3 mt-3" id="pills-tab" role="tablist">
+                          <li class="nav-item text-center" role="presentation">
+                            <a class="nav-link py-3 active" id="pills-general-info-tab" data-toggle="pill" href="#pills-general-info" role="tab" aria-controls="pills-general-info" aria-selected="true">Datos Generales</a>
+                          </li>
+                          <li class="nav-item text-center" role="presentation">
+                            <a class="nav-link py-3" id="pills-security-tab" data-toggle="pill" href="#pills-security" role="tab" aria-controls="pills-general-info" aria-selected="false">Seguridad</a>
+                          </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-12 col-md-10 col-lg-10">
+                        <div class="tab-content my-4" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-general-info" role="tabpanel" aria-labelledby="pills-general-info-tab">
+                                <div class="col-12 m-0">
+                                    <div class="form-group row mb-4">
+                                        <label class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-4 h5 text-dark">Imagen de perfil</label>
+                                        <div class="col-sm-12 col-md-12 col-lg-8 d-flex flex-column flex-md-row align-items-center justify-content-between">
+                                            <img v-if="user.img" class="img-profile mb-3" id="imgprev" :src="'/storage/'+user.img" alt="user-img">
+                                            <div v-else class="globe-profile align-self-center my-3">
+                                                {{ user.name[0]+user.lastname[0] }}
+                                            </div>
+                                            <div class="d-flex flex-fill">
+                                                <div class="flex-fill text-center w-80">
+                                                <label for="assetsFieldHandle" class="btn btn-sm btn-primary-red h5" v-if="this.filelist == null" style="border-radius : 50px;">
+                                                    <span class="h6">Elegir una nueva imagen</span>
+                                                </label>
+                                                <span class="arrastre d-block text-center" style="font-family: 'TitilliumWeb-Regular'; ">
+                                                    Arrastra aquí tu imagen de perfil
+                                                </span>
+                                                </div>
+                                                <button class="btn btn-sm d-none d-sm-inline w-45">
+                                                    <span class="h6 color-plomo" style="text-decoration : underline;">
+                                                        Eliminar imagen
+                                                    </span>
+                                                </button>                                                                  
+                                            </div>
+                                        </div>
+                                        <input type="file" style="opacity:0" name="img" id="assetsFieldHandle"
+                                                class="overflow-hidden position-absolute inputFile"
+                                                @change="onChange"
+                                                ref="file"
+                                                accept=".pdf,.jpg,.jpeg,.png"
+                                        >                                    
                                     </div>
-                                    </label>
-                    
+                                    <div class="form-group row mb-4">
+                                        <label for="email" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark">
+                                            Nombre del usuario
+                                        </label>
+                                        <div class="col-sm-12 col-md-12 col-lg-9 pl-0">
+                                            <input id="name" type="text" class="form-control input-style-file" name="name" v-model="user.name" placeholder="Full name" required autocomplete="email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-4">
+                                        <label for="email" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark">
+                                            Apellido del usuario
+                                        </label>
+                                        <div class="col-sm-12 col-md-12 col-lg-9 pl-0">
+                                            <input id="lastname" type="text" class="form-control input-style-file" name="lastname" v-model="user.lastname" placeholder="Full name" required autocomplete="email">
+                                        </div>
+                                    </div>
+                                     <div class="form-group row mb-4">
+                                        <label for="email" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark">
+                                            Correo electrónico
+                                        </label>
+                                        <div class="col-sm-12 col-md-12 col-lg-9 pl-0">
+                                            <input id="email" type="email" class="form-control input-style-file" name="email" v-model="user.email" placeholder="Email" required autocomplete="email" autofocus>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-security" role="tabpanel" aria-labelledby="pills-security-tab">
+                                <div class="col-12 m-0">
+                                    <div class="form-group row mb-4">
+                                        <label for="password" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark">Contraseña</label>
+                                        <div class="col-sm-12 col-md-12 col-lg-9 pl-0">
+                                            <input 
+                                                v-model="newcont.password" 
+                                                type="password"
+                                                name="password"
+                                                id="password"
+                                                class="form-control input-style-file" 
+                                                placeholder="Password" 
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-4">
+                                        <label for="newPassword" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark">Nueva contraseña</label>
+                                        <div class="col-sm-12 col-md-12 col-lg-9 pl-0">
+                                            <input 
+                                                id="newPassword" 
+                                                type="password"
+                                                v-model="newcont.newPassword" 
+                                                class="form-control input-style-file" 
+                                                placeholder="New Password"
+                                                name="password"
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-4">
+                                        <label for="passwordConfirm" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark">Confirmar nueva contraseña</label>
+                                        <div class="col-sm-12 col-md-12 col-lg-9 pl-0">
+                                            <input  
+                                                id="passwordConfirm" 
+                                                class="form-control input-style-file"
+                                                type="password"
+                                                placeholder="Confirm your password"
+                                                name="password" 
+                                                v-model="newcont.confirmPassword"   
+                                                autofocus
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <input type="submit" class="btn btn-primary" value="Guardar cambios">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
             </div>
-            <div class="col-sm-12 col-md-8">
-                <div class="row m-0">
-                    <h2 @click.prevent="seleccionar('data')" class="text-data col-3 p-0" style="font-family: 'TitilliumWeb-SemiBold'; ">Datos Generales</h2>
-                    <h2 @click.prevent="seleccionar('seguridad')" class="text-data col-3 p-0" style="font-family: 'TitilliumWeb-SemiBold';">Seguridad</h2>
-                </div>
-                
-                <div class="borderdiv"></div>
-                <div v-if="tabselected==='data'"  class="row m-0 w-100 justify-content-between">
-                        <div class="form-group col-sm-12 col-md-6 row mx-0 p-0">
-                            <label for="email" class="col-md-12 pl-0 col-form-label text-inbup">Nombre</label>
-                            <div class="col-md-12 pl-0">
-                                <input id="name" type="text" class="form-control input-style-file" name="name" v-model="user.name" placeholder="Full name" required autocomplete="email">
-                            </div>
-                        </div>
-                          <div class="form-group col-sm-12 col-md-6 row mx-0 p-0">
-                            <label for="email" class="col-md-12 pl-0 col-form-label text-inbup">Apellido</label>
-                            <div class="col-md-12 pl-0">
-                                <input id="lastname" type="text" class="form-control input-style-file" name="lastname" v-model="user.lastname" placeholder="Full name" required autocomplete="email">
-                            </div>
-                        </div>
-                         <div class="form-group col-sm-12 col-md-6 row mx-0 p-0">
-                            <label for="email" class="col-md-12 pr-0 col-form-label text-inbup">Correo</label>
-                            <div class="col-md-12 pr-0">
-                                <input  id="email" type="email" class="form-control input-style-file" name="email" v-model="user.email" placeholder="Email" required autocomplete="email" autofocus>
-                            </div>
-                        </div>
-                </div>
-                
-                
-                <div v-if="tabselected==='seguridad'"  class="row m-0 w-100 justify-content-between">
-                     <div class="form-group col-sm-12 col-md-6 row mx-0 p-0">
-                            <label for="email" class="col-md-12 pl-0 col-form-label text-inbup ">Contraseña</label>
-                            <div class="col-md-12 pl-0">
-                                <input 
-                                v-model="newcont.password" 
-                                type="password"
-                                name="password"
-                                class="form-control input-style-file" 
-                                placeholder="Password" 
-                                 >
-                            </div>
-                        </div>
-                </div>
-                  <div v-if="tabselected==='seguridad'" class="row m-0 w-100 justify-content-between">
-                        <div class="form-group col-sm-12 col-md-6 row mx-0 p-0">
-                            <label for="email" class="col-md-12 pl-0 col-form-label text-inbup">Nueva contraseña</label>
-                            <div class="col-md-12 pl-0">
-                                <input 
-                                id="email" 
-                                type="password"
-                                v-model="newcont.newPassword" 
-                                class="form-control input-style-file" 
-                                placeholder="New Password"
-                                name="password"
-                                 >
-                            </div>
-                        </div>
-                         <div class="form-group col-sm-12 col-md-6 row mx-0 p-0">
-                            <label for="email" class="col-md-12 pr-0 col-form-label text-inbup">Confirmar nueva contraseña</label>
-                            <div class="col-md-12 pr-0">
-                                <input  
-                                id="email" 
-                                class="form-control input-style-file"
-                                type="password"
-                                placeholder="Confirm your password"
-                                name="password" 
-                                v-model="newcont.confirmPassword"   
-                                autofocus>
-                            </div>
-                        </div>
-                </div>
-                <div class="row justify-content-end mx-0">
-                    <input type="submit" class="btn btn-registro" value="Guardar cambios">
-                </div>
-            </div>
-        </form>
-
+        </div>
     </div>
 </template>
 
@@ -221,103 +254,123 @@
 </script>
 
 <style lang="scss" scoped>
- .contenedor-nav-ocho{
-    max-width:82%;
-    margin-right: 2rem;
-    margin-left: auto;
-    width: 100%;
-    height: 100vh;
-}
-.profile-title{
-    color:#5F01F5;
-    font-size: 20px;
-    font-family: 'Rubik';
-    font-weight: bold;
-}
-.fonto-seccion{
-    background-color: #EBF6EE;
-    height: 200px;
-    flex-direction: column;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px;
-}
-.img-profile{
-    height: 140px;
-    width: 140px;
-    border-radius: 50%;
-}
-.text-data{
-    font-size: 20px;
-    font-family: 'Valera';
-}
-.borderdiv{
-    width: 100%;
-    height: 1px;
-    background-color: #76807988;
-}
-.text-inbup{
-    color: #282e2a83;
-}
-.text-data{
-    margin-top: 10px;
-}
-.input-style-file{
-    height: 42px;
-    border-radius: 8px;
-}
-.btn-change{
-    background-color: #30019B;
-    border-radius: 10px;
-    width: 181px;
-    color: #ffffff;
-    height: 41px;
-    border: none;
-}
-#inputFile {
-/*   display: none; */
-  margin-bottom: 25px;
-}
-
-#image-holder {
-  width: 200px;
-  min-width: 200px;
-  border: 2px dashed rgba(0,0,0,0.3);
-  color: rgba(0,0,0,0.8);
-  padding: 10px;
-  text-align: center;
-}
-
-#image-holder:hover {
-  cursor: pointer;
-}
-
-#image-holder img {
-  width: 200px;
-  height: auto;
-}
-.arrastre{
-    font-family: 'Valera';
-     max-width:187px;
-     color:grey;
-     font-size: 16px;
-     line-height: 24,34px;
-}
-.arrastre strong{
-     font-family: 'Valera';
-     color:#5F01F5;
-     font-size: 16px;
-     line-height: 24,34px;
-}
- @media only screen and (max-width: 768px){
-     .contenedor-nav-ocho{
-        max-width:100%;
-        margin-right:auto;
-        margin-left: auto;
-        width: 100%;
-        height: 100vh;
+    .nav-item {
+        position : relative;
+        font-size: 1.2rem;
     }
- }
+    .nav-link {
+        color : #606060;
+    }
+    .nav-link.active {
+        background : #FFF;
+        color : #31348B;
+    }
+    .nav-link.active::after {
+        content: "";
+        background: #31348B;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 100%;
+    }
+    .globe-profile {
+        display : flex;
+        justify-content: center;
+        align-items: center;
+        width: 55px;
+        height: 55px;
+        border-radius: 50px;
+        background-color: #31348B;
+        color : white;
+        font-size : 33px;
+    }
+    .profile-title{
+        color:#5F01F5;
+        font-size: 20px;
+        font-family: 'Rubik';
+        font-weight: bold;
+    }
+    .fonto-seccion{
+        flex-direction: column;
+        width: 100%;
+        display: flex;
+        justify-content: between;
+        border-radius: 12px;
+    }
+    .img-profile{
+        height: 140px;
+        width: 140px;
+        border-radius: 50%;
+    }
+    .text-data{
+        font-size: 20px;
+        font-family: 'Valera';
+    }
+    .borderdiv{
+        width: 100%;
+        height: 1px;
+        background-color: #76807988;
+    }
+    .text-inbup{
+        color: #282e2a83;
+    }
+    .text-data{
+        margin-top: 10px;
+    }
+    .input-style-file{
+        height: 42px;
+        border-radius: 8px;
+    }
+    .btn-change{
+        background-color: #30019B;
+        border-radius: 10px;
+        width: 181px;
+        color: #ffffff;
+        height: 41px;
+        border: none;
+    }
+    #inputFile {
+    /*   display: none; */
+      margin-bottom: 25px;
+    }
+
+    #image-holder {
+      width: 200px;
+      min-width: 200px;
+      border: 2px dashed rgba(0,0,0,0.3);
+      color: rgba(0,0,0,0.8);
+      padding: 10px;
+      text-align: center;
+    }
+
+    #image-holder:hover {
+      cursor: pointer;
+    }
+
+    #image-holder img {
+      width: 200px;
+      height: auto;
+    }
+    .arrastre{
+        font-family: 'Valera';
+        color:grey;
+        font-size: 16px;
+        line-height: 24,34px;
+    }
+    .arrastre strong{
+         font-family: 'Valera';
+         color:#5F01F5;
+         font-size: 16px;
+         line-height: 24,34px;
+    }
+    @media only screen and (max-width: 768px){
+         .contenedor-nav-ocho{
+            max-width:100%;
+            margin-right:auto;
+            margin-left: auto;
+            width: 100%;
+            height: 100vh;
+        }
+    }
 </style>
