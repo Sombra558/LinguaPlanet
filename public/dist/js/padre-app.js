@@ -40685,25 +40685,47 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card-perfil col-sm-6 col-md-3 col-lg-2" }, [
-    _c(
-      "div",
-      {
-        staticClass: "card-body img-profile",
-        style:
-          "background-color:" +
-          _vm.perfil.color +
-          "; background-image : url(/images/" +
-          _vm.perfil.animal.animal +
-          ".svg);"
-      },
-      [_c("div", { staticClass: "card-backdrop" })]
-    ),
-    _vm._v(" "),
-    _c("h2", { staticClass: "text-center my-3 bold" }, [
-      _vm._v(_vm._s(_vm.perfil.apodo))
-    ])
-  ])
+  return _c(
+    "div",
+    {
+      staticClass: "card-perfil col-sm-6 col-md-3 col-lg-2",
+      on: {
+        click: function($event) {
+          $event.preventDefault()
+          return _vm.entrar()
+        }
+      }
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "card-body img-profile",
+          style:
+            "background-color:" +
+            _vm.perfil.color +
+            "; background-image : url(/images/" +
+            _vm.perfil.animal.animal +
+            ".svg);"
+        },
+        [
+          _c("div", {
+            staticClass: "card-backdrop",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.editar()
+              }
+            }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _c("h2", { staticClass: "text-center my-3 bold" }, [
+        _vm._v(_vm._s(_vm.perfil.apodo))
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
