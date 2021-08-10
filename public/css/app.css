@@ -331,6 +331,12 @@ legend {
   white-space: normal;
 }
 
+@media (max-width: 1200px) {
+  legend {
+    font-size: calc(1.275rem + 0.3vw);
+  }
+}
+
 progress {
   vertical-align: baseline;
 }
@@ -393,9 +399,23 @@ h1,
   font-size: 2.25rem;
 }
 
+@media (max-width: 1200px) {
+  h1,
+  .h1 {
+    font-size: calc(1.35rem + 1.2vw);
+  }
+}
+
 h2,
 .h2 {
   font-size: 1.8rem;
+}
+
+@media (max-width: 1200px) {
+  h2,
+  .h2 {
+    font-size: calc(1.305rem + 0.66vw);
+  }
 }
 
 h3,
@@ -403,9 +423,23 @@ h3,
   font-size: 1.575rem;
 }
 
+@media (max-width: 1200px) {
+  h3,
+  .h3 {
+    font-size: calc(1.2825rem + 0.39vw);
+  }
+}
+
 h4,
 .h4 {
   font-size: 1.35rem;
+}
+
+@media (max-width: 1200px) {
+  h4,
+  .h4 {
+    font-size: calc(1.26rem + 0.12vw);
+  }
 }
 
 h5,
@@ -429,10 +463,22 @@ h6,
   line-height: 1.2;
 }
 
+@media (max-width: 1200px) {
+  .display-1 {
+    font-size: calc(1.725rem + 5.7vw);
+  }
+}
+
 .display-2 {
   font-size: 5.5rem;
   font-weight: 300;
   line-height: 1.2;
+}
+
+@media (max-width: 1200px) {
+  .display-2 {
+    font-size: calc(1.675rem + 5.1vw);
+  }
 }
 
 .display-3 {
@@ -441,10 +487,22 @@ h6,
   line-height: 1.2;
 }
 
+@media (max-width: 1200px) {
+  .display-3 {
+    font-size: calc(1.575rem + 3.9vw);
+  }
+}
+
 .display-4 {
   font-size: 3.5rem;
   font-weight: 300;
   line-height: 1.2;
+}
+
+@media (max-width: 1200px) {
+  .display-4 {
+    font-size: calc(1.475rem + 2.7vw);
+  }
 }
 
 hr {
@@ -6267,6 +6325,12 @@ a.badge-primary-red.focus {
   opacity: 0.5;
 }
 
+@media (max-width: 1200px) {
+  .close {
+    font-size: calc(1.26rem + 0.12vw);
+  }
+}
+
 .close:hover {
   color: #000;
   text-decoration: none;
@@ -11122,6 +11186,18 @@ a.text-primary-red:focus {
   display: none;
 }
 
+.globe-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  background-color: #31348B;
+  color: white;
+  font-size: 20px;
+}
+
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -11152,7 +11228,7 @@ body {
 }
 
 .color-plomo {
-  color: #606060;
+  color: #606060 !important;
 }
 
 .color-yellow {
@@ -11163,12 +11239,27 @@ body {
   display: none;
 }
 
-/* Navbar styles*/
+.dropdown-menu-right :first-child::after {
+  content: "";
+  background: #B5B5BB;
+  position: absolute;
+  top: 61px;
+  left: 22px;
+  height: 1px;
+  width: 87%;
+  opacity: 0.1;
+}
 
-/*.navbar {
-	height : 100px;
-	font-family: 'Poppins';
-}*/
+.dropdown-menu-right a:last-child::after {
+  content: "";
+  background: #B5B5BB;
+  position: absolute;
+  bottom: 39px;
+  left: 22px;
+  height: 2px;
+  width: 87%;
+  opacity: 0.2;
+}
 
 .navbar-toggler {
   border: 0;
@@ -11191,10 +11282,6 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-}
-
-.nav-link {
-  color: #31348B !important;
 }
 
 .btn-nav-signUp {
@@ -11361,6 +11448,35 @@ body {
   line-height: 24px;
 }
 
+.l-select {
+  background: #F8F8F8;
+  border-radius: 25px;
+  border: none;
+  padding: 0.5rem;
+  padding-left: 15px;
+  padding-right: 25px;
+  color: #31348B;
+}
+
+.l-select:hover {
+  text-decoration: none;
+}
+
+.months {
+  padding-left: 30%;
+}
+
+.months:before {
+  content: "";
+  background-image: url("/images/calendar.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 1px;
+  left: 15px;
+  height: 100%;
+  width: 100%;
+}
+
 /* END-  Inputs */
 
 .send-link-success {
@@ -11401,14 +11517,6 @@ h5 {
   font-weight: 200;
   font-size: 13px;
   line-height: 30px;
-}
-
-h1.courses-title {
-  color: #FFF;
-}
-
-h1 span.courses-span {
-  color: #FAB500;
 }
 
 span.membership-span {

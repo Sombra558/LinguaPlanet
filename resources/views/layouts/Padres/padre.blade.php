@@ -53,39 +53,19 @@
             backdrop-filter : blur(3px);
             transition : backdrop-filter 0.9s;
         }
+
+        @unless(!request()->routeIs('padre.perfil'))
+            #padre-app {
+                background-image: url('/images/upper-background.svg');
+                background-repeat : no-repeat;
+            }
+        @endunless
     </style>
     <div class="d-flex h-screen flex-column justify-content-between">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container d-flex">
-                <div class="w-10">
-                    @if(!request()->routeIs('perfil-user.create'))
-                        <button class="w-10 toggle-father-details img-btn">
-                            <img class="iz-60"  src="{{ asset('storage/images/bgray-lock.svg') }}">
-                        </button>
-                    @else
-                    <div>
-                        <span class="h6">Salir</span>
-                    </div>
-                    @endif
-                </div>
-                <a class="navbar-brand m-0" href="{{ url('/') }}">
-                    <img style="width: 90px; height: 90px;" src="{{ asset('storage/images/logo.svg') }}" class="logo" alt="{{ config('app.name', 'Laravel') }}">
-                </a>
-                <div class="p-3">
-                    @if(!request()->routeIs('perfil-user.create'))
-                        <button class="w-10 btn-logout" onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                            <img class="logout-image" src="{{ asset('images/logout.svg') }}">
-                            <span class="text-primary-red span-logout">Cerrar sesión</span>
-                        </button>    
-                    @endif
-                </div>                
-            </div>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        </nav>
-        <div id="padre-app" class="h-100">
+
+        @include('layouts.Padres.navbar')
+        
+        <div id="padre-app">
             <main class="d-flex flex-column mb-5">
                 @yield('content')
             </main>
