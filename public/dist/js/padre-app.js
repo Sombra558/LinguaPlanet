@@ -42786,7 +42786,7 @@ var render = function() {
               staticClass: "profile-bg mx-auto",
               style:
                 "background-image : url(/images/" +
-                _vm.perfil.animal.animal +
+                _vm.perfil.animal.animal.toLowerCase() +
                 ".svg); background-color: " +
                 _vm.perfil.color +
                 ";"
@@ -45197,7 +45197,10 @@ var render = function() {
                                   _c("img", {
                                     staticClass: "animal-icon mb-2",
                                     attrs: {
-                                      src: "/images/" + animal.animal + ".svg"
+                                      src:
+                                        "/images/" +
+                                        animal.animal.toLowerCase() +
+                                        ".svg"
                                     },
                                     on: {
                                       click: function($event) {
