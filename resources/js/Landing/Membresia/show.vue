@@ -12,7 +12,7 @@
                         <div class="card-body py-3 d-flex flex-column">
                             <div class="col px-0">
                                 <span class="d-flex mb-2 align-items-center justify-content-center">
-                                    <img class="mx-1 iz-10 mini-flag-img active" :src="`/storage/images/${membresia.idioma.diminutivo}.svg`"  alt="membresia idioma">
+                                    <img class="mx-1 iz-10 mini-flag-img active" :src="`/images/${membresia.idioma.diminutivo}.svg`"  alt="membresia idioma">
                                     <h3 class="bold mb-0 ml-2">{{membresia.nombre}}</h3>
                                 </span>
                                 <h4 class="px-3 select-subtitle">Selecciona tu membresía y comienza aprender.</h4>
@@ -21,8 +21,8 @@
                                 <span class="d-flex mb-2 span-payment-methods">
                                     Aceptamos múltiples metodos de pago.
                                 </span>
-                                <img class="mx-1" src="/storage/images/stripe-logo.svg"  alt="membresia idioma">
-                                <img class="mx-1" src="/storage/images/paypal-logo.svg"  alt="membresia idioma">
+                                <img class="mx-1" src="/images/stripe-logo.svg"  alt="membresia idioma">
+                                <img class="mx-1" src="/images/paypal-logo.svg"  alt="membresia idioma">
                             </div>
                         </div>
                     </div>

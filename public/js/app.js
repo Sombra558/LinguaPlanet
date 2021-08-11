@@ -42903,7 +42903,7 @@ var render = function() {
                             staticClass: "mx-1 iz-10 mini-flag-img active",
                             attrs: {
                               src:
-                                "/storage/images/" +
+                                "/images/" +
                                 _vm.membresia.idioma.diminutivo +
                                 ".svg",
                               alt: "membresia idioma"
@@ -43232,18 +43232,12 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("img", {
         staticClass: "mx-1",
-        attrs: {
-          src: "/storage/images/stripe-logo.svg",
-          alt: "membresia idioma"
-        }
+        attrs: { src: "/images/stripe-logo.svg", alt: "membresia idioma" }
       }),
       _vm._v(" "),
       _c("img", {
         staticClass: "mx-1",
-        attrs: {
-          src: "/storage/images/paypal-logo.svg",
-          alt: "membresia idioma"
-        }
+        attrs: { src: "/images/paypal-logo.svg", alt: "membresia idioma" }
       })
     ])
   },
