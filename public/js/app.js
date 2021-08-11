@@ -43755,7 +43755,7 @@ var render = function() {
           _c("div", [
             _c("img", {
               staticClass: "line1",
-              attrs: { src: "/storage/images/line.svg" }
+              attrs: { src: "/images/line.svg" }
             })
           ]),
           _vm._v(" "),

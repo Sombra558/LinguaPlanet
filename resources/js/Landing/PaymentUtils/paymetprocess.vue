@@ -7,7 +7,7 @@
                     <span class="h6 d-block">Seleccione el curso</span>
                 </div>
                 <div>
-                    <img class="line1" :src="`/storage/images/line.svg`">
+                    <img class="line1" :src="`/images/line.svg`">
                 </div>
                 <div class="text-center">
                     <img class="mx-1 mb-2 iz-35 active" :src="`/images/ellipse-${process >= 66.6 ? 'filled' : 'outlined'}.svg`">
