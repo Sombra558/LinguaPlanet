@@ -40,7 +40,7 @@ class LandingController extends Controller
                 if ($membresia) {
                     $membresia->load(['planes', 'idioma']);
                     
-                    return view('Landing.membresia.show', compact('membresia','idiomas'));
+                    return view('landing.membresia.show', compact('membresia','idiomas'));
                 }else {
                     return view('errors.404');
                 }
@@ -53,7 +53,7 @@ class LandingController extends Controller
                         ->first();
                         
             if ($plan) {
-                return view('Landing.Comprar.Confirma', compact('plan','idiomas'));
+                return view('landing.Comprar.Confirma', compact('plan','idiomas'));
             }else {
                 return view('errors.404');
             }
