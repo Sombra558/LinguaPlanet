@@ -42489,7 +42489,7 @@ var render = function() {
                   "mini-flag-img iz-100",
                   idio.diminutivo === _vm.idioma.diminutivo ? "active" : null
                 ],
-                attrs: { src: "/storage/images/" + idio.diminutivo + ".svg" }
+                attrs: { src: "/images/" + idio.diminutivo + ".svg" }
               })
             ]
           )
@@ -42680,7 +42680,7 @@ var render = function() {
                                   staticClass: "flag-img mx-auto",
                                   attrs: {
                                     src:
-                                      "/storage/images/" +
+                                      "/images/" +
                                       _vm.idioma.diminutivo +
                                       "-square.svg",
                                     alt: "lingua planet " + _vm.idioma.idioma
@@ -43609,12 +43609,12 @@ var render = function() {
             _vm.paymentmetod === "efectivoCollapse"
               ? _c("img", {
                   staticClass: "iz-lg",
-                  attrs: { src: "/storage/images/stripe-logo.svg" }
+                  attrs: { src: "/images/stripe-logo.svg" }
                 })
               : _vm.paymentmetod === "transferenciabancariaCollapse"
               ? _c("img", {
                   staticClass: "iz-lg",
-                  attrs: { src: "/storage/images/paypal-logo.svg" }
+                  attrs: { src: "/images/paypal-logo.svg" }
                 })
               : _vm._e(),
             _vm._v(" "),
@@ -43672,7 +43672,7 @@ var staticRenderFns = [
     return _c("div", [
       _c("img", {
         staticClass: "iz",
-        attrs: { src: "/storage/images/stripe-logo.svg" }
+        attrs: { src: "/images/stripe-logo.svg" }
       })
     ])
   },
@@ -43701,7 +43701,7 @@ var staticRenderFns = [
     return _c("div", [
       _c("img", {
         staticClass: "iz",
-        attrs: { src: "/storage/images/paypal-logo.svg" }
+        attrs: { src: "/images/paypal-logo.svg" }
       })
     ])
   }
@@ -43741,7 +43741,7 @@ var render = function() {
               staticClass: "mx-1 mb-2 iz-35 active",
               attrs: {
                 src:
-                  "/storage/images/ellipse-" +
+                  "/images/ellipse-" +
                   (_vm.process >= 33.3 ? "filled" : "outlined") +
                   ".svg"
               }
@@ -43764,7 +43764,7 @@ var render = function() {
               staticClass: "mx-1 mb-2 iz-35 active",
               attrs: {
                 src:
-                  "/storage/images/ellipse-" +
+                  "/images/ellipse-" +
                   (_vm.process >= 66.6 ? "filled" : "outlined") +
                   ".svg"
               }
@@ -43778,7 +43778,7 @@ var render = function() {
           _c("div", [
             _c("img", {
               staticClass: "line2",
-              attrs: { src: "/storage/images/line.svg" }
+              attrs: { src: "/images/line.svg" }
             })
           ]),
           _vm._v(" "),
@@ -43787,7 +43787,7 @@ var render = function() {
               staticClass: "mx-1 mb-2 iz-35 active",
               attrs: {
                 src:
-                  "/storage/images/ellipse-" +
+                  "/images/ellipse-" +
                   (_vm.process === 100 ? "filled" : "outlined") +
                   ".svg"
               }
