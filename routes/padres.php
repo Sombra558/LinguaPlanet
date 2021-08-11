@@ -1,7 +1,7 @@
 <?php
 
 Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
-Route::get('/', 'Padres\PadresViewController@home');
+Route::get('/', 'Padres\PadresViewController@home')->name('home');
 
 Route::get('/detalles-avances/cursos', 'Padres\PadresViewController@detallespadrecursos');
 Route::get('/detalles-avances/progreso', 'Padres\PadresViewController@detallesProgreso')->name('padre.pagos');
