@@ -52,7 +52,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-2 d-flex justify-content-center p-0">
-                        <img class="send-link-success" src="{{ asset('storage/images/white-logo.svg') }}" alt="Enlace de recuperacion enviado">
+                        <img class="send-link-success" src="{{ asset('/images/white-logo.svg') }}" alt="Enlace de recuperacion enviado">
                     </div>                
                     <div class="links-container-footer col-sm-12 col-md-12 col-lg-10 d-flex justify-content-around p-0">
                         <ul class="second-footer footer-list pl-0">
