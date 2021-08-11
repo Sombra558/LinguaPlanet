@@ -44273,7 +44273,7 @@ var render = function() {
             "background-color:" +
             _vm.perfil.color +
             "; background-image : url(/images/" +
-            _vm.perfil.animal.animal +
+            _vm.perfil.animal.animal.toLowerCase() +
             ".svg);"
         },
         [_c("div", { staticClass: "card-backdrop" })]

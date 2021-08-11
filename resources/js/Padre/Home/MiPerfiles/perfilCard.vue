@@ -1,9 +1,9 @@
 <template>
     <div @click.prevent="mode ? editar() : entrar()" class="card-perfil col-sm-6 col-md-3 col-lg-2">
-        <div class="card-body img-profile" :style="`background-color:${perfil.color}; background-image : url(/images/${perfil.animal.animal}.svg);`">
+        <div class="card-body img-profile" :style="`background-color:${perfil.color}; background-image : url(/images/${perfil.animal.animal.toLowerCase()}.svg);`">
             <div class="card-backdrop"></div>
         </div>
-        
+
         <h2 class="text-center my-3 bold">{{perfil.apodo}}</h2>
     </div>
 </template>
