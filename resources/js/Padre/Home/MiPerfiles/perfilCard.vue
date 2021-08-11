@@ -3,6 +3,7 @@
         <div class="card-body img-profile" :style="`background-color:${perfil.color}; background-image : url(/images/${perfil.animal.animal}.svg);`">
             <div class="card-backdrop"></div>
         </div>
+        
         <h2 class="text-center my-3 bold">{{perfil.apodo}}</h2>
     </div>
 </template>
