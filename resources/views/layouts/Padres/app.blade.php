@@ -51,10 +51,10 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container d-flex">
                 <button class="w-10 toggle-father-details img-btn">
-                    <img class="iz-60"  src="{{ asset('storage/images/bgray-lock.svg') }}">
+                    <img class="iz-60"  src="{{ asset('/images/bgray-lock.svg') }}">
                 </button>
                 <a class="navbar-brand m-0" href="{{ url('/') }}">
-                    <img style="width: 90px; height: 90px;" src="{{ asset('storage/images/logo.svg') }}" class="logo" alt="{{ config('app.name', 'Laravel') }}">
+                    <img style="width: 90px; height: 90px;" src="{{ asset('/images/logo.svg') }}" class="logo" alt="{{ config('app.name', 'Laravel') }}">
                 </a>
                 <button class="w-10 btn-logout" onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
@@ -75,14 +75,14 @@
                 <div class="col-12 text-right">
                     <label class="mb-0" for="check">
                         <button class="toggle-father-details img-btn">
-                            <img class="iz-100"  src="{{ asset('storage/images/exit-icon.svg') }}">
+                            <img class="iz-100"  src="{{ asset('/images/exit-icon.svg') }}">
                         </button>                    
                     </label>                
                 </div>
             </div>                    
             <div class="row panel-content">
                 <div class="col-12 text-center">
-                    <img class="iz-40 mb-4" src="{{ asset('storage/images/bwhite-lock.svg') }}">
+                    <img class="iz-40 mb-4" src="{{ asset('/images/bwhite-lock.svg') }}">
                     <h2 class="bold">Solo para adultos</h2>
                     <span>Para continuar por favor ingresa</span>
                     <div class="my-5">

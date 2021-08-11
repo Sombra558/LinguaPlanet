@@ -85,7 +85,7 @@ class PayPalService
             ]);
                        
     
-            return view('Landing.Comprar.Completado', compact('transactionId'));
+            return view('landing.Comprar.Completado', compact('transactionId'));
         }
 
         return redirect()

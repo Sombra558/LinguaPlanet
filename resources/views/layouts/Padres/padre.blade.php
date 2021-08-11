@@ -98,14 +98,14 @@
                 <div class="col-12 text-right">
                     <label class="mb-0" for="check">
                         <button class="toggle-father-details img-btn">
-                            <img class="iz-100"  src="{{ asset('storage/images/exit-icon.svg') }}">
+                            <img class="iz-100"  src="{{ asset('/images/exit-icon.svg') }}">
                         </button>                    
                     </label>                
                 </div>
             </div>                    
             <div class="row panel-content">
                 <div class="col-12 text-center">
-                    <img class="iz-40 mb-4" src="{{ asset('storage/images/bwhite-lock.svg') }}">
+                    <img class="iz-40 mb-4" src="{{ asset('/images/bwhite-lock.svg') }}">
                     <h2 class="bold">Solo para adultos</h2>
                     <span>Para continuar por favor ingresa</span>
                     <div class="my-5">
