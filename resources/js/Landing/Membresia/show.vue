@@ -77,28 +77,28 @@
                         </li>
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Panel de monitoreo para padres</h4></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
                         </li>
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Clases nuevas semanales</h4></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
                         </li>
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Juegos educativos</h4></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
                         </li>
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Certificado de finalización</h4></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
                         </li>
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Clases en full HD</h4></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
                         </li>
                     </ul>
                 </div>

@@ -43341,14 +43341,14 @@ var staticRenderFns = [
             _c("div", { staticClass: "w-38 text-center" }, [
               _c("img", {
                 staticClass: "mx-1",
-                attrs: { src: "/storage/images/check.svg" }
+                attrs: { src: "/images/check.svg" }
               })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "w-38 text-center" }, [
               _c("img", {
                 staticClass: "mx-1",
-                attrs: { src: "/storage/images/check.svg" }
+                attrs: { src: "/images/check.svg" }
               })
             ])
           ]),
@@ -43363,14 +43363,14 @@ var staticRenderFns = [
             _c("div", { staticClass: "w-38 text-center" }, [
               _c("img", {
                 staticClass: "mx-1",
-                attrs: { src: "/storage/images/check.svg" }
+                attrs: { src: "/images/check.svg" }
               })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "w-38 text-center" }, [
               _c("img", {
                 staticClass: "mx-1",
-                attrs: { src: "/storage/images/check.svg" }
+                attrs: { src: "/images/check.svg" }
               })
             ])
           ]),
@@ -43383,14 +43383,14 @@ var staticRenderFns = [
             _c("div", { staticClass: "w-38 text-center" }, [
               _c("img", {
                 staticClass: "mx-1",
-                attrs: { src: "/storage/images/check.svg" }
+                attrs: { src: "/images/check.svg" }
               })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "w-38 text-center" }, [
               _c("img", {
                 staticClass: "mx-1",
-                attrs: { src: "/storage/images/check.svg" }
+                attrs: { src: "/images/check.svg" }
               })
             ])
           ]),
@@ -43405,14 +43405,14 @@ var staticRenderFns = [
             _c("div", { staticClass: "w-38 text-center" }, [
               _c("img", {
                 staticClass: "mx-1",
-                attrs: { src: "/storage/images/check.svg" }
+                attrs: { src: "/images/check.svg" }
               })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "w-38 text-center" }, [
               _c("img", {
                 staticClass: "mx-1",
-                attrs: { src: "/storage/images/check.svg" }
+                attrs: { src: "/images/check.svg" }
               })
             ])
           ]),
@@ -43425,14 +43425,14 @@ var staticRenderFns = [
             _c("div", { staticClass: "w-38 text-center" }, [
               _c("img", {
                 staticClass: "mx-1",
-                attrs: { src: "/storage/images/check.svg" }
+                attrs: { src: "/images/check.svg" }
               })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "w-38 text-center" }, [
               _c("img", {
                 staticClass: "mx-1",
-                attrs: { src: "/storage/images/check.svg" }
+                attrs: { src: "/images/check.svg" }
               })
             ])
           ])
