@@ -7,18 +7,17 @@
             </div>
         </div>
         <div v-if="user.perfiles.length>0" class="row mt-5 justify-content-md-center">
-            <PerfilCard v-for="perf in user.perfiles" :key="perf.id" :perfil="perf" />
+            <PerfilCard v-for="perf in user.perfiles" :mode="selectMode"  :key="perf.id" :perfil="perf" />
             <div class="w-50 col-sm-6 col-md-3 col-lg-2">
-                <div class="card-body" style="height: 150px; background-image : url(images/add-gray.svg); background-repeat: no-repeat; background-position : center center;">
-                    <a href="/home/perfil-user/create">
-                    </a>
+                <div @click.prevent="crear()" class="card-body" style="height: 150px; background-image : url(images/add-gray.svg); background-repeat: no-repeat; background-position : center center;">
+                  
                 </div>                        
             </div>
         </div>
         <div v-else class="row">
             <div class="col-12 text-center mt-5 divAdd-profile">
                 <a href="/home/perfil-user/create">
-                    <img class="iz-15" src="storage/images/add.svg">
+                    <img class="iz-15" src="/images/add.svg">
                 </a>
             </div> 
         </div>
@@ -60,6 +59,9 @@ import PerfilCard from './perfilCard';
                         .forEach((e) => {
                           e.classList.toggle('show');  
                         })
+            },
+             crear() {
+                window.location='/home/perfil-user/create';
             }
         }
     }
