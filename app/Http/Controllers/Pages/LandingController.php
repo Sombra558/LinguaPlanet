@@ -28,7 +28,7 @@ class LandingController extends Controller
                 if ($idioma) {
                     $idioma->load(['membresias']);
            
-                    return view('Landing.cursos.show', compact('idioma','idiomas'));
+                    return view('landing.cursos.show', compact('idioma','idiomas'));
                 }else {
                     return view('errors.404');
                 }
