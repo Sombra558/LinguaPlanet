@@ -2534,12 +2534,75 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "activas-component",
-  props: ["membresias"],
+  props: ["membresias", "perfiles"],
+  data: function data() {
+    return {
+      planSelected: null,
+      perfilSelected: null
+    };
+  },
   components: {
     PlanCard: _planCard__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    mostrarasignacion: function mostrarasignacion(plan) {
+      if (plan) {
+        this.planSelected = plan;
+      }
+
+      setTimeout(function () {
+        $("#asignacionmodal").modal("show");
+      }, 200);
+    },
+    asignar: function asignar() {
+      var url = '/home/asignar-plan';
+      axios.post(url, {
+        plan_user_id: this.planSelected.pivot.id,
+        perfil_estudiante_user_id: this.perfilSelected.id
+      }).then(function (result) {
+        switch (result.data.codigo) {
+          case 'E26741':
+            console.log(result.data.message);
+            break;
+
+          case 'E26742':
+            console.log(result.data.message);
+            break;
+
+          default:
+            window.location.reload();
+            break;
+        }
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
   }
 });
 
@@ -2554,6 +2617,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -43116,7 +43184,12 @@ var render = function() {
                     _c(
                       "div",
                       { attrs: { clasS: "col-12 col-md-9 col-lg-9 p-0" } },
-                      [_c("PlanCard", { attrs: { plan: plan } })],
+                      [
+                        _c("PlanCard", {
+                          attrs: { plan: plan },
+                          on: { mostrarasignacion: _vm.mostrarasignacion }
+                        })
+                      ],
                       1
                     )
                   ])
@@ -43127,7 +43200,117 @@ var render = function() {
           2
         )
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _vm.planSelected
+      ? _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: {
+              id: "asignacionmodal",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "exampleModalLabel",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "modal-dialog", attrs: { role: "document" } },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c("div", { staticClass: "modal-header" }, [
+                    _c(
+                      "h5",
+                      {
+                        staticClass: "modal-title",
+                        attrs: { id: "exampleModalLabel" }
+                      },
+                      [_vm._v(_vm._s(_vm.planSelected.nombre))]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.perfilSelected,
+                            expression: "perfilSelected"
+                          }
+                        ],
+                        attrs: { name: "perfil_id" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.perfilSelected = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { domProps: { value: null } }, [
+                          _vm._v("Seleccione Perfil")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.perfiles, function(perfil) {
+                          return _c(
+                            "option",
+                            { key: perfil.id, domProps: { value: perfil } },
+                            [_vm._v(_vm._s(perfil.apodo))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Close")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.asignar()
+                          }
+                        }
+                      },
+                      [_vm._v("Asignar")]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -43152,6 +43335,23 @@ var staticRenderFns = [
         ])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   }
 ]
 render._withStripped = true
@@ -43188,6 +43388,23 @@ var render = function() {
               attrs: { href: "/home/membresia/" + _vm.plan.id + "/editar" }
             },
             [_c("u", [_vm._v("Editar")])]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex justify-content-end" }, [
+          _c(
+            "a",
+            {
+              staticClass: "color-plomo",
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.$emit("mostrarasignacion", _vm.plan)
+                }
+              }
+            },
+            [_c("u", [_vm._v("Asignar a perfil")])]
           )
         ]),
         _vm._v(" "),
@@ -44030,7 +44247,12 @@ var render = function() {
                   "div",
                   { staticClass: "row" },
                   [
-                    _c("Membresias", { attrs: { membresias: _vm.user.planes } })
+                    _c("Membresias", {
+                      attrs: {
+                        perfiles: _vm.user.perfiles,
+                        membresias: _vm.user.planes
+                      }
+                    })
                   ],
                   1
                 )

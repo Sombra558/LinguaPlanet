@@ -21,13 +21,36 @@
                                 {{plan.membresia.idioma.idioma}}
                             </div>
                             <div clasS="col-12 col-md-9 col-lg-9 p-0">
-                                <PlanCard :plan="plan"/>
+                                <PlanCard  @mostrarasignacion="mostrarasignacion" :plan="plan"/>
                             </div>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
+        <!-- Modal -->
+            <div v-if="planSelected" class="modal fade" id="asignacionmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{planSelected.nombre}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <select name="perfil_id" v-model="perfilSelected">
+                        <option :value="null">Seleccione Perfil</option>
+                        <option v-for="perfil in perfiles" :key="perfil.id" :value="perfil">{{perfil.apodo}}</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" @click.prevent="asignar()" class="btn btn-primary">Asignar</button>
+                </div>
+                </div>
+            </div>
+            </div>
     </div>
 </template>
 
@@ -35,9 +58,46 @@
 import PlanCard from './planCard';
     export default {
         name:"activas-component",
-        props:["membresias"],
+        props:["membresias","perfiles"],
+        data() {
+            return {
+                planSelected: null,
+                perfilSelected:null,
+            }
+        },
         components: {
             PlanCard,
+        },
+        methods: {
+             mostrarasignacion(plan){
+                if (plan) {
+                    this.planSelected=plan;
+                }
+                setTimeout(function(){
+                $("#asignacionmodal").modal("show");
+                },200)
+            },
+            asignar(){
+                var url = '/home/asignar-plan';
+                axios.post(url,{
+                    plan_user_id:this.planSelected.pivot.id,
+                    perfil_estudiante_user_id:this.perfilSelected.id,
+                }).then((result) => {
+                    switch (result.data.codigo) {
+                            case 'E26741':
+                                console.log(result.data.message);
+                            break;
+                            case 'E26742':
+                                console.log(result.data.message);
+                            break;
+                            default:
+                                window.location.reload();
+                                break;
+                    }
+                }).catch((err) => {
+                    console.log(err);
+                });
+            }
         },
     }
 </script>

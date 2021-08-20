@@ -14,6 +14,7 @@ Route::post('/actualizar-perfil/{id}', 'Padres\PerfilController@update')->name('
 Route::post('/actualizar-password', 'Padres\PerfilController@updatecontrasena');
 
 Route::resource('/perfil-user', 'Padres\PerfilEstudiante');
+Route::post('/asignar-plan', 'Padres\PerfilEstudiante@asignarplan');
    
      Route::group(['prefix' => 'app/{id}/{apodo}','middleware' => ['HasPerfilPadre']], function () {
         Route::get('/', 'Padres\PerfilEstudiante@previewshow');

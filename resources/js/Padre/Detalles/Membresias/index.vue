@@ -28,7 +28,7 @@
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-general-info" role="tabpanel" aria-labelledby="pills-general-info-tab">
                         <div class="row">
-                            <Membresias :membresias="user.planes"/> 
+                            <Membresias :perfiles="user.perfiles" :membresias="user.planes"/> 
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-security" role="tabpanel" aria-labelledby="pills-security-tab">
