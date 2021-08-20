@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container d-flex">
         <a class="navbar-brand m-0" href="{{ url('/') }}">
-            <img style="width: 90px; height: 90px;" src="{{ asset('storage/images/logo.svg') }}" class="logo" alt="{{ config('app.name', 'Laravel') }}">
+            <img style="width: 90px; height: 90px;" src="{{ asset('/images/logo.svg') }}" class="logo" alt="{{ config('app.name', 'Laravel') }}">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-icon">
@@ -15,10 +15,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item d-flex align-items-center">
-                    <a class="nav-link text-primary mx-3" href="{{ route('courses.index') }}"><span class="h6">{{ __('Courses') }}</span></a>
+                    <a class="nav-link text-primary mx-3" href="/home/detalles-avances/cursos"><span class="h6">{{ __('Courses') }}</span></a>
                 </li>
                 <li class="nav-item d-flex align-items-center">
-                    <a class="nav-link text-primary mx-3" href="#"><span class="h6">{{ __('Memberships') }}</span></a>
+                    <a class="nav-link text-primary mx-3" href="/home/detalles-pagos/membresias"><span class="h6">{{ __('Memberships') }}</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link text-primary mx-3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -59,7 +59,7 @@
             <div class="w-10">
                 @if(!request()->routeIs('perfil-user.create'))
                     <button class="w-10 toggle-father-details img-btn">
-                        <img class="iz-60"  src="{{ asset('storage/images/bgray-lock.svg') }}">
+                        <img class="iz-60"  src="{{ asset('/images/bgray-lock.svg') }}">
                     </button>
                 @else
                 <div>
@@ -68,7 +68,7 @@
                 @endif
             </div>
             <a class="navbar-brand m-0" href="{{ url('/') }}">
-                <img style="width: 90px; height: 90px;" src="{{ asset('storage/images/logo.svg') }}" class="logo" alt="{{ config('app.name', 'Laravel') }}">
+                <img style="width: 90px; height: 90px;" src="{{ asset('/images/logo.svg') }}" class="logo" alt="{{ config('app.name', 'Laravel') }}">
             </a>
             <div class="p-3">
                 @if(!request()->routeIs('perfil-user.create'))

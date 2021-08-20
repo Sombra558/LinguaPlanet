@@ -7,7 +7,7 @@
                 <span class="h5">Pagar con Stripe</span> 
             </div>
             <div>
-                <img class="iz" src="/storage/images/stripe-logo.svg">
+                <img class="iz" src="/images/stripe-logo.svg">
             </div>
         </label>
         <label class="btn d-flex m-2 col-12 py-2 row m-0 justify-content-between align-items-center" @click.prevent="definir('transferenciabancariaCollapse')">
@@ -16,14 +16,14 @@
             <span class="h5">Paypal</span>      
             </div>
             <div>
-                <img class="iz" src="/storage/images/paypal-logo.svg">
+                <img class="iz" src="/images/paypal-logo.svg">
             </div>            
         </label>                                    
     </div>
     <div v-else>
         <div class="d-flex flex-column align-items-center">
-            <img v-if="paymentmetod==='efectivoCollapse'" class="iz-lg" src="/storage/images/stripe-logo.svg">
-            <img v-else-if="paymentmetod==='transferenciabancariaCollapse'" class="iz-lg" src="/storage/images/paypal-logo.svg">
+            <img v-if="paymentmetod==='efectivoCollapse'" class="iz-lg" src="/images/stripe-logo.svg">
+            <img v-else-if="paymentmetod==='transferenciabancariaCollapse'" class="iz-lg" src="/images/paypal-logo.svg">
             <div class="card-rounded m-2 w-100 py-3 d-flex justify-content-between align-items-center">
                 <span>Metodo de pago agregado</span>
                 <button class="btn btn-success btn-registro" @click.prevent="cambiar()">Seleccionar otro pago</button>

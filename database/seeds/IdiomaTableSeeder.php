@@ -13,26 +13,30 @@ class IdiomaTableSeeder extends Seeder
     {
         Idioma::create([
             'idioma' => "Español",
-            'video' => "https://www.youtube.com/embed/GZ7xHi8AIjM",
+            'video' => "https://www.youtube.com/embed/b38oTgeNEos",
             'nombreURL' => "spanish",
+            'src' => "/img/Banderas/Spain.png",
             'diminutivo' => "es",
         ]);  
         Idioma::create([
             'idioma' => "English",
-            'video' => "https://www.youtube.com/embed/GZ7xHi8AIjM",
+            'video' => "https://www.youtube.com/embed/b38oTgeNEos",
             'nombreURL' => "english",
+            'src' => "/img/Banderas/Inglaterra.png",
             'diminutivo' => "en",
         ]); 
         Idioma::create([
             'idioma' => "Frances",
-            'video' => "https://www.youtube.com/embed/GZ7xHi8AIjM",
+            'video' => "https://www.youtube.com/embed/b38oTgeNEos",
             'diminutivo' => "fr",
+            'src' => "/img/Banderas/Francia.png",
             'nombreURL' => "frances",
         ]);
         Idioma::create([
             'idioma' => "Croata",
-            'video' => "https://www.youtube.com/embed/GZ7xHi8AIjM",
+            'video' => "https://www.youtube.com/embed/b38oTgeNEos",
             'diminutivo' => "hr",
+            'src' => "/img/Banderas/Croacia.png",
             'nombreURL' => "croata",
         ]);  
     }

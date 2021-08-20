@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Padres;
 
 use App\Http\Controllers\Controller;
 use App\Models\Animals\Animal;
+use App\Models\Idioma\Idioma;
+use App\Models\Cursos\Curso;
 use App\Models\PerfilEstudiante\PerfilEstudianteUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -55,10 +57,73 @@ class PerfilEstudiante extends Controller
         ]);
         return $perfil;
     }
-    
+    //Estudiante
+    public function previewshow($id)
+    {
+        $perfil=PerfilEstudianteUser::find($id)->load(['animal']);
+      
+        return view('Estudiantes.PerfilUser.preview',compact('perfil'));
+    }
+
     public function show($id)
     {
-        //
+        $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
+            return $q->with(['plan'=>function($k){
+                return $k->with(['membresia'=>function($j){
+                    return $j->with(['cursos','idioma']);
+                }]);
+            }]);
+        },'animal']);
+
+       
+        return view('Estudiantes.PerfilUser.show',compact('perfil'));
+    }
+
+    public function aplication($id,$apodo,$nombreURL)
+    {
+        $idioma=Idioma::where('nombreURL',$nombreURL)->first();
+        $cursos = collect();
+        $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
+            return $q->with(['plan'=>function($k){
+                return $k->with(['membresia'=>function($j){
+                    return $j->with(['cursos','idioma']);
+                }]);
+            }]);
+        },'animal']);
+
+        foreach ($perfil->planes as $plan) {
+            if ($plan->plan->membresia->idioma_id===$idioma->id) {
+                $cursostem=$plan->plan->membresia->cursos;
+                foreach ($cursostem as $tem) {
+                    $cursos->push($tem);
+                }
+            }
+           
+        }
+        if ($cursos->count()>1) {
+            return view('Estudiantes.Cursos.ListaDeCursos',compact('cursos','perfil','idioma'));
+        }else if($cursos->count()===1){
+
+            dd('individual');
+        }else{
+            dd('no tienes cursos en este idioma');
+        }
+        return view('Estudiantes.PerfilUser.show',compact('perfil'));
+    }
+    public function aplicationCurso($id,$apodo,$nombreURL,$curso_id)
+    {
+        $idioma=Idioma::where('nombreURL',$nombreURL)->first();
+        $curso = Curso::find($curso_id);
+        $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
+            return $q->with(['plan'=>function($k){
+                return $k->with(['membresia'=>function($j){
+                    return $j->with(['cursos','idioma']);
+                }]);
+            }]);
+        },'animal']);
+
+        return view('Estudiantes.Cursos.show',compact('curso','perfil','idioma'));
+    
     }
 
     /**

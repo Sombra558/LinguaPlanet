@@ -65,7 +65,7 @@
                         <div  v-if="tabnivel===2" class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                             <div class="row justify-content-center mb-2">
                                 <div class="col text-center" v-for="animal in animals" :key="animal.id">
-                                    <img class="animal-icon mb-2" :src="`/images/${animal.animal}.svg`" @click.prevent="seleccionarAnimal(animal.id, $event)">
+                                    <img class="animal-icon mb-2" :src="`/images/${animal.animal.toLowerCase()}.svg`" @click.prevent="seleccionarAnimal(animal.id, $event)">
                                     <span class="d-block">{{animal.animal}}</span>    
                                 </div>
                             </div>

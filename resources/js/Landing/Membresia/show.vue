@@ -12,7 +12,7 @@
                         <div class="card-body py-3 d-flex flex-column">
                             <div class="col px-0">
                                 <span class="d-flex mb-2 align-items-center justify-content-center">
-                                    <img class="mx-1 iz-10 mini-flag-img active" :src="`/storage/images/${membresia.idioma.diminutivo}.svg`"  alt="membresia idioma">
+                                    <img class="mx-1 iz-10 mini-flag-img active" :src="`/images/${membresia.idioma.diminutivo}.svg`"  alt="membresia idioma">
                                     <h3 class="bold mb-0 ml-2">{{membresia.nombre}}</h3>
                                 </span>
                                 <h4 class="px-3 select-subtitle">Selecciona tu membresía y comienza aprender.</h4>
@@ -21,8 +21,8 @@
                                 <span class="d-flex mb-2 span-payment-methods">
                                     Aceptamos múltiples metodos de pago.
                                 </span>
-                                <img class="mx-1" src="/storage/images/stripe-logo.svg"  alt="membresia idioma">
-                                <img class="mx-1" src="/storage/images/paypal-logo.svg"  alt="membresia idioma">
+                                <img class="mx-1" src="/images/stripe-logo.svg"  alt="membresia idioma">
+                                <img class="mx-1" src="/images/paypal-logo.svg"  alt="membresia idioma">
                             </div>
                         </div>
                     </div>
@@ -77,28 +77,28 @@
                         </li>
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Panel de monitoreo para padres</h4></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
                         </li>
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Clases nuevas semanales</h4></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
                         </li>
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Juegos educativos</h4></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
                         </li>
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Certificado de finalización</h4></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
                         </li>
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Clases en full HD</h4></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
                         </li>
                     </ul>
                 </div>

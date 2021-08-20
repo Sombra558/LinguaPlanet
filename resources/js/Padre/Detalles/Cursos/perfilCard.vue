@@ -2,7 +2,7 @@
     <a href="/home/detalles-avance-individual/cursos">
         <div class="card card-perfil mx-2">
             <div class="card-body text-center">
-                <div class="profile-bg mx-auto" :style="`background-image : url(/images/${perfil.animal.animal}.svg); background-color: ${perfil.color};`">&nbsp;
+                <div class="profile-bg mx-auto" :style="`background-image : url(/images/${perfil.animal.animal.toLowerCase()}.svg); background-color: ${perfil.color};`">&nbsp;
                 </div>
                 <h3 class="mt-2 mb-0 text-dark">{{perfil.apodo}}</h3>
             </div>

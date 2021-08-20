@@ -3,7 +3,7 @@
         <h1 class="m-0">Un tour por el mundo</h1>
         <div class="d-flex justify-content-center my-4">
             <a class="mx-1" v-for="idio in idiomas" :href="`/cursos/${idio.nombreURL}`">
-                <img :class="[ 'mini-flag-img iz-100', idio.diminutivo === idioma.diminutivo ? 'active' : null ]" :src="`/storage/images/${idio.diminutivo}.svg`" :key="'lang'+idio.id">
+                <img :class="[ 'mini-flag-img iz-100', idio.diminutivo === idioma.diminutivo ? 'active' : null ]" :src="`/images/${idio.diminutivo}.svg`" :key="'lang'+idio.id">
             </a>
         </div>
         <!-- <a href="/cursos">Regresar</a> -->
@@ -58,7 +58,7 @@
                     <div class="row justify-content-center">
                         <div v-for="(membresia, index2) in offsetCarousel(key)" class="card card-course-carrousel mx-3" style="width : 15rem;">
                             <div class="card-body d-flex flex-column">
-                                <img class="flag-img mx-auto" :src="`/storage/images/${idioma.diminutivo}-square.svg`" :alt="`lingua planet ${idioma.idioma}`">
+                                <img class="flag-img mx-auto" :src="`/images/${idioma.diminutivo}-square.svg`" :alt="`lingua planet ${idioma.idioma}`">
                                 <span class="h3 bold">{{ membresia.nombre }}</span>
                                 <h3>Pago {{ membresia.tipo }}</h3>
                                 <div class="mt-4 mb-3 lh">

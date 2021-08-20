@@ -2944,7 +2944,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "myperfiles-component",
@@ -2963,6 +2962,9 @@ __webpack_require__.r(__webpack_exports__);
       document.querySelectorAll('.card-perfil .card-backdrop').forEach(function (e) {
         e.classList.toggle('show');
       });
+    },
+    crear: function crear() {
+      window.location = '/home/perfil-user/create';
     }
   }
 });
@@ -2987,9 +2989,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "perfil-card-component",
-  props: ['perfil']
+  props: ['perfil', 'mode'],
+  methods: {
+    entrar: function entrar() {
+      window.location = '/home/app/' + this.perfil.id + '/' + this.perfil.apodo;
+    }
+  }
 });
 
 /***/ }),
@@ -42778,7 +42786,7 @@ var render = function() {
               staticClass: "profile-bg mx-auto",
               style:
                 "background-image : url(/images/" +
-                _vm.perfil.animal.animal +
+                _vm.perfil.animal.animal.toLowerCase() +
                 ".svg); background-color: " +
                 _vm.perfil.color +
                 ";"
@@ -44095,14 +44103,33 @@ var render = function() {
           { staticClass: "row mt-5 justify-content-md-center" },
           [
             _vm._l(_vm.user.perfiles, function(perf) {
-              return _c("PerfilCard", { key: perf.id, attrs: { perfil: perf } })
+              return _c("PerfilCard", {
+                key: perf.id,
+                attrs: { mode: _vm.selectMode, perfil: perf }
+              })
             }),
             _vm._v(" "),
-            _vm._m(0)
+            _c("div", { staticClass: "w-50 col-sm-6 col-md-3 col-lg-2" }, [
+              _c("div", {
+                staticClass: "card-body",
+                staticStyle: {
+                  height: "150px",
+                  "background-image": "url(images/add-gray.svg)",
+                  "background-repeat": "no-repeat",
+                  "background-position": "center center"
+                },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.crear()
+                  }
+                }
+              })
+            ])
           ],
           2
         )
-      : _c("div", { staticClass: "row" }, [_vm._m(1)]),
+      : _c("div", { staticClass: "row" }, [_vm._m(0)]),
     _vm._v(" "),
     _vm.user.perfiles.length > 0
       ? _c("div", { staticClass: "row justify-content-center mt-5" }, [
@@ -44194,35 +44221,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w-50 col-sm-6 col-md-3 col-lg-2" }, [
-      _c(
-        "div",
-        {
-          staticClass: "card-body",
-          staticStyle: {
-            height: "150px",
-            "background-image": "url(images/add-gray.svg)",
-            "background-repeat": "no-repeat",
-            "background-position": "center center"
-          }
-        },
-        [_c("a", { attrs: { href: "/home/perfil-user/create" } })]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c(
       "div",
       { staticClass: "col-12 text-center mt-5 divAdd-profile" },
       [
         _c("a", { attrs: { href: "/home/perfil-user/create" } }, [
-          _c("img", {
-            staticClass: "iz-15",
-            attrs: { src: "storage/images/add.svg" }
-          })
+          _c("img", { staticClass: "iz-15", attrs: { src: "/images/add.svg" } })
         ])
       ]
     )
@@ -44249,25 +44253,37 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card-perfil col-sm-6 col-md-3 col-lg-2" }, [
-    _c(
-      "div",
-      {
-        staticClass: "card-body img-profile",
-        style:
-          "background-color:" +
-          _vm.perfil.color +
-          "; background-image : url(/images/" +
-          _vm.perfil.animal.animal +
-          ".svg);"
-      },
-      [_c("div", { staticClass: "card-backdrop" })]
-    ),
-    _vm._v(" "),
-    _c("h2", { staticClass: "text-center my-3 bold" }, [
-      _vm._v(_vm._s(_vm.perfil.apodo))
-    ])
-  ])
+  return _c(
+    "div",
+    {
+      staticClass: "card-perfil col-sm-6 col-md-3 col-lg-2",
+      on: {
+        click: function($event) {
+          $event.preventDefault()
+          _vm.mode ? _vm.editar() : _vm.entrar()
+        }
+      }
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "card-body img-profile",
+          style:
+            "background-color:" +
+            _vm.perfil.color +
+            "; background-image : url(/images/" +
+            _vm.perfil.animal.animal.toLowerCase() +
+            ".svg);"
+        },
+        [_c("div", { staticClass: "card-backdrop" })]
+      ),
+      _vm._v(" "),
+      _c("h2", { staticClass: "text-center my-3 bold" }, [
+        _vm._v(_vm._s(_vm.perfil.apodo))
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -45181,7 +45197,10 @@ var render = function() {
                                   _c("img", {
                                     staticClass: "animal-icon mb-2",
                                     attrs: {
-                                      src: "/images/" + animal.animal + ".svg"
+                                      src:
+                                        "/images/" +
+                                        animal.animal.toLowerCase() +
+                                        ".svg"
                                     },
                                     on: {
                                       click: function($event) {
@@ -59053,7 +59072,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! c:\laragon\www\lingua-planet\resources\js\Padre\app.js */"./resources/js/Padre/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\LinguaPlanet-main\resources\js\Padre\app.js */"./resources/js/Padre/app.js");
 
 
 /***/ })
