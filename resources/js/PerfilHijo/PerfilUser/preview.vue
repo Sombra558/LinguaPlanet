@@ -4,6 +4,7 @@
 
             <a :href="'/home/app/'+perfil.id+'/'+perfil.apodo+'/idiomas'">Mundo</a>
     </div>
+    
 </template>
 
 <script>

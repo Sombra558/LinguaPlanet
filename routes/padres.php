@@ -15,16 +15,12 @@ Route::post('/actualizar-password', 'Padres\PerfilController@updatecontrasena');
 
 Route::resource('/perfil-user', 'Padres\PerfilEstudiante');
    
-    /* Route::group(['prefix' => 'app/{id}/{nombreURL}','middleware' => ['HasCourseDocente']], function () {
-        Route::get('/', 'Docente\DocenteController@cursoaplicacion');
-        Route::get('/clases', 'Docente\DocenteController@cursoaplicacionclases');
-        Route::get('/clases/{clase_id}', 'Docente\DocenteController@cursoaplicacionclasesshow');
-        Route::get('/clases/{clase_id}/asistencia', 'Docente\DocenteController@cursoclasesasistencia');
-        Route::get('/videos-conferencias', 'Docente\DocenteController@videoconferencias');
-        Route::get('/asistencia', 'Docente\DocenteController@asistencia');
-        Route::get('/asistencia', 'Docente\DocenteController@asistencia');
-        Route::get('/matricula', 'Docente\DocenteController@cursoaplicacionmatricula');
-        Route::get('/certificado', 'Docente\DocenteController@certificado');
-    });*/
+     Route::group(['prefix' => 'app/{id}/{apodo}','middleware' => ['HasPerfilPadre']], function () {
+        Route::get('/', 'Padres\PerfilEstudiante@previewshow');
+        Route::get('/idiomas', 'Padres\PerfilEstudiante@show');
+        Route::get('/idiomas/{nombreURL}', 'Padres\PerfilEstudiante@aplication');
+        Route::get('/idiomas/{nombreURL}/{curso_id}', 'Padres\PerfilEstudiante@aplicationCurso');
+      
+    });
  
 });

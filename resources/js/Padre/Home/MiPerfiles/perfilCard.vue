@@ -14,7 +14,7 @@
         props:['perfil','mode'],
         methods: {
             entrar() {
-                window.location='/home/perfil-user/'+this.perfil.id;
+                window.location='/home/app/'+this.perfil.id+'/'+this.perfil.apodo;
             }
         },
     }

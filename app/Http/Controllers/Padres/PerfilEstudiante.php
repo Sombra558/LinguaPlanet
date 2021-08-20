@@ -61,6 +61,7 @@ class PerfilEstudiante extends Controller
     public function previewshow($id)
     {
         $perfil=PerfilEstudianteUser::find($id)->load(['animal']);
+      
         return view('Estudiantes.PerfilUser.preview',compact('perfil'));
     }
 
@@ -73,8 +74,11 @@ class PerfilEstudiante extends Controller
                 }]);
             }]);
         },'animal']);
+
+       
         return view('Estudiantes.PerfilUser.show',compact('perfil'));
     }
+
     public function aplication($id,$apodo,$nombreURL)
     {
         $idioma=Idioma::where('nombreURL',$nombreURL)->first();

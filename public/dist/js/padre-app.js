@@ -2995,7 +2995,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['perfil', 'mode'],
   methods: {
     entrar: function entrar() {
-      window.location = '/home/perfil-user/' + this.perfil.id;
+      window.location = '/home/app/' + this.perfil.id + '/' + this.perfil.apodo;
     }
   }
 });
