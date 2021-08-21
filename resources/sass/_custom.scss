@@ -18,6 +18,38 @@
     font-size : 20px;
 }
 
+.globe-profile-student {
+	display : flex;
+	justify-content: center;
+	align-items: center;
+	width: 50px;
+    height: 35px;
+    border-radius: 50px;
+    color : white;
+    font-size : 20px;
+}
+
+.dropdown-student {
+	min-width : 20rem;
+	background: #FFFFFF;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	border : none;
+	right: 0;
+  	left: auto;
+}
+
+.dropdown-student :first-child::after {
+	content: "";
+    background: #c9c9c9;
+    position: absolute;
+    top: 61px;
+    left: 22px;
+    height: 1px;
+    width: 87%;
+    opacity: 0.1;
+}
+
 body {
 	margin : 0;
 	font-family: 'Poppins', sans-serif;
@@ -90,6 +122,36 @@ body {
 .navbar .logo {
 	width: 90px;
 	height: 90px;
+}
+
+img.header-animal-icon {
+    width : 80px;
+    height : 80px;
+    border-radius : 50px;
+    border : 6px solid #31348b;
+    position : absolute;
+    top : 10%;
+	left : 9.5%;
+    z-index : 1
+}
+
+.nickname-header {
+	position : absolute;
+	font-size : 1.2rem;
+	font-weight : 600;
+	color : $primary;
+	background-color : white;
+	padding : 0.3rem 1.8rem 0.3rem 2.8rem;
+	border : 7px solid $primary;
+	border-radius : 50px;
+	margin-left : -50px;
+	top : 24%;
+	left : 105%;
+	z-index : 0;
+}
+
+.navbar-nav .dropdown-menu {
+	position : absolute;
 }
 
 .mr-auto {
@@ -176,27 +238,27 @@ body {
 }
 
 .form-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-			color: $primary;
-			font-style: normal;
-			font-weight: bold;
-			font-size: 16px;
-			line-height: 24px;
+	color: $primary;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 24px;
 }
 
 .form-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-			color: $primary;
-			font-style: normal;
-			font-weight: bold;
-			font-size: 16px;
-			line-height: 24px;
+	color: $primary;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 24px;
 }
 
 .form-input::-ms-input-placeholder { /* Microsoft Edge */
-			color: $primary;
-			font-style: normal;
-			font-weight: bold;
-			font-size: 16px;
-			line-height: 24px;
+	color: $primary;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 24px;
 }
 
 .form-input {
@@ -208,24 +270,24 @@ body {
 }
 
 .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-			font-style: normal;
-			font-weight: bold;
-			font-size: 16px;
-			line-height: 24px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 24px;
 }
 
 .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
-			font-style: normal;
-			font-weight: bold;
-			font-size: 16px;
-			line-height: 24px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 24px;
 }
 
 .form-control::-ms-input-placeholder { /* Microsoft Edge */
-			font-style: normal;
-			font-weight: bold;
-			font-size: 16px;
-			line-height: 24px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 24px;
 }
 
 .l-select {
@@ -450,6 +512,12 @@ h1.course-show-header {
 	flex-direction : row !important;
 	justify-content : start !important;
 }
+
+.student-flags-group {
+	position : absolute;
+	top : 39%;
+}
+
 /* Footer styles*/
 footer,
 .footer-link {

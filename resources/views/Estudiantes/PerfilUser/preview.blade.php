@@ -1,4 +1,4 @@
-@extends('layouts.Estudiante.estudiante')
+@extends('layouts.Estudiante.home')
 
 @section('content')
     <preview-perfiluser :perfil="{{$perfil}}"></preview-perfiluser>

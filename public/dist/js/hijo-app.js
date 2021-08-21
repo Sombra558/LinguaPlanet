@@ -1959,8 +1959,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "preview-perfiluser",
   props: ["perfil"]
@@ -1977,6 +1975,18 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -37742,19 +37752,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._v("\n    " + _vm._s(_vm.perfil.animal.animal) + "\n\n        "),
-    _c(
-      "a",
-      {
-        attrs: {
-          href:
-            "/home/app/" + _vm.perfil.id + "/" + _vm.perfil.apodo + "/idiomas"
-        }
-      },
-      [_vm._v("Mundo")]
-    )
-  ])
+  return _c(
+    "div",
+    { staticClass: "flex-fill", staticStyle: { position: "relative" } },
+    [
+      _c("img", {
+        staticStyle: { position: "absolute", top: "20%", left: "15%" },
+        attrs: { src: "/images/" + _vm.perfil.animal.animal + "-character.svg" }
+      }),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          attrs: {
+            href:
+              "/home/app/" + _vm.perfil.id + "/" + _vm.perfil.apodo + "/idiomas"
+          }
+        },
+        [_vm._v("Mundo")]
+      )
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37780,30 +37798,97 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    {
+      staticClass: "d-flex justify-content-center",
+      staticStyle: { position: "relative" }
+    },
     [
-      _vm._l(_vm.idiomas, function(idioma) {
-        return _c("div", { key: idioma.id }, [
-          _c(
-            "a",
-            {
+      _c(
+        "svg",
+        {
+          attrs: {
+            width: "456",
+            height: "456",
+            viewBox: "0 0 456 456",
+            fill: "none",
+            xmlns: "http://www.w3.org/2000/svg"
+          }
+        },
+        [
+          _c("g", { attrs: { "clip-path": "url(#clip0)" } }, [
+            _c("rect", {
+              attrs: { width: "456", height: "456", rx: "228", fill: "#0092D2" }
+            }),
+            _vm._v(" "),
+            _c("path", {
               attrs: {
-                href:
-                  "/home/app/" +
-                  _vm.perfil.id +
-                  "/" +
-                  _vm.perfil.apodo +
-                  "/idiomas/" +
-                  idioma.nombreURL
+                "fill-rule": "evenodd",
+                "clip-rule": "evenodd",
+                d:
+                  "M80.7606 -29.8585C103.342 -29.5098 118.424 -7.94949 137.085 4.79729C156.524 18.075 186.678 23.2906 192.142 46.2213C197.656 69.3637 174.149 88.5312 161.892 108.908C152.696 124.197 142.555 137.641 129.711 150.01C114.6 164.563 101.625 185.064 80.7606 187.045C59.5558 189.059 40.8409 173.772 24.5721 159.994C9.29391 147.055 -1.07336 130.175 -8.412 111.527C-16.2011 91.7336 -24.6136 70.5387 -18.6693 50.113C-12.6518 29.4358 6.39882 16.5193 23.1603 3.03795C40.8276 -11.1718 58.1099 -30.2083 80.7606 -29.8585Z",
+                fill: "#00A53F"
               }
-            },
-            [_vm._v(_vm._s(idioma.idioma))]
-          )
-        ])
-      }),
+            }),
+            _vm._v(" "),
+            _c("path", {
+              attrs: {
+                "fill-rule": "evenodd",
+                "clip-rule": "evenodd",
+                d:
+                  "M382.697 92.0656C400.205 93.2238 415.72 102.632 430.93 111.331C445.419 119.617 462.409 126.945 469.77 141.862C477.122 156.76 470.511 174.425 470.252 191.016C470.046 204.297 468.989 217.05 468.393 230.319C467.682 246.147 472.174 262.45 466.383 277.21C460.058 293.329 450.514 311.105 434.264 317.309C417.81 323.591 399.772 313.507 382.697 309.161C368.615 305.577 355.097 301.064 342.452 293.939C330.334 287.111 317.635 280.046 310.222 268.324C302.996 256.899 309.021 240.561 301.563 229.284C288.842 210.05 254.056 204.374 252.726 181.394C251.588 161.736 282.411 156.389 296.546 142.593C308.96 130.478 316.286 113.526 331.269 104.738C346.673 95.7037 364.85 90.8851 382.697 92.0656Z",
+                fill: "#00A53F"
+              }
+            }),
+            _vm._v(" "),
+            _c("path", {
+              attrs: {
+                "fill-rule": "evenodd",
+                "clip-rule": "evenodd",
+                d:
+                  "M216.626 286.234C228.684 290.048 237.841 299.824 249.776 304.007C262.125 308.336 279.909 300.994 288.018 311.259C296.836 322.421 282.76 340.726 288.913 353.549C294.94 366.109 316.239 366.747 320.938 379.86C325.229 391.834 311.016 403.777 311.468 416.487C312.134 435.187 329.066 452.618 324.171 470.68C319.815 486.754 303.975 500.673 287.692 504.218C269.898 508.093 252.791 484.532 235.422 490.005C214.728 496.526 209.441 526.946 189.375 535.199C169.872 543.221 144.607 545.792 126.643 534.749C108.696 523.716 104.568 499.045 98.0123 479.032C92.338 461.71 90.3911 443.521 90.7913 425.299C91.1421 409.333 91.1976 391.924 100.215 378.74C109.481 365.193 141.457 368.291 141.002 351.889C140.035 317.1 82.2536 289.828 96.8673 258.239C108.207 233.727 147.897 273.954 174.21 280.105C188.24 283.385 202.889 281.889 216.626 286.234Z",
+                fill: "#00A53F"
+              }
+            })
+          ])
+        ]
+      ),
       _vm._v(" "),
-      _c("a", { attrs: { href: "/home" } }, [_vm._v("Cambiar perfil")])
-    ],
-    2
+      _c(
+        "div",
+        { staticClass: "student-flags-group w-100 text-center" },
+        _vm._l(_vm.idiomas, function(idioma) {
+          return _c("div", { key: idioma.id, staticClass: "mx-3" }, [
+            _c(
+              "a",
+              {
+                attrs: {
+                  href:
+                    "/home/app/" +
+                    _vm.perfil.id +
+                    "/" +
+                    _vm.perfil.apodo +
+                    "/idiomas/" +
+                    idioma.nombreURL
+                }
+              },
+              [
+                _c("img", {
+                  staticStyle: {
+                    width: "90px",
+                    height: "90px",
+                    border: "2px solid #FFFFFF",
+                    "box-sizing": "border-box",
+                    "border-radius": "35px"
+                  },
+                  attrs: { src: "/images/" + idioma.diminutivo + "-square.svg" }
+                })
+              ]
+            )
+          ])
+        }),
+        0
+      )
+    ]
   )
 }
 var staticRenderFns = []
@@ -50373,7 +50458,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\LinguaPlanet-main\resources\js\PerfilHijo\app.js */"./resources/js/PerfilHijo/app.js");
+module.exports = __webpack_require__(/*! c:\laragon\www\lingua-planet\resources\js\PerfilHijo\app.js */"./resources/js/PerfilHijo/app.js");
 
 
 /***/ })

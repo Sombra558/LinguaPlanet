@@ -15,12 +15,11 @@ Route::post('/actualizar-password', 'Padres\PerfilController@updatecontrasena');
 
 Route::resource('/perfil-user', 'Padres\PerfilEstudiante');
    
-     Route::group(['prefix' => 'app/{id}/{apodo}','middleware' => ['HasPerfilPadre']], function () {
-        Route::get('/', 'Padres\PerfilEstudiante@previewshow');
-        Route::get('/idiomas', 'Padres\PerfilEstudiante@show');
-        Route::get('/idiomas/{nombreURL}', 'Padres\PerfilEstudiante@aplication');
-        Route::get('/idiomas/{nombreURL}/{curso_id}', 'Padres\PerfilEstudiante@aplicationCurso');
-      
-    });
+Route::group([ 'prefix' => 'app/{id}/{apodo}', 'middleware' => ['HasPerfilPadre'] ], function() {
+    Route::get('/', 'Padres\PerfilEstudiante@previewshow');
+    Route::get('/idiomas', 'Padres\PerfilEstudiante@show');
+    Route::get('/idiomas/{nombreURL}', 'Padres\PerfilEstudiante@aplication');
+    Route::get('/idiomas/{nombreURL}/{curso_id}', 'Padres\PerfilEstudiante@aplicationCurso'); 
+});
  
 });

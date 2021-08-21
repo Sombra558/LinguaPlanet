@@ -74,8 +74,7 @@ class PerfilEstudiante extends Controller
                 }]);
             }]);
         },'animal']);
-
-       
+         
         return view('Estudiantes.PerfilUser.show',compact('perfil'));
     }
 
