@@ -16,6 +16,6 @@ class PerfilEstudianteUser extends Model
   
   public function planes()
   {
-    return $this->belongsToMany('App\Models\Solicitudes\PlanUser','perfil_estudiante_user_plan','plan_user_id','perfil_estudiante_user_id');
+    return $this->belongsToMany('App\Models\Solicitudes\PlanUser','perfil_estudiante_user_plan');
   }
 }

@@ -6,6 +6,11 @@
                     <u>Editar</u>
                 </a>                
             </div>
+             <div class="d-flex justify-content-end">
+                <a class="color-plomo" href="#" @click.prevent="$emit('mostrarasignacion',plan)">
+                    <u>Asignar a perfil</u>
+                </a>                
+            </div>
             <h1 class="m-0 text-center">
                 <span class="mx-auto badge badge-pill badge-primary">
                     {{plan.nombre}}

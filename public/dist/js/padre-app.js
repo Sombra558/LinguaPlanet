@@ -2135,11 +2135,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "cursos-detalle-padre",
   props: ['user'],
+  data: function data() {
+    return {
+      paisSelected: 'Seleccione',
+      mesSelected: 'Seleccione'
+    };
+  },
   components: {
     ProgesoCard: _progresoCard__WEBPACK_IMPORTED_MODULE_0__["default"],
     PerfilCard: _perfilCard__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -2534,12 +2546,106 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "activas-component",
-  props: ["membresias"],
+  props: ["membresias", "perfiles"],
+  data: function data() {
+    return {
+      planSelected: null,
+      perfilSelected: null
+    };
+  },
   components: {
     PlanCard: _planCard__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    mostrarasignacion: function mostrarasignacion(plan) {
+      if (plan) {
+        this.planSelected = plan;
+      }
+
+      setTimeout(function () {
+        $("#asignacionmodal").modal("show");
+      }, 200);
+    },
+    asignar: function asignar() {
+      var url = '/home/asignar-plan';
+      axios.post(url, {
+        plan_user_id: this.planSelected.pivot.id,
+        perfil_estudiante_user_id: this.perfilSelected.id
+      }).then(function (result) {
+        switch (result.data.codigo) {
+          case 'E26741':
+            console.log(result.data.message);
+            break;
+
+          case 'E26742':
+            console.log(result.data.message);
+            break;
+
+          default:
+            window.location.reload();
+            break;
+        }
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
   }
 });
 
@@ -2554,6 +2660,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7972,7 +8083,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".list-group-item[data-v-6bf24128] {\n  border: none;\n}\n.idioma-title[data-v-6bf24128] {\n  color: #606060;\n  font-size: 1.2rem;\n  font-weight: 500;\n}\n@media (min-width: 768px) {\n.idioma-title[data-v-6bf24128] {\n    color: #31348B;\n    font-size: 1rem;\n    font-weight: 400;\n}\n.list-group-item[data-v-6bf24128] {\n    padding: 0;\n    border: none;\n    border-top: 1px solid rgba(0, 0, 0, 0.125);\n}\n}", ""]);
+exports.push([module.i, "#c2 input:checked ~ .checkmark[data-v-6bf24128] {\n  background-color: #00A53F;\n  border-color: #00A53F;\n}\n\n/* Contenedor */\n.containercb[data-v-6bf24128] {\n  display: block;\n  position: relative;\n  padding-left: 35px;\n  margin-bottom: 12px;\n  cursor: pointer;\n  font-size: 22px;\n}\n\n/* escondemos el default checkbox */\n.containercb input[data-v-6bf24128] {\n  position: absolute;\n  opacity: 0;\n  cursor: pointer;\n  height: 0;\n  width: 0;\n}\n\n/* creamos un custom checkbox */\n.checkmark[data-v-6bf24128] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 25px;\n  width: 25px;\n  background-color: #F8F8F8;\n  border: 2px solid #B5B5BB;\n  box-sizing: border-box;\n  border-radius: 8px;\n}\n\n/* Al pasar el mouse encima, lo ponemos gris */\n.containercb:hover input ~ .checkmark[data-v-6bf24128] {\n  background-color: #ccc;\n}\n\n/* creamos el marcador (escondido al no seleccionar) */\n.checkmark[data-v-6bf24128]:after {\n  content: \"\";\n  position: absolute;\n  display: none;\n}\n\n/* mostramos el marcador al seleccionar */\n.containercb input:checked ~ .checkmark[data-v-6bf24128]:after {\n  display: block;\n}\n\n/* estilo del marcador */\n.containercb .checkmark[data-v-6bf24128]:after {\n  left: 6px;\n  top: 1px;\n  width: 9px;\n  height: 15px;\n  border: solid white;\n  border-width: 0 3px 3px 0;\n  transform: rotate(45deg);\n}\n.globe-profile-student[data-v-6bf24128] {\n  padding: 5px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 50px;\n  height: 35px;\n  border-radius: 8px;\n  color: white;\n  font-size: 20px;\n}\n.modal-header[data-v-6bf24128] {\n  border-bottom: none;\n}\n.list-group-item[data-v-6bf24128] {\n  border: none;\n}\n.idioma-title[data-v-6bf24128] {\n  color: #606060;\n  font-size: 1.2rem;\n  font-weight: 500;\n}\n@media (min-width: 768px) {\n.idioma-title[data-v-6bf24128] {\n    color: #31348B;\n    font-size: 1rem;\n    font-weight: 400;\n}\n.list-group-item[data-v-6bf24128] {\n    padding: 0;\n    border: none;\n    border-top: 1px solid rgba(0, 0, 0, 0.125);\n}\n}", ""]);
 
 // exports
 
@@ -41507,32 +41618,84 @@ var render = function() {
             { staticClass: "col-6 col-md-4 my-2 d-flex align-items-center" },
             [
               _c("div", { staticClass: "dropdown" }, [
-                _vm._m(0),
+                _c(
+                  "span",
+                  {
+                    staticClass: "l-select dropdown-toggle",
+                    attrs: {
+                      href: "#",
+                      role: "button",
+                      id: "dropdownMenuLink",
+                      "data-toggle": "dropdown",
+                      "aria-haspopup": "true",
+                      "aria-expanded": "false"
+                    }
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "flag-language",
+                      attrs: { src: "/images/fr.svg" }
+                    }),
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.paisSelected) +
+                        "\n                        "
+                    )
+                  ]
+                ),
                 _vm._v(" "),
                 _c(
-                  "div",
+                  "ul",
                   {
                     staticClass: "dropdown-menu",
                     attrs: { "aria-labelledby": "dropdownMenuLink" }
                   },
-                  _vm._l(3, function(i) {
-                    return _c(
-                      "a",
-                      { staticClass: "dropdown-item", attrs: { href: "#" } },
+                  [
+                    _c(
+                      "li",
+                      {
+                        staticClass: "dropdown-item",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            _vm.paisSelected = "Seleccione"
+                          }
+                        }
+                      },
                       [
-                        _c("img", {
-                          staticClass: "flag-language",
-                          attrs: { src: "/images/fr.svg" }
-                        }),
                         _vm._v(
-                          "\n                                Action " +
-                            _vm._s(i) +
-                            "\n                            "
+                          "\n                                Seleccione\n                            "
                         )
                       ]
-                    )
-                  }),
-                  0
+                    ),
+                    _vm._v(" "),
+                    _vm._l(3, function(i) {
+                      return _c(
+                        "li",
+                        {
+                          staticClass: "dropdown-item",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.paisSelected = i
+                            }
+                          }
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "flag-language",
+                            attrs: { src: "/images/fr.svg" }
+                          }),
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(i) +
+                              "\n                            "
+                          )
+                        ]
+                      )
+                    })
+                  ],
+                  2
                 )
               ])
             ]
@@ -41550,7 +41713,7 @@ var render = function() {
                 },
                 [
                   _c(
-                    "a",
+                    "span",
                     {
                       staticClass: "l-select months dropdown-toggle",
                       attrs: {
@@ -41564,31 +41727,61 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                            Dropdown link\n                        "
+                        "\n                            " +
+                          _vm._s(_vm.mesSelected) +
+                          "\n                        "
                       )
                     ]
                   ),
                   _vm._v(" "),
                   _c(
-                    "div",
+                    "ul",
                     {
                       staticClass: "dropdown-menu",
                       attrs: { "aria-labelledby": "dropdownMenuLink" }
                     },
-                    _vm._l(3, function(i) {
-                      return _c(
-                        "a",
-                        { staticClass: "dropdown-item", attrs: { href: "#" } },
+                    [
+                      _c(
+                        "li",
+                        {
+                          staticClass: "dropdown-item",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.mesSelected = "Seleccione"
+                            }
+                          }
+                        },
                         [
                           _vm._v(
-                            "\n                                Mes " +
-                              _vm._s(i) +
-                              "\n                            "
+                            "\n                                Seleccione\n                            "
                           )
                         ]
-                      )
-                    }),
-                    0
+                      ),
+                      _vm._v(" "),
+                      _vm._l(3, function(i) {
+                        return _c(
+                          "li",
+                          {
+                            staticClass: "dropdown-item",
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                _vm.mesSelected = i
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(i) +
+                                "\n                            "
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
                   )
                 ]
               )
@@ -41658,9 +41851,9 @@ var render = function() {
                         attrs: { "data-value": "50" }
                       },
                       [
-                        _vm._m(1),
+                        _vm._m(0),
                         _vm._v(" "),
-                        _vm._m(2),
+                        _vm._m(1),
                         _vm._v(" "),
                         _c(
                           "div",
@@ -41700,7 +41893,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _vm._m(2)
                 ])
               ])
             ])
@@ -41712,7 +41905,7 @@ var render = function() {
     _c("div", { staticClass: "resultados px-lg-4" }, [
       _c("div", { staticClass: "col-12" }, [
         _c("div", { staticClass: "row mt-3" }, [
-          _vm._m(4),
+          _vm._m(3),
           _vm._v(" "),
           _c("div", { staticClass: "col-12" }, [
             _c("div", { staticClass: "row" }, [
@@ -41720,7 +41913,7 @@ var render = function() {
                 "ul",
                 { staticClass: "list-group list-group-flush flex-grow-1" },
                 [
-                  _vm._m(5),
+                  _vm._m(4),
                   _vm._v(" "),
                   _vm._l(2, function(o) {
                     return _c("li", { staticClass: "list-group-item py-1" }, [
@@ -41835,34 +42028,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "l-select dropdown-toggle",
-        attrs: {
-          href: "#",
-          role: "button",
-          id: "dropdownMenuLink",
-          "data-toggle": "dropdown",
-          "aria-haspopup": "true",
-          "aria-expanded": "false"
-        }
-      },
-      [
-        _c("img", {
-          staticClass: "flag-language",
-          attrs: { src: "/images/fr.svg" }
-        }),
-        _vm._v(
-          "\n                            Dropdown link\n                        "
-        )
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -43116,7 +43281,12 @@ var render = function() {
                     _c(
                       "div",
                       { attrs: { clasS: "col-12 col-md-9 col-lg-9 p-0" } },
-                      [_c("PlanCard", { attrs: { plan: plan } })],
+                      [
+                        _c("PlanCard", {
+                          attrs: { plan: plan },
+                          on: { mostrarasignacion: _vm.mostrarasignacion }
+                        })
+                      ],
                       1
                     )
                   ])
@@ -43127,7 +43297,228 @@ var render = function() {
           2
         )
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _vm.planSelected
+      ? _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: {
+              id: "asignacionmodal",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "exampleModalLabel",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-dialog modal-dialog-centered",
+                attrs: { role: "document" }
+              },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c("div", { staticClass: "modal-header" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "close",
+                        attrs: {
+                          type: "button",
+                          "data-dismiss": "modal",
+                          "aria-label": "Close"
+                        }
+                      },
+                      [
+                        _c("span", { attrs: { "aria-hidden": "true" } }, [
+                          _c(
+                            "svg",
+                            {
+                              attrs: {
+                                width: "30",
+                                height: "30",
+                                viewBox: "0 0 30 30",
+                                fill: "none",
+                                xmlns: "http://www.w3.org/2000/svg"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d: "M22.5 7.5L7.5 22.5",
+                                  stroke: "#31348B",
+                                  "stroke-width": "2",
+                                  "stroke-linecap": "round",
+                                  "stroke-linejoin": "round"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                attrs: {
+                                  d: "M7.5 7.5L22.5 22.5",
+                                  stroke: "#31348B",
+                                  "stroke-width": "2",
+                                  "stroke-linecap": "round",
+                                  "stroke-linejoin": "round"
+                                }
+                              })
+                            ]
+                          )
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-body" }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col px-2" }, [
+                        _c(
+                          "ul",
+                          { staticClass: "list-group" },
+                          _vm._l(_vm.perfiles, function(perfil) {
+                            return _c(
+                              "li",
+                              {
+                                key: perfil.id,
+                                staticClass: "list-group-item border-0"
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "d-flex justify-content-between py-2 my-2",
+                                    staticStyle: {
+                                      "background-color": "#F8F8F8"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass: "d-flex align-items-center"
+                                      },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "globe-profile-student mx-3",
+                                            style: {
+                                              "background-color": perfil.color
+                                            }
+                                          },
+                                          [
+                                            _c("img", {
+                                              staticClass: "h-75",
+                                              attrs: {
+                                                src:
+                                                  "/images/" +
+                                                  perfil.animal.animal +
+                                                  ".svg"
+                                              }
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("span", { staticClass: "h5 mb-0" }, [
+                                          _vm._v(_vm._s(perfil.apodo))
+                                        ])
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "d-flex justify-content-center w-25"
+                                      },
+                                      [
+                                        _c(
+                                          "label",
+                                          {
+                                            staticClass:
+                                              "containercb mb-0 my-2",
+                                            attrs: {
+                                              for: "check" + perfil.id,
+                                              id: "c2"
+                                            }
+                                          },
+                                          [
+                                            _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: _vm.perfilSelected,
+                                                  expression: "perfilSelected"
+                                                }
+                                              ],
+                                              attrs: {
+                                                type: "radio",
+                                                id: "check" + perfil.id
+                                              },
+                                              domProps: {
+                                                value: perfil.id,
+                                                checked: _vm._q(
+                                                  _vm.perfilSelected,
+                                                  perfil.id
+                                                )
+                                              },
+                                              on: {
+                                                change: function($event) {
+                                                  _vm.perfilSelected = perfil.id
+                                                }
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c("span", {
+                                              staticClass: "checkmark"
+                                            })
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col my-5 text-center" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary py-2 px-5",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.asignar()
+                              }
+                            }
+                          },
+                          [_vm._v("Continuar")]
+                        )
+                      ])
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -43150,6 +43541,16 @@ var staticRenderFns = [
             "\n                            Membresías    \n                        "
           )
         ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row text-center" }, [
+      _c("div", { staticClass: "col" }, [
+        _c("h2", [_vm._v("Selección de perfil que tendrá acceso al curso")])
       ])
     ])
   }
@@ -43188,6 +43589,23 @@ var render = function() {
               attrs: { href: "/home/membresia/" + _vm.plan.id + "/editar" }
             },
             [_c("u", [_vm._v("Editar")])]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex justify-content-end" }, [
+          _c(
+            "a",
+            {
+              staticClass: "color-plomo",
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.$emit("mostrarasignacion", _vm.plan)
+                }
+              }
+            },
+            [_c("u", [_vm._v("Asignar a perfil")])]
           )
         ]),
         _vm._v(" "),
@@ -44030,7 +44448,12 @@ var render = function() {
                   "div",
                   { staticClass: "row" },
                   [
-                    _c("Membresias", { attrs: { membresias: _vm.user.planes } })
+                    _c("Membresias", {
+                      attrs: {
+                        perfiles: _vm.user.perfiles,
+                        membresias: _vm.user.planes
+                      }
+                    })
                   ],
                   1
                 )

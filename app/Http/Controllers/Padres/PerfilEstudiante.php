@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Animals\Animal;
 use App\Models\Idioma\Idioma;
 use App\Models\Cursos\Curso;
+use App\Models\Solicitudes\PlanUser;
+use App\Models\Relaciones\PerfilPlan;
 use App\Models\PerfilEstudiante\PerfilEstudianteUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -57,10 +59,51 @@ class PerfilEstudiante extends Controller
         ]);
         return $perfil;
     }
+    public function asignarplan(Request $request)
+    {
+        $rules = [
+            'plan_user_id' => ['required'],
+            'perfil_estudiante_user_id' => ['required'],
+        ];
+        $request->validate($rules);
+        $validacion=PerfilPlan::where('plan_user_id',$request['plan_user_id'])->where('perfil_estudiante_user_id',$request['perfil_estudiante_user_id'])->first();
+        if ($validacion!=null) {
+            $err=collect([
+                'codigo' => 'E26741',
+                'message'=>'Ya esta Asignado a Este perfil',
+            ]);
+            return json_encode($err);
+        }else{
+            $plan=PlanUser::find($request['plan_user_id']);
+      
+                if ($plan->available!=0) {
+                    $perfil = PerfilPlan::create([
+                        'plan_user_id' => $request['plan_user_id'],
+                        'perfil_estudiante_user_id' => $request['perfil_estudiante_user_id'],
+                    ]);
+                    $plan->available=$plan->available-1;
+                    $plan->save();
+                    return $perfil;
+                }else{
+                    $err=collect([
+                        'codigo' => 'E26742',
+                        'message'=>'No dispones de Capacidad para otro perfil',
+                    ]);
+                    return json_encode($err);
+                }
+        }
+        
+    }
     //Estudiante
     public function previewshow($id)
     {
-        $perfil=PerfilEstudianteUser::find($id)->load(['animal']);
+        $perfil = PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
+                    return $q->with(['plan'=>function($k){
+                        return $k->with(['membresia'=>function($j){
+                            return $j->with(['cursos','idioma']);
+                        }]);
+                    }]);
+                  },'animal']);
       
         return view('Estudiantes.PerfilUser.preview',compact('perfil'));
     }
@@ -74,8 +117,28 @@ class PerfilEstudiante extends Controller
                 }]);
             }]);
         },'animal']);
-         
+
         return view('Estudiantes.PerfilUser.show',compact('perfil'));
+    }
+
+    public function premios($id)
+    {
+        $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
+            return $q->with(['plan'=>function($k){
+                return $k->with(['membresia'=>function($j){
+                    return $j->with(['cursos','idioma']);
+                }]);
+            }]);
+        }]);
+
+        return view('Estudiantes.PerfilUser.premios',compact('perfil'));
+    }
+
+    public function armario($id)
+    {
+        $perfil=PerfilEstudianteUser::find($id);
+
+        return view('Estudiantes.PerfilUser.armario',compact('perfil'));
     }
 
     public function aplication($id,$apodo,$nombreURL)
@@ -109,6 +172,7 @@ class PerfilEstudiante extends Controller
         }
         return view('Estudiantes.PerfilUser.show',compact('perfil'));
     }
+
     public function aplicationCurso($id,$apodo,$nombreURL,$curso_id)
     {
         $idioma=Idioma::where('nombreURL',$nombreURL)->first();
@@ -121,8 +185,7 @@ class PerfilEstudiante extends Controller
             }]);
         },'animal']);
 
-        return view('Estudiantes.Cursos.show',compact('curso','perfil','idioma'));
-    
+        return view('Estudiantes.Cursos.show',compact('curso','perfil','idioma'));    
     }
 
     /**

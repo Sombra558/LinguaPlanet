@@ -3,21 +3,21 @@
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-center">
             <div class="d-flex">
                 <div class="text-center">
-                    <img class="mx-1 mb-2 iz-35 active" :src="`/images/ellipse-${process >= 33.3 ? 'filled' : 'outlined'}.svg`">
+                    <img class="mx-1 mb-2 process-dot active" :src="`/images/ellipse-${process >= 33.3 ? 'filled' : 'outlined'}.svg`">
                     <span class="h6 d-block">Seleccione el curso</span>
                 </div>
                 <div>
                     <img class="line1" :src="`/images/line.svg`">
                 </div>
                 <div class="text-center">
-                    <img class="mx-1 mb-2 iz-35 active" :src="`/images/ellipse-${process >= 66.6 ? 'filled' : 'outlined'}.svg`">
+                    <img class="mx-1 mb-2 process-dot active" :src="`/images/ellipse-${process >= 66.6 ? 'filled' : 'outlined'}.svg`">
                     <span class="h6 d-block">Seleccione el tipo de pago</span>
                 </div>
                 <div>
                     <img class="line2" :src="`/images/line.svg`">
                 </div>
                 <div class="text-center">
-                    <img class="mx-1 mb-2 iz-35 active" :src="`/images/ellipse-${process === 100 ? 'filled' : 'outlined'}.svg`">
+                    <img class="mx-1 mb-2 process-dot active" :src="`/images/ellipse-${process === 100 ? 'filled' : 'outlined'}.svg`">
                     <span class="h6 d-block">Confirma tu pago</span>
                 </div>
             </div>
@@ -53,17 +53,21 @@ import { mapState } from "vuex";
 </script>
 
 <style lang="scss" scoped>
+    .process-dot {
+        width : 30px;
+    }
+
     .line1 {
         position: relative;
-        left : -16px;
-        top: 8px;
+        left : -9px;
+        top: 3px;
         width: 220%;
     }
 
     .line2 {
         position: relative;
-        left : -31px;
-        top: 8px;
+        left : -24px;
+        top: 3px;
         width: 220%;
     }
 </style>

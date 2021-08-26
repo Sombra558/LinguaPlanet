@@ -42,9 +42,6 @@
 
         <div id="app">
             <main class="py-4" @if(request()->routeIs('courses.index')) style="position: relative;" @endif>
-                @unless(!request()->routeIs('courses.index'))
-                    @include('layouts.Padres.background-stars')
-                @endunless
                 @yield('content')
             </main>
         </div>

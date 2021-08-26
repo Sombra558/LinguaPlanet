@@ -21,28 +21,34 @@
                 <div class="row mt-3">
                     <div class="col-6 col-md-4 my-2 d-flex align-items-center">
                         <div class="dropdown">
-                            <a class="l-select dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="l-select dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img src="/images/fr.svg" class="flag-language">
-                                Dropdown link
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a v-for="i in 3" class="dropdown-item" href="#">
+                                {{ paisSelected }}
+                            </span>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li @click="paisSelected = 'Seleccione'" class="dropdown-item" href="#">
+                                    Seleccione
+                                </li>
+                                <li v-for="i in 3" @click="paisSelected = i" class="dropdown-item" href="#">
                                     <img src="/images/fr.svg" class="flag-language">
-                                    Action {{ i }}
-                                </a>
-                            </div>
+                                    {{ i }}
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="col-6 col-md-4 my-2 d-flex align-items-center">
                         <div class="dropdown" style="display : relative;">
-                            <a class="l-select months dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown link
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a v-for="i in 3" class="dropdown-item" href="#">
-                                    Mes {{ i }}
-                                </a>
-                            </div>
+                            <span class="l-select months dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ mesSelected }}
+                            </span>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li @click="mesSelected = 'Seleccione'" class="dropdown-item" href="#">
+                                    Seleccione
+                                </li>
+                                <li v-for="i in 3" @click="mesSelected = i" class="dropdown-item" href="#">
+                                    {{ i }}
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="col-12 col-md-4 my-2 ml-auto text-md-right">
@@ -153,6 +159,12 @@ import PerfilCard from './perfilCard';
     export default {
         name:"cursos-detalle-padre",
         props:['user'],
+        data() {
+            return {
+                paisSelected : 'Seleccione',
+                mesSelected : 'Seleccione',  
+            }            
+        },
         components: {
             ProgesoCard,PerfilCard
         },

@@ -21,7 +21,7 @@ class User extends Authenticatable
     ];
     public function planes()
     {
-      return $this->belongsToMany('App\Models\Membresia\Plan')->withPivot('available');
+      return $this->belongsToMany('App\Models\Membresia\Plan')->withPivot('available','id');
     }
 
     public function perfiles()
