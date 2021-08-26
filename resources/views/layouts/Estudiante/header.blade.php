@@ -7,7 +7,7 @@
         @else
             <div style="position : relative; width : 100px; height : 100px;">
                 <img class="header-animal-icon mb-2"
-                     src="{{ '/images/'.$perfil->animal->animal.'.svg' }}"
+                     src="{{$perfil->animal->cara}}"
                      style="background-color : #FAB500;"
                 >
                 <span class="nickname-header">{{ $perfil->apodo }}</span>
@@ -29,7 +29,7 @@
                                     <div class="globe-profile-student h-100">
                                         <img class="icon-menu-student"
                                              style="background-color: #FAB500;"
-                                             src="{{ '/images/'.$perfil->animal->animal.'.svg' }}"
+                                             src="{{$perfil->animal->cara}}"
                                         >
                                     </div>
                                     <span class="ml-4 d-flex flex-column justify-content-center">

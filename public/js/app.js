@@ -51662,7 +51662,7 @@ var render = function() {
                   "mini-flag-img iz-100",
                   idio.diminutivo === _vm.idioma.diminutivo ? "active" : null
                 ],
-                attrs: { src: "/images/" + idio.diminutivo + ".svg" }
+                attrs: { src: idio.src }
               })
             ]
           )
@@ -51739,10 +51739,7 @@ var render = function() {
                           _c("img", {
                             staticClass: "flag-img mx-auto",
                             attrs: {
-                              src:
-                                "/storage/images/" +
-                                _vm.idioma.diminutivo +
-                                "-square.svg",
+                              src: "" + _vm.idioma.src,
                               alt: "lingua planet france"
                             }
                           }),
@@ -51852,10 +51849,7 @@ var render = function() {
                                 _c("img", {
                                   staticClass: "flag-img mx-auto",
                                   attrs: {
-                                    src:
-                                      "/images/" +
-                                      _vm.idioma.diminutivo +
-                                      "-square.svg",
+                                    src: "" + _vm.idioma.src,
                                     alt: "lingua planet " + _vm.idioma.idioma
                                   }
                                 }),
@@ -52075,10 +52069,7 @@ var render = function() {
                           _c("img", {
                             staticClass: "mx-1 iz-10 mini-flag-img active",
                             attrs: {
-                              src:
-                                "/images/" +
-                                _vm.membresia.idioma.diminutivo +
-                                ".svg",
+                              src: "" + _vm.membresia.idioma.src,
                               alt: "membresia idioma"
                             }
                           }),
@@ -67186,8 +67177,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! c:\laragon\www\lingua-planet\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! c:\laragon\www\lingua-planet\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\lingua_planet\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\lingua_planet\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

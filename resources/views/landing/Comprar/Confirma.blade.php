@@ -15,7 +15,7 @@
           <div class="row justify-content-center">
             <div class="col-12 d-flex py-2">
               <div class="col-6 d-flex align-items-center px-0">
-                <img class="flag-img" src="/images/{{ $plan->membresia->idioma->diminutivo }}-square.svg">
+                <img class="flag-img" src="{{ $plan->membresia->idioma->src }}">
                 <span class="h3 mb-0 bold ml-2">{{ $plan->membresia->idioma->idioma }}</span>
               </div>
               <div class="col-6 d-flex align-items-center justify-content-end px-0">

@@ -112,7 +112,7 @@ import PlanCard from './planCard';
                 var url = '/home/asignar-plan';
                 axios.post(url,{
                     plan_user_id:this.planSelected.pivot.id,
-                    perfil_estudiante_user_id:this.perfilSelected.id,
+                    perfil_estudiante_user_id:this.perfilSelected,
                 }).then((result) => {
                     switch (result.data.codigo) {
                             case 'E26741':

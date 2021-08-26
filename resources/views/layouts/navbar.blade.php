@@ -41,7 +41,7 @@
                     </li>
                     <li class="nav-item" >
                         @php
-                        $banderaselected="/img/Banderas/Spain.png";
+                        $banderaselected="/img/Banderas/argentina.svg";
                                  foreach($idiomas as $idioma){
                                      if(session()->get('locale') == $idioma->diminutivo){
                                         $banderaselected=$idioma->src;
