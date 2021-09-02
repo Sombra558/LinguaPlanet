@@ -3,6 +3,11 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use App\User;
+use App\Models\PerfilEstudiante\PerfilEstudianteUser;
+use App\Models\Animals\Animal;
+use App\Models\Animals\Avatar;
+use App\Models\Animals\Accesorios;
+use App\Models\Relaciones\PerfilPremios;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -31,11 +36,46 @@ class DatabaseSeeder extends Seeder
           ]);
         $user->assignRole('Padre');
         $user->markEmailAsVerified();
+        $perfil = PerfilEstudianteUser::create([
+          'apodo' => 'Frito',
+          'f_nacimiento' => '2021-09-01',
+          'color' => '#000000',
+          'hobby' => 'Estres',
+          'user_id' => $user->id,
+       ]);
+       
+     
+
         $this->call(IdiomaTableSeeder::class);
         $this->call(MembresiaTableSeeder::class);
         $this->call(PlanTableSeeder::class);
         $this->call(AnimalsTableSeeder::class);
         $this->call(CursosTableSeeder::class);
         $this->call(MembresiaCursoTableSeeder::class);
-    }
+        $animal=Animal::find(1);
+        $avatar = Avatar::create([
+          'animal_id' => 1,
+          'cuerpo'  => $animal->cuerpo,
+          'cara'  => $animal->cara,
+        ]);
+  
+        $perfil->avatar_id=$avatar->id;
+        $perfil->save();
+        $accesorios=Accesorios::get();
+
+        foreach($accesorios as $accesorio){
+              PerfilPremios::create([
+                  'accesorios_id' =>$accesorio->id,
+                  'perfil_estudiante_user_id' => $perfil->id,
+              ]);
+         }
+
+
+
+
+      }
+      
+
+
+        
 }

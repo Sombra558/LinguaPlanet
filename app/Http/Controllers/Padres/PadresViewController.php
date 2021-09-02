@@ -22,7 +22,7 @@ class PadresViewController extends Controller
     {
         $user=Auth::user()->load(['perfiles'=>function($q)
         {
-            return $q->with('animal');
+            return $q->with('avatar');
         }]);
         return view('Padres.Home.home',compact('user'));
     }
@@ -31,7 +31,7 @@ class PadresViewController extends Controller
     {
         $user=Auth::user()->load(['perfiles'=>function($q)
         {
-            return $q->with('animal','planes');
+            return $q->with('avatar','planes');
         },'planes'=>function($q)
         {
             return $q->with(['membresia'=>function($k)
@@ -47,7 +47,7 @@ class PadresViewController extends Controller
     {
         $user=Auth::user()->load(['perfiles'=>function($q)
         {
-            return $q->with('animal','planes');
+            return $q->with('avatar','planes');
         },'planes'=>function($q)
         {
             return $q->with(['membresia'=>function($k)
@@ -62,7 +62,7 @@ class PadresViewController extends Controller
     {
         $user=Auth::user()->load(['perfiles'=>function($q)
         {
-            return $q->with('animal','planes');
+            return $q->with('avatar','planes');
         },'planes'=>function($q)
         {
             return $q->with(['membresia'=>function($k)
@@ -77,7 +77,7 @@ class PadresViewController extends Controller
     {
         $user=Auth::user()->load(['perfiles'=>function($q)
         {
-            return $q->with('animal');
+            return $q->with('avatar');
         },'planes'=>function($q)
         {
             return $q->with(['membresia'=>function($k)
@@ -111,7 +111,7 @@ class PadresViewController extends Controller
     {
         $user=Auth::user()->load(['perfiles'=>function($q)
         {
-            return $q->with('animal','planes');
+            return $q->with('avatar','planes');
         },'planes'=>function($q)
         {
             return $q->with(['membresia'=>function($k)

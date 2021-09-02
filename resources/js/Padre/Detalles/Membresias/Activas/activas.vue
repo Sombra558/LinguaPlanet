@@ -56,7 +56,7 @@
                                         <span class="d-flex align-items-center">
                                             <div class="globe-profile-student mx-3" :style="{'background-color' : perfil.color}">
                                                 <img class="h-75"
-                                                     :src="`/images/${perfil.animal.animal}.svg`"
+                                                     :src="`${perfil.avatar.cara}`"
                                                 >
                                             </div>
                                             <span class="h5 mb-0">{{perfil.apodo}}</span>

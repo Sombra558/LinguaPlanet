@@ -42951,7 +42951,7 @@ var render = function() {
               staticClass: "profile-bg mx-auto",
               style:
                 "background-image : url(" +
-                _vm.perfil.animal.cara +
+                _vm.perfil.avatar.cara +
                 "); background-color: " +
                 _vm.perfil.color +
                 ";"
@@ -43417,10 +43417,7 @@ var render = function() {
                                             _c("img", {
                                               staticClass: "h-75",
                                               attrs: {
-                                                src:
-                                                  "/images/" +
-                                                  perfil.animal.animal +
-                                                  ".svg"
+                                                src: "" + perfil.avatar.cara
                                               }
                                             })
                                           ]
@@ -44696,7 +44693,7 @@ var render = function() {
             "background-color:" +
             _vm.perfil.color +
             "; background-image : url(" +
-            _vm.perfil.animal.cara +
+            _vm.perfil.avatar.cara +
             ");"
         },
         [_c("div", { staticClass: "card-backdrop" })]
