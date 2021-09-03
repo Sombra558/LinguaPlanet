@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Padres;
 
 use App\Http\Controllers\Controller;
 use App\Models\Animals\Animal;
+use App\Models\Animals\Avatar;
 use App\Models\Idioma\Idioma;
 use App\Models\Cursos\Curso;
 use App\Models\Solicitudes\PlanUser;
@@ -49,14 +50,24 @@ class PerfilEstudiante extends Controller
             'animal_id' => ['required'],
         ];
         $request->validate($rules);
+        $animal=Animal::find($request['animal_id']);
         $perfil = PerfilEstudianteUser::create([
             'apodo' => $request['apodo'],
-            'animal_id' => $request['animal_id'],
             'f_nacimiento' => $request['f_nacimiento'],
             'color' => $request['color'],
             'hobby' => $request['hobby'],
             'user_id' => Auth::user()->id,
         ]);
+
+
+        $avatar = Avatar::create([
+            'animal_id' => $animal->id,
+            'cuerpo'  => $animal->cuerpo,
+            'cara'  => $animal->cara,
+        ]);
+
+        $perfil->avatar_id=$avatar->id;
+        $perfil->save();
         return $perfil;
     }
     public function asignarplan(Request $request)
@@ -103,7 +114,7 @@ class PerfilEstudiante extends Controller
                             return $j->with(['cursos','idioma']);
                         }]);
                     }]);
-                  },'animal']);
+                  },'avatar']);
       
         return view('Estudiantes.PerfilUser.preview',compact('perfil'));
     }
@@ -116,19 +127,22 @@ class PerfilEstudiante extends Controller
                     return $j->with(['cursos','idioma']);
                 }]);
             }]);
-        },'animal']);
+        },'avatar']);
 
         return view('Estudiantes.PerfilUser.show',compact('perfil'));
     }
 
     public function premios($id)
     {
-        $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
-            return $q->with(['plan'=>function($k){
-                return $k->with(['membresia'=>function($j){
-                    return $j->with(['cursos','idioma']);
-                }]);
+        $perfil=PerfilEstudianteUser::find($id)->load(['avatar'=>function($q){
+            return $q->with(['animal'=>function($j){
+                return $j->with(['accesorios']);
             }]);
+        }]);
+        $animal=$perfil->avatar->animal_id;
+      
+        $perfil->load(['premios'=>function($k) use($animal){
+            return $k->where('animal_id',$animal);
         }]);
 
         return view('Estudiantes.PerfilUser.premios',compact('perfil'));
@@ -136,8 +150,18 @@ class PerfilEstudiante extends Controller
 
     public function armario($id)
     {
-        $perfil=PerfilEstudianteUser::find($id);
-
+        $perfil=PerfilEstudianteUser::find($id)->load(['avatar'=>function($q){
+            return $q->with(['animal'=>function($j){
+                return $j->with(['accesorios']);
+            }]);
+        }]);
+        $animal=$perfil->avatar->animal_id;
+      
+        $perfil->load(['premios'=>function($k) use($animal){
+            return $k->where('animal_id',$animal);
+        }]);
+     
+      
         return view('Estudiantes.PerfilUser.armario',compact('perfil'));
     }
 
@@ -151,7 +175,7 @@ class PerfilEstudiante extends Controller
                     return $j->with(['cursos','idioma']);
                 }]);
             }]);
-        },'animal']);
+        },'avatar']);
 
         foreach ($perfil->planes as $plan) {
             if ($plan->plan->membresia->idioma_id===$idioma->id) {
@@ -183,7 +207,7 @@ class PerfilEstudiante extends Controller
                     return $j->with(['cursos','idioma']);
                 }]);
             }]);
-        },'animal']);
+        },'avatar']);
 
         return view('Estudiantes.Cursos.show',compact('curso','perfil','idioma'));    
     }

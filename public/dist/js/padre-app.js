@@ -2627,7 +2627,7 @@ __webpack_require__.r(__webpack_exports__);
       var url = '/home/asignar-plan';
       axios.post(url, {
         plan_user_id: this.planSelected.pivot.id,
-        perfil_estudiante_user_id: this.perfilSelected.id
+        perfil_estudiante_user_id: this.perfilSelected
       }).then(function (result) {
         switch (result.data.codigo) {
           case 'E26741':
@@ -42950,9 +42950,9 @@ var render = function() {
             {
               staticClass: "profile-bg mx-auto",
               style:
-                "background-image : url(/images/" +
-                _vm.perfil.animal.animal.toLowerCase() +
-                ".svg); background-color: " +
+                "background-image : url(" +
+                _vm.perfil.avatar.cara +
+                "); background-color: " +
                 _vm.perfil.color +
                 ";"
             },
@@ -43417,10 +43417,7 @@ var render = function() {
                                             _c("img", {
                                               staticClass: "h-75",
                                               attrs: {
-                                                src:
-                                                  "/images/" +
-                                                  perfil.animal.animal +
-                                                  ".svg"
+                                                src: "" + perfil.avatar.cara
                                               }
                                             })
                                           ]
@@ -44695,9 +44692,9 @@ var render = function() {
           style:
             "background-color:" +
             _vm.perfil.color +
-            "; background-image : url(/images/" +
-            _vm.perfil.animal.animal.toLowerCase() +
-            ".svg);"
+            "; background-image : url(" +
+            _vm.perfil.avatar.cara +
+            ");"
         },
         [_c("div", { staticClass: "card-backdrop" })]
       ),
@@ -45619,12 +45616,7 @@ var render = function() {
                                 [
                                   _c("img", {
                                     staticClass: "animal-icon mb-2",
-                                    attrs: {
-                                      src:
-                                        "/images/" +
-                                        animal.animal.toLowerCase() +
-                                        ".svg"
-                                    },
+                                    attrs: { src: "" + animal.cara },
                                     on: {
                                       click: function($event) {
                                         $event.preventDefault()
@@ -59495,7 +59487,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! c:\laragon\www\lingua-planet\resources\js\Padre\app.js */"./resources/js/Padre/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\lingua_planet\resources\js\Padre\app.js */"./resources/js/Padre/app.js");
 
 
 /***/ })

@@ -49,7 +49,7 @@ class LandingController extends Controller
         public function payment($nombreURL){
             $idiomas=Idioma::get();
             $plan = Plan::where('nombreURL',$nombreURL)
-                        ->with('membresia.idioma:id,diminutivo,idioma')
+                        ->with('membresia.idioma:id,diminutivo,idioma,src')
                         ->first();
                         
             if ($plan) {

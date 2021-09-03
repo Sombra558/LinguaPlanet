@@ -21,8 +21,8 @@ class CreatePerfilEstudianteUsersTable extends Migration
             $table->date('f_nacimiento')->nullable();
             $table->unsignedbigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedbigInteger('animal_id');
-            $table->foreign('animal_id')->references('id')->on('animals')->onDelete('cascade');
+            $table->unsignedbigInteger('avatar_id')->nullable();
+            $table->foreign('avatar_id')->references('id')->on('avatars')->onDelete('cascade');
             $table->timestamps();
         });
     }

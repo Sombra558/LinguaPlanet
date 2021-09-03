@@ -56,7 +56,7 @@
                                         <span class="d-flex align-items-center">
                                             <div class="globe-profile-student mx-3" :style="{'background-color' : perfil.color}">
                                                 <img class="h-75"
-                                                     :src="`/images/${perfil.animal.animal}.svg`"
+                                                     :src="`${perfil.avatar.cara}`"
                                                 >
                                             </div>
                                             <span class="h5 mb-0">{{perfil.apodo}}</span>
@@ -112,7 +112,7 @@ import PlanCard from './planCard';
                 var url = '/home/asignar-plan';
                 axios.post(url,{
                     plan_user_id:this.planSelected.pivot.id,
-                    perfil_estudiante_user_id:this.perfilSelected.id,
+                    perfil_estudiante_user_id:this.perfilSelected,
                 }).then((result) => {
                     switch (result.data.codigo) {
                             case 'E26741':

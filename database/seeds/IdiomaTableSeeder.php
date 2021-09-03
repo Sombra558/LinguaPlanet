@@ -12,31 +12,38 @@ class IdiomaTableSeeder extends Seeder
     public function run()
     {
         Idioma::create([
-            'idioma' => "Español",
+            'idioma' => "Español Mx",
             'video' => "https://www.youtube.com/embed/b38oTgeNEos",
-            'nombreURL' => "spanish",
-            'src' => "/img/Banderas/Spain.png",
-            'diminutivo' => "es",
-        ]);  
+            'nombreURL' => "mexicano",
+            'src' => "/img/Banderas/mx.svg",
+            'diminutivo' => "mx",
+        ]); 
+        Idioma::create([
+            'idioma' => "Español Arg",
+            'video' => "https://www.youtube.com/embed/b38oTgeNEos",
+            'nombreURL' => "argentino",
+            'src' => "/img/Banderas/argentina.svg",
+            'diminutivo' => "arg",
+        ]);   
         Idioma::create([
             'idioma' => "English",
             'video' => "https://www.youtube.com/embed/b38oTgeNEos",
             'nombreURL' => "english",
-            'src' => "/img/Banderas/Inglaterra.png",
+            'src' => "/img/Banderas/usa.svg",
             'diminutivo' => "en",
         ]); 
         Idioma::create([
-            'idioma' => "Frances",
+            'idioma' => "Suiza",
             'video' => "https://www.youtube.com/embed/b38oTgeNEos",
-            'diminutivo' => "fr",
-            'src' => "/img/Banderas/Francia.png",
-            'nombreURL' => "frances",
+            'diminutivo' => "ch",
+            'src' => "/img/Banderas/suiza.svg",
+            'nombreURL' => "Suiza",
         ]);
         Idioma::create([
             'idioma' => "Croata",
             'video' => "https://www.youtube.com/embed/b38oTgeNEos",
             'diminutivo' => "hr",
-            'src' => "/img/Banderas/Croacia.png",
+            'src' => "/img/Banderas/croacia.svg",
             'nombreURL' => "croata",
         ]);  
     }

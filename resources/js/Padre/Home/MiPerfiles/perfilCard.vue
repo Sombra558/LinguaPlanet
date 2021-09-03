@@ -1,6 +1,6 @@
 <template>
     <div @click.prevent="mode ? editar() : entrar()" class="card-perfil col-sm-6 col-md-3 col-lg-2">
-        <div class="card-body img-profile" :style="`background-color:${perfil.color}; background-image : url(/images/${perfil.animal.animal.toLowerCase()}.svg);`">
+        <div class="card-body img-profile" :style="`background-color:${perfil.color}; background-image : url(${perfil.avatar.cara});`">
             <div class="card-backdrop"></div>
         </div>
 

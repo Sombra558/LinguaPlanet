@@ -9,4 +9,8 @@ class Animal extends Model
     protected $fillable = [
         'animal','cara','cuerpo',
     ];
+
+    public function accesorios(){
+        return $this->hasMany('App\Models\Animals\Accesorios');
+    }
 }
