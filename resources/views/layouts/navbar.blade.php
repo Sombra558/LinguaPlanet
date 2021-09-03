@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
-            <img style="width: 90px; height: 90px;" src="{{ asset('images/logo.svg') }}" class="logo" alt="Lingua Planet Logo">
+        <a class="navbar-brand m-0" href="{{ url('/') }}">
+            <img src="{{ asset('/images/logo.svg') }}" class="logo light" alt="{{ config('app.name', 'Laravel') }}">
+            <img src="{{ asset('/images/blue-logo.svg') }}" class="logo blue" alt="{{ config('app.name', 'Laravel') }}">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-icon">

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8 d-flex flex-column justify-content-center text-center">
             @if(session('status'))
-                <img class="send-link-success mx-auto" src="{{ asset('storage/images/send-link-success.svg') }}" alt="Enlace de recuperacion enviado">
+                <img class="send-link-success mx-auto" src="{{ asset('/images/send-link-success.svg') }}" alt="Enlace de recuperacion enviado">
                 <h2 class="mb-4">{{ __('We have sended the recovery email successfully') }}</h2>
                 <a href="#" class="btn btn-primary-red w-50 mx-auto">Continuar</a>
             @else

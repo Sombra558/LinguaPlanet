@@ -170,14 +170,16 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-12 text-center">
-                                    <p class="my-0">¿Aún no tienes una cuenta?</p>
-                                    <a href="{{ route('register') }}"><strong><u>Crea una aquí</u></strong></a>
+                        @unless( request()->routeIs('register') )
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <p class="my-0">¿Aún no tienes una cuenta?</p>
+                                        <a href="{{ route('register') }}"><strong><u>Crea una aquí</u></strong></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endunless
                     </form>
                 </div>
             </div>

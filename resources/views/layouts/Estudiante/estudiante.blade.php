@@ -18,7 +18,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="@if(request()->routeIs('student.premios') || request()->routeIs('student.armario')) background-component bg-primary @endif">
+<body class="bg-primary @if(request()->routeIs('student.premios') || request()->routeIs('student.armario')) background-component @endif">
     <style type="text/css">
 
         .left-panel.show {
@@ -58,8 +58,8 @@
         
         @include('layouts/Estudiante/header')
         
-        <div id="hijo-app" class="h-100">
-            <main>
+        <div id="hijo-app" class="h-100 d-flex justify-content-center align-items-center">
+            <main class="flex-grow-1">
                 @yield('content')
             </main>
         </div>
