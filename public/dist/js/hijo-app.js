@@ -2214,16 +2214,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "perfiluser-show-component",
@@ -2235,6 +2225,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       idiomas: []
     };
+  },
+  methods: {
+    putAccesory: function putAccesory(accesory) {}
   }
 });
 
@@ -2254,9 +2247,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "user-character",
-  props: ["avatar"]
+  props: ["avatar", "premios"],
+  data: function data() {
+    return {
+      accesoriesUsed: []
+    };
+  }
 });
 
 /***/ }),
@@ -42039,7 +42039,13 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("personajeComponent", {
-          attrs: { x: "45", y: "390", width: "140", height: "320" }
+          attrs: {
+            avatar: _vm.perfil.avatar,
+            x: "45",
+            y: "390",
+            width: "140",
+            height: "320"
+          }
         }),
         _vm._v(" "),
         _c("a", { attrs: { href: "" } }, [
@@ -43433,13 +43439,29 @@ var render = function() {
                 "card-body d-flex flex-column justify-content-center align-items-center"
             },
             [
-              _c("personajeComponent", {
-                attrs: { width: "260", height: "400" }
-              }),
+              _c(
+                "svg",
+                {
+                  staticClass: "w-100 h-75",
+                  attrs: {
+                    viewBox: "0 0 230 430",
+                    fill: "none",
+                    xmlns: "http://www.w3.org/2000/svg"
+                  }
+                },
+                [
+                  _c("personajeComponent", {
+                    attrs: {
+                      avatar: _vm.perfil.avatar,
+                      premios: _vm.perfil.premios
+                    }
+                  })
+                ],
+                1
+              ),
               _vm._v(" "),
               _vm._m(0)
-            ],
-            1
+            ]
           )
         ])
       ]),
@@ -43456,20 +43478,30 @@ var render = function() {
                 "div",
                 { staticClass: "premios-container row row-cols-2" },
                 _vm._l(_vm.perfil.premios, function(i) {
-                  return _c("div", { key: i.id, staticClass: "col mb-3" }, [
-                    _c("div", { staticClass: "card premio" }, [
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("img", {
-                          staticStyle: { width: "100%", height: "100%" },
-                          attrs: {
-                            width: "125",
-                            height: "125",
-                            src: i.accesorio,
-                            alt: "accesorio"
+                  return _c("div", { key: i.id, staticClass: "col-6 mb-3" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "card premio",
+                        on: {
+                          click: function($event) {
+                            return _vm.putAccesory()
                           }
-                        })
-                      ])
-                    ]),
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "card-body text-center" }, [
+                          _c("img", {
+                            attrs: {
+                              width: "125",
+                              height: "125",
+                              src: i.accesorio,
+                              alt: "accesorio"
+                            }
+                          })
+                        ])
+                      ]
+                    ),
                     _vm._v(" "),
                     _c(
                       "p",
@@ -43551,7 +43583,36 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("img", { attrs: { src: _vm.avatar.cuerpo, alt: "mi avatar" } })
+  return _c(
+    "g",
+    [
+      _c("image", {
+        attrs: {
+          x: "-90",
+          y: "30",
+          width: "410",
+          height: "400",
+          preserveAspectRatio: "none",
+          "xlink:href": _vm.avatar.cuerpo,
+          alt: "mi avatar"
+        }
+      }),
+      _vm._v(" "),
+      _vm._l(_vm.accesoriesUsed, function(i) {
+        return _c("image", {
+          key: i.id,
+          attrs: {
+            x: "39",
+            y: "30",
+            "xlink:href": i.accesorio,
+            alt: "mi avatar",
+            preserveAspectRatio: "none"
+          }
+        })
+      })
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -45365,7 +45426,7 @@ var render = function() {
             ),
             _vm._v(" "),
             _vm.idiomas.some(function(i) {
-              return i.diminutivo === "es"
+              return i.diminutivo === "arg"
             })
               ? _c(
                   "a",
@@ -45379,7 +45440,7 @@ var render = function() {
                         _vm.perfil.apodo +
                         "/idiomas/" +
                         _vm.idiomas.find(function(i) {
-                          return i.diminutivo === "es"
+                          return i.diminutivo === "arg"
                         }).nombreURL
                     }
                   },
@@ -47073,7 +47134,7 @@ var render = function() {
               : _vm._e(),
             _vm._v(" "),
             _vm.idiomas.some(function(i) {
-              return i.diminutivo === "sw"
+              return i.diminutivo === "ch"
             })
               ? _c(
                   "a",
@@ -47087,7 +47148,7 @@ var render = function() {
                         _vm.perfil.apodo +
                         "/idiomas/" +
                         _vm.idiomas.find(function(i) {
-                          return i.diminutivo === "sw"
+                          return i.diminutivo === "ch"
                         }).nombreURL
                     }
                   },
@@ -47147,7 +47208,7 @@ var render = function() {
               : _vm._e(),
             _vm._v(" "),
             _vm.idiomas.some(function(i) {
-              return i.diminutivo === "cr"
+              return i.diminutivo === "hr"
             })
               ? _c(
                   "a",
@@ -47161,7 +47222,7 @@ var render = function() {
                         _vm.perfil.apodo +
                         "/idiomas/" +
                         _vm.idiomas.find(function(i) {
-                          return i.diminutivo === "cr"
+                          return i.diminutivo === "hr"
                         }).nombreURL
                     }
                   },
@@ -48476,7 +48537,7 @@ var render = function() {
               : _vm._e(),
             _vm._v(" "),
             _vm.idiomas.some(function(i) {
-              return i.diminutivo === "es"
+              return i.diminutivo === "mx"
             })
               ? _c(
                   "a",
@@ -48490,7 +48551,7 @@ var render = function() {
                         _vm.perfil.apodo +
                         "/idiomas/" +
                         _vm.idiomas.find(function(i) {
-                          return i.diminutivo === "es"
+                          return i.diminutivo === "mx"
                         }).nombreURL
                     }
                   },
@@ -56665,11 +56726,10 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("personajeComponent", {
-          staticStyle: { position: "absolute", top: "25%", left: "0%" },
           attrs: {
             avatar: _vm.perfil.avatar,
             x: "280",
-            y: "500",
+            y: "450",
             width: "220",
             height: "470"
           }
@@ -57364,7 +57424,7 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _vm.idiomas.some(function(i) {
-            return i.diminutivo === "es"
+            return i.diminutivo === "mx"
           })
             ? _c(
                 "a",
@@ -57378,7 +57438,7 @@ var render = function() {
                       _vm.perfil.apodo +
                       "/idiomas/" +
                       _vm.idiomas.find(function(i) {
-                        return i.diminutivo === "es"
+                        return i.diminutivo === "mx"
                       }).nombreURL
                   }
                 },
@@ -65369,7 +65429,7 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _vm.idiomas.some(function(i) {
-            return i.diminutivo === "es"
+            return i.diminutivo === "arg"
           })
             ? _c(
                 "a",
@@ -65383,7 +65443,7 @@ var render = function() {
                       _vm.perfil.apodo +
                       "/idiomas/" +
                       _vm.idiomas.find(function(i) {
-                        return i.diminutivo === "es"
+                        return i.diminutivo === "arg"
                       }).nombreURL
                   }
                 },
@@ -66643,7 +66703,7 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _vm.idiomas.some(function(i) {
-            return i.diminutivo === "sw"
+            return i.diminutivo === "ch"
           })
             ? _c(
                 "a",
@@ -66657,7 +66717,7 @@ var render = function() {
                       _vm.perfil.apodo +
                       "/idiomas/" +
                       _vm.idiomas.find(function(i) {
-                        return i.diminutivo === "sw"
+                        return i.diminutivo === "ch"
                       }).nombreURL
                   }
                 },
@@ -66719,7 +66779,7 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _vm.idiomas.some(function(i) {
-            return i.diminutivo === "cr"
+            return i.diminutivo === "hr"
           })
             ? _c(
                 "a",
@@ -66733,7 +66793,7 @@ var render = function() {
                       _vm.perfil.apodo +
                       "/idiomas/" +
                       _vm.idiomas.find(function(i) {
-                        return i.diminutivo === "cr"
+                        return i.diminutivo === "hr"
                       }).nombreURL
                   }
                 },
@@ -80901,7 +80961,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\lingua_planet\resources\js\PerfilHijo\app.js */"./resources/js/PerfilHijo/app.js");
+module.exports = __webpack_require__(/*! c:\laragon\www\lingua-planet\resources\js\PerfilHijo\app.js */"./resources/js/PerfilHijo/app.js");
 
 
 /***/ })
