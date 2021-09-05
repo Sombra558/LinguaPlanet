@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Clase extends Model
 {
     protected $fillable = [
-        'recurso', 'tipo','modulo_id',
+        'inicia', 'finaliza','modulo_id',
     ];
 }

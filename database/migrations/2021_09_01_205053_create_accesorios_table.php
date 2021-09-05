@@ -20,6 +20,9 @@ class CreateAccesoriosTable extends Migration
             $table->enum('tipo', ['gorro', 'camisa','yoyo','bufanda','guitarra','botas','gafas']);
             $table->string('accesorio')->nullable();
             $table->string('nombre')->nullable();
+            $table->integer('corde_x')->nullable();
+            $table->integer('corde_y')->nullable();
+            $table->integer('available')->nullable();
             $table->boolean('estados')->default(0);
             $table->timestamps();
         });

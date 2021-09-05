@@ -17,4 +17,8 @@ class Curso extends Model
         }
         return $this->video;
     }
+    
+    public function modulos(){
+        return $this->hasMany('App\Models\Cursos\Modulo');
+    }
 }

@@ -9,4 +9,5 @@ class Modulo extends Model
     protected $fillable = [
         'nombre', 'descripcion','inicia','curso_id',
     ];
+    
 }
