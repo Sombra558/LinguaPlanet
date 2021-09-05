@@ -70,7 +70,8 @@ class DatabaseSeeder extends Seeder
               ]);
          }
 
-
+        $this->call(ModuloTableSeeder::class);
+        $this->call(ClaseTableSeeder::class);
 
 
       }

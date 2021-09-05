@@ -2175,7 +2175,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "show-curso-component",
-  props: ['curso', 'perfil', 'idioma'],
+  props: ['curso', 'perfil', 'idioma', 'contenidos'],
   components: {
     personajeComponent: _PerfilUser_personaje__WEBPACK_IMPORTED_MODULE_0__["default"]
   }

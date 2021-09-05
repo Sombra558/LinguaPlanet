@@ -12,7 +12,7 @@ use App\Models\Relaciones\PerfilPlan;
 use App\Models\PerfilEstudiante\PerfilEstudianteUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class PerfilEstudiante extends Controller
 {
     /**
@@ -200,7 +200,13 @@ class PerfilEstudiante extends Controller
     public function aplicationCurso($id,$apodo,$nombreURL,$curso_id)
     {
         $idioma=Idioma::where('nombreURL',$nombreURL)->first();
-        $curso = Curso::find($curso_id);
+        $now = Carbon::now();
+        //$hoy->addDay(6);
+        //dd($hoy);
+
+
+        
+        $curso = Curso::find($curso_id)->load(['modulos']);
         $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
             return $q->with(['plan'=>function($k){
                 return $k->with(['membresia'=>function($j){
@@ -209,7 +215,36 @@ class PerfilEstudiante extends Controller
             }]);
         },'avatar']);
 
-        return view('Estudiantes.Cursos.show',compact('curso','perfil','idioma'));    
+        $pasadas = array();
+		$encurso = array();
+		$futuras = array();
+        foreach($curso->modulos as $key2 => $modulo){
+            $i=0;
+			$j=0;
+			$k=0;
+            $finaliza = new Carbon($modulo->inicia);
+            $finaliza->addMonth();
+            $inicia = new Carbon($modulo->inicia);
+            if( $finaliza->isBefore($now)){
+                $pasadas[$i] = $modulo; 
+                $i++;
+               
+            }elseif($inicia->isAfter($now)){
+                $futuras[$k] = $modulo;
+				$k++;
+         
+            }elseif($now->isAfter($inicia) && $now->isBefore($finaliza)){
+                $encurso[$j] = $modulo;
+				$j++;
+            }
+        }
+        $contenidos = collect([
+			'enCurso' => $encurso,
+			'guardadas' => $pasadas,
+			'porTransmitir' => $futuras
+		  ]);
+        
+        return view('Estudiantes.Cursos.show',compact('curso','perfil','idioma','contenidos'));    
     }
 
     /**

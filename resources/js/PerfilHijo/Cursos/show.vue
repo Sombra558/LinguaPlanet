@@ -243,7 +243,7 @@
 	import personajeComponent from '../PerfilUser/personaje';
     export default {
         name:"show-curso-component",
-        props:['curso','perfil','idioma'],
+        props:['curso','perfil','idioma','contenidos'],
         components : {
         	personajeComponent
         }
