@@ -5,7 +5,7 @@
 	    		<div class="card personaje">
 	    			<div class="card-body d-flex flex-column justify-content-center align-items-center">
 	    				<svg class="w-100 h-75" viewBox="0 0 230 430" fill="none" xmlns="http://www.w3.org/2000/svg">
-	    					<personajeComponent :avatar="perfil.avatar" :premios="perfil.premios"/>
+	    					<personajeComponent ref="personaje" :avatar="perfil.avatar" :premios="perfil.premios"/>
 	    				</svg>
 	    				<button class="btn btn-success mt-5 w-75">
 	    					<h2 class="mb-0">
@@ -24,13 +24,13 @@
 		        	</div>
 		        	<div class="card-body" style="padding-top: 8%;">
 		    			<div class="premios-container row row-cols-2">
-							<div class="col-6 mb-3" v-for="i in perfil.premios" :key="i.id">
-						    	<div class="card premio" @click="putAccesory()">
+							<div class="col-6 mb-3" v-for="premio in perfil.premios" :key="premio.id">
+						    	<div class="card premio" @click="updateCloth(premio)">
 						    		<div class="card-body text-center">
-										<img width="125" height="125" :src="i.accesorio" alt="accesorio">
+										<img width="125" height="125" :src="premio.accesorio" alt="accesorio">
 						      		</div>
 						    	</div>
-						    	<p class="card-text text-white text-center">{{ i.nombre }}</p>
+						    	<p class="card-text text-white text-center">{{ premio.nombre }}</p>
 						  	</div>
 						</div>
 		        	</div>
@@ -54,8 +54,29 @@
             }
         },
         methods : {
-        	putAccesory : function(accesory) {
+        	updateCloth : function(accesory) {
         		
+        		if (this.$refs.personaje.accesoriesUsed.some(a => a.id === accesory.id)){
+        			this.$refs.personaje.accesoriesUsed = this.$refs.personaje.accesoriesUsed.filter(a => {
+        				if(a.id !== accesory.id) {
+        					return a;
+        				}
+        			});
+        			return
+        		}
+
+        		let newAccesory = true;
+    			this.$refs.personaje.accesoriesUsed = this.$refs.personaje.accesoriesUsed.map(a => {
+    				if(a.tipo === accesory.tipo){
+    					newAccesory = false;
+    					let { id, tipo, corde_x, corde_y, accesorio } = accesory; 
+    					return { 'id' : id, 'tipo' : tipo, 'corde_x' : corde_x, 'corde_y' : corde_y, 'accesorio' : accesorio };
+    				} else
+    					return a;
+    			});
+
+    			let { id, tipo, corde_x, corde_y, accesorio } = accesory; 
+    			if (newAccesory) this.$refs.personaje.accesoriesUsed.push( { 'id' : id, 'tipo' : tipo, 'corde_x' : corde_x, 'corde_y' : corde_y, 'accesorio' : accesorio } );
         	}
         }
     }
