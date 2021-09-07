@@ -6,7 +6,7 @@
 	<div class="row justify-content-center">
 		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 			<div class="card-rounded gray-back text-center py-5">
-				<img class="my-3" src="storage/images/check-circle.svg">
+				<img class="my-3" src="/images/check-circle.svg">
 				<span class="h3 d-block text-success">Pago completado</span>
 		        <p class="color-plomo">
 		        	Gracias, tu pago fue procesado correctamente. Hemos enviado el comprobante a

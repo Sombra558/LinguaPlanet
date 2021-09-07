@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Padres;
-
 use App\Http\Controllers\Controller;
 use App\Models\Animals\Animal;
 use App\Models\Animals\Avatar;
@@ -58,8 +57,6 @@ class PerfilEstudiante extends Controller
             'hobby' => $request['hobby'],
             'user_id' => Auth::user()->id,
         ]);
-
-
         $avatar = Avatar::create([
             'animal_id' => $animal->id,
             'cuerpo'  => $animal->cuerpo,
