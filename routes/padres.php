@@ -14,6 +14,7 @@ Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
 	Route::post('/actualizar-password', 'Padres\PerfilController@updatecontrasena');
 	Route::post('/actualizar-avatar/{id}', 'Padres\PerfilEstudiante@guardaravatar')->name('update-avatar');
 	Route::resource('/perfil-user', 'Padres\PerfilEstudiante');
+	Route::post('/perfil-user/{id}', 'Padres\PerfilEstudiante@updateperfil');
 	Route::post('/asignar-plan', 'Padres\PerfilEstudiante@asignarplan');
 	   
 	Route::group([ 'prefix' => 'app/{id}/{apodo}', 'middleware' => ['HasPerfilPadre'] ], function() {

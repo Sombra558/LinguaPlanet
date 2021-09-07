@@ -15,6 +15,9 @@
         methods: {
             entrar() {
                 window.location='/home/app/'+this.perfil.id+'/'+this.perfil.apodo;
+            },
+            editar(){
+                window.location=`/home/perfil-user/${this.perfil.id}/edit`;
             }
         },
     }

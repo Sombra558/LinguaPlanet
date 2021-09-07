@@ -255,7 +255,11 @@ class PerfilEstudiante extends Controller
      */
     public function edit($id)
     {
-        //
+        $perfil=PerfilEstudianteUser::find($id)->load(['avatar'=>function($q){
+            return $q->with(['animal']);
+        }]);
+        $animals=Animal::get();
+        return view('Padres.PerfilUser.edit',compact('perfil','animals'));
     }
 
     /**
@@ -265,9 +269,34 @@ class PerfilEstudiante extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateperfil(Request $request, $id)
     {
-        //
+        $perfil=PerfilEstudianteUser::find($id)->load(['avatar']);
+        $perfil->apodo=$request['apodo'];
+        $perfil->hobby=$request['hobby'];
+        $perfil->f_nacimiento=$request['f_nacimiento'];
+        $perfil->color=$request['color'];
+        $perfil->save();
+
+        $avatar=$perfil->avatar;
+        $animal=Animal::find($request['animal_id']);
+        if ($avatar->animal_id!=$animal->id) {
+            $avatar->animal_id=$animal->id;
+            $avatar->cara=$animal->cara;
+            $avatar->cuerpo=$animal->cuerpo;
+            $avatar->gorro=null;
+            $avatar->botas=null;
+            $avatar->gafas=null;
+            $avatar->camisa=null;
+            $avatar->bufanda=null;
+            $avatar->guitarra=null;
+            $avatar->yoyo=null;
+            $avatar->save();
+        }
+        
+
+
+
     }
 
    public function guardaravatar(Request $request, $id)
