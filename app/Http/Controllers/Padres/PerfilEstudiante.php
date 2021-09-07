@@ -270,12 +270,135 @@ class PerfilEstudiante extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   public function guardaravatar(Request $request, $id)
+    {
+        $articulos=json_decode($request['data']);
+
+        
+        $avatar=Avatar::find($id);
+        if ($avatar->gorro!=null) {
+            $valid=true;
+            foreach ($articulos as $art) {
+                if ($art->tipo==='gorro') {
+                    $valid=false;
+                }
+            }
+
+            if ($valid===true) {
+                $avatar->gorro=null;
+            }
+        }
+        if ($avatar->camisa!=null) {
+            $valid=true;
+            foreach ($articulos as $art) {
+                if ($art->tipo==='camisa') {
+                    $valid=false;
+                }
+            }
+
+            if ($valid===true) {
+                $avatar->camisa=null;
+            }
+        }
+        if ($avatar->botas!=null) {
+            $valid=true;
+            foreach ($articulos as $art) {
+                if ($art->tipo==='botas') {
+                    $valid=false;
+                }
+            }
+
+            if ($valid===true) {
+                $avatar->botas=null;
+            }
+        }
+        if ($avatar->bufanda!=null) {
+            $valid=true;
+            foreach ($articulos as $art) {
+                if ($art->tipo==='bufanda') {
+                    $valid=false;
+                }
+            }
+
+            if ($valid===true) {
+                $avatar->bufanda=null;
+            }
+        }
+        if ($avatar->yoyo!=null) {
+            $valid=true;
+            foreach ($articulos as $art) {
+                if ($art->tipo==='yoyo') {
+                    $valid=false;
+                }
+            }
+
+            if ($valid===true) {
+                $avatar->yoyo=null;
+            }
+        }
+        if ($avatar->guitarra!=null) {
+            $valid=true;
+            foreach ($articulos as $art) {
+                if ($art->tipo==='guitarra') {
+                    $valid=false;
+                }
+            }
+
+            if ($valid===true) {
+                $avatar->guitarra=null;
+            }
+        }
+        if ($avatar->gafas!=null) {
+            $valid=true;
+            foreach ($articulos as $art) {
+                if ($art->tipo==='gafas') {
+                    $valid=false;
+                }
+            }
+
+            if ($valid===true) {
+                $avatar->gafas=null;
+            }
+        }
+
+        
+        foreach ($articulos as $art) {
+            $temp=collect([
+                'id'=>$art->id,
+                'accesorio'=>$art->accesorio,
+                'corde_x'=>$art->corde_x,
+                'corde_y'=>$art->corde_y,
+                'tipo'=>$art->tipo,
+                'color'=>null]);
+            
+            switch ($art->tipo) {
+                case 'gorro':
+                    $avatar->gorro=json_encode($temp);
+                break;
+                case 'yoyo':
+                    $avatar->yoyo=json_encode($temp);
+                break;
+                case 'camisa':
+                    $avatar->camisa=json_encode($temp);
+                break;
+                case 'gafas':
+                    $avatar->gafas=json_encode($temp);
+                break;
+                case 'guitarra':
+                    $avatar->guitarra=json_encode($temp);
+                break;
+                case 'botas':
+                    $avatar->botas=json_encode($temp);
+                break;
+                default:
+                    # code...
+                    break;
+            }
+        }
+        $avatar->save();
+       
+      
+    }
     public function destroy($id)
     {
         //

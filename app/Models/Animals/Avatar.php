@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Avatar extends Model
 {
     protected $fillable = [
-        'animal_id','cara','cuerpo',
+        'animal_id','cara','cuerpo','gorro','gafas','camisa','botas','yoyo','guitarra','bufanda',
     ];
 
     public function animal(){

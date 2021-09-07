@@ -19,6 +19,14 @@ class CreateAvatarsTable extends Migration
             $table->foreign('animal_id')->references('id')->on('animals')->onDelete('cascade');
             $table->string('cara')->nullable();
             $table->string('cuerpo')->nullable();
+            $table->text('gorro')->nullable();
+            $table->text('gafas')->nullable();
+            $table->text('camisa')->nullable();
+            $table->text('botas')->nullable();
+            $table->text('bufanda')->nullable();
+            $table->text('yoyo')->nullable();
+            $table->text('guitarra')->nullable();
+
             $table->timestamps();
         });
     }

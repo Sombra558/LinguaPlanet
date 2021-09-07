@@ -12,7 +12,7 @@ Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
 	Route::get('/perfil', 'Padres\PadresViewController@perfil')->name('padre.perfil');
 	Route::post('/actualizar-perfil/{id}', 'Padres\PerfilController@update')->name('update-perfil');
 	Route::post('/actualizar-password', 'Padres\PerfilController@updatecontrasena');
-
+	Route::post('/actualizar-avatar/{id}', 'Padres\PerfilEstudiante@guardaravatar')->name('update-avatar');
 	Route::resource('/perfil-user', 'Padres\PerfilEstudiante');
 	Route::post('/asignar-plan', 'Padres\PerfilEstudiante@asignarplan');
 	   

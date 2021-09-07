@@ -7,7 +7,7 @@
 	    				<svg class="w-100 h-75" viewBox="0 0 230 430" fill="none" xmlns="http://www.w3.org/2000/svg">
 	    					<personajeComponent ref="personaje" :avatar="perfil.avatar" :premios="perfil.premios"/>
 	    				</svg>
-	    				<button class="btn btn-success mt-5 w-75">
+	    				<button :disabled="estadoprocreso" @click.prevent="guardar()" class="btn btn-success mt-5 w-75">
 	    					<h2 class="mb-0">
 	    						Guardar
 	    					</h2>	    					
@@ -51,6 +51,7 @@
         data() {
             return {
                 idiomas: [],
+				estadoprocreso:false,
             }
         },
         methods : {
@@ -77,7 +78,21 @@
 
     			let { id, tipo, corde_x, corde_y, accesorio } = accesory; 
     			if (newAccesory) this.$refs.personaje.accesoriesUsed.push( { 'id' : id, 'tipo' : tipo, 'corde_x' : corde_x, 'corde_y' : corde_y, 'accesorio' : accesorio } );
-        	}
+        	},
+			guardar(){
+				this.estadoprocreso=true;
+				var url = '/home/actualizar-avatar/'+this.perfil.id;
+				axios.post(url,{
+					data:JSON.stringify(this.$refs.personaje.accesoriesUsed),
+				}).then((result) => {
+					window.location="/home";
+				}).catch((err) => {
+					this.estadoprocreso=true;
+					console.log(err);
+				});
+				
+			
+			}
         }
     }
 </script>
