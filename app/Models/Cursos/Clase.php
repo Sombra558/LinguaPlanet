@@ -9,4 +9,7 @@ class Clase extends Model
     protected $fillable = [
         'inicia', 'finaliza','modulo_id',
     ];
+    public function actividades(){
+        return $this->hasMany('App\Models\Cursos\Actividad');
+    }
 }

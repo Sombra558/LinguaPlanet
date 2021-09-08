@@ -17,7 +17,6 @@ class CreateClasesTable extends Migration
             $table->bigIncrements('id');
             $table->date('inicia')->nullable();
             $table->date('finaliza')->nullable();
-            //$table->enum('tipo', ['Palabras del día','Video de apertura','Actividad','Libros']);
             $table->unsignedbigInteger('modulo_id');
             $table->foreign('modulo_id')->references('id')->on('modulos')->onDelete('cascade');
             $table->timestamps();
