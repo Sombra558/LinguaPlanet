@@ -4,7 +4,8 @@
 			<image style="width: 100%; height: 100%;" href="/images/actividades-fondo.svg"/>
 			<personajeComponent :avatar="perfil.avatar" transform="translate(50,380), scale(0.6,0.8)"/>
 			<!--  Primer recurso -->
-			<a href="">
+			
+			<a v-if="contenidos.enCurso.length>0" href="#" @click.prevent="actividad(contenidos.enCurso[0].actividades[0])">
 				<svg x="245" y="430" width="107" height="157" viewBox="0 0 107 157" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M95.1975 80.9193L53.5722 135.459L11.9843 80.9193C-4.85605 58.8407 0.110987 27.8056 23.0819 11.6063C46.0528 -4.59294 78.3197 0.185532 95.16 22.2766C101.626 30.6822 105.135 40.9874 105.142 51.5916C105.149 62.1958 101.653 72.5054 95.1975 80.9193Z" fill="#FECC2C"/>
 					<path d="M95.1975 80.9193L53.5722 135.459L11.9843 80.9193C-4.85605 58.8407 0.110987 27.8056 23.0819 11.6063C46.0528 -4.59294 78.3197 0.185532 95.16 22.2766C101.626 30.6822 105.135 40.9874 105.142 51.5916C105.149 62.1958 101.653 72.5054 95.1975 80.9193V80.9193Z" stroke="#2F6A69" stroke-width="2.35" stroke-miterlimit="10"/>
@@ -21,7 +22,7 @@
 				</svg>
 			</a>
 			<!-- Segundo recurso -->
-			<a href="">
+			<a v-if="contenidos.enCurso.length>0" href="#" @click.prevent="actividad(contenidos.enCurso[0].actividades[1])">
 				<svg x="390" y="520" width="133" height="196" viewBox="0 0 133 196" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M118.435 100.121L66.4499 168.295L14.4276 100.121C-6.6166 72.5132 -0.410965 33.7224 28.2902 13.4827C56.9913 -6.75706 97.353 -0.802697 118.372 26.8049C126.454 37.3139 130.841 50.1959 130.852 63.4522C130.864 76.7086 126.499 89.598 118.435 100.121Z" fill="#FECC2C"/>
 					<path d="M118.435 100.121L66.4499 168.295L14.4276 100.121C-6.6166 72.5132 -0.410965 33.7224 28.2902 13.4827C56.9913 -6.75706 97.353 -0.802697 118.372 26.8049C126.454 37.3139 130.841 50.1959 130.852 63.4522C130.864 76.7086 126.499 89.598 118.435 100.121V100.121Z" stroke="#2F6A69" stroke-width="2.94" stroke-miterlimit="10"/>
@@ -50,7 +51,7 @@
 				</svg>
 			</a>
 			<!--  Tercer recurso -->
-			<a href="">
+			<a v-if="contenidos.enCurso.length>0" href="#" @click.prevent="actividad(contenidos.enCurso[0].actividades[2])">
 				<svg x="555" y="430" width="106" height="156" viewBox="0 0 106 156" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M94.3041 79.9173L52.7162 134.457L11.1284 79.9173C-5.72447 57.8388 -0.757429 26.8037 22.2135 10.6044C45.1844 -5.5949 77.4512 -0.816422 94.3041 21.2747C100.761 29.6861 104.261 39.9929 104.261 50.596C104.261 61.1991 100.761 71.5059 94.3041 79.9173Z" fill="#FECC2C"/>
 					<path d="M94.6161 80.2669L53.0283 134.807L11.4404 80.2669C-5.41246 58.1884 -0.445417 27.1533 22.5255 10.954C45.4964 -5.24529 77.7633 -0.466812 94.6161 21.6243C101.073 30.0357 104.573 40.3425 104.573 50.9456C104.573 61.5487 101.073 71.8555 94.6161 80.2669V80.2669Z" stroke="#2F6A69" stroke-width="2.35" stroke-miterlimit="10"/>
@@ -82,7 +83,7 @@
 				</svg>
 			</a>
 			<!-- Cuarto recurso -->
-			<a href="">
+			<a v-if="contenidos.enCurso.length>0" href="#" @click.prevent="actividad(contenidos.enCurso[0].actividades[3])">
 				<svg x="700" y="520" width="133" height="197" viewBox="0 0 133 197" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M118.308 101.117L66.323 169.279L14.3382 101.117C-6.71844 73.5091 -0.500262 34.7183 28.2008 14.4661C56.902 -5.78614 97.2512 0.193215 118.283 27.8008C126.359 38.3139 130.74 51.1982 130.744 64.4545C130.749 77.7108 126.377 90.5981 118.308 101.117Z" fill="#FECC2C"/>
 					<path d="M118.308 101.117L66.323 169.279L14.3382 101.117C-6.71844 73.5091 -0.500262 34.7183 28.2008 14.4661C56.902 -5.78614 97.2512 0.193215 118.283 27.8008C126.359 38.3139 130.74 51.1982 130.744 64.4545C130.749 77.7108 126.377 90.5981 118.308 101.117V101.117Z" stroke="#2F6A69" stroke-width="2.94" stroke-miterlimit="10"/>
@@ -114,7 +115,7 @@
 				</svg>
 			</a>
 			<!--  Quinto recurso -->
-			<a href="">
+			<a v-if="contenidos.enCurso.length>0" href="">
 				<svg x="865" y="430" width="107" height="157" viewBox="0 0 107 157" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M95.1863 80.9173L53.5985 135.457L12.0107 80.9173C-4.82967 58.8388 0.137344 27.8037 23.1082 11.6044C46.0791 -4.5949 78.346 0.183578 95.1863 22.2747C101.647 30.6844 105.149 40.9918 105.149 51.596C105.149 62.2002 101.647 72.5076 95.1863 80.9173Z" fill="#FECC2C"/>
 					<path d="M95.1863 80.9173L53.5985 135.457L12.0107 80.9173C-4.82967 58.8388 0.137344 27.8037 23.1082 11.6044C46.0791 -4.5949 78.346 0.183578 95.1863 22.2747C101.647 30.6844 105.149 40.9918 105.149 51.596C105.149 62.2002 101.647 72.5076 95.1863 80.9173V80.9173Z" stroke="#2F6A69" stroke-width="2.35" stroke-miterlimit="10"/>
@@ -131,7 +132,7 @@
 				</svg>
 			</a>
 			<!--  Sexto recurso -->
-			<a href="">
+			<a v-if="contenidos.enCurso.length>0" href="">
 				<svg x="1010" y="520" width="133" height="197" viewBox="0 0 133 197" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M118.888 101.117L66.9028 169.279L14.918 101.117C-6.13864 73.5091 0.0669525 34.7183 28.7806 14.4661C57.4942 -5.78614 97.831 0.193215 118.863 27.8008C126.939 38.3139 131.319 51.1982 131.324 64.4545C131.329 77.7108 126.957 90.5981 118.888 101.117Z" fill="#FECC2C"/>
 					<path d="M118.888 101.117L66.9028 169.279L14.918 101.117C-6.13864 73.5091 0.0669526 34.7183 28.7806 14.4661C57.4942 -5.78614 97.831 0.193215 118.863 27.8008C126.939 38.3139 131.319 51.1982 131.324 64.4545C131.329 77.7108 126.957 90.5981 118.888 101.117Z" stroke="#2F6A69" stroke-width="2.94" stroke-miterlimit="10"/>
@@ -144,7 +145,7 @@
 				</svg>
 			</a>
 			<!--  Septimo recurso -->
-			<a href="">
+			<a v-if="contenidos.enCurso.length>0" href="">
 				<svg x="1180" y="430" width="106" height="157" viewBox="0 0 106 157" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M94.7674 80.9173L53.1794 135.457L11.5915 80.9173C-5.24879 58.8388 -0.281785 27.8037 22.6766 11.6044C45.635 -4.5949 77.927 0.183578 94.7674 22.2747C101.228 30.6844 104.73 40.9918 104.73 51.596C104.73 62.2002 101.228 72.5076 94.7674 80.9173Z" fill="#FECC2C"/>
 					<path d="M94.7674 80.9173L53.1794 135.457L11.5915 80.9173C-5.24879 58.8388 -0.281785 27.8037 22.6766 11.6044C45.635 -4.5949 77.927 0.183578 94.7674 22.2747C101.228 30.6844 104.73 40.9918 104.73 51.596C104.73 62.2002 101.228 72.5076 94.7674 80.9173V80.9173Z" stroke="#2F6A69" stroke-width="2.35" stroke-miterlimit="10"/>
@@ -206,17 +207,89 @@
 		    </div>
 		  </div>
 		</div>
+		<div v-if="actividadSelected" class="modal fade" id="actividadmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">{{actividadSelected.tipo}}</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				   <iframe v-if="actividadSelected.tipo==='Palabras del día'|| actividadSelected.tipo ==='Video de apertura'" width="100%"
+                                height="300" :src="actividadSelected.recurso + '?autoplay=1'"
+                            webkitallowfullscreen mozallowfullscreen allowfullscreen
+                            autoplay="1"></iframe>
+					<pdf  v-else
+						:src="actividadSelected.recurso"
+						:page="currentPage"
+						@num-pages="pageCount = $event"
+						@page-loaded="currentPage = $event"
+						
+					/>
+					
+					
+					<!--<iframe  type="application/pdf" width="100%" frameborder="0" scrolling="no"
+                                height="300" :src="actividadSelected.recurso +'#page='+page"
+                            ></iframe>-->
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<div v-if="actividadSelected.tipo==='Libros'|| actividadSelected.tipo ==='Actividad'">
+					<button :disabled="noPrevPage" type="button" @click.prevent="anterior()" class="btn btn-primary">Anterior</button>
+					<button :disabled="noNextPage" type="button" @click.prevent="siguiente()" class="btn btn-primary">Siguiente</button>
+				</div>
+				
+			</div>
+			</div>
+		</div>
+		</div>
 	</div>
 </template>
 
 <script>
 	import personajeComponent from '../PerfilUser/personaje';
+	import pdf from "vue-pdf";
     export default {
         name:"show-curso-component",
         props:['curso','perfil','idioma','contenidos'],
+		data() {
+			return {
+				actividadSelected: null,
+				page:0,
+				 currentPage: 1,
+        pageCount: 0,
+        src: null,
+        zoom: 100
+			}
+		},
         components : {
-        	personajeComponent
-        }
+        	personajeComponent,pdf
+        },
+		  computed: {
+			noPrevPage() {
+			return this.currentPage <= 1;
+			},
+			noNextPage() {
+			return this.currentPage === this.pageCount;
+			}
+		},
+		methods: {
+			actividad(value) {
+				this.actividadSelected=value;
+				setTimeout(function(){
+                $("#actividadmodal").modal("show");
+                },200)
+			},
+			siguiente(){
+				this.currentPage++;
+			},
+			anterior(){
+				
+				this.currentPage--;
+			}
+		},
     }
 </script>
 

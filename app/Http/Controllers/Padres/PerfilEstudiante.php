@@ -203,7 +203,11 @@ class PerfilEstudiante extends Controller
 
 
         
-        $curso = Curso::find($curso_id)->load(['modulos']);
+        $curso = Curso::find($curso_id)->load(['modulos'=>function($k){
+            return $k->with(['clases'=>function($p){
+                return $p->with(['actividades']);
+            }]);
+        }]);
         $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
             return $q->with(['plan'=>function($k){
                 return $k->with(['membresia'=>function($j){
@@ -215,6 +219,7 @@ class PerfilEstudiante extends Controller
         $pasadas = array();
 		$encurso = array();
 		$futuras = array();
+        $semanaactiva = array();
         foreach($curso->modulos as $key2 => $modulo){
             $i=0;
 			$j=0;
@@ -235,8 +240,22 @@ class PerfilEstudiante extends Controller
 				$j++;
             }
         }
+        if (count($encurso)>0) {
+            foreach($encurso[0]->clases as $key2 => $clase){
+                $q=0;
+                
+                $finaliza = new Carbon($clase->finaliza);
+             
+                $inicia = new Carbon($clase->inicia);
+                if($now->isAfter($inicia) && $now->isBefore($finaliza)){
+                    $semanaactiva[$q] = $clase;
+                    $q++;
+                }
+            }
+        }
+      
         $contenidos = collect([
-			'enCurso' => $encurso,
+			'enCurso' => $semanaactiva,
 			'guardadas' => $pasadas,
 			'porTransmitir' => $futuras
 		  ]);

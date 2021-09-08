@@ -27,13 +27,13 @@ class ClaseTableSeeder extends Seeder
                         Actividad::create([
                             'tipo' => 'Palabras del día',
                             'icom' => '/images/actividades/palabra.svg',
-                            'recurso' => 'https://www.youtube.com/watch?v=WmMzF6Agf_I',
+                            'recurso' => 'https://www.youtube.com/embed/WmMzF6Agf_I',
                             'clase_id' => $clase1->id,
                         ]);
                         Actividad::create([
                             'tipo' => 'Video de apertura',
                             'icom' => '/images/actividades/video.svg',
-                            'recurso' => 'https://www.youtube.com/watch?v=WmMzF6Agf_I',
+                            'recurso' => 'https://www.youtube.com/embed/WmMzF6Agf_I',
                             'clase_id' => $clase1->id,
                         ]);
                         Actividad::create([
@@ -58,13 +58,13 @@ class ClaseTableSeeder extends Seeder
                         Actividad::create([
                             'tipo' => 'Palabras del día',
                             'icom' => '/images/actividades/palabra.svg',
-                            'recurso' => 'https://www.youtube.com/watch?v=WmMzF6Agf_I',
+                            'recurso' => 'https://www.youtube.com/embed/WmMzF6Agf_I',
                             'clase_id' => $clase2->id,
                         ]);
                         Actividad::create([
                             'tipo' => 'Video de apertura',
                             'icom' => '/images/actividades/video.svg',
-                            'recurso' => 'https://www.youtube.com/watch?v=WmMzF6Agf_I',
+                            'recurso' => 'https://www.youtube.com/embed/WmMzF6Agf_I',
                             'clase_id' => $clase2->id,
                         ]);
                         Actividad::create([
@@ -87,13 +87,13 @@ class ClaseTableSeeder extends Seeder
                         Actividad::create([
                             'tipo' => 'Palabras del día',
                             'icom' => '/images/actividades/palabra.svg',
-                            'recurso' => 'https://www.youtube.com/watch?v=WmMzF6Agf_I',
+                            'recurso' => 'https://www.youtube.com/embed/WmMzF6Agf_I',
                             'clase_id' => $clase3->id,
                         ]);
                         Actividad::create([
                             'tipo' => 'Video de apertura',
                             'icom' => '/images/actividades/video.svg',
-                            'recurso' => 'https://www.youtube.com/watch?v=WmMzF6Agf_I',
+                            'recurso' => 'https://www.youtube.com/embed/WmMzF6Agf_I',
                             'clase_id' => $clase3->id,
                         ]);
                         Actividad::create([
@@ -116,13 +116,13 @@ class ClaseTableSeeder extends Seeder
                         Actividad::create([
                             'tipo' => 'Palabras del día',
                             'icom' => '/images/actividades/palabra.svg',
-                            'recurso' => 'https://www.youtube.com/watch?v=WmMzF6Agf_I',
+                            'recurso' => 'https://www.youtube.com/embed/WmMzF6Agf_I',
                             'clase_id' => $clase4->id,
                         ]);
                         Actividad::create([
                             'tipo' => 'Video de apertura',
                             'icom' => '/images/actividades/video.svg',
-                            'recurso' => 'https://www.youtube.com/watch?v=WmMzF6Agf_I',
+                            'recurso' => 'https://www.youtube.com/embed/WmMzF6Agf_I',
                             'clase_id' => $clase4->id,
                         ]);
                         Actividad::create([

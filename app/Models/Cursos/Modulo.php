@@ -10,4 +10,7 @@ class Modulo extends Model
         'nombre', 'descripcion','inicia','curso_id',
     ];
     
+    public function clases(){
+        return $this->hasMany('App\Models\Cursos\Clase');
+    }
 }
