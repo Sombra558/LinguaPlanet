@@ -2,7 +2,7 @@
 	<div class="flex-fill">
 		<svg width="1440" height="771" style="position:absolute; top: 0%; left: 0%; z-index: 0; width: 100%; height: 100%;" viewBox="0 0 1440 1035" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<image style="width: 100%; height: 100%;" href="/images/actividades-fondo.svg"/>
-			<personajeComponent :avatar="perfil.avatar" x="45" y="390" width="140" height="320"/>
+			<personajeComponent :avatar="perfil.avatar" transform="translate(50,380), scale(0.6,0.8)"/>
 			<!--  Primer recurso -->
 			<a href="">
 				<svg x="245" y="430" width="107" height="157" viewBox="0 0 107 157" fill="none" xmlns="http://www.w3.org/2000/svg">
