@@ -5,12 +5,14 @@
                 <img src="/images/back-yellow.svg">
             </a>
         @else
-            <div style="position : relative; width : 100px; height : 100px;">
-                <div class="header-animal-icon mb-2" style="background-color : #FAB500;">
-                    <cara-avatar class="w-100 h-100" :perfil="{{ $perfil }}"/>
+            @unless(request()->routeIs('student.actividad'))
+                <div style="position : relative; width : 100px; height : 100px;">
+                    <div class="header-animal-icon mb-2" style="background-color : #FAB500;">
+                        <cara-avatar class="w-100 h-100" :perfil="{{ $perfil }}"/>
+                    </div>
+                    <span class="nickname-header">{{ $perfil->apodo }}</span>
                 </div>
-                <span class="nickname-header">{{ $perfil->apodo }}</span>
-            </div>
+            @endunless
             <ul class="navbar-nav ml-auto">
                 @if(request()->routeIs('student.home'))
                     <li class="nav-item dropdown">
