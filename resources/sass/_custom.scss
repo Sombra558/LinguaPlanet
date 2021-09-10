@@ -138,6 +138,18 @@ body {
     border : 5px solid #31348b;
 }
 
+.header-animal-icon {
+	padding : 5px;
+    width : 75%;
+    height : 75%;
+    border-radius : 50px;
+    border : 6px solid #31348b;
+    position : absolute;
+    top : 10%;
+	left : 9.5%;
+    z-index : 2;
+}
+
 img.header-animal-icon {
 	padding : 5px;
     width : 75%;

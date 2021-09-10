@@ -1,15 +1,14 @@
 <nav class="navbar navbar-expand-md h-25" style="background-color: transparent;">
-    <div class="container d-flex" style="position: relative; z-index:1;">
+    <div id="hijo-nav" class="container d-flex" style="position: relative; z-index:1;">
         @if(request()->routeIs('student.premios'))
             <a href="{{ url()->previous() }}">
                 <img src="/images/back-yellow.svg">
             </a>
         @else
             <div style="position : relative; width : 100px; height : 100px;">
-                <img class="header-animal-icon mb-2"
-                     src="{{$perfil->avatar->cara}}"
-                     style="background-color : #FAB500;"
-                >
+                <div class="header-animal-icon mb-2" style="background-color : #FAB500;">
+                    <cara-avatar class="w-100 h-100" :perfil="{{ $perfil }}"/>
+                </div>
                 <span class="nickname-header">{{ $perfil->apodo }}</span>
             </div>
             <ul class="navbar-nav ml-auto">
@@ -26,10 +25,9 @@
                             <div class="dropdown-item py-2">
                                 <a href="/home" class="d-flex" style="height: 50px;">
                                     <div class="globe-profile-student h-100">
-                                        <img class="icon-menu-student"
-                                             style="background-color: #FAB500;"
-                                             src="{{$perfil->avatar->cara}}"
-                                        >
+                                        <div class="icon-menu-student" style="padding : 0.2rem; background-color: #FAB500;">
+                                            <cara-avatar class="w-100 h-100" :perfil="{{ $perfil }}"/>
+                                        </div>
                                     </div>
                                     <span class="ml-4 d-flex flex-column justify-content-center">
                                         <span class="color-dark h5 mb-0">
