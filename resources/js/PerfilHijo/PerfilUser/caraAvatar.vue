@@ -1,6 +1,6 @@
 <template>
-	<svg>
-    	<image width="100%" :y="perfil.avatar.animal_id === 4 ? 0 : 50" :xlink:href="perfil.avatar.cara"/>
+	<svg viewBox="0 0 250 250">
+    	<image width="100%" height="100%" :xlink:href="perfil.avatar.cara"/>
         <image v-for="accesory in accesoriesUsed" :key="accesory.id" :x="accesory.corde_x" :y="accesory.corde_y" :xlink:href="accesory.accesorio" preserveAspectRatio="none"/>
 	</svg>
 </template>
@@ -11,17 +11,28 @@
         props:["perfil"],
         data() {
         	return {
-        		accesoriesUsed : []
+        		accesoriesUsed : [],
+        		accesoriesCoords : [
+        			{ animal_id : 1, gorro : { x : 15, y : -15 }, gafas : { x : 51, y : 105 } },
+        			{ animal_id : 3, gorro : { x : 31, y : 13 }, gafas : { x : 63, y : 74 } },
+        			{ animal_id : 6, gorro : { x : 25, y : 28 }, gafas : { x : 55, y : 122 } }
+        		],
         	}
         },
 		mounted () {
 			if (this.perfil.avatar.gorro) {
-				var gorro = JSON.parse(this.perfil.avatar.gorro);
-				this.accesoriesUsed.push(gorro);
+				var gorroObj = JSON.parse(this.perfil.avatar.gorro);
+				let { gorro } = this.accesoriesCoords.find(a => a.animal_id === this.perfil.avatar.animal_id);
+				gorroObj.corde_x = gorro.x;
+				gorroObj.corde_y = gorro.y;
+				this.accesoriesUsed.push(gorroObj);
 			}
 			if (this.perfil.avatar.gafas) {
-				var gafas = JSON.parse(this.perfil.avatar.gafas);
-				this.accesoriesUsed.push(gafas);
+				var gafasObj = JSON.parse(this.perfil.avatar.gafas);
+				let { gafas } = this.accesoriesCoords.find(a => a.animal_id === this.perfil.avatar.animal_id);
+				gafasObj.corde_x = gafas.x;
+				gafasObj.corde_y = gafas.y;
+				this.accesoriesUsed.push(gafasObj);
 			}
 		},
     }

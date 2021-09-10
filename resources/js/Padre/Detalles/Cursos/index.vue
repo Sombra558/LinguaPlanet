@@ -38,7 +38,7 @@
             <div class="col-12">
                 <h2 class="bold mt-5">Perfiles</h2>
             </div>            
-            <PerfilCard v-for="(perf,index) in user.perfiles" :key="perf.id+index" :perfil="perf" />            
+            <PerfilCard v-for="(perf,index) in user.perfiles" :key="perf.id+index" :perfil="perf" />
         </div>
     </div>
 </template>

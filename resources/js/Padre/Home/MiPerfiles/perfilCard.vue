@@ -1,6 +1,6 @@
 <template>
     <div @click.prevent="mode ? editar() : entrar()" class="card-perfil col-sm-6 col-md-3 col-lg-2">
-        <div class="card-body py-0" :style="`background-color:${perfil.color};`">
+        <div class="card-body p-2" :style="`background-color:${perfil.color};`">
             <caraAvatar class="w-100 h-100" viewBox="0 0 250 250" :perfil="perfil"/>
         </div>
         <h2 class="text-center my-3 bold">{{perfil.apodo}}</h2>

@@ -22,7 +22,7 @@ Vue.component('perfil-padre-component', require('./Perfil/perfil').default);
 //perfil estudiante (Hijo)
 Vue.component('create-perfiluser', require('./PerfilUser/create').default);
 Vue.component('edit-perfiluser', require('./PerfilUser/edit').default);
-
+Vue.component('cara-avatar', require('../PerfilHijo/PerfilUser/caraAvatar').default);
 
 const app = new Vue({
     el: '#padre-app',
