@@ -3497,6 +3497,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "create-component",
   props: ['animals'],
@@ -46146,37 +46147,6 @@ var render = function() {
                     ]
                   },
                   [
-                    _vm.tabnivel != 2
-                      ? _c(
-                          "button",
-                          {
-                            staticClass: "btn mx-2 btn-primary-red px-4",
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.siguiente()
-                              }
-                            }
-                          },
-                          [_vm._v("Siguiente")]
-                        )
-                      : _vm.tabnivel === 2
-                      ? _c(
-                          "button",
-                          {
-                            staticClass: "btn mx-2 btn-primary-red px-4",
-                            attrs: { type: "submit" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.enviar()
-                              }
-                            }
-                          },
-                          [_vm._v("Siguiente")]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
                     _vm.tabnivel === 0
                       ? _c(
                           "button",
@@ -46215,6 +46185,37 @@ var render = function() {
                               _vm._v("Regresar")
                             ])
                           ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.tabnivel != 2
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "btn mx-2 btn-primary-red px-4",
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.siguiente()
+                              }
+                            }
+                          },
+                          [_vm._v("Siguiente")]
+                        )
+                      : _vm.tabnivel === 2
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "btn mx-2 btn-primary-red px-4",
+                            attrs: { type: "submit" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.enviar()
+                              }
+                            }
+                          },
+                          [_vm._v("Siguiente")]
                         )
                       : _vm._e()
                   ]

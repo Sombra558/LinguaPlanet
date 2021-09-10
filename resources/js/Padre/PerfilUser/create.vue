@@ -85,10 +85,11 @@
                     </div>
                     <div class="row justify-content-center mt-3">
                         <div :class="[ 'text-center', tabnivel === 0 ? 'col-xs-12 col-sm-12 col-md-6' : tabnivel === 2 ? 'col-xs-12 col-sm-12 col-md-12' : 'col-xs-12 col-sm-12 col-md-16' ]">
-                            <button v-if="tabnivel!=2" class="btn mx-2 btn-primary-red px-4" @click.prevent="siguiente()">Siguiente</button>
-                            <button v-else-if="tabnivel===2" class="btn mx-2 btn-primary-red px-4" type="submit" @click.prevent="enviar()">Siguiente</button>
+                          
                             <button v-if="tabnivel===0" class="btn mx-2 transparent-button color-plomo" @click.prevent="regresar()"><span class="h6">Omitir</span></button> 
                             <button v-if="tabnivel>=1" class="btn mx-2 w-35 btn-secondary" @click.prevent="regresar()"><span class="h6">Regresar</span></button> 
+                              <button v-if="tabnivel!=2" class="btn mx-2 btn-primary-red px-4" @click.prevent="siguiente()">Siguiente</button>
+                            <button v-else-if="tabnivel===2" class="btn mx-2 btn-primary-red px-4" type="submit" @click.prevent="enviar()">Siguiente</button>
                         </div>
                     </div>
                 </form>
