@@ -230,6 +230,7 @@
 					/>
 					
 					
+					
 					<!--<iframe  type="application/pdf" width="100%" frameborder="0" scrolling="no"
                                 height="300" :src="actividadSelected.recurso +'#page='+page"
                             ></iframe>-->
