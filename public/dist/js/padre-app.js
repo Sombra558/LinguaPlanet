@@ -3930,6 +3930,16 @@ __webpack_require__.r(__webpack_exports__);
           y: 105
         }
       }, {
+        animal_id: 2,
+        gorro: {
+          x: 29,
+          y: 12
+        },
+        gafas: {
+          x: 58,
+          y: 105
+        }
+      }, {
         animal_id: 3,
         gorro: {
           x: 31,
@@ -3938,6 +3948,26 @@ __webpack_require__.r(__webpack_exports__);
         gafas: {
           x: 63,
           y: 74
+        }
+      }, {
+        animal_id: 4,
+        gorro: {
+          x: 60,
+          y: 102
+        },
+        gafas: {
+          x: 60,
+          y: 168
+        }
+      }, {
+        animal_id: 5,
+        gorro: {
+          x: 37,
+          y: 12
+        },
+        gafas: {
+          x: 56,
+          y: 90
         }
       }, {
         animal_id: 6,
