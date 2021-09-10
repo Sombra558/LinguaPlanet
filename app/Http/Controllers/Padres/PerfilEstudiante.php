@@ -6,6 +6,7 @@ use App\Models\Animals\Animal;
 use App\Models\Animals\Avatar;
 use App\Models\Idioma\Idioma;
 use App\Models\Cursos\Curso;
+use App\Models\Cursos\Actividad;
 use App\Models\Solicitudes\PlanUser;
 use App\Models\Relaciones\PerfilPlan;
 use App\Models\PerfilEstudiante\PerfilEstudianteUser;
@@ -429,6 +430,9 @@ class PerfilEstudiante extends Controller
                 case 'gafas':
                     $avatar->gafas=json_encode($temp);
                 break;
+                case 'bufanda':
+                    $avatar->bufanda=json_encode($temp);
+                break;
                 case 'guitarra':
                     $avatar->guitarra=json_encode($temp);
                 break;
@@ -443,6 +447,17 @@ class PerfilEstudiante extends Controller
         $avatar->save();
        
       
+    }
+    public function veractividad($id,$apodo,$nombreURL,$curso_id,$clase_id,$actividad_id){
+        $actividad=Actividad::find($actividad_id);
+        $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
+            return $q->with(['plan'=>function($k){
+                return $k->with(['membresia'=>function($j){
+                    return $j->with(['cursos','idioma']);
+                }]);
+            }]);
+        },'avatar']);
+        return view('Estudiantes.Actividades.show',compact('perfil','actividad'));
     }
     public function destroy($id)
     {

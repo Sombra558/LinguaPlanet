@@ -23,7 +23,10 @@ Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
 	    Route::get('/premios', 'Padres\PerfilEstudiante@premios')->name('student.premios');
 	    Route::get('/armario', 'Padres\PerfilEstudiante@armario')->name('student.armario');
 	    Route::get('/idiomas/{nombreURL}', 'Padres\PerfilEstudiante@aplication');
-	    Route::get('/idiomas/{nombreURL}/{curso_id}', 'Padres\PerfilEstudiante@aplicationCurso')->name('student.activities'); 
+	    Route::get('/idiomas/{nombreURL}/{curso_id}', 'Padres\PerfilEstudiante@aplicationCurso')->name('student.activities');
+		Route::group([ 'prefix' => '/idiomas/{nombreURL}/{curso_id}/clase/{clase_id}/actividad/{actividad_id}'], function() {
+			Route::get('/', 'Padres\PerfilEstudiante@veractividad')->name('student.actividad');
+		});
 	});
  
 });
