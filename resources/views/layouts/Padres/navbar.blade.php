@@ -39,6 +39,9 @@
                         <a class="dropdown-item mt-1" href="{{ route('padre.perfil') }}">
                             <span class="color-plomo">Perfil</span>
                         </a>
+                        <a class="dropdown-item mt-1" href="{{ route('home') }}">
+                            <span class="color-plomo">Mis usuarios</span>
+                        </a>
                         <a class="dropdown-item mt-1" href="{{ route('padre.pagos') }}">
                             <span class="color-plomo">Pagos</span>
                         </a>

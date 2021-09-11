@@ -79,7 +79,14 @@
                             </a>
                         </li>
                     @endif
-                    <li class="nav-item dropdown">
+                    @if(request()->routeIs('student.armario'))
+                        <li class="nav-item mr-4">
+                            <a href="{{ url()->previous() }}">
+                                <img src="/images/back-yellow.svg">
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
                         <a href="/home/app/{{ request()->route()->parameters()['id'] }}/{{ request()->route()->parameters()['apodo'] }}/">
                             <img src="/images/home-student.svg">
                         </a>

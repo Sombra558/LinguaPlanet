@@ -122,7 +122,7 @@ import PlanCard from './planCard';
                                 console.log(result.data.message);
                             break;
                             default:
-                                window.location.reload();
+                                location.href = '/home/';
                                 break;
                     }
                 }).catch((err) => {
