@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 v-if="user.perfiles.length>0" class="bold mt-4">¿Como quieres ingresar?</h2>
+                <h2 v-if="user.perfiles.length>0" class="bold mt-4">¿Cómo quieres ingresar?</h2>
                 <h3 v-else class="bold mt-4">Crea un perfil de estudiante</h3>
             </div>
         </div>

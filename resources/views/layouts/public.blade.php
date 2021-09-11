@@ -45,13 +45,13 @@
         <footer class="d-flex flex-column align-items-center justify-content-center">
             <ul class="footer-list d-flex flex-row justify-content-around w-50 mb-0">
                 <li>
-                    <a class="footer-link" href="#">{{ __('Home') }}</a>
+                    <a class="footer-link" href="https://lingua.alaxatech.com/">{{ __('Home') }}</a>
                 </li>
                 <li>
-                    <a class="footer-link" href="#">{{ __('Courses') }}</a>
+                    <a class="footer-link" href="{{ route('courses.index') }}">{{ __('Courses') }}</a>
                 </li>
                 <li>
-                    <a class="footer-link" href="#">{{ __('About') }}</a>
+                    <a class="footer-link" href="https://lingua.alaxatech.com/contactanos/">{{ __('About') }}</a>
                 </li>
                 <li>
                     <a class="footer-link" href="#">{{ __('Cookies policies') }}</a>
