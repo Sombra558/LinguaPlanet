@@ -14,7 +14,7 @@
                 <ul class="nav nav-pills" id="pills-tab" role="tablist">
                     <li @click.prevent=" selectedTab = 'M' " class="mx-md-3 nav-item text-center" role="presentation">
                         <a class="nav-link px-1 py-3 active" id="pills-general-info-tab" data-toggle="pill" href="#pills-general-info" role="tab" aria-controls="pills-general-info" aria-selected="true">
-                            Membresias activas
+                            Membresías activas
                         </a>
                     </li>
                     <li @click.prevent=" selectedTab = 'P' " class="mx-md-3 nav-item text-center" role="presentation">

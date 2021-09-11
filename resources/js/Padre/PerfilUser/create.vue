@@ -2,7 +2,7 @@
     <div class="container mb-4">
         <div class="row mb-5">
             <div clasS="col-sm-12 text-center">
-                <h3 class="bold mt-4">Crear Nuevo perfil</h3>
+                <h3 class="bold mt-4">Crear Nuevo Perfil</h3>
                 <span v-if="tabnivel === 0">Que le gusta más a tu hijo</span>
                 <span v-else-if="tabnivel === 1">Ingresa su fecha de nacimiento</span>
                 <span v-else-if="tabnivel === 2">Seleccione un avatar y un apodo</span>

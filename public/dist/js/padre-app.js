@@ -44818,7 +44818,7 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n                        Membresias activas\n                    "
+                      "\n                        Membresías activas\n                    "
                     )
                   ]
                 )
@@ -44947,7 +44947,7 @@ var render = function() {
       _c("div", { staticClass: "col-12 text-center" }, [
         _vm.user.perfiles.length > 0
           ? _c("h2", { staticClass: "bold mt-4" }, [
-              _vm._v("¿Como quieres ingresar?")
+              _vm._v("¿Cómo quieres ingresar?")
             ])
           : _c("h3", { staticClass: "bold mt-4" }, [
               _vm._v("Crea un perfil de estudiante")
@@ -45762,7 +45762,7 @@ var render = function() {
   return _c("div", { staticClass: "container mb-4" }, [
     _c("div", { staticClass: "row mb-5" }, [
       _c("div", { attrs: { clasS: "col-sm-12 text-center" } }, [
-        _c("h3", { staticClass: "bold mt-4" }, [_vm._v("Crear Nuevo perfil")]),
+        _c("h3", { staticClass: "bold mt-4" }, [_vm._v("Crear Nuevo Perfil")]),
         _vm._v(" "),
         _vm.tabnivel === 0
           ? _c("span", [_vm._v("Que le gusta más a tu hijo")])
@@ -46273,7 +46273,7 @@ var render = function() {
   return _c("div", { staticClass: "container mb-4" }, [
     _c("div", { staticClass: "row mb-5" }, [
       _c("div", { attrs: { clasS: "col-sm-12 text-center" } }, [
-        _c("h3", { staticClass: "bold mt-4" }, [_vm._v("Editar perfil")]),
+        _c("h3", { staticClass: "bold mt-4" }, [_vm._v("Editar Perfil")]),
         _vm._v(" "),
         _vm.tabnivel === 0
           ? _c("span", [_vm._v("Que le gusta más a tu hijo")])
