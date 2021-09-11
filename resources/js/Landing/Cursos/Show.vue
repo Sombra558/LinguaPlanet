@@ -59,7 +59,7 @@
                         <div v-for="(membresia, index2) in offsetCarousel(key)" class="card card-course-carrousel mx-3" style="width : 15rem;">
                             <div class="card-body d-flex flex-column">
                                 <img class="flag-img mx-auto" :src="`${idioma.src}`" :alt="`lingua planet ${idioma.idioma}`">
-                                <span class="h3 bold">{{ membresia.nombre }}</span>
+                                <span class="h3 bold" style="height: 4rem;">{{ membresia.nombre }}</span>
                                 <h3>Pago {{ membresia.tipo }}</h3>
                                 <div class="mt-4 mb-3 lh">
                                     <span class="h5">Tendrás acceso a:</span>
@@ -112,7 +112,7 @@
 
     .mini-flag-img.active {
         opacity: 1;
-        width : 113%;
+        width : 5rem;
         border : 3px solid black;
         border-radius : 50px;
     }   

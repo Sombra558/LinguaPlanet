@@ -52,7 +52,7 @@
                         @endphp
                         <div class="contenedor-padre">
                             <img class="banderaselected" src="{{$banderaselected}}" alt="badera">
-                            <select class="form-control changeLang">
+                            <select class="col-10 form-control changeLang">
                                 @foreach($idiomas as $idioma)   
                             
                                     <option value="{{$idioma->diminutivo}}" {{ session()->get('locale') == $idioma->diminutivo ? 'selected' : '' }}>{{$idioma->diminutivo}}</option>

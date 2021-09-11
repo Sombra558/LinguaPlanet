@@ -48,9 +48,9 @@
                 </div>
                 <span class="nickname-header">{{ perfil.apodo }}</span>
             </div>
-            <a v-if="actividad.tipo !=='Libros'" :href="`/home/app/${perfil.id}/${perfil.apodo}/`">
-	            <img src="/images/home-student.svg">
-	        </a>
+            <a :href="prevUrl">
+                <img src="/images/back-yellow.svg">
+            </a>
         	<div v-if="actividad.tipo !=='Palabras del día' && actividad.tipo !=='Video de apertura'">
 				<button :disabled="noPrevPage" type="button" @click.prevent="anterior()" class="btn btn-danger">Anterior</button>
 				<button :disabled="noNextPage" type="button" @click.prevent="siguiente()" class="btn btn-danger">Siguiente</button>	        		
@@ -73,6 +73,7 @@
         		src: null,
         		zoom: 100,
 				openbook:false,
+				prevUrl : document.referrer,
 			}
 		},
         components : {
