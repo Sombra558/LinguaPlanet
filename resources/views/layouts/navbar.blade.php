@@ -17,16 +17,16 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item" >
-                    <a class="nav-link text-primary" href="#">{{ __('Home') }}</a>
+                    <a class="nav-link text-primary" href="https://lingua.alaxatech.com/">{{ __('Home') }}</a>
                 </li>
                 <li class="nav-item" >
                     <a class="nav-link text-primary" href="{{ route('courses.index') }}">{{ __('Courses') }}</a>
                 </li>
                 <li class="nav-item" >
-                    <a class="nav-link text-primary" href="#">{{ __('About') }}</a>
+                    <a class="nav-link text-primary" href="https://lingua.alaxatech.com/acerca-de-nosotros/">{{ __('About') }}</a>
                 </li>
                 <li class="nav-item" >
-                    <a class="nav-link text-primary" href="#">{{ __('Contact us') }}</a>
+                    <a class="nav-link text-primary" href="https://lingua.alaxatech.com/contactanos/">{{ __('Contact us') }}</a>
                 </li>
             </ul>
             <!-- Right Side Of Navbar -->
