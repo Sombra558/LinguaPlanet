@@ -70,14 +70,20 @@
     			this.$refs.personaje.accesoriesUsed = this.$refs.personaje.accesoriesUsed.map(a => {
     				if(a.tipo === accesory.tipo){
     					newAccesory = false;
-    					let { id, tipo, corde_x, corde_y, accesorio } = accesory; 
-    					return { 'id' : id, 'tipo' : tipo, 'corde_x' : corde_x, 'corde_y' : corde_y, 'accesorio' : accesorio };
+    					let { id, tipo, display, corde_x, corde_y, accesorio } = accesory; 
+    					return { 'id' : id, 'tipo' : tipo, 'display' : display, 'corde_x' : corde_x, 'corde_y' : corde_y, 'accesorio' : accesorio };
     				} else
     					return a;
     			});
-
     			let { id, tipo, corde_x, corde_y, accesorio } = accesory; 
-    			if (newAccesory) this.$refs.personaje.accesoriesUsed.push( { 'id' : id, 'tipo' : tipo, 'corde_x' : corde_x, 'corde_y' : corde_y, 'accesorio' : accesorio } );
+    			let display = 1;
+
+    			if(tipo === 'bufanda' || tipo === 'gafas')
+    				display = 2;
+    			else if(tipo === 'guitarra')
+    				display = 3;
+
+    			if (newAccesory) this.$refs.personaje.accesoriesUsed.push( { 'id' : id, 'tipo' : tipo, 'display' : display, 'corde_x' : corde_x, 'corde_y' : corde_y, 'accesorio' : accesorio } );
         	},
 			guardar(){
 				this.estadoprocreso=true;

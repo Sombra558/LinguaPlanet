@@ -112,7 +112,7 @@
 
     .mini-flag-img.active {
         opacity: 1;
-        width : 113%;
+        width : 5rem;
         border : 3px solid black;
         border-radius : 50px;
     }   
