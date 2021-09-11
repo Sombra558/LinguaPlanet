@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-9">
                     <div id="carouselWIndicators" class="carousel slide web-display pt-4" data-ride="false" data-interval="false">
-                        <div class="carousel-indicators">
+                        <div v-if="false" class="carousel-indicators">
                             <a class="carousel-control-prev" href="#carouselWIndicators" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon carousel-control-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>

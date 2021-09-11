@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md h-25" style="background-color: transparent;">
-    <div id="hijo-nav" class="container d-flex" style="position: relative; z-index:1;">
+    <div id="hijo-nav" class="container-fluid px-5 d-flex" style="position: relative; z-index:1;">
         @if(request()->routeIs('student.premios'))
             <a href="{{ url()->previous() }}">
                 <img src="/images/back-yellow.svg">
