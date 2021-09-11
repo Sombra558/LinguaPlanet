@@ -52269,31 +52269,9 @@ var render = function() {
                   }
                 },
                 [
-                  _c("div", { staticClass: "carousel-indicators" }, [
-                    _vm._m(2),
-                    _vm._v(" "),
-                    _c(
-                      "ol",
-                      { staticClass: "web-display carousel-indicators" },
-                      _vm._l(
-                        _vm.keysArray.filter(function(e) {
-                          return e % _vm.limit === 0
-                        }),
-                        function(key, index) {
-                          return _c("li", {
-                            class: { active: index === 0 },
-                            attrs: {
-                              "data-target": "#carouselWIndicators",
-                              "data-slide-to": "wCard" + index
-                            }
-                          })
-                        }
-                      ),
-                      0
-                    ),
-                    _vm._v(" "),
-                    _vm._m(3)
-                  ]),
+                  false
+                    ? undefined
+                    : _vm._e(),
                   _vm._v(" "),
                   _c(
                     "div",
