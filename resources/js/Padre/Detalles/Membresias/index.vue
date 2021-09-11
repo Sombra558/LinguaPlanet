@@ -21,6 +21,7 @@
                         <a class="nav-link px-1 py-3" id="pills-security-tab" data-toggle="pill" href="#pills-security" role="tab" aria-controls="pills-general-info" aria-selected="false">
                             Historial de pagos
                         </a>
+                        
                     </li>
                 </ul>
             </div>
