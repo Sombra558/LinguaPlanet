@@ -2640,7 +2640,7 @@ __webpack_require__.r(__webpack_exports__);
             break;
 
           default:
-            window.location.reload();
+            location.href = '/home/';
             break;
         }
       })["catch"](function (err) {

@@ -8341,7 +8341,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".lh[data-v-6e45ef0f] {\n  line-height: 4;\n}\n.mini-flag-img[data-v-6e45ef0f] {\n  opacity: 0.5;\n}\n.mini-flag-img.active[data-v-6e45ef0f] {\n  opacity: 1;\n  width: 113%;\n  border: 3px solid black;\n  border-radius: 50px;\n}\n.card.card-course-carrousel[data-v-6e45ef0f]:hover {\n  background-color: #31348B;\n  transition: background-color 0.3s linear;\n}\n.card.card-course-carrousel:hover div[data-v-6e45ef0f] {\n  color: white !important;\n}\n.card-body div[data-v-6e45ef0f] {\n  color: #606060;\n}\n.carousel-indicators[data-v-6e45ef0f] {\n  position: absolute;\n  top: 0%;\n  bottom: 100%;\n}\n.carousel-control-icon[data-v-6e45ef0f] {\n  background-color: #31348B;\n  padding: 20px;\n  border-radius: 10px;\n}\n.carousel-indicators li[data-v-6e45ef0f] {\n  background-color: #31348B;\n}", ""]);
+exports.push([module.i, ".lh[data-v-6e45ef0f] {\n  line-height: 4;\n}\n.mini-flag-img[data-v-6e45ef0f] {\n  opacity: 0.5;\n}\n.mini-flag-img.active[data-v-6e45ef0f] {\n  opacity: 1;\n  width: 5rem;\n  border: 3px solid black;\n  border-radius: 50px;\n}\n.card.card-course-carrousel[data-v-6e45ef0f]:hover {\n  background-color: #31348B;\n  transition: background-color 0.3s linear;\n}\n.card.card-course-carrousel:hover div[data-v-6e45ef0f] {\n  color: white !important;\n}\n.card-body div[data-v-6e45ef0f] {\n  color: #606060;\n}\n.carousel-indicators[data-v-6e45ef0f] {\n  position: absolute;\n  top: 0%;\n  bottom: 100%;\n}\n.carousel-control-icon[data-v-6e45ef0f] {\n  background-color: #31348B;\n  padding: 20px;\n  border-radius: 10px;\n}\n.carousel-indicators li[data-v-6e45ef0f] {\n  background-color: #31348B;\n}", ""]);
 
 // exports
 
@@ -67343,8 +67343,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! c:\laragon\www\lingua-planet\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! c:\laragon\www\lingua-planet\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\lingua_planet\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\lingua_planet\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
