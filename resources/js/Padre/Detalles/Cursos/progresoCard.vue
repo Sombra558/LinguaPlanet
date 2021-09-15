@@ -28,7 +28,7 @@
                         <img class="flag-language mx-1" :src="'/images/es.svg'">
                         <span>Curso de Español</span>
                     </div>
-                    <div class="col-7 py-3 d-flex justify-content-around">
+                    <div class="col-7 py-3 d-flex justify-content-between">
                         <span v-for="i in 5">
                             <!-- checked -->
                             <svg v-if="i <= 3" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">

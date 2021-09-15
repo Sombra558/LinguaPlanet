@@ -2,14 +2,14 @@
     <div class="col-12">
         <div class="card mx-3">
             <div class="card-body">
-                <ul class="list-group">
+                <ul class="list-group px-4">
                     <li class="d-none d-md-flex flex-fill py-3">
-                        <div clasS="col-3 p-0">
+                        <div clasS="col-4 p-0">
                             <span class="h5 text-dark flex-fill">
                                 Idiomas
                             </span>    
                         </div>
-                        <div class="col-9 p-0">
+                        <div class="col-8 p-0">
                             <span class="h5 text-dark flex-fill">
                                 Membresías    
                             </span>    
@@ -17,11 +17,13 @@
                     </li>
                     <li class="list-group-item py-3" v-for="plan in membresias" :key="plan.id">
                         <div class="row">
-                            <div class="text-center idioma-title text-md-left col-12 col-md-3 col-lg-3">
+                            <div class="text-center idioma-title text-md-left col-12 col-md-3 col-lg-4">
                                 {{plan.membresia.idioma.idioma}}
                             </div>
-                            <div clasS="col-12 col-md-9 col-lg-9 p-0">
-                                <PlanCard  @mostrarasignacion="mostrarasignacion" :plan="plan"/>
+                            <div clasS="col-12 col-md-9 col-lg-8">
+                                <div class="row">
+                                    <PlanCard @mostrarasignacion="mostrarasignacion" :plan="plan"/>
+                                </div>
                             </div>
                         </div>
                     </li>
