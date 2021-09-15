@@ -66,7 +66,7 @@ import { mapState } from "vuex";
 
     .line2 {
         position: relative;
-        left : -24px;
+        left : -44px;
         top: 3px;
         width: 220%;
     }
