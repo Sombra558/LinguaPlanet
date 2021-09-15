@@ -23,4 +23,8 @@ class PerfilEstudianteUser extends Model
   {
     return $this->belongsToMany('App\Models\Animals\Accesorios','perfil_premios');
   }
+  public function misactividades()
+  {
+    return $this->belongsToMany('App\Models\Cursos\Actividad','actividad_users','perfil_id');
+  }
 }

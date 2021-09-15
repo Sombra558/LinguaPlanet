@@ -2149,7 +2149,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       paisSelected: 'Seleccione',
-      mesSelected: 'Seleccione'
+      mesSelected: 'Seleccione',
+      perfilSelected: null
     };
   },
   components: {
@@ -2172,6 +2173,11 @@ __webpack_require__.r(__webpack_exports__);
 
     function percentageToDegrees(percentage) {
       return percentage / 100 * 360;
+    }
+  },
+  methods: {
+    seleccionarPerfil: function seleccionarPerfil(value) {
+      this.perfilSelected = value;
     }
   }
 });
@@ -2492,13 +2498,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['perfil'],
   name: "progreso-card-component",
   data: function data() {
     return {
-      deployActivities: false
+      deployActivities: false,
+      miscursostotales: []
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.perfil.planes.forEach(function (plan) {
+      plan.plan.membresia.cursos.forEach(function (curso) {
+        var temp = {
+          curso: curso,
+          idioma: plan.plan.membresia.idioma
+        };
+
+        _this.miscursostotales.push(temp);
+      });
+    });
   }
 });
 
@@ -2514,6 +2542,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _planCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./planCard */ "./resources/js/Padre/Detalles/Membresias/Activas/planCard.vue");
+//
+//
 //
 //
 //
@@ -3054,9 +3084,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "myperfiles-component",
@@ -3094,6 +3121,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PerfilHijo_PerfilUser_caraAvatar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../PerfilHijo/PerfilUser/caraAvatar */ "./resources/js/PerfilHijo/PerfilUser/caraAvatar.vue");
+//
+//
+//
 //
 //
 //
@@ -3498,7 +3528,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "create-component",
   props: ['animals'],
@@ -3580,17 +3609,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.perfil.hobby = value;
     },
     seleccionarAnimal: function seleccionarAnimal(value, e) {
-      var _document$querySelect2;
+      var _document$querySelect2, _document$querySelect3;
 
-      (_document$querySelect2 = document.querySelector('.animal-icon.selected')) === null || _document$querySelect2 === void 0 ? void 0 : _document$querySelect2.classList.toggle('selected');
+      (_document$querySelect2 = document.querySelector('.animal-container.selected')) === null || _document$querySelect2 === void 0 ? void 0 : _document$querySelect2.style.removeProperty('background-color');
+      (_document$querySelect3 = document.querySelector('.animal-container.selected')) === null || _document$querySelect3 === void 0 ? void 0 : _document$querySelect3.classList.toggle('selected');
       e.currentTarget.classList.toggle('selected');
+      document.querySelector('.animal-container.selected').style.backgroundColor = this.perfil.color;
       this.perfil.animal = value;
     },
     seleccionarColor: function seleccionarColor(value, e) {
-      var _document$querySelect3;
+      var _document$querySelect4;
 
-      (_document$querySelect3 = document.querySelector('svg.selected')) === null || _document$querySelect3 === void 0 ? void 0 : _document$querySelect3.classList.toggle('selected');
+      (_document$querySelect4 = document.querySelector('svg.selected')) === null || _document$querySelect4 === void 0 ? void 0 : _document$querySelect4.classList.toggle('selected');
       e.currentTarget.firstChild.classList.toggle('selected');
+      document.querySelector('.animal-container.selected').style.backgroundColor = value;
       this.perfil.color = value;
     },
     enviar: function enviar() {
@@ -3656,7 +3688,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
 //
 //
 //
@@ -3843,8 +3874,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     seleccionarAnimal: function seleccionarAnimal(value, e) {
       var _document$querySelect2;
 
-      (_document$querySelect2 = document.querySelector('.animal-icon.selected')) === null || _document$querySelect2 === void 0 ? void 0 : _document$querySelect2.classList.toggle('selected');
+      document.querySelector('.animal-container.selected').style.removeProperty('background-color');
+      (_document$querySelect2 = document.querySelector('.animal-container.selected')) === null || _document$querySelect2 === void 0 ? void 0 : _document$querySelect2.classList.toggle('selected');
       e.currentTarget.classList.toggle('selected');
+      document.querySelector('.animal-container.selected').style.backgroundColor = this.perfil.color;
       this.perfil.animal = value;
     },
     seleccionarColor: function seleccionarColor(value, e) {
@@ -3852,6 +3885,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       (_document$querySelect3 = document.querySelector('svg.selected')) === null || _document$querySelect3 === void 0 ? void 0 : _document$querySelect3.classList.toggle('selected');
       e.currentTarget.firstChild.classList.toggle('selected');
+      document.querySelector('.animal-container.selected').style.backgroundColor = value;
       this.perfil.color = value;
     },
     editar: function editar() {
@@ -8548,7 +8582,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".nav-item[data-v-7db75ed8] {\n  position: relative;\n  font-size: 1.2rem;\n}\n.nav-link[data-v-7db75ed8] {\n  color: #606060;\n}\n.nav-link.active[data-v-7db75ed8] {\n  background: #FFF;\n  color: #31348B;\n}\n.nav-link.active[data-v-7db75ed8]::after {\n  content: \"\";\n  background: #31348B;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  height: 2px;\n  width: 100%;\n}\n.globe-profile[data-v-7db75ed8] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 55px;\n  height: 55px;\n  border-radius: 50px;\n  background-color: #31348B;\n  color: white;\n  font-size: 33px;\n}\n.profile-title[data-v-7db75ed8] {\n  color: #5F01F5;\n  font-size: 20px;\n  font-family: \"Rubik\";\n  font-weight: bold;\n}\n.fonto-seccion[data-v-7db75ed8] {\n  flex-direction: column;\n  width: 100%;\n  display: flex;\n  justify-content: between;\n  border-radius: 12px;\n}\n.img-profile[data-v-7db75ed8] {\n  height: 140px;\n  width: 140px;\n  border-radius: 50%;\n}\n.text-data[data-v-7db75ed8] {\n  font-size: 20px;\n  font-family: \"Valera\";\n}\n.borderdiv[data-v-7db75ed8] {\n  width: 100%;\n  height: 1px;\n  background-color: #76807988;\n}\n.text-inbup[data-v-7db75ed8] {\n  color: #282e2a83;\n}\n.text-data[data-v-7db75ed8] {\n  margin-top: 10px;\n}\n.input-style-file[data-v-7db75ed8] {\n  height: 42px;\n  border-radius: 8px;\n}\n.btn-change[data-v-7db75ed8] {\n  background-color: #30019B;\n  border-radius: 10px;\n  width: 181px;\n  color: #ffffff;\n  height: 41px;\n  border: none;\n}\n#inputFile[data-v-7db75ed8] {\n  /*   display: none; */\n  margin-bottom: 25px;\n}\n#image-holder[data-v-7db75ed8] {\n  width: 200px;\n  min-width: 200px;\n  border: 2px dashed rgba(0, 0, 0, 0.3);\n  color: rgba(0, 0, 0, 0.8);\n  padding: 10px;\n  text-align: center;\n}\n#image-holder[data-v-7db75ed8]:hover {\n  cursor: pointer;\n}\n#image-holder img[data-v-7db75ed8] {\n  width: 200px;\n  height: auto;\n}\n.arrastre[data-v-7db75ed8] {\n  font-family: \"Valera\";\n  color: grey;\n  font-size: 16px;\n  line-height: 24, 34px;\n}\n.arrastre strong[data-v-7db75ed8] {\n  font-family: \"Valera\";\n  color: #5F01F5;\n  font-size: 16px;\n  line-height: 24, 34px;\n}\n@media only screen and (max-width: 768px) {\n.contenedor-nav-ocho[data-v-7db75ed8] {\n    max-width: 100%;\n    margin-right: auto;\n    margin-left: auto;\n    width: 100%;\n    height: 100vh;\n}\n}", ""]);
+exports.push([module.i, ".nav-item[data-v-7db75ed8] {\n  position: relative;\n  font-size: 1.2rem;\n}\n.nav-link[data-v-7db75ed8] {\n  font-size: 1rem;\n  color: #606060;\n}\n.nav-link.active[data-v-7db75ed8] {\n  background: #FFF;\n  color: #31348B;\n}\n.nav-link.active[data-v-7db75ed8]::after {\n  content: \"\";\n  background: #31348B;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  height: 2px;\n  width: 100%;\n}\n.globe-profile[data-v-7db75ed8] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 55px;\n  height: 55px;\n  border-radius: 50px;\n  background-color: #31348B;\n  color: white;\n  font-size: 33px;\n}\n.profile-title[data-v-7db75ed8] {\n  color: #5F01F5;\n  font-size: 20px;\n  font-family: \"Rubik\";\n  font-weight: bold;\n}\n.fonto-seccion[data-v-7db75ed8] {\n  flex-direction: column;\n  width: 100%;\n  display: flex;\n  justify-content: between;\n  border-radius: 12px;\n}\n.img-profile[data-v-7db75ed8] {\n  height: 140px;\n  width: 140px;\n  border-radius: 50%;\n}\n.text-data[data-v-7db75ed8] {\n  font-size: 20px;\n  font-family: \"Valera\";\n}\n.borderdiv[data-v-7db75ed8] {\n  width: 100%;\n  height: 1px;\n  background-color: #76807988;\n}\n.text-inbup[data-v-7db75ed8] {\n  color: #282e2a83;\n}\n.text-data[data-v-7db75ed8] {\n  margin-top: 10px;\n}\n.input-style-file[data-v-7db75ed8] {\n  height: 42px;\n  border-radius: 8px;\n}\n.btn-change[data-v-7db75ed8] {\n  background-color: #30019B;\n  border-radius: 10px;\n  width: 181px;\n  color: #ffffff;\n  height: 41px;\n  border: none;\n}\n#inputFile[data-v-7db75ed8] {\n  /*   display: none; */\n  margin-bottom: 25px;\n}\n#image-holder[data-v-7db75ed8] {\n  width: 200px;\n  min-width: 200px;\n  border: 2px dashed rgba(0, 0, 0, 0.3);\n  color: rgba(0, 0, 0, 0.8);\n  padding: 10px;\n  text-align: center;\n}\n#image-holder[data-v-7db75ed8]:hover {\n  cursor: pointer;\n}\n#image-holder img[data-v-7db75ed8] {\n  width: 200px;\n  height: auto;\n}\n.arrastre[data-v-7db75ed8] {\n  font-family: \"Valera\";\n  color: grey;\n  font-size: 16px;\n  line-height: 24, 34px;\n}\n.arrastre strong[data-v-7db75ed8] {\n  font-family: \"Valera\";\n  color: #5F01F5;\n  font-size: 16px;\n  line-height: 24, 34px;\n}\n@media only screen and (max-width: 768px) {\n.contenedor-nav-ocho[data-v-7db75ed8] {\n    max-width: 100%;\n    margin-right: auto;\n    margin-left: auto;\n    width: 100%;\n    height: 100vh;\n}\n}", ""]);
 
 // exports
 
@@ -8567,7 +8601,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "input[type=date][data-v-8af2fa86]::-webkit-calendar-picker-indicator {\n  position: absolute;\n  left: 2%;\n  top: 30%;\n  width: 50px;\n  height: 20px;\n  margin: 0;\n  padding: 0;\n  color: red;\n  z-index: 0;\n  cursor: pointer;\n}\nimg.animal-icon[data-v-8af2fa86] {\n  width: 80px;\n  height: 80px;\n  border-radius: 50px;\n}\n.animal-icon.selected[data-v-8af2fa86] {\n  border: 4px solid #31348b;\n}\n.btnColor svg[data-v-8af2fa86] {\n  display: none;\n}\n.btnColor .selected[data-v-8af2fa86] {\n  display: inherit !important;\n}", ""]);
+exports.push([module.i, "input[type=date][data-v-8af2fa86]::-webkit-calendar-picker-indicator {\n  position: absolute;\n  left: 2%;\n  top: 30%;\n  width: 50px;\n  height: 20px;\n  margin: 0;\n  padding: 0;\n  color: red;\n  z-index: 0;\n  cursor: pointer;\n}\n.animal-container[data-v-8af2fa86] {\n  width: 100px;\n  height: 100px;\n  border-radius: 50px;\n}\nimg.animal-icon[data-v-8af2fa86] {\n  width: 75%;\n  height: 75%;\n}\n.btnColor svg[data-v-8af2fa86] {\n  display: none;\n}\n.btnColor .selected[data-v-8af2fa86] {\n  display: inherit !important;\n}", ""]);
 
 // exports
 
@@ -8586,7 +8620,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "input[type=date][data-v-a22b61ea]::-webkit-calendar-picker-indicator {\n  position: absolute;\n  left: 2%;\n  top: 30%;\n  width: 50px;\n  height: 20px;\n  margin: 0;\n  padding: 0;\n  color: red;\n  z-index: 0;\n  cursor: pointer;\n}\nimg.animal-icon[data-v-a22b61ea] {\n  width: 80px;\n  height: 80px;\n  border-radius: 50px;\n}\n.animal-icon.selected[data-v-a22b61ea] {\n  border: 4px solid #31348b;\n}\n.btnColor svg[data-v-a22b61ea] {\n  display: none;\n}\n.btnColor .selected[data-v-a22b61ea] {\n  display: inherit !important;\n}", ""]);
+exports.push([module.i, "input[type=date][data-v-a22b61ea]::-webkit-calendar-picker-indicator {\n  position: absolute;\n  left: 2%;\n  top: 30%;\n  width: 50px;\n  height: 20px;\n  margin: 0;\n  padding: 0;\n  color: red;\n  z-index: 0;\n  cursor: pointer;\n}\n.animal-container[data-v-a22b61ea] {\n  width: 100px;\n  height: 100px;\n  border-radius: 50px;\n}\nimg.animal-icon[data-v-a22b61ea] {\n  width: 75%;\n  height: 75%;\n}\n.btnColor svg[data-v-a22b61ea] {\n  display: none;\n}\n.btnColor .selected[data-v-a22b61ea] {\n  display: inherit !important;\n}", ""]);
 
 // exports
 
@@ -8738,7 +8772,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n.title[data-v-6143492a] { \n    font-size: 1.3rem;\n    font-weight: 600;\n}\n.fw-500[data-v-6143492a] {\n    font-weight : 500;\n}\nul[data-v-6143492a] {\n    list-style: none;\n    -webkit-padding-start : 0;\n            padding-inline-start : 0;\n}\n", ""]);
+exports.push([module.i, "\n.title[data-v-6143492a] { \n    font-size: 1.3rem;\n    font-weight: 400;\n}\n.fw-500[data-v-6143492a] {\n    font-weight : 500;\n}\n.fw-400[data-v-6143492a] {\n    font-weight : 400;\n}\nul[data-v-6143492a] {\n    list-style: none;\n    -webkit-padding-start : 0;\n            padding-inline-start : 0;\n}\n", ""]);
 
 // exports
 
@@ -8757,7 +8791,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.card-perfil[data-v-44bfcf8c]{\r\n    width: 50%;\r\n    border : none;\n}\n.card-perfil .card-body[data-v-44bfcf8c] {\r\n    border-radius : 12px;\r\n    height : 150px;\n}\n.card-backdrop.show[data-v-44bfcf8c] {\r\n    position : absolute;\r\n    top : 0;\r\n    left : 15px;\r\n    width : 85%;\r\n    height : 71%;\r\n    background-image : url('/images/edit-square.svg');\r\n    background-repeat : no-repeat;\r\n    background-size : 100% 20%;\r\n    background-position : center center;\r\n    border-radius : 12px;\r\n    -webkit-backdrop-filter : contrast(.4);\r\n            backdrop-filter : contrast(.4);\r\n    transition : -webkit-backdrop-filter 0.5s;\r\n    transition : backdrop-filter 0.5s;\r\n    transition : backdrop-filter 0.5s, -webkit-backdrop-filter 0.5s;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.card-perfil[data-v-44bfcf8c]{\r\n    width: 50%;\r\n    border : none;\n}\n.card-perfil .card-body[data-v-44bfcf8c] {\r\n    position: relative;\r\n    border-radius : 12px;\r\n    height : 75%;\n}\n.card-backdrop.show[data-v-44bfcf8c] {\r\n    position : absolute;\r\n    top : 0;\r\n    left : 0;\r\n    width : 100%;\r\n    height : 100%;\r\n    background-image : url('/images/edit-square.svg');\r\n    background-repeat : no-repeat;\r\n    background-size : 100% 20%;\r\n    background-position : center center;\r\n    border-radius : 12px;\r\n    -webkit-backdrop-filter : contrast(.4);\r\n            backdrop-filter : contrast(.4);\r\n    transition : -webkit-backdrop-filter 0.5s;\r\n    transition : backdrop-filter 0.5s;\r\n    transition : backdrop-filter 0.5s, -webkit-backdrop-filter 0.5s;\n}\n@media (min-width: 768px){\n.w-md-85[data-v-44bfcf8c] {\r\n        width : 85% !important;\n}\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -42033,14 +42067,25 @@ var render = function() {
             _c("span", { staticClass: "h4 bold ml-4" }, [_vm._v("Progreso")])
           ]),
           _vm._v(" "),
-          _vm._l(4, function(o) {
+          _vm._l(_vm.user.perfiles, function(estudiante) {
             return _c(
               "button",
               {
+                key: estudiante.id,
                 staticClass: "btn gray-back px-3 py-2 mr-3 mb-2",
-                staticStyle: { "border-radius": "50px" }
+                staticStyle: { "border-radius": "50px" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.seleccionarPerfil(estudiante)
+                  }
+                }
               },
-              [_c("span", { staticClass: "h5" }, [_vm._v("Christopher")])]
+              [
+                _c("span", { staticClass: "h5" }, [
+                  _vm._v(_vm._s(estudiante.apodo))
+                ])
+              ]
             )
           })
         ],
@@ -42048,172 +42093,426 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "progreso px-lg-4" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "row mt-3" }, [
-          _c(
-            "div",
-            { staticClass: "col-6 col-md-4 my-2 d-flex align-items-center" },
-            [
-              _c("div", { staticClass: "dropdown" }, [
-                _c(
-                  "span",
-                  {
-                    staticClass: "l-select dropdown-toggle",
-                    attrs: {
-                      href: "#",
-                      role: "button",
-                      id: "dropdownMenuLink",
-                      "data-toggle": "dropdown",
-                      "aria-haspopup": "true",
-                      "aria-expanded": "false"
-                    }
-                  },
-                  [
-                    _c("img", {
-                      staticClass: "flag-language",
-                      attrs: { src: "/images/fr.svg" }
-                    }),
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(_vm.paisSelected) +
-                        "\n                        "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "ul",
-                  {
-                    staticClass: "dropdown-menu",
-                    attrs: { "aria-labelledby": "dropdownMenuLink" }
-                  },
-                  [
+    _vm.perfilSelected
+      ? _c("div", { staticClass: "progreso px-lg-4" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "row mt-3" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "col-6 col-md-4 my-2 d-flex align-items-center"
+                },
+                [
+                  _c("div", { staticClass: "dropdown" }, [
                     _c(
-                      "li",
+                      "span",
                       {
-                        staticClass: "dropdown-item",
-                        attrs: { href: "#" },
-                        on: {
-                          click: function($event) {
-                            _vm.paisSelected = "Seleccione"
-                          }
+                        staticClass: "l-select dropdown-toggle",
+                        attrs: {
+                          href: "#",
+                          role: "button",
+                          id: "dropdownMenuLink",
+                          "data-toggle": "dropdown",
+                          "aria-haspopup": "true",
+                          "aria-expanded": "false"
                         }
                       },
                       [
+                        _c("img", {
+                          staticClass: "flag-language",
+                          attrs: { src: "/images/fr.svg" }
+                        }),
                         _vm._v(
-                          "\n                                Seleccione\n                            "
+                          "\n                            " +
+                            _vm._s(_vm.paisSelected) +
+                            "\n                        "
                         )
                       ]
                     ),
                     _vm._v(" "),
-                    _vm._l(3, function(i) {
-                      return _c(
-                        "li",
-                        {
-                          staticClass: "dropdown-item",
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.paisSelected = i
-                            }
-                          }
-                        },
-                        [
-                          _c("img", {
-                            staticClass: "flag-language",
-                            attrs: { src: "/images/fr.svg" }
-                          }),
-                          _vm._v(
-                            "\n                                " +
-                              _vm._s(i) +
-                              "\n                            "
-                          )
-                        ]
-                      )
-                    })
-                  ],
-                  2
-                )
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-6 col-md-4 my-2 d-flex align-items-center" },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "dropdown",
-                  staticStyle: { display: "relative" }
-                },
-                [
-                  _c(
-                    "span",
-                    {
-                      staticClass: "l-select months dropdown-toggle",
-                      attrs: {
-                        href: "#",
-                        role: "button",
-                        id: "dropdownMenuLink",
-                        "data-toggle": "dropdown",
-                        "aria-haspopup": "true",
-                        "aria-expanded": "false"
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(_vm.mesSelected) +
-                          "\n                        "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "ul",
-                    {
-                      staticClass: "dropdown-menu",
-                      attrs: { "aria-labelledby": "dropdownMenuLink" }
-                    },
-                    [
-                      _c(
-                        "li",
-                        {
-                          staticClass: "dropdown-item",
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.mesSelected = "Seleccione"
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Seleccione\n                            "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm._l(3, function(i) {
-                        return _c(
+                    _c(
+                      "ul",
+                      {
+                        staticClass: "dropdown-menu",
+                        attrs: { "aria-labelledby": "dropdownMenuLink" }
+                      },
+                      [
+                        _c(
                           "li",
                           {
                             staticClass: "dropdown-item",
                             attrs: { href: "#" },
                             on: {
                               click: function($event) {
-                                _vm.mesSelected = i
+                                _vm.paisSelected = "Seleccione"
                               }
                             }
                           },
                           [
                             _vm._v(
-                              "\n                                " +
-                                _vm._s(i) +
-                                "\n                            "
+                              "\n                                Seleccione\n                            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(3, function(i) {
+                          return _c(
+                            "li",
+                            {
+                              staticClass: "dropdown-item",
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  _vm.paisSelected = i
+                                }
+                              }
+                            },
+                            [
+                              _c("img", {
+                                staticClass: "flag-language",
+                                attrs: { src: "/images/fr.svg" }
+                              }),
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(i) +
+                                  "\n                            "
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "col-6 col-md-4 my-2 d-flex align-items-center"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "dropdown",
+                      staticStyle: { display: "relative" }
+                    },
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "l-select months dropdown-toggle",
+                          attrs: {
+                            href: "#",
+                            role: "button",
+                            id: "dropdownMenuLink",
+                            "data-toggle": "dropdown",
+                            "aria-haspopup": "true",
+                            "aria-expanded": "false"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(_vm.mesSelected) +
+                              "\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "ul",
+                        {
+                          staticClass: "dropdown-menu",
+                          attrs: { "aria-labelledby": "dropdownMenuLink" }
+                        },
+                        [
+                          _c(
+                            "li",
+                            {
+                              staticClass: "dropdown-item",
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  _vm.mesSelected = "Seleccione"
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                Seleccione\n                            "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(3, function(i) {
+                            return _c(
+                              "li",
+                              {
+                                staticClass: "dropdown-item",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.mesSelected = i
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                " +
+                                    _vm._s(i) +
+                                    "\n                            "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-12 col-md-4 my-2 ml-auto text-md-right" },
+                [
+                  _c(
+                    "button",
+                    { staticClass: "btn d-block d-md-inline gray-back" },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          attrs: {
+                            width: "24",
+                            height: "24",
+                            viewBox: "0 0 24 24",
+                            fill: "none",
+                            xmlns: "http://www.w3.org/2000/svg"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d: "M14.25 7.5L9.75 3L5.25 7.5",
+                              stroke: "#31348B",
+                              "stroke-width": "2",
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M18.75 21C16.3631 21 14.0739 20.0518 12.386 18.364C10.6982 16.6761 9.75 14.3869 9.75 12V3",
+                              stroke: "#31348B",
+                              "stroke-width": "2",
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round"
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "h5" }, [_vm._v("Exportar")])
+                    ]
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row mt-3" }, [
+              _c("div", { staticClass: "col-12" }, [
+                _c("div", { staticClass: "card gray-back" }, [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-12 col-lg-2" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "progress mx-auto",
+                            attrs: { "data-value": "50" }
+                          },
+                          [
+                            _vm._m(0),
+                            _vm._v(" "),
+                            _vm._m(1),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center"
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  { staticClass: "h2 font-weight-bold" },
+                                  [
+                                    _c(
+                                      "svg",
+                                      {
+                                        attrs: {
+                                          width: "47",
+                                          height: "52",
+                                          viewBox: "0 0 47 52",
+                                          fill: "none",
+                                          xmlns: "http://www.w3.org/2000/svg"
+                                        }
+                                      },
+                                      [
+                                        _c("path", {
+                                          attrs: {
+                                            "fill-rule": "evenodd",
+                                            "clip-rule": "evenodd",
+                                            d:
+                                              "M35.5176 0.0611203C35.1573 0.205662 35.1369 0.476563 35.0852 5.81739L35.0342 11.0826L31.9736 12.7403C30.2903 13.652 28.8785 14.3767 28.8364 14.3507C28.7942 14.3248 28.7597 14.2371 28.7597 14.1557C28.7597 13.8588 27.5451 11.6147 27.2134 11.2989C26.4089 10.5325 25.4238 10.4288 24.2446 10.9862C22.9466 11.6 22.3356 12.5063 22.4682 13.6212C22.5431 14.2511 23.6647 16.4454 24.1112 16.8358L24.4288 17.1134L24.1566 17.6558C23.7595 18.4468 23.311 20.029 23.3924 20.3516C23.4345 20.5187 23.5876 20.6798 23.8003 20.7807C24.0946 20.9205 24.1807 20.9236 24.4352 20.8032C24.6785 20.6882 24.7708 20.5314 24.9655 19.9022C25.3677 18.603 25.5131 18.2597 25.7892 17.9586C25.9414 17.7925 28.1814 16.5191 31.0042 14.9939C36.3958 12.0807 36.199 12.1533 35.8475 13.2069C35.5246 14.1746 34.9899 14.5904 30.9532 17.013C28.9331 18.2254 27.223 19.2887 27.1528 19.3761C27.0827 19.4633 27.0253 19.6827 27.0253 19.8635C27.0253 20.2615 27.4532 20.6526 27.8137 20.584C27.9445 20.5591 28.0424 20.5891 28.0383 20.6528C28.0342 20.7148 27.7473 21.5855 27.4006 22.5876L26.7702 24.4095L25.092 25.0983C24.169 25.4771 23.3961 25.7693 23.3743 25.7476C23.3524 25.7258 23.5066 25.0871 23.7168 24.3283C24.0356 23.1769 24.0795 22.9061 23.9819 22.693C23.7578 22.2032 22.9772 22.1354 22.6926 22.5811C22.6167 22.6999 22.2935 23.7113 21.9744 24.8286C21.3427 27.0404 21.3552 26.9413 21.1203 31.5834L21.0254 33.4625L19.3697 36.9161C18.4591 38.8155 17.6686 40.4268 17.6131 40.4966C17.5405 40.5878 17.0906 40.6236 16.0143 40.6236C14.6071 40.6236 14.4843 40.6395 13.9861 40.8867C12.8706 41.4401 12.5379 42.1767 12.5379 44.0927V45.3925L12.2762 45.2935C12.1235 45.2357 10.4645 45.1945 8.294 45.1945C4.14969 45.1945 4.14449 45.1952 3.42012 45.8851C2.72544 46.5466 2.64637 46.841 2.64382 48.775L2.64158 50.4764H1.56574C0.559372 50.4764 0.473569 50.4925 0.239425 50.7257C-0.0798082 51.0435 -0.0798082 51.4329 0.239425 51.7506L0.489791 52H23.33H46.1702L46.3921 51.765C46.6867 51.4526 46.6804 50.9803 46.3778 50.6972C46.1643 50.4976 46.0317 50.4764 45.0005 50.4764H43.8592V40.3388V30.2012L43.595 29.6733C43.4496 29.3828 43.1653 29.0095 42.963 28.8435C42.285 28.2871 41.9378 28.2314 39.148 28.2314H36.6155V21.6546V15.0777L37.0229 14.265C37.5054 13.3024 37.6709 12.4198 37.5399 11.5074C37.4268 10.7204 37.3096 10.5041 36.9237 10.3701C36.6231 10.2658 36.6155 10.2468 36.6155 9.59761V8.93209H41.3119C46.5667 8.93209 46.5462 8.93453 46.8631 8.26972C47.1832 7.59821 47.0084 7.29622 45.5939 6.07691C44.6618 5.27345 44.4016 4.99717 44.5041 4.91987C44.5782 4.864 45.1288 4.39026 45.7278 3.86704C46.977 2.77582 47.1737 2.42488 46.8807 1.81014C46.5618 1.14117 46.7499 1.16453 41.4362 1.13243L36.6155 1.10328V0.769201C36.6155 0.21521 36.0473 -0.151274 35.5176 0.0611203ZM44.6754 2.736C44.6754 2.79187 44.641 2.83839 44.5989 2.8393C44.5568 2.84032 44.1169 3.21737 43.6214 3.6773C42.8081 4.43221 42.7148 4.55694 42.6623 4.95979L42.6041 5.40601L43.6653 6.40795L44.7264 7.40999L40.6965 7.38378L36.6665 7.35768L36.639 5.12546C36.6238 3.89772 36.6339 2.83494 36.6612 2.76383C36.7248 2.59898 44.6754 2.57145 44.6754 2.736ZM26.2021 12.4506C26.5329 12.8694 27.3314 14.4886 27.3314 14.7408C27.3314 15.1028 27.0669 15.4085 26.5115 15.6887C25.9495 15.9722 25.5344 16.0082 25.2371 15.7994C25.1264 15.7217 24.7882 15.1567 24.4855 14.5441C23.8588 13.2755 23.852 13.0668 24.4243 12.6323C25.1593 12.0741 25.8489 12.0036 26.2021 12.4506ZM35.0852 22.2892V28.2314L34.8046 28.2324C34.4005 28.2338 33.5572 28.6538 33.1769 29.0431C32.5008 29.7352 32.4867 29.812 32.4536 32.98C32.437 34.5582 32.3911 35.8492 32.3515 35.8489C32.312 35.8486 32.1088 35.8012 31.9003 35.7435C31.5616 35.6498 31.5262 35.6092 31.5697 35.3632C31.7182 34.5249 32.1377 30.8386 32.14 30.3518C32.1441 29.5136 31.8667 29.0633 29.9476 26.7932L28.2595 24.7963L29.1784 22.0537L30.0973 19.3111L32.0046 18.1647C33.0536 17.5342 34.1414 16.8696 34.422 16.6879C34.7026 16.5061 34.9665 16.355 35.0086 16.3523C35.0508 16.3494 35.0852 19.0211 35.0852 22.2892ZM25.7435 29.8609C25.1859 32.888 25.0403 33.5175 24.828 33.8172C24.6892 34.0132 23.4855 35.6134 22.1531 37.3732C20.0313 40.1756 19.3735 40.9245 19.3735 40.5377C19.3735 40.4823 20.0643 38.9897 20.9085 37.2211C22.6717 33.5272 22.5419 34.0366 22.7466 30.009C22.8119 28.724 22.8945 27.659 22.9304 27.6422C23.2374 27.4979 26.3672 26.2311 26.3843 26.2441C26.3965 26.2533 26.1081 27.881 25.7435 29.8609ZM29.1214 28.186C30.5167 29.8383 30.5961 29.9614 30.5961 30.4728C30.5961 30.8585 30.174 34.4755 30.0309 35.3163C29.9854 35.5838 29.9272 35.6464 29.7243 35.6464C29.5866 35.6464 29.4725 35.6349 29.4709 35.621C29.4692 35.6071 29.3617 34.5671 29.2321 33.3102C29.0683 31.7221 28.9425 30.9214 28.82 30.6861C28.7135 30.4816 28.3891 30.186 28.0012 29.9398L27.3589 29.5321L27.4864 28.8563C27.5565 28.4847 27.6708 27.8404 27.7403 27.4247C27.8402 26.8258 27.8904 26.7002 27.9816 26.8206C28.0448 26.9041 28.5577 27.5185 29.1214 28.186ZM41.749 29.8685C41.8715 29.9308 42.0511 30.0795 42.1481 30.1986C42.3123 30.4005 42.3245 31.0954 42.3266 40.4458L42.3289 50.4764H38.1459H33.9629V48.1334C33.9629 45.3701 33.917 45.1995 33.1722 45.196C32.975 45.1951 32.758 45.2767 32.6366 45.3976C32.4439 45.5895 32.4325 45.7362 32.4325 48.0386V50.4764H28.1949H23.9572L23.9864 44.2041C24.0184 37.3165 23.9884 37.6312 24.6422 37.3224C25.1222 37.0956 31.3828 37.0971 31.8238 37.3241C32.3811 37.6111 32.4325 37.8553 32.4325 40.2169C32.4325 42.3564 32.433 42.36 32.683 42.6089C32.8207 42.746 33.0523 42.8582 33.1977 42.8582C33.3431 42.8582 33.5747 42.746 33.7124 42.6089L33.9629 42.3596V36.4026V30.4457L34.3098 30.1004L34.6567 29.755H38.0914C40.4201 29.755 41.5979 29.7916 41.749 29.8685ZM27.3434 31.3086C27.4725 31.4065 27.5532 31.8872 27.7139 33.5147C27.827 34.6592 27.9082 35.6085 27.8942 35.6242C27.8803 35.64 27.3147 35.64 26.6373 35.6242L25.4057 35.5956L25.903 34.9354C26.4417 34.2202 26.6012 33.7703 26.8838 32.1674C26.9799 31.6227 27.0854 31.1785 27.1183 31.1803C27.1514 31.1821 27.2526 31.2398 27.3434 31.3086ZM22.4342 40.1745V40.7413L22.1026 40.6706C21.9203 40.6317 21.7547 40.5851 21.7347 40.5671C21.6975 40.5335 22.3398 39.6078 22.4005 39.6078C22.419 39.6078 22.4342 39.8629 22.4342 40.1745ZM22.136 42.4441L22.4342 42.741V46.6087V50.4764H18.2512H14.0683V46.7114C14.0683 42.7951 14.0803 42.6768 14.5138 42.3272C14.7105 42.1685 15.0721 42.1515 18.2846 42.1494L21.8378 42.1472L22.136 42.4441ZM12.0334 46.8227C12.4465 47.0427 12.5379 47.4371 12.5379 48.9985V50.4764H8.35491H4.17193V48.8941V47.3119L4.47015 47.015L4.76837 46.7181H8.30278C10.5318 46.7181 11.9096 46.7567 12.0334 46.8227Z",
+                                            fill: "#31348B"
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(2)
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.perfilSelected
+      ? _c("div", { staticClass: "resultados px-lg-4" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "row mt-3" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-12" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "ul",
+                    { staticClass: "list-group list-group-flush flex-grow-1" },
+                    [
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _vm._l(2, function(o) {
+                        return _c(
+                          "li",
+                          { staticClass: "list-group-item py-1" },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "row justify-content-between align-items-center"
+                              },
+                              [
+                                _c("span", { staticClass: "col-12 col-md-5" }, [
+                                  _vm._v("Semana " + _vm._s(o))
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "col-9 col-md-5" },
+                                  _vm._l(5, function(i) {
+                                    return _c("span", { staticClass: "mr-4" }, [
+                                      i <= 3
+                                        ? _c(
+                                            "svg",
+                                            {
+                                              attrs: {
+                                                width: "20",
+                                                height: "20",
+                                                viewBox: "0 0 26 26",
+                                                fill: "none",
+                                                xmlns:
+                                                  "http://www.w3.org/2000/svg"
+                                              }
+                                            },
+                                            [
+                                              _c("rect", {
+                                                attrs: {
+                                                  width: "26",
+                                                  height: "26",
+                                                  rx: "13",
+                                                  fill: "#00A53F"
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("path", {
+                                                attrs: {
+                                                  d:
+                                                    "M19.6666 8L10.4999 17.1667L6.33325 13",
+                                                  stroke: "white",
+                                                  "stroke-width": "2",
+                                                  "stroke-linecap": "round",
+                                                  "stroke-linejoin": "round"
+                                                }
+                                              })
+                                            ]
+                                          )
+                                        : _c(
+                                            "svg",
+                                            {
+                                              attrs: {
+                                                width: "20",
+                                                height: "20",
+                                                viewBox: "0 0 26 26",
+                                                fill: "none",
+                                                xmlns:
+                                                  "http://www.w3.org/2000/svg"
+                                              }
+                                            },
+                                            [
+                                              _c("rect", {
+                                                attrs: {
+                                                  width: "26",
+                                                  height: "26",
+                                                  rx: "13",
+                                                  fill: "#B5B5BB"
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("path", {
+                                                attrs: {
+                                                  d:
+                                                    "M19.6668 8L10.5002 17.1667L6.3335 13",
+                                                  stroke: "white",
+                                                  "stroke-width": "2",
+                                                  "stroke-linecap": "round",
+                                                  "stroke-linejoin": "round"
+                                                }
+                                              })
+                                            ]
+                                          )
+                                    ])
+                                  }),
+                                  0
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass:
+                                      "col-3 col-md-2 h4 color-plomo d-flex justify-content-center align-items-center"
+                                  },
+                                  [_vm._v("8.0")]
+                                )
+                              ]
                             )
                           ]
                         )
@@ -42221,248 +42520,12 @@ var render = function() {
                     ],
                     2
                   )
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-12 col-md-4 my-2 ml-auto text-md-right" },
-            [
-              _c(
-                "button",
-                { staticClass: "btn d-block d-md-inline gray-back" },
-                [
-                  _c(
-                    "svg",
-                    {
-                      attrs: {
-                        width: "24",
-                        height: "24",
-                        viewBox: "0 0 24 24",
-                        fill: "none",
-                        xmlns: "http://www.w3.org/2000/svg"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          d: "M14.25 7.5L9.75 3L5.25 7.5",
-                          stroke: "#31348B",
-                          "stroke-width": "2",
-                          "stroke-linecap": "round",
-                          "stroke-linejoin": "round"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("path", {
-                        attrs: {
-                          d:
-                            "M18.75 21C16.3631 21 14.0739 20.0518 12.386 18.364C10.6982 16.6761 9.75 14.3869 9.75 12V3",
-                          stroke: "#31348B",
-                          "stroke-width": "2",
-                          "stroke-linecap": "round",
-                          "stroke-linejoin": "round"
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "h5" }, [_vm._v("Exportar")])
-                ]
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row mt-3" }, [
-          _c("div", { staticClass: "col-12" }, [
-            _c("div", { staticClass: "card gray-back" }, [
-              _c("div", { staticClass: "card-body" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-12 col-lg-2" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "progress mx-auto",
-                        attrs: { "data-value": "50" }
-                      },
-                      [
-                        _vm._m(0),
-                        _vm._v(" "),
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center"
-                          },
-                          [
-                            _c("div", { staticClass: "h2 font-weight-bold" }, [
-                              _c(
-                                "svg",
-                                {
-                                  attrs: {
-                                    width: "47",
-                                    height: "52",
-                                    viewBox: "0 0 47 52",
-                                    fill: "none",
-                                    xmlns: "http://www.w3.org/2000/svg"
-                                  }
-                                },
-                                [
-                                  _c("path", {
-                                    attrs: {
-                                      "fill-rule": "evenodd",
-                                      "clip-rule": "evenodd",
-                                      d:
-                                        "M35.5176 0.0611203C35.1573 0.205662 35.1369 0.476563 35.0852 5.81739L35.0342 11.0826L31.9736 12.7403C30.2903 13.652 28.8785 14.3767 28.8364 14.3507C28.7942 14.3248 28.7597 14.2371 28.7597 14.1557C28.7597 13.8588 27.5451 11.6147 27.2134 11.2989C26.4089 10.5325 25.4238 10.4288 24.2446 10.9862C22.9466 11.6 22.3356 12.5063 22.4682 13.6212C22.5431 14.2511 23.6647 16.4454 24.1112 16.8358L24.4288 17.1134L24.1566 17.6558C23.7595 18.4468 23.311 20.029 23.3924 20.3516C23.4345 20.5187 23.5876 20.6798 23.8003 20.7807C24.0946 20.9205 24.1807 20.9236 24.4352 20.8032C24.6785 20.6882 24.7708 20.5314 24.9655 19.9022C25.3677 18.603 25.5131 18.2597 25.7892 17.9586C25.9414 17.7925 28.1814 16.5191 31.0042 14.9939C36.3958 12.0807 36.199 12.1533 35.8475 13.2069C35.5246 14.1746 34.9899 14.5904 30.9532 17.013C28.9331 18.2254 27.223 19.2887 27.1528 19.3761C27.0827 19.4633 27.0253 19.6827 27.0253 19.8635C27.0253 20.2615 27.4532 20.6526 27.8137 20.584C27.9445 20.5591 28.0424 20.5891 28.0383 20.6528C28.0342 20.7148 27.7473 21.5855 27.4006 22.5876L26.7702 24.4095L25.092 25.0983C24.169 25.4771 23.3961 25.7693 23.3743 25.7476C23.3524 25.7258 23.5066 25.0871 23.7168 24.3283C24.0356 23.1769 24.0795 22.9061 23.9819 22.693C23.7578 22.2032 22.9772 22.1354 22.6926 22.5811C22.6167 22.6999 22.2935 23.7113 21.9744 24.8286C21.3427 27.0404 21.3552 26.9413 21.1203 31.5834L21.0254 33.4625L19.3697 36.9161C18.4591 38.8155 17.6686 40.4268 17.6131 40.4966C17.5405 40.5878 17.0906 40.6236 16.0143 40.6236C14.6071 40.6236 14.4843 40.6395 13.9861 40.8867C12.8706 41.4401 12.5379 42.1767 12.5379 44.0927V45.3925L12.2762 45.2935C12.1235 45.2357 10.4645 45.1945 8.294 45.1945C4.14969 45.1945 4.14449 45.1952 3.42012 45.8851C2.72544 46.5466 2.64637 46.841 2.64382 48.775L2.64158 50.4764H1.56574C0.559372 50.4764 0.473569 50.4925 0.239425 50.7257C-0.0798082 51.0435 -0.0798082 51.4329 0.239425 51.7506L0.489791 52H23.33H46.1702L46.3921 51.765C46.6867 51.4526 46.6804 50.9803 46.3778 50.6972C46.1643 50.4976 46.0317 50.4764 45.0005 50.4764H43.8592V40.3388V30.2012L43.595 29.6733C43.4496 29.3828 43.1653 29.0095 42.963 28.8435C42.285 28.2871 41.9378 28.2314 39.148 28.2314H36.6155V21.6546V15.0777L37.0229 14.265C37.5054 13.3024 37.6709 12.4198 37.5399 11.5074C37.4268 10.7204 37.3096 10.5041 36.9237 10.3701C36.6231 10.2658 36.6155 10.2468 36.6155 9.59761V8.93209H41.3119C46.5667 8.93209 46.5462 8.93453 46.8631 8.26972C47.1832 7.59821 47.0084 7.29622 45.5939 6.07691C44.6618 5.27345 44.4016 4.99717 44.5041 4.91987C44.5782 4.864 45.1288 4.39026 45.7278 3.86704C46.977 2.77582 47.1737 2.42488 46.8807 1.81014C46.5618 1.14117 46.7499 1.16453 41.4362 1.13243L36.6155 1.10328V0.769201C36.6155 0.21521 36.0473 -0.151274 35.5176 0.0611203ZM44.6754 2.736C44.6754 2.79187 44.641 2.83839 44.5989 2.8393C44.5568 2.84032 44.1169 3.21737 43.6214 3.6773C42.8081 4.43221 42.7148 4.55694 42.6623 4.95979L42.6041 5.40601L43.6653 6.40795L44.7264 7.40999L40.6965 7.38378L36.6665 7.35768L36.639 5.12546C36.6238 3.89772 36.6339 2.83494 36.6612 2.76383C36.7248 2.59898 44.6754 2.57145 44.6754 2.736ZM26.2021 12.4506C26.5329 12.8694 27.3314 14.4886 27.3314 14.7408C27.3314 15.1028 27.0669 15.4085 26.5115 15.6887C25.9495 15.9722 25.5344 16.0082 25.2371 15.7994C25.1264 15.7217 24.7882 15.1567 24.4855 14.5441C23.8588 13.2755 23.852 13.0668 24.4243 12.6323C25.1593 12.0741 25.8489 12.0036 26.2021 12.4506ZM35.0852 22.2892V28.2314L34.8046 28.2324C34.4005 28.2338 33.5572 28.6538 33.1769 29.0431C32.5008 29.7352 32.4867 29.812 32.4536 32.98C32.437 34.5582 32.3911 35.8492 32.3515 35.8489C32.312 35.8486 32.1088 35.8012 31.9003 35.7435C31.5616 35.6498 31.5262 35.6092 31.5697 35.3632C31.7182 34.5249 32.1377 30.8386 32.14 30.3518C32.1441 29.5136 31.8667 29.0633 29.9476 26.7932L28.2595 24.7963L29.1784 22.0537L30.0973 19.3111L32.0046 18.1647C33.0536 17.5342 34.1414 16.8696 34.422 16.6879C34.7026 16.5061 34.9665 16.355 35.0086 16.3523C35.0508 16.3494 35.0852 19.0211 35.0852 22.2892ZM25.7435 29.8609C25.1859 32.888 25.0403 33.5175 24.828 33.8172C24.6892 34.0132 23.4855 35.6134 22.1531 37.3732C20.0313 40.1756 19.3735 40.9245 19.3735 40.5377C19.3735 40.4823 20.0643 38.9897 20.9085 37.2211C22.6717 33.5272 22.5419 34.0366 22.7466 30.009C22.8119 28.724 22.8945 27.659 22.9304 27.6422C23.2374 27.4979 26.3672 26.2311 26.3843 26.2441C26.3965 26.2533 26.1081 27.881 25.7435 29.8609ZM29.1214 28.186C30.5167 29.8383 30.5961 29.9614 30.5961 30.4728C30.5961 30.8585 30.174 34.4755 30.0309 35.3163C29.9854 35.5838 29.9272 35.6464 29.7243 35.6464C29.5866 35.6464 29.4725 35.6349 29.4709 35.621C29.4692 35.6071 29.3617 34.5671 29.2321 33.3102C29.0683 31.7221 28.9425 30.9214 28.82 30.6861C28.7135 30.4816 28.3891 30.186 28.0012 29.9398L27.3589 29.5321L27.4864 28.8563C27.5565 28.4847 27.6708 27.8404 27.7403 27.4247C27.8402 26.8258 27.8904 26.7002 27.9816 26.8206C28.0448 26.9041 28.5577 27.5185 29.1214 28.186ZM41.749 29.8685C41.8715 29.9308 42.0511 30.0795 42.1481 30.1986C42.3123 30.4005 42.3245 31.0954 42.3266 40.4458L42.3289 50.4764H38.1459H33.9629V48.1334C33.9629 45.3701 33.917 45.1995 33.1722 45.196C32.975 45.1951 32.758 45.2767 32.6366 45.3976C32.4439 45.5895 32.4325 45.7362 32.4325 48.0386V50.4764H28.1949H23.9572L23.9864 44.2041C24.0184 37.3165 23.9884 37.6312 24.6422 37.3224C25.1222 37.0956 31.3828 37.0971 31.8238 37.3241C32.3811 37.6111 32.4325 37.8553 32.4325 40.2169C32.4325 42.3564 32.433 42.36 32.683 42.6089C32.8207 42.746 33.0523 42.8582 33.1977 42.8582C33.3431 42.8582 33.5747 42.746 33.7124 42.6089L33.9629 42.3596V36.4026V30.4457L34.3098 30.1004L34.6567 29.755H38.0914C40.4201 29.755 41.5979 29.7916 41.749 29.8685ZM27.3434 31.3086C27.4725 31.4065 27.5532 31.8872 27.7139 33.5147C27.827 34.6592 27.9082 35.6085 27.8942 35.6242C27.8803 35.64 27.3147 35.64 26.6373 35.6242L25.4057 35.5956L25.903 34.9354C26.4417 34.2202 26.6012 33.7703 26.8838 32.1674C26.9799 31.6227 27.0854 31.1785 27.1183 31.1803C27.1514 31.1821 27.2526 31.2398 27.3434 31.3086ZM22.4342 40.1745V40.7413L22.1026 40.6706C21.9203 40.6317 21.7547 40.5851 21.7347 40.5671C21.6975 40.5335 22.3398 39.6078 22.4005 39.6078C22.419 39.6078 22.4342 39.8629 22.4342 40.1745ZM22.136 42.4441L22.4342 42.741V46.6087V50.4764H18.2512H14.0683V46.7114C14.0683 42.7951 14.0803 42.6768 14.5138 42.3272C14.7105 42.1685 15.0721 42.1515 18.2846 42.1494L21.8378 42.1472L22.136 42.4441ZM12.0334 46.8227C12.4465 47.0427 12.5379 47.4371 12.5379 48.9985V50.4764H8.35491H4.17193V48.8941V47.3119L4.47015 47.015L4.76837 46.7181H8.30278C10.5318 46.7181 11.9096 46.7567 12.0334 46.8227Z",
-                                      fill: "#31348B"
-                                    }
-                                  })
-                                ]
-                              )
-                            ])
-                          ]
-                        )
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(2)
                 ])
               ])
             ])
           ])
         ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "resultados px-lg-4" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "row mt-3" }, [
-          _vm._m(3),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "ul",
-                { staticClass: "list-group list-group-flush flex-grow-1" },
-                [
-                  _vm._m(4),
-                  _vm._v(" "),
-                  _vm._l(2, function(o) {
-                    return _c("li", { staticClass: "list-group-item py-1" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "row justify-content-between align-items-center"
-                        },
-                        [
-                          _c("span", { staticClass: "col-12 col-md-5" }, [
-                            _vm._v("Semana " + _vm._s(o))
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "col-9 col-md-5" },
-                            _vm._l(5, function(i) {
-                              return _c("span", { staticClass: "mr-4" }, [
-                                i <= 3
-                                  ? _c(
-                                      "svg",
-                                      {
-                                        attrs: {
-                                          width: "20",
-                                          height: "20",
-                                          viewBox: "0 0 26 26",
-                                          fill: "none",
-                                          xmlns: "http://www.w3.org/2000/svg"
-                                        }
-                                      },
-                                      [
-                                        _c("rect", {
-                                          attrs: {
-                                            width: "26",
-                                            height: "26",
-                                            rx: "13",
-                                            fill: "#00A53F"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("path", {
-                                          attrs: {
-                                            d:
-                                              "M19.6666 8L10.4999 17.1667L6.33325 13",
-                                            stroke: "white",
-                                            "stroke-width": "2",
-                                            "stroke-linecap": "round",
-                                            "stroke-linejoin": "round"
-                                          }
-                                        })
-                                      ]
-                                    )
-                                  : _c(
-                                      "svg",
-                                      {
-                                        attrs: {
-                                          width: "20",
-                                          height: "20",
-                                          viewBox: "0 0 26 26",
-                                          fill: "none",
-                                          xmlns: "http://www.w3.org/2000/svg"
-                                        }
-                                      },
-                                      [
-                                        _c("rect", {
-                                          attrs: {
-                                            width: "26",
-                                            height: "26",
-                                            rx: "13",
-                                            fill: "#B5B5BB"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("path", {
-                                          attrs: {
-                                            d:
-                                              "M19.6668 8L10.5002 17.1667L6.3335 13",
-                                            stroke: "white",
-                                            "stroke-width": "2",
-                                            "stroke-linecap": "round",
-                                            "stroke-linejoin": "round"
-                                          }
-                                        })
-                                      ]
-                                    )
-                              ])
-                            }),
-                            0
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              staticClass:
-                                "col-3 col-md-2 h4 color-plomo d-flex justify-content-center align-items-center"
-                            },
-                            [_vm._v("8.0")]
-                          )
-                        ]
-                      )
-                    ])
-                  })
-                ],
-                2
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -42625,7 +42688,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "account-overview col-xs-12 col-sm-12 col-md-12 col-lg-4 d-flex flex-column justify-content-center text-center"
+            "account-overview col-xs-12 col-sm-12 col-md-12 col-lg-4 d-flex flex-column text-center"
         },
         [
           _c("div", { staticClass: "my-4" }, [
@@ -43514,10 +43577,11 @@ var render = function() {
           ? _c(
               "p",
               { staticClass: "card-text" },
-              _vm._l(3, function(i) {
+              _vm._l(_vm.miscursostotales, function(curso) {
                 return _c("img", {
+                  key: curso.curso.id,
                   staticClass: "flag-language mx-1",
-                  attrs: { src: "/images/es.svg" }
+                  attrs: { src: curso.idioma.src }
                 })
               }),
               0
@@ -43530,91 +43594,117 @@ var render = function() {
             staticClass: "collapse",
             attrs: { id: "collapse" + this.perfil.id }
           },
-          _vm._l(3, function(i) {
-            return _c("div", { staticClass: "row mt-3" }, [
+          _vm._l(_vm.miscursostotales, function(curs) {
+            return _c("div", { key: curs.curso.id, staticClass: "row mt-3" }, [
               _c("div", { staticClass: "col-12" }, [
                 _c("img", {
                   staticClass: "flag-language mx-1",
-                  attrs: { src: "/images/es.svg" }
+                  attrs: { src: curs.idioma.src }
                 }),
                 _vm._v(" "),
-                _c("span", [_vm._v("Curso de Español")])
+                _c("span", [_vm._v("Curso de " + _vm._s(curs.idioma.idioma))])
               ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-7 py-3 d-flex justify-content-around" },
-                _vm._l(5, function(i) {
-                  return _c("span", [
-                    i <= 3
-                      ? _c(
-                          "svg",
-                          {
-                            attrs: {
-                              width: "26",
-                              height: "26",
-                              viewBox: "0 0 26 26",
-                              fill: "none",
-                              xmlns: "http://www.w3.org/2000/svg"
-                            }
-                          },
-                          [
-                            _c("rect", {
-                              attrs: {
-                                width: "26",
-                                height: "26",
-                                rx: "13",
-                                fill: "#00A53F"
+              curs.curso.modulos.length > 0
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "col-7 py-3 d-flex justify-content-between"
+                    },
+                    [
+                      curs.curso.modulos[0].clases.length > 0
+                        ? _c(
+                            "span",
+                            {
+                              staticClass:
+                                "col-12  py-3 d-flex justify-content-between"
+                            },
+                            _vm._l(
+                              curs.curso.modulos[0].clases[0].actividades,
+                              function(actividad) {
+                                return _c("span", { key: actividad.id }, [
+                                  _vm.perfil.misactividades.some(function(evt) {
+                                    return (
+                                      evt.pivot.actividad_id === actividad.id
+                                    )
+                                  })
+                                    ? _c(
+                                        "svg",
+                                        {
+                                          attrs: {
+                                            width: "26",
+                                            height: "26",
+                                            viewBox: "0 0 26 26",
+                                            fill: "none",
+                                            xmlns: "http://www.w3.org/2000/svg"
+                                          }
+                                        },
+                                        [
+                                          _c("rect", {
+                                            attrs: {
+                                              width: "26",
+                                              height: "26",
+                                              rx: "13",
+                                              fill: "#00A53F"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("path", {
+                                            attrs: {
+                                              d:
+                                                "M19.6666 8L10.4999 17.1667L6.33325 13",
+                                              stroke: "white",
+                                              "stroke-width": "2",
+                                              "stroke-linecap": "round",
+                                              "stroke-linejoin": "round"
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    : _c(
+                                        "svg",
+                                        {
+                                          attrs: {
+                                            width: "26",
+                                            height: "26",
+                                            viewBox: "0 0 26 26",
+                                            fill: "none",
+                                            xmlns: "http://www.w3.org/2000/svg"
+                                          }
+                                        },
+                                        [
+                                          _c("rect", {
+                                            attrs: {
+                                              width: "26",
+                                              height: "26",
+                                              rx: "13",
+                                              fill: "white"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("path", {
+                                            attrs: {
+                                              d:
+                                                "M19.6666 8L10.4999 17.1667L6.33325 13",
+                                              stroke: "white",
+                                              "stroke-width": "2",
+                                              "stroke-linecap": "round",
+                                              "stroke-linejoin": "round"
+                                            }
+                                          })
+                                        ]
+                                      )
+                                ])
                               }
-                            }),
-                            _vm._v(" "),
-                            _c("path", {
-                              attrs: {
-                                d: "M19.6666 8L10.4999 17.1667L6.33325 13",
-                                stroke: "white",
-                                "stroke-width": "2",
-                                "stroke-linecap": "round",
-                                "stroke-linejoin": "round"
-                              }
-                            })
-                          ]
-                        )
-                      : _c(
-                          "svg",
-                          {
-                            attrs: {
-                              width: "26",
-                              height: "26",
-                              viewBox: "0 0 26 26",
-                              fill: "none",
-                              xmlns: "http://www.w3.org/2000/svg"
-                            }
-                          },
-                          [
-                            _c("rect", {
-                              attrs: {
-                                width: "26",
-                                height: "26",
-                                rx: "13",
-                                fill: "white"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("path", {
-                              attrs: {
-                                d: "M19.6666 8L10.4999 17.1667L6.33325 13",
-                                stroke: "white",
-                                "stroke-width": "2",
-                                "stroke-linecap": "round",
-                                "stroke-linejoin": "round"
-                              }
-                            })
-                          ]
-                        )
-                  ])
-                }),
-                0
-              ),
+                            ),
+                            0
+                          )
+                        : _vm._e()
+                    ]
+                  )
+                : _c("div", {
+                    staticClass: "col-7 py-3 d-flex justify-content-between"
+                  }),
               _vm._v(" "),
               _vm._m(1, true)
             ])
@@ -43692,7 +43782,7 @@ var render = function() {
       _c("div", { staticClass: "card-body" }, [
         _c(
           "ul",
-          { staticClass: "list-group" },
+          { staticClass: "list-group px-4" },
           [
             _vm._m(0),
             _vm._v(" "),
@@ -43706,7 +43796,7 @@ var render = function() {
                       "div",
                       {
                         staticClass:
-                          "text-center idioma-title text-md-left col-12 col-md-3 col-lg-3"
+                          "text-center idioma-title text-md-left col-12 col-md-3 col-lg-4"
                       },
                       [
                         _vm._v(
@@ -43719,14 +43809,20 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "div",
-                      { attrs: { clasS: "col-12 col-md-9 col-lg-9 p-0" } },
+                      { attrs: { clasS: "col-12 col-md-9 col-lg-8" } },
                       [
-                        _c("PlanCard", {
-                          attrs: { plan: plan },
-                          on: { mostrarasignacion: _vm.mostrarasignacion }
-                        })
-                      ],
-                      1
+                        _c(
+                          "div",
+                          { staticClass: "row" },
+                          [
+                            _c("PlanCard", {
+                              attrs: { plan: plan },
+                              on: { mostrarasignacion: _vm.mostrarasignacion }
+                            })
+                          ],
+                          1
+                        )
+                      ]
                     )
                   ])
                 ]
@@ -43963,7 +44059,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "d-none d-md-flex flex-fill py-3" }, [
-      _c("div", { attrs: { clasS: "col-3 p-0" } }, [
+      _c("div", { attrs: { clasS: "col-4 p-0" } }, [
         _c("span", { staticClass: "h5 text-dark flex-fill" }, [
           _vm._v(
             "\n                            Idiomas\n                        "
@@ -43971,7 +44067,7 @@ var staticRenderFns = [
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-9 p-0" }, [
+      _c("div", { staticClass: "col-8 p-0" }, [
         _c("span", { staticClass: "h5 text-dark flex-fill" }, [
           _vm._v(
             "\n                            Membresías    \n                        "
@@ -44014,7 +44110,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "card plan-card p-0 m-1 col-sm-12 col-md-5 col-lg-5" },
+    { staticClass: "card plan-card p-0 mx-2 col-12 col-md-5 col-lg-5" },
     [
       _c("div", { staticClass: "card-body" }, [
         _c("div", { staticClass: "d-flex justify-content-end" }, [
@@ -44048,7 +44144,7 @@ var render = function() {
         _c("h1", { staticClass: "m-0 text-center" }, [
           _c(
             "span",
-            { staticClass: "mx-auto badge badge-pill badge-primary" },
+            { staticClass: "mx-auto badge badge-pill badge-primary text-wrap" },
             [
               _vm._v(
                 "\n                " +
@@ -44146,7 +44242,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "m-4", staticStyle: { color: "black" } }, [
-    _c("h2", { staticClass: "mb-3 fw-500" }, [
+    _c("h2", { staticClass: "mb-4 fw-400" }, [
       _vm._v(
         _vm._s(
           new Date(_vm.pago.created_at).toLocaleDateString("es-ES", {
@@ -44165,7 +44261,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "ul",
-            { staticClass: "fw-500" },
+            { staticClass: "fw-400" },
             _vm._l(_vm.pago.membresia.cursos, function(curso) {
               return _c("li", { key: curso.id }, [_vm._v(_vm._s(curso.titulo))])
             }),
@@ -44176,7 +44272,7 @@ var render = function() {
         _c("div", { staticClass: "col-6 col-md-4 col-lg-3" }, [
           _c("h3", { staticClass: "title mb-3" }, [_vm._v("Precio")]),
           _vm._v(" "),
-          _c("span", { staticClass: "fw-500" }, [
+          _c("span", { staticClass: "fw-400" }, [
             _vm._v("$ " + _vm._s(_vm.pago.precio) + " " + _vm._s(_vm.pago.tipo))
           ])
         ]),
@@ -44184,7 +44280,7 @@ var render = function() {
         _c("div", { staticClass: "col-6 col-md-4 col-lg-3" }, [
           _c("h3", { staticClass: "title mb-3" }, [_vm._v("Detalles de pago")]),
           _vm._v(" "),
-          _c("p", { staticClass: "fw-500" }, [
+          _c("p", { staticClass: "fw-400" }, [
             _vm._v(
               "\n                    Suscribción hasta el " +
                 _vm._s(
@@ -44210,7 +44306,7 @@ var render = function() {
           [
             _c("h3", { staticClass: "title mb-3" }, [_vm._v("Pago")]),
             _vm._v(" "),
-            _c("span", { staticClass: "fw-500" }, [
+            _c("span", { staticClass: "fw-400" }, [
               _vm._v("$" + _vm._s(_vm.pago.precio))
             ]),
             _vm._v(" "),
@@ -44962,13 +45058,20 @@ var render = function() {
           { staticClass: "row mt-5 justify-content-md-center" },
           [
             _vm._l(_vm.user.perfiles, function(perf) {
-              return _c("PerfilCard", {
-                key: perf.id,
-                attrs: { mode: _vm.selectMode, perfil: perf }
-              })
+              return _c(
+                "div",
+                { staticClass: "col-6 col-md-3 d-flex justify-content-center" },
+                [
+                  _c("PerfilCard", {
+                    key: perf.id,
+                    attrs: { mode: _vm.selectMode, perfil: perf }
+                  })
+                ],
+                1
+              )
             }),
             _vm._v(" "),
-            _c("div", { staticClass: "w-50 col-sm-6 col-md-3 col-lg-2" }, [
+            _c("div", { staticClass: "col-6 col-md-3" }, [
               _c("div", {
                 staticClass: "card-body",
                 staticStyle: {
@@ -44996,65 +45099,18 @@ var render = function() {
             "div",
             {
               staticClass:
-                "col-sm-12 col-md-12 col-lg-5 text-center mt-3 divEdit-profile"
+                "col-sm-12 col-md-12 col-lg-5 text-center divEdit-profile"
             },
             [
               !_vm.selectMode
                 ? _c(
                     "button",
                     {
-                      staticClass: "btn btn-outline-secondary",
+                      staticClass: "btn btn-outline-secondary px-4",
                       on: { click: _vm.editMode }
                     },
                     [
-                      _c("span", { staticClass: "h3" }, [
-                        _c(
-                          "svg",
-                          {
-                            attrs: {
-                              width: "22",
-                              height: "22",
-                              viewBox: "0 0 22 22",
-                              fill: "none",
-                              xmlns: "http://www.w3.org/2000/svg"
-                            }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                d:
-                                  "M9.8895 0.791016H5.9807C2.76605 0.791016 0.750488 3.06279 0.750488 6.27896V14.9549C0.750488 18.1711 2.75664 20.4429 5.9807 20.4429H15.2054C18.4305 20.4429 20.4367 18.1711 20.4367 14.9549V10.7516",
-                                stroke: "#606060",
-                                "stroke-width": "1.5",
-                                "stroke-linecap": "round",
-                                "stroke-linejoin": "round"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("path", {
-                              attrs: {
-                                "fill-rule": "evenodd",
-                                "clip-rule": "evenodd",
-                                d:
-                                  "M7.1039 9.2762L14.9163 1.47787C15.8896 0.507378 17.4671 0.507378 18.4404 1.47787L19.7126 2.74785C20.6859 3.71938 20.6859 5.29511 19.7126 6.2656L11.8626 14.1015C11.4371 14.5262 10.8601 14.7652 10.2579 14.7652H6.3418L6.44007 10.8206C6.4547 10.2404 6.69201 9.68735 7.1039 9.2762Z",
-                                stroke: "#606060",
-                                "stroke-width": "1.5",
-                                "stroke-linecap": "round",
-                                "stroke-linejoin": "round"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("path", {
-                              attrs: {
-                                d: "M13.7295 2.68262L18.5029 7.44739",
-                                stroke: "#606060",
-                                "stroke-width": "1.5",
-                                "stroke-linecap": "round",
-                                "stroke-linejoin": "round"
-                              }
-                            })
-                          ]
-                        ),
+                      _c("span", { staticClass: "h5" }, [
                         _vm._v(
                           "\n                    Editar perfiles\n                "
                         )
@@ -45115,7 +45171,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "card-perfil col-sm-6 col-md-3 col-lg-2",
+      staticClass: "card-perfil w-100",
       on: {
         click: function($event) {
           $event.preventDefault()
@@ -45127,22 +45183,30 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "card-body p-2",
+          staticClass:
+            "card-body p-2 d-flex justify-content-center align-items-center",
           style: "background-color:" + _vm.perfil.color + ";"
         },
         [
+          _c("div", { staticClass: "card-backdrop" }),
+          _vm._v(" "),
           _c("caraAvatar", {
-            staticClass: "w-100 h-100",
+            staticClass: "w-75 h-75",
             attrs: { viewBox: "0 0 250 250", perfil: _vm.perfil }
           })
         ],
         1
       ),
       _vm._v(" "),
-      _c("h2", { staticClass: "text-center my-3 bold" }, [
-        _vm._v(_vm._s(_vm.perfil.apodo))
+      _c("center", { staticClass: "mt-3" }, [
+        _c(
+          "span",
+          { staticClass: "bold", staticStyle: { "font-size": "1.3rem" } },
+          [_vm._v(_vm._s(_vm.perfil.apodo))]
+        )
       ])
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = []
@@ -45198,7 +45262,7 @@ var render = function() {
                           "label",
                           {
                             staticClass:
-                              "d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-4 h5 text-dark"
+                              "d-flex align-items-center pl-0 col-12 col-md-12 col-lg-4 h6 text-dark"
                           },
                           [_vm._v("Imagen de perfil")]
                         ),
@@ -45247,7 +45311,7 @@ var render = function() {
                                         "label",
                                         {
                                           staticClass:
-                                            "btn btn-sm btn-primary-red h5",
+                                            "btn btn-sm btn-primary-red h6",
                                           staticStyle: {
                                             "border-radius": "50px"
                                           },
@@ -45304,7 +45368,7 @@ var render = function() {
                           "label",
                           {
                             staticClass:
-                              "d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark",
+                              "d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h6 text-dark",
                             attrs: { for: "email" }
                           },
                           [
@@ -45359,7 +45423,7 @@ var render = function() {
                           "label",
                           {
                             staticClass:
-                              "d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark",
+                              "d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h6 text-dark",
                             attrs: { for: "email" }
                           },
                           [
@@ -45414,7 +45478,7 @@ var render = function() {
                           "label",
                           {
                             staticClass:
-                              "d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark",
+                              "d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h6 text-dark",
                             attrs: { for: "email" }
                           },
                           [
@@ -45485,7 +45549,7 @@ var render = function() {
                           "label",
                           {
                             staticClass:
-                              "d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark",
+                              "d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h6 text-dark",
                             attrs: { for: "password" }
                           },
                           [_vm._v("Contraseña")]
@@ -45534,7 +45598,7 @@ var render = function() {
                           "label",
                           {
                             staticClass:
-                              "d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark",
+                              "d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h6 text-dark",
                             attrs: { for: "newPassword" }
                           },
                           [_vm._v("Nueva contraseña")]
@@ -45583,7 +45647,7 @@ var render = function() {
                           "label",
                           {
                             staticClass:
-                              "d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark",
+                              "d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h6 text-dark",
                             attrs: { for: "passwordConfirm" }
                           },
                           [_vm._v("Confirmar nueva contraseña")]
@@ -45779,7 +45843,7 @@ var render = function() {
       _c(
         "div",
         {
-          class: ["col-sm-12", _vm.tabnivel === 2 ? "col-md-6 col-lg-6" : null]
+          class: ["col-sm-12", _vm.tabnivel === 2 ? "col-md-6 col-lg-9" : null]
         },
         [
           _c(
@@ -45986,15 +46050,8 @@ var render = function() {
                         [
                           _c(
                             "div",
-                            {
-                              staticClass:
-                                "input-primary col-xs-12 col-sm-12 col-md-6"
-                            },
+                            { staticClass: "input-primary col-12 col-md-4" },
                             [
-                              _c("div", {
-                                staticClass: "input-group-prepend pl-3 bg-red"
-                              }),
-                              _vm._v(" "),
                               _c("input", {
                                 directives: [
                                   {
@@ -46054,19 +46111,39 @@ var render = function() {
                                   staticClass: "col text-center"
                                 },
                                 [
-                                  _c("img", {
-                                    staticClass: "animal-icon mb-2",
-                                    attrs: { src: "" + animal.cara },
-                                    on: {
-                                      click: function($event) {
-                                        $event.preventDefault()
-                                        return _vm.seleccionarAnimal(
-                                          animal.id,
-                                          $event
-                                        )
+                                  _c(
+                                    "div",
+                                    {
+                                      class: [
+                                        "animal-container mb-2 d-flex",
+                                        _vm.perfil.animal === animal.id
+                                          ? "selected"
+                                          : null
+                                      ],
+                                      style: {
+                                        "background-color":
+                                          _vm.perfil.animal === animal.id
+                                            ? _vm.perfil.color
+                                            : ""
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          $event.preventDefault()
+                                          return _vm.seleccionarAnimal(
+                                            animal.id,
+                                            $event
+                                          )
+                                        }
                                       }
-                                    }
-                                  }),
+                                    },
+                                    [
+                                      _c("img", {
+                                        staticClass:
+                                          "animal-icon mx-auto my-auto",
+                                        attrs: { src: "" + animal.cara }
+                                      })
+                                    ]
+                                  ),
                                   _vm._v(" "),
                                   _c("span", { staticClass: "d-block" }, [
                                     _vm._v(_vm._s(animal.animal))
@@ -46080,52 +46157,78 @@ var render = function() {
                           _c(
                             "div",
                             { staticClass: "row justify-content-around my-4" },
-                            _vm._l(_vm.colores, function(col) {
-                              return _c(
-                                "button",
-                                {
-                                  key: col,
-                                  staticClass: "btnColor",
-                                  style:
-                                    "background-color:" +
-                                    col +
-                                    ";border:none;width:30px;height:30px;border-radius:50px;",
-                                  on: {
-                                    click: function($event) {
-                                      $event.preventDefault()
-                                      return _vm.seleccionarColor(col, $event)
-                                    }
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "svg",
-                                    {
-                                      attrs: {
-                                        width: "20",
-                                        height: "20",
-                                        viewBox: "0 0 20 20",
-                                        fill: "none",
-                                        xmlns: "http://www.w3.org/2000/svg"
-                                      }
-                                    },
-                                    [
-                                      _c("path", {
-                                        attrs: {
-                                          d:
-                                            "M16.6666 5L7.49992 14.1667L3.33325 10",
-                                          stroke: "white",
-                                          "stroke-width": "2",
-                                          "stroke-linecap": "round",
-                                          "stroke-linejoin": "round"
-                                        }
-                                      })
-                                    ]
-                                  )
-                                ]
-                              )
-                            }),
-                            0
+                            [
+                              _c("div", { staticClass: "col-12 col-lg-8" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "row justify-content-between"
+                                  },
+                                  _vm._l(_vm.colores, function(col) {
+                                    return _c(
+                                      "div",
+                                      {
+                                        key: col,
+                                        staticClass: "col-2 text-center"
+                                      },
+                                      [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btnColor",
+                                            style:
+                                              "background-color:" +
+                                              col +
+                                              ";border:none;width:30px;height:30px;border-radius:50px;",
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                                return _vm.seleccionarColor(
+                                                  col,
+                                                  $event
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c(
+                                              "svg",
+                                              {
+                                                class:
+                                                  _vm.perfil.color === col
+                                                    ? "selected"
+                                                    : "",
+                                                attrs: {
+                                                  width: "20",
+                                                  height: "20",
+                                                  viewBox: "0 0 20 20",
+                                                  fill: "none",
+                                                  xmlns:
+                                                    "http://www.w3.org/2000/svg"
+                                                }
+                                              },
+                                              [
+                                                _c("path", {
+                                                  attrs: {
+                                                    d:
+                                                      "M16.6666 5L7.49992 14.1667L3.33325 10",
+                                                    stroke: "white",
+                                                    "stroke-width": "2",
+                                                    "stroke-linecap": "round",
+                                                    "stroke-linejoin": "round"
+                                                  }
+                                                })
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  }),
+                                  0
+                                )
+                              ])
+                            ]
                           ),
                           _vm._v(" "),
                           _vm._m(0)
@@ -46142,39 +46245,19 @@ var render = function() {
                     class: [
                       "text-center",
                       _vm.tabnivel === 0
-                        ? "col-xs-12 col-sm-12 col-md-6"
+                        ? "col-12 col-lg-6"
                         : _vm.tabnivel === 2
-                        ? "col-xs-12 col-sm-12 col-md-12"
-                        : "col-xs-12 col-sm-12 col-md-16"
+                        ? "col-12 col-lg-6"
+                        : "col-12 col-lg-4"
                     ]
                   },
                   [
-                    _vm.tabnivel === 0
-                      ? _c(
-                          "button",
-                          {
-                            staticClass:
-                              "btn mx-2 transparent-button color-plomo",
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.regresar()
-                              }
-                            }
-                          },
-                          [
-                            _c("span", { staticClass: "h6" }, [
-                              _vm._v("Omitir")
-                            ])
-                          ]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
                     _vm.tabnivel >= 1
                       ? _c(
                           "button",
                           {
-                            staticClass: "btn mx-2 w-35 btn-secondary",
+                            staticClass:
+                              "btn mx-2 col-5 col-md-5 bg-gray text-white",
                             on: {
                               click: function($event) {
                                 $event.preventDefault()
@@ -46194,7 +46277,8 @@ var render = function() {
                       ? _c(
                           "button",
                           {
-                            staticClass: "btn mx-2 btn-primary-red px-4",
+                            staticClass:
+                              "btn mx-2 col-5 col-md-5 btn-primary-red px-4",
                             on: {
                               click: function($event) {
                                 $event.preventDefault()
@@ -46208,16 +46292,39 @@ var render = function() {
                       ? _c(
                           "button",
                           {
-                            staticClass: "btn mx-2 btn-primary-red px-4",
+                            staticClass:
+                              "btn mx-2 col-5 col-md-5 btn-primary-red px-4",
                             attrs: { type: "submit" },
                             on: {
                               click: function($event) {
                                 $event.preventDefault()
-                                return _vm.enviar()
+                                return _vm.editar()
                               }
                             }
                           },
                           [_vm._v("Siguiente")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm.tabnivel === 0
+                      ? _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn my-3 transparent-button color-plomo",
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.regresar()
+                              }
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "h5" }, [
+                              _vm._v("Omitir")
+                            ])
+                          ]
                         )
                       : _vm._e()
                   ]
@@ -46290,7 +46397,7 @@ var render = function() {
       _c(
         "div",
         {
-          class: ["col-sm-12", _vm.tabnivel === 2 ? "col-md-6 col-lg-6" : null]
+          class: ["col-sm-12", _vm.tabnivel === 2 ? "col-md-6 col-lg-9" : null]
         },
         [
           _c(
@@ -46511,15 +46618,8 @@ var render = function() {
                         [
                           _c(
                             "div",
-                            {
-                              staticClass:
-                                "input-primary col-xs-12 col-sm-12 col-md-6"
-                            },
+                            { staticClass: "input-primary col-12 col-md-4" },
                             [
-                              _c("div", {
-                                staticClass: "input-group-prepend pl-3 bg-red"
-                              }),
-                              _vm._v(" "),
                               _c("input", {
                                 directives: [
                                   {
@@ -46576,25 +46676,42 @@ var render = function() {
                                 "div",
                                 {
                                   key: animal.id,
-                                  staticClass: "col text-center "
+                                  staticClass: "col text-center"
                                 },
                                 [
-                                  _c("img", {
-                                    class:
-                                      _vm.perfil.animal === animal.id
-                                        ? "animal-icon mb-2 selected"
-                                        : "animal-icon mb-2",
-                                    attrs: { src: "" + animal.cara },
-                                    on: {
-                                      click: function($event) {
-                                        $event.preventDefault()
-                                        return _vm.seleccionarAnimal(
-                                          animal.id,
-                                          $event
-                                        )
+                                  _c(
+                                    "div",
+                                    {
+                                      class: [
+                                        "animal-container mb-2 d-flex",
+                                        _vm.perfil.animal === animal.id
+                                          ? "selected"
+                                          : null
+                                      ],
+                                      style: {
+                                        "background-color":
+                                          _vm.perfil.animal === animal.id
+                                            ? _vm.perfil.color
+                                            : ""
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          $event.preventDefault()
+                                          return _vm.seleccionarAnimal(
+                                            animal.id,
+                                            $event
+                                          )
+                                        }
                                       }
-                                    }
-                                  }),
+                                    },
+                                    [
+                                      _c("img", {
+                                        staticClass:
+                                          "animal-icon mx-auto my-auto",
+                                        attrs: { src: "" + animal.cara }
+                                      })
+                                    ]
+                                  ),
                                   _vm._v(" "),
                                   _c("span", { staticClass: "d-block" }, [
                                     _vm._v(_vm._s(animal.animal))
@@ -46607,57 +46724,79 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "div",
-                            { staticClass: "row justify-content-around my-4" },
-                            _vm._l(_vm.colores, function(col) {
-                              return _c(
-                                "button",
-                                {
-                                  key: col,
-                                  staticClass: "btnColor",
-                                  style:
-                                    "background-color:" +
-                                    col +
-                                    ";border:none;width:30px;height:30px;border-radius:50px;",
-                                  on: {
-                                    click: function($event) {
-                                      $event.preventDefault()
-                                      return _vm.seleccionarColor(col, $event)
-                                    }
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "svg",
-                                    {
-                                      class:
-                                        _vm.perfil.color === col
-                                          ? "selected"
-                                          : "",
-                                      attrs: {
-                                        width: "20",
-                                        height: "20",
-                                        viewBox: "0 0 20 20",
-                                        fill: "none",
-                                        xmlns: "http://www.w3.org/2000/svg"
-                                      }
-                                    },
-                                    [
-                                      _c("path", {
-                                        attrs: {
-                                          d:
-                                            "M16.6666 5L7.49992 14.1667L3.33325 10",
-                                          stroke: "white",
-                                          "stroke-width": "2",
-                                          "stroke-linecap": "round",
-                                          "stroke-linejoin": "round"
-                                        }
-                                      })
-                                    ]
-                                  )
-                                ]
-                              )
-                            }),
-                            0
+                            { staticClass: "row justify-content-center my-4" },
+                            [
+                              _c("div", { staticClass: "col-12 col-lg-8" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "row justify-content-between"
+                                  },
+                                  _vm._l(_vm.colores, function(col) {
+                                    return _c(
+                                      "div",
+                                      {
+                                        key: col,
+                                        staticClass: "col-2 text-center"
+                                      },
+                                      [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btnColor",
+                                            style:
+                                              "background-color:" +
+                                              col +
+                                              ";border:none;width:30px;height:30px;border-radius:50px;",
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                                return _vm.seleccionarColor(
+                                                  col,
+                                                  $event
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c(
+                                              "svg",
+                                              {
+                                                class:
+                                                  _vm.perfil.color === col
+                                                    ? "selected"
+                                                    : "",
+                                                attrs: {
+                                                  width: "20",
+                                                  height: "20",
+                                                  viewBox: "0 0 20 20",
+                                                  fill: "none",
+                                                  xmlns:
+                                                    "http://www.w3.org/2000/svg"
+                                                }
+                                              },
+                                              [
+                                                _c("path", {
+                                                  attrs: {
+                                                    d:
+                                                      "M16.6666 5L7.49992 14.1667L3.33325 10",
+                                                    stroke: "white",
+                                                    "stroke-width": "2",
+                                                    "stroke-linecap": "round",
+                                                    "stroke-linejoin": "round"
+                                                  }
+                                                })
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  }),
+                                  0
+                                )
+                              ])
+                            ]
                           ),
                           _vm._v(" "),
                           _c(
@@ -46716,39 +46855,19 @@ var render = function() {
                     class: [
                       "text-center",
                       _vm.tabnivel === 0
-                        ? "col-xs-12 col-sm-12 col-md-6"
+                        ? "col-12 col-lg-6"
                         : _vm.tabnivel === 2
-                        ? "col-xs-12 col-sm-12 col-md-12"
-                        : "col-xs-12 col-sm-12 col-md-16"
+                        ? "col-12 col-lg-6"
+                        : "col-12 col-lg-4"
                     ]
                   },
                   [
-                    _vm.tabnivel === 0
-                      ? _c(
-                          "button",
-                          {
-                            staticClass:
-                              "btn mx-2 transparent-button color-plomo",
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.regresar()
-                              }
-                            }
-                          },
-                          [
-                            _c("span", { staticClass: "h6" }, [
-                              _vm._v("Omitir")
-                            ])
-                          ]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
                     _vm.tabnivel >= 1
                       ? _c(
                           "button",
                           {
-                            staticClass: "btn mx-2 w-35 btn-secondary",
+                            staticClass:
+                              "btn mx-2 col-5 col-md-5 bg-gray text-white",
                             on: {
                               click: function($event) {
                                 $event.preventDefault()
@@ -46768,7 +46887,8 @@ var render = function() {
                       ? _c(
                           "button",
                           {
-                            staticClass: "btn mx-2 btn-primary-red px-4",
+                            staticClass:
+                              "btn mx-2 col-5 col-md-5 btn-primary-red px-4",
                             on: {
                               click: function($event) {
                                 $event.preventDefault()
@@ -46782,7 +46902,8 @@ var render = function() {
                       ? _c(
                           "button",
                           {
-                            staticClass: "btn mx-2 btn-primary-red px-4",
+                            staticClass:
+                              "btn mx-2 col-5 col-md-5 btn-primary-red px-4",
                             attrs: { type: "submit" },
                             on: {
                               click: function($event) {
@@ -46792,6 +46913,28 @@ var render = function() {
                             }
                           },
                           [_vm._v("Siguiente")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm.tabnivel === 0
+                      ? _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn my-3 transparent-button color-plomo",
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.regresar()
+                              }
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "h5" }, [
+                              _vm._v("Omitir")
+                            ])
+                          ]
                         )
                       : _vm._e()
                   ]

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Padres;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PadresViewController extends Controller
 {
@@ -45,9 +46,30 @@ class PadresViewController extends Controller
 
     public function detallespadrecursos()
     {
-        $user=Auth::user()->load(['perfiles'=>function($q)
+        $now = Carbon::now();
+        $user=Auth::user()->load(['perfiles'=>function($q) use($now)
         {
-            return $q->with('avatar','planes');
+            return $q->with(['avatar','misactividades','planes'=>function($q) use($now)
+            {
+                return $q->with(['plan'=>function($j) use($now)
+                {
+                    return $j->with(['membresia'=>function($z) use($now)
+                    {
+                        return $z->with(['cursos'=>function($m) use($now)
+                        {
+                            return $m->with(['modulos'=>function($c) use($now)
+                            {
+                                return $c->where('inicia', '<=', $now)
+                                    ->where('finaliza', '>', $now)->with(['clases'=>function($a) use($now)
+                                {
+                                    return $a->where('inicia', '<=', $now)
+                                    ->where('finaliza', '>', $now)->with('actividades');
+                                }]);
+                            }]);
+                        },'idioma']);
+                    }]);
+                }]);
+            }]);
         },'planes'=>function($q)
         {
             return $q->with(['membresia'=>function($k)
@@ -55,14 +77,34 @@ class PadresViewController extends Controller
                 return $k->with('idioma','cursos');
             }]);
         }]);
+     
         return view('Padres.Detalles.Cursos.index',compact('user'));
     }
 
     public function detallesProgreso()
     {
+     
         $user=Auth::user()->load(['perfiles'=>function($q)
         {
-            return $q->with('avatar','planes');
+            return $q->with(['avatar','misactividades','planes'=>function($q)
+            {
+                return $q->with(['plan'=>function($j)
+                {
+                    return $j->with(['membresia'=>function($z)
+                    {
+                        return $z->with(['cursos'=>function($m)
+                        {
+                            return $m->with(['modulos'=>function($c)
+                            {
+                                return $c->with(['clases'=>function($a)
+                                {
+                                    return $a->with('actividades');
+                                }]);
+                            }]);
+                        },'idioma']);
+                    }]);
+                }]);
+            }]);
         },'planes'=>function($q)
         {
             return $q->with(['membresia'=>function($k)

@@ -54394,11 +54394,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "h2 mt-5 courses-title" }, [
+    return _c("span", { staticClass: "h2 my-5 courses-title" }, [
       _c("span", { staticClass: "courses-span" }, [
         _vm._v("Explora  y aprende del mundo")
       ]),
-      _vm._v(" con Lingua Planet")
+      _vm._v(" con "),
+      _c("br"),
+      _vm._v("Lingua Planet")
     ])
   }
 ]

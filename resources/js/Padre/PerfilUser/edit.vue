@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="row mt-4 justify-content-center">
-            <div :class="[ 'col-sm-12', tabnivel === 2 ? 'col-md-6 col-lg-6' : null ]">
+            <div :class="[ 'col-sm-12', tabnivel === 2 ? 'col-md-6 col-lg-9' : null ]">
                 <form @submit.prevent="editar" id="edit-perfil">
                     <div class="tab-content" id="myTabContent">
                         <div v-if="tabnivel===0" class="tab-pane fade show active " id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -43,15 +43,7 @@
                             </div>
                         </div>
                         <div  v-if="tabnivel===1" class="tab-pane fade d-flex justify-content-center" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <div class="input-primary col-xs-12 col-sm-12 col-md-6">
-                                <div class="input-group-prepend pl-3 bg-red">
-                                    <!-- <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M16 2V6" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M8 2V6" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M3 10H21" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg> -->
-                                </div>
+                            <div class="input-primary col-12 col-md-4">
                                 <input
                                     type="date"
                                     class="form-input"
@@ -62,19 +54,27 @@
                                 >
                             </div>                            
                         </div>
-                        <div  v-if="tabnivel===2" class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <div v-if="tabnivel===2" class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                             <div class="row justify-content-center mb-2">
-                                <div class="col text-center " v-for="animal in animals" :key="animal.id">
-                                    <img :class="perfil.animal===animal.id ? 'animal-icon mb-2 selected' : 'animal-icon mb-2'" :src="`${animal.cara}`" @click.prevent="seleccionarAnimal(animal.id, $event)">
+                                <div class="col text-center" v-for="animal in animals" :key="animal.id">
+                                    <div :class="['animal-container mb-2 d-flex', perfil.animal===animal.id ? 'selected' : null ]" @click.prevent="seleccionarAnimal(animal.id, $event)" :style="{ 'background-color' : perfil.animal===animal.id ? perfil.color : '' }">
+                                        <img class="animal-icon mx-auto my-auto" :src="`${animal.cara}`">    
+                                    </div>
                                     <span class="d-block">{{animal.animal}}</span>    
                                 </div>
                             </div>
-                            <div class="row justify-content-around my-4">
-                                <button v-for="col in colores" :key="col" class="btnColor" :style="`background-color:${col};border:none;width:30px;height:30px;border-radius:50px;`" @click.prevent="seleccionarColor(col, $event)">
-                                    <svg :class="perfil.color===col ? 'selected' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M16.6666 5L7.49992 14.1667L3.33325 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
+                            <div class="row justify-content-center my-4">
+                                <div class="col-12 col-lg-8">
+                                    <div class="row justify-content-between">
+                                        <div class="col-2 text-center" v-for="col in colores" :key="col">
+                                            <button class="btnColor" :style="`background-color:${col};border:none;width:30px;height:30px;border-radius:50px;`" @click.prevent="seleccionarColor(col, $event)">
+                                                <svg :class="perfil.color===col ? 'selected' : ''" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M16.6666 5L7.49992 14.1667L3.33325 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row justify-content-center">
                                 <div class="col-xs-12 col-sm-12 col-md-8">
@@ -84,12 +84,11 @@
                         </div>
                     </div>
                     <div class="row justify-content-center mt-3">
-                        <div :class="[ 'text-center', tabnivel === 0 ? 'col-xs-12 col-sm-12 col-md-6' : tabnivel === 2 ? 'col-xs-12 col-sm-12 col-md-12' : 'col-xs-12 col-sm-12 col-md-16' ]">
-                          
-                            <button v-if="tabnivel===0" class="btn mx-2 transparent-button color-plomo" @click.prevent="regresar()"><span class="h6">Omitir</span></button> 
-                            <button v-if="tabnivel>=1" class="btn mx-2 w-35 btn-secondary" @click.prevent="regresar()"><span class="h6">Regresar</span></button> 
-                            <button v-if="tabnivel!=2" class="btn mx-2 btn-primary-red px-4" @click.prevent="siguiente()">Siguiente</button>
-                            <button v-else-if="tabnivel===2" class="btn mx-2 btn-primary-red px-4" type="submit" @click.prevent="editar()">Siguiente</button>
+                        <div :class="[ 'text-center', tabnivel === 0 ? 'col-12 col-lg-6' : tabnivel === 2 ? 'col-12 col-lg-6' : 'col-12 col-lg-4' ]">
+                            <button v-if="tabnivel>=1" class="btn mx-2 col-5 col-md-5 bg-gray text-white" @click.prevent="regresar()"><span class="h6">Regresar</span></button> 
+                            <button v-if="tabnivel!=2" class="btn mx-2 col-5 col-md-5 btn-primary-red px-4" @click.prevent="siguiente()">Siguiente</button>
+                            <button v-else-if="tabnivel===2" class="btn mx-2 col-5 col-md-5 btn-primary-red px-4" type="submit" @click.prevent="editar()">Siguiente</button>
+                            <br/><button v-if="tabnivel===0" class="btn my-3 transparent-button color-plomo" @click.prevent="regresar()"><span class="h5">Omitir</span></button> 
                         </div>
                     </div>
                 </form>
@@ -183,13 +182,16 @@
                 this.perfil.hobby=value;
             },
             seleccionarAnimal(value, e){
-                document.querySelector('.animal-icon.selected')?.classList.toggle('selected');
+                document.querySelector('.animal-container.selected').style.removeProperty('background-color');
+                document.querySelector('.animal-container.selected')?.classList.toggle('selected');
                 e.currentTarget.classList.toggle('selected');
+                document.querySelector('.animal-container.selected').style.backgroundColor = this.perfil.color;
                 this.perfil.animal=value;
             },
             seleccionarColor(value, e){
                 document.querySelector('svg.selected')?.classList.toggle('selected');
                 e.currentTarget.firstChild.classList.toggle('selected');
+                document.querySelector('.animal-container.selected').style.backgroundColor = value;
                 this.perfil.color=value;
             },
             async editar() {
@@ -229,14 +231,15 @@
         cursor: pointer;
     }
 
-    img.animal-icon {
-        width : 80px;
-        height : 80px;
+    .animal-container {
+        width : 100px;
+        height : 100px;
         border-radius : 50px;
     }
 
-    .animal-icon.selected {
-        border : 4px solid #31348b;
+    img.animal-icon {
+        width : 75%;
+        height : 75%;
     }
 
     .btnColor svg {

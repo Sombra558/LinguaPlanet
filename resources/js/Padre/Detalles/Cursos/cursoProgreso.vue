@@ -11,12 +11,12 @@
                     </a>
                     <span class="h4 bold ml-4">Progreso</span>
                 </div>
-                <button v-for="o in 4" class="btn gray-back px-3 py-2 mr-3 mb-2" style="border-radius : 50px;">
-                    <span class="h5">Christopher</span>
+                <button v-for="estudiante in user.perfiles" :key="estudiante.id" class="btn gray-back px-3 py-2 mr-3 mb-2" @click.prevent="seleccionarPerfil(estudiante) " style="border-radius : 50px;">
+                    <span class="h5">{{estudiante.apodo}}</span>
                 </button>                    
             </div>
         </div>
-        <div class="progreso px-lg-4">
+        <div v-if="perfilSelected" class="progreso px-lg-4">
             <div class="col-12">
                 <div class="row mt-3">
                     <div class="col-6 col-md-4 my-2 d-flex align-items-center">
@@ -110,7 +110,7 @@
                 </div>
             </div>
         </div>        
-        <div class="resultados px-lg-4">
+        <div  v-if="perfilSelected" class="resultados px-lg-4">
             <div class="col-12">
                 <div class="row mt-3">
                     <div class="col-12 mb-3 px-4">
@@ -163,6 +163,7 @@ import PerfilCard from './perfilCard';
             return {
                 paisSelected : 'Seleccione',
                 mesSelected : 'Seleccione',  
+                perfilSelected: null,
             }            
         },
         components: {
@@ -184,6 +185,11 @@ import PerfilCard from './perfilCard';
 
             function percentageToDegrees(percentage) {
                 return percentage / 100 * 360;
+            }
+        },
+        methods: {
+            seleccionarPerfil(value) {
+                this.perfilSelected=value;
             }
         },
     }

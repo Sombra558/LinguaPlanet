@@ -3,7 +3,7 @@
 Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
 	Route::get('/', 'Padres\PadresViewController@home')->name('home');
 
-	Route::get('/detalles-avances/cursos', 'Padres\PadresViewController@detallespadrecursos');
+	Route::get('/detalles-avances/cursos', 'Padres\PadresViewController@detallespadrecursos')->name('padre.detalles-avances');
 	Route::get('/detalles-avances/progreso', 'Padres\PadresViewController@detallesProgreso')->name('padre.pagos');
 	Route::get('/detalles-avance-individual/cursos', 'Padres\PadresViewController@detalleIndividualpadrecursos');
 	Route::get('/detalles-pagos/membresias', 'Padres\PadresViewController@detallespadremembresias')->name('padre.pagos');
@@ -13,9 +13,10 @@ Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
 	Route::post('/actualizar-perfil/{id}', 'Padres\PerfilController@update')->name('update-perfil');
 	Route::post('/actualizar-password', 'Padres\PerfilController@updatecontrasena');
 	Route::post('/actualizar-avatar/{id}', 'Padres\PerfilEstudiante@guardaravatar')->name('update-avatar');
-	Route::resource('/perfil-user', 'Padres\PerfilEstudiante');
 	Route::post('/perfil-user/{id}', 'Padres\PerfilEstudiante@updateperfil');
 	Route::post('/asignar-plan', 'Padres\PerfilEstudiante@asignarplan');
+
+	Route::resource('/perfil-user', 'Padres\PerfilEstudiante');
 	   
 	Route::group([ 'prefix' => 'app/{id}/{apodo}', 'middleware' => ['HasPerfilPadre'] ], function() {
 	    Route::get('/', 'Padres\PerfilEstudiante@previewshow')->name('student.home');
