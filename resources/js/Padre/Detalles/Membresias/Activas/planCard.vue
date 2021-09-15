@@ -1,5 +1,5 @@
 <template>
-    <div class="card plan-card p-0 m-1 col-sm-12 col-md-5 col-lg-5">
+    <div class="card plan-card p-0 mx-2 col-12 col-md-5 col-lg-5">
         <div class="card-body">
             <div class="d-flex justify-content-end">
                 <a class="color-plomo" :href="`/home/membresia/${plan.id}/editar`">
@@ -12,7 +12,7 @@
                 </a>                
             </div>
             <h1 class="m-0 text-center">
-                <span class="mx-auto badge badge-pill badge-primary">
+                <span class="mx-auto badge badge-pill badge-primary text-wrap">
                     {{plan.nombre}}
                 </span>
             </h1>

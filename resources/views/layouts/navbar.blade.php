@@ -32,30 +32,28 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 @guest
+                    <li class="nav-item mx-2">
+                        <a class="nav-link btn-nav-signIn" href="{{ route('login') }}">{{ __('Sign in') }}</a>
+                    </li>
                     @if(Route::has('register'))
-                        <li class="nav-item nav-item-register">
+                        <li class="nav-item mx-2 nav-item-register">
                             <a class="nav-link btn-nav-signUp" href="{{ route('register') }}">{{ __('Get Start') }}</a>
                         </li>
                     @endif
-                    <li class="nav-item mx-3">
-                        <a class="nav-link btn-nav-signIn" href="{{ route('login') }}">{{ __('Sign in') }}</a>
-                    </li>
-                    <li class="nav-item" >
+                    <li class="nav-item mx-2 col-5">
                         @php
-                        $banderaselected="/img/Banderas/argentina.svg";
-                                 foreach($idiomas as $idioma){
-                                     if(session()->get('locale') == $idioma->diminutivo){
-                                        $banderaselected=$idioma->src;
-                                     }
-                                 }
-
+                            $banderaselected="/img/Banderas/argentina.svg";
+                            foreach($idiomas as $idioma){
+                                if(session()->get('locale') == $idioma->diminutivo){
+                                    $banderaselected=$idioma->src;
+                                }
+                            }
                         @endphp
                         <div class="contenedor-padre">
-                            <img class="banderaselected" src="{{$banderaselected}}" alt="badera">
-                            <select class="col-10 form-control changeLang">
+                            <img class="mx-2 banderaselected" src="{{$banderaselected}}" alt="badera">
+                            <select class="mx-2 form-control changeLang">
                                 @foreach($idiomas as $idioma)   
-                            
-                                    <option value="{{$idioma->diminutivo}}" {{ session()->get('locale') == $idioma->diminutivo ? 'selected' : '' }}>{{$idioma->diminutivo}}</option>
+                                    <option value="{{$idioma->diminutivo}}" @if(session()->get('locale') == $idioma->diminutivo) selected @endif>{{$idioma->diminutivo}}</option>
                                 @endforeach
                             </select>
                         </div>

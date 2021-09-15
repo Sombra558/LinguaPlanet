@@ -18,7 +18,7 @@
                             <div class="tab-pane fade show active" id="pills-general-info" role="tabpanel" aria-labelledby="pills-general-info-tab">
                                 <div class="col-12 m-0">
                                     <div class="form-group row mb-4">
-                                        <label class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-4 h5 text-dark">Imagen de perfil</label>
+                                        <label class="d-flex align-items-center pl-0 col-12 col-md-12 col-lg-4 h6 text-dark">Imagen de perfil</label>
                                         <div class="col-sm-12 col-md-12 col-lg-8 d-flex flex-column flex-md-row align-items-center justify-content-between">
                                             <img v-if="user.img" class="img-profile mb-3" id="imgprev" :src="'/storage/'+user.img" alt="user-img">
                                             <div v-else class="globe-profile align-self-center my-3">
@@ -26,7 +26,7 @@
                                             </div>
                                             <div class="d-flex flex-fill">
                                                 <div class="flex-fill text-center w-80">
-                                                <label for="assetsFieldHandle" class="btn btn-sm btn-primary-red h5" v-if="this.filelist == null" style="border-radius : 50px;">
+                                                <label for="assetsFieldHandle" class="btn btn-sm btn-primary-red h6" v-if="this.filelist == null" style="border-radius : 50px;">
                                                     <span class="h6">Elegir una nueva imagen</span>
                                                 </label>
                                                 <span class="arrastre d-block text-center" style="font-family: 'TitilliumWeb-Regular'; ">
@@ -48,7 +48,7 @@
                                         >                                    
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label for="email" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark">
+                                        <label for="email" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h6 text-dark">
                                             Nombre del usuario
                                         </label>
                                         <div class="col-sm-12 col-md-12 col-lg-9 pl-0">
@@ -56,7 +56,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label for="email" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark">
+                                        <label for="email" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h6 text-dark">
                                             Apellido del usuario
                                         </label>
                                         <div class="col-sm-12 col-md-12 col-lg-9 pl-0">
@@ -64,7 +64,7 @@
                                         </div>
                                     </div>
                                      <div class="form-group row mb-4">
-                                        <label for="email" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark">
+                                        <label for="email" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h6 text-dark">
                                             Correo electrónico
                                         </label>
                                         <div class="col-sm-12 col-md-12 col-lg-9 pl-0">
@@ -76,7 +76,7 @@
                             <div class="tab-pane fade" id="pills-security" role="tabpanel" aria-labelledby="pills-security-tab">
                                 <div class="col-12 m-0">
                                     <div class="form-group row mb-4">
-                                        <label for="password" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark">Contraseña</label>
+                                        <label for="password" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h6 text-dark">Contraseña</label>
                                         <div class="col-sm-12 col-md-12 col-lg-9 pl-0">
                                             <input 
                                                 v-model="newcont.password" 
@@ -89,7 +89,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label for="newPassword" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark">Nueva contraseña</label>
+                                        <label for="newPassword" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h6 text-dark">Nueva contraseña</label>
                                         <div class="col-sm-12 col-md-12 col-lg-9 pl-0">
                                             <input 
                                                 id="newPassword" 
@@ -102,7 +102,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label for="passwordConfirm" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h5 text-dark">Confirmar nueva contraseña</label>
+                                        <label for="passwordConfirm" class="d-flex align-items-center pl-0 col-sm-12 col-md-12 col-lg-3 h6 text-dark">Confirmar nueva contraseña</label>
                                         <div class="col-sm-12 col-md-12 col-lg-9 pl-0">
                                             <input  
                                                 id="passwordConfirm" 
@@ -259,6 +259,7 @@
         font-size: 1.2rem;
     }
     .nav-link {
+        font-size: 1rem;
         color : #606060;
     }
     .nav-link.active {
