@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Padres;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\PerfilEstudiante\PerfilEstudianteUser;
 use Carbon\Carbon;
 
 class PadresViewController extends Controller
@@ -28,20 +29,32 @@ class PadresViewController extends Controller
         return view('Padres.Home.home',compact('user'));
     }
     
-    public function detalleIndividualpadrecursos()
+    public function detalleIndividualpadrecursos($id)
     {
-        $user=Auth::user()->load(['perfiles'=>function($q)
+        
+        $now = Carbon::now();
+        $perfil=PerfilEstudianteUser::find($id)->load(['avatar','misactividades','planes'=>function($q) use($now)
         {
-            return $q->with('avatar','planes');
-        },'planes'=>function($q)
-        {
-            return $q->with(['membresia'=>function($k)
+            return $q->with(['plan'=>function($j) use($now)
             {
-                return $k->with('idioma','cursos');
+                return $j->with(['membresia'=>function($z) use($now)
+                {
+                    return $z->with(['cursos'=>function($m) use($now)
+                    {
+                        return $m->with(['modulos'=>function($c) use($now)
+                        {
+                            return $c->where('inicia', '<=', $now)
+                                ->where('finaliza', '>', $now)->with(['clases'=>function($a) use($now)
+                            {
+                                return $a->where('inicia', '<=', $now)
+                                ->where('finaliza', '>', $now)->with('actividades');
+                            }]);
+                        }]);
+                    },'idioma']);
+                }]);
             }]);
         }]);
-        
-        return view('Padres.Detalles.Cursos.individual',compact('user'));
+        return view('Padres.Detalles.Cursos.individual',compact('perfil'));
     }
 
     public function detallespadrecursos()

@@ -4,11 +4,21 @@
             <img class="w-100" src="/images/home-student.svg">
         </a>
         <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura'" style="height: 85%;">
-				  <iframe width="100%"
+				<video @ended="onEnd()" controls width="100%" height="100%">
+
+					<source src="/images/recurso/prueba.webm"
+							type="video/webm">
+
+					<source src="/images/recurso/prueba.mp4"
+							type="video/mp4">
+
+					Sorry, your browser doesn't support embedded videos.
+				</video>
+				  <!--<iframe width="100%"
 	                height="100%" :src="actividad.recurso + '?autoplay=0'"
 	                webkitallowfullscreen mozallowfullscreen allowfullscreen
 	                autoplay="0"
-	        ></iframe>
+	        ></iframe>-->
         </div>
 		<div v-else class="d-flex justify-content-center" :style="{'height': !openbook ? '100%' : '85%'}">
 			<section v-if="actividad.tipo==='Libros'" class="content-pdf d-flex">
@@ -91,7 +101,8 @@
 					muted: true,
 					autoplay: true,
 				},
-			playerReady: false
+				playerReady: false,
+				visto:false,
 				
 			}
 		},
@@ -116,6 +127,7 @@
 				return this.currentPage === this.pageCount;
 				
 			},
+			
 		
 		},
 		methods: {
@@ -125,6 +137,15 @@
 			anterior(){				
 				this.currentPage--;
 			},
+			onEnd: function () {
+				var url = `/home/app/${this.perfil.id}/${this.perfil.apodo}/clase/${this.actividad.clase_id}/actividad/${this.actividad.id}/realizada`;
+					axios.get(url).then((result) => {
+						console.log(result.data);
+					}).catch((err) => {
+						
+					});
+			}
+			
 		
 		},
     }

@@ -1986,6 +1986,13 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _progresoCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./progresoCard */ "./resources/js/Padre/Detalles/Cursos/progresoCard.vue");
 /* harmony import */ var _perfilCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./perfilCard */ "./resources/js/Padre/Detalles/Cursos/perfilCard.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2141,6 +2148,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2150,7 +2166,10 @@ __webpack_require__.r(__webpack_exports__);
     return {
       paisSelected: 'Seleccione',
       mesSelected: 'Seleccione',
-      perfilSelected: null
+      perfilSelected: null,
+      perfilcursosgenerales: [],
+      idiomasg: [],
+      meses: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'diciembre']
     };
   },
   components: {
@@ -2175,9 +2194,28 @@ __webpack_require__.r(__webpack_exports__);
       return percentage / 100 * 360;
     }
   },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])(["filteredCursos"])),
   methods: {
     seleccionarPerfil: function seleccionarPerfil(value) {
-      this.perfilSelected = value;
+      var self = this;
+      self.perfilcursosgenerales = [], self.$store.commit("setCursos", self.perfilcursosgenerales);
+      self.perfilSelected = value;
+      self.perfilSelected.planes.forEach(function (plan) {
+        if (self.idiomasg.length > 0) {
+          if (self.idiomasg.some(function (evt) {
+            return evt.id === plan.plan.membresia.idioma.id;
+          }) != true) {
+            self.idiomasS.push(plan.plan.membresia.idioma);
+          }
+        } else {
+          self.idiomasg.push(plan.plan.membresia.idioma);
+        }
+
+        plan.plan.membresia.cursos.forEach(function (curso) {
+          self.perfilcursosgenerales.push(curso);
+        });
+      });
+      self.$store.commit("setCursos", self.perfilcursosgenerales);
     }
   }
 });
@@ -2391,17 +2429,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "cursos-detalle-padre",
-  props: ['user'],
+  props: ['perfil'],
+  data: function data() {
+    return {
+      miscursostotales: []
+    };
+  },
   components: {
     ProgesoCard: _progresoCard__WEBPACK_IMPORTED_MODULE_0__["default"],
     PerfilCard: _perfilCard__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.perfil.planes.forEach(function (plan) {
+      plan.plan.membresia.cursos.forEach(function (curso) {
+        var temp = {
+          curso: curso,
+          idioma: plan.plan.membresia.idioma
+        };
+
+        _this.miscursostotales.push(temp);
+      });
+    });
   }
 });
 
@@ -42095,115 +42149,22 @@ var render = function() {
     _vm._v(" "),
     _vm.perfilSelected
       ? _c("div", { staticClass: "progreso px-lg-4" }, [
-          _c("div", { staticClass: "col-12" }, [
-            _c("div", { staticClass: "row mt-3" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "col-6 col-md-4 my-2 d-flex align-items-center"
-                },
-                [
-                  _c("div", { staticClass: "dropdown" }, [
-                    _c(
-                      "span",
-                      {
-                        staticClass: "l-select dropdown-toggle",
-                        attrs: {
-                          href: "#",
-                          role: "button",
-                          id: "dropdownMenuLink",
-                          "data-toggle": "dropdown",
-                          "aria-haspopup": "true",
-                          "aria-expanded": "false"
-                        }
-                      },
-                      [
-                        _c("img", {
-                          staticClass: "flag-language",
-                          attrs: { src: "/images/fr.svg" }
-                        }),
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.paisSelected) +
-                            "\n                        "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "ul",
-                      {
-                        staticClass: "dropdown-menu",
-                        attrs: { "aria-labelledby": "dropdownMenuLink" }
-                      },
-                      [
-                        _c(
-                          "li",
-                          {
-                            staticClass: "dropdown-item",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                _vm.paisSelected = "Seleccione"
-                              }
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                Seleccione\n                            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _vm._l(3, function(i) {
-                          return _c(
-                            "li",
-                            {
-                              staticClass: "dropdown-item",
-                              attrs: { href: "#" },
-                              on: {
-                                click: function($event) {
-                                  _vm.paisSelected = i
-                                }
-                              }
-                            },
-                            [
-                              _c("img", {
-                                staticClass: "flag-language",
-                                attrs: { src: "/images/fr.svg" }
-                              }),
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(i) +
-                                  "\n                            "
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "col-6 col-md-4 my-2 d-flex align-items-center"
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "dropdown",
-                      staticStyle: { display: "relative" }
-                    },
-                    [
+          _c(
+            "div",
+            { staticClass: "col-12" },
+            [
+              _c("div", { staticClass: "row mt-3" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "col-6 col-md-4 my-2 d-flex align-items-center"
+                  },
+                  [
+                    _c("div", { staticClass: "dropdown" }, [
                       _c(
                         "span",
                         {
-                          staticClass: "l-select months dropdown-toggle",
+                          staticClass: "l-select dropdown-toggle",
                           attrs: {
                             href: "#",
                             role: "button",
@@ -42214,9 +42175,15 @@ var render = function() {
                           }
                         },
                         [
+                          _vm.paisSelected != "Seleccione"
+                            ? _c("img", {
+                                staticClass: "flag-language",
+                                attrs: { src: _vm.paisSelected.src }
+                              })
+                            : _vm._e(),
                           _vm._v(
                             "\n                            " +
-                              _vm._s(_vm.mesSelected) +
+                              _vm._s(_vm.paisSelected.idioma) +
                               "\n                        "
                           )
                         ]
@@ -42236,7 +42203,7 @@ var render = function() {
                               attrs: { href: "#" },
                               on: {
                                 click: function($event) {
-                                  _vm.mesSelected = "Seleccione"
+                                  _vm.paisSelected = "Seleccione"
                                 }
                               }
                             },
@@ -42247,22 +42214,27 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
-                          _vm._l(3, function(i) {
+                          _vm._l(_vm.idiomasg, function(idioma) {
                             return _c(
                               "li",
                               {
+                                key: idioma.id,
                                 staticClass: "dropdown-item",
                                 attrs: { href: "#" },
                                 on: {
                                   click: function($event) {
-                                    _vm.mesSelected = i
+                                    _vm.paisSelected = idioma
                                   }
                                 }
                               },
                               [
+                                _c("img", {
+                                  staticClass: "flag-language",
+                                  attrs: { src: idioma.src }
+                                }),
                                 _vm._v(
                                   "\n                                " +
-                                    _vm._s(i) +
+                                    _vm._s(idioma.idioma) +
                                     "\n                            "
                                 )
                               ]
@@ -42271,259 +42243,464 @@ var render = function() {
                         ],
                         2
                       )
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-12 col-md-4 my-2 ml-auto text-md-right" },
-                [
-                  _c(
-                    "button",
-                    { staticClass: "btn d-block d-md-inline gray-back" },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          attrs: {
-                            width: "24",
-                            height: "24",
-                            viewBox: "0 0 24 24",
-                            fill: "none",
-                            xmlns: "http://www.w3.org/2000/svg"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d: "M14.25 7.5L9.75 3L5.25 7.5",
-                              stroke: "#31348B",
-                              "stroke-width": "2",
-                              "stroke-linecap": "round",
-                              "stroke-linejoin": "round"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M18.75 21C16.3631 21 14.0739 20.0518 12.386 18.364C10.6982 16.6761 9.75 14.3869 9.75 12V3",
-                              stroke: "#31348B",
-                              "stroke-width": "2",
-                              "stroke-linecap": "round",
-                              "stroke-linejoin": "round"
-                            }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "h5" }, [_vm._v("Exportar")])
-                    ]
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row mt-3" }, [
-              _c("div", { staticClass: "col-12" }, [
-                _c("div", { staticClass: "card gray-back" }, [
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-12 col-lg-2" }, [
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "col-6 col-md-4 my-2 d-flex align-items-center"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "dropdown",
+                        staticStyle: { display: "relative" }
+                      },
+                      [
                         _c(
-                          "div",
+                          "span",
                           {
-                            staticClass: "progress mx-auto",
-                            attrs: { "data-value": "50" }
+                            staticClass: "l-select months dropdown-toggle",
+                            attrs: {
+                              href: "#",
+                              role: "button",
+                              id: "dropdownMenuLink",
+                              "data-toggle": "dropdown",
+                              "aria-haspopup": "true",
+                              "aria-expanded": "false"
+                            }
                           },
                           [
-                            _vm._m(0),
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(
+                                  _vm.mesSelected != "Seleccione"
+                                    ? _vm.meses[_vm.mesSelected]
+                                    : "Seleccione"
+                                ) +
+                                "\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "ul",
+                          {
+                            staticClass: "dropdown-menu",
+                            attrs: { "aria-labelledby": "dropdownMenuLink" }
+                          },
+                          [
+                            _c(
+                              "li",
+                              {
+                                staticClass: "dropdown-item",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.mesSelected = "Seleccione"
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                Seleccione\n                            "
+                                )
+                              ]
+                            ),
                             _vm._v(" "),
-                            _vm._m(1),
+                            _vm._l(_vm.meses, function(mes, i) {
+                              return _c(
+                                "li",
+                                {
+                                  key: i,
+                                  staticClass: "dropdown-item",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.mesSelected = i
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                " +
+                                      _vm._s(mes) +
+                                      "\n                            "
+                                  )
+                                ]
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-12 col-md-4 my-2 ml-auto text-md-right" },
+                  [
+                    _c(
+                      "button",
+                      { staticClass: "btn d-block d-md-inline gray-back" },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            attrs: {
+                              width: "24",
+                              height: "24",
+                              viewBox: "0 0 24 24",
+                              fill: "none",
+                              xmlns: "http://www.w3.org/2000/svg"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d: "M14.25 7.5L9.75 3L5.25 7.5",
+                                stroke: "#31348B",
+                                "stroke-width": "2",
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round"
+                              }
+                            }),
                             _vm._v(" "),
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M18.75 21C16.3631 21 14.0739 20.0518 12.386 18.364C10.6982 16.6761 9.75 14.3869 9.75 12V3",
+                                stroke: "#31348B",
+                                "stroke-width": "2",
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round"
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "h5" }, [_vm._v("Exportar")])
+                      ]
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.filteredCursos, function(curso) {
+                return _c("div", { key: curso.id, staticClass: "row mt-3" }, [
+                  _c("div", { staticClass: "col-12" }, [
+                    _c("div", { staticClass: "card gray-back" }, [
+                      _c("div", { staticClass: "card-body" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-12 col-lg-2" }, [
                             _c(
                               "div",
                               {
-                                staticClass:
-                                  "progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center"
+                                staticClass: "progress mx-auto",
+                                attrs: { "data-value": "50" }
                               },
                               [
+                                _vm._m(0, true),
+                                _vm._v(" "),
+                                _vm._m(1, true),
+                                _vm._v(" "),
                                 _c(
                                   "div",
-                                  { staticClass: "h2 font-weight-bold" },
+                                  {
+                                    staticClass:
+                                      "progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center"
+                                  },
                                   [
                                     _c(
-                                      "svg",
-                                      {
-                                        attrs: {
-                                          width: "47",
-                                          height: "52",
-                                          viewBox: "0 0 47 52",
-                                          fill: "none",
-                                          xmlns: "http://www.w3.org/2000/svg"
-                                        }
-                                      },
+                                      "div",
+                                      { staticClass: "h2 font-weight-bold" },
                                       [
-                                        _c("path", {
-                                          attrs: {
-                                            "fill-rule": "evenodd",
-                                            "clip-rule": "evenodd",
-                                            d:
-                                              "M35.5176 0.0611203C35.1573 0.205662 35.1369 0.476563 35.0852 5.81739L35.0342 11.0826L31.9736 12.7403C30.2903 13.652 28.8785 14.3767 28.8364 14.3507C28.7942 14.3248 28.7597 14.2371 28.7597 14.1557C28.7597 13.8588 27.5451 11.6147 27.2134 11.2989C26.4089 10.5325 25.4238 10.4288 24.2446 10.9862C22.9466 11.6 22.3356 12.5063 22.4682 13.6212C22.5431 14.2511 23.6647 16.4454 24.1112 16.8358L24.4288 17.1134L24.1566 17.6558C23.7595 18.4468 23.311 20.029 23.3924 20.3516C23.4345 20.5187 23.5876 20.6798 23.8003 20.7807C24.0946 20.9205 24.1807 20.9236 24.4352 20.8032C24.6785 20.6882 24.7708 20.5314 24.9655 19.9022C25.3677 18.603 25.5131 18.2597 25.7892 17.9586C25.9414 17.7925 28.1814 16.5191 31.0042 14.9939C36.3958 12.0807 36.199 12.1533 35.8475 13.2069C35.5246 14.1746 34.9899 14.5904 30.9532 17.013C28.9331 18.2254 27.223 19.2887 27.1528 19.3761C27.0827 19.4633 27.0253 19.6827 27.0253 19.8635C27.0253 20.2615 27.4532 20.6526 27.8137 20.584C27.9445 20.5591 28.0424 20.5891 28.0383 20.6528C28.0342 20.7148 27.7473 21.5855 27.4006 22.5876L26.7702 24.4095L25.092 25.0983C24.169 25.4771 23.3961 25.7693 23.3743 25.7476C23.3524 25.7258 23.5066 25.0871 23.7168 24.3283C24.0356 23.1769 24.0795 22.9061 23.9819 22.693C23.7578 22.2032 22.9772 22.1354 22.6926 22.5811C22.6167 22.6999 22.2935 23.7113 21.9744 24.8286C21.3427 27.0404 21.3552 26.9413 21.1203 31.5834L21.0254 33.4625L19.3697 36.9161C18.4591 38.8155 17.6686 40.4268 17.6131 40.4966C17.5405 40.5878 17.0906 40.6236 16.0143 40.6236C14.6071 40.6236 14.4843 40.6395 13.9861 40.8867C12.8706 41.4401 12.5379 42.1767 12.5379 44.0927V45.3925L12.2762 45.2935C12.1235 45.2357 10.4645 45.1945 8.294 45.1945C4.14969 45.1945 4.14449 45.1952 3.42012 45.8851C2.72544 46.5466 2.64637 46.841 2.64382 48.775L2.64158 50.4764H1.56574C0.559372 50.4764 0.473569 50.4925 0.239425 50.7257C-0.0798082 51.0435 -0.0798082 51.4329 0.239425 51.7506L0.489791 52H23.33H46.1702L46.3921 51.765C46.6867 51.4526 46.6804 50.9803 46.3778 50.6972C46.1643 50.4976 46.0317 50.4764 45.0005 50.4764H43.8592V40.3388V30.2012L43.595 29.6733C43.4496 29.3828 43.1653 29.0095 42.963 28.8435C42.285 28.2871 41.9378 28.2314 39.148 28.2314H36.6155V21.6546V15.0777L37.0229 14.265C37.5054 13.3024 37.6709 12.4198 37.5399 11.5074C37.4268 10.7204 37.3096 10.5041 36.9237 10.3701C36.6231 10.2658 36.6155 10.2468 36.6155 9.59761V8.93209H41.3119C46.5667 8.93209 46.5462 8.93453 46.8631 8.26972C47.1832 7.59821 47.0084 7.29622 45.5939 6.07691C44.6618 5.27345 44.4016 4.99717 44.5041 4.91987C44.5782 4.864 45.1288 4.39026 45.7278 3.86704C46.977 2.77582 47.1737 2.42488 46.8807 1.81014C46.5618 1.14117 46.7499 1.16453 41.4362 1.13243L36.6155 1.10328V0.769201C36.6155 0.21521 36.0473 -0.151274 35.5176 0.0611203ZM44.6754 2.736C44.6754 2.79187 44.641 2.83839 44.5989 2.8393C44.5568 2.84032 44.1169 3.21737 43.6214 3.6773C42.8081 4.43221 42.7148 4.55694 42.6623 4.95979L42.6041 5.40601L43.6653 6.40795L44.7264 7.40999L40.6965 7.38378L36.6665 7.35768L36.639 5.12546C36.6238 3.89772 36.6339 2.83494 36.6612 2.76383C36.7248 2.59898 44.6754 2.57145 44.6754 2.736ZM26.2021 12.4506C26.5329 12.8694 27.3314 14.4886 27.3314 14.7408C27.3314 15.1028 27.0669 15.4085 26.5115 15.6887C25.9495 15.9722 25.5344 16.0082 25.2371 15.7994C25.1264 15.7217 24.7882 15.1567 24.4855 14.5441C23.8588 13.2755 23.852 13.0668 24.4243 12.6323C25.1593 12.0741 25.8489 12.0036 26.2021 12.4506ZM35.0852 22.2892V28.2314L34.8046 28.2324C34.4005 28.2338 33.5572 28.6538 33.1769 29.0431C32.5008 29.7352 32.4867 29.812 32.4536 32.98C32.437 34.5582 32.3911 35.8492 32.3515 35.8489C32.312 35.8486 32.1088 35.8012 31.9003 35.7435C31.5616 35.6498 31.5262 35.6092 31.5697 35.3632C31.7182 34.5249 32.1377 30.8386 32.14 30.3518C32.1441 29.5136 31.8667 29.0633 29.9476 26.7932L28.2595 24.7963L29.1784 22.0537L30.0973 19.3111L32.0046 18.1647C33.0536 17.5342 34.1414 16.8696 34.422 16.6879C34.7026 16.5061 34.9665 16.355 35.0086 16.3523C35.0508 16.3494 35.0852 19.0211 35.0852 22.2892ZM25.7435 29.8609C25.1859 32.888 25.0403 33.5175 24.828 33.8172C24.6892 34.0132 23.4855 35.6134 22.1531 37.3732C20.0313 40.1756 19.3735 40.9245 19.3735 40.5377C19.3735 40.4823 20.0643 38.9897 20.9085 37.2211C22.6717 33.5272 22.5419 34.0366 22.7466 30.009C22.8119 28.724 22.8945 27.659 22.9304 27.6422C23.2374 27.4979 26.3672 26.2311 26.3843 26.2441C26.3965 26.2533 26.1081 27.881 25.7435 29.8609ZM29.1214 28.186C30.5167 29.8383 30.5961 29.9614 30.5961 30.4728C30.5961 30.8585 30.174 34.4755 30.0309 35.3163C29.9854 35.5838 29.9272 35.6464 29.7243 35.6464C29.5866 35.6464 29.4725 35.6349 29.4709 35.621C29.4692 35.6071 29.3617 34.5671 29.2321 33.3102C29.0683 31.7221 28.9425 30.9214 28.82 30.6861C28.7135 30.4816 28.3891 30.186 28.0012 29.9398L27.3589 29.5321L27.4864 28.8563C27.5565 28.4847 27.6708 27.8404 27.7403 27.4247C27.8402 26.8258 27.8904 26.7002 27.9816 26.8206C28.0448 26.9041 28.5577 27.5185 29.1214 28.186ZM41.749 29.8685C41.8715 29.9308 42.0511 30.0795 42.1481 30.1986C42.3123 30.4005 42.3245 31.0954 42.3266 40.4458L42.3289 50.4764H38.1459H33.9629V48.1334C33.9629 45.3701 33.917 45.1995 33.1722 45.196C32.975 45.1951 32.758 45.2767 32.6366 45.3976C32.4439 45.5895 32.4325 45.7362 32.4325 48.0386V50.4764H28.1949H23.9572L23.9864 44.2041C24.0184 37.3165 23.9884 37.6312 24.6422 37.3224C25.1222 37.0956 31.3828 37.0971 31.8238 37.3241C32.3811 37.6111 32.4325 37.8553 32.4325 40.2169C32.4325 42.3564 32.433 42.36 32.683 42.6089C32.8207 42.746 33.0523 42.8582 33.1977 42.8582C33.3431 42.8582 33.5747 42.746 33.7124 42.6089L33.9629 42.3596V36.4026V30.4457L34.3098 30.1004L34.6567 29.755H38.0914C40.4201 29.755 41.5979 29.7916 41.749 29.8685ZM27.3434 31.3086C27.4725 31.4065 27.5532 31.8872 27.7139 33.5147C27.827 34.6592 27.9082 35.6085 27.8942 35.6242C27.8803 35.64 27.3147 35.64 26.6373 35.6242L25.4057 35.5956L25.903 34.9354C26.4417 34.2202 26.6012 33.7703 26.8838 32.1674C26.9799 31.6227 27.0854 31.1785 27.1183 31.1803C27.1514 31.1821 27.2526 31.2398 27.3434 31.3086ZM22.4342 40.1745V40.7413L22.1026 40.6706C21.9203 40.6317 21.7547 40.5851 21.7347 40.5671C21.6975 40.5335 22.3398 39.6078 22.4005 39.6078C22.419 39.6078 22.4342 39.8629 22.4342 40.1745ZM22.136 42.4441L22.4342 42.741V46.6087V50.4764H18.2512H14.0683V46.7114C14.0683 42.7951 14.0803 42.6768 14.5138 42.3272C14.7105 42.1685 15.0721 42.1515 18.2846 42.1494L21.8378 42.1472L22.136 42.4441ZM12.0334 46.8227C12.4465 47.0427 12.5379 47.4371 12.5379 48.9985V50.4764H8.35491H4.17193V48.8941V47.3119L4.47015 47.015L4.76837 46.7181H8.30278C10.5318 46.7181 11.9096 46.7567 12.0334 46.8227Z",
-                                            fill: "#31348B"
-                                          }
-                                        })
+                                        _c(
+                                          "svg",
+                                          {
+                                            attrs: {
+                                              width: "47",
+                                              height: "52",
+                                              viewBox: "0 0 47 52",
+                                              fill: "none",
+                                              xmlns:
+                                                "http://www.w3.org/2000/svg"
+                                            }
+                                          },
+                                          [
+                                            _c("path", {
+                                              attrs: {
+                                                "fill-rule": "evenodd",
+                                                "clip-rule": "evenodd",
+                                                d:
+                                                  "M35.5176 0.0611203C35.1573 0.205662 35.1369 0.476563 35.0852 5.81739L35.0342 11.0826L31.9736 12.7403C30.2903 13.652 28.8785 14.3767 28.8364 14.3507C28.7942 14.3248 28.7597 14.2371 28.7597 14.1557C28.7597 13.8588 27.5451 11.6147 27.2134 11.2989C26.4089 10.5325 25.4238 10.4288 24.2446 10.9862C22.9466 11.6 22.3356 12.5063 22.4682 13.6212C22.5431 14.2511 23.6647 16.4454 24.1112 16.8358L24.4288 17.1134L24.1566 17.6558C23.7595 18.4468 23.311 20.029 23.3924 20.3516C23.4345 20.5187 23.5876 20.6798 23.8003 20.7807C24.0946 20.9205 24.1807 20.9236 24.4352 20.8032C24.6785 20.6882 24.7708 20.5314 24.9655 19.9022C25.3677 18.603 25.5131 18.2597 25.7892 17.9586C25.9414 17.7925 28.1814 16.5191 31.0042 14.9939C36.3958 12.0807 36.199 12.1533 35.8475 13.2069C35.5246 14.1746 34.9899 14.5904 30.9532 17.013C28.9331 18.2254 27.223 19.2887 27.1528 19.3761C27.0827 19.4633 27.0253 19.6827 27.0253 19.8635C27.0253 20.2615 27.4532 20.6526 27.8137 20.584C27.9445 20.5591 28.0424 20.5891 28.0383 20.6528C28.0342 20.7148 27.7473 21.5855 27.4006 22.5876L26.7702 24.4095L25.092 25.0983C24.169 25.4771 23.3961 25.7693 23.3743 25.7476C23.3524 25.7258 23.5066 25.0871 23.7168 24.3283C24.0356 23.1769 24.0795 22.9061 23.9819 22.693C23.7578 22.2032 22.9772 22.1354 22.6926 22.5811C22.6167 22.6999 22.2935 23.7113 21.9744 24.8286C21.3427 27.0404 21.3552 26.9413 21.1203 31.5834L21.0254 33.4625L19.3697 36.9161C18.4591 38.8155 17.6686 40.4268 17.6131 40.4966C17.5405 40.5878 17.0906 40.6236 16.0143 40.6236C14.6071 40.6236 14.4843 40.6395 13.9861 40.8867C12.8706 41.4401 12.5379 42.1767 12.5379 44.0927V45.3925L12.2762 45.2935C12.1235 45.2357 10.4645 45.1945 8.294 45.1945C4.14969 45.1945 4.14449 45.1952 3.42012 45.8851C2.72544 46.5466 2.64637 46.841 2.64382 48.775L2.64158 50.4764H1.56574C0.559372 50.4764 0.473569 50.4925 0.239425 50.7257C-0.0798082 51.0435 -0.0798082 51.4329 0.239425 51.7506L0.489791 52H23.33H46.1702L46.3921 51.765C46.6867 51.4526 46.6804 50.9803 46.3778 50.6972C46.1643 50.4976 46.0317 50.4764 45.0005 50.4764H43.8592V40.3388V30.2012L43.595 29.6733C43.4496 29.3828 43.1653 29.0095 42.963 28.8435C42.285 28.2871 41.9378 28.2314 39.148 28.2314H36.6155V21.6546V15.0777L37.0229 14.265C37.5054 13.3024 37.6709 12.4198 37.5399 11.5074C37.4268 10.7204 37.3096 10.5041 36.9237 10.3701C36.6231 10.2658 36.6155 10.2468 36.6155 9.59761V8.93209H41.3119C46.5667 8.93209 46.5462 8.93453 46.8631 8.26972C47.1832 7.59821 47.0084 7.29622 45.5939 6.07691C44.6618 5.27345 44.4016 4.99717 44.5041 4.91987C44.5782 4.864 45.1288 4.39026 45.7278 3.86704C46.977 2.77582 47.1737 2.42488 46.8807 1.81014C46.5618 1.14117 46.7499 1.16453 41.4362 1.13243L36.6155 1.10328V0.769201C36.6155 0.21521 36.0473 -0.151274 35.5176 0.0611203ZM44.6754 2.736C44.6754 2.79187 44.641 2.83839 44.5989 2.8393C44.5568 2.84032 44.1169 3.21737 43.6214 3.6773C42.8081 4.43221 42.7148 4.55694 42.6623 4.95979L42.6041 5.40601L43.6653 6.40795L44.7264 7.40999L40.6965 7.38378L36.6665 7.35768L36.639 5.12546C36.6238 3.89772 36.6339 2.83494 36.6612 2.76383C36.7248 2.59898 44.6754 2.57145 44.6754 2.736ZM26.2021 12.4506C26.5329 12.8694 27.3314 14.4886 27.3314 14.7408C27.3314 15.1028 27.0669 15.4085 26.5115 15.6887C25.9495 15.9722 25.5344 16.0082 25.2371 15.7994C25.1264 15.7217 24.7882 15.1567 24.4855 14.5441C23.8588 13.2755 23.852 13.0668 24.4243 12.6323C25.1593 12.0741 25.8489 12.0036 26.2021 12.4506ZM35.0852 22.2892V28.2314L34.8046 28.2324C34.4005 28.2338 33.5572 28.6538 33.1769 29.0431C32.5008 29.7352 32.4867 29.812 32.4536 32.98C32.437 34.5582 32.3911 35.8492 32.3515 35.8489C32.312 35.8486 32.1088 35.8012 31.9003 35.7435C31.5616 35.6498 31.5262 35.6092 31.5697 35.3632C31.7182 34.5249 32.1377 30.8386 32.14 30.3518C32.1441 29.5136 31.8667 29.0633 29.9476 26.7932L28.2595 24.7963L29.1784 22.0537L30.0973 19.3111L32.0046 18.1647C33.0536 17.5342 34.1414 16.8696 34.422 16.6879C34.7026 16.5061 34.9665 16.355 35.0086 16.3523C35.0508 16.3494 35.0852 19.0211 35.0852 22.2892ZM25.7435 29.8609C25.1859 32.888 25.0403 33.5175 24.828 33.8172C24.6892 34.0132 23.4855 35.6134 22.1531 37.3732C20.0313 40.1756 19.3735 40.9245 19.3735 40.5377C19.3735 40.4823 20.0643 38.9897 20.9085 37.2211C22.6717 33.5272 22.5419 34.0366 22.7466 30.009C22.8119 28.724 22.8945 27.659 22.9304 27.6422C23.2374 27.4979 26.3672 26.2311 26.3843 26.2441C26.3965 26.2533 26.1081 27.881 25.7435 29.8609ZM29.1214 28.186C30.5167 29.8383 30.5961 29.9614 30.5961 30.4728C30.5961 30.8585 30.174 34.4755 30.0309 35.3163C29.9854 35.5838 29.9272 35.6464 29.7243 35.6464C29.5866 35.6464 29.4725 35.6349 29.4709 35.621C29.4692 35.6071 29.3617 34.5671 29.2321 33.3102C29.0683 31.7221 28.9425 30.9214 28.82 30.6861C28.7135 30.4816 28.3891 30.186 28.0012 29.9398L27.3589 29.5321L27.4864 28.8563C27.5565 28.4847 27.6708 27.8404 27.7403 27.4247C27.8402 26.8258 27.8904 26.7002 27.9816 26.8206C28.0448 26.9041 28.5577 27.5185 29.1214 28.186ZM41.749 29.8685C41.8715 29.9308 42.0511 30.0795 42.1481 30.1986C42.3123 30.4005 42.3245 31.0954 42.3266 40.4458L42.3289 50.4764H38.1459H33.9629V48.1334C33.9629 45.3701 33.917 45.1995 33.1722 45.196C32.975 45.1951 32.758 45.2767 32.6366 45.3976C32.4439 45.5895 32.4325 45.7362 32.4325 48.0386V50.4764H28.1949H23.9572L23.9864 44.2041C24.0184 37.3165 23.9884 37.6312 24.6422 37.3224C25.1222 37.0956 31.3828 37.0971 31.8238 37.3241C32.3811 37.6111 32.4325 37.8553 32.4325 40.2169C32.4325 42.3564 32.433 42.36 32.683 42.6089C32.8207 42.746 33.0523 42.8582 33.1977 42.8582C33.3431 42.8582 33.5747 42.746 33.7124 42.6089L33.9629 42.3596V36.4026V30.4457L34.3098 30.1004L34.6567 29.755H38.0914C40.4201 29.755 41.5979 29.7916 41.749 29.8685ZM27.3434 31.3086C27.4725 31.4065 27.5532 31.8872 27.7139 33.5147C27.827 34.6592 27.9082 35.6085 27.8942 35.6242C27.8803 35.64 27.3147 35.64 26.6373 35.6242L25.4057 35.5956L25.903 34.9354C26.4417 34.2202 26.6012 33.7703 26.8838 32.1674C26.9799 31.6227 27.0854 31.1785 27.1183 31.1803C27.1514 31.1821 27.2526 31.2398 27.3434 31.3086ZM22.4342 40.1745V40.7413L22.1026 40.6706C21.9203 40.6317 21.7547 40.5851 21.7347 40.5671C21.6975 40.5335 22.3398 39.6078 22.4005 39.6078C22.419 39.6078 22.4342 39.8629 22.4342 40.1745ZM22.136 42.4441L22.4342 42.741V46.6087V50.4764H18.2512H14.0683V46.7114C14.0683 42.7951 14.0803 42.6768 14.5138 42.3272C14.7105 42.1685 15.0721 42.1515 18.2846 42.1494L21.8378 42.1472L22.136 42.4441ZM12.0334 46.8227C12.4465 47.0427 12.5379 47.4371 12.5379 48.9985V50.4764H8.35491H4.17193V48.8941V47.3119L4.47015 47.015L4.76837 46.7181H8.30278C10.5318 46.7181 11.9096 46.7567 12.0334 46.8227Z",
+                                                fill: "#31348B"
+                                              }
+                                            })
+                                          ]
+                                        )
                                       ]
                                     )
                                   ]
                                 )
                               ]
                             )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(2)
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(2, true)
+                        ])
+                      ])
                     ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-12" }, [
+                    _vm.perfilSelected
+                      ? _c("div", { staticClass: "resultados px-lg-4" }, [
+                          _c("div", { staticClass: "col-12" }, [
+                            _c("div", { staticClass: "row mt-3" }, [
+                              _vm._m(3, true),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-12" }, [
+                                _c("div", { staticClass: "row" }, [
+                                  curso.modulos.length > 0
+                                    ? _c(
+                                        "ul",
+                                        {
+                                          staticClass:
+                                            "list-group list-group-flush flex-grow-1"
+                                        },
+                                        [
+                                          _vm._m(4, true),
+                                          _vm._v(" "),
+                                          _vm._l(curso.modulos, function(
+                                            modulo
+                                          ) {
+                                            return _c(
+                                              "li",
+                                              {
+                                                key: modulo.id,
+                                                staticClass:
+                                                  "list-group-item py-1"
+                                              },
+                                              _vm._l(modulo.clases, function(
+                                                cla,
+                                                index
+                                              ) {
+                                                return _c(
+                                                  "span",
+                                                  {
+                                                    key: cla.id,
+                                                    staticClass:
+                                                      "list-group-item py-1"
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "row justify-content-between align-items-center"
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "span",
+                                                          {
+                                                            staticClass:
+                                                              "col-12 col-md-5"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "Semana " +
+                                                                _vm._s(
+                                                                  index + 1
+                                                                )
+                                                            )
+                                                          ]
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "div",
+                                                          {
+                                                            staticClass:
+                                                              "col-9 col-md-5"
+                                                          },
+                                                          _vm._l(
+                                                            cla.actividades,
+                                                            function(
+                                                              actividad
+                                                            ) {
+                                                              return _c(
+                                                                "span",
+                                                                {
+                                                                  key:
+                                                                    actividad.id,
+                                                                  staticClass:
+                                                                    "mr-4"
+                                                                },
+                                                                [
+                                                                  _vm.perfilSelected.misactividades.some(
+                                                                    function(
+                                                                      evt
+                                                                    ) {
+                                                                      return (
+                                                                        evt
+                                                                          .pivot
+                                                                          .actividad_id ===
+                                                                        actividad.id
+                                                                      )
+                                                                    }
+                                                                  )
+                                                                    ? _c(
+                                                                        "svg",
+                                                                        {
+                                                                          attrs: {
+                                                                            width:
+                                                                              "20",
+                                                                            height:
+                                                                              "20",
+                                                                            viewBox:
+                                                                              "0 0 26 26",
+                                                                            fill:
+                                                                              "none",
+                                                                            xmlns:
+                                                                              "http://www.w3.org/2000/svg"
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _c(
+                                                                            "rect",
+                                                                            {
+                                                                              attrs: {
+                                                                                width:
+                                                                                  "26",
+                                                                                height:
+                                                                                  "26",
+                                                                                rx:
+                                                                                  "13",
+                                                                                fill:
+                                                                                  "#00A53F"
+                                                                              }
+                                                                            }
+                                                                          ),
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _c(
+                                                                            "path",
+                                                                            {
+                                                                              attrs: {
+                                                                                d:
+                                                                                  "M19.6666 8L10.4999 17.1667L6.33325 13",
+                                                                                stroke:
+                                                                                  "white",
+                                                                                "stroke-width":
+                                                                                  "2",
+                                                                                "stroke-linecap":
+                                                                                  "round",
+                                                                                "stroke-linejoin":
+                                                                                  "round"
+                                                                              }
+                                                                            }
+                                                                          )
+                                                                        ]
+                                                                      )
+                                                                    : _c(
+                                                                        "svg",
+                                                                        {
+                                                                          attrs: {
+                                                                            width:
+                                                                              "20",
+                                                                            height:
+                                                                              "20",
+                                                                            viewBox:
+                                                                              "0 0 26 26",
+                                                                            fill:
+                                                                              "none",
+                                                                            xmlns:
+                                                                              "http://www.w3.org/2000/svg"
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _c(
+                                                                            "rect",
+                                                                            {
+                                                                              attrs: {
+                                                                                width:
+                                                                                  "26",
+                                                                                height:
+                                                                                  "26",
+                                                                                rx:
+                                                                                  "13",
+                                                                                fill:
+                                                                                  "#B5B5BB"
+                                                                              }
+                                                                            }
+                                                                          ),
+                                                                          _vm._v(
+                                                                            " "
+                                                                          ),
+                                                                          _c(
+                                                                            "path",
+                                                                            {
+                                                                              attrs: {
+                                                                                d:
+                                                                                  "M19.6668 8L10.5002 17.1667L6.3335 13",
+                                                                                stroke:
+                                                                                  "white",
+                                                                                "stroke-width":
+                                                                                  "2",
+                                                                                "stroke-linecap":
+                                                                                  "round",
+                                                                                "stroke-linejoin":
+                                                                                  "round"
+                                                                              }
+                                                                            }
+                                                                          )
+                                                                        ]
+                                                                      )
+                                                                ]
+                                                              )
+                                                            }
+                                                          ),
+                                                          0
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "span",
+                                                          {
+                                                            staticClass:
+                                                              "col-3 col-md-2 h4 color-plomo d-flex justify-content-center align-items-center"
+                                                          },
+                                                          [_vm._v("8.0")]
+                                                        )
+                                                      ]
+                                                    )
+                                                  ]
+                                                )
+                                              }),
+                                              0
+                                            )
+                                          })
+                                        ],
+                                        2
+                                      )
+                                    : _vm._e()
+                                ])
+                              ])
+                            ])
+                          ])
+                        ])
+                      : _vm._e()
                   ])
                 ])
-              ])
-            ])
-          ])
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.perfilSelected
-      ? _c("div", { staticClass: "resultados px-lg-4" }, [
-          _c("div", { staticClass: "col-12" }, [
-            _c("div", { staticClass: "row mt-3" }, [
-              _vm._m(3),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-12" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c(
-                    "ul",
-                    { staticClass: "list-group list-group-flush flex-grow-1" },
-                    [
-                      _vm._m(4),
-                      _vm._v(" "),
-                      _vm._l(2, function(o) {
-                        return _c(
-                          "li",
-                          { staticClass: "list-group-item py-1" },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "row justify-content-between align-items-center"
-                              },
-                              [
-                                _c("span", { staticClass: "col-12 col-md-5" }, [
-                                  _vm._v("Semana " + _vm._s(o))
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "col-9 col-md-5" },
-                                  _vm._l(5, function(i) {
-                                    return _c("span", { staticClass: "mr-4" }, [
-                                      i <= 3
-                                        ? _c(
-                                            "svg",
-                                            {
-                                              attrs: {
-                                                width: "20",
-                                                height: "20",
-                                                viewBox: "0 0 26 26",
-                                                fill: "none",
-                                                xmlns:
-                                                  "http://www.w3.org/2000/svg"
-                                              }
-                                            },
-                                            [
-                                              _c("rect", {
-                                                attrs: {
-                                                  width: "26",
-                                                  height: "26",
-                                                  rx: "13",
-                                                  fill: "#00A53F"
-                                                }
-                                              }),
-                                              _vm._v(" "),
-                                              _c("path", {
-                                                attrs: {
-                                                  d:
-                                                    "M19.6666 8L10.4999 17.1667L6.33325 13",
-                                                  stroke: "white",
-                                                  "stroke-width": "2",
-                                                  "stroke-linecap": "round",
-                                                  "stroke-linejoin": "round"
-                                                }
-                                              })
-                                            ]
-                                          )
-                                        : _c(
-                                            "svg",
-                                            {
-                                              attrs: {
-                                                width: "20",
-                                                height: "20",
-                                                viewBox: "0 0 26 26",
-                                                fill: "none",
-                                                xmlns:
-                                                  "http://www.w3.org/2000/svg"
-                                              }
-                                            },
-                                            [
-                                              _c("rect", {
-                                                attrs: {
-                                                  width: "26",
-                                                  height: "26",
-                                                  rx: "13",
-                                                  fill: "#B5B5BB"
-                                                }
-                                              }),
-                                              _vm._v(" "),
-                                              _c("path", {
-                                                attrs: {
-                                                  d:
-                                                    "M19.6668 8L10.5002 17.1667L6.3335 13",
-                                                  stroke: "white",
-                                                  "stroke-width": "2",
-                                                  "stroke-linecap": "round",
-                                                  "stroke-linejoin": "round"
-                                                }
-                                              })
-                                            ]
-                                          )
-                                    ])
-                                  }),
-                                  0
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "span",
-                                  {
-                                    staticClass:
-                                      "col-3 col-md-2 h4 color-plomo d-flex justify-content-center align-items-center"
-                                  },
-                                  [_vm._v("8.0")]
-                                )
-                              ]
-                            )
-                          ]
-                        )
-                      })
-                    ],
-                    2
-                  )
-                ])
-              ])
-            ])
-          ])
+              })
+            ],
+            2
+          )
         ])
       : _vm._e()
   ])
@@ -42943,10 +43120,15 @@ var render = function() {
             "div",
             {
               staticClass: "profile-bg",
-              style:
-                "background-image : url(/images/Perro.svg); background-color: #E4032F;"
+              style: "background-color: " + _vm.perfil.color + ";"
             },
-            [_vm._v("\n                     \n                ")]
+            [
+              _c("cara-avatar", {
+                staticClass: "w-100 h-100",
+                attrs: { viewBox: "0 0 250 250", perfil: _vm.perfil }
+              })
+            ],
+            1
           ),
           _vm._v(" "),
           _c("div", { staticClass: "ml-3 flex-fill" }, [
@@ -42958,7 +43140,9 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "\n                        Christopher\n                        "
+                  "\n                        " +
+                    _vm._s(_vm.perfil.apodo) +
+                    "\n                        "
                 ),
                 _c("a", { attrs: { href: "#" } }, [
                   _c(
@@ -43092,85 +43276,108 @@ var render = function() {
         [
           _vm._m(1),
           _vm._v(" "),
-          _vm._l(3, function(i) {
-            return _c("div", { staticClass: "row mt-3" }, [
-              _vm._m(2, true),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-12 py-3 d-flex justify-content-between" },
-                _vm._l(5, function(i) {
-                  return _c("span", [
-                    i <= 3
-                      ? _c(
-                          "svg",
-                          {
-                            attrs: {
-                              width: "26",
-                              height: "26",
-                              viewBox: "0 0 26 26",
-                              fill: "none",
-                              xmlns: "http://www.w3.org/2000/svg"
-                            }
-                          },
-                          [
-                            _c("rect", {
-                              attrs: {
-                                width: "26",
-                                height: "26",
-                                rx: "13",
-                                fill: "#00A53F"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("path", {
-                              attrs: {
-                                d: "M19.6666 8L10.4999 17.1667L6.33325 13",
-                                stroke: "white",
-                                "stroke-width": "2",
-                                "stroke-linecap": "round",
-                                "stroke-linejoin": "round"
-                              }
+          _vm._l(_vm.miscursostotales, function(curso, index) {
+            return _c(
+              "div",
+              { key: index, staticClass: "row mt-3" },
+              [
+                _c("div", { staticClass: "col-12" }, [
+                  _c("span", [_vm._v(_vm._s(curso.curso.titulo))])
+                ]),
+                _vm._v(" "),
+                _vm._l(curso.curso.modulos, function(modulo) {
+                  return _c(
+                    "div",
+                    { key: "modulo-" + modulo.id, staticClass: "col-12" },
+                    _vm._l(modulo.clases, function(clase) {
+                      return _c(
+                        "div",
+                        {
+                          key: "clase-" + clase.id,
+                          staticClass:
+                            "col-12 py-3 d-flex justify-content-between"
+                        },
+                        _vm._l(clase.actividades, function(act) {
+                          return _c("span", { key: act.id }, [
+                            _vm.perfil.misactividades.some(function(evt) {
+                              return evt.pivot.actividad_id === act.id
                             })
-                          ]
-                        )
-                      : _c(
-                          "svg",
-                          {
-                            attrs: {
-                              width: "26",
-                              height: "26",
-                              viewBox: "0 0 26 26",
-                              fill: "none",
-                              xmlns: "http://www.w3.org/2000/svg"
-                            }
-                          },
-                          [
-                            _c("rect", {
-                              attrs: {
-                                width: "26",
-                                height: "26",
-                                rx: "13",
-                                fill: "#B5B5BB"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("path", {
-                              attrs: {
-                                d: "M19.6666 8L10.5 17.1667L6.33331 13",
-                                stroke: "white",
-                                "stroke-width": "2",
-                                "stroke-linecap": "round",
-                                "stroke-linejoin": "round"
-                              }
-                            })
-                          ]
-                        )
-                  ])
-                }),
-                0
-              )
-            ])
+                              ? _c(
+                                  "svg",
+                                  {
+                                    attrs: {
+                                      width: "26",
+                                      height: "26",
+                                      viewBox: "0 0 26 26",
+                                      fill: "none",
+                                      xmlns: "http://www.w3.org/2000/svg"
+                                    }
+                                  },
+                                  [
+                                    _c("rect", {
+                                      attrs: {
+                                        width: "26",
+                                        height: "26",
+                                        rx: "13",
+                                        fill: "#00A53F"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M19.6666 8L10.4999 17.1667L6.33325 13",
+                                        stroke: "white",
+                                        "stroke-width": "2",
+                                        "stroke-linecap": "round",
+                                        "stroke-linejoin": "round"
+                                      }
+                                    })
+                                  ]
+                                )
+                              : _c(
+                                  "svg",
+                                  {
+                                    attrs: {
+                                      width: "26",
+                                      height: "26",
+                                      viewBox: "0 0 26 26",
+                                      fill: "none",
+                                      xmlns: "http://www.w3.org/2000/svg"
+                                    }
+                                  },
+                                  [
+                                    _c("rect", {
+                                      attrs: {
+                                        width: "26",
+                                        height: "26",
+                                        rx: "13",
+                                        fill: "#B5B5BB"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        d: "M19.6666 8L10.5 17.1667L6.33331 13",
+                                        stroke: "white",
+                                        "stroke-width": "2",
+                                        "stroke-linecap": "round",
+                                        "stroke-linejoin": "round"
+                                      }
+                                    })
+                                  ]
+                                )
+                          ])
+                        }),
+                        0
+                      )
+                    }),
+                    0
+                  )
+                })
+              ],
+              2
+            )
           })
         ],
         2
@@ -43179,188 +43386,100 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "contenido" }, [
       _c("div", { staticClass: "row" }, [
-        _vm._m(3),
+        _vm._m(2),
         _vm._v(" "),
         _c("div", { staticClass: "col-12" }, [
           _c(
             "div",
             { staticClass: "row" },
-            _vm._l(2, function(o) {
-              return _c("div", { staticClass: "col-12 mb-3" }, [
+            _vm._l(_vm.miscursostotales, function(curso) {
+              return _c("div", { key: curso.id, staticClass: "col-12 mb-3" }, [
                 _c("div", { staticClass: "card card-rounded flex-fill" }, [
-                  _c("div", { staticClass: "card-body p-0" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-12 p-0 d-flex justify-content-between"
-                      },
-                      [
-                        _c("span", { staticClass: "h5" }, [
-                          _c("img", {
-                            staticClass: "flag-language mx-1",
-                            attrs: { src: "/images/es.svg" }
-                          }),
-                          _vm._v(
-                            "\n                                        Curso de Español\n                                    "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("span", [
-                          _vm._v(
-                            "\n                                        Semana 10\n                                    "
-                          )
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _vm._m(4, true),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "col-12 p-1 mt-1 d-flex justify-content-between overflow-auto"
-                      },
-                      _vm._l(5, function(i) {
-                        return _c("div", { staticClass: "text-center mx-2" }, [
-                          _c("p", { staticClass: "mb-2 h5 color-plomo" }, [
-                            _vm._v("Actividad")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "svg",
-                            {
-                              attrs: {
-                                width: "56",
-                                height: "56",
-                                viewBox: "0 0 86 86",
-                                fill: "none",
-                                xmlns: "http://www.w3.org/2000/svg"
-                              }
-                            },
-                            [
-                              _c("circle", {
-                                attrs: {
-                                  cx: "43",
-                                  cy: "43",
-                                  r: "42.5",
-                                  stroke: "#31348B"
-                                }
-                              }),
+                  _c(
+                    "div",
+                    { staticClass: "card-body p-0" },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "col-12 p-0 d-flex justify-content-between"
+                        },
+                        [
+                          _c("span", { staticClass: "h5" }, [
+                            _c("img", {
+                              staticClass: "flag-language mx-1",
+                              attrs: { src: curso.idioma.src }
+                            }),
+                            _vm._v(
+                              "\n                                         " +
+                                _vm._s(curso.curso.titulo) +
+                                "\n                                    "
+                            )
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm._l(curso.curso.modulos, function(modulo) {
+                        return _c(
+                          "div",
+                          { key: modulo.id },
+                          _vm._l(modulo.clases, function(clase) {
+                            return _c("div", { key: clase.id }, [
+                              _vm._m(3, true),
                               _vm._v(" "),
                               _c(
-                                "g",
-                                { attrs: { "clip-path": "url(#clip0)" } },
-                                [
-                                  _c("path", {
-                                    attrs: {
-                                      d:
-                                        "M75.9203 43.0026C75.9203 43.9498 75.884 44.8971 75.8088 45.8443C75.7776 46.2309 75.7413 46.6228 75.6973 47.0095C75.6973 47.0743 75.5909 47.8425 75.6713 47.269C75.6298 47.5752 75.5832 47.8814 75.5313 48.185C75.2449 49.9169 74.8297 51.6249 74.2891 53.2948C74.0298 54.12 73.7212 54.9297 73.397 55.7342C73.2337 56.1416 73.6408 55.1944 73.3478 55.8536L73.0755 56.4686C72.8577 56.9444 72.6295 57.4149 72.3909 57.8803C71.6121 59.4003 70.7255 60.8625 69.738 62.2557C69.6083 62.4373 69.4787 62.6164 69.3464 62.7954C69.3101 62.8473 68.8641 63.4338 69.209 62.9875C68.9834 63.2807 68.75 63.5688 68.514 63.8516C67.9262 64.5627 67.3107 65.2504 66.6676 65.9147C66.0763 66.5237 65.4643 67.1111 64.8316 67.6768C64.5567 67.9363 64.2766 68.1673 63.994 68.4034C63.8254 68.5462 63.6543 68.6863 63.4753 68.8264C63.4001 68.8861 62.6688 69.4467 63.1149 69.1119C61.7544 70.1405 60.3238 71.0727 58.8334 71.9016C58.0555 72.3324 57.2516 72.7373 56.4373 73.1084L56.0301 73.2926C55.9705 73.3186 55.2807 73.604 55.8097 73.3886C55.3222 73.5884 54.8321 73.7805 54.3368 73.9569C52.6933 74.549 51.0083 75.0182 49.2955 75.3609C48.8426 75.4526 48.3879 75.5339 47.9315 75.6048C47.7033 75.6412 47.4751 75.6775 47.2443 75.7086C47.7292 75.6412 47.3221 75.6957 47.2261 75.7086C46.2147 75.815 45.2008 75.9059 44.1816 75.9396C42.371 75.9873 40.5592 75.9101 38.7592 75.7086C37.9812 75.6282 39.2778 75.7943 38.4999 75.6775C38.2717 75.6438 38.0435 75.61 37.8153 75.5711C37.4366 75.5088 37.058 75.4388 36.6794 75.3635C35.7822 75.1905 34.8927 74.9768 34.011 74.7225C33.1293 74.4682 32.2649 74.1879 31.4177 73.8817C31.0651 73.7519 30.7176 73.6222 30.3804 73.4769C29.6855 73.2173 30.8369 73.6871 30.1574 73.386C29.8955 73.2511 29.6362 73.1317 29.3509 73.0045C27.8002 72.2819 26.3035 71.4485 24.8724 70.5107C24.5016 70.2667 24.1333 70.0176 23.7729 69.7581C23.5913 69.6309 23.4124 69.4986 23.2335 69.3688C23.249 69.3688 22.6682 68.9432 22.9586 69.1664C23.249 69.3896 22.6759 68.9432 22.6993 68.9562L22.1806 68.5358C21.7839 68.2062 21.4027 67.8663 21.0111 67.5185C19.7521 66.3781 18.5762 65.1492 17.4921 63.8413C17.3494 63.6726 17.212 63.4987 17.072 63.3222C17.0331 63.2729 16.587 62.689 16.9241 63.138C16.7037 62.8421 16.4833 62.5437 16.268 62.2427C15.7338 61.4875 15.2308 60.7116 14.751 59.9071C14.3015 59.1805 13.8875 58.4383 13.5088 57.6805C13.3403 57.3457 13.1769 57.011 13.0213 56.671C12.9254 56.4686 12.8346 56.2636 12.7438 56.0586C12.6816 55.9219 12.622 55.7844 12.5649 55.6459C12.6738 55.9055 12.6738 55.9055 12.5649 55.6304C11.9204 54.01 11.3858 52.348 10.9649 50.6556C10.7496 49.7603 10.5681 48.8546 10.4229 47.9463L10.3529 47.487C10.2388 46.7266 10.4021 48.006 10.3218 47.2404C10.2647 46.6955 10.2051 46.1531 10.1662 45.6081C10.0358 43.7937 10.0419 41.972 10.1843 40.1584C10.2206 39.6913 10.2751 39.2268 10.3218 38.7596C10.4021 37.9811 10.2362 39.2787 10.3529 38.5001C10.3788 38.347 10.3996 38.1939 10.4229 38.0408C10.5802 37.0564 10.7782 36.0798 11.0167 35.1109C11.4414 33.4281 11.9856 31.7777 12.6453 30.1725C12.4326 30.6915 12.7179 30.0116 12.7438 29.9519C12.8346 29.7469 12.9254 29.5419 13.0213 29.3395C13.1769 28.9995 13.3403 28.6647 13.5088 28.3326C13.9099 27.5333 14.3421 26.7547 14.8055 25.997C15.2688 25.2392 15.7555 24.4953 16.2655 23.7652C16.4807 23.4641 16.7011 23.1683 16.9215 22.8725C16.5844 23.3214 17.0305 22.7349 17.0694 22.6856C17.2535 22.4547 17.4402 22.2263 17.6321 21.9979C18.7226 20.6955 19.9047 19.4727 21.1693 18.3388C21.7761 17.7973 22.4002 17.2783 23.0416 16.7818C22.5955 17.1269 23.1816 16.6806 23.2335 16.6416L23.7729 16.2524C24.1947 15.9513 24.6269 15.6607 25.0695 15.3804C26.5061 14.4489 28.009 13.6241 29.5662 12.9125L30.1808 12.653C30.8602 12.3519 29.7088 12.8294 30.4038 12.5596C30.7539 12.4246 31.1014 12.2845 31.4411 12.1547C32.2917 11.8398 33.1561 11.5604 34.0343 11.3165C34.9126 11.0726 35.802 10.858 36.7028 10.6729C37.0814 10.5977 37.46 10.5302 37.8386 10.4653L38.5232 10.3589H38.5414C38.6944 10.3382 38.8474 10.32 39.003 10.3044C40.7999 10.0964 42.6098 10.0235 44.4176 10.0864C45.3149 10.1228 46.2147 10.1928 47.1094 10.2966C47.2365 10.3096 47.7499 10.3771 47.2417 10.2966L47.9289 10.4004C48.4596 10.4852 48.9895 10.5821 49.5185 10.6911C51.2317 11.0469 52.9159 11.5301 54.5572 12.1366C54.9799 12.2923 55.4 12.4583 55.8175 12.627C55.3352 12.4298 56.2973 12.8398 56.4451 12.9073C57.3268 13.3121 58.1912 13.7516 59.0383 14.2256C59.7514 14.6227 60.449 15.0483 61.131 15.4946C61.4396 15.6996 61.7482 15.9072 62.0491 16.12C62.2332 16.2472 62.4121 16.3795 62.591 16.5067C62.6688 16.5612 63.4053 17.1191 62.9645 16.7662C64.3055 17.8108 65.5683 18.9523 66.7428 20.1814C67.3583 20.8197 67.9487 21.4806 68.514 22.164C68.75 22.4495 68.9834 22.7349 69.209 23.0282C68.8641 22.5818 69.3101 23.1709 69.3464 23.2202C69.5228 23.459 69.6965 23.7003 69.8651 23.9416C70.8459 25.3415 71.7238 26.8107 72.492 28.3377C72.6943 28.7374 72.8888 29.1405 73.0755 29.5471C73.1377 29.6846 73.5526 30.6629 73.3556 30.1777C73.7238 31.0859 74.0635 31.9942 74.3591 32.9363C74.8878 34.6118 75.2925 36.324 75.5702 38.059C75.6065 38.2899 75.6402 38.5183 75.6713 38.7493C75.5909 38.1628 75.6895 38.9309 75.6973 39.0088C75.7413 39.3955 75.7776 39.7873 75.8088 40.174C75.884 41.1186 75.9177 42.0658 75.9203 43.013C75.9203 44.3417 77.0846 45.6081 78.459 45.5536C79.1285 45.5404 79.7668 45.2685 80.2405 44.795C80.7142 44.3214 80.9865 43.6829 81.0004 43.013C80.9745 35.1914 78.568 27.3879 73.9987 21.0248C69.4846 14.7194 63.1823 9.91599 55.9083 7.23701C41.1087 1.78731 23.7521 6.53893 13.7552 18.7411C8.75172 24.8285 5.73571 32.306 5.11454 40.1636C4.52681 47.912 6.32896 55.6543 10.2777 62.3453C14.2264 69.0363 20.1316 74.3537 27.1959 77.5797C34.5412 80.8958 42.7383 81.8321 50.6414 80.2578C65.8352 77.2268 78.1556 64.4277 80.4921 49.0752C80.807 47.0686 80.9735 45.0415 80.9901 43.0104C80.9901 41.6817 79.8179 40.4153 78.4487 40.4698C77.7797 40.4837 77.142 40.7559 76.6689 41.2293C76.1957 41.7028 75.9238 42.341 75.9099 43.0104",
-                                      fill: "#0092D2"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("path", {
-                                    attrs: {
-                                      d:
-                                        "M37.291 52.2912C35.1512 52.3699 33.0189 51.9958 31.0335 51.1935C29.3931 50.5364 28.043 49.3115 27.2292 47.742C26.2623 45.8755 25.7111 43.8215 25.6136 41.7214C25.5656 40.9165 25.5734 40.1092 25.637 39.3053C25.6544 39.0009 25.689 38.6976 25.7407 38.3971C25.8652 37.7171 24.8279 37.4265 24.7034 38.109C24.1711 41.2836 24.5889 44.5449 25.9041 47.4825C26.7365 49.3224 27.9294 50.8068 29.7291 51.7566C31.1918 52.4942 32.7711 52.9727 34.3969 53.1709C35.3524 53.3196 36.319 53.3856 37.2858 53.3682C37.9782 53.3448 37.9808 52.2678 37.2858 52.2912",
-                                      fill: "#FAB500"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("path", {
-                                    attrs: {
-                                      d:
-                                        "M49.8449 53.3492C52.0214 53.6593 54.2338 53.6128 56.3954 53.2117C57.8813 52.9237 59.4139 52.3761 60.5134 51.2965C62.0694 49.7732 62.448 47.2067 62.448 45.1306C62.4709 43.414 62.1764 41.708 61.5792 40.0987C61.3199 39.4629 60.2826 39.7406 60.542 40.3867C60.9801 41.5614 61.2423 42.7944 61.3199 44.0458C61.4276 45.2749 61.3472 46.5132 61.0813 47.7179C60.8739 48.6132 60.5964 49.576 59.9818 50.2844C58.2132 52.3242 54.8654 52.4955 52.3655 52.4513C51.8019 52.441 51.2392 52.4116 50.6773 52.3631C50.5165 52.3631 50.3557 52.332 50.1949 52.3164C50.1223 52.3164 49.85 52.2697 50.1249 52.3164C49.4455 52.223 49.1525 53.261 49.8371 53.3544",
-                                      fill: "#FAB500"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("path", {
-                                    attrs: {
-                                      d:
-                                        "M43.9245 28.6317L44.0645 24.464C44.0879 23.7711 43.0117 23.7711 42.9883 24.464L42.8613 28.6317C42.8379 29.3272 43.9141 29.3246 43.9375 28.6317",
-                                      fill: "#FAB500"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("path", {
-                                    attrs: {
-                                      d:
-                                        "M34.9649 30.6605C34.8456 30.824 35.1283 30.5334 34.9986 30.6346C35.08 30.5717 35.1668 30.5161 35.2579 30.4685C35.4736 30.3599 35.6994 30.273 35.9322 30.209C36.6553 29.9801 37.3948 29.8066 38.1442 29.69C40.1227 29.3678 42.1225 29.1943 44.1268 29.171C46.0736 29.0945 48.0231 29.2136 49.946 29.5265C50.614 29.6252 51.2656 29.8138 51.8832 30.087C52.0828 30.1728 52.2642 30.2962 52.4174 30.4503C52.4822 30.5178 52.4641 30.4711 52.5341 30.6164C52.6446 30.8523 52.7425 31.094 52.8271 31.3405C53.2903 32.5994 53.5774 33.9163 53.6803 35.2539C53.7685 36.471 53.7451 37.823 53.2032 38.9415C53.0951 39.2148 52.9321 39.4629 52.7242 39.6705C52.5164 39.8781 52.268 40.0407 51.9947 40.1482C51.3343 40.4112 50.6499 40.6094 49.9512 40.7399C48.0076 41.133 46.0356 41.3691 44.0542 41.4458C41.9587 41.5722 39.8564 41.527 37.7682 41.3108C36.539 41.1707 34.7678 40.9605 33.9017 40.1352C33.6681 39.8441 33.5 39.506 33.409 39.1439C33.1814 38.433 33.0608 37.6923 33.0511 36.9459C33.0354 35.4122 33.342 33.8924 33.951 32.4849C34.2254 31.8421 34.5633 31.2283 34.9597 30.6528C35.3539 30.0818 34.4203 29.5421 34.0313 30.1104C32.2757 32.664 31.407 36.2634 32.325 39.2815C32.5843 40.13 32.9085 40.8385 33.6761 41.3082C34.3416 41.6836 35.0645 41.9466 35.8155 42.0868C37.8901 42.5435 40.0632 42.6058 42.1845 42.5902C44.4759 42.5706 46.7627 42.3789 49.0254 42.0167C49.8899 41.8844 50.7442 41.6928 51.5824 41.4432C52.2025 41.289 52.7853 41.0119 53.2965 40.6283C54.1756 39.8783 54.549 38.6379 54.6969 37.535C54.8646 36.0948 54.7883 34.6367 54.4712 33.2219C54.3276 32.5092 54.1335 31.8076 53.8904 31.1225C53.7627 30.6714 53.5668 30.2426 53.3095 29.8509C52.9153 29.3318 52.2877 29.0723 51.6965 28.8621C49.8994 28.2419 47.8792 28.1511 45.9914 28.1044C43.743 28.0472 41.4935 28.1591 39.2619 28.4391C37.7526 28.6312 35.9192 28.7895 34.5941 29.6069C34.3751 29.7414 34.1847 29.9177 34.0339 30.1259C33.6216 30.6839 34.5526 31.2237 34.9623 30.6683",
-                                      fill: "#FAB500"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("path", {
-                                    attrs: {
-                                      d:
-                                        "M49.2666 46.0027C50.3039 47.6506 49.2666 63.299 48.0166 64.7419C46.7667 66.1848 40.1591 65.5931 38.7562 63.5897C37.7604 62.1702 36.1915 47.0641 38.7562 44.8479C40.2628 43.5503 47.9777 43.9578 49.2666 46.0027Z",
-                                      fill: "#E4032F"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("path", {
-                                    attrs: {
-                                      d:
-                                        "M45.8124 22.7479C45.8124 23.2006 45.6782 23.6431 45.4269 24.0195C45.1756 24.3959 44.8184 24.6893 44.4004 24.8625C43.9825 25.0357 43.5226 25.0811 43.0789 24.9928C42.6353 24.9044 42.2277 24.6864 41.9078 24.3663C41.588 24.0462 41.3701 23.6384 41.2819 23.1944C41.1936 22.7504 41.2389 22.2902 41.412 21.8719C41.5851 21.4537 41.8783 21.0962 42.2544 20.8447C42.6306 20.5932 43.0728 20.459 43.5252 20.459C44.1318 20.459 44.7135 20.7001 45.1425 21.1294C45.5714 21.5586 45.8124 22.1408 45.8124 22.7479Z",
-                                      fill: "#00A53F"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("path", {
-                                    attrs: {
-                                      d:
-                                        "M49.9875 34.5848C49.9875 35.0375 49.8533 35.48 49.602 35.8564C49.3507 36.2328 48.9935 36.5262 48.5755 36.6994C48.1576 36.8727 47.6977 36.918 47.254 36.8297C46.8104 36.7414 46.4028 36.5234 46.0829 36.2033C45.7631 35.8832 45.5452 35.4753 45.457 35.0313C45.3687 34.5873 45.414 34.1271 45.5871 33.7089C45.7602 33.2906 46.0534 32.9331 46.4295 32.6816C46.8057 32.4301 47.2479 32.2959 47.7003 32.2959C48.0007 32.2956 48.2983 32.3545 48.5759 32.4694C48.8536 32.5843 49.1059 32.7529 49.3183 32.9655C49.5308 33.1781 49.6993 33.4306 49.8141 33.7085C49.9289 33.9863 49.9878 34.2841 49.9875 34.5848Z",
-                                      fill: "#0092D2"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("path", {
-                                    attrs: {
-                                      d:
-                                        "M41.9329 34.5848C41.9329 35.0375 41.7987 35.48 41.5474 35.8564C41.2961 36.2328 40.9389 36.5262 40.5209 36.6994C40.103 36.8727 39.6431 36.918 39.1994 36.8297C38.7557 36.7414 38.3482 36.5234 38.0283 36.2033C37.7084 35.8832 37.4906 35.4753 37.4023 35.0313C37.3141 34.5873 37.3594 34.1271 37.5325 33.7089C37.7056 33.2906 37.9988 32.9331 38.3749 32.6816C38.751 32.4301 39.1933 32.2959 39.6456 32.2959C39.9461 32.2956 40.2437 32.3545 40.5213 32.4694C40.799 32.5843 41.0513 32.7529 41.2637 32.9655C41.4762 33.1781 41.6446 33.4306 41.7595 33.7085C41.8743 33.9863 41.9332 34.2841 41.9329 34.5848Z",
-                                      fill: "#0092D2"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("path", {
-                                    attrs: {
-                                      d:
-                                        "M27.3304 38.2511C27.3309 38.7039 27.1972 39.1467 26.9462 39.5235C26.6952 39.9002 26.3381 40.194 25.9202 40.3676C25.5023 40.5413 25.0424 40.587 24.5985 40.4989C24.1547 40.4109 23.7469 40.1931 23.4268 39.8731C23.1066 39.5531 22.8885 39.1453 22.8001 38.7012C22.7116 38.2571 22.7567 37.7968 22.9298 37.3784C23.1028 36.96 23.396 36.6024 23.7722 36.3508C24.1484 36.0992 24.5907 35.9648 25.0432 35.9648C25.6493 35.9648 26.2307 36.2056 26.6596 36.6343C27.0884 37.063 27.3297 37.6445 27.3304 38.2511Z",
-                                      fill: "#00A53F"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("path", {
-                                    attrs: {
-                                      d:
-                                        "M63.239 40.242C63.239 40.6947 63.1048 41.1372 62.8535 41.5136C62.6022 41.89 62.2449 42.1834 61.827 42.3566C61.4091 42.5299 60.9492 42.5752 60.5055 42.4869C60.0618 42.3986 59.6543 42.1806 59.3344 41.8605C59.0145 41.5404 58.7967 41.1325 58.7084 40.6885C58.6202 40.2445 58.6655 39.7843 58.8386 39.3661C59.0117 38.9478 59.3049 38.5904 59.681 38.3389C60.0571 38.0874 60.4994 37.9531 60.9517 37.9531C61.5583 37.9531 62.1401 38.1943 62.569 38.6235C62.998 39.0528 63.239 39.635 63.239 40.242Z",
-                                      fill: "#00A53F"
-                                    }
-                                  })
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("defs", [
-                                _c("clipPath", { attrs: { id: "clip0" } }, [
-                                  _c("rect", {
-                                    attrs: {
-                                      width: "76",
-                                      height: "76",
-                                      fill: "white",
-                                      transform: "translate(5 5)"
-                                    }
-                                  })
-                                ])
-                              ])
-                            ]
-                          )
-                        ])
-                      }),
-                      0
-                    )
-                  ])
+                                "div",
+                                {
+                                  staticClass:
+                                    "col-12 p-1 mt-1 d-flex justify-content-between overflow-auto"
+                                },
+                                _vm._l(clase.actividades, function(act) {
+                                  return _c(
+                                    "div",
+                                    {
+                                      key: act.id,
+                                      staticClass: "text-center mx-2"
+                                    },
+                                    [
+                                      _c(
+                                        "p",
+                                        { staticClass: "mb-2 h5 color-plomo" },
+                                        [_vm._v(_vm._s(act.tipo))]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "svg",
+                                        {
+                                          attrs: {
+                                            width: "56",
+                                            height: "56",
+                                            viewBox: "0 0 250 250"
+                                          }
+                                        },
+                                        [
+                                          _c("image", {
+                                            attrs: {
+                                              width: "100%",
+                                              height: "100%",
+                                              "xlink:href": act.icom
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                }),
+                                0
+                              )
+                            ])
+                          }),
+                          0
+                        )
+                      })
+                    ],
+                    2
+                  )
                 ])
               ])
             }),
@@ -43392,14 +43511,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [
-      _c("span", [_vm._v("Curso de Español")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-12 mb-3 mt-4 px-4" }, [
       _c("span", { staticClass: "h4 bold" }, [
         _vm._v("Contenidos de la semana")
@@ -43413,7 +43524,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-12 p-1 mt-1" }, [
       _c("span", [
         _vm._v(
-          "\n                                        Actividades de la semana\n                                    "
+          "\n                                                        Actividades de esta semana\n                                                    "
         )
       ])
     ])
@@ -43442,7 +43553,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "a",
-    { attrs: { href: "/home/detalles-avance-individual/cursos" } },
+    {
+      attrs: {
+        href: "/home/detalles-avance-individual/cursos/" + _vm.perfil.id
+      }
+    },
     [
       _c("div", { staticClass: "card card-perfil mx-2" }, [
         _c("div", { staticClass: "card-body text-center" }, [
@@ -43602,7 +43717,7 @@ var render = function() {
                   attrs: { src: curs.idioma.src }
                 }),
                 _vm._v(" "),
-                _c("span", [_vm._v("Curso de " + _vm._s(curs.idioma.idioma))])
+                _c("span", [_vm._v(_vm._s(curs.curso.titulo))])
               ]),
               _vm._v(" "),
               curs.curso.modulos.length > 0
@@ -43702,9 +43817,13 @@ var render = function() {
                         : _vm._e()
                     ]
                   )
-                : _c("div", {
-                    staticClass: "col-7 py-3 d-flex justify-content-between"
-                  }),
+                : _c(
+                    "div",
+                    {
+                      staticClass: "col-7 py-3 d-flex justify-content-between"
+                    },
+                    [_c("p", [_vm._v("No hay Clase esta Semana")])]
+                  ),
               _vm._v(" "),
               _vm._m(1, true)
             ])
@@ -59150,6 +59269,1271 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/vuex/dist/vuex.esm.js":
+/*!********************************************!*\
+  !*** ./node_modules/vuex/dist/vuex.esm.js ***!
+  \********************************************/
+/*! exports provided: default, Store, createLogger, createNamespacedHelpers, install, mapActions, mapGetters, mapMutations, mapState */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Store", function() { return Store; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createLogger", function() { return createLogger; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNamespacedHelpers", function() { return createNamespacedHelpers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "install", function() { return install; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapActions", function() { return mapActions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapGetters", function() { return mapGetters; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapMutations", function() { return mapMutations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapState", function() { return mapState; });
+/*!
+ * vuex v3.6.2
+ * (c) 2021 Evan You
+ * @license MIT
+ */
+function applyMixin (Vue) {
+  var version = Number(Vue.version.split('.')[0]);
+
+  if (version >= 2) {
+    Vue.mixin({ beforeCreate: vuexInit });
+  } else {
+    // override init and inject vuex init procedure
+    // for 1.x backwards compatibility.
+    var _init = Vue.prototype._init;
+    Vue.prototype._init = function (options) {
+      if ( options === void 0 ) options = {};
+
+      options.init = options.init
+        ? [vuexInit].concat(options.init)
+        : vuexInit;
+      _init.call(this, options);
+    };
+  }
+
+  /**
+   * Vuex init hook, injected into each instances init hooks list.
+   */
+
+  function vuexInit () {
+    var options = this.$options;
+    // store injection
+    if (options.store) {
+      this.$store = typeof options.store === 'function'
+        ? options.store()
+        : options.store;
+    } else if (options.parent && options.parent.$store) {
+      this.$store = options.parent.$store;
+    }
+  }
+}
+
+var target = typeof window !== 'undefined'
+  ? window
+  : typeof global !== 'undefined'
+    ? global
+    : {};
+var devtoolHook = target.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+
+function devtoolPlugin (store) {
+  if (!devtoolHook) { return }
+
+  store._devtoolHook = devtoolHook;
+
+  devtoolHook.emit('vuex:init', store);
+
+  devtoolHook.on('vuex:travel-to-state', function (targetState) {
+    store.replaceState(targetState);
+  });
+
+  store.subscribe(function (mutation, state) {
+    devtoolHook.emit('vuex:mutation', mutation, state);
+  }, { prepend: true });
+
+  store.subscribeAction(function (action, state) {
+    devtoolHook.emit('vuex:action', action, state);
+  }, { prepend: true });
+}
+
+/**
+ * Get the first item that pass the test
+ * by second argument function
+ *
+ * @param {Array} list
+ * @param {Function} f
+ * @return {*}
+ */
+function find (list, f) {
+  return list.filter(f)[0]
+}
+
+/**
+ * Deep copy the given object considering circular structure.
+ * This function caches all nested objects and its copies.
+ * If it detects circular structure, use cached copy to avoid infinite loop.
+ *
+ * @param {*} obj
+ * @param {Array<Object>} cache
+ * @return {*}
+ */
+function deepCopy (obj, cache) {
+  if ( cache === void 0 ) cache = [];
+
+  // just return if obj is immutable value
+  if (obj === null || typeof obj !== 'object') {
+    return obj
+  }
+
+  // if obj is hit, it is in circular structure
+  var hit = find(cache, function (c) { return c.original === obj; });
+  if (hit) {
+    return hit.copy
+  }
+
+  var copy = Array.isArray(obj) ? [] : {};
+  // put the copy into cache at first
+  // because we want to refer it in recursive deepCopy
+  cache.push({
+    original: obj,
+    copy: copy
+  });
+
+  Object.keys(obj).forEach(function (key) {
+    copy[key] = deepCopy(obj[key], cache);
+  });
+
+  return copy
+}
+
+/**
+ * forEach for object
+ */
+function forEachValue (obj, fn) {
+  Object.keys(obj).forEach(function (key) { return fn(obj[key], key); });
+}
+
+function isObject (obj) {
+  return obj !== null && typeof obj === 'object'
+}
+
+function isPromise (val) {
+  return val && typeof val.then === 'function'
+}
+
+function assert (condition, msg) {
+  if (!condition) { throw new Error(("[vuex] " + msg)) }
+}
+
+function partial (fn, arg) {
+  return function () {
+    return fn(arg)
+  }
+}
+
+// Base data struct for store's module, package with some attribute and method
+var Module = function Module (rawModule, runtime) {
+  this.runtime = runtime;
+  // Store some children item
+  this._children = Object.create(null);
+  // Store the origin module object which passed by programmer
+  this._rawModule = rawModule;
+  var rawState = rawModule.state;
+
+  // Store the origin module's state
+  this.state = (typeof rawState === 'function' ? rawState() : rawState) || {};
+};
+
+var prototypeAccessors = { namespaced: { configurable: true } };
+
+prototypeAccessors.namespaced.get = function () {
+  return !!this._rawModule.namespaced
+};
+
+Module.prototype.addChild = function addChild (key, module) {
+  this._children[key] = module;
+};
+
+Module.prototype.removeChild = function removeChild (key) {
+  delete this._children[key];
+};
+
+Module.prototype.getChild = function getChild (key) {
+  return this._children[key]
+};
+
+Module.prototype.hasChild = function hasChild (key) {
+  return key in this._children
+};
+
+Module.prototype.update = function update (rawModule) {
+  this._rawModule.namespaced = rawModule.namespaced;
+  if (rawModule.actions) {
+    this._rawModule.actions = rawModule.actions;
+  }
+  if (rawModule.mutations) {
+    this._rawModule.mutations = rawModule.mutations;
+  }
+  if (rawModule.getters) {
+    this._rawModule.getters = rawModule.getters;
+  }
+};
+
+Module.prototype.forEachChild = function forEachChild (fn) {
+  forEachValue(this._children, fn);
+};
+
+Module.prototype.forEachGetter = function forEachGetter (fn) {
+  if (this._rawModule.getters) {
+    forEachValue(this._rawModule.getters, fn);
+  }
+};
+
+Module.prototype.forEachAction = function forEachAction (fn) {
+  if (this._rawModule.actions) {
+    forEachValue(this._rawModule.actions, fn);
+  }
+};
+
+Module.prototype.forEachMutation = function forEachMutation (fn) {
+  if (this._rawModule.mutations) {
+    forEachValue(this._rawModule.mutations, fn);
+  }
+};
+
+Object.defineProperties( Module.prototype, prototypeAccessors );
+
+var ModuleCollection = function ModuleCollection (rawRootModule) {
+  // register root module (Vuex.Store options)
+  this.register([], rawRootModule, false);
+};
+
+ModuleCollection.prototype.get = function get (path) {
+  return path.reduce(function (module, key) {
+    return module.getChild(key)
+  }, this.root)
+};
+
+ModuleCollection.prototype.getNamespace = function getNamespace (path) {
+  var module = this.root;
+  return path.reduce(function (namespace, key) {
+    module = module.getChild(key);
+    return namespace + (module.namespaced ? key + '/' : '')
+  }, '')
+};
+
+ModuleCollection.prototype.update = function update$1 (rawRootModule) {
+  update([], this.root, rawRootModule);
+};
+
+ModuleCollection.prototype.register = function register (path, rawModule, runtime) {
+    var this$1 = this;
+    if ( runtime === void 0 ) runtime = true;
+
+  if ((true)) {
+    assertRawModule(path, rawModule);
+  }
+
+  var newModule = new Module(rawModule, runtime);
+  if (path.length === 0) {
+    this.root = newModule;
+  } else {
+    var parent = this.get(path.slice(0, -1));
+    parent.addChild(path[path.length - 1], newModule);
+  }
+
+  // register nested modules
+  if (rawModule.modules) {
+    forEachValue(rawModule.modules, function (rawChildModule, key) {
+      this$1.register(path.concat(key), rawChildModule, runtime);
+    });
+  }
+};
+
+ModuleCollection.prototype.unregister = function unregister (path) {
+  var parent = this.get(path.slice(0, -1));
+  var key = path[path.length - 1];
+  var child = parent.getChild(key);
+
+  if (!child) {
+    if ((true)) {
+      console.warn(
+        "[vuex] trying to unregister module '" + key + "', which is " +
+        "not registered"
+      );
+    }
+    return
+  }
+
+  if (!child.runtime) {
+    return
+  }
+
+  parent.removeChild(key);
+};
+
+ModuleCollection.prototype.isRegistered = function isRegistered (path) {
+  var parent = this.get(path.slice(0, -1));
+  var key = path[path.length - 1];
+
+  if (parent) {
+    return parent.hasChild(key)
+  }
+
+  return false
+};
+
+function update (path, targetModule, newModule) {
+  if ((true)) {
+    assertRawModule(path, newModule);
+  }
+
+  // update target module
+  targetModule.update(newModule);
+
+  // update nested modules
+  if (newModule.modules) {
+    for (var key in newModule.modules) {
+      if (!targetModule.getChild(key)) {
+        if ((true)) {
+          console.warn(
+            "[vuex] trying to add a new module '" + key + "' on hot reloading, " +
+            'manual reload is needed'
+          );
+        }
+        return
+      }
+      update(
+        path.concat(key),
+        targetModule.getChild(key),
+        newModule.modules[key]
+      );
+    }
+  }
+}
+
+var functionAssert = {
+  assert: function (value) { return typeof value === 'function'; },
+  expected: 'function'
+};
+
+var objectAssert = {
+  assert: function (value) { return typeof value === 'function' ||
+    (typeof value === 'object' && typeof value.handler === 'function'); },
+  expected: 'function or object with "handler" function'
+};
+
+var assertTypes = {
+  getters: functionAssert,
+  mutations: functionAssert,
+  actions: objectAssert
+};
+
+function assertRawModule (path, rawModule) {
+  Object.keys(assertTypes).forEach(function (key) {
+    if (!rawModule[key]) { return }
+
+    var assertOptions = assertTypes[key];
+
+    forEachValue(rawModule[key], function (value, type) {
+      assert(
+        assertOptions.assert(value),
+        makeAssertionMessage(path, key, type, value, assertOptions.expected)
+      );
+    });
+  });
+}
+
+function makeAssertionMessage (path, key, type, value, expected) {
+  var buf = key + " should be " + expected + " but \"" + key + "." + type + "\"";
+  if (path.length > 0) {
+    buf += " in module \"" + (path.join('.')) + "\"";
+  }
+  buf += " is " + (JSON.stringify(value)) + ".";
+  return buf
+}
+
+var Vue; // bind on install
+
+var Store = function Store (options) {
+  var this$1 = this;
+  if ( options === void 0 ) options = {};
+
+  // Auto install if it is not done yet and `window` has `Vue`.
+  // To allow users to avoid auto-installation in some cases,
+  // this code should be placed here. See #731
+  if (!Vue && typeof window !== 'undefined' && window.Vue) {
+    install(window.Vue);
+  }
+
+  if ((true)) {
+    assert(Vue, "must call Vue.use(Vuex) before creating a store instance.");
+    assert(typeof Promise !== 'undefined', "vuex requires a Promise polyfill in this browser.");
+    assert(this instanceof Store, "store must be called with the new operator.");
+  }
+
+  var plugins = options.plugins; if ( plugins === void 0 ) plugins = [];
+  var strict = options.strict; if ( strict === void 0 ) strict = false;
+
+  // store internal state
+  this._committing = false;
+  this._actions = Object.create(null);
+  this._actionSubscribers = [];
+  this._mutations = Object.create(null);
+  this._wrappedGetters = Object.create(null);
+  this._modules = new ModuleCollection(options);
+  this._modulesNamespaceMap = Object.create(null);
+  this._subscribers = [];
+  this._watcherVM = new Vue();
+  this._makeLocalGettersCache = Object.create(null);
+
+  // bind commit and dispatch to self
+  var store = this;
+  var ref = this;
+  var dispatch = ref.dispatch;
+  var commit = ref.commit;
+  this.dispatch = function boundDispatch (type, payload) {
+    return dispatch.call(store, type, payload)
+  };
+  this.commit = function boundCommit (type, payload, options) {
+    return commit.call(store, type, payload, options)
+  };
+
+  // strict mode
+  this.strict = strict;
+
+  var state = this._modules.root.state;
+
+  // init root module.
+  // this also recursively registers all sub-modules
+  // and collects all module getters inside this._wrappedGetters
+  installModule(this, state, [], this._modules.root);
+
+  // initialize the store vm, which is responsible for the reactivity
+  // (also registers _wrappedGetters as computed properties)
+  resetStoreVM(this, state);
+
+  // apply plugins
+  plugins.forEach(function (plugin) { return plugin(this$1); });
+
+  var useDevtools = options.devtools !== undefined ? options.devtools : Vue.config.devtools;
+  if (useDevtools) {
+    devtoolPlugin(this);
+  }
+};
+
+var prototypeAccessors$1 = { state: { configurable: true } };
+
+prototypeAccessors$1.state.get = function () {
+  return this._vm._data.$$state
+};
+
+prototypeAccessors$1.state.set = function (v) {
+  if ((true)) {
+    assert(false, "use store.replaceState() to explicit replace store state.");
+  }
+};
+
+Store.prototype.commit = function commit (_type, _payload, _options) {
+    var this$1 = this;
+
+  // check object-style commit
+  var ref = unifyObjectStyle(_type, _payload, _options);
+    var type = ref.type;
+    var payload = ref.payload;
+    var options = ref.options;
+
+  var mutation = { type: type, payload: payload };
+  var entry = this._mutations[type];
+  if (!entry) {
+    if ((true)) {
+      console.error(("[vuex] unknown mutation type: " + type));
+    }
+    return
+  }
+  this._withCommit(function () {
+    entry.forEach(function commitIterator (handler) {
+      handler(payload);
+    });
+  });
+
+  this._subscribers
+    .slice() // shallow copy to prevent iterator invalidation if subscriber synchronously calls unsubscribe
+    .forEach(function (sub) { return sub(mutation, this$1.state); });
+
+  if (
+    ( true) &&
+    options && options.silent
+  ) {
+    console.warn(
+      "[vuex] mutation type: " + type + ". Silent option has been removed. " +
+      'Use the filter functionality in the vue-devtools'
+    );
+  }
+};
+
+Store.prototype.dispatch = function dispatch (_type, _payload) {
+    var this$1 = this;
+
+  // check object-style dispatch
+  var ref = unifyObjectStyle(_type, _payload);
+    var type = ref.type;
+    var payload = ref.payload;
+
+  var action = { type: type, payload: payload };
+  var entry = this._actions[type];
+  if (!entry) {
+    if ((true)) {
+      console.error(("[vuex] unknown action type: " + type));
+    }
+    return
+  }
+
+  try {
+    this._actionSubscribers
+      .slice() // shallow copy to prevent iterator invalidation if subscriber synchronously calls unsubscribe
+      .filter(function (sub) { return sub.before; })
+      .forEach(function (sub) { return sub.before(action, this$1.state); });
+  } catch (e) {
+    if ((true)) {
+      console.warn("[vuex] error in before action subscribers: ");
+      console.error(e);
+    }
+  }
+
+  var result = entry.length > 1
+    ? Promise.all(entry.map(function (handler) { return handler(payload); }))
+    : entry[0](payload);
+
+  return new Promise(function (resolve, reject) {
+    result.then(function (res) {
+      try {
+        this$1._actionSubscribers
+          .filter(function (sub) { return sub.after; })
+          .forEach(function (sub) { return sub.after(action, this$1.state); });
+      } catch (e) {
+        if ((true)) {
+          console.warn("[vuex] error in after action subscribers: ");
+          console.error(e);
+        }
+      }
+      resolve(res);
+    }, function (error) {
+      try {
+        this$1._actionSubscribers
+          .filter(function (sub) { return sub.error; })
+          .forEach(function (sub) { return sub.error(action, this$1.state, error); });
+      } catch (e) {
+        if ((true)) {
+          console.warn("[vuex] error in error action subscribers: ");
+          console.error(e);
+        }
+      }
+      reject(error);
+    });
+  })
+};
+
+Store.prototype.subscribe = function subscribe (fn, options) {
+  return genericSubscribe(fn, this._subscribers, options)
+};
+
+Store.prototype.subscribeAction = function subscribeAction (fn, options) {
+  var subs = typeof fn === 'function' ? { before: fn } : fn;
+  return genericSubscribe(subs, this._actionSubscribers, options)
+};
+
+Store.prototype.watch = function watch (getter, cb, options) {
+    var this$1 = this;
+
+  if ((true)) {
+    assert(typeof getter === 'function', "store.watch only accepts a function.");
+  }
+  return this._watcherVM.$watch(function () { return getter(this$1.state, this$1.getters); }, cb, options)
+};
+
+Store.prototype.replaceState = function replaceState (state) {
+    var this$1 = this;
+
+  this._withCommit(function () {
+    this$1._vm._data.$$state = state;
+  });
+};
+
+Store.prototype.registerModule = function registerModule (path, rawModule, options) {
+    if ( options === void 0 ) options = {};
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if ((true)) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+    assert(path.length > 0, 'cannot register the root module by using registerModule.');
+  }
+
+  this._modules.register(path, rawModule);
+  installModule(this, this.state, path, this._modules.get(path), options.preserveState);
+  // reset store to update getters...
+  resetStoreVM(this, this.state);
+};
+
+Store.prototype.unregisterModule = function unregisterModule (path) {
+    var this$1 = this;
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if ((true)) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+  }
+
+  this._modules.unregister(path);
+  this._withCommit(function () {
+    var parentState = getNestedState(this$1.state, path.slice(0, -1));
+    Vue.delete(parentState, path[path.length - 1]);
+  });
+  resetStore(this);
+};
+
+Store.prototype.hasModule = function hasModule (path) {
+  if (typeof path === 'string') { path = [path]; }
+
+  if ((true)) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+  }
+
+  return this._modules.isRegistered(path)
+};
+
+Store.prototype.hotUpdate = function hotUpdate (newOptions) {
+  this._modules.update(newOptions);
+  resetStore(this, true);
+};
+
+Store.prototype._withCommit = function _withCommit (fn) {
+  var committing = this._committing;
+  this._committing = true;
+  fn();
+  this._committing = committing;
+};
+
+Object.defineProperties( Store.prototype, prototypeAccessors$1 );
+
+function genericSubscribe (fn, subs, options) {
+  if (subs.indexOf(fn) < 0) {
+    options && options.prepend
+      ? subs.unshift(fn)
+      : subs.push(fn);
+  }
+  return function () {
+    var i = subs.indexOf(fn);
+    if (i > -1) {
+      subs.splice(i, 1);
+    }
+  }
+}
+
+function resetStore (store, hot) {
+  store._actions = Object.create(null);
+  store._mutations = Object.create(null);
+  store._wrappedGetters = Object.create(null);
+  store._modulesNamespaceMap = Object.create(null);
+  var state = store.state;
+  // init all modules
+  installModule(store, state, [], store._modules.root, true);
+  // reset vm
+  resetStoreVM(store, state, hot);
+}
+
+function resetStoreVM (store, state, hot) {
+  var oldVm = store._vm;
+
+  // bind store public getters
+  store.getters = {};
+  // reset local getters cache
+  store._makeLocalGettersCache = Object.create(null);
+  var wrappedGetters = store._wrappedGetters;
+  var computed = {};
+  forEachValue(wrappedGetters, function (fn, key) {
+    // use computed to leverage its lazy-caching mechanism
+    // direct inline function use will lead to closure preserving oldVm.
+    // using partial to return function with only arguments preserved in closure environment.
+    computed[key] = partial(fn, store);
+    Object.defineProperty(store.getters, key, {
+      get: function () { return store._vm[key]; },
+      enumerable: true // for local getters
+    });
+  });
+
+  // use a Vue instance to store the state tree
+  // suppress warnings just in case the user has added
+  // some funky global mixins
+  var silent = Vue.config.silent;
+  Vue.config.silent = true;
+  store._vm = new Vue({
+    data: {
+      $$state: state
+    },
+    computed: computed
+  });
+  Vue.config.silent = silent;
+
+  // enable strict mode for new vm
+  if (store.strict) {
+    enableStrictMode(store);
+  }
+
+  if (oldVm) {
+    if (hot) {
+      // dispatch changes in all subscribed watchers
+      // to force getter re-evaluation for hot reloading.
+      store._withCommit(function () {
+        oldVm._data.$$state = null;
+      });
+    }
+    Vue.nextTick(function () { return oldVm.$destroy(); });
+  }
+}
+
+function installModule (store, rootState, path, module, hot) {
+  var isRoot = !path.length;
+  var namespace = store._modules.getNamespace(path);
+
+  // register in namespace map
+  if (module.namespaced) {
+    if (store._modulesNamespaceMap[namespace] && ("development" !== 'production')) {
+      console.error(("[vuex] duplicate namespace " + namespace + " for the namespaced module " + (path.join('/'))));
+    }
+    store._modulesNamespaceMap[namespace] = module;
+  }
+
+  // set state
+  if (!isRoot && !hot) {
+    var parentState = getNestedState(rootState, path.slice(0, -1));
+    var moduleName = path[path.length - 1];
+    store._withCommit(function () {
+      if ((true)) {
+        if (moduleName in parentState) {
+          console.warn(
+            ("[vuex] state field \"" + moduleName + "\" was overridden by a module with the same name at \"" + (path.join('.')) + "\"")
+          );
+        }
+      }
+      Vue.set(parentState, moduleName, module.state);
+    });
+  }
+
+  var local = module.context = makeLocalContext(store, namespace, path);
+
+  module.forEachMutation(function (mutation, key) {
+    var namespacedType = namespace + key;
+    registerMutation(store, namespacedType, mutation, local);
+  });
+
+  module.forEachAction(function (action, key) {
+    var type = action.root ? key : namespace + key;
+    var handler = action.handler || action;
+    registerAction(store, type, handler, local);
+  });
+
+  module.forEachGetter(function (getter, key) {
+    var namespacedType = namespace + key;
+    registerGetter(store, namespacedType, getter, local);
+  });
+
+  module.forEachChild(function (child, key) {
+    installModule(store, rootState, path.concat(key), child, hot);
+  });
+}
+
+/**
+ * make localized dispatch, commit, getters and state
+ * if there is no namespace, just use root ones
+ */
+function makeLocalContext (store, namespace, path) {
+  var noNamespace = namespace === '';
+
+  var local = {
+    dispatch: noNamespace ? store.dispatch : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if (( true) && !store._actions[type]) {
+          console.error(("[vuex] unknown local action type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      return store.dispatch(type, payload)
+    },
+
+    commit: noNamespace ? store.commit : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if (( true) && !store._mutations[type]) {
+          console.error(("[vuex] unknown local mutation type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      store.commit(type, payload, options);
+    }
+  };
+
+  // getters and state object must be gotten lazily
+  // because they will be changed by vm update
+  Object.defineProperties(local, {
+    getters: {
+      get: noNamespace
+        ? function () { return store.getters; }
+        : function () { return makeLocalGetters(store, namespace); }
+    },
+    state: {
+      get: function () { return getNestedState(store.state, path); }
+    }
+  });
+
+  return local
+}
+
+function makeLocalGetters (store, namespace) {
+  if (!store._makeLocalGettersCache[namespace]) {
+    var gettersProxy = {};
+    var splitPos = namespace.length;
+    Object.keys(store.getters).forEach(function (type) {
+      // skip if the target getter is not match this namespace
+      if (type.slice(0, splitPos) !== namespace) { return }
+
+      // extract local getter type
+      var localType = type.slice(splitPos);
+
+      // Add a port to the getters proxy.
+      // Define as getter property because
+      // we do not want to evaluate the getters in this time.
+      Object.defineProperty(gettersProxy, localType, {
+        get: function () { return store.getters[type]; },
+        enumerable: true
+      });
+    });
+    store._makeLocalGettersCache[namespace] = gettersProxy;
+  }
+
+  return store._makeLocalGettersCache[namespace]
+}
+
+function registerMutation (store, type, handler, local) {
+  var entry = store._mutations[type] || (store._mutations[type] = []);
+  entry.push(function wrappedMutationHandler (payload) {
+    handler.call(store, local.state, payload);
+  });
+}
+
+function registerAction (store, type, handler, local) {
+  var entry = store._actions[type] || (store._actions[type] = []);
+  entry.push(function wrappedActionHandler (payload) {
+    var res = handler.call(store, {
+      dispatch: local.dispatch,
+      commit: local.commit,
+      getters: local.getters,
+      state: local.state,
+      rootGetters: store.getters,
+      rootState: store.state
+    }, payload);
+    if (!isPromise(res)) {
+      res = Promise.resolve(res);
+    }
+    if (store._devtoolHook) {
+      return res.catch(function (err) {
+        store._devtoolHook.emit('vuex:error', err);
+        throw err
+      })
+    } else {
+      return res
+    }
+  });
+}
+
+function registerGetter (store, type, rawGetter, local) {
+  if (store._wrappedGetters[type]) {
+    if ((true)) {
+      console.error(("[vuex] duplicate getter key: " + type));
+    }
+    return
+  }
+  store._wrappedGetters[type] = function wrappedGetter (store) {
+    return rawGetter(
+      local.state, // local state
+      local.getters, // local getters
+      store.state, // root state
+      store.getters // root getters
+    )
+  };
+}
+
+function enableStrictMode (store) {
+  store._vm.$watch(function () { return this._data.$$state }, function () {
+    if ((true)) {
+      assert(store._committing, "do not mutate vuex store state outside mutation handlers.");
+    }
+  }, { deep: true, sync: true });
+}
+
+function getNestedState (state, path) {
+  return path.reduce(function (state, key) { return state[key]; }, state)
+}
+
+function unifyObjectStyle (type, payload, options) {
+  if (isObject(type) && type.type) {
+    options = payload;
+    payload = type;
+    type = type.type;
+  }
+
+  if ((true)) {
+    assert(typeof type === 'string', ("expects string as the type, but found " + (typeof type) + "."));
+  }
+
+  return { type: type, payload: payload, options: options }
+}
+
+function install (_Vue) {
+  if (Vue && _Vue === Vue) {
+    if ((true)) {
+      console.error(
+        '[vuex] already installed. Vue.use(Vuex) should be called only once.'
+      );
+    }
+    return
+  }
+  Vue = _Vue;
+  applyMixin(Vue);
+}
+
+/**
+ * Reduce the code which written in Vue.js for getting the state.
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} states # Object's item can be a function which accept state and getters for param, you can do something for state and getters in it.
+ * @param {Object}
+ */
+var mapState = normalizeNamespace(function (namespace, states) {
+  var res = {};
+  if (( true) && !isValidMap(states)) {
+    console.error('[vuex] mapState: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(states).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedState () {
+      var state = this.$store.state;
+      var getters = this.$store.getters;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapState', namespace);
+        if (!module) {
+          return
+        }
+        state = module.context.state;
+        getters = module.context.getters;
+      }
+      return typeof val === 'function'
+        ? val.call(this, state, getters)
+        : state[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for committing the mutation
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} mutations # Object's item can be a function which accept `commit` function as the first param, it can accept another params. You can commit mutation and do any other things in this function. specially, You need to pass anthor params from the mapped function.
+ * @return {Object}
+ */
+var mapMutations = normalizeNamespace(function (namespace, mutations) {
+  var res = {};
+  if (( true) && !isValidMap(mutations)) {
+    console.error('[vuex] mapMutations: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(mutations).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedMutation () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      // Get the commit method from store
+      var commit = this.$store.commit;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapMutations', namespace);
+        if (!module) {
+          return
+        }
+        commit = module.context.commit;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [commit].concat(args))
+        : commit.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for getting the getters
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} getters
+ * @return {Object}
+ */
+var mapGetters = normalizeNamespace(function (namespace, getters) {
+  var res = {};
+  if (( true) && !isValidMap(getters)) {
+    console.error('[vuex] mapGetters: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(getters).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    // The namespace has been mutated by normalizeNamespace
+    val = namespace + val;
+    res[key] = function mappedGetter () {
+      if (namespace && !getModuleByNamespace(this.$store, 'mapGetters', namespace)) {
+        return
+      }
+      if (( true) && !(val in this.$store.getters)) {
+        console.error(("[vuex] unknown getter: " + val));
+        return
+      }
+      return this.$store.getters[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for dispatch the action
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} actions # Object's item can be a function which accept `dispatch` function as the first param, it can accept anthor params. You can dispatch action and do any other things in this function. specially, You need to pass anthor params from the mapped function.
+ * @return {Object}
+ */
+var mapActions = normalizeNamespace(function (namespace, actions) {
+  var res = {};
+  if (( true) && !isValidMap(actions)) {
+    console.error('[vuex] mapActions: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(actions).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedAction () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      // get dispatch function from store
+      var dispatch = this.$store.dispatch;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapActions', namespace);
+        if (!module) {
+          return
+        }
+        dispatch = module.context.dispatch;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [dispatch].concat(args))
+        : dispatch.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+/**
+ * Rebinding namespace param for mapXXX function in special scoped, and return them by simple object
+ * @param {String} namespace
+ * @return {Object}
+ */
+var createNamespacedHelpers = function (namespace) { return ({
+  mapState: mapState.bind(null, namespace),
+  mapGetters: mapGetters.bind(null, namespace),
+  mapMutations: mapMutations.bind(null, namespace),
+  mapActions: mapActions.bind(null, namespace)
+}); };
+
+/**
+ * Normalize the map
+ * normalizeMap([1, 2, 3]) => [ { key: 1, val: 1 }, { key: 2, val: 2 }, { key: 3, val: 3 } ]
+ * normalizeMap({a: 1, b: 2, c: 3}) => [ { key: 'a', val: 1 }, { key: 'b', val: 2 }, { key: 'c', val: 3 } ]
+ * @param {Array|Object} map
+ * @return {Object}
+ */
+function normalizeMap (map) {
+  if (!isValidMap(map)) {
+    return []
+  }
+  return Array.isArray(map)
+    ? map.map(function (key) { return ({ key: key, val: key }); })
+    : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }); })
+}
+
+/**
+ * Validate whether given map is valid or not
+ * @param {*} map
+ * @return {Boolean}
+ */
+function isValidMap (map) {
+  return Array.isArray(map) || isObject(map)
+}
+
+/**
+ * Return a function expect two param contains namespace and map. it will normalize the namespace and then the param's function will handle the new namespace and the map.
+ * @param {Function} fn
+ * @return {Function}
+ */
+function normalizeNamespace (fn) {
+  return function (namespace, map) {
+    if (typeof namespace !== 'string') {
+      map = namespace;
+      namespace = '';
+    } else if (namespace.charAt(namespace.length - 1) !== '/') {
+      namespace += '/';
+    }
+    return fn(namespace, map)
+  }
+}
+
+/**
+ * Search a special module from store by namespace. if module not exist, print error message.
+ * @param {Object} store
+ * @param {String} helper
+ * @param {String} namespace
+ * @return {Object}
+ */
+function getModuleByNamespace (store, helper, namespace) {
+  var module = store._modulesNamespaceMap[namespace];
+  if (( true) && !module) {
+    console.error(("[vuex] module namespace not found in " + helper + "(): " + namespace));
+  }
+  return module
+}
+
+// Credits: borrowed code from fcomb/redux-logger
+
+function createLogger (ref) {
+  if ( ref === void 0 ) ref = {};
+  var collapsed = ref.collapsed; if ( collapsed === void 0 ) collapsed = true;
+  var filter = ref.filter; if ( filter === void 0 ) filter = function (mutation, stateBefore, stateAfter) { return true; };
+  var transformer = ref.transformer; if ( transformer === void 0 ) transformer = function (state) { return state; };
+  var mutationTransformer = ref.mutationTransformer; if ( mutationTransformer === void 0 ) mutationTransformer = function (mut) { return mut; };
+  var actionFilter = ref.actionFilter; if ( actionFilter === void 0 ) actionFilter = function (action, state) { return true; };
+  var actionTransformer = ref.actionTransformer; if ( actionTransformer === void 0 ) actionTransformer = function (act) { return act; };
+  var logMutations = ref.logMutations; if ( logMutations === void 0 ) logMutations = true;
+  var logActions = ref.logActions; if ( logActions === void 0 ) logActions = true;
+  var logger = ref.logger; if ( logger === void 0 ) logger = console;
+
+  return function (store) {
+    var prevState = deepCopy(store.state);
+
+    if (typeof logger === 'undefined') {
+      return
+    }
+
+    if (logMutations) {
+      store.subscribe(function (mutation, state) {
+        var nextState = deepCopy(state);
+
+        if (filter(mutation, prevState, nextState)) {
+          var formattedTime = getFormattedTime();
+          var formattedMutation = mutationTransformer(mutation);
+          var message = "mutation " + (mutation.type) + formattedTime;
+
+          startMessage(logger, message, collapsed);
+          logger.log('%c prev state', 'color: #9E9E9E; font-weight: bold', transformer(prevState));
+          logger.log('%c mutation', 'color: #03A9F4; font-weight: bold', formattedMutation);
+          logger.log('%c next state', 'color: #4CAF50; font-weight: bold', transformer(nextState));
+          endMessage(logger);
+        }
+
+        prevState = nextState;
+      });
+    }
+
+    if (logActions) {
+      store.subscribeAction(function (action, state) {
+        if (actionFilter(action, state)) {
+          var formattedTime = getFormattedTime();
+          var formattedAction = actionTransformer(action);
+          var message = "action " + (action.type) + formattedTime;
+
+          startMessage(logger, message, collapsed);
+          logger.log('%c action', 'color: #03A9F4; font-weight: bold', formattedAction);
+          endMessage(logger);
+        }
+      });
+    }
+  }
+}
+
+function startMessage (logger, message, collapsed) {
+  var startMessage = collapsed
+    ? logger.groupCollapsed
+    : logger.group;
+
+  // render
+  try {
+    startMessage.call(logger, message);
+  } catch (e) {
+    logger.log(message);
+  }
+}
+
+function endMessage (logger) {
+  try {
+    logger.groupEnd();
+  } catch (e) {
+    logger.log('—— log end ——');
+  }
+}
+
+function getFormattedTime () {
+  var time = new Date();
+  return (" @ " + (pad(time.getHours(), 2)) + ":" + (pad(time.getMinutes(), 2)) + ":" + (pad(time.getSeconds(), 2)) + "." + (pad(time.getMilliseconds(), 3)))
+}
+
+function repeat (str, times) {
+  return (new Array(times + 1)).join(str)
+}
+
+function pad (num, maxLength) {
+  return repeat('0', maxLength - num.toString().length) + num
+}
+
+var index = {
+  Store: Store,
+  install: install,
+  version: '3.6.2',
+  mapState: mapState,
+  mapMutations: mapMutations,
+  mapGetters: mapGetters,
+  mapActions: mapActions,
+  createNamespacedHelpers: createNamespacedHelpers,
+  createLogger: createLogger
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (index);
+
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -60679,12 +62063,17 @@ __webpack_require__.r(__webpack_exports__);
 /*!***********************************!*\
   !*** ./resources/js/Padre/app.js ***!
   \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 __webpack_require__(/*! ../bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); //home
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]); //home
 
 Vue.component('home-component', __webpack_require__(/*! ./Home/MiPerfiles/home */ "./resources/js/Padre/Home/MiPerfiles/home.vue")["default"]); //detalles padre cursos
 
@@ -60705,8 +62094,31 @@ Vue.component('perfil-padre-component', __webpack_require__(/*! ./Perfil/perfil 
 Vue.component('create-perfiluser', __webpack_require__(/*! ./PerfilUser/create */ "./resources/js/Padre/PerfilUser/create.vue")["default"]);
 Vue.component('edit-perfiluser', __webpack_require__(/*! ./PerfilUser/edit */ "./resources/js/Padre/PerfilUser/edit.vue")["default"]);
 Vue.component('cara-avatar', __webpack_require__(/*! ../PerfilHijo/PerfilUser/caraAvatar */ "./resources/js/PerfilHijo/PerfilUser/caraAvatar.vue")["default"]);
+var store = new vuex__WEBPACK_IMPORTED_MODULE_0__["default"].Store({
+  state: {
+    cursos: [],
+    filterCursos: {
+      curso: ""
+    }
+  },
+  mutations: {
+    setCursos: function setCursos(state, cursos) {
+      state.cursos = cursos;
+    },
+    setfilterCursos: function setfilterCursos(state, data) {
+      state.filterCursos[data['filter']] = data.value;
+    }
+  },
+  getters: {
+    filteredCursos: function filteredCursos(state) {
+      var cursos = state.cursos;
+      return cursos;
+    }
+  }
+});
 var app = new Vue({
-  el: '#padre-app'
+  el: '#padre-app',
+  store: store
 });
 
 /***/ }),

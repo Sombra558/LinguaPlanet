@@ -26,7 +26,7 @@
                 <div v-for="curs in miscursostotales"  :key="curs.curso.id" class="row mt-3">
                     <div class="col-12">
                         <img class="flag-language mx-1" :src="curs.idioma.src">
-                        <span>Curso de {{curs.idioma.idioma}}</span>
+                        <span>{{curs.curso.titulo}}</span>
                     </div>
                     <div v-if="curs.curso.modulos.length>0" class="col-7 py-3 d-flex justify-content-between">
 
@@ -47,7 +47,7 @@
                      
                     </div>
                     <div v-else class="col-7 py-3 d-flex justify-content-between">
-                    
+                        <p>No hay Clase esta Semana</p>
                     </div>
                     <div class="col-5 text-center d-flex justify-content-center align-items-center">
                         <a class="btn btn-light btn-lg text-primary" href="#"><span class="h6">Ver contenido</span></a>

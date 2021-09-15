@@ -5,7 +5,7 @@ Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
 
 	Route::get('/detalles-avances/cursos', 'Padres\PadresViewController@detallespadrecursos')->name('padre.detalles-avances');
 	Route::get('/detalles-avances/progreso', 'Padres\PadresViewController@detallesProgreso')->name('padre.pagos');
-	Route::get('/detalles-avance-individual/cursos', 'Padres\PadresViewController@detalleIndividualpadrecursos')->name('padre.detalles-individual');;
+	Route::get('/detalles-avance-individual/cursos/{id}', 'Padres\PadresViewController@detalleIndividualpadrecursos')->name('padre.detalles-individual');;
 	Route::get('/detalles-pagos/membresias', 'Padres\PadresViewController@detallespadremembresias')->name('padre.pagos');
 	Route::get('/membresia/{plan_id}/editar', 'Padres\PadresViewController@editarMembresia')->name('padre.editarMembresia');
 	Route::get('/certificados', 'Padres\PadresViewController@certificados');

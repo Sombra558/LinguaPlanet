@@ -10922,7 +10922,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".process-dot[data-v-107001ad] {\n  width: 30px;\n}\n.line1[data-v-107001ad] {\n  position: relative;\n  left: -9px;\n  top: 3px;\n  width: 220%;\n}\n.line2[data-v-107001ad] {\n  position: relative;\n  left: -24px;\n  top: 3px;\n  width: 220%;\n}", ""]);
+exports.push([module.i, ".process-dot[data-v-107001ad] {\n  width: 30px;\n}\n.line1[data-v-107001ad] {\n  position: relative;\n  left: -9px;\n  top: 3px;\n  width: 220%;\n}\n.line2[data-v-107001ad] {\n  position: relative;\n  left: -44px;\n  top: 3px;\n  width: 220%;\n}", ""]);
 
 // exports
 

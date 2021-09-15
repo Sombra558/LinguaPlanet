@@ -95,6 +95,11 @@
             $('.left-panel').toggleClass('show');
         });
     </script>
+    <script>
+        function myFunction(perfil_id) {
+            alert("The video has ended"+ perfil_id);
+        }
+    </script>
     <div class="backdrop"></div>
 </body>
 </html>
