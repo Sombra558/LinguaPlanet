@@ -8,7 +8,12 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import Vuex from 'vuex';
+
 Vue.use(Vuex);
+
+import vueVimeoPlayer from 'vue-vimeo-player'
+
+Vue.use(vueVimeoPlayer)
 
 Vue.component('footer-component', require('./Landing/Templades/Footer/footer').default);
 

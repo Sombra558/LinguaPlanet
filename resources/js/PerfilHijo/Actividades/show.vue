@@ -4,7 +4,7 @@
             <img class="w-100" src="/images/home-student.svg">
         </a>
         <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura'" style="height: 85%;">
-	        <iframe width="100%"
+				  <iframe width="100%"
 	                height="100%" :src="actividad.recurso + '?autoplay=0'"
 	                webkitallowfullscreen mozallowfullscreen allowfullscreen
 	                autoplay="0"
@@ -61,6 +61,7 @@
 
 <script>
 	import pdf from "vue-pdf";
+	import vueVimeoPlayer from 'vue-vimeo-player'
     export default {
         name:"actividad-show",
         props:['perfil','actividad'],
@@ -74,18 +75,38 @@
         		zoom: 100,
 				openbook:false,
 				prevUrl : document.referrer,
+				videoID: '76979871',
+				height: 500,
+				options: {
+					muted: true,
+					autoplay: true,
+				},
+			playerReady: false
+				
 			}
 		},
         components : {
-    		pdf
+    		pdf,vueVimeoPlayer
         },
         computed: {
 			noPrevPage() {
 				return this.currentPage <= 1;
 			},
 			noNextPage() {
+				
+				if (this.currentPage === this.pageCount) {
+					var url = `/home/app/${this.perfil.id}/${this.perfil.apodo}/clase/${this.actividad.clase_id}/actividad/${this.actividad.id}/realizada`;
+					axios.get(url).then((result) => {
+						console.log(result.data);
+					}).catch((err) => {
+						
+					});
+				}
+
 				return this.currentPage === this.pageCount;
-			}
+				
+			},
+		
 		},
 		methods: {
 			siguiente(){
@@ -93,7 +114,8 @@
 			},
 			anterior(){				
 				this.currentPage--;
-			}
+			},
+		
 		},
     }
 </script>
