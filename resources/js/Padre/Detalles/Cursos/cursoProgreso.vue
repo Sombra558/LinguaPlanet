@@ -87,19 +87,19 @@
                                         <div class="row align-items-center h-100">
                                             <div class="item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3">
                                                 <h5 class="bold text-primary">Completado</h5>
-                                                <span class="h4">50%</span>
+                                                <span class="h4">{{curso.progreso}}%</span>
                                             </div>
                                             <div class="item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3">
                                                 <h5 class="bold text-primary">Lecciones</h5>
-                                                <span class="h4">6</span>
+                                                <span class="h4">{{curso.lecciones}}</span>
                                             </div>
                                             <div class="item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3">
                                                 <h5 class="bold text-primary">Juegos Ganados</h5>
-                                                <span class="h4">6</span>
+                                                <span class="h4">0</span>
                                             </div>
                                             <div class="item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3">
                                                 <h5 class="bold text-primary">Calificación promedio</h5>
-                                                <span class="h4">6</span>
+                                                <span class="h4">0</span>
                                             </div>
                                         </div>
                                     </div>
@@ -220,7 +220,30 @@ import { mapGetters } from "vuex";
                     
                     
                     plan.plan.membresia.cursos.forEach(curso => {
-                        self.perfilcursosgenerales.push(curso);
+                        var tempro = 0;
+                        var temact =0;
+                        curso.progresos.forEach(prog => {
+                             if (prog.perfil_id === self.perfilSelected.id) {
+                                 tempro=prog.progreso*100;
+                             }
+                        });
+                        curso.modulos.forEach(mod => {
+                             mod.clases.forEach(clas=> {
+                                 clas.actividades.forEach(activi => {
+                                      if (self.perfilSelected.misactividades.some(evt => evt.id === activi.id)) {
+                                            temact++;
+                                      }
+                                 });
+                             });
+                             
+                            
+                        });
+                        var curtemp={
+                            modulos:curso.modulos,
+                            progreso:tempro,
+                            lecciones:temact,
+                        }
+                        self.perfilcursosgenerales.push(curtemp);
                     });
                 });
                 self.$store.commit("setCursos", self.perfilcursosgenerales);

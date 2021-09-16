@@ -50,7 +50,7 @@ class PadresViewController extends Controller
                                 ->where('finaliza', '>', $now)->with('actividades');
                             }]);
                         }]);
-                    },'idioma']);
+                    },'idioma',]);
                 }]);
             }]);
         }]);
@@ -113,7 +113,7 @@ class PadresViewController extends Controller
                                 {
                                     return $a->with('actividades');
                                 }]);
-                            }]);
+                            },'progresos']);
                         },'idioma']);
                     }]);
                 }]);
@@ -122,7 +122,7 @@ class PadresViewController extends Controller
         {
             return $q->with(['membresia'=>function($k)
             {
-                return $k->with('idioma','cursos');
+                return $k->with(['idioma','cursos']);
             }]);
         }]);
         return view('Padres.Detalles.Cursos.progreso',compact('user'));

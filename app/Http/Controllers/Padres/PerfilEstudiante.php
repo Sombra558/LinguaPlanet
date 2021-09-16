@@ -10,6 +10,7 @@ use App\Models\Cursos\Actividad;
 use App\Models\Solicitudes\PlanUser;
 use App\Models\Relaciones\PerfilPlan;
 use App\Models\Relaciones\ActividadUser;
+use App\Models\Relaciones\ProgresoCursoUser;
 use App\Models\PerfilEstudiante\PerfilEstudianteUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -451,6 +452,8 @@ class PerfilEstudiante extends Controller
     }
     public function veractividad($id,$apodo,$nombreURL,$curso_id,$clase_id,$actividad_id){
         $actividad=Actividad::find($actividad_id);
+        $curso=Curso::find($curso_id);
+     
         $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
             return $q->with(['plan'=>function($k){
                 return $k->with(['membresia'=>function($j){
@@ -458,21 +461,59 @@ class PerfilEstudiante extends Controller
                 }]);
             }]);
         },'avatar']);
-        return view('Estudiantes.Actividades.show',compact('perfil','actividad'));
+        return view('Estudiantes.Actividades.show',compact('perfil','actividad','curso'));
     }
-    public function actividadrealizada($id,$apodo,$clase_id,$actividad_id){
-
-        $actividad=ActividadUser::where('actividad_id',$actividad_id)->where('perfil_id',$id)->first();
+    public function actividadrealizada($id,$apodo,$curso_id,$clase_id,$actividad_id){
+    
+        $actividadus=ActividadUser::where('actividad_id',$actividad_id)->where('perfil_id',$id)->first();
      
+        $countmisact=0;
+        $actividadesCurso=collect();
+        $curs=Curso::find($curso_id)->load(['modulos'=>function($j){
+            return $j->with(['clases'=>function($j){
+                return $j->with(['actividades']);
+            }]);
+        }]);
+       
 
-        if ($actividad===null) {
-            $actividad = ActividadUser::create([
+        foreach ($curs->modulos as $modulo) {
+            foreach ($modulo->clases as $clase) {
+                foreach ($clase->actividades as $actividad) {
+                    $actividadesCurso->push($actividad);
+                }
+             }
+        }
+    
+     
+        if ($actividadus===null) {
+            $actividadus = ActividadUser::create([
                 'actividad_id' => $actividad_id,
                 'perfil_id' => $id,
             ]);
-            return $actividad;
-        }else{
-            return $actividad;
+       
+            $progresocurso = ProgresoCursoUser::where('curso_id',$curso_id)->where('perfil_id',$id)->first();
+            if ($progresocurso===null) {
+                $progresocurso = ProgresoCursoUser::create([
+                    'progreso' => 1/count($actividadesCurso),
+                    'curso_id' => $curso_id,
+                    'perfil_id' => $id,
+                ]);
+              
+            }else{
+                $perfil=PerfilEstudianteUser::find($id)->load(['misactividades']);
+                foreach ($perfil->misactividades as $act) {
+                    foreach ($actividadesCurso as $act2) {
+                        if ($act->id===$act2->id) {
+                            $countmisact++;
+                        }
+                     }
+                }
+               $progresocurso->progreso=$countmisact/count($actividadesCurso);
+               $progresocurso->save();
+            }
+
+
+            return $actividadus;
         }
     }
     public function destroy($id)

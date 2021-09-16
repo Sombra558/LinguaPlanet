@@ -21,4 +21,7 @@ class Curso extends Model
     public function modulos(){
         return $this->hasMany('App\Models\Cursos\Modulo');
     }
+    public function progresos(){
+        return $this->hasMany('App\Models\Relaciones\ProgresoCursoUser');
+    }
 }

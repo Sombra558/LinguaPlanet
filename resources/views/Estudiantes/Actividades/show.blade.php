@@ -1,5 +1,5 @@
 @extends('layouts.Estudiante.actividades')
 
 @section('content')
-	<show-actividad :perfil="{{$perfil}}" :actividad="{{$actividad}}" ></show-actividad>
+	<show-actividad :perfil="{{$perfil}}" :curso="{{$curso}}" :actividad="{{$actividad}}" ></show-actividad>
 @endsection

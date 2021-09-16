@@ -27,4 +27,5 @@ class PerfilEstudianteUser extends Model
   {
     return $this->belongsToMany('App\Models\Cursos\Actividad','actividad_users','perfil_id');
   }
+  
 }

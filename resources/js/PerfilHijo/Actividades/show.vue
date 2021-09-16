@@ -84,7 +84,7 @@
 	import vueVimeoPlayer from 'vue-vimeo-player'
     export default {
         name:"actividad-show",
-        props:['perfil','actividad'],
+        props:['perfil','actividad','curso'],
         data() {
 			return {
 				actividadSelected: null,
@@ -116,7 +116,7 @@
 			noNextPage() {
 				
 				if (this.currentPage === this.pageCount) {
-					var url = `/home/app/${this.perfil.id}/${this.perfil.apodo}/clase/${this.actividad.clase_id}/actividad/${this.actividad.id}/realizada`;
+					var url = `/home/app/${this.perfil.id}/${this.perfil.apodo}/curso/${this.curso.id}/clase/${this.actividad.clase_id}/actividad/${this.actividad.id}/realizada`;
 					axios.get(url).then((result) => {
 						console.log(result.data);
 					}).catch((err) => {
@@ -138,7 +138,7 @@
 				this.currentPage--;
 			},
 			onEnd: function () {
-				var url = `/home/app/${this.perfil.id}/${this.perfil.apodo}/clase/${this.actividad.clase_id}/actividad/${this.actividad.id}/realizada`;
+				var url = `/home/app/${this.perfil.id}/${this.perfil.apodo}/curso/${this.curso.id}/clase/${this.actividad.clase_id}/actividad/${this.actividad.id}/realizada`;
 					axios.get(url).then((result) => {
 						console.log(result.data);
 					}).catch((err) => {

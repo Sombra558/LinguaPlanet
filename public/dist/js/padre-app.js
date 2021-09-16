@@ -2212,7 +2212,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
 
         plan.plan.membresia.cursos.forEach(function (curso) {
-          self.perfilcursosgenerales.push(curso);
+          var tempro = 0;
+          var temact = 0;
+          curso.progresos.forEach(function (prog) {
+            if (prog.perfil_id === self.perfilSelected.id) {
+              tempro = prog.progreso * 100;
+            }
+          });
+          curso.modulos.forEach(function (mod) {
+            mod.clases.forEach(function (clas) {
+              clas.actividades.forEach(function (activi) {
+                if (self.perfilSelected.misactividades.some(function (evt) {
+                  return evt.id === activi.id;
+                })) {
+                  temact++;
+                }
+              });
+            });
+          });
+          var curtemp = {
+            modulos: curso.modulos,
+            progreso: tempro,
+            lecciones: temact
+          };
+          self.perfilcursosgenerales.push(curtemp);
         });
       });
       self.$store.commit("setCursos", self.perfilcursosgenerales);
@@ -42452,7 +42475,59 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
-                          _vm._m(2, true)
+                          _c(
+                            "div",
+                            { staticClass: "col-12 col-md-12 col-lg-10" },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "row align-items-center h-100" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3"
+                                    },
+                                    [
+                                      _c(
+                                        "h5",
+                                        { staticClass: "bold text-primary" },
+                                        [_vm._v("Completado")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("span", { staticClass: "h4" }, [
+                                        _vm._v(_vm._s(curso.progreso) + "%")
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3"
+                                    },
+                                    [
+                                      _c(
+                                        "h5",
+                                        { staticClass: "bold text-primary" },
+                                        [_vm._v("Lecciones")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("span", { staticClass: "h4" }, [
+                                        _vm._v(_vm._s(curso.lecciones))
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _vm._m(2, true),
+                                  _vm._v(" "),
+                                  _vm._m(3, true)
+                                ]
+                              )
+                            ]
+                          )
                         ])
                       ])
                     ])
@@ -42463,7 +42538,7 @@ var render = function() {
                       ? _c("div", { staticClass: "resultados px-lg-4" }, [
                           _c("div", { staticClass: "col-12" }, [
                             _c("div", { staticClass: "row mt-3" }, [
-                              _vm._m(3, true),
+                              _vm._m(4, true),
                               _vm._v(" "),
                               _c("div", { staticClass: "col-12" }, [
                                 _c("div", { staticClass: "row" }, [
@@ -42475,7 +42550,7 @@ var render = function() {
                                             "list-group list-group-flush flex-grow-1"
                                         },
                                         [
-                                          _vm._m(4, true),
+                                          _vm._m(5, true),
                                           _vm._v(" "),
                                           _vm._l(curso.modulos, function(
                                             modulo
@@ -42726,69 +42801,39 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 col-md-12 col-lg-10" }, [
-      _c("div", { staticClass: "row align-items-center h-100" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3"
-          },
-          [
-            _c("h5", { staticClass: "bold text-primary" }, [
-              _vm._v("Completado")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "h4" }, [_vm._v("50%")])
-          ]
-        ),
+    return _c(
+      "div",
+      {
+        staticClass:
+          "item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3"
+      },
+      [
+        _c("h5", { staticClass: "bold text-primary" }, [
+          _vm._v("Juegos Ganados")
+        ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3"
-          },
-          [
-            _c("h5", { staticClass: "bold text-primary" }, [
-              _vm._v("Lecciones")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "h4" }, [_vm._v("6")])
-          ]
-        ),
+        _c("span", { staticClass: "h4" }, [_vm._v("0")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3"
+      },
+      [
+        _c("h5", { staticClass: "bold text-primary" }, [
+          _vm._v("Calificación promedio")
+        ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3"
-          },
-          [
-            _c("h5", { staticClass: "bold text-primary" }, [
-              _vm._v("Juegos Ganados")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "h4" }, [_vm._v("6")])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3"
-          },
-          [
-            _c("h5", { staticClass: "bold text-primary" }, [
-              _vm._v("Calificación promedio")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "h4" }, [_vm._v("6")])
-          ]
-        )
-      ])
-    ])
+        _c("span", { staticClass: "h4" }, [_vm._v("0")])
+      ]
+    )
   },
   function() {
     var _vm = this
