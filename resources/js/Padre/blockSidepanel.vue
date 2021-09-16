@@ -15,7 +15,7 @@
                 <h2 class="bold">Solo para adultos</h2>
                 <span>Para continuar por favor ingresa</span>
                 <div class="my-5">
-                    <h2 class="color-yellow mb-4">{{daten1.texto}}, {{daten2.texto}},{{daten3.texto}}</h2>
+                    <h2 class="color-yellow mb-4">{{daten1.texto}}, {{daten2.texto}}, {{daten3.texto}}</h2>
                     <input class="input-validation-father" v-model="value1" type="text" name="number">
                     <input class="input-validation-father" v-model="value2" type="text" name="number">
                     <input class="input-validation-father" v-model="value3" type="text" name="number">

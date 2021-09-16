@@ -2638,8 +2638,29 @@ __webpack_require__.r(__webpack_exports__);
       miscursostotales: []
     };
   },
+  computed: {
+    progreso: function progreso() {
+      var _this = this;
+
+      var prog = 0;
+      this.miscursostotales.forEach(function (curso) {
+        curso.curso.progresos.forEach(function (progreso) {
+          if (progreso.perfil_id === _this.perfil.id) {
+            prog = prog + progreso.progreso;
+          }
+        });
+      });
+      console.log(prog);
+
+      if (prog > 0) {
+        return prog / this.miscursostotales.length * 100;
+      } else {
+        return prog;
+      }
+    }
+  },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
     this.perfil.planes.forEach(function (plan) {
       plan.plan.membresia.cursos.forEach(function (curso) {
@@ -2648,7 +2669,7 @@ __webpack_require__.r(__webpack_exports__);
           idioma: plan.plan.membresia.idioma
         };
 
-        _this.miscursostotales.push(temp);
+        _this2.miscursostotales.push(temp);
       });
     });
   }
@@ -43937,13 +43958,27 @@ var render = function() {
                   staticClass: "mb-0 pl-3",
                   staticStyle: { "border-left": "1px solid gray" }
                 },
-                [_vm._v("25%")]
+                [_vm._v(_vm._s(_vm.progreso.toFixed(2)) + "%")]
               )
             ]
           ),
           _vm._v(" "),
           _c("div", { staticClass: "col-sm-6 col-lg-8 col-6" }, [
-            _vm._m(0),
+            _c("div", { staticClass: "progress ml-2" }, [
+              _c("div", {
+                staticClass: "progress-bar bg-success",
+                style:
+                  "border-radius : 50px; width:" +
+                  _vm.progreso.toFixed(2) +
+                  "%",
+                attrs: {
+                  role: "progressbar",
+                  "aria-valuenow": "50",
+                  "aria-valuemin": "0",
+                  "aria-valuemax": "100"
+                }
+              })
+            ]),
             _vm._v(" "),
             _c(
               "button",
@@ -44168,25 +44203,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "progress ml-2" }, [
-      _c("div", {
-        staticClass: "progress-bar bg-success",
-        staticStyle: { "border-radius": "50px", width: "50%" },
-        attrs: {
-          role: "progressbar",
-          "aria-valuenow": "50",
-          "aria-valuemin": "0",
-          "aria-valuemax": "100"
-        }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -47445,7 +47462,7 @@ var render = function() {
               _vm._s(_vm.daten1.texto) +
                 ", " +
                 _vm._s(_vm.daten2.texto) +
-                "," +
+                ", " +
                 _vm._s(_vm.daten3.texto)
             )
           ]),

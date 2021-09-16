@@ -4,11 +4,11 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-4 col-6 d-flex justify-content-between align-items-center">
                     <span class="h4">{{ perfil.apodo }}</span>
-                    <span class="mb-0 pl-3" style="border-left : 1px solid gray;">25%</span>
+                    <span class="mb-0 pl-3" style="border-left : 1px solid gray;">{{progreso.toFixed(2)}}%</span>
                 </div>
                 <div class="col-sm-6 col-lg-8 col-6">
                     <div class="progress ml-2">
-                        <div class="progress-bar bg-success" role="progressbar" style="border-radius : 50px; width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-success" role="progressbar" :style="'border-radius : 50px; width:'+progreso.toFixed(2)+'%'" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <button class="btn btn-primary p-0 deployBtn" @click="deployActivities = !deployActivities" data-toggle="collapse" :data-target="`#collapse${this.perfil.id}`" aria-expanded="false" aria-controls="collapseExample">
                         <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,6 +66,24 @@
             return {
                 deployActivities : false,
                 miscursostotales: [],
+            }
+        },
+        computed: {
+            progreso() {
+                var prog=0;
+                this.miscursostotales.forEach(curso => {
+                    curso.curso.progresos.forEach(progreso => {
+                        if (progreso.perfil_id===this.perfil.id) {
+                            prog=prog+progreso.progreso;
+                        }
+                    });
+                });
+                console.log(prog);
+                if (prog>0) {
+                    return prog/this.miscursostotales.length*100;
+                }else{
+                    return prog;
+                }
             }
         },
         mounted () {
