@@ -1,7 +1,7 @@
 <template>
     <div class="body-component">
-    	<a v-if="actividad.tipo ==='Libros' || actividad.tipo ==='Actividad'" class="home-student" :href="prevUrl">
-            <img class="w-75" src="/images/home-student.svg">
+    	<a v-if="actividad.tipo ==='Libros' || actividad.tipo ==='Actividad'" class="back" :href="prevUrl">
+            <img class="w-75" src="/images/back-yellow.svg">
         </a>
         <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura'" style="height: 85%;">
 				<video @ended="onEnd()" controls width="100%" height="100%">
@@ -84,7 +84,7 @@
             </div>
             <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura'" class="ml-auto col-3 text-center">
             	<a :href="prevUrl">
-		            <img class="w-25 w-md-40 w-sm-75" src="/images/home-student.svg">
+		            <img class="w-25 w-md-40 w-sm-75" src="/images/back-yellow.svg">
 		        </a>
             </div>
             <div v-else class="col-4">
@@ -176,7 +176,7 @@
 	    height: 4rem;
 	}
 
-	.home-student {
+	.back {
 		position:absolute;
 		top: 5%;
 		left: 85.5%;
