@@ -40,7 +40,7 @@
                             <a class="nav-link btn-nav-signUp" href="{{ route('register') }}">{{ __('Get Start') }}</a>
                         </li>
                     @endif
-                    <li class="nav-item mx-2 col-8">
+                    <li class="nav-item mx-2 @if(request()->routeIs('courses.index')) col-5 @else col-8 @endif">
                         @php
                             $banderaselected="/img/Banderas/mx.svg";
                             foreach($idiomas as $idioma){
@@ -60,7 +60,7 @@
                        
                     </li>
                 @else
-                <li class="nav-item mx-2 col-8">
+                    <li class="nav-item mx-2 col-8">
                         @php
                             $banderaselected="/img/Banderas/mx.svg";
                             foreach($idiomas as $idioma){
