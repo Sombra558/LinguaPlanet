@@ -110,7 +110,7 @@
                     hobby:null,
                     f_nacimiento:null,
                     apodo:null,
-                    color:null,
+                    color: '#E4032F',
                 }
             }
         },
