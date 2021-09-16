@@ -37,7 +37,7 @@
                                 </svg>
                             </a>
                         </span>
-                        <a href="#"><span class="color-plomo">Ver reportes</span></a>
+                        <a href="/home/detalles-avances/progreso"><span class="color-plomo">Ver reportes</span></a>
                     </div>     
                 </div>
             </div>
