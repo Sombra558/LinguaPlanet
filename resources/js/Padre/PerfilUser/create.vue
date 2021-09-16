@@ -88,7 +88,7 @@
                             <button v-if="tabnivel>=1" class="btn mx-2 col-5 col-md-5 bg-gray text-white" @click.prevent="regresar()"><span class="h6">Regresar</span></button> 
                             <button v-if="tabnivel!=2" class="btn mx-2 col-5 col-md-5 btn-primary-red px-4" @click.prevent="siguiente()">Siguiente</button>
                             <button v-else-if="tabnivel===2" class="btn mx-2 col-5 col-md-5 btn-primary-red px-4" type="submit" @click.prevent="enviar()">Siguiente</button>
-                            <br/><button v-if="tabnivel===0" class="btn my-3 transparent-button color-plomo" @click.prevent="regresar()"><span class="h5">Omitir</span></button> 
+                            <br/><button v-if="tabnivel===0" class="btn my-3 transparent-button color-plomo" @click.prevent="omitir()"><span class="h5">Omitir</span></button> 
                         </div>
                     </div>
                 </form>
@@ -170,6 +170,13 @@
                         default:
                             break;
                     }
+            },
+            omitir(){
+                this.tabnivel=1;
+                 setTimeout(function(){
+                            $("#profile").tab("show");
+                          
+                              },200)
             },
             seleccionarHobby(value, e){
                 document.querySelector('.btn-outline-primary.active')?.classList.toggle('active');

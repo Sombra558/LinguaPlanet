@@ -50,7 +50,7 @@
                         <p>No hay Clase esta Semana</p>
                     </div>
                     <div class="col-5 text-center d-flex justify-content-center align-items-center">
-                        <a class="btn btn-light btn-lg text-primary" href="#"><span class="h6">Ver contenido</span></a>
+                        <a v-if="curs.curso.modulos.length>0" class="btn btn-light btn-lg text-primary" :href="'/home/detalles-avance-individual/cursos/'+perfil.id"><span class="h6">Ver contenido</span></a>
                     </div>
                 </div>
             </div>

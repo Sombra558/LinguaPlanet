@@ -3725,6 +3725,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           break;
       }
     },
+    omitir: function omitir() {
+      this.tabnivel = 1;
+      setTimeout(function () {
+        $("#profile").tab("show");
+      }, 200);
+    },
     seleccionarHobby: function seleccionarHobby(value, e) {
       var _document$querySelect;
 
@@ -3988,6 +3994,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           break;
       }
     },
+    omitir: function omitir() {
+      this.tabnivel = 1;
+      setTimeout(function () {
+        $("#profile").tab("show");
+      }, 200);
+    },
     seleccionarHobby: function seleccionarHobby(value, e) {
       var _document$querySelect;
 
@@ -4156,10 +4168,8 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     cerrar: function cerrar() {
-      $('.left-panel').on('click', '.toggle-father-details', function (e) {
-        $('.backdrop').toggleClass('show');
-        $('.left-panel').toggleClass('show');
-      });
+      $('.backdrop').toggleClass('show');
+      $('.left-panel').toggleClass('show');
     }
   }
 });
@@ -44123,7 +44133,33 @@ var render = function() {
                     [_c("p", [_vm._v("No hay Clase esta Semana")])]
                   ),
               _vm._v(" "),
-              _vm._m(1, true)
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "col-5 text-center d-flex justify-content-center align-items-center"
+                },
+                [
+                  curs.curso.modulos.length > 0
+                    ? _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-light btn-lg text-primary",
+                          attrs: {
+                            href:
+                              "/home/detalles-avance-individual/cursos/" +
+                              _vm.perfil.id
+                          }
+                        },
+                        [
+                          _c("span", { staticClass: "h6" }, [
+                            _vm._v("Ver contenido")
+                          ])
+                        ]
+                      )
+                    : _vm._e()
+                ]
+              )
             ])
           }),
           0
@@ -44149,28 +44185,6 @@ var staticRenderFns = [
         }
       })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "col-5 text-center d-flex justify-content-center align-items-center"
-      },
-      [
-        _c(
-          "a",
-          {
-            staticClass: "btn btn-light btn-lg text-primary",
-            attrs: { href: "#" }
-          },
-          [_c("span", { staticClass: "h6" }, [_vm._v("Ver contenido")])]
-        )
-      ]
-    )
   }
 ]
 render._withStripped = true
@@ -46736,7 +46750,7 @@ var render = function() {
                             on: {
                               click: function($event) {
                                 $event.preventDefault()
-                                return _vm.regresar()
+                                return _vm.omitir()
                               }
                             }
                           },
@@ -47346,7 +47360,7 @@ var render = function() {
                             on: {
                               click: function($event) {
                                 $event.preventDefault()
-                                return _vm.regresar()
+                                return _vm.omitir()
                               }
                             }
                           },
