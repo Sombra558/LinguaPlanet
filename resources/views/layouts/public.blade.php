@@ -32,8 +32,7 @@
     </style>
 </head>
 <body>
-    <div class="d-flex flex-column">
-        
+    <div class="d-flex h-screen flex-column">        
         @include('layouts.navbar')
 
         <div id="app">
@@ -41,8 +40,7 @@
                 @yield('content')            
             </main>
         </div>
-    </div>
-    <footer class="d-flex flex-column align-items-center justify-content-center">
+        <footer class="d-flex flex-column align-items-center justify-content-center">
         <ul class="footer-list d-flex flex-row justify-content-around w-50 mb-0">
             <li>
                 <a class="footer-link" href="https://lingua.alaxatech.com/">{{ __('Home') }}</a>
@@ -65,6 +63,7 @@
             ©{{ Date('Y') }} Lingua Planet. {{ __('All rights reserved.') }}
         </span>
     </footer>
+    </div>
 </body>
 <script type="text/javascript">
   
