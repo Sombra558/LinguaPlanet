@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Services\PayPalService;
 use App\Traits\ConsumesExternalServices;
 use App\Models\Solicitudes\PlanUser;
+use App\Models\Idioma\Idioma;
 use App\Models\Membresia\Plan;
 use Carbon\Carbon;
 
@@ -84,8 +85,8 @@ class PayPalService
                 'tipo' => "Paypal",
             ]);
                        
-    
-            return view('landing.Comprar.Completado', compact('transactionId'));
+            $idiomas=Idioma::get();
+            return view('landing.Comprar.Completado', compact('transactionId','idiomas'));
         }
 
         return redirect()
