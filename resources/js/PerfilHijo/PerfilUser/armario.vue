@@ -91,7 +91,7 @@
 				axios.post(url,{
 					data:JSON.stringify(this.$refs.personaje.accesoriesUsed),
 				}).then((result) => {
-					window.history.back();
+					window.location="/home/app/"+this.perfil.id+'/'+this.perfil.apodo;
 				}).catch((err) => {
 					this.estadoprocreso=true;
 					console.log(err);
