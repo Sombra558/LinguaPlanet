@@ -8,7 +8,7 @@
                     </button>
                 @else
                 <div>
-                    <span class="h6">Salir</span>
+                    <a href="/home/"><span class="h6">Salir</span></a>
                 </div>
                 @endif
             </span>

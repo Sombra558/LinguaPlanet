@@ -1,6 +1,6 @@
 <template>
     <div class="body-component">
-    	<a v-if="actividad.tipo ==='Libros'" class="home-student" :href="`/home/app/${perfil.id}/${perfil.apodo}/`">
+    	<a v-if="actividad.tipo ==='Libros' || actividad.tipo ==='Actividad'" class="home-student" :href="prevUrl">
             <img class="w-75" src="/images/home-student.svg">
         </a>
         <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura'" style="height: 85%;">
@@ -20,7 +20,7 @@
 	                autoplay="0"
 	        ></iframe>-->
         </div>
-		<div v-else class="d-flex justify-content-center" :style="{'height': !openbook ? '100%' : '85%'}">
+		<div v-else class="d-flex justify-content-center" :style="{'height': ( openbook || actividad.tipo === 'Actividad' ) ? '85%' : '100%'}">
 			<section v-if="actividad.tipo==='Libros'" class="content-pdf d-flex">
 				<center v-if="openbook===false" class="mx-auto my-auto">
 					<svg @click.prevent="openbook=true;" width="50%" height="50%" viewBox="0 0 432 388" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -74,7 +74,12 @@
             	<img class="mx-auto w-20 w-sm-30" :disabled="noPrevPage" @click.prevent="anterior()" src="/images/back-yellow.svg">
             	<img class="mx-auto w-20 w-sm-30" :disabled="noNextPage" @click.prevent="siguiente()" src="/images/back-yellow.svg" style="transform: scaleX(-1);">
             </div>
-            <div class="col-4">
+            <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura'" class="ml-auto col-3 text-center">
+            	<a :href="prevUrl">
+		            <img class="w-25 w-md-40 w-sm-75" src="/images/home-student.svg">
+		        </a>
+            </div>
+            <div v-else class="col-4">
             	
             </div>
         </div>                  
@@ -207,6 +212,10 @@
 		.nickname-header {
 			top : 12%;
 		}
+
+		.w-md-40 {
+			width: 40% !important;
+		}
 	}
 
 	@media(max-width: 425px) {
@@ -222,6 +231,10 @@
 
 		.w-sm-30 {
 			width: 30% !important;
+		}
+
+		.w-sm-75 {
+			width: 75% !important;
 		}
 	}
 </style>

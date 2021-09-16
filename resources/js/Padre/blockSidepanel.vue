@@ -103,10 +103,8 @@
                 }
             },
             cerrar(){
-                  $('.left-panel').on('click', '.toggle-father-details', (e) => {
                 $('.backdrop').toggleClass('show');
                 $('.left-panel').toggleClass('show');
-            });
             }
 
         },
