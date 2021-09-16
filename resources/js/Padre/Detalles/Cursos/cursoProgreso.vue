@@ -192,7 +192,7 @@ import { mapGetters } from "vuex";
             var value = $(".progress").attr('data-value');
             var left = $(".progress").find('.progress-left .progress-bar');
             var right = $(".progress").find('.progress-right .progress-bar');
-
+                
             if (value > 0) {
               if (value <= 50) {
                 right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')

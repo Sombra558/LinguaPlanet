@@ -70,7 +70,7 @@ class PadresViewController extends Controller
                     {
                         return $z->with(['cursos'=>function($m) use($now)
                         {
-                            return $m->with(['modulos'=>function($c) use($now)
+                            return $m->with(['progresos','modulos'=>function($c) use($now)
                             {
                                 return $c->where('inicia', '<=', $now)
                                     ->where('finaliza', '>', $now)->with(['clases'=>function($a) use($now)

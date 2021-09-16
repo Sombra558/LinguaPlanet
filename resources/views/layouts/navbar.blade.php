@@ -42,7 +42,7 @@
                     @endif
                     <li class="nav-item mx-2 col-5">
                         @php
-                            $banderaselected="/img/Banderas/argentina.svg";
+                            $banderaselected="/img/Banderas/mx.svg";
                             foreach($idiomas as $idioma){
                                 if(session()->get('locale') == $idioma->diminutivo){
                                     $banderaselected=$idioma->src;
@@ -60,6 +60,25 @@
                        
                     </li>
                 @else
+                <li class="nav-item mx-2 col-5">
+                        @php
+                            $banderaselected="/img/Banderas/mx.svg";
+                            foreach($idiomas as $idioma){
+                                if(session()->get('locale') == $idioma->diminutivo){
+                                    $banderaselected=$idioma->src;
+                                }
+                            }
+                        @endphp
+                        <div class="contenedor-padre">
+                            <img class="mx-2 banderaselected" src="{{$banderaselected}}" alt="badera">
+                            <select class="mx-1 form-control changeLang">
+                                @foreach($idiomas as $idioma)   
+                                    <option value="{{$idioma->diminutivo}}" @if(session()->get('locale') == $idioma->diminutivo) selected @endif>{{$idioma->diminutivo}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                       
+                    </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
