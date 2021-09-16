@@ -4145,10 +4145,6 @@ __webpack_require__.r(__webpack_exports__);
       $('.backdrop').toggleClass('show');
       $('.left-panel').toggleClass('show');
     });
-    $('.left-panel').on('click', '.toggle-father-details', function (e) {
-      $('.backdrop').toggleClass('show');
-      $('.left-panel').toggleClass('show');
-    });
     this.daten1 = this.numeros[Math.floor(Math.random() * this.numeros.length)];
     this.daten2 = this.numeros[Math.floor(Math.random() * this.numeros.length)];
     this.daten3 = this.numeros[Math.floor(Math.random() * this.numeros.length)];
@@ -4158,6 +4154,12 @@ __webpack_require__.r(__webpack_exports__);
       if (this.daten1.numero === Number(this.value1) && this.daten2.numero === Number(this.value2) && this.daten3.numero === Number(this.value3)) {
         window.location = '/home/detalles-avances/cursos';
       }
+    },
+    cerrar: function cerrar() {
+      $('.left-panel').on('click', '.toggle-father-details', function (e) {
+        $('.backdrop').toggleClass('show');
+        $('.left-panel').toggleClass('show');
+      });
     }
   }
 });
@@ -47388,7 +47390,29 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "left-panel container bg-primary" }, [
-    _vm._m(0),
+    _c("div", { staticClass: "row py-3" }, [
+      _c("div", { staticClass: "col-12 text-right" }, [
+        _c("label", { staticClass: "mb-0", attrs: { for: "check" } }, [
+          _c(
+            "button",
+            {
+              staticClass: "toggle-father-details img-btn",
+              on: {
+                click: function($event) {
+                  return _vm.cerrar()
+                }
+              }
+            },
+            [
+              _c("img", {
+                staticClass: "iz-100",
+                attrs: { src: "/images/exit-icon.svg" }
+              })
+            ]
+          )
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "row panel-content" }, [
       _c("div", { staticClass: "col-12 text-center" }, [
@@ -47496,25 +47520,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row py-3" }, [
-      _c("div", { staticClass: "col-12 text-right" }, [
-        _c("label", { staticClass: "mb-0", attrs: { for: "check" } }, [
-          _c("button", { staticClass: "toggle-father-details img-btn" }, [
-            _c("img", {
-              staticClass: "iz-100",
-              attrs: { src: "/images/exit-icon.svg" }
-            })
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

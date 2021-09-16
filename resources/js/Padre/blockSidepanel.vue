@@ -3,7 +3,7 @@
         <div class="row py-3">
             <div class="col-12 text-right">
                 <label class="mb-0" for="check">
-                    <button class="toggle-father-details img-btn">
+                    <button @click="cerrar()" class="toggle-father-details img-btn">
                         <img class="iz-100"  src="/images/exit-icon.svg">
                     </button>                    
                 </label>                
@@ -91,10 +91,7 @@
                 $('.left-panel').toggleClass('show');
             });
 
-            $('.left-panel').on('click', '.toggle-father-details', (e) => {
-                $('.backdrop').toggleClass('show');
-                $('.left-panel').toggleClass('show');
-            });
+          
              this.daten1=this.numeros[Math.floor(Math.random() * this.numeros.length)];
              this.daten2=this.numeros[Math.floor(Math.random() * this.numeros.length)];
              this.daten3=this.numeros[Math.floor(Math.random() * this.numeros.length)];
@@ -104,7 +101,14 @@
                 if (this.daten1.numero===Number(this.value1) && this.daten2.numero===Number(this.value2) && this.daten3.numero===Number(this.value3)) {
                     window.location='/home/detalles-avances/cursos';
                 }
+            },
+            cerrar(){
+                  $('.left-panel').on('click', '.toggle-father-details', (e) => {
+                $('.backdrop').toggleClass('show');
+                $('.left-panel').toggleClass('show');
+            });
             }
+
         },
     }
 </script>
