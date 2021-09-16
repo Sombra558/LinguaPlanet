@@ -62,7 +62,9 @@
                     </div>
                 </div>
                 <div  v-for="curso in filteredCursos" :key="curso.id" class="row mt-3">
+                    
                     <div class="col-12">
+                       
                         <div class="card gray-back">
                             <div class="card-body">
                                 <div class="row">
@@ -84,9 +86,10 @@
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-12 col-lg-10">
+                                        
                                         <div class="row align-items-center h-100">
                                             <div class="item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3">
-                                                <h5 class="bold text-primary">Completado</h5>
+                                                <h5 class="bold text-primary">{{curso.titulo}} Completado</h5>
                                                 <span class="h4">{{curso.progreso}}%</span>
                                             </div>
                                             <div class="item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3">
@@ -112,22 +115,23 @@
             <div class="col-12">
                 <div class="row mt-3">
                     <div class="col-12 mb-3 px-4">
-                        <span class="h4 bold">Resultados de Junio</span>
+                        <span class="h4 bold">Resultados</span>
                     </div>
                     <div class="col-12">
                         <div class="row">
                             <ul v-if="curso.modulos.length>0" class="list-group list-group-flush flex-grow-1">
                                 <li class="list-group-item d-none py-1 color-plomo d-md-flex justify-content-between align-items-center">
-                                    <span class="col-5 h6 bold">Fecha</span>
-                                    <span class="col-5 h6 bold">Actividades Completadas</span>
+                                    <span class="col-4 h6 bold">Fecha</span>
+                                    <span class="col-4 h6 bold">Actividades Completadas</span>
+                                     <span class="col-2 h6 bold">Progreso Semanal</span>
                                     <span class="col-2 h6 bold text-center">Calificación</span>
                                 </li>
                                 
                                 <li v-for="modulo in curso.modulos" :key="modulo.id" class="list-group-item py-1" >
                                         <span v-for="(cla, index ) in modulo.clases" :key="cla.id" class="list-group-item py-1">
                                             <div class="row justify-content-between align-items-center">
-                                                <span class="col-12 col-md-5">Semana {{ index + 1  }}</span>
-                                                <div class="col-9 col-md-5">
+                                                <span class="col-12 col-md-4">Semana {{ index + 1  }}</span>
+                                                <div class="col-9 col-md-4">
                                                     <span v-for="actividad in cla.actividades" :key="actividad.id" class="mr-4">
                                                     
                                                        <svg v-if="perfilSelected.misactividades.some(evt => evt.pivot.actividad_id===actividad.id)" width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -141,7 +145,8 @@
                                                         </svg>
                                                     </span>
                                                 </div>
-                                                <span class="col-3 col-md-2 h4 color-plomo d-flex justify-content-center align-items-center">8.0</span>
+                                                <Progreso :clase="cla" :actividades="perfilSelected.misactividades" />
+                                                <span class="col-3 col-md-2 h4 color-plomo d-flex justify-content-center align-items-center">0</span>
                                             </div>
                                         </span>
                                 </li>
@@ -164,6 +169,7 @@
 <script>
 import ProgesoCard from './progresoCard';
 import PerfilCard from './perfilCard';
+import Progreso from './progreSemanal.vue'
 import { mapGetters } from "vuex";
     export default {
         name:"cursos-detalle-padre",
@@ -180,7 +186,7 @@ import { mapGetters } from "vuex";
             }            
         },
         components: {
-            ProgesoCard,PerfilCard
+            ProgesoCard,PerfilCard,Progreso 
         },
         mounted() {
             var value = $(".progress").attr('data-value');
@@ -242,6 +248,7 @@ import { mapGetters } from "vuex";
                             modulos:curso.modulos,
                             progreso:tempro,
                             lecciones:temact,
+                            titulo:curso.titulo,
                         }
                         self.perfilcursosgenerales.push(curtemp);
                     });

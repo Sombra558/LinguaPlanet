@@ -72,7 +72,7 @@
             </div>            
             <div class="col-6 col-md-4 d-flex" v-if="actividad.tipo !=='Palabras del día' && actividad.tipo !=='Video de apertura'">
             	<img class="mx-auto w-20 w-sm-30" :disabled="noPrevPage" @click.prevent="anterior()" src="/images/back-yellow.svg">
-            	<img class="mx-auto w-20 w-sm-30" :disabled="noPrevPage" @click.prevent="anterior()" src="/images/back-yellow.svg" style="transform: scaleX(-1);">
+            	<img class="mx-auto w-20 w-sm-30" :disabled="noNextPage" @click.prevent="siguiente()" src="/images/back-yellow.svg" style="transform: scaleX(-1);">
             </div>
             <div class="col-4">
             	

@@ -1986,7 +1986,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _progresoCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./progresoCard */ "./resources/js/Padre/Detalles/Cursos/progresoCard.vue");
 /* harmony import */ var _perfilCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./perfilCard */ "./resources/js/Padre/Detalles/Cursos/perfilCard.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _progreSemanal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./progreSemanal.vue */ "./resources/js/Padre/Detalles/Cursos/progreSemanal.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2156,6 +2157,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+
 
 
 
@@ -2174,7 +2181,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   components: {
     ProgesoCard: _progresoCard__WEBPACK_IMPORTED_MODULE_0__["default"],
-    PerfilCard: _perfilCard__WEBPACK_IMPORTED_MODULE_1__["default"]
+    PerfilCard: _perfilCard__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Progreso: _progreSemanal_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   mounted: function mounted() {
     var value = $(".progress").attr('data-value');
@@ -2194,7 +2202,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return percentage / 100 * 360;
     }
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])(["filteredCursos"])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapGetters"])(["filteredCursos"])),
   methods: {
     seleccionarPerfil: function seleccionarPerfil(value) {
       var self = this;
@@ -2233,7 +2241,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           var curtemp = {
             modulos: curso.modulos,
             progreso: tempro,
-            lecciones: temact
+            lecciones: temact,
+            titulo: curso.titulo
           };
           self.perfilcursosgenerales.push(curtemp);
         });
@@ -2509,6 +2518,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "perfil-card",
   props: ['perfil']
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Padre/Detalles/Cursos/progreSemanal.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Padre/Detalles/Cursos/progreSemanal.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "progresoSemanal",
+  props: ['clase', 'actividades'],
+  computed: {
+    progreso: function progreso() {
+      var _this = this;
+
+      var pro = 0;
+      this.actividades.forEach(function (act) {
+        if (act.clase_id === _this.clase.id) {
+          pro = pro + 1;
+        }
+      });
+
+      if (pro > 0) {
+        return pro / 4 * 100;
+      } else {
+        return pro;
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -42648,7 +42695,11 @@ var render = function() {
                                       _c(
                                         "h5",
                                         { staticClass: "bold text-primary" },
-                                        [_vm._v("Completado")]
+                                        [
+                                          _vm._v(
+                                            _vm._s(curso.titulo) + " Completado"
+                                          )
+                                        ]
                                       ),
                                       _vm._v(" "),
                                       _c("span", { staticClass: "h4" }, [
@@ -42740,7 +42791,7 @@ var render = function() {
                                                           "span",
                                                           {
                                                             staticClass:
-                                                              "col-12 col-md-5"
+                                                              "col-12 col-md-4"
                                                           },
                                                           [
                                                             _vm._v(
@@ -42756,7 +42807,7 @@ var render = function() {
                                                           "div",
                                                           {
                                                             staticClass:
-                                                              "col-9 col-md-5"
+                                                              "col-9 col-md-4"
                                                           },
                                                           _vm._l(
                                                             cla.actividades,
@@ -42899,15 +42950,25 @@ var render = function() {
                                                           0
                                                         ),
                                                         _vm._v(" "),
+                                                        _c("Progreso", {
+                                                          attrs: {
+                                                            clase: cla,
+                                                            actividades:
+                                                              _vm.perfilSelected
+                                                                .misactividades
+                                                          }
+                                                        }),
+                                                        _vm._v(" "),
                                                         _c(
                                                           "span",
                                                           {
                                                             staticClass:
                                                               "col-3 col-md-2 h4 color-plomo d-flex justify-content-center align-items-center"
                                                           },
-                                                          [_vm._v("8.0")]
+                                                          [_vm._v("0")]
                                                         )
-                                                      ]
+                                                      ],
+                                                      1
                                                     )
                                                   ]
                                                 )
@@ -42995,7 +43056,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-12 mb-3 px-4" }, [
-      _c("span", { staticClass: "h4 bold" }, [_vm._v("Resultados de Junio")])
+      _c("span", { staticClass: "h4 bold" }, [_vm._v("Resultados")])
     ])
   },
   function() {
@@ -43009,10 +43070,14 @@ var staticRenderFns = [
           "list-group-item d-none py-1 color-plomo d-md-flex justify-content-between align-items-center"
       },
       [
-        _c("span", { staticClass: "col-5 h6 bold" }, [_vm._v("Fecha")]),
+        _c("span", { staticClass: "col-4 h6 bold" }, [_vm._v("Fecha")]),
         _vm._v(" "),
-        _c("span", { staticClass: "col-5 h6 bold" }, [
+        _c("span", { staticClass: "col-4 h6 bold" }, [
           _vm._v("Actividades Completadas")
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "col-2 h6 bold" }, [
+          _vm._v("Progreso Semanal")
         ]),
         _vm._v(" "),
         _c("span", { staticClass: "col-2 h6 bold text-center" }, [
@@ -43782,6 +43847,37 @@ var render = function() {
         ])
       ])
     ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Padre/Detalles/Cursos/progreSemanal.vue?vue&type=template&id=21c1a36c&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Padre/Detalles/Cursos/progreSemanal.vue?vue&type=template&id=21c1a36c&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "span",
+    {
+      staticClass:
+        "col-3 col-md-2 h4 color-plomo d-flex justify-content-center align-items-center"
+    },
+    [_vm._v(_vm._s(_vm.progreso.toFixed(2)) + "%")]
   )
 }
 var staticRenderFns = []
@@ -46620,7 +46716,7 @@ var render = function() {
                             on: {
                               click: function($event) {
                                 $event.preventDefault()
-                                return _vm.editar()
+                                return _vm.enviar()
                               }
                             }
                           },
@@ -61380,6 +61476,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_perfilCard_vue_vue_type_template_id_bed92ef0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_perfilCard_vue_vue_type_template_id_bed92ef0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/Padre/Detalles/Cursos/progreSemanal.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/Padre/Detalles/Cursos/progreSemanal.vue ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _progreSemanal_vue_vue_type_template_id_21c1a36c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./progreSemanal.vue?vue&type=template&id=21c1a36c&scoped=true& */ "./resources/js/Padre/Detalles/Cursos/progreSemanal.vue?vue&type=template&id=21c1a36c&scoped=true&");
+/* harmony import */ var _progreSemanal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./progreSemanal.vue?vue&type=script&lang=js& */ "./resources/js/Padre/Detalles/Cursos/progreSemanal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _progreSemanal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _progreSemanal_vue_vue_type_template_id_21c1a36c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _progreSemanal_vue_vue_type_template_id_21c1a36c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "21c1a36c",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Padre/Detalles/Cursos/progreSemanal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Padre/Detalles/Cursos/progreSemanal.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/Padre/Detalles/Cursos/progreSemanal.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_progreSemanal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./progreSemanal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Padre/Detalles/Cursos/progreSemanal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_progreSemanal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Padre/Detalles/Cursos/progreSemanal.vue?vue&type=template&id=21c1a36c&scoped=true&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/Padre/Detalles/Cursos/progreSemanal.vue?vue&type=template&id=21c1a36c&scoped=true& ***!
+  \*********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_progreSemanal_vue_vue_type_template_id_21c1a36c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./progreSemanal.vue?vue&type=template&id=21c1a36c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Padre/Detalles/Cursos/progreSemanal.vue?vue&type=template&id=21c1a36c&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_progreSemanal_vue_vue_type_template_id_21c1a36c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_progreSemanal_vue_vue_type_template_id_21c1a36c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
