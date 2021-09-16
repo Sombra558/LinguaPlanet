@@ -3685,7 +3685,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         hobby: null,
         f_nacimiento: null,
         apodo: null,
-        color: null
+        color: '#E4032F'
       }
     };
   },

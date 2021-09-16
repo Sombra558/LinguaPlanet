@@ -11402,6 +11402,16 @@ img.header-animal-icon {
   border-radius: 8px;
 }
 
+.changeLang {
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: none;
+}
+
+.changeLang:focus {
+  outline: none;
+}
+
 /* END - Navbar styles*/
 
 .login-title {
