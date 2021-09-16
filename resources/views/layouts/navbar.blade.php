@@ -40,7 +40,7 @@
                             <a class="nav-link btn-nav-signUp" href="{{ route('register') }}">{{ __('Get Start') }}</a>
                         </li>
                     @endif
-                    <li class="nav-item mx-2 col-5">
+                    <li class="nav-item mx-2 col-8">
                         @php
                             $banderaselected="/img/Banderas/mx.svg";
                             foreach($idiomas as $idioma){
@@ -51,7 +51,7 @@
                         @endphp
                         <div class="contenedor-padre">
                             <img class="mx-2 banderaselected" src="{{$banderaselected}}" alt="badera">
-                            <select class="mx-2 form-control changeLang">
+                            <select class="mx-2 px-1 form-control changeLang">
                                 @foreach($idiomas as $idioma)   
                                     <option value="{{$idioma->diminutivo}}" @if(session()->get('locale') == $idioma->diminutivo) selected @endif>{{$idioma->diminutivo}}</option>
                                 @endforeach
@@ -60,7 +60,7 @@
                        
                     </li>
                 @else
-                <li class="nav-item mx-2 col-5">
+                <li class="nav-item mx-2 col-8">
                         @php
                             $banderaselected="/img/Banderas/mx.svg";
                             foreach($idiomas as $idioma){
@@ -71,7 +71,7 @@
                         @endphp
                         <div class="contenedor-padre">
                             <img class="mx-2 banderaselected" src="{{$banderaselected}}" alt="badera">
-                            <select class="mx-1 form-control changeLang">
+                            <select class="mx-1 px-0 form-control changeLang">
                                 @foreach($idiomas as $idioma)   
                                     <option value="{{$idioma->diminutivo}}" @if(session()->get('locale') == $idioma->diminutivo) selected @endif>{{$idioma->diminutivo}}</option>
                                 @endforeach
