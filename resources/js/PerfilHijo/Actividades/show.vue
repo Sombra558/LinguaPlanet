@@ -23,7 +23,7 @@
 		<div v-else class="d-flex justify-content-center" :style="{'height': ( openbook || actividad.tipo === 'Actividad' ) ? '85%' : '100%'}">
 			<section v-if="actividad.tipo==='Libros'" class="content-pdf d-flex">
 				<center v-if="openbook===false" class="mx-auto my-auto">
-					<svg @click.prevent="openbook=true;" width="50%" height="50%" viewBox="0 0 432 388" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<svg @click.prevent="openbook=true;" width="100%" height="100%" viewBox="0 0 432 388" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M421.914 323.595V323.153H49.1514C38.2195 323.433 27.8833 326.486 20.3314 331.666C12.7794 336.846 8.60452 343.745 8.69076 350.904C8.65006 354.473 9.70065 358.012 11.7808 361.312C13.8609 364.612 16.9285 367.606 20.8031 370.118C24.6778 372.631 29.2812 374.611 34.3426 375.942C39.404 377.273 44.8211 377.929 50.2753 377.87C53.1225 377.87 56.1945 377.87 59.0418 377.87H421.165C402.433 375.369 394.94 364.142 394.94 350.708C394.94 337.274 402.433 325.801 421.914 323.595Z" fill="white"/>
 						<path d="M425.434 329.818H6.96582V332.466H425.434V329.818Z" fill="#CCD4D2"/>
 						<path d="M425.434 343.301H6.96582V345.948H425.434V343.301Z" fill="#CCD4D2"/>
