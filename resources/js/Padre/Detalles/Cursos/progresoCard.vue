@@ -20,18 +20,20 @@
             <h4 v-if="deployActivities" class="card-title">Actividades completadas</h4>
             <h4 v-else class="card-title">Cursos</h4>
             <p v-if="!deployActivities" class="card-text">
-                <img v-for="i in 3" class="flag-language mx-1" :src="'/images/es.svg'">
+                <img v-for="curso in miscursostotales" :key="curso.curso.id" class="flag-language mx-1" :src="curso.idioma.src">
             </p>
             <div class="collapse" :id="`collapse${this.perfil.id}`">
-                <div v-for="i in 3" class="row mt-3">
+                <div v-for="curs in miscursostotales"  :key="curs.curso.id" class="row mt-3">
                     <div class="col-12">
-                        <img class="flag-language mx-1" :src="'/images/es.svg'">
-                        <span>Curso de Español</span>
+                        <img class="flag-language mx-1" :src="curs.idioma.src">
+                        <span>{{curs.curso.titulo}}</span>
                     </div>
-                    <div class="col-7 py-3 d-flex justify-content-between">
-                        <span v-for="i in 5">
+                    <div v-if="curs.curso.modulos.length>0" class="col-7 py-3 d-flex justify-content-between">
+
+                       <span class="col-12  py-3 d-flex justify-content-between" v-if="curs.curso.modulos[0].clases.length>0">
+                            <span v-for="actividad in curs.curso.modulos[0].clases[0].actividades" :key="actividad.id">
                             <!-- checked -->
-                            <svg v-if="i <= 3" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg v-if="perfil.misactividades.some(evt => evt.pivot.actividad_id===actividad.id)" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="26" height="26" rx="13" fill="#00A53F"/>
                                 <path d="M19.6666 8L10.4999 17.1667L6.33325 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
@@ -41,6 +43,11 @@
                                 <path d="M19.6666 8L10.4999 17.1667L6.33325 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </span>
+                       </span>
+                     
+                    </div>
+                    <div v-else class="col-7 py-3 d-flex justify-content-between">
+                        <p>No hay Clase esta Semana</p>
                     </div>
                     <div class="col-5 text-center d-flex justify-content-center align-items-center">
                         <a class="btn btn-light btn-lg text-primary" href="#"><span class="h6">Ver contenido</span></a>
@@ -58,8 +65,23 @@
         data() {
             return {
                 deployActivities : false,
+                miscursostotales: [],
             }
-        }
+        },
+        mounted () {
+           this.perfil.planes.forEach(plan => {
+               plan.plan.membresia.cursos.forEach(curso => {
+                   var temp = {
+                       curso:curso,
+                       idioma:plan.plan.membresia.idioma,
+                   };
+                 
+
+                   this.miscursostotales.push(temp);
+
+               }); 
+           }); 
+        },
     }
 </script>
 

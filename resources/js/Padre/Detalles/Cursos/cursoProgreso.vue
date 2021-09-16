@@ -11,27 +11,27 @@
                     </a>
                     <span class="h4 bold ml-4">Progreso</span>
                 </div>
-                <button v-for="o in 4" class="btn gray-back px-3 py-2 mr-3 mb-2" style="border-radius : 50px;">
-                    <span class="h5">Christopher</span>
+                <button v-for="estudiante in user.perfiles" :key="estudiante.id" class="btn gray-back px-3 py-2 mr-3 mb-2" @click.prevent="seleccionarPerfil(estudiante) " style="border-radius : 50px;">
+                    <span class="h5">{{estudiante.apodo}}</span>
                 </button>                    
             </div>
         </div>
-        <div class="progreso px-lg-4">
+        <div v-if="perfilSelected" class="progreso px-lg-4">
             <div class="col-12">
                 <div class="row mt-3">
                     <div class="col-6 col-md-4 my-2 d-flex align-items-center">
                         <div class="dropdown">
                             <span class="l-select dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="/images/fr.svg" class="flag-language">
-                                {{ paisSelected }}
+                                <img v-if="paisSelected!='Seleccione'" :src="paisSelected.src" class="flag-language">
+                                {{ paisSelected.idioma }}
                             </span>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <li @click="paisSelected = 'Seleccione'" class="dropdown-item" href="#">
                                     Seleccione
                                 </li>
-                                <li v-for="i in 3" @click="paisSelected = i" class="dropdown-item" href="#">
-                                    <img src="/images/fr.svg" class="flag-language">
-                                    {{ i }}
+                                <li v-for="idioma in idiomasg" :key="idioma.id" @click="paisSelected = idioma" class="dropdown-item" href="#">
+                                    <img :src="idioma.src" class="flag-language">
+                                    {{ idioma.idioma }}
                                 </li>
                             </ul>
                         </div>
@@ -39,14 +39,14 @@
                     <div class="col-6 col-md-4 my-2 d-flex align-items-center">
                         <div class="dropdown" style="display : relative;">
                             <span class="l-select months dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ mesSelected }}
+                                {{mesSelected != 'Seleccione' ? meses[mesSelected] : 'Seleccione'  }}
                             </span>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <li @click="mesSelected = 'Seleccione'" class="dropdown-item" href="#">
                                     Seleccione
                                 </li>
-                                <li v-for="i in 3" @click="mesSelected = i" class="dropdown-item" href="#">
-                                    {{ i }}
+                                <li v-for="(mes , i) in meses" @click="mesSelected = i" :key="i" class="dropdown-item" href="#">
+                                    {{ mes }}
                                 </li>
                             </ul>
                         </div>
@@ -61,7 +61,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="row mt-3">
+                <div  v-for="curso in filteredCursos" :key="curso.id" class="row mt-3">
                     <div class="col-12">
                         <div class="card gray-back">
                             <div class="card-body">
@@ -107,10 +107,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>        
-        <div class="resultados px-lg-4">
+                    <div class="col-12">
+                                 <div  v-if="perfilSelected" class="resultados px-lg-4">
             <div class="col-12">
                 <div class="row mt-3">
                     <div class="col-12 mb-3 px-4">
@@ -118,44 +116,55 @@
                     </div>
                     <div class="col-12">
                         <div class="row">
-                            <ul class="list-group list-group-flush flex-grow-1">
+                            <ul v-if="curso.modulos.length>0" class="list-group list-group-flush flex-grow-1">
                                 <li class="list-group-item d-none py-1 color-plomo d-md-flex justify-content-between align-items-center">
                                     <span class="col-5 h6 bold">Fecha</span>
                                     <span class="col-5 h6 bold">Actividades Completadas</span>
                                     <span class="col-2 h6 bold text-center">Calificación</span>
                                 </li>
-                                <li v-for="o in 2" class="list-group-item py-1">
-                                    <div class="row justify-content-between align-items-center">
-                                        <span class="col-12 col-md-5">Semana {{ o }}</span>
-                                        <div class="col-9 col-md-5">
-                                            <span v-for="i in 5" class="mr-4">
-                                                <!-- checked -->
-                                                <svg v-if="i <= 3" width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="26" height="26" rx="13" fill="#00A53F"/>
-                                                    <path d="M19.6666 8L10.4999 17.1667L6.33325 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                                <!-- unchecked -->
-                                                <svg v-else width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="26" height="26" rx="13" fill="#B5B5BB"/>
-                                                    <path d="M19.6668 8L10.5002 17.1667L6.3335 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                            </span>
-                                        </div>
-                                        <span class="col-3 col-md-2 h4 color-plomo d-flex justify-content-center align-items-center">8.0</span>
-                                    </div>
+                                
+                                <li v-for="modulo in curso.modulos" :key="modulo.id" class="list-group-item py-1" >
+                                        <span v-for="(cla, index ) in modulo.clases" :key="cla.id" class="list-group-item py-1">
+                                            <div class="row justify-content-between align-items-center">
+                                                <span class="col-12 col-md-5">Semana {{ index + 1  }}</span>
+                                                <div class="col-9 col-md-5">
+                                                    <span v-for="actividad in cla.actividades" :key="actividad.id" class="mr-4">
+                                                    
+                                                       <svg v-if="perfilSelected.misactividades.some(evt => evt.pivot.actividad_id===actividad.id)" width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <rect width="26" height="26" rx="13" fill="#00A53F"/>
+                                                            <path d="M19.6666 8L10.4999 17.1667L6.33325 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                      
+                                                        <svg  v-else width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <rect width="26" height="26" rx="13" fill="#B5B5BB"/>
+                                                            <path d="M19.6668 8L10.5002 17.1667L6.3335 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                                <span class="col-3 col-md-2 h4 color-plomo d-flex justify-content-center align-items-center">8.0</span>
+                                            </div>
+                                        </span>
                                 </li>
+                            
                             </ul>
                         </div>                
                     </div>
                 </div>
             </div>
         </div>
+                    </div>
+           
+                </div>
+            </div>
+        </div>        
+        
     </div>
 </template>
 
 <script>
 import ProgesoCard from './progresoCard';
 import PerfilCard from './perfilCard';
+import { mapGetters } from "vuex";
     export default {
         name:"cursos-detalle-padre",
         props:['user'],
@@ -163,6 +172,11 @@ import PerfilCard from './perfilCard';
             return {
                 paisSelected : 'Seleccione',
                 mesSelected : 'Seleccione',  
+                perfilSelected: null,
+                perfilcursosgenerales:[],
+                idiomasg:[],
+                meses:['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','diciembre']
+
             }            
         },
         components: {
@@ -184,6 +198,32 @@ import PerfilCard from './perfilCard';
 
             function percentageToDegrees(percentage) {
                 return percentage / 100 * 360;
+            }
+        },
+        computed: {
+            ...mapGetters(["filteredCursos"]),
+        },
+        methods: {
+            seleccionarPerfil(value) {
+                var self=this;
+                self.perfilcursosgenerales=[],
+                self.$store.commit("setCursos", self.perfilcursosgenerales);
+                self.perfilSelected=value;
+                self.perfilSelected.planes.forEach(plan => {
+                    if (self.idiomasg.length>0) {
+                            if (self.idiomasg.some(evt => evt.id === plan.plan.membresia.idioma.id)!=true) {
+                                self.idiomasS.push(plan.plan.membresia.idioma);
+                            }
+                    }else{
+                          self.idiomasg.push(plan.plan.membresia.idioma);
+                    }
+                    
+                    
+                    plan.plan.membresia.cursos.forEach(curso => {
+                        self.perfilcursosgenerales.push(curso);
+                    });
+                });
+                self.$store.commit("setCursos", self.perfilcursosgenerales);
             }
         },
     }

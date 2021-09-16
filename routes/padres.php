@@ -5,7 +5,7 @@ Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
 
 	Route::get('/detalles-avances/cursos', 'Padres\PadresViewController@detallespadrecursos')->name('padre.detalles-avances');
 	Route::get('/detalles-avances/progreso', 'Padres\PadresViewController@detallesProgreso')->name('padre.pagos');
-	Route::get('/detalles-avance-individual/cursos', 'Padres\PadresViewController@detalleIndividualpadrecursos')->name('padre.detalles-individual');;
+	Route::get('/detalles-avance-individual/cursos/{id}', 'Padres\PadresViewController@detalleIndividualpadrecursos')->name('padre.detalles-individual');;
 	Route::get('/detalles-pagos/membresias', 'Padres\PadresViewController@detallespadremembresias')->name('padre.pagos');
 	Route::get('/membresia/{plan_id}/editar', 'Padres\PadresViewController@editarMembresia')->name('padre.editarMembresia');
 	Route::get('/certificados', 'Padres\PadresViewController@certificados');
@@ -24,9 +24,11 @@ Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
 	    Route::get('/premios', 'Padres\PerfilEstudiante@premios')->name('student.premios');
 	    Route::get('/armario', 'Padres\PerfilEstudiante@armario')->name('student.armario');
 	    Route::get('/idiomas/{nombreURL}', 'Padres\PerfilEstudiante@aplication');
+		Route::get('/clase/{clase_id}/actividad/{actividad_id}/realizada', 'Padres\PerfilEstudiante@actividadrealizada')->name('student.actividad.realizada');
 	    Route::get('/idiomas/{nombreURL}/{curso_id}', 'Padres\PerfilEstudiante@aplicationCurso')->name('student.activities');
 		Route::group([ 'prefix' => '/idiomas/{nombreURL}/{curso_id}/clase/{clase_id}/actividad/{actividad_id}'], function() {
 			Route::get('/', 'Padres\PerfilEstudiante@veractividad')->name('student.actividad');
+			
 		});
 	});
  

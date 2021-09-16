@@ -3,6 +3,8 @@
 require('../bootstrap');
 
 window.Vue = require('vue');
+import Vuex from 'vuex';
+Vue.use(Vuex);
 //home
 Vue.component('home-component', require('./Home/MiPerfiles/home').default);
 //detalles padre cursos
@@ -24,6 +26,32 @@ Vue.component('create-perfiluser', require('./PerfilUser/create').default);
 Vue.component('edit-perfiluser', require('./PerfilUser/edit').default);
 Vue.component('cara-avatar', require('../PerfilHijo/PerfilUser/caraAvatar').default);
 
+const store = new Vuex.Store({
+    state: {
+        cursos:[],
+        filterCursos: {
+            curso: "",
+        },
+    },
+    mutations: {
+        setCursos(state, cursos) {
+            state.cursos = cursos;
+        },
+        setfilterCursos(state, data) {
+            state.filterCursos[data['filter']] = data.value;
+        },
+       
+    },
+    getters: {
+        filteredCursos(state) {
+            let cursos = state.cursos;
+            return cursos;
+        },
+       
+    }
+});
+
 const app = new Vue({
     el: '#padre-app',
+    store
 });

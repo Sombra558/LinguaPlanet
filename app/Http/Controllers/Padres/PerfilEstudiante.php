@@ -9,6 +9,7 @@ use App\Models\Cursos\Curso;
 use App\Models\Cursos\Actividad;
 use App\Models\Solicitudes\PlanUser;
 use App\Models\Relaciones\PerfilPlan;
+use App\Models\Relaciones\ActividadUser;
 use App\Models\PerfilEstudiante\PerfilEstudianteUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -458,6 +459,21 @@ class PerfilEstudiante extends Controller
             }]);
         },'avatar']);
         return view('Estudiantes.Actividades.show',compact('perfil','actividad'));
+    }
+    public function actividadrealizada($id,$apodo,$clase_id,$actividad_id){
+
+        $actividad=ActividadUser::where('actividad_id',$actividad_id)->where('perfil_id',$id)->first();
+     
+
+        if ($actividad===null) {
+            $actividad = ActividadUser::create([
+                'actividad_id' => $actividad_id,
+                'perfil_id' => $id,
+            ]);
+            return $actividad;
+        }else{
+            return $actividad;
+        }
     }
     public function destroy($id)
     {

@@ -4,11 +4,21 @@
             <img class="w-100" src="/images/home-student.svg">
         </a>
         <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura'" style="height: 85%;">
-	        <iframe width="100%"
+				<video @ended="onEnd()" controls width="100%" height="100%">
+
+					<source src="/images/recurso/prueba.webm"
+							type="video/webm">
+
+					<source src="/images/recurso/prueba.mp4"
+							type="video/mp4">
+
+					Sorry, your browser doesn't support embedded videos.
+				</video>
+				  <!--<iframe width="100%"
 	                height="100%" :src="actividad.recurso + '?autoplay=0'"
 	                webkitallowfullscreen mozallowfullscreen allowfullscreen
 	                autoplay="0"
-	        ></iframe>
+	        ></iframe>-->
         </div>
 		<div v-else class="d-flex justify-content-center" :style="{'height': !openbook ? '100%' : '85%'}">
 			<section v-if="actividad.tipo==='Libros'" class="content-pdf d-flex">
@@ -32,6 +42,16 @@
 					</svg>
 				</center>
 				<article v-else class="visor-pdf">
+					<pdf style="heigth:100%; width:100%;" 
+						:src="actividad.recurso"
+						:page="currentPage"
+						@num-pages="pageCount = $event"
+						@page-loaded="currentPage = $event"
+					/>
+				</article>
+			</section>
+			<section v-else class="content-pdf d-flex">
+				<article class="visor-pdf">
 					<pdf style="width:100%;" 
 						:src="actividad.recurso"
 						:page="currentPage"
@@ -61,6 +81,7 @@
 
 <script>
 	import pdf from "vue-pdf";
+	import vueVimeoPlayer from 'vue-vimeo-player'
     export default {
         name:"actividad-show",
         props:['perfil','actividad'],
@@ -74,18 +95,40 @@
         		zoom: 100,
 				openbook:false,
 				prevUrl : document.referrer,
+				videoID: '76979871',
+				height: 500,
+				options: {
+					muted: true,
+					autoplay: true,
+				},
+				playerReady: false,
+				visto:false,
+				
 			}
 		},
         components : {
-    		pdf
+    		pdf,vueVimeoPlayer
         },
         computed: {
 			noPrevPage() {
 				return this.currentPage <= 1;
 			},
 			noNextPage() {
+				
+				if (this.currentPage === this.pageCount) {
+					var url = `/home/app/${this.perfil.id}/${this.perfil.apodo}/clase/${this.actividad.clase_id}/actividad/${this.actividad.id}/realizada`;
+					axios.get(url).then((result) => {
+						console.log(result.data);
+					}).catch((err) => {
+						
+					});
+				}
+
 				return this.currentPage === this.pageCount;
-			}
+				
+			},
+			
+		
 		},
 		methods: {
 			siguiente(){
@@ -93,7 +136,17 @@
 			},
 			anterior(){				
 				this.currentPage--;
+			},
+			onEnd: function () {
+				var url = `/home/app/${this.perfil.id}/${this.perfil.apodo}/clase/${this.actividad.clase_id}/actividad/${this.actividad.id}/realizada`;
+					axios.get(url).then((result) => {
+						console.log(result.data);
+					}).catch((err) => {
+						
+					});
 			}
+			
+		
 		},
     }
 </script>
@@ -109,13 +162,14 @@
 	.body-component {
 		position: relative;
 		height: 100vh;
+	
 		background-image: url('/images/estrellas-pdf.svg');
 		background-repeat: no-repeat;
 		background-position: center center;
 	}
 
 	.visor-pdf {
-		width: 32em;
+		width: 57.9em;
 	}
 
 	.content-pdf {

@@ -17,6 +17,7 @@ class CreateModulosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre',250);
             $table->date('inicia')->nullable();
+            $table->date('finaliza')->nullable();
             $table->text('descripcion',5000)->nullable();
             $table->unsignedbigInteger('curso_id');
             $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');

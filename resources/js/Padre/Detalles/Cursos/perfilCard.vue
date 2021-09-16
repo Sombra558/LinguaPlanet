@@ -1,5 +1,5 @@
 <template>
-    <a href="/home/detalles-avance-individual/cursos">
+    <a :href="'/home/detalles-avance-individual/cursos/'+perfil.id">
         <div class="card card-perfil mx-2">
             <div class="card-body text-center">
                 <div class="profile-bg mx-auto" :style="`background-color: ${perfil.color};`">
