@@ -86,7 +86,12 @@
             }
         },
         mounted() {
-            $('.toggle-father-details').on('click', (e) => {
+            $('.navbar').on('click', '.toggle-father-details', (e) => {
+                $('.backdrop').toggleClass('show');
+                $('.left-panel').toggleClass('show');
+            });
+
+            $('.left-panel').on('click', '.toggle-father-details', (e) => {
                 $('.backdrop').toggleClass('show');
                 $('.left-panel').toggleClass('show');
             });

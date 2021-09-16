@@ -62,39 +62,9 @@
             <main class="flex-grow-1">
                 @yield('content')
             </main>
-        </div>
-        <div class="left-panel container bg-primary">
-            <div class="row py-3">
-                <div class="col-12 text-right">
-                    <label class="mb-0" for="check">
-                        <button class="toggle-father-details img-btn">
-                            <img class="iz-100"  src="{{ asset('/images/exit-icon.svg') }}">
-                        </button>                    
-                    </label>                
-                </div>
-            </div>                    
-            <div class="row panel-content">
-                <div class="col-12 text-center">
-                    <img class="iz-40 mb-4" src="{{ asset('/images/bwhite-lock.svg') }}">
-                    <h2 class="bold">Solo para adultos</h2>
-                    <span>Para continuar por favor ingresa</span>
-                    <div class="my-5">
-                        <h2 class="color-yellow mb-4">Siete, Cuatro, Cinco</h2>
-                        <input class="input-validation-father" type="text" name="number">
-                        <input class="input-validation-father" type="text" name="number">
-                        <input class="input-validation-father" type="text" name="number">
-                    </div>
-                    <button class="btn btn-primary-red"><span class="h4 px-2">Acceder</span></button>
-                </div>
-            </div>
+            <block-sidepanel/>
         </div>
     </div>
-    <script type="text/javascript">
-        $('.toggle-father-details').on('click', (e) => {
-            $('.backdrop').toggleClass('show');
-            $('.left-panel').toggleClass('show');
-        });
-    </script>
     <div class="backdrop"></div>
 </body>
 </html>
