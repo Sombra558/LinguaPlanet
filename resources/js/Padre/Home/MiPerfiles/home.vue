@@ -7,7 +7,7 @@
             </div>
         </div>
         <div v-if="user.perfiles.length>0" class="row mt-5 justify-content-md-center">
-            <div class="col-6 col-md-3 d-flex justify-content-center" v-for="perf in user.perfiles">
+            <div class="col-6 col-md-3 d-flex justify-content-center" v-for="perf in user.perfiles" :key="perf.id">
                 <PerfilCard  :mode="selectMode"  :key="perf.id" :perfil="perf" />
             </div>
             <div class="col-6 col-md-3">
