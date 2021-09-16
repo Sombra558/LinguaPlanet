@@ -4094,7 +4094,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    $('.toggle-father-details').on('click', function (e) {
+    $('.navbar').on('click', '.toggle-father-details', function (e) {
+      $('.backdrop').toggleClass('show');
+      $('.left-panel').toggleClass('show');
+    });
+    $('.left-panel').on('click', '.toggle-father-details', function (e) {
       $('.backdrop').toggleClass('show');
       $('.left-panel').toggleClass('show');
     });
