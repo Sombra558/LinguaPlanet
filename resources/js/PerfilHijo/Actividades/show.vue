@@ -83,7 +83,7 @@
 
 <script>
 	import pdf from "vue-pdf";
-	import vueVimeoPlayer from 'vue-vimeo-player'
+
     export default {
         name:"actividad-show",
         props:['perfil','actividad','curso'],
@@ -109,7 +109,7 @@
 			}
 		},
         components : {
-    		pdf,vueVimeoPlayer
+    		pdf
         },
         computed: {
 			noPrevPage() {
