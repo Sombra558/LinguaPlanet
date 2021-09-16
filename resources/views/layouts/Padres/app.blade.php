@@ -21,30 +21,8 @@
 </head>
 <body>
     <style type="text/css">
-
         #padre-app {
             backdrop-filter: blur(10px);
-        }
-        .left-panel.show {
-            left : 0;
-        }
-
-        .panel-content {
-            height : 100%;
-            display : flex;
-            align-items : center;
-            justify-content : center;
-            color : white;
-        }
-
-        .input-validation-father {
-            width: 20%;
-            margin: 0 0.5rem 0 0.5rem;
-            padding: 0.6rem 0.55rem;
-            background: #FFFFFF;
-            border: 1px solid #31348B;
-            box-sizing: border-box;
-            border-radius: 12px;
         }
     </style>
     <div class="d-flex h-screen flex-column justify-content-between">

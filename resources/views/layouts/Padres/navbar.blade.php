@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     @if(explode('.', request()->route()->action['as'])[0] === 'perfil-user' || explode('.', request()->route()->action['as'])[0] === 'home')
         <div class="container d-flex">
-            <div class="w-10">
+            <span class="w-15">
                 @if(!request()->routeIs('perfil-user.create'))
                     <button class="w-10 toggle-father-details img-btn">
                         <img class="iz-60"  src="{{ asset('/images/bgray-lock.svg') }}">
@@ -11,12 +11,12 @@
                     <span class="h6">Salir</span>
                 </div>
                 @endif
-            </div>
+            </span>
             <a class="navbar-brand m-0" href="{{ url('/') }}">
                 <img style="width: 90px; height: 90px;" src="{{ asset('/images/logo.svg') }}" class="logo light" alt="{{ config('app.name', 'Laravel') }}">
                 <img style="width: 90px; height: 90px;" src="{{ asset('/images/blue-logo.svg') }}" class="logo blue" alt="{{ config('app.name', 'Laravel') }}">
             </a>
-            <div class="p-3">
+            <span class="w-15">
                 @if(!request()->routeIs('perfil-user.create'))
                     <button class="w-10 btn-logout" onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
@@ -24,7 +24,7 @@
                         <span style="font-weight: 500;" class="text-primary-red span-logout">Cerrar sesión</span>
                     </button>    
                 @endif
-            </div>                
+            </span>                
         </div>
     @else
         <div class="container d-flex">

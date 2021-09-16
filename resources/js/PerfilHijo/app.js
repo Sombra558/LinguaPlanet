@@ -15,8 +15,9 @@ Vue.component('lista-cursos', require('./Cursos/listaCursos').default);
 Vue.component('show-curso', require('./Cursos/show').default);
 
 //actividad
-
 Vue.component('show-actividad', require('./Actividades/show').default);
+
+Vue.component('block-sidepanel', require('../Padre/blockSidepanel').default);
 
 const app = new Vue({
     el: '#hijo-app',

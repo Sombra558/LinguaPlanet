@@ -38,7 +38,7 @@
             }
         @endunless
     </style>
-    <div class="d-flex h-screen flex-column @unless(explode('.', request()->route()->action['as'])[0]) justify-content-between @endunless">
+    <div class="d-flex h-screen flex-column @unless(explode('.', request()->route()->action['as'])[0] === 'perfil-user') justify-content-between @endunless">
 
         @include('layouts.Padres.navbar')
         
