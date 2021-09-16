@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('content')
-<div class="container">
+<div class="container" style="margin-bottom: 15rem;">
     <div class="row d-flex justify-content-center">
         <div class="col-5 login-title d-flex">
             <h1 class="ml-5" style="margin-top:38%;">
