@@ -1,7 +1,7 @@
 <template>
     <div class="body-component">
     	<a v-if="actividad.tipo ==='Libros'" class="home-student" :href="`/home/app/${perfil.id}/${perfil.apodo}/`">
-            <img class="w-100" src="/images/home-student.svg">
+            <img class="w-75" src="/images/home-student.svg">
         </a>
         <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura'" style="height: 85%;">
 				<video @ended="onEnd()" controls width="100%" height="100%">
@@ -61,20 +61,22 @@
 				</article>
 			</section>
 		</div>
-        <div v-if="actividad.tipo !=='Libros' || (actividad.tipo ==='Libros' && openbook)" class="d-flex bg-white justify-content-between align-items-center px-2 px-md-4" style="height:15%;">
-        	<div class="avatar">
-                <div class="header-animal-icon" style="background-color : #FAB500;">
-                    <cara-avatar class="w-100 h-100" :perfil="perfil"/>
-                </div>
-                <span class="nickname-header">{{ perfil.apodo }}</span>
+        <div v-if="actividad.tipo !=='Libros' || (actividad.tipo ==='Libros' && openbook)" class="d-flex bg-white align-items-center px-2 px-md-4" style="height:15%;">
+        	<div class="col-6 col-md-4">
+	        	<div class="avatar">
+	                <div class="header-animal-icon" style="background-color : #FAB500;">
+	                    <cara-avatar class="w-100 h-100" :perfil="perfil"/>
+	                </div>
+	                <span class="nickname-header">{{ perfil.apodo }}</span>
+	            </div>
+            </div>            
+            <div class="col-6 col-md-4 d-flex" v-if="actividad.tipo !=='Palabras del día' && actividad.tipo !=='Video de apertura'">
+            	<img class="mx-auto w-20 w-sm-30" :disabled="noPrevPage" @click.prevent="anterior()" src="/images/back-yellow.svg">
+            	<img class="mx-auto w-20 w-sm-30" :disabled="noPrevPage" @click.prevent="anterior()" src="/images/back-yellow.svg" style="transform: scaleX(-1);">
             </div>
-            <a :href="prevUrl">
-                <img src="/images/back-yellow.svg">
-            </a>
-        	<div v-if="actividad.tipo !=='Palabras del día' && actividad.tipo !=='Video de apertura'">
-				<button :disabled="noPrevPage" type="button" @click.prevent="anterior()" class="btn btn-danger">Anterior</button>
-				<button :disabled="noNextPage" type="button" @click.prevent="siguiente()" class="btn btn-danger">Siguiente</button>	        		
-        	</div>
+            <div class="col-4">
+            	
+            </div>
         </div>                  
     </div>
 </template>
@@ -152,6 +154,7 @@
 </script>
 
 <style lang="scss" scoped>
+
 	.home-student {
 		position:absolute;
 		top: 5%;
@@ -215,6 +218,10 @@
 
 		.content-pdf {
 			width: 100%;
+		}
+
+		.w-sm-30 {
+			width: 30% !important;
 		}
 	}
 </style>

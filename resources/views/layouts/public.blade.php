@@ -32,7 +32,7 @@
     </style>
 </head>
 <body>
-    <div class="d-flex h-screen flex-column">        
+    <div class="d-flex h-screen flex-column justify-content-between">        
         @include('layouts.navbar')
 
         <div id="app">

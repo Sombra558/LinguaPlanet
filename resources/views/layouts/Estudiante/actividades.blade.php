@@ -19,44 +19,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="bg-primary @if(request()->routeIs('student.premios') || request()->routeIs('student.armario')) background-component @endif">
-    <style type="text/css">
-
-        .left-panel.show {
-            left : 0;
-        }
-
-        .panel-content {
-            height : 80%;
-            display : flex;
-            align-items : center;
-            justify-content : center;
-            color : white;
-        }
-
-        .input-validation-father {
-            width: 20%;
-            margin: 0 0.5rem 0 0.5rem;
-            padding: 0.6rem 0.55rem;
-            background: #FFFFFF;
-            border: 1px solid #31348B;
-            box-sizing: border-box;
-            border-radius: 12px;
-        }
-
-        .backdrop.show {
-            position : fixed;
-            top : 0;
-            left : 0;
-            width : 100vw;
-            height : 100vh;
-            z-index : 1040;
-            backdrop-filter : blur(3px);
-            transition : backdrop-filter 0.9s;
-        }
-    </style>
     <div class="d-flex h-screen flex-column justify-content-between">
-        
-    
         
         <div id="hijo-app" class="h-100 d-flex justify-content-center align-items-center">
             <main class="flex-grow-1">

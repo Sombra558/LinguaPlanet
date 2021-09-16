@@ -26,6 +26,8 @@ Vue.component('create-perfiluser', require('./PerfilUser/create').default);
 Vue.component('edit-perfiluser', require('./PerfilUser/edit').default);
 Vue.component('cara-avatar', require('../PerfilHijo/PerfilUser/caraAvatar').default);
 
+Vue.component('block-sidepanel', require('./blockSidepanel').default);
+
 const store = new Vuex.Store({
     state: {
         cursos:[],
