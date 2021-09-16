@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-    @if(explode('.', request()->route()->action['as'])[0] === 'perfil-user')
+    @if(explode('.', request()->route()->action['as'])[0] === 'perfil-user' || explode('.', request()->route()->action['as'])[0] === 'home')
         <div class="container d-flex">
             <div class="w-10">
                 @if(!request()->routeIs('perfil-user.create'))
