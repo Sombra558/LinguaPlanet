@@ -3236,6 +3236,14 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     PerfilCard: _perfilCard__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  mounted: function mounted() {
+    var url = "http://165.22.27.174/rompecabeza/1";
+    axios.get(url).then(function (result) {
+      console.log(result.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  },
   data: function data() {
     return {
       selectMode: false

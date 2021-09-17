@@ -44,6 +44,14 @@ import PerfilCard from './perfilCard';
         components: {
             PerfilCard,
         },
+        mounted () {
+            var url="http://165.22.27.174/rompecabeza/1";
+            axios.get(url).then((result) => {
+                console.log(result.data);
+            }).catch((err) => {
+                console.log(err);
+            });
+        },
         data() {
             return {
                 selectMode : false,
