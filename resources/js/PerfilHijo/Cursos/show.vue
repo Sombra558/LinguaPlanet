@@ -179,7 +179,7 @@
 				</a>
     		</div>
     	</div>
-    	<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    	<div v-if="premioSelected" class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered modal-lg">
 		    <div class="modal-content modal-premio">
 		      <div class="modal-body d-flex flex-column align-items-center py-5" style="height: 60vh;">
@@ -201,7 +201,15 @@
 					</linearGradient>
 					</defs>
 				</svg>
-		        <button class="btn btn-success w-35">Recibir premio</button>
+					<svg viewBox="0 0 250 250">
+						<image width="100%" height="100%" :xlink:href="premioSelected.accesorio"/>
+					
+					</svg>
+					<div class="row">
+						<button class="col" :style="'background-color:'+col+'; width:50px;heigth:50px;'" v-for="col in colores" :key="col "  @click.prevent="seleccionarcolor(col)" ></button>
+					</div>
+
+		        <button  @click.prevent="recibir()" class="btn btn-success w-35">Recibir premio</button>
 		      </div>
 		    </div>
 		  </div>
@@ -255,10 +263,14 @@
 			return {
 				actividadSelected: null,
 				page:0,
-				 currentPage: 1,
-        pageCount: 0,
-        src: null,
-        zoom: 100
+				currentPage: 1,
+				pageCount: 0,
+				src: null,
+				zoom: 100,
+				realizadas:[],
+				premioSelected: null,
+				colorSelected:"#FCD13A",
+				colores:['#FCD13A','#5887FF','#72CE52','#FF6B3D']
 			}
 		},
         components : {
@@ -270,22 +282,59 @@
 			},
 			noNextPage() {
 			return this.currentPage === this.pageCount;
-			}
+			},
+		
+		},
+		mounted () {
+			if (this.perfil.misactividades.length>0) {
+				this.perfil.misactividades.forEach(actividad => {
+					if (actividad.clase_id === this.contenidos.enCurso[0].id && actividad.pivot.estado===1) {
+						this.realizadas.push(actividad);
+					}
+				});
+			};
+			if (this.realizadas.length===4) {
+					this.contenidos.enCurso[0].premio_clase.forEach(pre => {
+						if (pre.accesorio.animal_id===this.perfil.avatar.animal_id) {
+							this.premioSelected=pre.accesorio;
+						}
+					});
+				
+						setTimeout(function(){
+							
+						$("#staticBackdrop").modal("show");
+						},200)
+					
+					
+				}
+
 		},
 		methods: {
-			actividad(value) {
-				this.actividadSelected=value;
-				setTimeout(function(){
-                $("#actividadmodal").modal("show");
-                },200)
-			},
+		
 			siguiente(){
 				this.currentPage++;
 			},
 			anterior(){
 				
 				this.currentPage--;
+			},
+			recibir(){
+				var url = `/home/app/${this.perfil.id}/${this.perfil.apodo}/recibir-premio/${this.contenidos.enCurso[0].id}`;
+				axios.post(url,{
+					premios:JSON.stringify(this.contenidos.enCurso[0].premio_clase),
+					color:this.colorSelected,
+					actividades:JSON.stringify(this.realizadas),
+				}).then((result) => {
+					$("#staticBackdrop").modal("hide");
+				}).catch((err) => {
+					console.log(err);
+				});
+				
+			},
+			seleccionarcolor(col){
+				this.colorSelected=col;
 			}
+
 		},
     }
 </script>

@@ -3238,10 +3238,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     var url = "http://165.22.27.174/rompecabeza/1";
-    axios.get(url).then(function (result) {
-      console.log(result.data);
-    })["catch"](function (err) {
-      console.log(err);
+    var axiosInstance = axios.create({
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      }
+    });
+    axiosInstance.get(url).then(function (response) {
+      console.log(response);
+    })["catch"](function (e) {
+      return console.log(e);
     });
   },
   data: function data() {

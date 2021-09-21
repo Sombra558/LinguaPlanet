@@ -21,6 +21,7 @@ Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
 	Route::group([ 'prefix' => 'app/{id}/{apodo}', 'middleware' => ['HasPerfilPadre'] ], function() {
 	    Route::get('/', 'Padres\PerfilEstudiante@previewshow')->name('student.home');
 	    Route::get('/idiomas', 'Padres\PerfilEstudiante@show');
+		Route::post('/recibir-premio/{clase_id}', 'Padres\PerfilEstudiante@guardarpremio');
 	    Route::get('/premios', 'Padres\PerfilEstudiante@premios')->name('student.premios');
 	    Route::get('/armario', 'Padres\PerfilEstudiante@armario')->name('student.armario');
 	    Route::get('/idiomas/{nombreURL}', 'Padres\PerfilEstudiante@aplication');

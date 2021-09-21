@@ -19,6 +19,7 @@ class CreateActividadUsersTable extends Migration
             $table->foreign('actividad_id')->references('id')->on('actividads')->onDelete('cascade');
             $table->unsignedbigInteger('perfil_id');
             $table->foreign('perfil_id')->references('id')->on('perfil_estudiante_users')->onDelete('cascade');
+            $table->boolean('estado')->default(0);
             $table->timestamps();
         });
     }

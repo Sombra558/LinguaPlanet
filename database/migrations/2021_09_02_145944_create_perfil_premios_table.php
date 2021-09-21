@@ -15,6 +15,7 @@ class CreatePerfilPremiosTable extends Migration
     {
         Schema::create('perfil_premios', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('color',250)->nullable();
             $table->unsignedbigInteger('accesorios_id');
             $table->foreign('accesorios_id')->references('id')->on('accesorios')->onDelete('cascade');
             $table->unsignedbigInteger('perfil_estudiante_user_id');

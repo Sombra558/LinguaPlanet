@@ -21,11 +21,11 @@ class PerfilEstudianteUser extends Model
   }
   public function premios()
   {
-    return $this->belongsToMany('App\Models\Animals\Accesorios','perfil_premios');
+    return $this->belongsToMany('App\Models\Animals\Accesorios','perfil_premios')->withPivot('color');
   }
   public function misactividades()
   {
-    return $this->belongsToMany('App\Models\Cursos\Actividad','actividad_users','perfil_id');
+    return $this->belongsToMany('App\Models\Cursos\Actividad','actividad_users','perfil_id')->withPivot('estado','id');
   }
   
 }

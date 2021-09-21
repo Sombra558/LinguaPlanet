@@ -10,4 +10,7 @@ class ActividadUser extends Model
     protected $fillable = [
         'actividad_id','perfil_id',
     ];
+    public function actividadclase() {
+    	return $this->belongsTo('App\Models\Cursos\Actividad','actividad_id');
+    }
 }

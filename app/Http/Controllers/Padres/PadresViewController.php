@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Padres;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
+
 use App\Models\PerfilEstudiante\PerfilEstudianteUser;
 use Carbon\Carbon;
 
@@ -26,6 +28,13 @@ class PadresViewController extends Controller
         {
             return $q->with('avatar');
         }]);
+        $baseUrl="http://165.22.27.174/rompecabeza/1";
+        $client = new Client(['base_uri' => 'http://165.22.27.17/']);  
+        $response = $client->request('GET', 'http://165.22.27.174/rompecabeza/1'); 
+        $body = $response->getBody();
+        $content =$body->getContents();
+        $arr = json_decode($content);
+      
         return view('Padres.Home.home',compact('user'));
     }
     

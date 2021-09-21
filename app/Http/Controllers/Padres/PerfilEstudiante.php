@@ -11,6 +11,7 @@ use App\Models\Solicitudes\PlanUser;
 use App\Models\Relaciones\PerfilPlan;
 use App\Models\Relaciones\ActividadUser;
 use App\Models\Relaciones\ProgresoCursoUser;
+use App\Models\Relaciones\PerfilPremios;
 use App\Models\PerfilEstudiante\PerfilEstudianteUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -201,14 +202,11 @@ class PerfilEstudiante extends Controller
     {
         $idioma=Idioma::where('nombreURL',$nombreURL)->first();
         $now = Carbon::now();
-        //$hoy->addDay(6);
-        //dd($hoy);
-
-
-        
         $curso = Curso::find($curso_id)->load(['modulos'=>function($k){
             return $k->with(['clases'=>function($p){
-                return $p->with(['actividades']);
+                return $p->with(['actividades','premioClase'=>function($a){
+                    return $a->with(['accesorio']);
+                }]);
             }]);
         }]);
         $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
@@ -217,7 +215,7 @@ class PerfilEstudiante extends Controller
                     return $j->with(['cursos','idioma']);
                 }]);
             }]);
-        },'avatar']);
+        },'avatar','misactividades']);
 
         $pasadas = array();
 		$encurso = array();
@@ -489,6 +487,7 @@ class PerfilEstudiante extends Controller
             $actividadus = ActividadUser::create([
                 'actividad_id' => $actividad_id,
                 'perfil_id' => $id,
+                'estado' => 1,
             ]);
        
             $progresocurso = ProgresoCursoUser::where('curso_id',$curso_id)->where('perfil_id',$id)->first();
@@ -514,7 +513,55 @@ class PerfilEstudiante extends Controller
 
 
             return $actividadus;
+        }else{
+            $actividadus->estado=1;
+            $actividadus->save();
         }
+    }
+    public function guardarpremio(Request $request, $id, $apodo, $clase_id){
+        $perfil=PerfilEstudianteUser::find($id)->load(['premios']);
+  
+        $ganados=json_decode($request->premios);
+        $realizadas=json_decode($request->actividades);
+  
+        if ($perfil->premios->count()>0) {
+           
+                foreach ($ganados as $act) {
+                    $pre=PerfilPremios::where('accesorios_id',$act->accesorio_id)->where('perfil_estudiante_user_id',$id)->first();
+                    if ($pre!=null) {
+                        $pre->color=$request->color;
+                        $pre->save();
+                    }else{
+                        PerfilPremios::create([
+                            'color' => $request->color,
+                            'accesorios_id' =>$act->accesorio_id,
+                            'perfil_estudiante_user_id' => $id,
+                        ]);
+                    }
+                    
+                 }
+        }else{
+            foreach ($ganados as $act) {
+                
+                    PerfilPremios::create([
+                        'color' => $request->color,
+                        'accesorios_id' =>$act->accesorio_id,
+                        'perfil_estudiante_user_id' => $id,
+                    ]);
+                
+                
+             }
+        }
+        foreach ($realizadas as $rea) {
+                
+            $temp=ActividadUser::find($rea->pivot->id);
+            $temp->estado=0;
+            $temp->save();
+        
+        
+     }
+     return $realizadas;
+        
     }
     public function destroy($id)
     {

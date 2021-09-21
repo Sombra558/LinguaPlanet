@@ -46,11 +46,20 @@ import PerfilCard from './perfilCard';
         },
         mounted () {
             var url="http://165.22.27.174/rompecabeza/1";
-            axios.get(url).then((result) => {
-                console.log(result.data);
-            }).catch((err) => {
-                console.log(err);
-            });
+                const axiosInstance = axios.create({
+                headers: {
+                    "Access-Control-Allow-Origin": "*"
+                }
+                });
+
+                axiosInstance
+                .get(url)
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(e => console.log(e));
+
+            
         },
         data() {
             return {

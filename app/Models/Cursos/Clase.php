@@ -12,4 +12,9 @@ class Clase extends Model
     public function actividades(){
         return $this->hasMany('App\Models\Cursos\Actividad');
     }
+
+    public function premioClase()
+    {
+        return $this->hasMany('App\Models\Relaciones\ClasePremio');
+    }
 }
