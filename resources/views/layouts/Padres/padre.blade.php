@@ -46,7 +46,7 @@
             <main class="d-flex flex-column mb-5">
                 @yield('content')
             </main>
-            <block-sidepanel/>
+            <block-sidepanel :user="{{$user}}" />
         </div>
         @unless(explode('.', request()->route()->action['as'])[0] === 'perfil-user')
             <footer class="d-flex flex-column align-items-center justify-content-center">

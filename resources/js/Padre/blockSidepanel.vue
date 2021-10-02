@@ -13,12 +13,9 @@
             <div class="col-12 text-center">
                 <img class="iz-40 mb-4" src="/images/bwhite-lock.svg">
                 <h2 class="bold">Solo para adultos</h2>
-                <span>Para continuar por favor ingresa</span>
+                <span>Para continuar por favor ingresa tu frase</span>
                 <div class="my-5">
-                    <h2 class="color-yellow mb-4">{{daten1.texto}}, {{daten2.texto}}, {{daten3.texto}}</h2>
-                    <input class="input-validation-father" v-model="value1" type="text" name="number">
-                    <input class="input-validation-father" v-model="value2" type="text" name="number">
-                    <input class="input-validation-father" v-model="value3" type="text" name="number">
+                    <input class="input-validation-father" v-model="value1" type="password" name="number">
                 </div>
                 <button @click.prevent="acceder()" class="btn btn-primary-red"><span class="h4 px-2">Acceder</span></button>
             </div>
@@ -98,7 +95,7 @@
         },
         methods: {
             acceder() {
-                if (this.daten1.numero===Number(this.value1) && this.daten2.numero===Number(this.value2) && this.daten3.numero===Number(this.value3)) {
+                if (this.value1===this.user.frase) {
                     window.location='/home/detalles-avances/cursos';
                 }
             },

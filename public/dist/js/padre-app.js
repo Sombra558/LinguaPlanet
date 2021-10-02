@@ -4138,9 +4138,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "block-sidepanel",
   props: ['user'],
@@ -4197,7 +4194,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     acceder: function acceder() {
-      if (this.daten1.numero === Number(this.value1) && this.daten2.numero === Number(this.value2) && this.daten3.numero === Number(this.value3)) {
+      if (this.value1 === this.user.frase) {
         window.location = '/home/detalles-avances/cursos';
       }
     },
@@ -47467,19 +47464,9 @@ var render = function() {
         _vm._v(" "),
         _c("h2", { staticClass: "bold" }, [_vm._v("Solo para adultos")]),
         _vm._v(" "),
-        _c("span", [_vm._v("Para continuar por favor ingresa")]),
+        _c("span", [_vm._v("Para continuar por favor ingresa tu frase")]),
         _vm._v(" "),
         _c("div", { staticClass: "my-5" }, [
-          _c("h2", { staticClass: "color-yellow mb-4" }, [
-            _vm._v(
-              _vm._s(_vm.daten1.texto) +
-                ", " +
-                _vm._s(_vm.daten2.texto) +
-                ", " +
-                _vm._s(_vm.daten3.texto)
-            )
-          ]),
-          _vm._v(" "),
           _c("input", {
             directives: [
               {
@@ -47490,7 +47477,7 @@ var render = function() {
               }
             ],
             staticClass: "input-validation-father",
-            attrs: { type: "text", name: "number" },
+            attrs: { type: "password", name: "number" },
             domProps: { value: _vm.value1 },
             on: {
               input: function($event) {
@@ -47498,50 +47485,6 @@ var render = function() {
                   return
                 }
                 _vm.value1 = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.value2,
-                expression: "value2"
-              }
-            ],
-            staticClass: "input-validation-father",
-            attrs: { type: "text", name: "number" },
-            domProps: { value: _vm.value2 },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.value2 = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.value3,
-                expression: "value3"
-              }
-            ],
-            staticClass: "input-validation-father",
-            attrs: { type: "text", name: "number" },
-            domProps: { value: _vm.value3 },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.value3 = $event.target.value
               }
             }
           })

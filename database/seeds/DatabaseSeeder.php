@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $Administrador= User::create([
             'name' => 'Lingua',
             'lastname' => 'Planet',
+            'frase' => 'Frito',
             'email' => 'admin@test.com',
             'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
             'remember_token' => Str::random(10),
@@ -30,6 +31,7 @@ class DatabaseSeeder extends Seeder
         $user= User::create([
             'name' => 'Lingua',
             'lastname' => 'Padre',
+            'frase' => 'Frito',
             'email' => 'padre@test.com',
             'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
             'remember_token' => Str::random(10),
