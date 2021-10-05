@@ -20,18 +20,7 @@
 	                autoplay="0"
 	        ></iframe>-->
         </div>
-		 <div v-if="actividad.tipo==='Rompecabeza'" >
-			  <span>plis</span>
-		   
-        </div>
-		 <div v-if="actividad.tipo==='Memorama'" >
-			   MEMORAMA GAME
-		   
-        </div>
-		 <div v-if="actividad.tipo==='Mochila'">
-			   MOCHILA GAME
-		   
-        </div>
+		
 		<div v-else class="d-flex justify-content-center" :style="{'height': ( openbook || actividad.tipo === 'Actividad' ) ? '85%' : '100%'}">
 			<section v-if="actividad.tipo==='Libros'" class="content-pdf d-flex">
 				<center v-if="openbook===false" class="mx-auto my-auto">
@@ -109,9 +98,12 @@
 <script>
 	import pdf from "vue-pdf";
 
+	
+
     export default {
         name:"actividad-show",
         props:['perfil','actividad','curso'],
+	
         data() {
 			return {
 				actividadSelected: null,

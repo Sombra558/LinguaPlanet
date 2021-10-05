@@ -3,24 +3,20 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
+    <title>{{$actividad->tipo}}</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('dist/js/hijo-app.js') }}" defer></script>
-    <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="/game/Silueta/Siluetas/TemplateData/style.css">
+    <script src="/game/Silueta/Siluetas/TemplateData/UnityProgress.js"></script>
+    <script src="/game/Silueta/Siluetas/Build/UnityLoader.js"></script>
 </head>
 <body class="bg-primary @if(request()->routeIs('student.premios') || request()->routeIs('student.armario')) background-component @endif">
     <div class="d-flex h-screen flex-column justify-content-between">
-        
+        @if($actividad->tipo==='Palabras del día' || $actividad->tipo==='Video de apertura' || $actividad->tipo==='Actividad' || $actividad->tipo==='Libros')
         <div id="hijo-app" class="h-100 d-flex justify-content-center align-items-center">
             <main class="flex-grow-1">
                 @yield('content')
@@ -51,6 +47,9 @@
                 </div>
             </div>
         </div>
+        @else
+         <div class="h-100 d-flex justify-content-center align-items-center" id="unityContainer" ></div>
+        @endif
     </div>
     <script type="text/javascript">
         $('.toggle-father-details').on('click', (e) => {
@@ -62,6 +61,9 @@
         function myFunction(perfil_id) {
             alert("The video has ended"+ perfil_id);
         }
+    </script>
+     <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "/game/Silueta/Siluetas/Build/Siluetas.json", {onProgress: UnityProgress});
     </script>
     <div class="backdrop"></div>
 </body>
