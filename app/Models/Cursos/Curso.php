@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 class Curso extends Model
 {
     protected $fillable = [
-        'titulo', 'descripcion','video','destacados','inicia','img','img_min','nombreURL',
+        'titulo', 'descripcion','video','destacados','inicia','img','img_min','nombreURL','linkoriginal',
     ];
     protected $appends = [
         'video_source',
@@ -23,5 +23,10 @@ class Curso extends Model
     }
     public function progresos(){
         return $this->hasMany('App\Models\Relaciones\ProgresoCursoUser');
+    }
+
+    public function membresias()
+    {
+      return $this->belongsToMany('App\Models\Membresia\Membresia')->withPivot('curso_id');
     }
 }

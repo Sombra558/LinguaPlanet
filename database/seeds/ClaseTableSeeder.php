@@ -69,7 +69,7 @@ class ClaseTableSeeder extends Seeder
                             'clase_id' => $clase1->id,
                         ]);
                         Actividad::create([
-                            'tipo' => 'Memorama',
+                            'tipo' => 'Silueta',
                             'icom' => '/images/actividades/control.svg',
                             'clase_id' => $clase1->id,
                         ]);
@@ -122,7 +122,7 @@ class ClaseTableSeeder extends Seeder
                             'clase_id' => $clase2->id,
                         ]);
                         Actividad::create([
-                            'tipo' => 'Memorama',
+                            'tipo' => 'Silueta',
                             'icom' => '/images/actividades/control.svg',
                             'clase_id' => $clase2->id,
                         ]);
@@ -174,7 +174,7 @@ class ClaseTableSeeder extends Seeder
                             'clase_id' => $clase3->id,
                         ]);
                         Actividad::create([
-                            'tipo' => 'Memorama',
+                            'tipo' => 'Silueta',
                             'icom' => '/images/actividades/control.svg',
                             'clase_id' => $clase3->id,
                         ]);
@@ -187,10 +187,10 @@ class ClaseTableSeeder extends Seeder
                         ]);
 
                         foreach($todoslospremios4 as $pre4){
-                            ClasePremio::create([
+                        ClasePremio::create([
                                 'accesorio_id' => $pre4->id,
                                 'clase_id' => $clase4->id,
-                            ]);
+                        ]);
                         }
                         Actividad::create([
                             'tipo' => 'Palabras del día',
@@ -227,7 +227,7 @@ class ClaseTableSeeder extends Seeder
                             'clase_id' => $clase4->id,
                         ]);
                         Actividad::create([
-                            'tipo' => 'Memorama',
+                            'tipo' => 'Silueta',
                             'icom' => '/images/actividades/control.svg',
                             'clase_id' => $clase4->id,
                         ]);
