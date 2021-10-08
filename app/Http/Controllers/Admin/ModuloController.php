@@ -77,7 +77,21 @@ class ModuloController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $Modulo = Modulo::find($id);
+        dd($request['nombre']);
+        $modulo->nombre=$request['nombre'];
+        $modulo->inicia=$request['inicia'];
+        $modulo->finaliza=$request['finaliza'];
+        $modulo->descripcion=$request['descripcion'];
+        $modulo->save();
+        //if ($request->file('file')) {
+          //  $image = $request->file('file');
+            //$path = $image->store('public/Testimonial');
+            //$path = str_replace('public/', '', $path);
+            //$testimonial->img = $path;
+            //$testimonial->save();
+       // }
+        return $modulo;
     }
 
     /**
@@ -88,6 +102,6 @@ class ModuloController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Modulo::destroy($id);
     }
 }

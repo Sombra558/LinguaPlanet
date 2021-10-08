@@ -16,7 +16,7 @@
                 <tr  v-for="(curso,index) in filteredCursos" :key="index">
                     <td>{{curso.titulo}}</td>
                     <td>definir</td>
-                    <td>definir</td>
+                    <td>{{curso.destacados===1 ? 'Borrador' : 'Publicado'}}</td>
                    
                 </tr>
                 </tbody>

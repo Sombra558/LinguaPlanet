@@ -2307,6 +2307,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "curso-show",
@@ -2345,6 +2377,23 @@ __webpack_require__.r(__webpack_exports__);
     seleccionartab: function seleccionartab(value) {
       this.tab = value;
     },
+    seleccionarModuloModal: function seleccionarModuloModal(value, action) {
+      if (action === 'crear') {
+        this.moduloSelected = null;
+        $("#crearModulo").modal("show");
+      } else if (action === 'editar') {
+        this.moduloSelected = value;
+        setTimeout(function () {
+          $("#crearModulo").modal("show");
+        }, 200);
+      } else {
+        this.moduloSelected = value;
+        this.newclase.modulo_id = value.id;
+        setTimeout(function () {
+          $("#crearClase").modal("show");
+        }, 200);
+      }
+    },
     crearModulo: function crearModulo() {
       var _this = this;
 
@@ -2365,39 +2414,102 @@ __webpack_require__.r(__webpack_exports__);
         _this.proceso = false;
       });
     },
-    seleccionarModulo: function seleccionarModulo(value) {
-      this.moduloSelected = value;
+    editarModulo: function editarModulo(modulo) {
+      var _this2 = this;
+
+      this.proceso = true;
+      console.log(modulo);
+      var form = $("#formmodulo")[0];
+      var formulario = new FormData(form);
+      formulario.append("nombre", modulo.nombre);
+      formulario.append("inicia", modulo.inicia);
+      formulario.append("finaliza", modulo.finaliza);
+      formulario.append("descripcion", modulo.descripcion);
+      var ruta = '/admin/modulo/' + modulo.id;
+      axios.put(ruta, formulario).then(function (res) {
+        $("#crearModulo").modal("hide");
+      })["catch"](function (err) {
+        _this2.proceso = false;
+        console.log(err);
+      });
+    },
+    eliminarModulo: function eliminarModulo(modulo) {
+      var _this3 = this;
+
+      this.proceso = true;
+      var url = '/admin/modulo/' + modulo.id;
+      axios["delete"](url).then(function (result) {
+        window.location.reload();
+      })["catch"](function (err) {
+        console.log(err);
+        _this3.proceso = false;
+      });
+    },
+    seleccionarClase: function seleccionarClase(value, action) {
+      if (action === 'editar') {
+        this.claseSelected = value;
+        setTimeout(function () {
+          $("#editarClase").modal("show");
+        }, 200);
+      } else {
+        this.claseSelected = value;
+        this.newactividad.clase_id = value.id;
+        setTimeout(function () {
+          $("#crearActividad").modal("show");
+        }, 200);
+      }
+
+      this.claseSelected = value;
       this.newclase.modulo_id = value.id;
       setTimeout(function () {
         $("#crearClase").modal("show");
       }, 200);
     },
     crearClase: function crearClase() {
-      var _this2 = this;
+      var _this4 = this;
 
       this.proceso = true;
       var url = '/admin/clase';
       axios.post(url, this.newclase).then(function (result) {
-        _this2.newclase.inicia = null;
-        _this2.newclase.finaliza = null;
-        _this2.newclase.modulo_id = null;
+        _this4.newclase.inicia = null;
+        _this4.newclase.finaliza = null;
+        _this4.newclase.modulo_id = null;
         $("#crearClase").modal("hide");
         window.location.reload();
-        _this2.proceso = false;
+        _this4.proceso = false;
       })["catch"](function (err) {
         console.log(err);
-        _this2.proceso = false;
+        _this4.proceso = false;
       });
     },
-    seleccionarClase: function seleccionarClase(value) {
-      this.claseSelected = value;
-      this.newactividad.clase_id = value.id;
-      setTimeout(function () {
-        $("#crearActividad").modal("show");
-      }, 200);
+    editarClase: function editarClase(clase) {
+      var _this5 = this;
+
+      this.proceso = true;
+      var url = '/admin/clase/' + clase.id;
+      axios.post(url, clase).then(function (result) {
+        $("#editarClase").modal("hide"); //window.location.reload();
+
+        _this5.proceso = false;
+      })["catch"](function (err) {
+        console.log(err);
+        _this5.proceso = false;
+      });
+    },
+    eliminarClase: function eliminarClase(clase) {
+      var _this6 = this;
+
+      this.proceso = true;
+      var url = '/admin/clase/' + clase.id;
+      axios["delete"](url).then(function (result) {
+        window.location.reload();
+      })["catch"](function (err) {
+        console.log(err);
+        _this6.proceso = false;
+      });
     },
     crearActividad: function crearActividad() {
-      var _this3 = this;
+      var _this7 = this;
 
       console.log('creando');
       this.proceso = true;
@@ -2407,15 +2519,42 @@ __webpack_require__.r(__webpack_exports__);
       axios.post(ruta, formulario).then(function (res) {
         window.location.reload();
       })["catch"](function (err) {
-        _this3.proceso = false;
+        _this7.proceso = false;
         console.log(err);
+      });
+    },
+    editarActividad: function editarActividad() {
+      var _this8 = this;
+
+      console.log('creando');
+      this.proceso = true;
+      var form = $("#subiractividad")[0];
+      var formulario = new FormData(form);
+      var ruta = '/admin/actividad';
+      axios.post(ruta, formulario).then(function (res) {
+        window.location.reload();
+      })["catch"](function (err) {
+        _this8.proceso = false;
+        console.log(err);
+      });
+    },
+    eliminarActividad: function eliminarActividad(clase) {
+      var _this9 = this;
+
+      this.proceso = true;
+      var url = '/admin/actividad/' + clase.id;
+      axios["delete"](url).then(function (result) {
+        window.location.reload();
+      })["catch"](function (err) {
+        console.log(err);
+        _this9.proceso = false;
       });
     },
     newmember: function newmember() {
       $("#crearRelacion").modal("show");
     },
     crearrelacion: function crearrelacion() {
-      var _this4 = this;
+      var _this10 = this;
 
       this.proceso = true;
       var form = $("#relacion-member")[0];
@@ -2424,7 +2563,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post(ruta, formulario).then(function (res) {
         window.location.reload();
       })["catch"](function (err) {
-        _this4.proceso = false;
+        _this10.proceso = false;
         console.log(err);
       });
     }
@@ -38496,7 +38635,22 @@ var render = function() {
     _vm._v(" "),
     _vm.tab === "modulos"
       ? _c("div", [
-          _vm._m(0),
+          _c("div", { staticClass: "row justify-content-between" }, [
+            _c("span", [_vm._v("Módulos")]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.seleccionarModuloModal(null, "crear")
+                  }
+                }
+              },
+              [_vm._v("Agregar Mòdulo")]
+            )
+          ]),
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
@@ -38532,16 +38686,41 @@ var render = function() {
                           on: {
                             click: function($event) {
                               $event.preventDefault()
-                              return _vm.seleccionarModulo(modulo)
+                              return _vm.seleccionarModuloModal(modulo, "Clase")
                             }
                           }
                         },
                         [_vm._v("Agregar Clase")]
                       ),
                       _vm._v(" "),
-                      _c("button", [_vm._v("Editar")]),
+                      _c(
+                        "button",
+                        {
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.seleccionarModuloModal(
+                                modulo,
+                                "editar"
+                              )
+                            }
+                          }
+                        },
+                        [_vm._v("Editar")]
+                      ),
                       _vm._v(" "),
-                      _c("button", [_vm._v("Eliminar")]),
+                      _c(
+                        "button",
+                        {
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.eliminarModulo(modulo)
+                            }
+                          }
+                        },
+                        [_vm._v("Eliminar")]
+                      ),
                       _vm._v(" "),
                       _c("button", [_vm._v("...")])
                     ])
@@ -38572,16 +38751,41 @@ var render = function() {
                                 on: {
                                   click: function($event) {
                                     $event.preventDefault()
-                                    return _vm.seleccionarClase(clase)
+                                    return _vm.seleccionarClase(
+                                      clase,
+                                      "actividad"
+                                    )
                                   }
                                 }
                               },
                               [_vm._v("Agregar Actividad")]
                             ),
                             _vm._v(" "),
-                            _c("button", [_vm._v("Editar")]),
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.seleccionarClase(clase, "editar")
+                                  }
+                                }
+                              },
+                              [_vm._v("Editar")]
+                            ),
                             _vm._v(" "),
-                            _c("button", [_vm._v("Eliminar")]),
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.eliminarClase(clase)
+                                  }
+                                }
+                              },
+                              [_vm._v("Eliminar")]
+                            ),
                             _vm._v(" "),
                             _c("button", [_vm._v("...")])
                           ])
@@ -38607,7 +38811,22 @@ var render = function() {
                                   ]
                                 ),
                                 _vm._v(" "),
-                                _vm._m(1, true)
+                                _c("div", { staticClass: "col-4" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      on: {
+                                        click: function($event) {
+                                          $event.preventDefault()
+                                          return _vm.eliminarActividad(
+                                            actividad
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Eliminar")]
+                                  )
+                                ])
                               ])
                             ]
                           )
@@ -38724,16 +38943,35 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(2),
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  {
+                    staticClass: "modal-title",
+                    attrs: { id: "exampleModalLabel" }
+                  },
+                  [
+                    _vm._v(
+                      _vm._s(_vm.moduloSelected ? "Editar" : "Nuevo") +
+                        " módulo"
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(0)
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
                   "form",
                   {
+                    attrs: { id: "formmodulo" },
                     on: {
                       submit: function($event) {
                         $event.preventDefault()
-                        return _vm.crearModulo()
+                        _vm.moduloSelected
+                          ? _vm.editarModulo(_vm.moduloSelected)
+                          : _vm.crearModulo()
                       }
                     }
                   },
@@ -38743,31 +38981,61 @@ var render = function() {
                         _vm._v("Nombre del módulo")
                       ]),
                       _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.newmodulo.nombre,
-                            expression: "newmodulo.nombre"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text", name: "nombre", required: "" },
-                        domProps: { value: _vm.newmodulo.nombre },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                      _vm.moduloSelected
+                        ? _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.moduloSelected.nombre,
+                                expression: "moduloSelected.nombre"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "text", required: "" },
+                            domProps: { value: _vm.moduloSelected.nombre },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.moduloSelected,
+                                  "nombre",
+                                  $event.target.value
+                                )
+                              }
                             }
-                            _vm.$set(
-                              _vm.newmodulo,
-                              "nombre",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
+                          })
+                        : _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newmodulo.nombre,
+                                expression: "newmodulo.nombre"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              name: "nombre",
+                              required: ""
+                            },
+                            domProps: { value: _vm.newmodulo.nombre },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.newmodulo,
+                                  "nombre",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group col-md-6 col-12" }, [
@@ -38775,31 +39043,61 @@ var render = function() {
                         _vm._v("Fecha de Inicio")
                       ]),
                       _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.newmodulo.inicia,
-                            expression: "newmodulo.inicia"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "date", name: "inicia", required: "" },
-                        domProps: { value: _vm.newmodulo.inicia },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                      _vm.moduloSelected
+                        ? _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.moduloSelected.inicia,
+                                expression: "moduloSelected.inicia"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "date", required: "" },
+                            domProps: { value: _vm.moduloSelected.inicia },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.moduloSelected,
+                                  "inicia",
+                                  $event.target.value
+                                )
+                              }
                             }
-                            _vm.$set(
-                              _vm.newmodulo,
-                              "inicia",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
+                          })
+                        : _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newmodulo.inicia,
+                                expression: "newmodulo.inicia"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "date",
+                              name: "inicia",
+                              required: ""
+                            },
+                            domProps: { value: _vm.newmodulo.inicia },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.newmodulo,
+                                  "inicia",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group col-md-6 col-12" }, [
@@ -38807,31 +39105,61 @@ var render = function() {
                         _vm._v("Fecha de Finalizacion")
                       ]),
                       _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.newmodulo.finaliza,
-                            expression: "newmodulo.finaliza"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "date", name: "finaliza", required: "" },
-                        domProps: { value: _vm.newmodulo.finaliza },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                      _vm.moduloSelected
+                        ? _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.moduloSelected.finaliza,
+                                expression: "moduloSelected.finaliza"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "date", required: "" },
+                            domProps: { value: _vm.moduloSelected.finaliza },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.moduloSelected,
+                                  "finaliza",
+                                  $event.target.value
+                                )
+                              }
                             }
-                            _vm.$set(
-                              _vm.newmodulo,
-                              "finaliza",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
+                          })
+                        : _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newmodulo.finaliza,
+                                expression: "newmodulo.finaliza"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "date",
+                              name: "finaliza",
+                              required: ""
+                            },
+                            domProps: { value: _vm.newmodulo.finaliza },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.newmodulo,
+                                  "finaliza",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group col-md-6 col-12" }, [
@@ -38839,31 +39167,61 @@ var render = function() {
                         _vm._v("Descripcion")
                       ]),
                       _vm._v(" "),
-                      _c("textarea", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.newmodulo.descripcion,
-                            expression: "newmodulo.descripcion"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { name: "descripcion", cols: "30", rows: "10" },
-                        domProps: { value: _vm.newmodulo.descripcion },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                      _vm.moduloSelected
+                        ? _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.moduloSelected.descripcion,
+                                expression: "moduloSelected.descripcion"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { cols: "30", rows: "10" },
+                            domProps: { value: _vm.moduloSelected.descripcion },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.moduloSelected,
+                                  "descripcion",
+                                  $event.target.value
+                                )
+                              }
                             }
-                            _vm.$set(
-                              _vm.newmodulo,
-                              "descripcion",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
+                          })
+                        : _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newmodulo.descripcion,
+                                expression: "newmodulo.descripcion"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              name: "descripcion",
+                              cols: "30",
+                              rows: "10"
+                            },
+                            domProps: { value: _vm.newmodulo.descripcion },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.newmodulo,
+                                  "descripcion",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-footer" }, [
@@ -38882,7 +39240,12 @@ var render = function() {
                           staticClass: "btn btn-primary",
                           attrs: { disabled: _vm.proceso, type: "submit" }
                         },
-                        [_vm._v("Agregar modulo")]
+                        [
+                          _vm._v(
+                            _vm._s(_vm.moduloSelected ? "Editar" : "Agregar") +
+                              " Módulo"
+                          )
+                        ]
                       )
                     ])
                   ]
@@ -38913,7 +39276,7 @@ var render = function() {
               { staticClass: "modal-dialog", attrs: { role: "document" } },
               [
                 _c("div", { staticClass: "modal-content" }, [
-                  _vm._m(3),
+                  _vm._m(1),
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-body" }, [
                     _c(
@@ -39042,6 +39405,148 @@ var render = function() {
           {
             staticClass: "modal fade",
             attrs: {
+              id: "editarClase",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "exampleModalLabel",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "modal-dialog", attrs: { role: "document" } },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c(
+                      "form",
+                      {
+                        on: {
+                          submit: function($event) {
+                            $event.preventDefault()
+                            return _vm.editarClase(_vm.claseSelected)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "form-group col-md-6 col-12" },
+                          [
+                            _c("label", { attrs: { for: "finaliza" } }, [
+                              _vm._v("Tipo de Actividad")
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.claseSelected.inicia,
+                                  expression: "claseSelected.inicia"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "date",
+                                name: "inicia",
+                                required: ""
+                              },
+                              domProps: { value: _vm.claseSelected.inicia },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.claseSelected,
+                                    "inicia",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group col-md-6 col-12" },
+                          [
+                            _c("label", { attrs: { for: "inicia" } }, [
+                              _vm._v("Fecha de Finalizacion")
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.claseSelected.finaliza,
+                                  expression: "claseSelected.finaliza"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "date",
+                                name: "finaliza",
+                                required: ""
+                              },
+                              domProps: { value: _vm.claseSelected.finaliza },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.claseSelected,
+                                    "finaliza",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "modal-footer" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-secondary",
+                              attrs: { type: "button", "data-dismiss": "modal" }
+                            },
+                            [_vm._v("Cancelar")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: { disabled: _vm.proceso, type: "submit" }
+                            },
+                            [_vm._v("Agregar Clase")]
+                          )
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.claseSelected
+      ? _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: {
               id: "crearActividad",
               tabindex: "-1",
               role: "dialog",
@@ -39055,7 +39560,7 @@ var render = function() {
               { staticClass: "modal-dialog", attrs: { role: "document" } },
               [
                 _c("div", { staticClass: "modal-content" }, [
-                  _vm._m(4),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-body" }, [
                     _c(
@@ -39289,7 +39794,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(5),
+              _vm._m(4),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -39396,23 +39901,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row justify-content-between" }, [
-      _c("span", [_vm._v("Módulos")]),
-      _vm._v(" "),
-      _c(
-        "button",
-        { attrs: { "data-toggle": "modal", "data-target": "#crearModulo" } },
-        [_vm._v("Agregar Mòdulo")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4" }, [
-      _c("button", [_vm._v("Eliminar")])
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   },
   function() {
     var _vm = this
@@ -39422,7 +39922,7 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Nuevo módulo")]
+        [_vm._v("Nueva Clase")]
       ),
       _vm._v(" "),
       _c(
@@ -39447,7 +39947,7 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Nueva Clase")]
+        [_vm._v("Editar Clase")]
       ),
       _vm._v(" "),
       _c(
@@ -39564,7 +40064,11 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v("definir")]),
                 _vm._v(" "),
-                _c("td", [_vm._v("definir")])
+                _c("td", [
+                  _vm._v(
+                    _vm._s(curso.destacados === 1 ? "Borrador" : "Publicado")
+                  )
+                ])
               ])
             }),
             0
@@ -39697,7 +40201,9 @@ var render = function() {
               _c("td", [_vm._v(_vm._s(curso.Semana.id))]),
               _vm._v(" "),
               _c("td", [
-                _c("a", { attrs: { href: "#" } }, [_vm._v("Ver contenidos")])
+                _c("a", { attrs: { href: "/admin/curso/" + curso.Curso.id } }, [
+                  _vm._v("Ver contenidos")
+                ])
               ])
             ])
           }),

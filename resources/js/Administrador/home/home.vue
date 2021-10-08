@@ -31,7 +31,7 @@
                 <tr  v-for="(curso,index) in cursos" :key="index">
                     <td>{{curso.Curso.titulo}}</td>
                     <td>{{curso.Semana.id}}</td>
-                    <td><a :href="'#'">Ver contenidos</a></td>
+                    <td><a :href="'/admin/curso/'+curso.Curso.id">Ver contenidos</a></td>
                 </tr>
                 </tbody>
             </table>

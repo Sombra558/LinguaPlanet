@@ -15,8 +15,9 @@ Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
 	Route::post('/actualizar-avatar/{id}', 'Padres\PerfilEstudiante@guardaravatar')->name('update-avatar');
 	Route::post('/perfil-user/{id}', 'Padres\PerfilEstudiante@updateperfil');
 	Route::post('/asignar-plan', 'Padres\PerfilEstudiante@asignarplan');
-
+	//Route::post('/{perfil_id}/{curso_id}/actividad/{actividad_id}/realizada', 'Padres\PerfilEstudiante@juegorealizado');
 	Route::resource('/perfil-user', 'Padres\PerfilEstudiante');
+
 	   
 	Route::group([ 'prefix' => 'app/{id}/{apodo}', 'middleware' => ['HasPerfilPadre'] ], function() {
 	    Route::get('/', 'Padres\PerfilEstudiante@previewshow')->name('student.home');

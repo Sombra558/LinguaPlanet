@@ -518,6 +518,63 @@ class PerfilEstudiante extends Controller
             $actividadus->save();
         }
     }
+    public function juegorealizado($id,$actividad_id, $curso_id){
+    
+        $actividadus=ActividadUser::where('actividad_id',$actividad_id)->where('perfil_id',$id)->first();
+     
+        $countmisact=0;
+        $actividadesCurso=collect();
+        $curs=Curso::find($curso_id)->load(['modulos'=>function($j){
+            return $j->with(['clases'=>function($j){
+                return $j->with(['actividades']);
+            }]);
+        }]);
+       
+
+        foreach ($curs->modulos as $modulo) {
+            foreach ($modulo->clases as $clase) {
+                foreach ($clase->actividades as $actividad) {
+                    $actividadesCurso->push($actividad);
+                }
+             }
+        }
+    
+     
+        if ($actividadus===null) {
+            $actividadus = ActividadUser::create([
+                'actividad_id' => $actividad_id,
+                'perfil_id' => $id,
+                'estado' => 1,
+            ]);
+       
+            $progresocurso = ProgresoCursoUser::where('curso_id',$curso_id)->where('perfil_id',$id)->first();
+            if ($progresocurso===null) {
+                $progresocurso = ProgresoCursoUser::create([
+                    'progreso' => 1/count($actividadesCurso),
+                    'curso_id' => $curso_id,
+                    'perfil_id' => $id,
+                ]);
+              
+            }else{
+                $perfil=PerfilEstudianteUser::find($id)->load(['misactividades']);
+                foreach ($perfil->misactividades as $act) {
+                    foreach ($actividadesCurso as $act2) {
+                        if ($act->id===$act2->id) {
+                            $countmisact++;
+                        }
+                     }
+                }
+               $progresocurso->progreso=$countmisact/count($actividadesCurso);
+               $progresocurso->save();
+            }
+
+
+            return $actividadus;
+        }else{
+            $actividadus->estado=1;
+            $actividadus->save();
+        }
+    }
     public function guardarpremio(Request $request, $id, $apodo, $clase_id){
         $perfil=PerfilEstudianteUser::find($id)->load(['premios']);
   
