@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Models\PerfilEstudiante\PerfilEstudianteUser;
 use App\Models\Cursos\Curso;
+use App\Models\Cursos\Cupon;
 use App\Models\Relaciones\MembresiaCurso;
+use App\Models\Relaciones\CuponMembresia;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Carbon\Carbon;
@@ -68,5 +70,23 @@ class AdminController extends Controller
     {
         MembresiaCurso::destroy($id);
     }
-   
+    public function cupones()
+    {
+        
+        $cupones=Cupon::get();
+        return view('Administrador.Cupones.cupones', compact('cupones'));
+    }
+    public function relacioncuponmember(Request $request)
+    {
+       $relacion=CuponMembresia::create([
+            'cupon_id' => $request->cupon_id,
+            'membresia_id' => $request->membresia_id,
+        ]);
+        return $relacion;
+       
+    }
+    public function relacioncupondestroy($id)
+    {
+        CuponMembresia::destroy($id);
+    }
 }

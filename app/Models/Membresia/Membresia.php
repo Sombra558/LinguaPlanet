@@ -22,4 +22,9 @@ class Membresia extends Model
     {
       return $this->belongsToMany('App\Models\Cursos\Curso')->withPivot('membresia_id');
     }
+
+    public function cupones()
+    {
+      return $this->belongsToMany('App\Models\Cursos\Cupon')->withPivot('membresia_id');
+    }
 }
