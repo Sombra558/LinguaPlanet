@@ -2339,6 +2339,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "curso-show",
@@ -2566,6 +2571,18 @@ __webpack_require__.r(__webpack_exports__);
         _this10.proceso = false;
         console.log(err);
       });
+    },
+    eliminarRelacion: function eliminarRelacion(relacion) {
+      var _this11 = this;
+
+      this.proceso = true;
+      var url = '/admin/eliminar-relacion/' + relacion.pivot.id;
+      axios["delete"](url).then(function (result) {
+        window.location.reload();
+      })["catch"](function (err) {
+        console.log(err);
+        _this11.proceso = false;
+      });
     }
   }
 });
@@ -2615,11 +2632,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'admin-cursos',
   props: ['cursos'],
+  data: function data() {
+    return {
+      proceso: false
+    };
+  },
   components: {
     Searh: _search_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
@@ -2630,6 +2657,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
 
     ;
+  },
+  methods: {
+    eliminarCurso: function eliminarCurso(curso) {
+      var _this = this;
+
+      this.proceso = true;
+      var url = '/admin/curso/' + curso.id;
+      axios["delete"](url).then(function (result) {
+        window.location.reload();
+      })["catch"](function (err) {
+        console.log(err);
+        _this.proceso = false;
+      });
+    }
   }
 });
 
@@ -38818,6 +38859,19 @@ var render = function() {
                                       on: {
                                         click: function($event) {
                                           $event.preventDefault()
+                                          return _vm.editarActividad(actividad)
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Editar")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      on: {
+                                        click: function($event) {
+                                          $event.preventDefault()
                                           return _vm.eliminarActividad(
                                             actividad
                                           )
@@ -38886,11 +38940,22 @@ var render = function() {
                       "div",
                       { key: relacion.id, staticClass: "col-12" },
                       [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(relacion.nombre) +
-                            "\n                        "
-                        )
+                        _c("div", { staticClass: "rpw" }, [
+                          _c("span", [_vm._v(_vm._s(relacion.nombre))]),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.eliminarRelacion(relacion)
+                                }
+                              }
+                            },
+                            [_vm._v("Eliminar")]
+                          )
+                        ])
                       ]
                     )
                   })
@@ -40068,6 +40133,27 @@ var render = function() {
                   _vm._v(
                     _vm._s(curso.destacados === 1 ? "Borrador" : "Publicado")
                   )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    { attrs: { href: "/admin/curso/" + curso.id + "/edit" } },
+                    [_vm._v("Editar")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.eliminarCurso(curso)
+                        }
+                      }
+                    },
+                    [_vm._v("Eliminar")]
+                  )
                 ])
               ])
             }),
@@ -40090,7 +40176,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Creado")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Estado")])
+        _c("th", [_vm._v("Estado")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Accion")])
       ])
     ])
   }

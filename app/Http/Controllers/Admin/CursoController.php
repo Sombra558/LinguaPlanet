@@ -116,6 +116,6 @@ class CursoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Curso::destroy($id);
     }
 }

@@ -9,5 +9,6 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')
     Route::resource('/clase', 'ClaseController');
     Route::resource('/actividad', 'ActividadController');
     Route::post('/relacion', 'AdminController@relacioncursomember')->name('.cursos.relacion');
+    Route::delete('/eliminar-relacion/{id}', 'AdminController@relaciondestroy')->name('.cursos.eliminar.relacion');
    
   });//end admin

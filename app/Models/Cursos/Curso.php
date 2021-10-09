@@ -27,6 +27,6 @@ class Curso extends Model
 
     public function membresias()
     {
-      return $this->belongsToMany('App\Models\Membresia\Membresia')->withPivot('curso_id');
+      return $this->belongsToMany('App\Models\Membresia\Membresia')->withPivot('curso_id','id');
     }
 }

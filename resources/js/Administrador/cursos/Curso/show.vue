@@ -54,7 +54,8 @@
                             </div>
                             <div class="col-4">
                                
-                               
+                                 
+                                <button @click.prevent="editarActividad(actividad)">Editar</button>
                                 <button @click.prevent="eliminarActividad(actividad)">Eliminar</button>
                              
                             </div>
@@ -85,7 +86,11 @@
                         <div class="row">
                             <button @click.prevent="newmember()">Asignar Membresia</button>
                             <div class="col-12" v-for="relacion in curso.membresias" :key="relacion.id">
-                                {{relacion.nombre}}
+                                <div class="rpw">
+                                    <span>{{relacion.nombre}}</span>
+                                    <button @click.prevent="eliminarRelacion(relacion)" >Eliminar</button>
+                                </div>
+                                
                             </div>
                         </div>
                  </div>
@@ -523,6 +528,16 @@ import Cont from './contador.vue';
                                     this.proceso=false;
                                     console.log(err);
                         });
+                },
+                eliminarRelacion(relacion){
+                      this.proceso=true;
+                      var url = '/admin/eliminar-relacion/'+relacion.pivot.id;
+                      axios.delete(url).then((result) => {
+                        window.location.reload();
+                      }).catch((err) => {
+                        console.log(err);
+                        this.proceso=false;
+                      });
                 }
               
         },

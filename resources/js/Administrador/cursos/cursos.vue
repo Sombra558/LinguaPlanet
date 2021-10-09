@@ -9,6 +9,7 @@
                         <th>Nombre del Curso</th>
                         <th>Creado</th>
                         <th>Estado</th>
+                        <th>Accion</th>
                  
                     </tr>
                 </thead>
@@ -17,6 +18,10 @@
                     <td>{{curso.titulo}}</td>
                     <td>definir</td>
                     <td>{{curso.destacados===1 ? 'Borrador' : 'Publicado'}}</td>
+                    <td>
+                        <a :href="`/admin/curso/${curso.id}/edit`">Editar</a>
+                        <button @click.prevent="eliminarCurso(curso)">Eliminar</button>
+                    </td>
                    
                 </tr>
                 </tbody>
@@ -30,6 +35,11 @@ import Searh from './search.vue';
     export default {
         name:'admin-cursos',
         props:['cursos'],
+        data() {
+            return {
+                proceso: false
+            }
+        },
         components: {
             Searh,
         },
@@ -40,6 +50,18 @@ import Searh from './search.vue';
             if (this.cursos.length>0) {
                 this.$store.commit("setCursos", this.cursos);
             };
+        },
+        methods: {
+            eliminarCurso(curso) {
+                this.proceso=true;
+                var url = '/admin/curso/'+curso.id;
+                axios.delete(url).then((result) => {
+                  window.location.reload();
+                }).catch((err) => {
+                    console.log(err);
+                     this.proceso=false;
+                });
+            }
         },
 
     }
