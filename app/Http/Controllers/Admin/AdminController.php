@@ -8,6 +8,8 @@ use App\User;
 use App\Models\PerfilEstudiante\PerfilEstudianteUser;
 use App\Models\Cursos\Curso;
 use App\Models\Cursos\Cupon;
+use App\Models\Idioma\idioma;
+use App\Models\Membresia\Membresia;
 use App\Models\Relaciones\MembresiaCurso;
 use App\Models\Relaciones\CuponMembresia;
 use Spatie\Permission\Models\Role;
@@ -88,5 +90,12 @@ class AdminController extends Controller
     public function relacioncupondestroy($id)
     {
         CuponMembresia::destroy($id);
+    }
+
+    public function membresias()
+    {
+        $membresias=Membresia::get()->load(['idioma']);
+        $idiomas=Idioma::get();
+        return view('Administrador.Membresias.membresia', compact('membresias','idiomas'));
     }
 }

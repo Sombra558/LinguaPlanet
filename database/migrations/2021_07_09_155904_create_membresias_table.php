@@ -18,8 +18,8 @@ class CreateMembresiasTable extends Migration
             $table->string('nombre',120);
             $table->string('nombreURL',120);
             $table->enum('tipo', ['mensual', 'trimestral','anual']);
-            $table->dateTime('inicia');
-            $table->dateTime('finaliza');
+            $table->dateTime('inicia')->nullable();
+            $table->dateTime('finaliza')->nullable();
             $table->unsignedbigInteger('idioma_id');
             $table->foreign('idioma_id')->references('id')->on('idiomas')->onDelete('cascade');
             $table->timestamps();

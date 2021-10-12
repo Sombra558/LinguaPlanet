@@ -1,5 +1,5 @@
 @extends('layouts.Administrador.Admin')
 
 @section('content')
- olis
+<membresias-component :membresias="{{$membresias}}" :idiomas="{{$idiomas}}"></membresias-component>
 @endsection

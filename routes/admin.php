@@ -16,4 +16,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')
     Route::resource('/cupon', 'CuponesController');
     Route::post('/cupon-membresia', 'AdminController@relacioncuponmember')->name('.cupon.relacion');
     Route::delete('/eliminar-relacion-cupon/{id}', 'AdminController@relacioncupondestroy')->name('.cupon.eliminar.relacion');
+
+
+    //membresias
+    Route::get('/membresias', 'AdminController@membresias')->name('.membresias');
+    Route::resource('/membresia', 'MembresiasController');
+
   });//end admin

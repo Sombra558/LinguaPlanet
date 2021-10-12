@@ -17,17 +17,22 @@ Vue.component('cursos-show', require('./cursos/Curso/show').default);
 //cupones
 Vue.component('cupones-component', require('./cupones/cupones.vue').default);
 Vue.component('cupones-show', require('./cupones/Cupon/show.vue').default);
-
+//membresia
+Vue.component('membresias-component', require('./membresias/membresia').default);
 
 const store = new Vuex.Store({
     state: {
         cursos:[],
         cupones:[],
+        membresias:[],
         filterCursos: {
             curso: "",
         },
         filterCupones: {
             codigo: "",
+        },
+        filterMembresias: {
+            nombre: "",
         },
     },
     mutations: {
@@ -37,11 +42,17 @@ const store = new Vuex.Store({
         setCupones(state, cupones) {
             state.cupones = cupones;
         },
+        setMembresias(state, membresias) {
+            state.membresias = membresias;
+        },
         setfilterCursos(state, data) {
             state.filterCursos[data['filter']] = data.value;
         },
         setfilterCupones(state, data) {
             state.filterCupones[data['filter']] = data.value;
+        },
+        setfilterMembresias(state, data) {
+            state.filterMembresias[data['filter']] = data.value;
         },
        
     },
@@ -59,6 +70,13 @@ const store = new Vuex.Store({
                 cupones = cupones.filter(r => r.codigo.toLowerCase().includes(state.filterCupones.codigo.toLowerCase()));
             }
             return cupones;
+        },
+        filteredMembresias(state) {
+            let membresias = state.membresias;
+            if (state.filterMembresias.nombre.length > 1) {
+                membresias = membresias.filter(r => r.nombre.toLowerCase().includes(state.filterMembresias.nombre.toLowerCase()));
+            }
+            return membresias;
         },
        
     }
