@@ -11,7 +11,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')
     Route::post('/relacion', 'AdminController@relacioncursomember')->name('.cursos.relacion');
     Route::delete('/eliminar-relacion/{id}', 'AdminController@relaciondestroy')->name('.cursos.eliminar.relacion');
 
-    //
+    //cupones
     Route::get('/cupones', 'AdminController@cupones')->name('.cupones');
     Route::resource('/cupon', 'CuponesController');
     Route::post('/cupon-membresia', 'AdminController@relacioncuponmember')->name('.cupon.relacion');
@@ -21,5 +21,16 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')
     //membresias
     Route::get('/membresias', 'AdminController@membresias')->name('.membresias');
     Route::resource('/membresia', 'MembresiasController');
+
+    //Usuarios
+    Route::get('/usuarios', 'AdminController@usuarios')->name('.usuarios');
+
+    Route::get('/buscar-usuario/{query}', 'UserController@buscarUsuario');
+    Route::get('/valida-usuario/{email}', 'UserController@validaUsuario');
+    Route::post('/crear-usuario', 'UserController@crearUsuario');
+    Route::delete('/userdelete/{id}','UserController@destroy');
+
+    Route::resource('/plan-user', 'PlanUserController');
+
 
   });//end admin

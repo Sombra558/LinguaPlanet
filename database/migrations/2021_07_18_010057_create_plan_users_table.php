@@ -15,7 +15,7 @@ class CreatePlanUsersTable extends Migration
     {
         Schema::create('plan_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('comprobante',20);
+            $table->string('comprobante',20)->nullable();
             $table->string('tipo',10);
             $table->integer('available')->nullable();
             $table->unsignedbigInteger('plan_id');

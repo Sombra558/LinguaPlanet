@@ -7,8 +7,6 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 //home
 Vue.component('home-component', require('./home/home.vue').default);
-
-
 //cursos
 Vue.component('cursos-component', require('./cursos/cursos.vue').default);
 Vue.component('cursos-create', require('./cursos/Curso/create').default);
@@ -19,12 +17,16 @@ Vue.component('cupones-component', require('./cupones/cupones.vue').default);
 Vue.component('cupones-show', require('./cupones/Cupon/show.vue').default);
 //membresia
 Vue.component('membresias-component', require('./membresias/membresia').default);
+//usuarios
+Vue.component('usuarios-component', require('./usuarios/usuarios').default);
 
 const store = new Vuex.Store({
     state: {
         cursos:[],
         cupones:[],
         membresias:[],
+        usuarios:[],
+        inscripciones:[],
         filterCursos: {
             curso: "",
         },
@@ -33,6 +35,12 @@ const store = new Vuex.Store({
         },
         filterMembresias: {
             nombre: "",
+        },
+        filterUsuarios: {
+            query: "",
+        },
+        filterInscripciones: {
+            query: "",
         },
     },
     mutations: {
@@ -45,6 +53,12 @@ const store = new Vuex.Store({
         setMembresias(state, membresias) {
             state.membresias = membresias;
         },
+        setUsuarios(state, usuarios) {
+            state.usuarios = usuarios;
+        },
+        setInscripciones(state, usuarios) {
+            state.inscripciones = usuarios;
+        },
         setfilterCursos(state, data) {
             state.filterCursos[data['filter']] = data.value;
         },
@@ -53,6 +67,12 @@ const store = new Vuex.Store({
         },
         setfilterMembresias(state, data) {
             state.filterMembresias[data['filter']] = data.value;
+        },
+        setfilterUsuarios(state, data) {
+            state.filterUsuarios[data['filter']] = data.value;
+        },
+        setfilterinscripciones(state, data) {
+            state.filterInscripciones[data['filter']] = data.value;
         },
        
     },
@@ -77,6 +97,20 @@ const store = new Vuex.Store({
                 membresias = membresias.filter(r => r.nombre.toLowerCase().includes(state.filterMembresias.nombre.toLowerCase()));
             }
             return membresias;
+        },
+        filteredUsuarios(state) {
+            let usuarios = state.usuarios;
+            if (state.filterUsuarios.query.length > 1) {
+                usuarios = usuarios.filter(r => r.name.toLowerCase().includes(state.filterUsuarios.query.toLowerCase()) || r.lastname.toLowerCase().includes(state.filterUsuarios.query.toLowerCase()));
+            }
+            return usuarios;
+        },
+        filteredInscripciones(state) {
+            let usuarios = state.inscripciones;
+            if (state.filterInscripciones.query.length > 1) {
+                usuarios = usuarios.filter(r => r.user.name.toLowerCase().includes(state.filterInscripciones.query.toLowerCase()) || r.user.lastname.toLowerCase().includes(state.filterInscripciones.query.toLowerCase()));
+            }
+            return usuarios;
         },
        
     }

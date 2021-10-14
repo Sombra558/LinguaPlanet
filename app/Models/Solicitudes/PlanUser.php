@@ -11,6 +11,9 @@ class PlanUser extends Model
     protected $fillable = [
         'user_id','plan_id','available','tipo','comprobante',
     ];
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
     public function plan(){
         return $this->belongsTo('App\Models\Membresia\Plan');
     }

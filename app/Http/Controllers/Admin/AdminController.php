@@ -11,6 +11,7 @@ use App\Models\Cursos\Cupon;
 use App\Models\Idioma\idioma;
 use App\Models\Membresia\Membresia;
 use App\Models\Relaciones\MembresiaCurso;
+use App\Models\Solicitudes\PlanUser;
 use App\Models\Relaciones\CuponMembresia;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -97,5 +98,14 @@ class AdminController extends Controller
         $membresias=Membresia::get()->load(['idioma']);
         $idiomas=Idioma::get();
         return view('Administrador.Membresias.membresia', compact('membresias','idiomas'));
+    }
+
+    public function usuarios()
+    {
+        $membresias=Membresia::get()->load(['idioma','planes']);
+        $usuarios=User::get();
+        $inscripciones=PlanUser::get()->load(['user','plan']);
+       
+        return view('Administrador.Usuarios.usuarios', compact('membresias','usuarios','inscripciones'));
     }
 }
