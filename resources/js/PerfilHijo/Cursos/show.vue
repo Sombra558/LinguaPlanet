@@ -114,7 +114,7 @@
 				</svg>
 			</a>
 			<!--  Quinto recurso -->
-			<a v-if="contenidos.enCurso.length>0" :href="`/home/app/${perfil.id}/${perfil.apodo}/idiomas/${idioma.nombreURL}/${curso.id}/clase/${contenidos.enCurso[0].id}/actividad/${contenidos.enCurso[0].actividades[4].id}`">
+			<a v-if="contenidos.enCurso.length>0" :href="`/home/app/${perfil.id}/${perfil.apodo}/idiomas/${idioma.nombreURL}/${curso.id}/clase/${contenidos.enCurso[0].id}/actividad/${contenidos.enCurso[0].actividades[4].id}?perfil_id=${perfil.id}&actividad_id=${contenidos.enCurso[0].actividades[4].id}&juego_id=1&idioma=${idioma.diminutivo}`">
 				<svg preserveAspectRatio="none" x="870" y="430" width="95" height="157" viewBox="0 0 107 157" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M95.1863 80.9173L53.5985 135.457L12.0107 80.9173C-4.82967 58.8388 0.137344 27.8037 23.1082 11.6044C46.0791 -4.5949 78.346 0.183578 95.1863 22.2747C101.647 30.6844 105.149 40.9918 105.149 51.596C105.149 62.2002 101.647 72.5076 95.1863 80.9173Z" fill="#FECC2C"/>
 					<path d="M95.1863 80.9173L53.5985 135.457L12.0107 80.9173C-4.82967 58.8388 0.137344 27.8037 23.1082 11.6044C46.0791 -4.5949 78.346 0.183578 95.1863 22.2747C101.647 30.6844 105.149 40.9918 105.149 51.596C105.149 62.2002 101.647 72.5076 95.1863 80.9173V80.9173Z" stroke="#2F6A69" stroke-width="2.35" stroke-miterlimit="10"/>
@@ -131,7 +131,7 @@
 				</svg>
 			</a>
 			<!--  Sexto recurso -->
-			<a v-if="contenidos.enCurso.length>0" :href="`/home/app/${perfil.id}/${perfil.apodo}/idiomas/${idioma.nombreURL}/${curso.id}/clase/${contenidos.enCurso[0].id}/actividad/${contenidos.enCurso[0].actividades[5].id}`">
+			<a v-if="contenidos.enCurso.length>0" :href="`/home/app/${perfil.id}/${perfil.apodo}/idiomas/${idioma.nombreURL}/${curso.id}/clase/${contenidos.enCurso[0].id}/actividad/${contenidos.enCurso[0].actividades[5].id}?perfil_id=${perfil.id}&actividad_id=${contenidos.enCurso[0].actividades[5].id}&juego_id=1&idioma=${idioma.diminutivo}`">
 				<svg preserveAspectRatio="none" x="1020" y="505" width="115" height="210" viewBox="0 0 133 197" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M118.888 101.117L66.9028 169.279L14.918 101.117C-6.13864 73.5091 0.0669525 34.7183 28.7806 14.4661C57.4942 -5.78614 97.831 0.193215 118.863 27.8008C126.939 38.3139 131.319 51.1982 131.324 64.4545C131.329 77.7108 126.957 90.5981 118.888 101.117Z" fill="#FECC2C"/>
 					<path d="M118.888 101.117L66.9028 169.279L14.918 101.117C-6.13864 73.5091 0.0669526 34.7183 28.7806 14.4661C57.4942 -5.78614 97.831 0.193215 118.863 27.8008C126.939 38.3139 131.319 51.1982 131.324 64.4545C131.329 77.7108 126.957 90.5981 118.888 101.117Z" stroke="#2F6A69" stroke-width="2.94" stroke-miterlimit="10"/>
@@ -144,7 +144,7 @@
 				</svg>
 			</a>
 			<!--  Septimo recurso -->
-			<a v-if="contenidos.enCurso.length>0" :href="`/home/app/${perfil.id}/${perfil.apodo}/idiomas/${idioma.nombreURL}/${curso.id}/clase/${contenidos.enCurso[0].id}/actividad/${contenidos.enCurso[0].actividades[6].id}`">
+			<a v-if="contenidos.enCurso.length>0" :href="`/home/app/${perfil.id}/${perfil.apodo}/idiomas/${idioma.nombreURL}/${curso.id}/clase/${contenidos.enCurso[0].id}/actividad/${contenidos.enCurso[0].actividades[6].id}?perfil_id=${perfil.id}&actividad_id=${contenidos.enCurso[0].actividades[6].id}&juego_id=1&idioma=${idioma.diminutivo}`">
 				<svg preserveAspectRatio="none" x="1185" y="430" width="95" height="157" viewBox="0 0 106 157" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M94.7674 80.9173L53.1794 135.457L11.5915 80.9173C-5.24879 58.8388 -0.281785 27.8037 22.6766 11.6044C45.635 -4.5949 77.927 0.183578 94.7674 22.2747C101.228 30.6844 104.73 40.9918 104.73 51.596C104.73 62.2002 101.228 72.5076 94.7674 80.9173Z" fill="#FECC2C"/>
 					<path d="M94.7674 80.9173L53.1794 135.457L11.5915 80.9173C-5.24879 58.8388 -0.281785 27.8037 22.6766 11.6044C45.635 -4.5949 77.927 0.183578 94.7674 22.2747C101.228 30.6844 104.73 40.9918 104.73 51.596C104.73 62.2002 101.228 72.5076 94.7674 80.9173V80.9173Z" stroke="#2F6A69" stroke-width="2.35" stroke-miterlimit="10"/>

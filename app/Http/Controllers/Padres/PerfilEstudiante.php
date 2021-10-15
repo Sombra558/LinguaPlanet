@@ -36,7 +36,8 @@ class PerfilEstudiante extends Controller
     public function create()
     {
         $animals=Animal::get();
-        return view('Padres.PerfilUser.create',compact('animals'));
+        $user = Auth::user();
+        return view('Padres.PerfilUser.create',compact('animals','user'));
     }
 
     /**
@@ -176,7 +177,7 @@ class PerfilEstudiante extends Controller
                     return $j->with(['cursos','idioma']);
                 }]);
             }]);
-        },'avatar']);
+        },'avatar','misactividades']);
 
         foreach ($perfil->planes as $plan) {
             if ($plan->plan->membresia->idioma_id===$idioma->id) {
@@ -190,8 +191,59 @@ class PerfilEstudiante extends Controller
         if ($cursos->count()>1) {
             return view('Estudiantes.Cursos.ListaDeCursos',compact('cursos','perfil','idioma'));
         }else if($cursos->count()===1){
-
-            dd('individual');
+            $now = Carbon::now();
+            $curso = Curso::find($cursos[0]->id)->load(['modulos'=>function($k){
+                return $k->with(['clases'=>function($p){
+                    return $p->with(['actividades','premioClase'=>function($a){
+                        return $a->with(['accesorio']);
+                    }]);
+                }]);
+            }]);
+            $pasadas = array();
+            $encurso = array();
+            $futuras = array();
+            $semanaactiva = array();
+            foreach($curso->modulos as $key2 => $modulo){
+                $i=0;
+                $j=0;
+                $k=0;
+                $finaliza = new Carbon($modulo->inicia);
+                $finaliza->addMonth();
+                $inicia = new Carbon($modulo->inicia);
+                if( $finaliza->isBefore($now)){
+                    $pasadas[$i] = $modulo; 
+                    $i++;
+                   
+                }elseif($inicia->isAfter($now)){
+                    $futuras[$k] = $modulo;
+                    $k++;
+             
+                }elseif($now->isAfter($inicia) && $now->isBefore($finaliza)){
+                    $encurso[$j] = $modulo;
+                    $j++;
+                }
+            }
+            if (count($encurso)>0) {
+                foreach($encurso[0]->clases as $key2 => $clase){
+                    $q=0;
+                    
+                    $finaliza = new Carbon($clase->finaliza);
+                 
+                    $inicia = new Carbon($clase->inicia);
+                    if($now->isAfter($inicia) && $now->isBefore($finaliza)){
+                        $semanaactiva[$q] = $clase;
+                        $q++;
+                    }
+                }
+            }
+          
+            $contenidos = collect([
+                'enCurso' => $semanaactiva,
+                'guardadas' => $pasadas,
+                'porTransmitir' => $futuras
+              ]);
+            
+            return view('Estudiantes.Cursos.show',compact('curso','perfil','idioma','contenidos'));
         }else{
             dd('no tienes cursos en este idioma');
         }
@@ -272,11 +324,12 @@ class PerfilEstudiante extends Controller
      */
     public function edit($id)
     {
+        $user = Auth::user();
         $perfil=PerfilEstudianteUser::find($id)->load(['avatar'=>function($q){
             return $q->with(['animal']);
         }]);
         $animals=Animal::get();
-        return view('Padres.PerfilUser.edit',compact('perfil','animals'));
+        return view('Padres.PerfilUser.edit',compact('perfil','animals','user'));
     }
 
     /**
@@ -451,7 +504,7 @@ class PerfilEstudiante extends Controller
     public function veractividad($id,$apodo,$nombreURL,$curso_id,$clase_id,$actividad_id){
         $actividad=Actividad::find($actividad_id);
         $curso=Curso::find($curso_id);
-     
+        
         $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
             return $q->with(['plan'=>function($k){
                 return $k->with(['membresia'=>function($j){
@@ -459,8 +512,12 @@ class PerfilEstudiante extends Controller
                 }]);
             }]);
         },'avatar']);
-        return view('Estudiantes.Actividades.show',compact('perfil','actividad','curso'));
+
+            return view('Estudiantes.Actividades.show',compact('perfil','actividad','curso'));
+    
+        
     }
+ 
     public function actividadrealizada($id,$apodo,$curso_id,$clase_id,$actividad_id){
     
         $actividadus=ActividadUser::where('actividad_id',$actividad_id)->where('perfil_id',$id)->first();
