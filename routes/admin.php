@@ -32,5 +32,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')
 
     Route::resource('/plan-user', 'PlanUserController');
 
+    //configuraciones
+    Route::get('/configuraciones', 'AdminController@configuraciones')->name('.configuraciones');
+    Route::resource('/plan', 'PlanController');
+
 
   });//end admin

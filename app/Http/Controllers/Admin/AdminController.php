@@ -108,4 +108,10 @@ class AdminController extends Controller
        
         return view('Administrador.Usuarios.usuarios', compact('membresias','usuarios','inscripciones'));
     }
+
+    public function configuraciones()
+    {
+        $membresias=Membresia::get()->load(['idioma','planes']);
+        return view('Administrador.Configuraciones.configuraciones', compact('membresias'));
+    }
 }

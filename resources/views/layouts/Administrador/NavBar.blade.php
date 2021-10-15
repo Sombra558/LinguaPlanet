@@ -4,4 +4,5 @@
     <a href="/admin/cupones">Cupones</a>
     <a href="/admin/membresias">Membresias</a>
     <a href="/admin/usuarios">Usuarios</a>
+    <a href="/admin/configuraciones">Configuraciones</a>
 </nav>

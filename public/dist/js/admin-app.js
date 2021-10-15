@@ -1899,6 +1899,253 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Administrador/configuraciones/configuraciones.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Administrador/configuraciones/configuraciones.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'admin-configuraciones',
+  props: ['membresias'],
+  data: function data() {
+    return {
+      proceso: false,
+      membresiaSelected: null,
+      planSelected: null,
+      newplan: {
+        nombre: null,
+        membresia_id: null,
+        nombreURL: null,
+        precio: null,
+        stock: null,
+        tipo: null
+      }
+    };
+  },
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["filteredMembresias"])), {}, {
+    nombreURL: function nombreURL() {
+      var tituloorigi = this.newplan.nombre;
+
+      if (tituloorigi) {
+        this.newplan.nombreURL = tituloorigi.replace(/[ ?¿!¡/\\🔴]/g, "-").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        return this.newplan.nombreURL;
+      } else {
+        return null;
+      }
+    }
+  }),
+  mounted: function mounted() {
+    if (this.membresias.length > 0) {
+      this.$store.commit("setMembresias", this.membresias);
+    }
+
+    ;
+  },
+  methods: {
+    crearPlan: function crearPlan() {
+      var url = '/admin/plan';
+      axios.post(url, this.newplan).then(function (result) {
+        window.location.reload();
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    editarPlan: function editarPlan(plan) {
+      var url = '/admin/plan/' + plan.id;
+      axios.put(url, plan).then(function (result) {
+        window.location.reload();
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    eliminarPlan: function eliminarPlan(plan) {
+      var _this = this;
+
+      this.proceso = true;
+      var url = '/admin/plan/' + plan.id;
+      axios["delete"](url).then(function (result) {
+        window.location.reload();
+      })["catch"](function (err) {
+        console.log(err);
+        _this.proceso = false;
+      });
+    },
+    planmodal: function planmodal(value, action) {
+      this.membresiaSelected = value;
+      this.newplan.membresia_id = this.membresiaSelected.id;
+
+      if (action === 'crear') {
+        $("#crearPlan").modal("show");
+      } else {
+        this.planSelected = value;
+        setTimeout(function () {
+          $("#editarPlan").modal("show");
+        }, 200);
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Administrador/cupones/Cupon/show.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Administrador/cupones/Cupon/show.vue?vue&type=script&lang=js& ***!
@@ -39595,6 +39842,751 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Administrador/configuraciones/configuraciones.vue?vue&type=template&id=040030ca&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Administrador/configuraciones/configuraciones.vue?vue&type=template&id=040030ca&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("h1", [_vm._v("Configuraciones")]),
+      _vm._v(" "),
+      _c("h3", [_vm._v("Membresias")]),
+      _vm._v(" "),
+      _vm._l(_vm.filteredMembresias, function(membresia) {
+        return _c("div", { key: membresia.id, staticClass: "container" }, [
+          _c("div", { staticClass: "row justify-content-between" }, [
+            _c("div", [
+              _c("h4", [_vm._v("Membresia: " + _vm._s(membresia.nombre))]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Idioma: " + _vm._s(membresia.idioma.idioma))])
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.planmodal(membresia, "crear")
+                  }
+                }
+              },
+              [_vm._v("Agregar Plan")]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "table",
+            {
+              staticClass: "table table-com",
+              staticStyle: { "margin-top": "25px" }
+            },
+            [
+              _vm._m(0, true),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(membresia.planes, function(plan) {
+                  return _c("tr", { key: plan.id }, [
+                    _c("td", [_vm._v(_vm._s(plan.nombre))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(plan.tipo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(plan.precio))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(plan.stock))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.planmodal(plan, "editar")
+                            }
+                          }
+                        },
+                        [_vm._v("Editar Plan")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.eliminarPlan(plan)
+                            }
+                          }
+                        },
+                        [_vm._v("Eliminar")]
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("br")
+        ])
+      }),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "crearPlan",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "exampleModalLabel",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "modal-dialog", attrs: { role: "document" } },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c(
+                    "form",
+                    {
+                      ref: "form",
+                      attrs: { id: "crear-cupon" },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.crearPlan()
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "form-group col-md-6 col-12" }, [
+                        _c("label", { attrs: { for: "nombre" } }, [
+                          _vm._v("Nombre")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.newplan.nombre,
+                              expression: "newplan.nombre"
+                            }
+                          ],
+                          attrs: {
+                            type: "text",
+                            maxlength: "200",
+                            required: ""
+                          },
+                          domProps: { value: _vm.newplan.nombre },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.newplan,
+                                "nombre",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6 col-12" }, [
+                        _c("label", { attrs: { for: "tipo_cupon" } }, [
+                          _vm._v("Tipo de Pago")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newplan.tipo,
+                                expression: "newplan.tipo"
+                              }
+                            ],
+                            attrs: { name: "tipo", required: "" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.newplan,
+                                  "tipo",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { domProps: { value: null } }, [
+                              _vm._v("Seleccione")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { domProps: { value: "Mensual" } }, [
+                              _vm._v("Mensual")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { domProps: { value: "Trimestral" } },
+                              [_vm._v("Trimestral")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { domProps: { value: "Anual" } }, [
+                              _vm._v("Anual")
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6 col-12" }, [
+                        _c("label", { attrs: { for: "titulo" } }, [
+                          _vm._v("Nombre URL")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.nombreURL,
+                              expression: "nombreURL"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            name: "nombreURL",
+                            required: ""
+                          },
+                          domProps: { value: _vm.nombreURL },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.nombreURL = $event.target.value
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-3 col-12" }, [
+                        _c("label", { attrs: { for: "Precio" } }, [
+                          _vm._v("Precio")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.newplan.precio,
+                              expression: "newplan.precio"
+                            }
+                          ],
+                          staticClass: "form-control input-novedades",
+                          attrs: {
+                            type: "number",
+                            step: ".01",
+                            name: "precio",
+                            required: ""
+                          },
+                          domProps: { value: _vm.newplan.precio },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.newplan,
+                                "precio",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-3 col-12" }, [
+                        _c("label", { attrs: { for: "Precio" } }, [
+                          _vm._v("Stock")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.newplan.stock,
+                              expression: "newplan.stock"
+                            }
+                          ],
+                          staticClass: "form-control input-novedades",
+                          attrs: {
+                            type: "number",
+                            step: "1",
+                            name: "stock",
+                            required: ""
+                          },
+                          domProps: { value: _vm.newplan.stock },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.newplan,
+                                "stock",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-footer" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-secondary",
+                            attrs: { type: "button", "data-dismiss": "modal" }
+                          },
+                          [_vm._v("Cancelar")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: { disabled: _vm.proceso, type: "submit" }
+                          },
+                          [_vm._v("Agregar Plan")]
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _vm.planSelected
+        ? _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: {
+                id: "editarPlan",
+                tabindex: "-1",
+                role: "dialog",
+                "aria-labelledby": "exampleModalLabel",
+                "aria-hidden": "true"
+              }
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "modal-dialog", attrs: { role: "document" } },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-body" }, [
+                      _c(
+                        "form",
+                        {
+                          ref: "form",
+                          attrs: { id: "crear-cupon" },
+                          on: {
+                            submit: function($event) {
+                              $event.preventDefault()
+                              return _vm.editarPlan(_vm.planSelected)
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "form-group col-md-6 col-12" },
+                            [
+                              _c("label", { attrs: { for: "nombre" } }, [
+                                _vm._v("Nombre")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.planSelected.nombre,
+                                    expression: "planSelected.nombre"
+                                  }
+                                ],
+                                attrs: {
+                                  type: "text",
+                                  maxlength: "200",
+                                  required: ""
+                                },
+                                domProps: { value: _vm.planSelected.nombre },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.planSelected,
+                                      "nombre",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "form-group col-md-6 col-12" },
+                            [
+                              _c("label", { attrs: { for: "tipo_cupon" } }, [
+                                _vm._v("Tipo de Pago")
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.planSelected.tipo,
+                                      expression: "planSelected.tipo"
+                                    }
+                                  ],
+                                  attrs: { name: "tipo", required: "" },
+                                  on: {
+                                    change: function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        _vm.planSelected,
+                                        "tipo",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("option", { domProps: { value: null } }, [
+                                    _vm._v("Seleccione")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "option",
+                                    { domProps: { value: "Mensual" } },
+                                    [_vm._v("Mensual")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "option",
+                                    { domProps: { value: "Trimestral" } },
+                                    [_vm._v("Trimestral")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "option",
+                                    { domProps: { value: "Anual" } },
+                                    [_vm._v("Anual")]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "form-group col-md-6 col-12" },
+                            [
+                              _c("label", { attrs: { for: "titulo" } }, [
+                                _vm._v("Nombre URL")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.planSelected.nombreURL,
+                                    expression: "planSelected.nombreURL"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "text",
+                                  name: "nombreURL",
+                                  required: ""
+                                },
+                                domProps: { value: _vm.planSelected.nombreURL },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.planSelected,
+                                      "nombreURL",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "form-group col-md-3 col-12" },
+                            [
+                              _c("label", { attrs: { for: "Precio" } }, [
+                                _vm._v("Precio")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.planSelected.precio,
+                                    expression: "planSelected.precio"
+                                  }
+                                ],
+                                staticClass: "form-control input-novedades",
+                                attrs: {
+                                  type: "number",
+                                  step: ".01",
+                                  name: "precio",
+                                  required: ""
+                                },
+                                domProps: { value: _vm.planSelected.precio },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.planSelected,
+                                      "precio",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "form-group col-md-3 col-12" },
+                            [
+                              _c("label", { attrs: { for: "Precio" } }, [
+                                _vm._v("Stock")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.planSelected.stock,
+                                    expression: "planSelected.stock"
+                                  }
+                                ],
+                                staticClass: "form-control input-novedades",
+                                attrs: {
+                                  type: "number",
+                                  step: "1",
+                                  name: "stock",
+                                  required: ""
+                                },
+                                domProps: { value: _vm.planSelected.stock },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.planSelected,
+                                      "stock",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "modal-footer" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-secondary",
+                                attrs: {
+                                  type: "button",
+                                  "data-dismiss": "modal"
+                                }
+                              },
+                              [_vm._v("Cancelar")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-primary",
+                                attrs: { disabled: _vm.proceso, type: "submit" }
+                              },
+                              [_vm._v("Editar Plan")]
+                            )
+                          ])
+                        ]
+                      )
+                    ])
+                  ])
+                ]
+              )
+            ]
+          )
+        : _vm._e()
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Nombre ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Tipo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Precio")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Perfiles")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Accion")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Nuevo Plan")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Editar Plan")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Administrador/cupones/Cupon/show.vue?vue&type=template&id=1aa15683&scoped=true&":
 /*!************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Administrador/cupones/Cupon/show.vue?vue&type=template&id=1aa15683&scoped=true& ***!
@@ -58236,7 +59228,9 @@ Vue.component('cupones-show', __webpack_require__(/*! ./cupones/Cupon/show.vue *
 
 Vue.component('membresias-component', __webpack_require__(/*! ./membresias/membresia */ "./resources/js/Administrador/membresias/membresia.vue")["default"]); //usuarios
 
-Vue.component('usuarios-component', __webpack_require__(/*! ./usuarios/usuarios */ "./resources/js/Administrador/usuarios/usuarios.vue")["default"]);
+Vue.component('usuarios-component', __webpack_require__(/*! ./usuarios/usuarios */ "./resources/js/Administrador/usuarios/usuarios.vue")["default"]); //configuraciones
+
+Vue.component('configuraciones-component', __webpack_require__(/*! ./configuraciones/configuraciones */ "./resources/js/Administrador/configuraciones/configuraciones.vue")["default"]);
 var store = new vuex__WEBPACK_IMPORTED_MODULE_0__["default"].Store({
   state: {
     cursos: [],
@@ -58354,6 +59348,75 @@ var app = new Vue({
   el: '#admin-app',
   store: store
 });
+
+/***/ }),
+
+/***/ "./resources/js/Administrador/configuraciones/configuraciones.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/Administrador/configuraciones/configuraciones.vue ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _configuraciones_vue_vue_type_template_id_040030ca_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./configuraciones.vue?vue&type=template&id=040030ca&scoped=true& */ "./resources/js/Administrador/configuraciones/configuraciones.vue?vue&type=template&id=040030ca&scoped=true&");
+/* harmony import */ var _configuraciones_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./configuraciones.vue?vue&type=script&lang=js& */ "./resources/js/Administrador/configuraciones/configuraciones.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _configuraciones_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _configuraciones_vue_vue_type_template_id_040030ca_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _configuraciones_vue_vue_type_template_id_040030ca_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "040030ca",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Administrador/configuraciones/configuraciones.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Administrador/configuraciones/configuraciones.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/Administrador/configuraciones/configuraciones.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_configuraciones_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./configuraciones.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Administrador/configuraciones/configuraciones.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_configuraciones_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Administrador/configuraciones/configuraciones.vue?vue&type=template&id=040030ca&scoped=true&":
+/*!*******************************************************************************************************************!*\
+  !*** ./resources/js/Administrador/configuraciones/configuraciones.vue?vue&type=template&id=040030ca&scoped=true& ***!
+  \*******************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_configuraciones_vue_vue_type_template_id_040030ca_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./configuraciones.vue?vue&type=template&id=040030ca&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Administrador/configuraciones/configuraciones.vue?vue&type=template&id=040030ca&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_configuraciones_vue_vue_type_template_id_040030ca_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_configuraciones_vue_vue_type_template_id_040030ca_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
