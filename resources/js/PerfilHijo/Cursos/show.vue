@@ -4,7 +4,7 @@
 			<image style="width: 100%; height: 100%;" href="/images/actividades-fondo.svg"/>
 			<personajeComponent :avatar="perfil.avatar" transform="translate(50,380), scale(0.6,0.8)"/>
 		
-			<a v-for="actividad in contenidos.enCurso[0].actividades" :key="actividad.id" :href="`/home/app/${perfil.id}/${perfil.apodo}/idiomas/${idioma.nombreURL}/${curso.id}/clase/${contenidos.enCurso[0].id}/actividad/${actividad.id}?perfil_id=${perfil.id}&actividad_id=${actividad.id}&juego_id=1&idioma=${idioma.diminutivo}`">
+			<a v-for="actividad in contenidos.enCurso[0].actividades" :key="actividad.id" :href="`/home/app/${perfil.id}/${perfil.apodo}/idiomas/${idioma.nombreURL}/${curso.id}/clase/${contenidos.enCurso[0].id}/actividad/${actividad.id}?perfil_id=${perfil.id}&actividad_id=${actividad.id}&juego_id=1&idioma=${idioma.diminutivo}&curso_id=${curso.id}`">
 				
 				<!--  Primer recurso -->
 				<svg v-if="actividad.tipo==='Palabras del día'" preserveAspectRatio="none" x="250" y="430" width="95" height="157" viewBox="0 0 107 157" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -263,15 +263,6 @@
         components : {
         	personajeComponent,pdf
         },
-		  computed: {
-			noPrevPage() {
-			return this.currentPage <= 1;
-			},
-			noNextPage() {
-			return this.currentPage === this.pageCount;
-			},
-		
-		},
 		mounted () {
 			if (this.perfil.misactividades.length>0) {
 				this.perfil.misactividades.forEach(actividad => {
@@ -280,7 +271,7 @@
 					}
 				});
 			};
-			if (this.realizadas.length===4) {
+			if (this.realizadas.length===7) {
 					this.contenidos.enCurso[0].premio_clase.forEach(pre => {
 						if (pre.accesorio.animal_id===this.perfil.avatar.animal_id) {
 							this.premioSelected=pre.accesorio;

@@ -575,7 +575,7 @@ class PerfilEstudiante extends Controller
             $actividadus->save();
         }
     }
-    public function juegorealizado($id,$actividad_id, $curso_id){
+    public function juegorealizado($id, $curso_id, $actividad_id){
     
         $actividadus=ActividadUser::where('actividad_id',$actividad_id)->where('perfil_id',$id)->first();
      
