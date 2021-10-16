@@ -53,7 +53,7 @@
                                             </span>
                                             <span class="h4">Pago {{ plan.tipo }}</span>
                                             <ul class="text-left w-80 mx-auto mt-4">
-                                                <li class="li-benefits text-secondary"><span class="text-primary bold">1 perfil</span> de estudiante en la plataforma.</li>
+                                                <li class="li-benefits text-secondary"><span class="text-primary bold">{{plan.stock}} perfil</span> de estudiante en la plataforma.</li>
                                                 <li class="li-benefits text-secondary">Certificado de finalización.</li>
                                                 <li class="li-benefits text-secondary">Clases nuevas semanales.</li>
                                             </ul>
@@ -68,37 +68,42 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col-12">
                     <ul class="membership-details text-left mx-auto mt-4">
+                         <li class="d-flex align-items-center p-2">
+                            <div class="w-24"><h4 class="mb-0">Plan</h4></div>
+                            <div  v-for="plan in membresia.planes" :key="'descripcion-0-plan-'+plan.id" class="w-38 text-center p-3"><span class="h4 bold">{{plan.nombre}}</span></div>
+                          
+                        </li>
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Estudiantes con acceso a la plataforma</h4></div>
-                            <div class="w-38 text-center p-3"><span class="h4 bold">1</span></div>
-                            <div class="w-38 text-center p-3"><span class="h4 bold">1</span></div>
+                            <div  v-for="plan in membresia.planes" :key="'descripcion-plan-'+plan.id" class="w-38 text-center p-3"><span class="h4 bold">{{plan.stock}}</span></div>
+                          
                         </li>
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Panel de monitoreo para padres</h4></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                          
+                            <div  v-for="plan in membresia.planes" :key="'descripcion-1-plan-'+plan.id" class="w-38 text-center p-3"><img class="mx-1" src="/images/check.svg"></div>
                         </li>
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Clases nuevas semanales</h4></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                            <div v-for="plan in membresia.planes" :key="'descripcion-2-plan-'+plan.id" class="w-38 text-center p-3" ><img class="mx-1" src="/images/check.svg"></div>
+                          
                         </li>
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Juegos educativos</h4></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                            <div v-for="plan in membresia.planes" :key="'descripcion-3-plan-'+plan.id" class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                            
                         </li>
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Certificado de finalización</h4></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                            <div v-for="plan in membresia.planes" :key="'descripcion-4-plan-'+plan.id" class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                            
                         </li>
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Clases en full HD</h4></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
-                            <div class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                            <div v-for="plan in membresia.planes" :key="'descripcion-5-plan-'+plan.id" class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                            
                         </li>
                     </ul>
                 </div>

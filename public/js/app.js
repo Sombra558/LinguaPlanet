@@ -3481,7 +3481,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "curso-show-component",
   props: ["idioma", "idiomas"],
@@ -3508,6 +3507,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -51910,9 +51914,7 @@ var render = function() {
                           _c("h1", { staticClass: "mb-0" }, [
                             _vm._v(_vm._s(membresia.nombre))
                           ]),
-                          _vm._v(" "),
-                          _c("h2", [_vm._v("Pago " + _vm._s(membresia.tipo))]),
-                          _vm._v(" "),
+                          _vm._v(">\n                        "),
                           _vm._m(0, true),
                           _vm._v(" "),
                           _c(
@@ -52025,10 +52027,6 @@ var render = function() {
                                   },
                                   [_vm._v(_vm._s(membresia.nombre))]
                                 ),
-                                _vm._v(" "),
-                                _c("h3", [
-                                  _vm._v("Pago " + _vm._s(membresia.tipo))
-                                ]),
                                 _vm._v(" "),
                                 _vm._m(3, true),
                                 _vm._v(" "),
@@ -52345,7 +52343,66 @@ var render = function() {
                                           _vm._v("Pago " + _vm._s(plan.tipo))
                                         ]),
                                         _vm._v(" "),
-                                        _vm._m(4, true),
+                                        _c(
+                                          "ul",
+                                          {
+                                            staticClass:
+                                              "text-left w-80 mx-auto mt-4"
+                                          },
+                                          [
+                                            _c(
+                                              "li",
+                                              {
+                                                staticClass:
+                                                  "li-benefits text-secondary"
+                                              },
+                                              [
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass:
+                                                      "text-primary bold"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(plan.stock) +
+                                                        " perfil"
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(
+                                                  " de estudiante en la plataforma."
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "li",
+                                              {
+                                                staticClass:
+                                                  "li-benefits text-secondary"
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "Certificado de finalización."
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "li",
+                                              {
+                                                staticClass:
+                                                  "li-benefits text-secondary"
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "Clases nuevas semanales."
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        ),
                                         _vm._v(" "),
                                         _c(
                                           "a",
@@ -52384,7 +52441,188 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(5)
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-12" }, [
+              _c(
+                "ul",
+                { staticClass: "membership-details text-left mx-auto mt-4" },
+                [
+                  _c(
+                    "li",
+                    { staticClass: "d-flex align-items-center p-2" },
+                    [
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _vm._l(_vm.membresia.planes, function(plan) {
+                        return _c(
+                          "div",
+                          {
+                            key: "descripcion-0-plan-" + plan.id,
+                            staticClass: "w-38 text-center p-3"
+                          },
+                          [
+                            _c("span", { staticClass: "h4 bold" }, [
+                              _vm._v(_vm._s(plan.nombre))
+                            ])
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    { staticClass: "d-flex align-items-center p-2" },
+                    [
+                      _vm._m(5),
+                      _vm._v(" "),
+                      _vm._l(_vm.membresia.planes, function(plan) {
+                        return _c(
+                          "div",
+                          {
+                            key: "descripcion-plan-" + plan.id,
+                            staticClass: "w-38 text-center p-3"
+                          },
+                          [
+                            _c("span", { staticClass: "h4 bold" }, [
+                              _vm._v(_vm._s(plan.stock))
+                            ])
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    { staticClass: "d-flex align-items-center p-2" },
+                    [
+                      _vm._m(6),
+                      _vm._v(" "),
+                      _vm._l(_vm.membresia.planes, function(plan) {
+                        return _c(
+                          "div",
+                          {
+                            key: "descripcion-1-plan-" + plan.id,
+                            staticClass: "w-38 text-center p-3"
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "mx-1",
+                              attrs: { src: "/images/check.svg" }
+                            })
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    { staticClass: "d-flex align-items-center p-2" },
+                    [
+                      _vm._m(7),
+                      _vm._v(" "),
+                      _vm._l(_vm.membresia.planes, function(plan) {
+                        return _c(
+                          "div",
+                          {
+                            key: "descripcion-2-plan-" + plan.id,
+                            staticClass: "w-38 text-center p-3"
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "mx-1",
+                              attrs: { src: "/images/check.svg" }
+                            })
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    { staticClass: "d-flex align-items-center p-2" },
+                    [
+                      _vm._m(8),
+                      _vm._v(" "),
+                      _vm._l(_vm.membresia.planes, function(plan) {
+                        return _c(
+                          "div",
+                          {
+                            key: "descripcion-3-plan-" + plan.id,
+                            staticClass: "w-38 text-center"
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "mx-1",
+                              attrs: { src: "/images/check.svg" }
+                            })
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    { staticClass: "d-flex align-items-center p-2" },
+                    [
+                      _vm._m(9),
+                      _vm._v(" "),
+                      _vm._l(_vm.membresia.planes, function(plan) {
+                        return _c(
+                          "div",
+                          {
+                            key: "descripcion-4-plan-" + plan.id,
+                            staticClass: "w-38 text-center"
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "mx-1",
+                              attrs: { src: "/images/check.svg" }
+                            })
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    { staticClass: "d-flex align-items-center p-2" },
+                    [
+                      _vm._m(10),
+                      _vm._v(" "),
+                      _vm._l(_vm.membresia.planes, function(plan) {
+                        return _c(
+                          "div",
+                          {
+                            key: "descripcion-5-plan-" + plan.id,
+                            staticClass: "w-38 text-center"
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "mx-1",
+                              attrs: { src: "/images/check.svg" }
+                            })
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ]
+              )
+            ])
+          ])
         ])
       : _vm._e(),
     _vm._v(" "),
@@ -52489,7 +52727,7 @@ var render = function() {
                         _vm._v("Pago " + _vm._s(plan.tipo))
                       ]),
                       _vm._v(" "),
-                      _vm._m(6, true)
+                      _vm._m(11, true)
                     ]),
                     _vm._v(" "),
                     _c(
@@ -52503,7 +52741,7 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _vm._m(7, true)
+                _vm._m(12, true)
               ]
             )
           }),
@@ -52603,18 +52841,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "text-left w-80 mx-auto mt-4" }, [
-      _c("li", { staticClass: "li-benefits text-secondary" }, [
-        _c("span", { staticClass: "text-primary bold" }, [_vm._v("1 perfil")]),
-        _vm._v(" de estudiante en la plataforma.")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "li-benefits text-secondary" }, [
-        _vm._v("Certificado de finalización.")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "li-benefits text-secondary" }, [
-        _vm._v("Clases nuevas semanales.")
+    return _c("div", { staticClass: "w-24" }, [
+      _c("h4", { staticClass: "mb-0" }, [_vm._v("Plan")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w-24" }, [
+      _c("h4", { staticClass: "mb-0" }, [
+        _vm._v("Estudiantes con acceso a la plataforma")
       ])
     ])
   },
@@ -52622,132 +52859,42 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [
-        _c("ul", { staticClass: "membership-details text-left mx-auto mt-4" }, [
-          _c("li", { staticClass: "d-flex align-items-center p-2" }, [
-            _c("div", { staticClass: "w-24" }, [
-              _c("h4", { staticClass: "mb-0" }, [
-                _vm._v("Estudiantes con acceso a la plataforma")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-38 text-center p-3" }, [
-              _c("span", { staticClass: "h4 bold" }, [_vm._v("1")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-38 text-center p-3" }, [
-              _c("span", { staticClass: "h4 bold" }, [_vm._v("1")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "d-flex align-items-center p-2" }, [
-            _c("div", { staticClass: "w-24" }, [
-              _c("h4", { staticClass: "mb-0" }, [
-                _vm._v("Panel de monitoreo para padres")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-38 text-center" }, [
-              _c("img", {
-                staticClass: "mx-1",
-                attrs: { src: "/images/check.svg" }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-38 text-center" }, [
-              _c("img", {
-                staticClass: "mx-1",
-                attrs: { src: "/images/check.svg" }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "d-flex align-items-center p-2" }, [
-            _c("div", { staticClass: "w-24" }, [
-              _c("h4", { staticClass: "mb-0" }, [
-                _vm._v("Clases nuevas semanales")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-38 text-center" }, [
-              _c("img", {
-                staticClass: "mx-1",
-                attrs: { src: "/images/check.svg" }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-38 text-center" }, [
-              _c("img", {
-                staticClass: "mx-1",
-                attrs: { src: "/images/check.svg" }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "d-flex align-items-center p-2" }, [
-            _c("div", { staticClass: "w-24" }, [
-              _c("h4", { staticClass: "mb-0" }, [_vm._v("Juegos educativos")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-38 text-center" }, [
-              _c("img", {
-                staticClass: "mx-1",
-                attrs: { src: "/images/check.svg" }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-38 text-center" }, [
-              _c("img", {
-                staticClass: "mx-1",
-                attrs: { src: "/images/check.svg" }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "d-flex align-items-center p-2" }, [
-            _c("div", { staticClass: "w-24" }, [
-              _c("h4", { staticClass: "mb-0" }, [
-                _vm._v("Certificado de finalización")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-38 text-center" }, [
-              _c("img", {
-                staticClass: "mx-1",
-                attrs: { src: "/images/check.svg" }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-38 text-center" }, [
-              _c("img", {
-                staticClass: "mx-1",
-                attrs: { src: "/images/check.svg" }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "d-flex align-items-center p-2" }, [
-            _c("div", { staticClass: "w-24" }, [
-              _c("h4", { staticClass: "mb-0" }, [_vm._v("Clases en full HD")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-38 text-center" }, [
-              _c("img", {
-                staticClass: "mx-1",
-                attrs: { src: "/images/check.svg" }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-38 text-center" }, [
-              _c("img", {
-                staticClass: "mx-1",
-                attrs: { src: "/images/check.svg" }
-              })
-            ])
-          ])
-        ])
+    return _c("div", { staticClass: "w-24" }, [
+      _c("h4", { staticClass: "mb-0" }, [
+        _vm._v("Panel de monitoreo para padres")
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w-24" }, [
+      _c("h4", { staticClass: "mb-0" }, [_vm._v("Clases nuevas semanales")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w-24" }, [
+      _c("h4", { staticClass: "mb-0" }, [_vm._v("Juegos educativos")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w-24" }, [
+      _c("h4", { staticClass: "mb-0" }, [_vm._v("Certificado de finalización")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w-24" }, [
+      _c("h4", { staticClass: "mb-0" }, [_vm._v("Clases en full HD")])
     ])
   },
   function() {

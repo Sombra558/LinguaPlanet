@@ -19,6 +19,8 @@ Vue.component('cupones-show', require('./cupones/Cupon/show.vue').default);
 Vue.component('membresias-component', require('./membresias/membresia').default);
 //usuarios
 Vue.component('usuarios-component', require('./usuarios/usuarios').default);
+//configuraciones
+Vue.component('configuraciones-component', require('./configuraciones/configuraciones').default);
 
 const store = new Vuex.Store({
     state: {

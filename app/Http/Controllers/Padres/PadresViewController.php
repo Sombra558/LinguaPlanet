@@ -40,7 +40,7 @@ class PadresViewController extends Controller
     
     public function detalleIndividualpadrecursos($id)
     {
-        
+        $user = Auth::user();
         $now = Carbon::now();
         $perfil=PerfilEstudianteUser::find($id)->load(['avatar','misactividades','planes'=>function($q) use($now)
         {
@@ -63,7 +63,7 @@ class PadresViewController extends Controller
                 }]);
             }]);
         }]);
-        return view('Padres.Detalles.Cursos.individual',compact('perfil'));
+        return view('Padres.Detalles.Cursos.individual',compact('perfil','user'));
     }
 
     public function detallespadrecursos()

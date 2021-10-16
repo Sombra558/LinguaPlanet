@@ -36,6 +36,7 @@ class LandingController extends Controller
 
         public function MembresiaShow($nombreURL){
             $idiomas=Idioma::get();
+            
             $membresia = Membresia::where('nombreURL',$nombreURL)->first();
                 if ($membresia) {
                     $membresia->load(['planes', 'idioma']);

@@ -27,8 +27,7 @@
                     <div class="card card-course-carrousel mx-3">
                         <div class="card-body d-flex flex-column">
                             <img class="flag-img mx-auto" :src="`${idioma.src}`" alt="lingua planet france">
-                            <h1 class="mb-0">{{ membresia.nombre }}</h1>
-                            <h2>Pago {{ membresia.tipo }}</h2>
+                            <h1 class="mb-0">{{ membresia.nombre }}</h1>>
                             <div class="mt-5 mb-4">
                                 <h3 class="bold">Tendrás acceso a:</h3>
                                 <h3>Dashboard de seguimiento</h3>
@@ -60,7 +59,7 @@
                             <div class="card-body d-flex flex-column">
                                 <img class="flag-img mx-auto" :src="`${idioma.src}`" :alt="`lingua planet ${idioma.idioma}`">
                                 <span class="h3 bold" style="height: 4rem;">{{ membresia.nombre }}</span>
-                                <h3>Pago {{ membresia.tipo }}</h3>
+                               
                                 <div class="mt-4 mb-3 lh">
                                     <span class="h5">Tendrás acceso a:</span>
                                     <h4>Dashboard de seguimiento</h4>
