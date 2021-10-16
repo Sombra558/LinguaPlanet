@@ -1,23 +1,34 @@
 <template>
-    <div>
+    <div class="container">
+        <h3 class="color-black">Nuevo curso</h3>
        <form @submit.prevent="crearcurso()">
-            <div class="form-group col-md-6 col-12">
+            <div class="row">
+                <div class="form-group col-12 col-lg-6">
                     <label for="titulo" >Titulo</label>
-                    <input type="text" class="form-control"  name="titulo" v-model="newcurso.titulo" required>
-            </div>
-            <div class="form-group col-md-6 col-12">
-                    <label for="titulo" >Descripcion</label>
-                    <textarea name="descripcion" class="form-control"  v-model="newcurso.descripcion" cols="30" rows="10" required></textarea>
-            </div>
-            <div class="form-group col-md-6 col-12">
+                    <input type="text" class="form-input input-gray"  name="titulo" v-model="newcurso.titulo" placeholder="Ingresa el titulo del curso" required>
+                </div>
+                <div class="form-group col-12 col-lg-6">
                     <label for="titulo" >Nombre URL</label>
-                    <input type="text" v-model="nombreURL" name="nombreURL" class="form-control" required>
+                    <input type="text" v-model="nombreURL" name="nombreURL" class="form-input input-gray" placeholder="Ingresa el nombre que se vera en la URL" required>
+                </div>
             </div>
-            <div class="form-group col-md-4 row m-0 flex-column">
+            <div class="row">
+                <div class="form-group col-12 col-lg-6">
                     <label for="titulo" >Trailer</label>
-                    <input type="text" v-model="newcurso.video" name="video" placeholder="Link" class="form-control">
+                    <input type="text" v-model="newcurso.video" name="video" placeholder="Ingresa el link del trailer del curso" class="form-input input-gray">
+                </div>
             </div>
-            <input type="submit" value="Guardar Borrador">
+            <div class="row">
+                <div class="form-group col-12 col-lg-6">
+                    <label for="titulo" >Descripcion</label>
+                    <textarea name="descripcion" class="form-input input-gray"  v-model="newcurso.descripcion" cols="30" rows="10" placeholder="Ingresa una descripción al curso" required></textarea>
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="form-group col-12 col-lg-3">
+                    <input type="submit" class="btn btn-lg btn-secondary bg-plomo w-100" value="Guardar borrador">
+                </div>
+            </div>
        </form>
     </div>
 </template>
@@ -62,5 +73,13 @@
 </script>
 
 <style lang="scss" scoped>
+    .btn {
+        font-weight: 400;
+        font-size: 0.9rem;
+    }
 
+    label {
+        color : #606060;
+        font-weight: 500;
+    }
 </style>

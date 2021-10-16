@@ -21,24 +21,20 @@
 </head>
 <body>
     <div id="admin-app">
-
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+            <div class="container-fluid">
+                <a class="navbar-brand ml-3" href="{{ url('/') }}">
+                    <img style="width: 90px; height: 90px;" src="{{ asset('/images/logo.svg') }}" class="logo" alt="{{ config('app.name', 'Laravel') }}">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
+                    <ul class="navbar-nav">
                     </ul>
-
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto  d-flex justify-content-between w-15">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -50,12 +46,16 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                            <li class="nav-item d-flex align-items-center">
+                                {{ Auth::user()->name.' '.Auth::user()->lastname }}
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <div class="globe-profile bg-plomo">
+                                        {{ Auth::user()->name[0].Auth::user()->lastname[0] }}
+                                    </div>
                                 </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -65,17 +65,29 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                </div>
+                                </div> --}}
                             </li>
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
-        @include('layouts.Administrador.NavBar')
-        <main class="py-4">
-            @yield('content')
+        <main class="d-flex" id="wrapper">
+            @include('layouts.Administrador.Sidebar')
+            <div id="page-content-wrapper">
+                <div class="container-fluid pt-5">
+                    @yield('content')
+                </div>
+            </div>
         </main>
     </div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+           $('.button-left').click(function(){
+               $('.sidebar').toggleClass('fliph');
+           });
+             
+        });
+    </script>
 </body>
 </html>

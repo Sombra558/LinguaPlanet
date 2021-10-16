@@ -86,6 +86,14 @@ body {
 	color : $plomo !important;
 }
 
+.color-black {
+	color : $black !important;
+}
+
+.bg-plomo {
+	background-color: $plomo !important;
+}
+
 .color-yellow {
 	color: $yellow;
 }
@@ -95,6 +103,61 @@ body {
 	display : none;
 }
 //-/
+
+// - Estilos layout de Admin
+#wrapper {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -19rem;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 19rem;
+}
+
+.sidebar-item {
+	padding: 0.6rem 1.9rem;
+	font-size: 1rem;
+}
+
+.sidebar-item.active {
+	background: #31348B;
+	border-radius: 53px;
+	color: white;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+    margin-left: -20rem;
+  }
+}
+// - FIN Estilos layout de Admin
 
 .dropdown-menu-right :first-child::after {
 	content: "";
@@ -272,6 +335,11 @@ img.header-animal-icon {
 	border-radius: 12px;
 }
 
+.input-gray {
+	border: 1px solid $plomo !important;
+	box-sizing: border-box;
+}
+
 .form-input { /* Chrome, Firefox, Opera, Safari 10.1+ */
 	width: 100%;
     border: 0px;
@@ -281,6 +349,14 @@ img.header-animal-icon {
 
 .form-input:focus {
 	outline: none;
+}
+
+.form-input.input-gray::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: $plomo;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
 }
 
 .form-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
