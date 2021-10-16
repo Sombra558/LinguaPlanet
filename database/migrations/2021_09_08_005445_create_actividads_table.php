@@ -15,7 +15,7 @@ class CreateActividadsTable extends Migration
     {
         Schema::create('actividads', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->enum('tipo', ['Palabras del día','Video de apertura','Actividad','Libros','Mochila','Rompecabeza','Memorama','Silueta']);
+            $table->enum('tipo', ['Palabras del día','Video de apertura','Actividad','Libros','Mochila','Rompecabeza','Memorama','Silueta','Simon Dice']);
             $table->text('icom')->nullable();
             $table->text('recurso')->nullable();
             $table->unsignedbigInteger('clase_id');

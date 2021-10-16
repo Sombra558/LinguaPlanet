@@ -44,7 +44,7 @@
 				</center>
 				<article v-else class="visor-pdf">
 					<pdf style="heigth:100%; width:100%;" 
-						:src="actividad.recurso"
+						:src="'/storage/'+actividad.recurso"
 						:page="currentPage"
 						@num-pages="pageCount = $event"
 						@page-loaded="currentPage = $event"
@@ -54,7 +54,7 @@
 			<section v-else class="content-pdf d-flex">
 				<article class="visor-pdf">
 					<pdf style="width:100%;" 
-						:src="actividad.recurso"
+						:src="'/storage/'+actividad.recurso"
 						:page="currentPage"
 						@num-pages="pageCount = $event"
 						@page-loaded="currentPage = $event"
