@@ -5,6 +5,7 @@ namespace App\Services;
 use Illuminate\Http\Request;
 use App\Models\Curso\Curso;
 use App\Models\Cursos\Cupon;
+use App\Models\Cursos\CuponHistory;
 use Illuminate\Support\Facades\Storage;
 use App\Helpers\General\CollectionHelper;
 use Illuminate\Support\Facades\Auth;
@@ -86,6 +87,11 @@ class PayPalService
                 $cupon=Cupon::find($cupon_id);
                 $cupon->cantidad=$cupon->cantidad-1;
                 $cupon->save();
+                $cuponHistory = CuponHistory::create([
+                    'precio_pago' => $payment->value,
+                    'plan_id' => $plan_id,
+                    'cupon_id' => $cupon_id,
+                ]);
             }
             $solicitud = PlanUser::create([
                 'comprobante' => $transactionId,

@@ -2312,6 +2312,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "cupon-show",
@@ -42551,7 +42578,77 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "tab-content", attrs: { id: "nav-tabContent" } }, [
-      _vm._m(0),
+      _vm.cupon.usados.lenght > 0
+        ? _c(
+            "div",
+            {
+              staticClass: "tab-pane fade show active pt-3",
+              attrs: {
+                id: "nav-historial",
+                role: "tabpanel",
+                "aria-labelledby": "nav-historial-tab"
+              }
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col px-1" }, [
+                  _c(
+                    "table",
+                    {
+                      staticClass:
+                        "table mt-2 table-borderless table-striped table-com"
+                    },
+                    [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.cupon.usados, function(usado, index) {
+                          return _c(
+                            "tr",
+                            {
+                              key: "indice-" + index,
+                              staticClass: "color-black"
+                            },
+                            [
+                              _c("td", [
+                                _vm._v(_vm._s(usado.precio_pago) + " USD")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(usado.created_at))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(usado.plan.membresia.nombre))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(usado.plan.nombre))])
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ]
+          )
+        : _c("div", [
+            _c(
+              "p",
+              {
+                staticClass: "tab-pane fade show active pt-3",
+                attrs: {
+                  id: "nav-historial",
+                  role: "tabpanel",
+                  "aria-labelledby": "nav-historial-tab"
+                }
+              },
+              [_vm._v("cupones no canjeados")]
+            )
+          ]),
       _vm._v(" "),
       _c(
         "div",
@@ -42592,7 +42689,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(1)
+              _vm._m(2)
             ]
           ),
           _vm._v(" "),
@@ -42605,7 +42702,7 @@ var render = function() {
                     "table mt-2 table-borderless table-striped table-com"
                 },
                 [
-                  _vm._m(2),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c(
                     "tbody",
@@ -42791,7 +42888,7 @@ var render = function() {
                 },
                 [
                   _c("div", { staticClass: "modal-body pt-0 px-5" }, [
-                    _vm._m(3),
+                    _vm._m(4),
                     _vm._v(" "),
                     _c("input", {
                       attrs: { type: "hidden", name: "cupon_id" },
@@ -42895,56 +42992,58 @@ var staticRenderFns = [
     return _c(
       "div",
       {
-        staticClass: "tab-pane fade show active pt-3",
-        attrs: {
-          id: "nav-historial",
-          role: "tabpanel",
-          "aria-labelledby": "nav-historial-tab"
-        }
+        staticClass:
+          "row justify-content-between align-items-center flex-lg-row-reverse"
       },
       [
         _c(
           "div",
           {
             staticClass:
-              "row justify-content-between align-items-center flex-lg-row-reverse"
+              "col-12 mb-3 mb-lg-0 col-lg-3 d-flex justify-content-between align-items-center"
           },
           [
             _c(
-              "div",
+              "a",
               {
-                staticClass:
-                  "col-12 mb-3 mb-lg-0 col-lg-3 d-flex justify-content-between align-items-center"
+                staticClass: "btn btn-block btn-outline-primary px-4 fw-500",
+                attrs: { href: "#" }
               },
-              [
-                _c(
-                  "a",
-                  {
-                    staticClass:
-                      "btn btn-block btn-outline-primary px-4 fw-500",
-                    attrs: { href: "#" }
-                  },
-                  [_vm._v("Exportar CSV")]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "col-12 col-lg-9 d-flex justify-content-between align-items-center"
-              },
-              [
-                _c("span", { staticClass: "h5 color-black m-0" }, [
-                  _vm._v("Cupones canjeados")
-                ])
-              ]
+              [_vm._v("Exportar CSV")]
             )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "col-12 col-lg-9 d-flex justify-content-between align-items-center"
+          },
+          [
+            _c("span", { staticClass: "h5 color-black m-0" }, [
+              _vm._v("Cupones canjeados")
+            ])
           ]
         )
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", { staticClass: "color-black" }, [
+        _c("th", [_vm._v("Precio con Cupón")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Fecha de Uso")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Membresia")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Plan")])
+      ])
+    ])
   },
   function() {
     var _vm = this
@@ -43078,7 +43177,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(cupon.cantidad))]),
                 _vm._v(" "),
-                _c("td", [_vm._v("--")]),
+                _c("td", [_vm._v(_vm._s(cupon.usados.length))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(cupon.vence))]),
                 _vm._v(" "),
@@ -44308,33 +44407,29 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "span",
-    { staticClass: "form-control input-primary input-search" },
-    [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.query,
-            expression: "query"
-          }
-        ],
-        staticClass: "border-0 w-100",
-        attrs: { type: "text", placeholder: "Buscar" },
-        domProps: { value: _vm.query },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.query = $event.target.value
-          }
+  return _c("span", [
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.query,
+          expression: "query"
         }
-      })
-    ]
-  )
+      ],
+      staticClass: "form-control input-primary input-search border-0 w-100",
+      attrs: { type: "text", placeholder: "Buscar" },
+      domProps: { value: _vm.query },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.query = $event.target.value
+        }
+      }
+    })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

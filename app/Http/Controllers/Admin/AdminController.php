@@ -76,7 +76,7 @@ class AdminController extends Controller
     public function cupones()
     {
         
-        $cupones=Cupon::get();
+        $cupones=Cupon::get()->load(['usados']);
         return view('Administrador.Cupones.cupones', compact('cupones'));
     }
     public function relacioncuponmember(Request $request)

@@ -60,15 +60,42 @@
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active pt-3" id="nav-historial" role="tabpanel" aria-labelledby="nav-historial-tab">
+            <div v-if="cupon.usados.lenght>0" class="tab-pane fade show active pt-3" id="nav-historial" role="tabpanel" aria-labelledby="nav-historial-tab">
                 <div class="row justify-content-between align-items-center flex-lg-row-reverse">
                     <div class="col-12 mb-3 mb-lg-0 col-lg-3 d-flex justify-content-between align-items-center">
                         <a class="btn btn-block btn-outline-primary px-4 fw-500" href="#">Exportar CSV</a>
                     </div>
                     <div class="col-12 col-lg-9 d-flex justify-content-between align-items-center">
                         <span class="h5 color-black m-0">Cupones canjeados</span>
+
+
                     </div>
-                </div>   
+                </div> 
+                  <div  class="row">
+                    <div class="col px-1">
+                        <table class="table mt-2 table-borderless table-striped table-com">
+                            <thead>
+                                <tr class="color-black">
+                                    <th>Precio con Cupón</th>
+                                    <th>Fecha de Uso</th> 
+                                    <th>Membresia</th>   
+                                    <th>Plan</th>            
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="color-black" v-for="(usado,index) in cupon.usados" :key="'indice-'+index">
+                                    <td>{{usado.precio_pago}} USD</td>
+                                    <td>{{usado.created_at}}</td> 
+                                    <td>{{usado.plan.membresia.nombre}}</td>                    
+                                    <td>{{usado.plan.nombre}}</td>             
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+            </div>
+            <div v-else>
+                <p class="tab-pane fade show active pt-3" id="nav-historial" role="tabpanel" aria-labelledby="nav-historial-tab">cupones no canjeados</p>
             </div>
             <div class="tab-pane fade pt-3" id="nav-membresias" role="tabpanel" aria-labelledby="nav-membresias-tab">
                 <div class="row justify-content-between flex-lg-row-reverse">
