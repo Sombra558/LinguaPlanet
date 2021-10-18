@@ -96,7 +96,7 @@
                                 </div>
                             </div>
                         </div>
-                    </td>               
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -178,7 +178,7 @@ import Searh from './search.vue';
     }
 
     .table {
-        width : 62.4em;
+        width : 74.3em;
     }
 
     @media(max-width: 768px) {

@@ -84,7 +84,7 @@
     }
 
     .table {
-        width : 62.4em;
+        width : 73.4em;
     }
 
     @media(min-width: 768px) {

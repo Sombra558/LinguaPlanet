@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <span>
         {{actividades}}
-    </div>
+    </span>
 </template>
 
 <script>
