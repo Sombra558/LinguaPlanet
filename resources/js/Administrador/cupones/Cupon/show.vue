@@ -60,7 +60,7 @@
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-            <div v-if="cupon.usados.lenght>0" class="tab-pane fade show active pt-3" id="nav-historial" role="tabpanel" aria-labelledby="nav-historial-tab">
+            <div class="tab-pane fade show active pt-3" id="nav-historial" role="tabpanel" aria-labelledby="nav-historial-tab">
                 <div class="row justify-content-between align-items-center flex-lg-row-reverse">
                     <div class="col-12 mb-3 mb-lg-0 col-lg-3 d-flex justify-content-between align-items-center">
                         <a class="btn btn-block btn-outline-primary px-4 fw-500" href="#">Exportar CSV</a>
@@ -93,9 +93,6 @@
                         </table>
                     </div>
                 </div>  
-            </div>
-            <div v-else>
-                <p class="tab-pane fade show active pt-3" id="nav-historial" role="tabpanel" aria-labelledby="nav-historial-tab">cupones no canjeados</p>
             </div>
             <div class="tab-pane fade pt-3" id="nav-membresias" role="tabpanel" aria-labelledby="nav-membresias-tab">
                 <div class="row justify-content-between flex-lg-row-reverse">

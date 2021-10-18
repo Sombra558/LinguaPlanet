@@ -2336,9 +2336,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "cupon-show",
@@ -42578,77 +42575,59 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "tab-content", attrs: { id: "nav-tabContent" } }, [
-      _vm.cupon.usados.lenght > 0
-        ? _c(
-            "div",
-            {
-              staticClass: "tab-pane fade show active pt-3",
-              attrs: {
-                id: "nav-historial",
-                role: "tabpanel",
-                "aria-labelledby": "nav-historial-tab"
-              }
-            },
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col px-1" }, [
+      _c(
+        "div",
+        {
+          staticClass: "tab-pane fade show active pt-3",
+          attrs: {
+            id: "nav-historial",
+            role: "tabpanel",
+            "aria-labelledby": "nav-historial-tab"
+          }
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col px-1" }, [
+              _c(
+                "table",
+                {
+                  staticClass:
+                    "table mt-2 table-borderless table-striped table-com"
+                },
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
                   _c(
-                    "table",
-                    {
-                      staticClass:
-                        "table mt-2 table-borderless table-striped table-com"
-                    },
-                    [
-                      _vm._m(1),
-                      _vm._v(" "),
-                      _c(
-                        "tbody",
-                        _vm._l(_vm.cupon.usados, function(usado, index) {
-                          return _c(
-                            "tr",
-                            {
-                              key: "indice-" + index,
-                              staticClass: "color-black"
-                            },
-                            [
-                              _c("td", [
-                                _vm._v(_vm._s(usado.precio_pago) + " USD")
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(usado.created_at))]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(usado.plan.membresia.nombre))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(usado.plan.nombre))])
-                            ]
-                          )
-                        }),
-                        0
+                    "tbody",
+                    _vm._l(_vm.cupon.usados, function(usado, index) {
+                      return _c(
+                        "tr",
+                        { key: "indice-" + index, staticClass: "color-black" },
+                        [
+                          _c("td", [
+                            _vm._v(_vm._s(usado.precio_pago) + " USD")
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(usado.created_at))]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(usado.plan.membresia.nombre))
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(usado.plan.nombre))])
+                        ]
                       )
-                    ]
+                    }),
+                    0
                   )
-                ])
-              ])
-            ]
-          )
-        : _c("div", [
-            _c(
-              "p",
-              {
-                staticClass: "tab-pane fade show active pt-3",
-                attrs: {
-                  id: "nav-historial",
-                  role: "tabpanel",
-                  "aria-labelledby": "nav-historial-tab"
-                }
-              },
-              [_vm._v("cupones no canjeados")]
-            )
-          ]),
+                ]
+              )
+            ])
+          ])
+        ]
+      ),
       _vm._v(" "),
       _c(
         "div",
