@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "cors": "^2.8.5",
+        "vue-multiselect": "^2.1.6",
         "vue-pdf": "^4.3.0",
         "vuex": "^3.6.2"
     }

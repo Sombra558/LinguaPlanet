@@ -260,6 +260,13 @@
                                 <input type="file" name="recurso" id="assetsFieldHandle"  />
                                
                         </div>
+                        <div v-if="actividadtipe==='Silueta'">
+                               
+                               
+                               <multiselect v-model="newactividad.siluetas" multiple deselect-label="Can't remove this value" track-by="Label" label="Label" placeholder="Select one" :options="siluetas"></multiselect>
+                                  
+                                  
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button :disabled="proceso" type="submit" class="btn btn-primary">Agregar Actividad</button>
@@ -308,12 +315,14 @@
 
 <script>
 import Cont from './contador.vue';
+import Multiselect from 'vue-multiselect'
     export default {
         name:"curso-show",
-        props:['curso','membresias'],
+        props:['curso','membresias','siluetas'],
         data() {
             return {
                 tab: 'modulos',
+              
                 newmodulo:{
                     nombre:null,
                     descripcion:null,
@@ -332,6 +341,7 @@ import Cont from './contador.vue';
                 newactividad:{
                     tipo:null,
                     clase_id:null,
+                    siluetas:null
                 },
                 actividadtipe:null,
                 lastFile:null,
@@ -339,7 +349,7 @@ import Cont from './contador.vue';
             }
         },
         components: {
-            Cont,
+            Cont, Multiselect,
         },
         methods: {
             seleccionartab(value) {
@@ -478,7 +488,8 @@ import Cont from './contador.vue';
                 var ruta ='/admin/actividad';
                     axios.post(ruta, formulario)
                         .then((res) => {
-                            window.location.reload();
+                            //window.location.reload();
+                            this.proceso=false;
                         })
                         .catch((err) => {
                             this.proceso=false;

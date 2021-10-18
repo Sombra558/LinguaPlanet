@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Cursos\Actividad;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class ActividadController extends Controller
 {
@@ -69,6 +70,25 @@ class ActividadController extends Controller
                 'clase_id' => $request->clase_id,
                 
             ]);
+
+        }else if($request->tipo==='Silueta'){
+           // Actividad::create([
+             //   'tipo' => $request->tipo,
+               // 'icom'=>'/images/actividades/control.svg',
+                //'clase_id' => $request->clase_id,
+                
+            //]);
+         
+
+
+
+            $client = new Client([
+         
+                'base_uri' => 'http://167.172.162.54/',
+           
+            ]);
+            $response = $client->post('http://localhost:8000/post-silueta-create',['name' => 'olas']);
+            dd($response->getBody());
 
         }else{
             Actividad::create([

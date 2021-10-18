@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 use App\Models\Membresia\Membresia;
 use App\Models\Cursos\Curso;
 
@@ -74,13 +75,21 @@ class CursoController extends Controller
      */
     public function show($id)
     {
+         $baseUrl="http://64.227.103.117/get-silueta/1/en";
+         $client = new Client(['base_uri' => 'http://167.172.162.54/']);  
+         $response = $client->request('GET', 'http://64.227.103.117/get-silueta/1/en'); 
+         $body = $response->getBody();
+         $content =$body->getContents();
+         $arr = json_decode($content);
+         $siluetas= json_encode($arr->array);
+   
         $membresias=Membresia::get();
         $curso=Curso::find($id)->load(['modulos' => function($q){
             return $q->with(['clases'=>function($g){
                 return $g->with(['actividades']);
             }]);
         },'membresias']);
-        return view('Administrador.Cursos.show', compact('curso','membresias'));
+        return view('Administrador.Cursos.show', compact('curso','membresias','siluetas'));
     }
 
     /**
