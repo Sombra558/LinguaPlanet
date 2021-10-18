@@ -27,7 +27,7 @@ class CursoController extends Controller
      */
     public function create()
     {
-       $membresias=Membresia::get()->load(['planes']);
+       $membresias=Membresia::get();
        return view('Administrador.Cursos.create', compact('membresias'));
     }
 
@@ -100,9 +100,10 @@ class CursoController extends Controller
      */
     public function edit($id)
     {
-
-        $membresias=Membresia::get()->load(['planes']);
-        return view('Administrador.Cursos.edit', compact('membresias'));
+        $curso=Curso::find($id);
+        
+        $membresias=Membresia::get();
+        return view('Administrador.Cursos.edit', compact('membresias','curso'));
     }
 
     /**
@@ -114,7 +115,33 @@ class CursoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $curso=Curso::find($id);
+        $link = explode('watch?v=',$request['video']);
+		if(count($link) > 1){
+			$id = $link[1];
+			if($id){
+				$url = 'https://www.youtube.com/embed/'.$id;  
+			}
+        }else{
+                $link = explode('vimeo.com/',$request['video']);
+                if(count($link) > 1){
+                    $id = $link[1];
+                    if($id){
+                        $url = 'https://player.vimeo.com/video/'.$id;
+                    }
+                }else{
+                    $url = 'https://www.youtube.com/embed/'.$request['video'];
+                }
+            }
+        $curso->update([
+            'titulo' => $request['titulo'],
+            'descripcion' => $request['descripcion'],
+            'nombreURL' => $request['nombreURL'],
+            'destacados' => 1,
+            'video' => $url,
+            'linkoriginal' => $request['video'],
+        ]);
+        return $curso;
     }
 
     /**

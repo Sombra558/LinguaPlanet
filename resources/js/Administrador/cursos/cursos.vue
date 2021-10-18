@@ -10,12 +10,12 @@
             </div>
         </div>
         <div class="table-container">
-            <table style="margin-top:25px" class="table table-borderless table-striped table-com">
+            <table style="margin-top:25px," class="table table-borderless table-striped table-com">
                 <thead>
                     <tr class="color-black">
                         <th>Nombre del Curso</th>
                         <th>Precio</th>
-                        <th>Creado</th>
+                        <!--<th>Creado</th>-->
                         <th>Estado</th>
                         <th></th>             
                     </tr>
@@ -24,10 +24,10 @@
                 <tr v-for="(curso,index) in filteredCursos" :key="index" class="color-black">
                     <td>{{curso.titulo}}</td>
                     <td>USD</td>
-                    <td>definir</td>
+                    <!--<td>definir</td>-->
                     <td>{{curso.destacados===1 ? 'Borrador' : 'Publicado'}}</td>
                     <td style="position:relative;">
-                        <button type="button"class="btn-options" @click="showOptions($event, index)">
+                        <button type="button" class="btn-options" @click="showOptions($event, index)">
                             <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="2" cy="2" r="2" fill="#606060"/>
                                 <circle cx="9" cy="2" r="2" fill="#606060"/>
@@ -46,7 +46,7 @@
                                                 <path d="M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
                                             <span class="ml-1">
-                                                Detalle
+                                                Ver Detalle
                                             </span>
                                         </a>        
                                     </div>                                
@@ -122,14 +122,12 @@ import Searh from './search.vue';
          ...mapGetters(["filteredCursos"]),
         },
         mounted () {
-
-            $(document).ready(function(){
-              $('[data-toggle="popover"]').popover();
-            });
-
             if (this.cursos.length>0) {
                 this.$store.commit("setCursos", this.cursos);
             };
+            $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+            });
         },
         methods: {
             eliminarCurso(curso) {
@@ -174,6 +172,8 @@ import Searh from './search.vue';
 
     .table-container {
         width : 100%;
+        height: 100%;
+        min-height: calc(100vh - 100px);
         overflow-x : auto;
     }
 
