@@ -3528,16 +3528,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.proceso = true;
-      console.log(modulo);
-      var form = $("#formmodulo")[0];
-      var formulario = new FormData(form);
-      formulario.append("nombre", modulo.nombre);
-      formulario.append("inicia", modulo.inicia);
-      formulario.append("finaliza", modulo.finaliza);
-      formulario.append("descripcion", modulo.descripcion);
-      var ruta = '/admin/modulo/' + modulo.id;
-      axios.put(ruta, formulario).then(function (res) {
-        $("#crearModulo").modal("hide");
+      var url = '/admin/modulo/' + modulo.id;
+      axios.put(url, modulo).then(function (result) {
+        window.location.reload();
       })["catch"](function (err) {
         _this2.proceso = false;
         console.log(err);
@@ -44811,7 +44804,10 @@ var render = function() {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "tab-content", attrs: { id: "myTabContent" } },
+          {
+            staticClass: "tab-content contenido",
+            attrs: { id: "myTabContent" }
+          },
           [
             _c(
               "div",
@@ -45185,7 +45181,7 @@ var render = function() {
                                                       _vm._v(
                                                         _vm._s(
                                                           modulo.clases.length
-                                                        ) + " Actividades"
+                                                        ) + " Clases"
                                                       )
                                                     ]
                                                   )
@@ -45678,6 +45674,9 @@ var render = function() {
                                                 "div",
                                                 {
                                                   staticClass: "card-header",
+                                                  staticStyle: {
+                                                    heigth: "300px"
+                                                  },
                                                   attrs: { id: "headingOne" }
                                                 },
                                                 [

@@ -27,7 +27,7 @@
                         <a class="nav-link color-black" id="usuarios-tab" data-toggle="tab" href="#usuarios" role="tab" aria-controls="usuarios" aria-selected="false">Usuarios suscritos</a>
                     </li>
                 </ul>
-                <div class="tab-content" id="myTabContent">
+                <div class="tab-content contenido" id="myTabContent">
                     <div class="tab-pane fade show active" id="curso-contenido" role="tabpanel" aria-labelledby="curso-contenido-tab">
                         <div v-if="!curso.modulos.length" class="row">
                             <div class="col">
@@ -87,7 +87,7 @@
                                                     <span class="list-modulos-header">{{modulo.nombre}}</span>
                                                     <span v-if="!modulo.clases.length" class="color-plomo">{{modulo.clases.length}} Clases - <Cont :modulo="modulo" /> Actividades</span>
                                                     <a v-else href="#" data-toggle="collapse" :data-target="`#collapse${index}`" aria-expanded="true" :aria-controls="`collapse${index}`">
-                                                        <span class="fw-400 color-plomo">{{ modulo.clases.length }} Actividades</span>
+                                                        <span class="fw-400 color-plomo">{{ modulo.clases.length }} Clases</span>
                                                     </a>
                                                 </div>
                                                 <div class="col-3 d-flex justify-content-around">
@@ -149,7 +149,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="card-header" id="headingOne">
+                                                        <div style="heigth:300px;" class="card-header" id="headingOne">
                                                           <div class="row">
                                                                 <div class="col-10">
                                                                     <span class="d-block fw-400">Clase/Semana {{index+1}}</span>
@@ -560,22 +560,13 @@ import Multiselect from 'vue-multiselect'
             },
              editarModulo(modulo) {
                            this.proceso=true;
-                           console.log(modulo);
-                           let form = $("#formmodulo")[0];
-                           let formulario = new FormData(form);
-                           formulario.append("nombre", modulo.nombre);
-                           formulario.append("inicia", modulo.inicia);
-                           formulario.append("finaliza", modulo.finaliza);
-                           formulario.append("descripcion", modulo.descripcion);
-                           var ruta = '/admin/modulo/'+modulo.id;
-                            axios.put(ruta, formulario)
-                                .then((res) => {
-                                   $("#crearModulo").modal("hide");
-                                })
-                                .catch((err) => {
-                                    this.proceso=false;
-                                    console.log(err);
-                        });              
+                            var url = '/admin/modulo/'+modulo.id;
+                            axios.put(url,modulo).then((result) => {
+                                window.location.reload();
+                            }).catch((err) => {
+                                this.proceso=false;
+                                console.log(err);
+                            });
             },
               eliminarModulo(modulo) {
                 this.proceso=true;
