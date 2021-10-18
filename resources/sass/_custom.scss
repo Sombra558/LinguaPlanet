@@ -78,6 +78,30 @@ body {
 	width : 80% !important;
 }
 
+.fw-200 {
+	font-weight: 200;
+}
+
+.fw-300 {
+	font-weight: 300;
+}
+
+.fw-400 {
+	font-weight: 400;
+}
+
+.fw-500 {
+	font-weight: 500;
+}
+
+.fw-600 {
+	font-weight: 600;
+}
+
+.fw-700 {
+	font-weight: 700;
+}
+
 .color-gray {
 	color : $gray;
 }
@@ -125,7 +149,7 @@ body {
 }
 
 .sidebar-item {
-	padding: 0.6rem 1.9rem;
+	padding: 0.6rem 0.9rem;
 	font-size: 1rem;
 }
 
@@ -316,8 +340,6 @@ img.header-animal-icon {
 .btn {
 	border-radius: 8px;
 	font-style: normal;
-	font-weight: bold;
-	font-size: 16px;
 	line-height: 24px;
 }
 
@@ -344,7 +366,7 @@ img.header-animal-icon {
 	width: 100%;
     border: 0px;
     border-radius: 12px;
-    padding: 12px 16px;
+    padding: 9px 16px;
 }
 
 .form-input:focus {
@@ -650,6 +672,10 @@ h1.course-show-header {
 	background-size: cover;
 }
 
+.bg-none {
+	background-color: transparent;
+}
+
 /* Footer styles*/
 footer,
 .footer-link {
@@ -681,19 +707,7 @@ footer.courses-footer {
 	color: #FFFFFF;
 }
 
-.img-btn {
-	border : none;
-	border-radius : 50px;
-	background: transparent;
-}
-
-.transparent-button {
-	border : none;
-	border-radius : 50px;
-	background: transparent;
-}
-
-.btn-logout {
+.img-btn, .transparent-button, .btn-logout {
 	border : none;
 	border-radius : 50px;
 	background: transparent;

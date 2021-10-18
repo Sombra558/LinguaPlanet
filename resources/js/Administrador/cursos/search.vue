@@ -24,7 +24,6 @@
 </script>
 
 <style lang="scss" scoped>
-
     .input-search {
         padding-left : 45px;
     }
