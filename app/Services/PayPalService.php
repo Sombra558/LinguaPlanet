@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Illuminate\Http\Request;
 use App\Models\Curso\Curso;
+use App\Models\Cursos\Cupon;
 use Illuminate\Support\Facades\Storage;
 use App\Helpers\General\CollectionHelper;
 use Illuminate\Support\Facades\Auth;
@@ -58,6 +59,9 @@ class PayPalService
         $orderLinks = collect($order->links);
 
         $approve = $orderLinks->where('rel', 'approve')->first();
+        if ($request->cupon_id) {
+            session()->put('cupon_id', $request->cupon_id);
+        }
 
         session()->put('approvalId', $order->id);
         session()->put('plan_id', $request->plan_id);
@@ -70,6 +74,7 @@ class PayPalService
         if (session()->has('approvalId')) {
             $approvalId = session()->get('approvalId');
             $plan_id = session()->get('plan_id');
+            $cupon_id = session()->get('cupon_id');
             $payment = $this->capturePayment($approvalId);
             $name = $payment->payer->name->given_name;
             $transactionId=$payment->purchase_units[0]->payments->captures[0]->id;
@@ -77,6 +82,11 @@ class PayPalService
             $amount = $payment->value;
             $currency = $payment->currency_code;
             $plan =Plan::find($plan_id);
+            if ($cupon_id) {
+                $cupon=Cupon::find($cupon_id);
+                $cupon->cantidad=$cupon->cantidad-1;
+                $cupon->save();
+            }
             $solicitud = PlanUser::create([
                 'comprobante' => $transactionId,
                 'plan_id' => $plan_id,

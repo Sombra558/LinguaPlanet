@@ -1,10 +1,5 @@
 <template>
-    <div>
-        <input type="hidden" name="currency" value="usd">
-        <input type="hidden" name="plan_id" :value="plan.id">
-        <input type="hidden" name="value"  :value="precio"> 
-        <input v-if="cupon" type="hidden" name="cupon_id"  :value="cupon.id">    
-    </div>
+  <span class="h1 bold mb-0" style="font-size: 2rem;">USD {{ precio }}</span>
 </template>
 
 <script>
