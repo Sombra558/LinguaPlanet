@@ -61,6 +61,11 @@
                                                 <div class="arrow"></div>
                                                 <h3 class="popover-header"></h3>
                                                 <div class="popover-body px-4">
+                                                     <div class="row py-2">
+                                                        <div class="col">
+                                                            <button class="transparent-button" @click.prevent="seleccionarModuloModal(modulo,'Clase')">Agregar Clase</button>
+                                                        </div>                                
+                                                    </div>
                                                     <div class="row py-2">
                                                         <button class="edit-mobile img-btn" @click.prevent="seleccionarModuloModal(modulo,'editar')">
                                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,12 +74,9 @@
                                                             </svg>
                                                             Editar
                                                         </button>
+                                                        
                                                     </div>
-                                                    <div class="row py-2">
-                                                        <div class="col">
-                                                            <button class="transparent-button" @click.prevent="seleccionarModuloModal(modulo,'Clase')">Agregar Clase</button>
-                                                        </div>                                
-                                                    </div>
+                                                   
                                                     <div class="row py-2">
                                                         <div class="col">
                                                             <button class="transparent-button" @click.prevent="eliminarModulo(modulo)">Eliminar</button>

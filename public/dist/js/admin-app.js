@@ -3463,6 +3463,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -45112,6 +45114,38 @@ var render = function() {
                                               { staticClass: "row py-2" },
                                               [
                                                 _c(
+                                                  "div",
+                                                  { staticClass: "col" },
+                                                  [
+                                                    _c(
+                                                      "button",
+                                                      {
+                                                        staticClass:
+                                                          "transparent-button",
+                                                        on: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            $event.preventDefault()
+                                                            return _vm.seleccionarModuloModal(
+                                                              modulo,
+                                                              "Clase"
+                                                            )
+                                                          }
+                                                        }
+                                                      },
+                                                      [_vm._v("Agregar Clase")]
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "row py-2" },
+                                              [
+                                                _c(
                                                   "button",
                                                   {
                                                     staticClass:
@@ -45168,38 +45202,6 @@ var render = function() {
                                                     ),
                                                     _vm._v(
                                                       "\n                                                        Editar\n                                                    "
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              { staticClass: "row py-2" },
-                                              [
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "col" },
-                                                  [
-                                                    _c(
-                                                      "button",
-                                                      {
-                                                        staticClass:
-                                                          "transparent-button",
-                                                        on: {
-                                                          click: function(
-                                                            $event
-                                                          ) {
-                                                            $event.preventDefault()
-                                                            return _vm.seleccionarModuloModal(
-                                                              modulo,
-                                                              "Clase"
-                                                            )
-                                                          }
-                                                        }
-                                                      },
-                                                      [_vm._v("Agregar Clase")]
                                                     )
                                                   ]
                                                 )
