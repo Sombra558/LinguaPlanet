@@ -96,7 +96,7 @@ class AdminController extends Controller
     public function membresias()
     {
         $membresias=Membresia::get()->load(['idioma']);
-        $idiomas=idioma::get();
+        $idiomas=Idioma::get();
         return view('Administrador.Membresias.membresia', compact('membresias','idiomas'));
     }
 
