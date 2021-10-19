@@ -1,5 +1,5 @@
 <?php
-
+	Route::post('/home/{perfil_id}/{curso_id}/actividad/{actividad_id}/intentos/{valor}/realizada', 'Padres\PerfilEstudiante@juegorealizado');
 Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
 	Route::get('/', 'Padres\PadresViewController@home')->name('home');
 
@@ -15,7 +15,7 @@ Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
 	Route::post('/actualizar-avatar/{id}', 'Padres\PerfilEstudiante@guardaravatar')->name('update-avatar');
 	Route::post('/perfil-user/{id}', 'Padres\PerfilEstudiante@updateperfil');
 	Route::post('/asignar-plan', 'Padres\PerfilEstudiante@asignarplan');
-	Route::post('/{perfil_id}/{curso_id}/actividad/{actividad_id}/intentos/{valor}/realizada', 'Padres\PerfilEstudiante@juegorealizado');
+
 	Route::resource('/perfil-user', 'Padres\PerfilEstudiante');
 
 	   
