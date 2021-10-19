@@ -25,6 +25,13 @@ Vue.component('membresias-component', require('./membresias/membresia').default)
 Vue.component('usuarios-component', require('./usuarios/usuarios').default);
 //configuraciones
 Vue.component('configuraciones-component', require('./configuraciones/configuraciones').default);
+
+//reportes
+Vue.component('reportes-component', require('./reportes/reportes').default);
+Vue.component('reportes-padre', require('./reportes/secciones/padres').default);
+Vue.component('reportes-alumnos', require('./reportes/secciones/alumnos').default);
+Vue.component('reportes-calificaciones', require('./reportes/secciones/calificaciones').default);
+
 Vue.component('multiselect', Multiselect)
 const store = new Vuex.Store({
     state: {

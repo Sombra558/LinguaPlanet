@@ -114,4 +114,31 @@ class AdminController extends Controller
         $membresias=Membresia::get()->load(['idioma','planes']);
         return view('Administrador.Configuraciones.configuraciones', compact('membresias'));
     }
+
+
+    public function reportes()
+    {
+        
+       
+        return view('Administrador.Reportes.reportes');
+    }
+
+    public function reportesPadre()
+    {
+        
+       
+        return view('Administrador.Reportes.Secciones.padres');
+    }
+    public function reportesAlumnos()
+    {
+        
+       
+        return view('Administrador.Reportes.Secciones.alumnos');
+    }
+    public function reportesCalificaciones()
+    {
+        
+       
+        return view('Administrador.Reportes.Secciones.calificaciones');
+    }
 }
