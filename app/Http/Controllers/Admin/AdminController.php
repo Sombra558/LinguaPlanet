@@ -8,7 +8,7 @@ use App\User;
 use App\Models\PerfilEstudiante\PerfilEstudianteUser;
 use App\Models\Cursos\Curso;
 use App\Models\Cursos\Cupon;
-use App\Models\Idioma\idioma;
+use App\Models\Idioma\Idioma;
 use App\Models\Membresia\Membresia;
 use App\Models\Relaciones\MembresiaCurso;
 use App\Models\Solicitudes\PlanUser;
