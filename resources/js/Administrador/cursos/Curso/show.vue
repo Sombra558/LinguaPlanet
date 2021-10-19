@@ -98,6 +98,7 @@
                                                         </svg>
                                                         Editar
                                                     </button>
+                                                     <button class="btn transparent-button" @click.prevent="seleccionarClase(clase,'actividad')">Agregar Actividad</button>
                                                     <button type="button" class="btn-options" @click="showOptions($event, `options${index}`)">
                                                         <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <circle cx="2" cy="2" r="2" fill="#606060"/>
@@ -130,7 +131,8 @@
                                                                                 Editar
                                                                             </span>
                                                                         </button>
-                                                                    </div>                                
+                                                                    </div>          
+                                                                                          
                                                                 </div>
                                                                 <div class="row py-2">
                                                                     <div class="col">

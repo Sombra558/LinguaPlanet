@@ -62,9 +62,16 @@
             alert("The video has ended"+ perfil_id);
         }
     </script>
-     <script>
+    @if($actividad->tipo==='Silueta')
+    <script>
       var unityInstance = UnityLoader.instantiate("unityContainer", "/game/Silueta/Siluetas/Build/Siluetas.json", {onProgress: UnityProgress});
     </script>
+    @else
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "/game/Rompecabeza/Rompecabezas/Build/Rompecabezas.json", {onProgress: UnityProgress});
+    </script>
+    @endif
+    
     <div class="backdrop"></div>
 </body>
 </html>

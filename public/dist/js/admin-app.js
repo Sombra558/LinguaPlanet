@@ -3461,6 +3461,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -45367,6 +45369,24 @@ var render = function() {
                                                 "\n                                                    Editar\n                                                "
                                               )
                                             ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "button",
+                                            {
+                                              staticClass:
+                                                "btn transparent-button",
+                                              on: {
+                                                click: function($event) {
+                                                  $event.preventDefault()
+                                                  return _vm.seleccionarClase(
+                                                    _vm.clase,
+                                                    "actividad"
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [_vm._v("Agregar Actividad")]
                                           ),
                                           _vm._v(" "),
                                           _c(

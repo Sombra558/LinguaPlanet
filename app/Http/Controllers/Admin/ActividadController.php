@@ -72,23 +72,23 @@ class ActividadController extends Controller
             ]);
 
         }else if($request->tipo==='Silueta'){
-           // Actividad::create([
-             //   'tipo' => $request->tipo,
-               // 'icom'=>'/images/actividades/control.svg',
-                //'clase_id' => $request->clase_id,
+           Actividad::create([
+                'tipo' => $request->tipo,
+                'icom'=>'/images/actividades/control.svg',
+                'clase_id' => $request->clase_id,
                 
-            //]);
-         
-
-
-
-            $client = new Client([
-         
-                'base_uri' => 'http://167.172.162.54/',
-           
             ]);
-            $response = $client->post('http://localhost:8000/post-silueta-create',['name' => 'olas']);
-            dd($response->getBody());
+         
+
+
+
+           // $client = new Client([
+         //
+           //     'base_uri' => 'http://167.172.162.54/',
+           
+            //]);
+            //$response = $client->post('http://localhost:8000/post-silueta-create',['name' => 'olas']);
+           // dd($response->getBody());
 
         }else{
             Actividad::create([
