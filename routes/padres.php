@@ -1,6 +1,6 @@
 <?php
-	Route::post('/home/{perfil_id}/{curso_id}/actividad/{actividad_id}/intentos/{valor}/realizada', 'Padres\PerfilEstudiante@juegorealizado');
-Route::group(['middleware' => ['auth'],'prefix' => 'home2'], function () {
+Route::post('/game/{perfil_id}/{curso_id}/actividad/{actividad_id}/intentos/{valor}/realizada', 'Padres\PerfilEstudiante@juegorealizado');
+Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
 	Route::get('/', 'Padres\PadresViewController@home')->name('home');
 
 	Route::get('/detalles-avances/cursos', 'Padres\PadresViewController@detallespadrecursos')->name('padre.detalles-avances');
