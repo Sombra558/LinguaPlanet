@@ -1,8 +1,8 @@
 <template>
-     <div >
-             <input v-if="accion==='usuarios'" type="text" v-model="query" placeholder="Buscar Usuario"> 
-             <input v-else type="text" v-model="query2" placeholder="Buscar inscripcion"> 
-    </div>
+     <span class="form-control input-primary input-search">
+        <input v-if="accion==='usuarios'" type="text" v-model="query" class="border-0 w-100" placeholder="Buscar usuario"> 
+        <input v-else type="text" v-model="query2" class="border-0 w-100" placeholder="Buscar inscripción"> 
+    </span>
 </template>
 
 <script>

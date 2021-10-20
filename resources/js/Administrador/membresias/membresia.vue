@@ -6,11 +6,11 @@
                 <Searh/>    
             </div>
             <div class="col-12 col-lg-6 d-flex justify-content-center justify-content-md-end mt-3 mt-lg-0">
-                <a class="btn btn-primary px-4" @click.prevent="membresiamodal(null,'crear')">Crear nueva membresia</a>
+                <a class="btn btn-admin btn-primary px-4" @click.prevent="membresiamodal(null,'crear')">Crear nueva membresia</a>
             </div>
         </div>
-        <div class="table-container">      
-            <table style="margin-top:25px" class="table table-borderless table-striped table-com">
+        <div class="table-container"> 
+            <table style="margin-top:25px" class="table table-admin table-borderless table-striped table-com">
                 <thead>
                     <tr class="color-black">
                         <th>Membresia</th>
@@ -75,7 +75,7 @@
         <div class="modal fade" id="crearMembresia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header pb-0">
+                    <div class="modal-header modal-header-admin pb-0">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M22.5 7.5L7.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -91,30 +91,30 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-12">
+                                <div class="form-group form-group-admin col-12">
                                     <label for="nombre">Nombre de la membresia</label>
-                                    <input type="text" class="form-input input-primary" v-model="newmembresia.nombre" maxlength="200" placeholder="Ingresa el nombre" required>
+                                    <input type="text" class="form-input form-input-admin input-primary" v-model="newmembresia.nombre" maxlength="200" placeholder="Ingresa el nombre" required>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-12">
+                                <div class="form-group form-group-admin col-12">
                                     <label for="tipo_cupon" >idioma</label>
-                                    <select class="form-input input-primary" name="idioma_id"  v-model="newmembresia.idioma_id" required>
+                                    <select class="form-input form-input-admin input-primary" name="idioma_id"  v-model="newmembresia.idioma_id" required>
                                         <option :value="null">Seleccionar</option>
                                         <option v-for="idioma in idiomas" :key="idioma.id" :value="idioma.id">{{idioma.idioma}}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-12">
+                                <div class="form-group form-group-admin col-12">
                                     <label for="titulo" >Nombre URL</label>
-                                    <input type="text" class="form-input input-primary" v-model="nombreURL" name="nombreURL" placeholder="Ingresa el nombre URL" required>
+                                    <input type="text" class="form-input form-input-admin input-primary" v-model="nombreURL" name="nombreURL" placeholder="Ingresa el nombre URL" required>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-lg btn-outline-secondary" data-dismiss="modal">Cancelar</button>
-                            <button :disabled="proceso" type="submit" class="btn btn-lg btn-primary">Agregar Membresia</button>
+                        <div class="modal-footer modal-footer-admin">
+                            <button type="button" class="btn btn-admin btn-lg btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                            <button :disabled="proceso" type="submit" class="btn btn-admin btn-lg btn-primary">Agregar Membresia</button>
                         </div>
                     </form>            
                 </div>
@@ -122,9 +122,9 @@
         </div>
           <!--modal editar-->
          <div v-if="membresiaSelected" class="modal fade" id="editarMembresia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header pb-0">
+                    <div class="modal-header moda-heacer-admin pb-0">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M22.5 7.5L7.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -140,30 +140,30 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-12">
+                                <div class="form-group form-group-admin col-12">
                                     <label for="nombre" >Nombre</label>
-                                    <input type="text" class="form-input input-primary" v-model="membresiaSelected.nombre" maxlength="200" required> 
+                                    <input type="text" class="form-input form-input-admin input-primary" v-model="membresiaSelected.nombre" maxlength="200" required> 
                                 </div>    
                             </div>
                             <div class="row">
-                                <div class="form-group col-12">
+                                <div class="form-group form-group-admin col-12">
                                     <label for="tipo_cupon" >idioma</label>
-                                    <select class="form-input input-primary" name="tipo_cupon"  v-model="membresiaSelected.idioma_id" required>
+                                    <select class="form-input form-input-admin input-primary" name="tipo_cupon"  v-model="membresiaSelected.idioma_id" required>
                                         <option :value="null">Seleccione</option>
                                         <option v-for="idioma in idiomas" :key="idioma.id" :value="idioma.id">{{idioma.idioma}}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-12">
+                                <div class="form-group form-group-admin col-12">
                                     <label for="titulo" >Nombre URL</label>
-                                    <input type="text" class="form-input input-primary" v-model="membresiaSelected.nombreURL" name="nombreURL" required>
+                                    <input type="text" class="form-input form-input-admin input-primary" v-model="membresiaSelected.nombreURL" name="nombreURL" required>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-lg btn-outline-secondary" data-dismiss="modal">Cancelar</button>
-                            <button :disabled="proceso" type="submit" class="btn btn-lg btn-primary">Editar Membresia</button>
+                        <div class="modal-footer modal-footer-admin">
+                            <button type="button" class="btn btn-admin btn-lg btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                            <button :disabled="proceso" type="submit" class="btn btn-admin btn-lg btn-primary">Editar Membresia</button>
                         </div>
                     </form>          
                 </div>
@@ -261,70 +261,5 @@ import Searh from './search.vue';
 </script>
 
 <style lang="scss" scoped>
-    .btn-options {
-        background-color: transparent;
-        border: none;
-    }
-
-    .btn-options:hover {
-        border: 1px solid #606060;
-        box-sizing: border-box;
-        border-radius: 4px;
-    }
-
-    table thead th {        
-        font-weight: 500;
-        font-size: 1rem;
-    }
-
-    .table-container {
-        width : 100%;
-        overflow-x : auto;
-    }
-
-    .table {
-        width : 74.3em;
-    }
-
-    .modal-header {
-        border-bottom: none;
-    }
-
-    .modal-footer {
-        border-top-color: #B5B5BB;
-        background-color: #F8F8F8;
-    }
-
-    .form-input {
-        padding: 9px 16px !important;
-    }
-
-    .form-group label {
-        font-weight: 500;
-        font-size: 0.9rem;
-    }
-
-    .form-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-        color: #606060 !important;
-        font-weight: 400 !important;
-        font-size: 1rem !important;
-    }
-
-    select.form-input {
-        color: #606060 !important;
-        font-weight: 400 !important;
-        font-size: 1rem !important;   
-    }
-
-    @media(max-width: 768px) {
-        .btn.btn-primary {
-            display: block;
-            width: 100%;
-        }
-
-        .btn.btn-lg {
-            display: block;
-            width: 100%;
-        }
-    }
+    
 </style>

@@ -4,9 +4,11 @@
 	    	<div class="col-12 col-md-6 my-4">
 	    		<div class="card personaje">
 	    			<div class="card-body d-flex flex-column justify-content-center align-items-center">
-	    				<svg class="w-100 h-75" viewBox="0 0 230 430" fill="none" xmlns="http://www.w3.org/2000/svg">
+	    				<!-- <svg class="w-100 h-75" viewBox="0 0 230 430" fill="none" xmlns="http://www.w3.org/2000/svg">
 	    					<personajeComponent ref="personaje" :avatar="perfil.avatar" :premios="perfil.premios"/>
-	    				</svg>
+	    				</svg> -->
+	    				<object type="image/svg+xml" width="230" height="430" data="/images/perro-accesorios.svg">
+						</object>
 	    				<button :disabled="estadoprocreso" @click.prevent="guardar()" class="btn btn-success mt-5 w-75">
 	    					<h2 class="mb-0">
 	    						Guardar
@@ -27,7 +29,9 @@
 							<div class="col-6 mb-3" v-for="premio in perfil.premios" :key="premio.id">
 						    	<div class="card premio" @click="updateCloth(premio)">
 						    		<div class="card-body text-center">
-										<img width="125" height="125" :src="premio.accesorio" alt="accesorio">
+						    			<object type="image/svg+xml" width="125" height="125" :data="premio.accesorio">
+						    				<param name="color" :value="premio.pivot.color"/>
+  										</object>
 						      		</div>
 						    	</div>
 						    	<p class="card-text text-white text-center">{{ premio.nombre }}</p>
@@ -75,7 +79,7 @@
     				} else
     					return a;
     			});
-    			let { id, tipo, corde_x, corde_y, accesorio } = accesory; 
+    			let { id, tipo, corde_x, corde_y, accesorio, pivot : { color } } = accesory; 
     			let display = 1;
 
     			if(tipo === 'bufanda' || tipo === 'gafas')
@@ -83,7 +87,7 @@
     			else if(tipo === 'guitarra')
     				display = 3;
 
-    			if (newAccesory) this.$refs.personaje.accesoriesUsed.push( { 'id' : id, 'tipo' : tipo, 'display' : display, 'corde_x' : corde_x, 'corde_y' : corde_y, 'accesorio' : accesorio } );
+    			if (newAccesory) this.$refs.personaje.accesoriesUsed.push( { 'id' : id, 'tipo' : tipo, 'display' : display, 'corde_x' : corde_x, 'corde_y' : corde_y, 'accesorio' : accesorio, 'color' :  color } );
         	},
 			guardar(){
 				this.estadoprocreso=true;

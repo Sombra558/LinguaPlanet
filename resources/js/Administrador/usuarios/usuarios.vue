@@ -1,258 +1,315 @@
 <template>
-    <div>
-            <h1>Usuarios</h1>
-            <Searh :accion="tab" />
-             <a v-if="tab==='inscripciones'" @click.prevent="planusermodal(null,'crear')">Inscribir Usuario a membresia</a>
-              <a v-else @click.prevent="usermodal()">Crear Usuario</a>
-
-            <div class="row">
-                    <button @click.prevent="seleccionartab('inscripciones')" class="col-sm-12 col-md-3">
-                        Usuarios Inscritos
-                    </button>
-                    <button @click.prevent="seleccionartab('usuarios')" class="col-sm-12 col-md-3">
-                        Todos los Usuarios
-                    </button>
-                   
+    <div class="container">
+        <h3 class="color-black">Usuarios</h3>
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <Searh :accion="tab"/>
+            </div>
+            <div class="col-12 col-lg-6 d-flex justify-content-center justify-content-md-end mt-3 mt-lg-0">
+                <a v-if="tab==='inscripciones'" class="btn btn-admin btn-primary px-4" @click.prevent="planusermodal(null,'crear')">Inscribir Usuario a membresia</a>
+             <a v-else class="btn btn-admin btn-primary px-4" @click.prevent="usermodal()">Crear Usuario</a>
+            </div>
         </div>
-              <table v-if="tab==='usuarios'" style="margin-top:25px" class="table table-com">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Lastname</th>
-                        <th>Accion</th>
-                 
-                    </tr>
-                </thead>
-                <tbody>
-                <tr  v-for="(usuario,index) in filteredUsuarios" :key="index">
-                    <td>{{usuario.name}}</td>
-                    <td>{{usuario.lastname}}</td>
-                    <td>{{usuario.email}}</td>
-                    <td>
-                        <a @click.prevent="eliminaruser(usuario.id)">Eliminar</a>
-
-                    </td>
-                   
-                </tr>
-                </tbody>
-            </table>
-              <table v-if="tab==='inscripciones'" style="margin-top:25px" class="table table-com">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Lastname</th>
-                        <th>Tipo</th>
-                        <th>Comprobante</th>
-                        <th>Perfiles Disponibles En Plan</th>
-                        <th>Accion</th>
-                 
-                    </tr>
-                </thead>
-                <tbody>
-                <tr  v-for="(usuario,index) in filteredInscripciones" :key="index">
-                    <td>{{usuario.user.name}}</td>
-                    <td>{{usuario.user.lastname}}</td>
-                    <td>{{usuario.user.email}}</td>
-                    <td>{{usuario.tipo}}</td>
-                    <td>{{usuario.comprobante}}</td>
-                    <td>{{usuario.available}}</td>
-                    <td>
-                        <a @click.prevent="planusermodal(usuario,'editar')">Editar</a>
-                         <a @click.prevent="eliminarInscripcion(usuario)">Eliminar</a>
-      
-                    </td>
-                   
-                </tr>
-                </tbody>
-            </table>
-
-                <!--modal crear Usuario-->
-             <div class="modal fade" id="crearUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nuevo Usuario</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
+        <nav class="mt-3">
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-link active" @click.prevent="seleccionartab('inscripciones')" id="nav-inscritos-tab" data-toggle="tab" href="#nav-inscritos" role="tab" aria-controls="nav-inscritos" aria-selected="true">Usuarios inscritos</a>
+            <a class="nav-link" @click.prevent="seleccionartab('usuarios')" id="nav-usuarios-tab" data-toggle="tab" href="#nav-usuarios" role="tab" aria-controls="nav-usuarios" aria-selected="false">Todos los usuarios</a>
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane table-container fade show active" id="nav-inscritos" role="tabpanel" aria-labelledby="nav-inscritos-tab">
+                <table class="table mt-2 table-admin table-borderless table-striped table-com">
+                    <thead>
+                        <tr class="color-black">
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Email</th>
+                            <th>Tipo</th>
+                            <th>Comprobante</th>
+                            <th>Perfiles disponibles en plan</th>
+                            <th></th>                     
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="color-black" v-for="(usuario,index) in filteredInscripciones" :key="index">
+                            <td>{{usuario.user.name}}</td>
+                            <td>{{usuario.user.lastname}}</td>
+                            <td>{{usuario.user.email}}</td>
+                            <td>{{usuario.tipo}}</td>
+                            <td>{{usuario.comprobante}}</td>
+                            <td>{{usuario.available}}</td>
+                            <td>
+                                <button class="transparent-button" @click.prevent="planusermodal(usuario,'editar')">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 20H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <span class="ml-1">
+                                        Editar
+                                    </span>
+                                </button>
+                                <button class="transparent-button" @click.prevent="eliminarInscripcion(usuario)">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 6H5H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M10 11V17" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M14 11V17" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <span class="ml-1">
+                                        Eliminar
+                                    </span>
+                                </button>
+                            </td>                           
+                        </tr>
+                    </tbody>
+                </table>                
+            </div>
+            <div class="tab-pane fade" id="nav-usuarios" role="tabpanel" aria-labelledby="nav-usuarios-tab">
+                <div class="table-container">
+                    <table class="table mt-2 table-admin table-borderless table-striped table-com">
+                        <thead>
+                            <tr class="color-black">
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="color-black" v-for="(usuario,index) in filteredUsuarios" :key="index">
+                                <td>{{usuario.name}}</td>
+                                <td>{{usuario.lastname}}</td>
+                                <td>{{usuario.email}}</td>
+                                <td>
+                                    <button class="transparent-button" @click.prevent="eliminaruser(usuario.id)" >
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 6H5H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M10 11V17" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M14 11V17" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="ml-1">
+                                            Eliminar
+                                        </span>
+                                    </button>
+                                </td>                       
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="modal-body">
+            </div>
+        </div>        
+        <!--modal crear Usuario-->
+        <div class="modal fade" id="crearUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header modal-header-admin pb-0">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.5 7.5L7.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7.5 7.5L22.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
                     <form id="formu-usuario" @submit.prevent="agregar()" ref="form">
-                       
-                       <div class="row m-0">
-                                        <div class="col-6">
-                                            <input  type="text" v-model="newusuario.name" name="name" class="form-control" placeholder="Nombre del usuario" aria-label="Cursos" aria-describedby="addon-wrapping">
-                                        </div>
-                                        
-                                        <div class="col-6">
-                                            <input type="text" v-model="newusuario.lastname"  name="lastname" class="form-control"  placeholder="Apellido del docente" aria-label="Cursos" aria-describedby="addon-wrapping">
-                                        </div>
-                                        
-                                        <div class="col-6">
-                                            <input type="text" v-model="newusuario.email" name="email" class="form-control "  placeholder="Correo">
-                                        </div>
-                                        
-                                  </div>
-                                   
-                                  
-                                         <div class="col-md-12 mt-3 mb-1">
-                                        <label>Frase Secreta</label>
-                                        <input
-                                            type="password"
-                                            placeholder="Indroduce tu frase de acceso"
-                                            name="frase"
-                                            v-model="newusuario.frase"
-                                            class="form-control "
-                                        />
-                                    </div> 
-                                    <div class="col-md-12 mt-3 mb-1">
-                                        <label>Contraseña</label>
-                                        <input
-                                            type="password"
-                                            placeholder="Indroduce tu nueva Contraseña"
-                                            name="password"
-                                            v-model="newusuario.password"
-                                            class="form-control "
-                                        />
-                                    </div>            
-                                    <div class="col-md-12 mt-3 mb-2">
-                                                <label>Confirmar Contraseña</label>
-                                                <input
-                                                type="password"
-                                                placeholder="Confirma tu contraseña"
-                                                name="password"
-                                                v-model="newusuario.confirmpassword"
-                                                class="form-control"
-                                                />
-                                    </div>
-                            
-                         
-                           
-                         
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button :disabled="proceso" type="submit" class="btn btn-primary">Inscribir Usuario</button>
+                        <div class="modal-body pt-0 px-5">
+                            <div class="row">
+                                <div class="col">
+                                    <h3 class="fw-500 color-black mb-4" id="exampleModalLabel">Crear nuevo usuario</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group form-group-admin col-12 col-lg-6">
+                                    <label>Nombre de usuario</label>
+                                    <input type="text" v-model="newusuario.name" name="name" class="form-input form-input-admin input-primary" placeholder="Nombre del usuario" aria-label="Cursos" aria-describedby="addon-wrapping">
+                                </div>                        
+                                <div class="form-group form-group-admin col-12 col-lg-6">
+                                    <label>Apellido de usuario</label>
+                                    <input type="text" v-model="newusuario.lastname"  name="lastname" class="form-input form-input-admin input-primary"  placeholder="Apellido del docente" aria-label="Cursos" aria-describedby="addon-wrapping">
+                                </div>                        
+                            </div>
+                            <div class="row">
+                                <div class="form-group form-group-admin col-12 col-lg-6">
+                                    <label>Email</label>
+                                    <input type="text" v-model="newusuario.email" name="email" class="form-input form-input-admin input-primary "  placeholder="Correo">
+                                </div>                        
+                                <div class="form-group form-group-admin col-12 col-lg-6">
+                                    <label>Frase Secreta</label>
+                                    <input
+                                        type="password"
+                                        placeholder="Indroduce tu frase de acceso"
+                                        name="frase"
+                                        v-model="newusuario.frase"
+                                        class="form-input form-input-admin input-primary "
+                                    />
+                                </div> 
+                            </div>
+                            <div class="row">
+                                <div class="form-group form-group-admin col-12 col-lg-6">
+                                    <label>Contraseña</label>
+                                    <input
+                                        type="password"
+                                        placeholder="Indroduce tu nueva Contraseña"
+                                        name="password"
+                                        v-model="newusuario.password"
+                                        class="form-input form-input-admin input-primary "
+                                    />
+                                </div>            
+                                <div class="form-group form-group-admin col-12 col-lg-6">
+                                    <label>Confirmar Contraseña</label>
+                                    <input
+                                    type="password"
+                                    placeholder="Confirma tu contraseña"
+                                    name="password"
+                                    v-model="newusuario.confirmpassword"
+                                    class="form-input form-input-admin input-primary"
+                                    />
+                                </div>
+                            </div>
                         </div>
+                        <div class="modal-footer modal-footer-admin">
+                            <button type="button" class="btn btn-admin btn-lg btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                            <button :disabled="proceso" type="submit" class="btn btn-admin btn-lg btn-primary">Inscribir usuario</button>
+                        </div>            
                     </form>
-                </div>              
                 </div>
             </div>
-            </div>
-              <!--modal editar-->
-             <div v-if="inscripcionSelected" class="modal fade" id="editarPlan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        </div>
+        <!--modal editar-->
+        <div v-if="inscripcionSelected" class="modal fade" id="editarPlan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar Inscripcion</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
+                    <div class="modal-header modal-header-admin">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.5 7.5L7.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7.5 7.5L22.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
                     <form id="editar-cupon" @submit.prevent="editarInscripcion(inscripcionSelected)" ref="form">
-                            <div class="form-group">
-                                        <label for="inicia">Nombre de Usuario</label>
-                                        <div class="row mx-0 align-items-center justify-content-end mb-3 ">
-                                            <input type="text" disabled v-model="inscripcionSelected.user.name" class="form-control input-novedades" style="border-radius:8px;" required>
-                                        </div>
-                             </div>
-                              <div class="form-group">
-                                        <label for="inicia">Apellido de Usuario</label>
-                                        <div class="row mx-0 align-items-center justify-content-end mb-3 ">
-                                            <input type="text" disabled v-model="inscripcionSelected.user.lastname" class="form-control input-novedades" style="border-radius:8px;" required>
-                                        </div>
-                             </div>
-                                <div class="form-group">
-                                        <label for="inicia">Email de Usuario</label>
-                                        <div class="row mx-0 align-items-center justify-content-end mb-3 ">
-                                            <input type="text" disabled v-model="inscripcionSelected.user.email" class="form-control input-novedades" style="border-radius:8px;" required>
-                                        </div>
-                             </div>
-                                  
-                            <div class="form-group">
-                                  
-                                        <label for="inicia">Seleccione Plan</label>
-                                        <select v-if="planesdisSelected" v-model="inscripcionSelected.plan_id" name="plan_id" class="form-control input-novedades"  required>
-                                                    <option :value="null">Seleccione plan</option>
-                                                    <option :value="plan.id" v-for="plan in planesdisSelected" :key="'plan-disponibles-'+plan.id">
-                                                        {{plan.nombre}}
-                                                    </option>
-                                         </select>
+                        <div class="modal-body pt-0 px-5">
+                            <div class="row">
+                                <div class="col">
+                                    <h3 class="fw-500 color-black mb-4" id="exampleModalLabel">Editar inscripción</h3>
+                                </div>
                             </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button :disabled="proceso" type="submit" class="btn btn-primary">Editar Inscripcion</button>
+                            <div class="row">
+                                <div class="form-group form-group-admin col-12">
+                                    <label>Nombre de Usuario</label>
+                                    <input type="text" disabled v-model="inscripcionSelected.user.name" class="form-input form-input-admin input-primary input-novedades" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group form-group-admin col-12">
+                                    <label for="inicia">Apellido de Usuario</label>
+                                    <input type="text" disabled v-model="inscripcionSelected.user.lastname" class="form-input form-input-admin input-primary input-novedades" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group form-group-admin col-12">
+                                    <label for="inicia">Email de Usuario</label>
+                                    <input type="text" disabled v-model="inscripcionSelected.user.email" class="form-input form-input-admin input-primary input-novedades" required>
+                                </div>                                  
+                            </div>
+                            <div class="row">
+                                <div class="form-group form-group-admin col-12">
+                                    <label for="inicia">Seleccione Plan</label>
+                                    <select v-if="planesdisSelected" v-model="inscripcionSelected.plan_id" name="plan_id" class="form-input form-input-admin input-primary input-novedades" required>
+                                        <option :value="null">Seleccione plan</option>
+                                        <option :value="plan.id" v-for="plan in planesdisSelected" :key="'plan-disponibles-'+plan.id">
+                                            {{plan.nombre}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer modal-footer-admin">
+                            <button type="button" class="btn btn-lg btn-admin btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                            <button :disabled="proceso" type="submit" class="btn btn-lg btn-admin btn-primary">Editar Inscripcion</button>
                         </div>
                     </form>
-                </div>              
                 </div>
             </div>
-            </div>
-              <!--modal crear-->
-             <div class="modal fade" id="crearPlan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        </div>
+        <!--modal crear-->
+        <div class="modal fade" id="crearPlan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nueva Inscripcion</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
+                    <div class="modal-header modal-header-admin pb-0">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.5 7.5L7.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7.5 7.5L22.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
                     <form id="crear-inscripcion" @submit.prevent="crearInscripcion(userSelected,planSelected)" ref="form">
-                       
-                             <div class="form-group">
-                                        <label for="inicia">Buscar alumno</label>
-
-                                        <div class="row mx-0 align-items-center justify-content-end mb-3 ">
-                                            <input type="text" v-model="query" class="form-control input-novedades" style="border-radius:8px;" required>
-                                            <button @click.prevent="buscar(query)" class="position-absolute mr-2 btn p-0">
-                                                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <ellipse cx="9.50953" cy="9.85054" rx="8.50953" ry="8.85054" stroke="#041008" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M15.428 16.4668L18.7642 19.9277" stroke="#041008" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                            </button>
-                                        </div>
-                             </div>
-                                  
-                            <div class="form-group">
-                                        <label for="inicia">Seleccione estudiante</label>
-                                        <select  name="user_id" v-model="userSelected" class="form-control input-novedades" required>
-                                                <option :value="null">Seleccione Usuario</option>
-                                                <option :value="user.id" v-for="user in todosUser" :key="'user-'+user.id">
-                                                    {{user.name}} {{user.lastname}}
-                                                </option>
-                                        </select>
-                                        <label for="inicia">Seleccione Membresia</label>
-                                        <select v-model="membresiaSelected" name="curso_id" class="form-control input-novedades"  required>
-                                                    <option :value="null">Seleccione Membresia</option>
-                                                    <option :value="membresia" v-for="membresia in membresias" :key="'membresia-'+membresia.id">
-                                                        {{membresia.nombre}}
-                                                    </option>
-                                         </select>
-                                            <label for="inicia">Seleccione Plan</label>
-                                        <select v-if="membresiaSelected" v-model="planSelected" name="plan_id" class="form-control input-novedades"  required>
-                                                    <option :value="null">Seleccione plan</option>
-                                                    <option :value="plan.id" v-for="plan in membresiaSelected.planes" :key="'plan-'+plan.id">
-                                                        {{plan.nombre}}
-                                                    </option>
-                                         </select>
+                        <div class="modal-body pt-0 px-5">
+                            <div class="row">
+                                <div class="col">
+                                    <h3 class="fw-500 color-black mb-4" id="exampleModalLabel">Nueva inscripción</h3>
+                                </div>
                             </div>
-                         
-                           
-                         
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button :disabled="proceso" type="submit" class="btn btn-primary">Inscribir Usuario</button>
+                            <div class="row">
+                                <div class="form-group form-group-admin col-12">
+                                    <label for="inicia">Buscar alumno</label>
+                                    <div class="d-flex align-items-center justify-content-end">
+                                        <input type="text" v-model="query" class="form-input form-input-admin input-primary input-novedades" style="border-radius:8px;" required>
+                                        <button @click.prevent="buscar(query)" class="position-absolute mr-2 btn p-0">
+                                            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <ellipse cx="9.50953" cy="9.85054" rx="8.50953" ry="8.85054" stroke="#041008" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M15.428 16.4668L18.7642 19.9277" stroke="#041008" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group form-group-admin col-12">
+                                    <label for="inicia">Seleccione estudiante</label>
+                                    <select  name="user_id" v-model="userSelected" class="form-input form-input-admin input-primary input-novedades" required>
+                                        <option :value="null">Seleccionar</option>
+                                        <option :value="user.id" v-for="user in todosUser" :key="'user-'+user.id">
+                                            {{user.name}} {{user.lastname}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group form-group-admin col-12">
+                                    <label for="inicia">Seleccione Membresia</label>
+                                    <select v-model="membresiaSelected" name="curso_id" class="form-input form-input-admin input-primary input-novedades"  required>
+                                        <option :value="null">Seleccionar</option>
+                                        <option :value="membresia" v-for="membresia in membresias" :key="'membresia-'+membresia.id">
+                                            {{membresia.nombre}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group form-group-admin col-12">
+                                    <label for="inicia">Seleccione Plan</label>
+                                    <select v-if="membresiaSelected" v-model="planSelected" name="plan_id" class="form-input form-input-admin input-primary input-novedades"  required>
+                                        <option :value="null">Seleccionar</option>
+                                        <option :value="plan.id" v-for="plan in membresiaSelected.planes" :key="'plan-'+plan.id">
+                                            {{plan.nombre}}
+                                        </option>
+                                    </select>
+                                    <select v-else v-model="planSelected" name="plan_id" class="form-input form-input-admin input-primary input-novedades"  required>
+                                        <option :value="null">Seleccionar</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer modal-footer-admin">
+                            <button type="button" class="btn btn-admin btn-lg btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                            <button :disabled="proceso" type="submit" class="btn btn-admin btn-lg btn-primary">Inscribir Usuario</button>
                         </div>
                     </form>
-                </div>              
                 </div>
             </div>
-            </div>
-            
+        </div>            
     </div>
 </template>
 

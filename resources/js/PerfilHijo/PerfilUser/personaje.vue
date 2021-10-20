@@ -1,7 +1,12 @@
 <template>
 	<g>
-    	<image x="-90" y="30" width="410" height="400" preserveAspectRatio="none" :xlink:href="avatar.cuerpo" alt="mi avatar"/>
-    	<image v-for="accesory in displayAccesories" :key="accesory.id" :x="accesory.corde_x" :y="accesory.corde_y" :xlink:href="accesory.accesorio" preserveAspectRatio="none"/>
+    	<image x="-90" y="30" width="410" height="400" preserveAspectRatio="none" :href="avatar.cuerpo" alt="mi avatar"/>
+    	<!-- <foreignObject v-for="accesory in displayAccesories" :x="accesory.corde_x" :y="accesory.corde_y" width="200" height="160">
+	    	<object type="image/svg+xml" :data="accesory.accesorio">
+				<param name="color" :value="accesory.color"/>
+			</object>
+		</foreignObject> -->
+    	<use class="accesorio" v-for="accesory in displayAccesories" :key="accesory.id" :x="accesory.corde_x" :y="accesory.corde_y" :href="accesory.accesorio+'#accesorio'" preserveAspectRatio="none"></use>
 	</g>
 </template>
 
@@ -60,5 +65,11 @@
 </script>
 
 <style lang="scss" scoped>
+	use.accesorio {
+		fill : red;
+	}
 
+	svg path.relleno {
+		fill : inherit;
+	}
 </style>

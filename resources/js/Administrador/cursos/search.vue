@@ -25,26 +25,5 @@ import { mapGetters } from "vuex";
 </script>
 
 <style lang="scss" scoped>
-    .input-search {
-        padding-left : 45px;
-    }
-
-    .input-search input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-        color: #31348B;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-    }
-
-    .input-search:before {
-        content: "";
-        background-image: url('/images/search-icon.svg');
-        background-repeat : no-repeat;
-        background-position-y : center;
-        position: absolute;
-        top: 0;
-        left: 27px;
-        height: 100%;
-        width: 100%;
-    }
+    
 </style>

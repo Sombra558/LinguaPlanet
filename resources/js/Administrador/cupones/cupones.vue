@@ -6,11 +6,11 @@
                 <Searh/>    
             </div>
             <div class="col-12 col-lg-6 d-flex justify-content-center justify-content-md-end mt-3 mt-lg-0">
-                <a class="btn btn-primary px-4" @click.prevent="cuponmodal(null,'crear')">Crear Nuevo Cupón</a>
+                <a class="btn btn-admin btn-primary px-4" @click.prevent="cuponmodal(null,'crear')">Crear Nuevo Cupón</a>
             </div>
         </div>
         <div class="table-container">            
-            <table style="margin-top:25px" class="table table-borderless table-striped table-com">
+            <table style="margin-top:25px" class="table table-admin table-borderless table-striped table-com">
                 <thead>
                     <tr class="color-black">
                         <th>Nombre</th>
@@ -97,7 +97,7 @@
             <div class="modal fade" id="crearCupon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                     <div class="modal-content">
-                        <div class="modal-header pb-0">
+                        <div class="modal-header modal-header-admin pb-0">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M22.5 7.5L7.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -113,48 +113,48 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-12 col-lg-6">
+                                    <div class="form-group form-group-admin col-12 col-lg-6">
                                         <label for="nombre" >Nombre</label>
-                                        <input class="form-input input-primary" type="text" v-model="newcupon.nombre" maxlength="200" placeholder="Ingresa el nombre" required>
+                                        <input class="form-input form-input-admin input-primary" type="text" v-model="newcupon.nombre" maxlength="200" placeholder="Ingresa el nombre" required>
                                     </div>
-                                    <div class="form-group col-12 col-lg-6">
+                                    <div class="form-group form-group-admin col-12 col-lg-6">
                                         <label for="codigo" >Código</label>
-                                        <input class="form-input input-primary" type="text" v-model="newcupon.codigo" maxlength="20" placeholder="Ingresa o genera el código" required>
+                                        <input class="form-input form-input-admin input-primary" type="text" v-model="newcupon.codigo" maxlength="20" placeholder="Ingresa o genera el código" required>
                                         <button class="btn btn-block btn-primary mt-2" type="button"  @click.prevent="generar('crear')">Generar Código</button>
                                     </div>
-                                    <div class="form-group col-12 col-lg-6">
+                                    <div class="form-group form-group-admin col-12 col-lg-6">
                                         <label for="tipo_cupon" >Condición de Descuento</label>
-                                        <select class="form-input input-primary" name="tipo_descuento"  v-model="newcupon.tipo_descuento"  required>
+                                        <select class="form-input form-input-admin input-primary" name="tipo_descuento"  v-model="newcupon.tipo_descuento"  required>
                                             <option :value="null">Seleccione</option>
                                             <option value="Porcentual">Porcentual</option>
                                             <option value="Moneda">Moneda</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-12 col-lg-6">
+                                    <div class="form-group form-group-admin col-12 col-lg-6">
                                         <label for="valor">Precio Total</label>
-                                        <input class="form-input input-primary" type="number" v-model="newcupon.valor" step=".01" name="valor" required>
+                                        <input class="form-input form-input-admin input-primary" type="number" v-model="newcupon.valor" step=".01" name="valor" required>
                                     </div>
-                                    <div class="form-group col-12 col-lg-6">
+                                    <div class="form-group form-group-admin col-12 col-lg-6">
                                         <label for="tipo_cupon" >Tipo de Cupón</label>
-                                         <select class="form-input input-primary" name="tipo_cupon"  v-model="newcupon.tipo_cupon" required>
+                                         <select class="form-input form-input-admin input-primary" name="tipo_cupon"  v-model="newcupon.tipo_cupon" required>
                                             <option :value="null">Seleccione</option>
                                             <option value="Global">Global</option>
                                             <option value="Plan">Plan</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-12 col-lg-6">
+                                    <div class="form-group form-group-admin col-12 col-lg-6">
                                         <label for="cantidad">Cantidad</label>
-                                        <input class="form-input input-primary" type="number" v-model="newcupon.cantidad"  name="cantidad" required>
+                                        <input class="form-input form-input-admin input-primary" type="number" v-model="newcupon.cantidad"  name="cantidad" required>
                                     </div>
-                                    <div class="form-group col-12">
+                                    <div class="form-group form-group-admin col-12">
                                         <label for="vence">Valido Hasta</label>
-                                        <input class="form-input input-primary" type="date" v-model="newcupon.vence"  name="vence" required>
+                                        <input class="form-input form-input-admin input-primary" type="date" v-model="newcupon.vence"  name="vence" required>
                                     </div>    
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-lg btn-outline-secondary" data-dismiss="modal">Cancelar</button>
-                                <button :disabled="proceso" type="submit" class="btn btn-lg btn-primary">Agregar Cupón</button>
+                            <div class="modal-footer modal-footer-admin">
+                                <button type="button" class="btn btn-admin btn-lg btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                                <button :disabled="proceso" type="submit" class="btn btn-admin btn-lg btn-primary">Agregar Cupón</button>
                             </div>
                         </form>
                     </div>
@@ -180,53 +180,53 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-12 col-lg-6">
+                                <div class="form-group form-group-admin col-12 col-lg-6">
                                     <label for="nombre" >Nombre</label>
-                                    <input class="form-input input-primary" type="text" v-model="cuponSelected.nombre" maxlength="200" required>
+                                    <input class="form-input form-input-admin input-primary" type="text" v-model="cuponSelected.nombre" maxlength="200" required>
                                 </div>
-                                <div class="form-group col-12 col-lg-6">
+                                <div class="form-group form-group-admin col-12 col-lg-6">
                                     <label for="codigo" >Código</label>
-                                    <input class="form-input input-primary" type="text" v-model="cuponSelected.codigo" maxlength="20" required>
+                                    <input class="form-input form-input-admin input-primary" type="text" v-model="cuponSelected.codigo" maxlength="20" required>
                                     <button type="button" class="btn btn-block btn-primary mt-2" @click.prevent="generar('editar')">Generar Código</button>
                                 </div>
-                                <div class="form-group col-12 col-lg-6">
+                                <div class="form-group form-group-admin col-12 col-lg-6">
                                     <label for="tipo_cupon" >Tito de Cupón</label>
-                                    <select class="form-input input-primary" name="tipo_cupon"  v-model="cuponSelected.tipo_cupon" required>
+                                    <select class="form-input form-input-admin input-primary" name="tipo_cupon"  v-model="cuponSelected.tipo_cupon" required>
                                         <option :value="null">Seleccione</option>
                                         <option value="Global">Global</option>
                                         <option value="Plan">Plan</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-12 col-lg-6">
+                                <div class="form-group form-group-admin col-12 col-lg-6">
                                     <label for="tipo_cupon" >Tito de Descuento</label>
-                                     <select class="form-input input-primary" name="tipo_descuento"  v-model="cuponSelected.tipo_descuento" required>
+                                     <select class="form-input form-input-admin input-primary" name="tipo_descuento"  v-model="cuponSelected.tipo_descuento" required>
                                         <option :value="null">Seleccione</option>
                                         <option value="Porcentual">Porcentual</option>
                                         <option value="Moneda">Moneda</option>
                                     </select>
                                 </div>
-                               <div class="form-group col-12 col-lg-6">
+                                <div class="form-group form-group-admin col-12 col-lg-6">
                                     <label for="valor">Precio Total</label>
-                                    <input class="form-input input-primary" type="number" v-model="cuponSelected.valor" step=".01" name="valor" required>
+                                    <input class="form-input form-input-admin input-primary" type="number" v-model="cuponSelected.valor" step=".01" name="valor" required>
                                 </div>
-                                <div class="form-group col-12 col-lg-6">
+                                <div class="form-group form-group-admin col-12 col-lg-6">
                                     <label for="cantidad">Cantidad</label>
-                                    <input class="form-input input-primary" type="number" v-model="cuponSelected.cantidad"  name="cantidad" required>
+                                    <input class="form-input form-input-admin input-primary" type="number" v-model="cuponSelected.cantidad"  name="cantidad" required>
                                 </div>
-                                <div class="form-group col-12">
+                                <div class="form-group form-group-admin col-12">
                                     <label for="vence">Valido Hasta</label>
-                                    <input class="form-input input-primary" type="date" v-model="cuponSelected.vence"  name="vence" required>
+                                    <input class="form-input form-input-admin input-primary" type="date" v-model="cuponSelected.vence"  name="vence" required>
                                 </div>
                             </div> 
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-lg btn-outline-secondary" data-dismiss="modal">Cancelar</button>
-                            <button :disabled="proceso" type="submit" class="btn btn-lg btn-primary">Agregar Cupón</button>
+                        <div class="modal-footer modal-footer-admin">
+                            <button type="button" class="btn btn-admin btn-lg btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                            <button :disabled="proceso" type="submit" class="btn btn-admin btn-lg btn-primary">Agregar Cupón</button>
                         </div>
                     </form>
                 </div>
             </div>
-            </div>
+        </div>
     </div>
 </template>
 
@@ -324,83 +324,5 @@ import Searh from './search.vue';
 </script>
 
 <style lang="scss" scoped>
-    .btn {
-        font-weight : 400;
-    }
 
-    .btn-options {
-        background-color: transparent;
-        border: none;
-    }
-
-    .btn-options:hover {
-        border: 1px solid #606060;
-        box-sizing: border-box;
-        border-radius: 4px;
-    }
-
-    table thead th {        
-        font-weight: 500;
-        font-size: 1rem;
-    }
-
-    .table-container {
-        width : 100%;
-        overflow-x : auto;
-        height : 30rem;
-    }
-
-    .table {
-        width : 73.2em;
-    }
-
-    .modal-header {
-        border-bottom: none;
-    }
-
-    .form-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-        color: #606060 !important;
-        font-weight: 400 !important;
-        font-size: 1rem !important;
-    }
-
-    .form-input::-webkit-datetime-edit {
-        color: #606060 !important;
-        font-weight: 400 !important;
-        font-size: 1rem !important;
-    }
-
-    .form-input::-webkit-calendar-picker-indicator {
-        background-image: url('/images/calendar-dark.svg');
-        background-origin: content-box;
-        background-size: contain;
-        height: 1.2em;
-        margin-inline-start: 24px;
-        opacity: 1;
-        padding-bottom: 2px;
-        padding-inline-start: 3px;
-        padding-inline-end: 3px;
-        padding-top: 2px;
-        width: 1.2em;
-        background-repeat: no-repeat;
-        outline: none;
-    }
-
-    select.form-input {
-        color: #606060 !important;
-        font-weight: 400 !important;
-        font-size: 1rem !important;   
-    }
-
-    @media(max-width: 768px) {
-        .btn.btn-lg {
-            display: block;
-            width: 100%;
-        }
-
-        .btn.btn-primary {
-            display: block;
-            width: 100%;
-        }
-    }
 </style>

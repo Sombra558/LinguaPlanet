@@ -6,11 +6,11 @@
                 <Searh/>    
             </div>
             <div class="col-12 col-lg-6 d-flex justify-content-center justify-content-md-end mt-3 mt-lg-0">
-                <a href="/admin/curso/create" class="btn btn-primary px-4">Crear nuevo curso</a>
+                <a href="/admin/curso/create" class="btn btn-admin btn-primary px-4">Crear nuevo curso</a>
             </div>
         </div>
         <div class="table-container">
-            <table style="margin-top:25px," class="table table-borderless table-striped table-com">
+            <table style="margin-top:25px" class="table table-admin table-borderless table-striped table-com">
                 <thead>
                     <tr class="color-black">
                         <th>Nombre del Curso</th>
@@ -150,6 +150,9 @@ import Searh from './search.vue';
 </script>
 
 <style lang="scss" scoped>
+<<<<<<< HEAD
+    
+=======
     .btn {
         font-weight : 400;
     }
@@ -187,4 +190,5 @@ import Searh from './search.vue';
             width: 100%;
         }
     }
+>>>>>>> 1b4731fd86b252cae00cf23257434ac6558a9b10
 </style>
