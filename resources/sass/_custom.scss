@@ -181,6 +181,97 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     margin-left: -20rem;
   }
 }
+
+.btn-options {
+    background-color: transparent;
+    border: none;
+}
+
+.btn-options:hover {
+    border: 1px solid #606060;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+table.table-admin thead th {        
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.table-container {
+    width : 100%;
+    overflow-x : auto;
+}
+
+.table-admin {
+    width : 73.5em;
+}
+
+.modal-header-admin {
+    border-bottom: none;
+}
+
+.modal-footer-admin {
+    border-top-color: #B5B5BB;
+    background-color: #F8F8F8;
+}
+
+.form-input-admin {
+    padding: 9px 16px !important;
+}
+
+.form-group-admin label {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.form-input-admin::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #606060 !important;
+    font-weight: 400 !important;
+    font-size: 1rem !important;
+}
+
+select.form-input-admin {
+    color: #606060 !important;
+    font-weight: 400 !important;
+    font-size: 1rem !important;   
+}
+
+@media(max-width: 768px) {
+    .btn-admin.btn-primary {
+        display: block;
+        width: 100%;
+    }
+
+    .btn-admin.btn-lg {
+        display: block;
+        width: 100%;
+    }
+}
+
+.input-search {
+    padding-left : 45px;
+}
+
+.input-search input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #31348B;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.input-search:before {
+    content: "";
+    background-image: url('/images/search-icon.svg');
+    background-repeat : no-repeat;
+    background-position-y : center;
+    position: absolute;
+    top: 0;
+    left: 27px;
+    height: 100%;
+    width: 100%;
+}
+
 // - FIN Estilos layout de Admin
 
 .dropdown-menu-right :first-child::after {
