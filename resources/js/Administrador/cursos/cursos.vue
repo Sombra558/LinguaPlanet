@@ -150,9 +150,6 @@ import Searh from './search.vue';
 </script>
 
 <style lang="scss" scoped>
-<<<<<<< HEAD
-    
-=======
     .btn {
         font-weight : 400;
     }
@@ -190,5 +187,4 @@ import Searh from './search.vue';
             width: 100%;
         }
     }
->>>>>>> 1b4731fd86b252cae00cf23257434ac6558a9b10
 </style>

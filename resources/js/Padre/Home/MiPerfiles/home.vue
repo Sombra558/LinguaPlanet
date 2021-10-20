@@ -12,7 +12,7 @@
             </div>
             <div class="col-6 col-md-3">
                 <div @click.prevent="crear()" class="card-body" style="height: 150px; background-image : url(images/add-gray.svg); background-repeat: no-repeat; background-position : center center;">
-                  
+
                 </div> 
                <!-- <div @click="enviar()">enviar</div>-->                       
             </div>
