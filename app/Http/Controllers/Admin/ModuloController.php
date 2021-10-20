@@ -77,20 +77,14 @@ class ModuloController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $Modulo = Modulo::find($id);
-        dd($request['nombre']);
-        $modulo->nombre=$request['nombre'];
-        $modulo->inicia=$request['inicia'];
-        $modulo->finaliza=$request['finaliza'];
-        $modulo->descripcion=$request['descripcion'];
-        $modulo->save();
-        //if ($request->file('file')) {
-          //  $image = $request->file('file');
-            //$path = $image->store('public/Testimonial');
-            //$path = str_replace('public/', '', $path);
-            //$testimonial->img = $path;
-            //$testimonial->save();
-       // }
+        $modulo = Modulo::find($id);
+        $modulo->update([
+            'nombre' => $request['nombre'],
+            'descripcion' => $request['descripcion'],
+            'inicia' => $request['inicia'],
+            'finaliza' => $request['finaliza'],
+            'curso_id' => $request['curso_id'],
+        ]);
         return $modulo;
     }
 

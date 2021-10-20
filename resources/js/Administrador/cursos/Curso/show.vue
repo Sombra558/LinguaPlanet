@@ -27,7 +27,7 @@
                         <a class="nav-link color-black" id="usuarios-tab" data-toggle="tab" href="#usuarios" role="tab" aria-controls="usuarios" aria-selected="false">Usuarios suscritos</a>
                     </li>
                 </ul>
-                <div class="tab-content" id="myTabContent">
+                <div class="tab-content contenido" id="myTabContent">
                     <div class="tab-pane fade show active" id="curso-contenido" role="tabpanel" aria-labelledby="curso-contenido-tab">
                         <div v-if="!curso.modulos.length" class="row">
                             <div class="col">
@@ -61,6 +61,11 @@
                                                 <div class="arrow"></div>
                                                 <h3 class="popover-header"></h3>
                                                 <div class="popover-body px-4">
+                                                     <div class="row py-2">
+                                                        <div class="col">
+                                                            <button class="transparent-button" @click.prevent="seleccionarModuloModal(modulo,'Clase')">Agregar Clase</button>
+                                                        </div>                                
+                                                    </div>
                                                     <div class="row py-2">
                                                         <button class="edit-mobile img-btn" @click.prevent="seleccionarModuloModal(modulo,'editar')">
                                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,12 +74,9 @@
                                                             </svg>
                                                             Editar
                                                         </button>
+
                                                     </div>
-                                                    <div class="row py-2">
-                                                        <div class="col">
-                                                            <button class="transparent-button" @click.prevent="seleccionarModuloModal(modulo,'Clase')">Agregar Clase</button>
-                                                        </div>                                
-                                                    </div>
+                                                   
                                                     <div class="row py-2">
                                                         <div class="col">
                                                             <button class="transparent-button" @click.prevent="eliminarModulo(modulo)">Eliminar</button>
@@ -87,7 +89,7 @@
                                                     <span class="list-modulos-header">{{modulo.nombre}}</span>
                                                     <span v-if="!modulo.clases.length" class="color-plomo">{{modulo.clases.length}} Clases - <Cont :modulo="modulo" /> Actividades</span>
                                                     <a v-else href="#" data-toggle="collapse" :data-target="`#collapse${index}`" aria-expanded="true" :aria-controls="`collapse${index}`">
-                                                        <span class="fw-400 color-plomo">{{ modulo.clases.length }} Actividades</span>
+                                                        <span class="fw-400 color-plomo">{{ modulo.clases.length }} Clases</span>
                                                     </a>
                                                 </div>
                                                 <div class="col-3 d-flex justify-content-around">
@@ -98,7 +100,8 @@
                                                         </svg>
                                                         Editar
                                                     </button>
-                                                    <button type="button"class="btn-options" @click="showOptions($event, `options${index}`)">
+                                    
+                                                    <button type="button" class="btn-options" @click="showOptions($event, `options${index}`)">
                                                         <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <circle cx="2" cy="2" r="2" fill="#606060"/>
                                                             <circle cx="9" cy="2" r="2" fill="#606060"/>
@@ -130,7 +133,8 @@
                                                                                 Editar
                                                                             </span>
                                                                         </button>
-                                                                    </div>                                
+                                                                    </div>          
+                                                                                          
                                                                 </div>
                                                                 <div class="row py-2">
                                                                     <div class="col">
@@ -149,7 +153,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="card-header" id="headingOne">
+                                                        <div style="heigth:300px;" class="card-header" id="headingOne">
                                                           <div class="row">
                                                                 <div class="col-10">
                                                                     <span class="d-block fw-400">Clase/Semana {{index+1}}</span>
@@ -159,7 +163,7 @@
                                                                     </a>
                                                                 </div>
                                                                 <div class="col-2 text-center">                                                            
-                                                                    <button type="button"class="btn-options" @click="showOptions($event, `optionsClass${index}`)">
+                                                                    <button type="button" class="btn-options" @click="showOptions($event, `optionsClass${index}`)">
                                                                         <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                             <circle cx="2" cy="2" r="2" fill="#606060"/>
                                                                             <circle cx="9" cy="2" r="2" fill="#606060"/>
@@ -477,12 +481,14 @@
 
 <script>
 import Cont from './contador.vue';
+import Multiselect from 'vue-multiselect'
     export default {
         name:"curso-show",
-        props:['curso','membresias'],
+        props:['curso','membresias','siluetas'],
         data() {
             return {
                 tab: 'modulos',
+              
                 newmodulo:{
                     nombre:null,
                     descripcion:null,
@@ -501,6 +507,7 @@ import Cont from './contador.vue';
                 newactividad:{
                     tipo:null,
                     clase_id:null,
+                    siluetas:null
                 },
                 actividadtipe:null,
                 lastFile:null,
@@ -508,7 +515,7 @@ import Cont from './contador.vue';
             }
         },
         components: {
-            Cont,
+            Cont, Multiselect,
         },
         mounted() {
             $(document).ready(function(){
@@ -557,22 +564,13 @@ import Cont from './contador.vue';
             },
              editarModulo(modulo) {
                            this.proceso=true;
-                           console.log(modulo);
-                           let form = $("#formmodulo")[0];
-                           let formulario = new FormData(form);
-                           formulario.append("nombre", modulo.nombre);
-                           formulario.append("inicia", modulo.inicia);
-                           formulario.append("finaliza", modulo.finaliza);
-                           formulario.append("descripcion", modulo.descripcion);
-                           var ruta = '/admin/modulo/'+modulo.id;
-                            axios.put(ruta, formulario)
-                                .then((res) => {
-                                   $("#crearModulo").modal("hide");
-                                })
-                                .catch((err) => {
-                                    this.proceso=false;
-                                    console.log(err);
-                        });              
+                            var url = '/admin/modulo/'+modulo.id;
+                            axios.put(url,modulo).then((result) => {
+                                window.location.reload();
+                            }).catch((err) => {
+                                this.proceso=false;
+                                console.log(err);
+                            });
             },
               eliminarModulo(modulo) {
                 this.proceso=true;
@@ -649,7 +647,8 @@ import Cont from './contador.vue';
                 var ruta ='/admin/actividad';
                     axios.post(ruta, formulario)
                         .then((res) => {
-                            window.location.reload();
+                            //window.location.reload();
+                            this.proceso=false;
                         })
                         .catch((err) => {
                             this.proceso=false;

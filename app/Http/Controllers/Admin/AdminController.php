@@ -8,7 +8,7 @@ use App\User;
 use App\Models\PerfilEstudiante\PerfilEstudianteUser;
 use App\Models\Cursos\Curso;
 use App\Models\Cursos\Cupon;
-use App\Models\Idioma\idioma;
+use App\Models\Idioma\Idioma;
 use App\Models\Membresia\Membresia;
 use App\Models\Relaciones\MembresiaCurso;
 use App\Models\Solicitudes\PlanUser;
@@ -76,7 +76,7 @@ class AdminController extends Controller
     public function cupones()
     {
         
-        $cupones=Cupon::get();
+        $cupones=Cupon::get()->load(['usados']);
         return view('Administrador.Cupones.cupones', compact('cupones'));
     }
     public function relacioncuponmember(Request $request)
@@ -113,5 +113,32 @@ class AdminController extends Controller
     {
         $membresias=Membresia::get()->load(['idioma','planes']);
         return view('Administrador.Configuraciones.configuraciones', compact('membresias'));
+    }
+
+
+    public function reportes()
+    {
+        
+       
+        return view('Administrador.Reportes.reportes');
+    }
+
+    public function reportesPadre()
+    {
+        
+       
+        return view('Administrador.Reportes.Secciones.padres');
+    }
+    public function reportesAlumnos()
+    {
+        
+       
+        return view('Administrador.Reportes.Secciones.alumnos');
+    }
+    public function reportesCalificaciones()
+    {
+        
+       
+        return view('Administrador.Reportes.Secciones.calificaciones');
     }
 }

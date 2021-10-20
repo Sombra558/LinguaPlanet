@@ -19,7 +19,7 @@
                 <span class="h3 mb-0 bold ml-2">{{ $plan->membresia->idioma->idioma }}</span>
               </div>
               <div class="col-6 d-flex align-items-center justify-content-end px-0">
-                <span class="h1 bold mb-0" style="font-size: 2rem;">USD {{ $plan->precio }}</span>
+                <precio :plan="{{$plan}}"></precio>
               </div>
             </div>
           </div>
@@ -33,7 +33,7 @@
     </div>
     <div class="row py-4 text-center color-yellow">
       <div class="col-12">
-        <span class="h5">¿Tienes un cupon de descuento?</span>
+        <span data-toggle="modal" data-target="#exampleModal" class="h5">¿Tienes un cupon de descuento?</span>
       </div>
     </div>
     <div class="row justify-content-center">
@@ -63,5 +63,6 @@
         <span class="h5 align-middle">Tu pago es 100% seguro.</span>
       </div>
     </div>
+    <modalcupon :plan="{{$plan}}"></modalcupon>
   </div>
 @endsection

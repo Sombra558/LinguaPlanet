@@ -38,5 +38,11 @@ class LoginController extends Controller
 
         return $this->loggedOut($request) ?: redirect('/login');
     }
-
+    public function authenticated($request , $user){
+            if($user->roles[0]->name=='Administrador'){
+                return redirect('/admin');
+            }else{
+                return redirect('/home');
+            }
+        }
 }

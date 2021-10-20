@@ -4,6 +4,10 @@ require('../bootstrap');
 
 window.Vue = require('vue');
 import Vuex from 'vuex';
+import Multiselect from 'vue-multiselect'
+
+
+
 Vue.use(Vuex);
 //home
 Vue.component('home-component', require('./home/home.vue').default);
@@ -22,6 +26,13 @@ Vue.component('usuarios-component', require('./usuarios/usuarios').default);
 //configuraciones
 Vue.component('configuraciones-component', require('./configuraciones/configuraciones').default);
 
+//reportes
+Vue.component('reportes-component', require('./reportes/reportes').default);
+Vue.component('reportes-padre', require('./reportes/secciones/padres').default);
+Vue.component('reportes-alumnos', require('./reportes/secciones/alumnos').default);
+Vue.component('reportes-calificaciones', require('./reportes/secciones/calificaciones').default);
+
+Vue.component('multiselect', Multiselect)
 const store = new Vuex.Store({
     state: {
         cursos:[],

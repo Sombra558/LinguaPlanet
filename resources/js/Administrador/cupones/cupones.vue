@@ -31,10 +31,10 @@
                     <td>{{cupon.tipo_descuento}}</td>
                     <td>{{cupon.valor}} {{cupon.tipo_descuento==='Porcentual' ? '%' : 'USD'}}</td>
                     <td>{{cupon.cantidad}}</td>
-                    <td>--</td>
+                    <td>{{cupon.usados.length}}</td>
                     <td>{{cupon.vence}}</td>
                     <td style="position:relative;">
-                        <button type="button"class="btn-options" @click="showOptions($event, index)">
+                        <button type="button" class="btn-options" @click="showOptions($event, index)">
                             <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="2" cy="2" r="2" fill="#606060"/>
                                 <circle cx="9" cy="2" r="2" fill="#606060"/>
