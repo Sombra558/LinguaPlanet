@@ -4,11 +4,9 @@
 	    	<div class="col-12 col-md-6 my-4">
 	    		<div class="card personaje">
 	    			<div class="card-body d-flex flex-column justify-content-center align-items-center">
-	    				<!-- <svg class="w-100 h-75" viewBox="0 0 230 430" fill="none" xmlns="http://www.w3.org/2000/svg">
+	    				<svg class="w-100 h-75" viewBox="0 0 230 430" fill="none" xmlns="http://www.w3.org/2000/svg">
 	    					<personajeComponent ref="personaje" :avatar="perfil.avatar" :premios="perfil.premios"/>
-	    				</svg> -->
-	    				<object type="image/svg+xml" width="230" height="430" data="/images/perro-accesorios.svg">
-						</object>
+	    				</svg>
 	    				<button :disabled="estadoprocreso" @click.prevent="guardar()" class="btn btn-success mt-5 w-75">
 	    					<h2 class="mb-0">
 	    						Guardar
@@ -29,9 +27,7 @@
 							<div class="col-6 mb-3" v-for="premio in perfil.premios" :key="premio.id">
 						    	<div class="card premio" @click="updateCloth(premio)">
 						    		<div class="card-body text-center">
-						    			<object type="image/svg+xml" width="125" height="125" :data="premio.accesorio">
-						    				<param name="color" :value="premio.pivot.color"/>
-  										</object>
+                                        <img width="125" height="125" :src="`${premio.accesorio.split('.')[0]}${premio.pivot.color !== null ? premio.pivot.color.split('#')[1] : ''}.svg`" alt="accesorio">
 						      		</div>
 						    	</div>
 						    	<p class="card-text text-white text-center">{{ premio.nombre }}</p>
