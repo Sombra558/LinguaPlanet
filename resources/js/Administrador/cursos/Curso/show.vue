@@ -323,9 +323,25 @@
                                     <h4 class="fw-500 color-black mb-4" id="exampleModalLabel">Nueva Clase</h4>
                                 </div>
                             </div>
+                             <div class="row">
+                                    <div class="form-group col-12">
+                                        <label for="finaliza" >Accesorio</label>
+                                        <select class="form-input input-gray" name="premio" v-model="newclase.premio" >
+                                    
+                                            <option value="gorro">Gorro</option>
+                                            <option value="guitarra">Guitarra</option>
+                                            <option value="yoyo">Yoyo</option>
+                                            <option value="gafas">Gafas</option>
+                                            <option value="camisa">Camisa</option>
+                                            <option value="bufanda">Bufanda</option>
+                                            <option value="botas">Botas</option>
+                                            
+                                        </select>                                       
+                                    </div>
+                                </div>
                             <div class="row">
                                 <div class="form-group col-12">
-                                    <label class="color-plomo" for="finaliza" >Tipo de Actividad</label>
+                                    <label class="color-plomo" for="finaliza" >Inicia</label>
                                     <input type="date" class="form-input input-gray"  name="inicia" v-model="newclase.inicia" required>
                                 </div>    
                             </div>                            
@@ -417,6 +433,8 @@
                                             <option value="Rompecabeza">Rompecabeza</option>
                                             <option value="Memorama">Memorama</option>
                                             <option value="Silueta">Silueta</option>
+                                            <option value="Simon Dice">Simon Dice</option>
+                                            
                                         </select>                                       
                                     </div>
                                 </div>
@@ -497,6 +515,7 @@ import Multiselect from 'vue-multiselect'
                     curso_id:this.curso.id,
                 },
                 newclase:{ 
+                    premio:null,
                     inicia:null,
                     finaliza:null,
                     modulo_id:null,

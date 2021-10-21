@@ -3,6 +3,5 @@
     "/dist/js/hijo-app.js": "/dist/js/hijo-app.js",
     "/dist/js/padre-app.js": "/dist/js/padre-app.js",
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/js/ref2.js": "/js/ref2.js"
+    "/css/app.css": "/css/app.css"
 }

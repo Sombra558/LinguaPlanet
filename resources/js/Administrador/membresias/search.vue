@@ -1,6 +1,6 @@
 <template>
-    <span class="form-control input-primary input-search">
-        <input type="text" v-model="query" class="border-0 w-100" placeholder="Buscar"> 
+    <span >
+        <input type="text" v-model="query" class="form-control input-primary input-search border-0 w-100" placeholder="Buscar"> 
     </span>
 </template>
 

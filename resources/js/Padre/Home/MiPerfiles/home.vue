@@ -12,8 +12,9 @@
             </div>
             <div class="col-6 col-md-3">
                 <div @click.prevent="crear()" class="card-body" style="height: 150px; background-image : url(images/add-gray.svg); background-repeat: no-repeat; background-position : center center;">
-                  
-                </div>                        
+
+                </div> 
+               <!-- <div @click="enviar()">enviar</div>-->                       
             </div>
         </div>
         <div v-else class="row">
@@ -45,19 +46,7 @@ import PerfilCard from './perfilCard';
             PerfilCard,
         },
         mounted () {
-            var url="http://165.22.27.174/rompecabeza/1";
-                const axiosInstance = axios.create({
-                headers: {
-                    "Access-Control-Allow-Origin": "*"
-                }
-                });
-
-                axiosInstance
-                .get(url)
-                .then(response => {
-                    console.log(response);
-                })
-                .catch(e => console.log(e));
+            
 
             
         },
@@ -76,6 +65,23 @@ import PerfilCard from './perfilCard';
             },
              crear() {
                 window.location='/home/perfil-user/create';
+            },
+            enviar(){
+                fetch("http://167.172.162.54/game/2/81/actividad/561/intentos/0/realizada", {
+                    mode: 'no-cors',
+                    headers: {
+                        'csrf-token': 'ZdXvLAvP33hfxzuxKHay8QtbQmaD4YTm482BT9gD',
+                    },
+                    method: "POST",
+                    body: JSON.stringify({
+                    "nombre": "Luis",
+                    "web": "parzibyte.me"
+                    })
+                })
+                .then(r => r.json())
+                .then(respuesta => {
+                console.log(respuesta);
+                });
             }
         }
     }
