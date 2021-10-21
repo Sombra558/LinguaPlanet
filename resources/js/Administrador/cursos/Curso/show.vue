@@ -666,7 +666,7 @@ import Multiselect from 'vue-multiselect'
                 var ruta ='/admin/actividad';
                     axios.post(ruta, formulario)
                         .then((res) => {
-                            //window.location.reload();
+                            window.location.reload();
                             this.proceso=false;
                         })
                         .catch((err) => {
