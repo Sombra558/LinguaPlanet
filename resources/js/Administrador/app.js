@@ -4,6 +4,8 @@ require('../bootstrap');
 
 window.Vue = require('vue');
 import Vuex from 'vuex';
+import Multiselect from 'vue-multiselect';
+
 Vue.use(Vuex);
 //home
 Vue.component('home-component', require('./home/home.vue').default);

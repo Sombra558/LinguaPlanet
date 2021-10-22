@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('dist/js/admin-app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -23,9 +24,18 @@
     <div id="admin-app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
-                <a class="navbar-brand ml-3" href="{{ url('/') }}">
-                    <img style="width: 90px; height: 90px;" src="{{ asset('/images/logo.svg') }}" class="logo" alt="{{ config('app.name', 'Laravel') }}">
-                </a>
+                <span>
+                    <a class="navbar-brand ml-3 mr-0 mr-lg-5" href="{{ url('/') }}">
+                        <img style="width: 90px; height: 90px;" src="{{ asset('/images/logo.svg') }}" class="logo" alt="{{ config('app.name', 'Laravel') }}">
+                    </a>
+                    <button class="transparent-button ml-0 ml-lg-5" id="sidebarToggle" type="button">
+                        <svg width="37" height="23" viewBox="0 0 37 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="37" height="5" rx="2.5" fill="#31348B"/>
+                            <rect y="9" width="37" height="5" rx="2.5" fill="#31348B"/>
+                            <rect y="18" width="37" height="5" rx="2.5" fill="#31348B"/>
+                        </svg>
+                    </button>
+                </span>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -82,12 +92,11 @@
         </main>
     </div>
     <script type="text/javascript">
-        $(document).ready(function(){
-           $('.button-left').click(function(){
-               $('.sidebar').toggleClass('fliph');
-           });
-             
-        });
+        $(document).ready(function() {
+            $('#sidebarToggle').on('click', (e) => {
+                document.body.classList.toggle('sb-sidenav-toggled');
+            });            
+        });           
     </script>
 </body>
 </html>

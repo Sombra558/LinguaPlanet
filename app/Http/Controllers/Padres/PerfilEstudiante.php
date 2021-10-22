@@ -72,6 +72,7 @@ class PerfilEstudiante extends Controller
         $perfil->save();
         return $perfil;
     }
+
     public function asignarplan(Request $request)
     {
         $rules = [
@@ -364,9 +365,6 @@ class PerfilEstudiante extends Controller
             $avatar->save();
         }
         
-
-
-
     }
 
    public function guardaravatar(Request $request, $id)
@@ -468,7 +466,8 @@ class PerfilEstudiante extends Controller
                 'corde_x'=>$art->corde_x,
                 'corde_y'=>$art->corde_y,
                 'tipo'=>$art->tipo,
-                'color'=>null]);
+                'color'=>$art->color
+            ]);
             
             switch ($art->tipo) {
                 case 'gorro':

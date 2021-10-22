@@ -1,7 +1,7 @@
 <template>
 	<svg viewBox="0 0 250 250">
     	<image width="100%" height="100%" :xlink:href="perfil.avatar.cara"/>
-        <image v-for="accesory in accesoriesUsed" :key="accesory.id" :x="accesory.corde_x" :y="accesory.corde_y" :xlink:href="accesory.accesorio" preserveAspectRatio="none"/>
+        <image v-for="accesory in accesoriesUsed" :key="accesory.id" :x="accesory.corde_x" :y="accesory.corde_y" :href="`${accesory.accesorio.split('.')[0]}${accesory.color !== null ? accesory.color.split('#')[1] : ''}.svg`" preserveAspectRatio="none"/>
 	</svg>
 </template>
 
