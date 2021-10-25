@@ -14,7 +14,7 @@
                 <div @click.prevent="crear()" class="card-body" style="height: 150px; background-image : url(images/add-gray.svg); background-repeat: no-repeat; background-position : center center;">
 
                 </div> 
-               <!-- <div @click="enviar()">enviar</div>-->                       
+               <div @click="enviar()">enviar</div>                       
             </div>
         </div>
         <div v-else class="row">
@@ -70,9 +70,9 @@ import PerfilCard from './perfilCard';
                 fetch("http://167.172.162.54/game/2/81/actividad/561/intentos/0/realizada", {
                     mode: 'no-cors',
                     headers: {
-                        'csrf-token': 'ZdXvLAvP33hfxzuxKHay8QtbQmaD4YTm482BT9gD',
+                        'csrf-token': 'tTvtClp8XFD8ebLvgItaN6u12oRYBvaE56XvaPcB',
                     },
-                    method: "POST",
+                    method: "GET",
                     body: JSON.stringify({
                     "nombre": "Luis",
                     "web": "parzibyte.me"
