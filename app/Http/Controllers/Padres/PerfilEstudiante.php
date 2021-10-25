@@ -575,9 +575,7 @@ class PerfilEstudiante extends Controller
         }
     }
     public function juegorealizado($id, $curso_id, $actividad_id,$valor){
-        dd($valor);
         $actividadus=ActividadUser::where('actividad_id',$actividad_id)->where('perfil_id',$id)->first();
-     
         $countmisact=0;
         $actividadesCurso=collect();
         $curs=Curso::find($curso_id)->load(['modulos'=>function($j){
@@ -585,8 +583,6 @@ class PerfilEstudiante extends Controller
                 return $j->with(['actividades']);
             }]);
         }]);
-       
-
         foreach ($curs->modulos as $modulo) {
             foreach ($modulo->clases as $clase) {
                 foreach ($clase->actividades as $actividad) {
@@ -594,8 +590,6 @@ class PerfilEstudiante extends Controller
                 }
              }
         }
-    
-     
         if ($actividadus===null) {
             $actividadus = ActividadUser::create([
                 'actividad_id' => $actividad_id,

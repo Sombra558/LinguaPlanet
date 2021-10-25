@@ -3256,14 +3256,7 @@ __webpack_require__.r(__webpack_exports__);
     enviar: function enviar() {
       fetch("http://167.172.162.54/game/2/81/actividad/561/intentos/0/realizada", {
         mode: 'no-cors',
-        headers: {
-          'csrf-token': 'tTvtClp8XFD8ebLvgItaN6u12oRYBvaE56XvaPcB'
-        },
-        method: "GET",
-        body: JSON.stringify({
-          "nombre": "Luis",
-          "web": "parzibyte.me"
-        })
+        method: "GET"
       }).then(function (r) {
         return r.json();
       }).then(function (respuesta) {
@@ -45553,19 +45546,7 @@ var render = function() {
                     return _vm.crear()
                   }
                 }
-              }),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  on: {
-                    click: function($event) {
-                      return _vm.enviar()
-                    }
-                  }
-                },
-                [_vm._v("enviar")]
-              )
+              })
             ])
           ],
           2
