@@ -122,13 +122,10 @@ import Searh from './search.vue';
          ...mapGetters(["filteredCursos"]),
         },
         mounted () {
-<<<<<<< HEAD
-=======
             $(document).ready(function(){
               $('[data-toggle="popover"]').popover();
             });
 
->>>>>>> maquetado
             if (this.cursos.length>0) {
                 this.$store.commit("setCursos", this.cursos);
             };
