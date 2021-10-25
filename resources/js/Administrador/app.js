@@ -29,6 +29,8 @@ Vue.component('reportes-component', require('./reportes/reportes').default);
 Vue.component('reportes-padre', require('./reportes/secciones/padres').default);
 Vue.component('reportes-alumnos', require('./reportes/secciones/alumnos').default);
 Vue.component('reportes-calificaciones', require('./reportes/secciones/calificaciones').default);
+Vue.component('reportes-ventas', require('./reportes/secciones/ventas').default);
+Vue.component('reportes-cupones', require('./reportes/secciones/cupones').default);
 
 Vue.component('multiselect', Multiselect)
 const store = new Vuex.Store({
@@ -39,11 +41,14 @@ const store = new Vuex.Store({
         usuarios:[],
         inscripciones:[],
         perfiles:[],
+        ventas:[],
         filterCursos: {
             curso: "",
         },
         filterCupones: {
             codigo: "",
+            cupon_id:null,
+            membresia_id:null,
         },
         filterMembresias: {
             nombre: "",
@@ -57,6 +62,11 @@ const store = new Vuex.Store({
         filterPerfiles: {
             query: "",
             curso_id: null,
+        },
+        filterVentas: {
+            query: "",
+            membresia_id: null,
+            metodo:null,
         },
     },
     mutations: {
@@ -78,6 +88,9 @@ const store = new Vuex.Store({
         setPerfiles(state, perfiles) {
             state.perfiles = perfiles;
         },
+        setVentas(state, ventas) {
+            state.ventas = ventas;
+        },
         setfilterCursos(state, data) {
             state.filterCursos[data['filter']] = data.value;
         },
@@ -95,6 +108,9 @@ const store = new Vuex.Store({
         },
         setfilterPerfiles(state, data) {
             state.filterPerfiles[data['filter']] = data.value;
+        },
+        setfilterVentas(state, data) {
+            state.filterVentas[data['filter']] = data.value;
         },
        
     },
@@ -140,6 +156,11 @@ const store = new Vuex.Store({
                 usuarios = usuarios.filter(r => r.apodo.toLowerCase().includes(state.filterPerfiles.query.toLowerCase()));
             }
             return usuarios;
+        },
+        filteredVentas(state) {
+            let ventas = state.ventas;
+          
+            return ventas;
         },
        
     }

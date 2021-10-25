@@ -22,13 +22,17 @@
                         <thead>
                             <tr class="color-black">
                                 <th>Nombre</th>
-                               
+                                <th>Nombre del Padre</th>
+                                <th>Fecha de nacimiento</th>
+                                <th>hobby</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="color-black" v-for="(usuario,index) in filteredPerfiles" :key="index">
                                 <td>{{usuario.apodo}}</td>
-                              
+                                 <td>{{usuario.padre.name}} {{usuario.padre.lastname}}</td>
+                                 <td>{{usuario.f_nacimiento}}</td>
+                                 <td>{{usuario.hobby}}</td>
                             </tr>
                         </tbody>
          </table>

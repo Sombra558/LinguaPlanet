@@ -2,6 +2,7 @@
      <span>
         <input v-if="accion==='usuarios'" type="text" v-model="query" class="form-control input-primary input-search border-0 w-100" placeholder="Buscar"> 
         <input v-else-if="accion==='perfiles'" type="text" v-model="query2" class="form-control input-primary input-search border-0 w-100" placeholder="Buscar"> 
+         <input v-else-if="accion==='ventas'" type="text" v-model="query3" class="form-control input-primary input-search border-0 w-100" placeholder="Buscar"> 
         <input v-else type="text" v-model="query2" class="form-control input-primary input-search border-0 w-100" placeholder="Buscar"> 
     </span>
 </template>
@@ -28,6 +29,17 @@
                 },
                 set(value) {
                     this.$store.commit("setfilterPerfiles", {
+                    filter: "query",
+                    value,
+                    });
+                },
+            },
+             query3: {
+                get() {
+                    return this.$store.state.filterVentas.query;
+                },
+                set(value) {
+                    this.$store.commit("setfilterVentas", {
                     filter: "query",
                     value,
                     });

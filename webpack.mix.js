@@ -13,7 +13,6 @@ const mix = require('laravel-mix');
 
 
  mix.js('resources/js/app.js', 'public/js')
- .js('resources/js/ref2.js', 'public/js')
  .js('resources/js/Administrador/app.js', 'public/dist/js/admin-app.js')
  .js('resources/js/Padre/app.js', 'public/dist/js/padre-app.js')
  .js('resources/js/PerfilHijo/app.js', 'public/dist/js/hijo-app.js')

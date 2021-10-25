@@ -132,7 +132,7 @@ class AdminController extends Controller
     }
     public function reportesAlumnos()
     {
-        $perfiles=PerfilEstudianteUser::get();
+        $perfiles=PerfilEstudianteUser::get()->load(['padre','planes']);
         $cursos=Curso::get();
        
         return view('Administrador.Reportes.Secciones.alumnos',compact('perfiles','cursos'));
@@ -142,5 +142,19 @@ class AdminController extends Controller
         
        
         return view('Administrador.Reportes.Secciones.calificaciones');
+    }
+    public function reportesVentas()
+    {
+        $ventas=PlanUser::get()->load(['plan'=>function($p){
+            return $p->with('membresia');
+        },'user']);
+       $membresias=Membresia::get();
+        return view('Administrador.Reportes.Secciones.ventas',compact('ventas','membresias'));
+    }
+    public function reportesCupones()
+    {
+        $cupones=Cupon::get()->load(['usados']);
+        $membresias=Membresia::get();
+        return view('Administrador.Reportes.Secciones.cupones',compact('cupones','membresias'));
     }
 }

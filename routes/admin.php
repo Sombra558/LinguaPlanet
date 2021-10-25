@@ -43,5 +43,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')
     Route::get('/reportes-padres', 'AdminController@reportesPadre')->name('.reportes.padres');
     Route::get('/reportes-alumnos', 'AdminController@reportesAlumnos')->name('.reportes.alumnos');
     Route::get('/reportes-calificaciones', 'AdminController@reportesCalificaciones')->name('.reportes.calificaciones');
+    Route::get('/reportes-ventas', 'AdminController@reportesVentas')->name('.reportes.ventas');
+    Route::get('/reportes-cupones', 'AdminController@reportesCupones')->name('.reportes.cupones');
 
   });//end admin

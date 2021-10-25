@@ -10,7 +10,9 @@ class PerfilEstudianteUser extends Model
       'user_id','hobby','f_nacimiento','apodo','color','avatar_id',
   ];
 
- 
+  public function padre(){
+    return $this->belongsTo('App\User','user_id');
+  } 
   public function avatar(){
     return $this->belongsTo('App\Models\Animals\Avatar');
   } 
