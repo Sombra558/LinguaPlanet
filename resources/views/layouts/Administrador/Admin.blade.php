@@ -24,8 +24,8 @@
     <div id="admin-app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
-                <span>
-                    <a class="navbar-brand ml-3 mr-0 mr-lg-5" href="{{ url('/') }}">
+                <span class="w-50">
+                    <a class="navbar-brand ml-3 mr-0 mr-md-5" href="{{ url('/') }}">
                         <img style="width: 90px; height: 90px;" src="{{ asset('/images/logo.svg') }}" class="logo" alt="{{ config('app.name', 'Laravel') }}">
                     </a>
                     <button class="transparent-button ml-0 ml-lg-5" id="sidebarToggle" type="button">
@@ -37,14 +37,13 @@
                     </button>
                 </span>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                    <div class="globe-profile bg-plomo">
+                        {{ Auth::user()->name[0].Auth::user()->lastname[0] }}
+                    </div>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav">
-                    </ul>
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto  d-flex justify-content-between w-15">
+                    <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -56,26 +55,25 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item d-flex align-items-center">
-                                {{ Auth::user()->name.' '.Auth::user()->lastname }}
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
+                            <li class="nav-item d-flex align-items-center justify-content-end">
+                                <span class="mx-2">
+                                    {{ Auth::user()->name.' '.Auth::user()->lastname }}
+                                </span>
+                                <a class="nav-link mx-2 d-none d-md-block">
                                     <div class="globe-profile bg-plomo">
                                         {{ Auth::user()->name[0].Auth::user()->lastname[0] }}
                                     </div>
                                 </a>
-                                {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div> --}}
+                            </li>
+                            <li class="nav-item d-sm-none text-right">
+                                <a class="nav-link mx-2" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </li>
                         @endguest
                     </ul>
@@ -85,7 +83,7 @@
         <main class="d-flex" id="wrapper">
             @include('layouts.Administrador.Sidebar')
             <div id="page-content-wrapper">
-                <div class="container-fluid pt-5">
+                <div class="container-fluid pt-4">
                     @yield('content')
                 </div>
             </div>
