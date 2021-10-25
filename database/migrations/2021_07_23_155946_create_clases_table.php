@@ -15,6 +15,7 @@ class CreateClasesTable extends Migration
     {
         Schema::create('clases', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('indice')->nullable();
             $table->date('inicia')->nullable();
             $table->date('finaliza')->nullable();
             $table->unsignedbigInteger('modulo_id');

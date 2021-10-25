@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Clase extends Model
 {
     protected $fillable = [
-        'inicia', 'finaliza','modulo_id',
+        'inicia', 'finaliza','modulo_id','indice',
     ];
     public function actividades(){
         return $this->hasMany('App\Models\Cursos\Actividad');

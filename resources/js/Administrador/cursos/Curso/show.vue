@@ -67,7 +67,7 @@
                                                 </div>
                                                 <div class="col-6 d-flex justify-content-end align-items-center">
                                                     <span id="modulo" class="btn-deck d-flex align-items-center">
-                                                        <button class="btn transparent-button" @click.prevent="seleccionarClase(modulo,'actividad')">Agregar Actividad</button>
+                                                        <button class="btn transparent-button" @click.prevent="seleccionarModuloModal(modulo,'Clase',modulo)">Agregar Clase</button>
                                                         <button class="transparent-button color-plomo" @click.prevent="eliminarClase(modulo)">
                                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path d="M3 6H5H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -87,7 +87,7 @@
                                                             Editar
                                                         </button>
                                                     </span>
-                                                    <button type="button"class="btn-options" @click="showOptions($event, modulo)" style="position: relative;">
+                                                    <button type="button" class="btn-options" @click="showOptions($event, modulo)" style="position: relative;">
                                                         <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <circle cx="2" cy="2" r="2" fill="#606060"/>
                                                             <circle cx="9" cy="2" r="2" fill="#606060"/>
@@ -104,7 +104,7 @@
                                                         <div class="card-header" id="headingOne">
                                                           <div class="row">
                                                                 <div class="col-10">
-                                                                    <span class="d-block fw-400">Clase/Semana {{index+1}}</span>
+                                                                    <span class="d-block fw-400">Clase/Semana {{clase.indice}}</span>
                                                                     <span v-if="!clase.actividades.length" class="d-block fw-400 color-plomo">{{ clase.actividades.length }} Actividades</span>
                                                                     <a v-else href="#" data-toggle="collapse" :data-target="`#collapseActividades${index}`" aria-expanded="true" :aria-controls="`collapseActividades${index}`">
                                                                         <span class="fw-400 color-plomo">{{ clase.actividades.length }} Actividades</span>
@@ -121,7 +121,7 @@
                                                                 </div>
                                                                 <div class="row py-2">
                                                                     <div class="col">
-                                                                        <button class="transparent-button" @click.prevent="seleccionarModuloModal(clase,'Clase')">Agregar Clase</button>
+                                                                        <button class="transparent-button" @click.prevent="seleccionarClase(clase,'actividad')">Agregar Actividad</button>
                                                                     </div>                                
                                                                 </div>
                                                                 <div class="row py-2">
@@ -130,7 +130,7 @@
                                                                     </div>                                
                                                                 </div>
                                                                 <div class="col-2 text-center">                                                            
-                                                                    <button type="button"class="btn-options" @click="showOptions($event, clase)" style="position: relative;">
+                                                                    <button type="button" class="btn-options" @click="showOptions($event, clase)" style="position: relative;">
                                                                         <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                             <circle cx="2" cy="2" r="2" fill="#606060"/>
                                                                             <circle cx="9" cy="2" r="2" fill="#606060"/>
@@ -406,19 +406,19 @@
                             <div class="row">
                                 <div v-if="actividadtipe==='Palabras del día'" class="form-group col-md-6 col-12">
                                     <label for="inicia" >Subir video</label>
-                                    <input type="file" name="recurso" id="assetsFieldHandle"  />
+                                    <input type="file" name="recurso" accept="video/*" id="assetsFieldHandle"  />
                                 </div>
                                 <div v-if="actividadtipe==='Video de apertura'" class="form-group col-md-6 col-12">
                                     <label for="inicia" >Subir video</label>
-                                    <input type="file" name="recurso" id="assetsFieldHandle"  />
+                                    <input type="file" name="recurso" accept="video/*" id="assetsFieldHandle"  />
                                 </div>
                                 <div v-if="actividadtipe==='Actividad'" class="form-group col-md-6 col-12">
                                     <label for="inicia" >Subir Archivo</label>
-                                    <input type="file" name="recurso" id="assetsFieldHandle"  />
+                                    <input type="file" name="recurso" accept="application/pdf"  id="assetsFieldHandle"  />
                                 </div>
                                 <div v-if="actividadtipe==='Libros'" class="form-group col-md-6 col-12">
                                     <label for="inicia" >Subir Archivo</label>
-                                    <input type="file" name="recurso" id="assetsFieldHandle"  />
+                                    <input type="file" name="recurso" accept="application/pdf" id="assetsFieldHandle"  />
                                 </div>
                             </div>
                         </div>
@@ -471,7 +471,6 @@ import Multiselect from 'vue-multiselect'
         data() {
             return {
                 tab: 'modulos',
-              
                 newmodulo:{
                     nombre:null,
                     descripcion:null,
@@ -483,6 +482,7 @@ import Multiselect from 'vue-multiselect'
                     premio:null,
                     inicia:null,
                     finaliza:null,
+                    indice:null,
                     modulo_id:null,
                 },
                 proceso:false,
@@ -507,7 +507,7 @@ import Multiselect from 'vue-multiselect'
             });
         },
         methods: {
-            seleccionarModuloModal(value,action) {
+            seleccionarModuloModal(value,action,modulo) {
                     if (action==='crear') {
                         this.moduloSelected=null;
                         $("#crearModulo").modal("show");
@@ -519,6 +519,7 @@ import Multiselect from 'vue-multiselect'
                     }else{
                         this.moduloSelected=value;
                         this.newclase.modulo_id=value.id;
+                        this.newclase.indice=modulo.clases.length+1;
                         setTimeout(function(){
                                 $("#crearClase").modal("show");
                         },200)
@@ -581,7 +582,7 @@ import Multiselect from 'vue-multiselect'
                         $("#crearClase").modal("show");
                 },200)
             },
-            crearClase() {
+            crearClase(modulo) {
                 this.proceso=true;
                 var url = '/admin/clase';
                 axios.post(url,this.newclase).then((result) => {           

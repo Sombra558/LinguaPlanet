@@ -277,15 +277,13 @@
 					}
 				});
 			};
-			if (this.realizadas.length===4) {
+			if (this.realizadas.length===7) {
 					this.contenidos.enCurso[0].premio_clase.forEach(pre => {
 						if (pre.accesorio.animal_id===this.perfil.avatar.animal_id) {
 							this.premioSelected=pre.accesorio;
 						}
 					});
-				
 						setTimeout(function(){
-							
 						$("#staticBackdrop").modal("show");
 						},200)
 					

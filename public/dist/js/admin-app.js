@@ -3505,6 +3505,7 @@ __webpack_require__.r(__webpack_exports__);
         premio: null,
         inicia: null,
         finaliza: null,
+        indice: null,
         modulo_id: null
       },
       proceso: false,
@@ -3530,7 +3531,7 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    seleccionarModuloModal: function seleccionarModuloModal(value, action) {
+    seleccionarModuloModal: function seleccionarModuloModal(value, action, modulo) {
       if (action === 'crear') {
         this.moduloSelected = null;
         $("#crearModulo").modal("show");
@@ -3542,6 +3543,7 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.moduloSelected = value;
         this.newclase.modulo_id = value.id;
+        this.newclase.indice = modulo.clases.length + 1;
         setTimeout(function () {
           $("#crearClase").modal("show");
         }, 200);
@@ -3611,7 +3613,7 @@ __webpack_require__.r(__webpack_exports__);
         $("#crearClase").modal("show");
       }, 200);
     },
-    crearClase: function crearClase() {
+    crearClase: function crearClase(modulo) {
       var _this4 = this;
 
       this.proceso = true;
@@ -45949,14 +45951,15 @@ var render = function() {
                                                     on: {
                                                       click: function($event) {
                                                         $event.preventDefault()
-                                                        return _vm.seleccionarClase(
+                                                        return _vm.seleccionarModuloModal(
                                                           modulo,
-                                                          "actividad"
+                                                          "Clase",
+                                                          modulo
                                                         )
                                                       }
                                                     }
                                                   },
-                                                  [_vm._v("Agregar Actividad")]
+                                                  [_vm._v("Agregar Clase")]
                                                 ),
                                                 _vm._v(" "),
                                                 _c(
@@ -46239,7 +46242,7 @@ var render = function() {
                                                                 _vm._v(
                                                                   "Clase/Semana " +
                                                                     _vm._s(
-                                                                      index + 1
+                                                                      clase.indice
                                                                     )
                                                                 )
                                                               ]
@@ -46409,16 +46412,16 @@ var render = function() {
                                                                         $event
                                                                       ) {
                                                                         $event.preventDefault()
-                                                                        return _vm.seleccionarModuloModal(
+                                                                        return _vm.seleccionarClase(
                                                                           clase,
-                                                                          "Clase"
+                                                                          "actividad"
                                                                         )
                                                                       }
                                                                     }
                                                                   },
                                                                   [
                                                                     _vm._v(
-                                                                      "Agregar Clase"
+                                                                      "Agregar Actividad"
                                                                     )
                                                                   ]
                                                                 )
@@ -47932,6 +47935,7 @@ var render = function() {
                                       attrs: {
                                         type: "file",
                                         name: "recurso",
+                                        accept: "video/*",
                                         id: "assetsFieldHandle"
                                       }
                                     })
@@ -47952,6 +47956,7 @@ var render = function() {
                                       attrs: {
                                         type: "file",
                                         name: "recurso",
+                                        accept: "video/*",
                                         id: "assetsFieldHandle"
                                       }
                                     })
@@ -47972,6 +47977,7 @@ var render = function() {
                                       attrs: {
                                         type: "file",
                                         name: "recurso",
+                                        accept: "application/pdf",
                                         id: "assetsFieldHandle"
                                       }
                                     })
@@ -47992,6 +47998,7 @@ var render = function() {
                                       attrs: {
                                         type: "file",
                                         name: "recurso",
+                                        accept: "application/pdf",
                                         id: "assetsFieldHandle"
                                       }
                                     })
@@ -48911,7 +48918,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("td", { staticClass: "color-black" }, [
-                      _vm._v(_vm._s(curso.Semana.id))
+                      _vm._v(_vm._s(curso.Semana.indice))
                     ]),
                     _vm._v(" "),
                     _c("td", [

@@ -29,6 +29,7 @@ class ClaseController extends Controller
             'nombre' => $request['nombre'],
             'descripcion' => $request['descripcion'],
             'inicia' => $request['inicia'],
+            'indice' => $request['indice'],
             'finaliza' => $request['finaliza'],
             'modulo_id' => $request['modulo_id'],
         ]);

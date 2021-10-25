@@ -518,7 +518,7 @@ class PerfilEstudiante extends Controller
         
     }
  
-    public function actividadrealizada($id,$apodo,$curso_id,$clase_id,$actividad_id){
+    public function actividadrealizada($id,$curso_id,$clase_id,$actividad_id){
     
         $actividadus=ActividadUser::where('actividad_id',$actividad_id)->where('perfil_id',$id)->first();
      
