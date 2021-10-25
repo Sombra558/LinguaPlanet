@@ -4,7 +4,7 @@
 			<image style="width: 100%; height: 100%;" href="/images/actividades-fondo.svg"/>
 			<personajeComponent :avatar="perfil.avatar" transform="translate(50,380), scale(0.6,0.8)"/>
 			
-			<a v-for="actividad in actividades" :key="actividad.id" :href="`/home/app/${perfil.id}/${perfil.apodo}/idiomas/${idioma.nombreURL}/${curso.id}/clase/${contenidos.enCurso[0].id}/actividad/${actividad.id}?perfil_id=${perfil.id}&actividad_id=${actividad.id}&juego_id=1&idioma=${idioma.diminutivo}&curso_id=${curso.id}`">
+			<a v-for="actividad in actividades" :key="actividad.id" :href="`/home/app/${perfil.id}/idiomas/${idioma.diminutivo}/${curso.id}/clase/${contenidos.enCurso[0].id}/actividad/${actividad.id}?perfil_id=${perfil.id}&actividad_id=${actividad.id}&juego_id=1&idioma=${idioma.diminutivo}&curso_id=${curso.id}`">
 				<!--  Primer recurso -->
 				<svg v-if="actividad.tipo==='Palabras del día'" preserveAspectRatio="none" x="250" y="430" width="95" height="157" viewBox="0 0 107 157" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M95.1975 80.9193L53.5722 135.459L11.9843 80.9193C-4.85605 58.8407 0.110987 27.8056 23.0819 11.6063C46.0528 -4.59294 78.3197 0.185532 95.16 22.2766C101.626 30.6822 105.135 40.9874 105.142 51.5916C105.149 62.1958 101.653 72.5054 95.1975 80.9193Z" fill="#FECC2C"/>
@@ -155,12 +155,12 @@
 			  Launch static backdrop modal
 			</button> -->
     		<div class="aplication-option bg-white d-flex justify-content-center align-items-center mx-4">
-    			<a class="text-center" :href="`/home/app/${ this.perfil.id }/${ this.perfil.apodo }/premios`">
+    			<a class="text-center" :href="`/home/app/${ this.perfil.id }/premios`">
 					<img class="w-80" src="/images/trophy.svg">
 				</a>
     		</div>
     		<div class="aplication-option bg-white d-flex justify-content-center align-items-center mx-4">
-    			<a class="text-center" :href="`/home/app/${ this.perfil.id }/${ this.perfil.apodo }/armario`">
+    			<a class="text-center" :href="`/home/app/${ this.perfil.id }/armario`">
 	    			<img class="w-80" src="/images/clothing.svg">
 				</a>
     		</div>

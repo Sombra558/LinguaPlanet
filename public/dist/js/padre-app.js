@@ -3299,7 +3299,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     entrar: function entrar() {
-      window.location = '/home/app/' + this.perfil.id + '/' + this.perfil.apodo;
+      window.location = '/home/app/' + this.perfil.id;
     },
     editar: function editar() {
       window.location = "/home/perfil-user/".concat(this.perfil.id, "/edit");

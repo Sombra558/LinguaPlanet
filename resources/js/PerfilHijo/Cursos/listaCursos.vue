@@ -2,7 +2,7 @@
 	<div class="container">
 	    <div class="row">
 	    	<div class="col-4 text-center" v-for="curso in cursos" :key="curso.id">
-	    		<a class="text-white" :href="'/home/app/'+perfil.id+'/'+perfil.apodo+'/idiomas/'+idioma.nombreURL+'/'+curso.id">
+	    		<a class="text-white" :href="'/home/app/'+perfil.id+'/idiomas/'+idioma.diminutivo+'/'+curso.id">
 	    			<img class="curso-img" :src="`${idioma.src}`">
 	    			<h3>
 	    				{{curso.titulo}}

@@ -75,7 +75,7 @@
                         </li>
                     @endif
                     <li class="nav-item">
-                        <a href="/home/app/{{ request()->route()->parameters()['id'] }}/{{ request()->route()->parameters()['apodo'] }}/">
+                        <a href="/home/app/{{ request()->route()->parameters()['id'] }}/">
                             <img class="w-75" src="/images/home-student.svg">
                         </a>
                     </li>
