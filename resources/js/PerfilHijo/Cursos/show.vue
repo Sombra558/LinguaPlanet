@@ -3,8 +3,8 @@
 		<svg width="1440" height="771" style="position:absolute; top: 0%; left: 0%; z-index: 0; width: 100%; height: 100%;" viewBox="0 0 1440 1035" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<image style="width: 100%; height: 100%;" href="/images/actividades-fondo.svg"/>
 			<personajeComponent :avatar="perfil.avatar" transform="translate(50,380), scale(0.6,0.8)"/>
-		
-			<a v-for="actividad in contenidos.enCurso[0].actividades" :key="actividad.id" :href="`/home/app/${perfil.id}/${perfil.apodo}/idiomas/${idioma.nombreURL}/${curso.id}/clase/${contenidos.enCurso[0].id}/actividad/${actividad.id}?perfil_id=${perfil.id}&actividad_id=${actividad.id}&juego_id=1&idioma=${idioma.diminutivo}&curso_id=${curso.id}`">
+			
+			<a v-for="actividad in actividades" :key="actividad.id" :href="`/home/app/${perfil.id}/${perfil.apodo}/idiomas/${idioma.nombreURL}/${curso.id}/clase/${contenidos.enCurso[0].id}/actividad/${actividad.id}?perfil_id=${perfil.id}&actividad_id=${actividad.id}&juego_id=1&idioma=${idioma.diminutivo}&curso_id=${curso.id}`">
 				<!--  Primer recurso -->
 				<svg v-if="actividad.tipo==='Palabras del día'" preserveAspectRatio="none" x="250" y="430" width="95" height="157" viewBox="0 0 107 157" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M95.1975 80.9193L53.5722 135.459L11.9843 80.9193C-4.85605 58.8407 0.110987 27.8056 23.0819 11.6063C46.0528 -4.59294 78.3197 0.185532 95.16 22.2766C101.626 30.6822 105.135 40.9874 105.142 51.5916C105.149 62.1958 101.653 72.5054 95.1975 80.9193Z" fill="#FECC2C"/>
@@ -168,34 +168,34 @@
     	<div v-if="premioSelected" class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered modal-lg">
 		    <div class="modal-content modal-premio">
-		      <div class="modal-body d-flex flex-column align-items-center py-5" style="height: 60vh;">
-		        <h1 class="text-white">¡Has ganado!</h1>
-		        <svg class="my-5" width="296" height="296" viewBox="0 0 296 296" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<circle opacity="0.35" cx="148" cy="148" r="148" fill="white"/>
-					<circle opacity="0.25" cx="147.999" cy="147.999" r="130.195" fill="white"/>
-					<rect x="35.6094" y="38.9482" width="224.782" height="218.105" rx="109.053" fill="white"/>
-					<path d="M103.59 180.724C121.35 180.724 135.748 166.326 135.748 148.565C135.748 130.804 121.35 116.406 103.59 116.406C85.8287 116.406 71.4307 130.804 71.4307 148.565C71.4307 166.326 85.8287 180.724 103.59 180.724Z" fill="url(#paint0_linear)"/>
-					<path opacity="0.25" d="M116.017 146.745C121.829 146.745 126.541 142.033 126.541 136.221C126.541 130.409 121.829 125.697 116.017 125.697C110.205 125.697 105.493 130.409 105.493 136.221C105.493 142.033 110.205 146.745 116.017 146.745Z" fill="white"/>					
-					<defs>
-					<linearGradient id="paint0_linear" x1="42261.2" y1="38142.3" x2="42261.2" y2="34619.6" gradientUnits="userSpaceOnUse">
-					<stop stop-color="white" stop-opacity="0.6"/>
-					<stop offset="1" stop-color="white" stop-opacity="0.1"/>
-					</linearGradient>
-					<linearGradient id="paint1_linear" x1="47196.7" y1="38142.3" x2="47196.7" y2="34619.6" gradientUnits="userSpaceOnUse">
-					<stop stop-color="white" stop-opacity="0.6"/>
-					<stop offset="1" stop-color="white" stop-opacity="0.1"/>
-					</linearGradient>
-					</defs>
-				</svg>
-					<svg viewBox="0 0 250 250">
-						<image width="100%" height="100%" :xlink:href="premioSelected.accesorio"/>
-					
+		      <div class="modal-body py-5 text-center">
+		        <h1 class="text-white mb-5">¡Has ganado!</h1>
+		        <div class="row justify-content-center">
+			        <svg width="200" height="200" viewBox="0 0 300 295" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle opacity="0.35" cx="148" cy="148" r="148" fill="white"/>
+						<circle opacity="0.25" cx="147.999" cy="147.999" r="130.195" fill="white"/>
+						<rect x="35.6094" y="38.9482" width="224.782" height="218.105" rx="109.053" fill="white"/>
+						<path d="M103.59 180.724C121.35 180.724 135.748 166.326 135.748 148.565C135.748 130.804 121.35 116.406 103.59 116.406C85.8287 116.406 71.4307 130.804 71.4307 148.565C71.4307 166.326 85.8287 180.724 103.59 180.724Z" fill="url(#paint0_linear)"/>
+						<path opacity="0.25" d="M116.017 146.745C121.829 146.745 126.541 142.033 126.541 136.221C126.541 130.409 121.829 125.697 116.017 125.697C110.205 125.697 105.493 130.409 105.493 136.221C105.493 142.033 110.205 146.745 116.017 146.745Z" fill="white"/>					
+						<defs>
+						<linearGradient id="paint0_linear" x1="42261.2" y1="38142.3" x2="42261.2" y2="34619.6" gradientUnits="userSpaceOnUse">
+						<stop stop-color="white" stop-opacity="0.6"/>
+						<stop offset="1" stop-color="white" stop-opacity="0.1"/>
+						</linearGradient>
+						<linearGradient id="paint1_linear" x1="47196.7" y1="38142.3" x2="47196.7" y2="34619.6" gradientUnits="userSpaceOnUse">
+						<stop stop-color="white" stop-opacity="0.6"/>
+						<stop offset="1" stop-color="white" stop-opacity="0.1"/>
+						</linearGradient>
+						</defs>
+						<image x="45" y="75" :href="`${premioSelected.accesorio.split('.')[0]}${colorSelected !== '#FCD13A' ? colorSelected.split('#')[1] : '' }.svg`"/>
 					</svg>
-					<div class="row">
-						<button class="col" :style="'background-color:'+col+'; width:50px;heigth:50px;'" v-for="col in colores" :key="col "  @click.prevent="seleccionarcolor(col)" ></button>
-					</div>
-
-		        <button  @click.prevent="recibir()" class="btn btn-success w-35">Recibir premio</button>
+				</div>
+				<div class="row justify-content-center mt-4">
+					<button v-for="col in colores" :key="col " class="mx-2" :style="'background-color:'+col+'; width:50px;height:50px;border-radius:50px;border:none;'" @click.prevent="seleccionarcolor(col)" ></button>
+				</div>
+				<div class="row justify-content-center mt-4">
+					<button  @click.prevent="recibir()" class="btn btn-success w-50">Recibir premio</button>
+		        </div>
 		      </div>
 		    </div>
 		  </div>
@@ -230,8 +230,7 @@
 				<div v-if="actividadSelected.tipo==='Libros'|| actividadSelected.tipo ==='Actividad'">
 					<button :disabled="noPrevPage" type="button" @click.prevent="anterior()" class="btn btn-primary">Anterior</button>
 					<button :disabled="noNextPage" type="button" @click.prevent="siguiente()" class="btn btn-primary">Siguiente</button>
-				</div>
-				
+				</div>				
 			</div>
 			</div>
 		</div>
@@ -262,6 +261,14 @@
         components : {
         	personajeComponent,pdf
         },
+        computed :  {
+			actividades() {
+			    if (this.contenidos.enCurso[0]) {
+				    return this.contenidos.enCurso[0].actividades;
+			    }
+			    return null;
+			}
+        },
 		mounted () {
 			if (this.perfil.misactividades.length>0) {
 				this.perfil.misactividades.forEach(actividad => {
@@ -270,7 +277,7 @@
 					}
 				});
 			};
-			if (this.realizadas.length===7) {
+			if (this.realizadas.length===4) {
 					this.contenidos.enCurso[0].premio_clase.forEach(pre => {
 						if (pre.accesorio.animal_id===this.perfil.avatar.animal_id) {
 							this.premioSelected=pre.accesorio;

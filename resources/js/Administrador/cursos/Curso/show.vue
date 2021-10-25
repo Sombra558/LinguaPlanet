@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" style="position: relative;">
         <div class="row mb-3">
             <a class="color-plomo" href="/admin/cursos">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -56,49 +56,38 @@
                                 </ul>
                                 <div class="accordion" id="accordionExample">
                                     <div class="card" v-for="(modulo, index) in curso.modulos" :key="modulo.id">
-                                        <div class="card-header" id="headingOne" style="position: relative">
-                                            <div :id="`options${index}`" class="popover d-none" role="tooltip" style="width: 12rem; z-index: 2;position: absolute;top: 48px;left: 43.2rem;">
-                                                <div class="arrow"></div>
-                                                <h3 class="popover-header"></h3>
-                                                <div class="popover-body px-4">
-                                                    <div class="row py-2">
-                                                        <button class="edit-mobile img-btn" @click.prevent="seleccionarModuloModal(modulo,'editar')">
-                                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M12 20H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                <path d="M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                            </svg>
-                                                            Editar
-                                                        </button>
-                                                    </div>
-                                                    <div class="row py-2">
-                                                        <div class="col">
-                                                            <button class="transparent-button" @click.prevent="seleccionarModuloModal(modulo,'Clase')">Agregar Clase</button>
-                                                        </div>                                
-                                                    </div>
-                                                    <div class="row py-2">
-                                                        <div class="col">
-                                                            <button class="transparent-button" @click.prevent="eliminarModulo(modulo)">Eliminar</button>
-                                                        </div>                                
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="card-header" id="headingOne">
                                             <div class="row">                                                
-                                                <div class="col-9 d-flex flex-column">
+                                                <div class="col-6 d-flex flex-column">
                                                     <span class="list-modulos-header">{{modulo.nombre}}</span>
                                                     <span v-if="!modulo.clases.length" class="color-plomo">{{modulo.clases.length}} Clases - <Cont :modulo="modulo" /> Actividades</span>
                                                     <a v-else href="#" data-toggle="collapse" :data-target="`#collapse${index}`" aria-expanded="true" :aria-controls="`collapse${index}`">
                                                         <span class="fw-400 color-plomo">{{ modulo.clases.length }} Actividades</span>
                                                     </a>
                                                 </div>
-                                                <div class="col-3 d-flex justify-content-around">
-                                                    <button class="edit-desktop img-btn" @click.prevent="seleccionarModuloModal(modulo,'editar')">
-                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M12 20H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                            <path d="M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        </svg>
-                                                        Editar
-                                                    </button>
-                                                    <button type="button"class="btn-options" @click="showOptions($event, `options${index}`)">
+                                                <div class="col-6 d-flex justify-content-end align-items-center">
+                                                    <span id="modulo" class="btn-deck d-flex align-items-center">
+                                                        <button class="btn transparent-button" @click.prevent="seleccionarClase(modulo,'actividad')">Agregar Actividad</button>
+                                                        <button class="transparent-button color-plomo" @click.prevent="eliminarClase(modulo)">
+                                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3 6H5H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                <path d="M10 11V17" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                <path d="M14 11V17" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                            <span class="ml-1">
+                                                                Eliminar
+                                                            </span>
+                                                        </button>
+                                                        <button class="edit-desktop img-btn" @click.prevent="seleccionarModuloModal(modulo,'editar')">
+                                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M12 20H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                <path d="M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                            Editar
+                                                        </button>
+                                                    </span>
+                                                    <button type="button"class="btn-options" @click="showOptions($event, modulo)" style="position: relative;">
                                                         <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <circle cx="2" cy="2" r="2" fill="#606060"/>
                                                             <circle cx="9" cy="2" r="2" fill="#606060"/>
@@ -112,43 +101,6 @@
                                             <div class="card-body">
                                                 <div class="accordion" id="accordionActividades">
                                                     <div v-for="(clase, index) in modulo.clases" :key="clase.id" class="card">
-                                                        <div :id="`optionsClass${index}`" class="popover d-none" role="tooltip" style="width: 12rem; z-index: 2;position: absolute;top: 48px;left: 43.2rem;">
-                                                            <div class="arrow"></div>
-                                                            <h3 class="popover-header"></h3>
-                                                            <div class="popover-body px-4">
-                                                                <div class="row py-2">
-                                                                    <button class="btn transparent-button" @click.prevent="seleccionarClase(clase,'actividad')">Agregar Actividad</button>
-                                                                </div>
-                                                                <div class="row py-2">
-                                                                    <div class="col">
-                                                                        <button class="transparent-button color-plomo" @click.prevent="seleccionarClase(clase,'editar')">
-                                                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                                <path d="M12 20H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                                <path d="M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                            </svg>
-                                                                            <span class="ml-1">
-                                                                                Editar
-                                                                            </span>
-                                                                        </button>
-                                                                    </div>                                
-                                                                </div>
-                                                                <div class="row py-2">
-                                                                    <div class="col">
-                                                                        <button class="transparent-button color-plomo" @click.prevent="eliminarClase(clase)">
-                                                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                                <path d="M3 6H5H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                                <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                                <path d="M10 11V17" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                                <path d="M14 11V17" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                            </svg>
-                                                                            <span class="ml-1">
-                                                                                Eliminar
-                                                                            </span>
-                                                                        </button>
-                                                                    </div>                                
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                         <div class="card-header" id="headingOne">
                                                           <div class="row">
                                                                 <div class="col-10">
@@ -158,8 +110,27 @@
                                                                         <span class="fw-400 color-plomo">{{ clase.actividades.length }} Actividades</span>
                                                                     </a>
                                                                 </div>
+                                                                <div class="row py-2">
+                                                                    <button class="edit-mobile img-btn" @click.prevent="seleccionarModuloModal(clase,'editar')">
+                                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M12 20H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                            <path d="M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                        </svg>
+                                                                        Editar
+                                                                    </button>
+                                                                </div>
+                                                                <div class="row py-2">
+                                                                    <div class="col">
+                                                                        <button class="transparent-button" @click.prevent="seleccionarModuloModal(clase,'Clase')">Agregar Clase</button>
+                                                                    </div>                                
+                                                                </div>
+                                                                <div class="row py-2">
+                                                                    <div class="col">
+                                                                        <button class="transparent-button" @click.prevent="eliminarModulo(clase)">Eliminar</button>
+                                                                    </div>                                
+                                                                </div>
                                                                 <div class="col-2 text-center">                                                            
-                                                                    <button type="button"class="btn-options" @click="showOptions($event, `optionsClass${index}`)">
+                                                                    <button type="button"class="btn-options" @click="showOptions($event, clase)" style="position: relative;">
                                                                         <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                             <circle cx="2" cy="2" r="2" fill="#606060"/>
                                                                             <circle cx="9" cy="2" r="2" fill="#606060"/>
@@ -339,139 +310,139 @@
                     </form>          
                 </div>
             </div>
-            </div>
-            <!--Modal editar clase-->
-            <div v-if="claseSelected" class="modal fade" id="editarClase" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header pb-0">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M22.5 7.5L7.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M7.5 7.5L22.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <form @submit.prevent="editarClase(claseSelected)">
-                            <div class="modal-body pt-0 px-5">
-                                <div class="row">
-                                    <div class="col">
-                                        <h4 class="fw-500 color-black mb-4" id="exampleModalLabel">Editar Clase</h4>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-12">
-                                        <label for="finaliza" >Tipo de Actividad</label>
-                                        <input type="date" class="form-input input-gray" name="inicia" v-model="claseSelected.inicia" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-12">
-                                        <label for="inicia" >Fecha de Finalizacion</label>
-                                        <input type="date" class="form-input input-gray" name="finaliza" v-model="claseSelected.finaliza" required>   
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-secondary fw-500" data-dismiss="modal">Cancelar</button>
-                                <button :disabled="proceso" type="submit" class="btn btn-primary">Editar Clase</button>
-                            </div>
-                        </form>              
-                    </div>
-                </div>
-            </div>
-             <!--Modal actividad -->
-            <div v-if="claseSelected" class="modal fade" id="crearActividad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header pb-0">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M22.5 7.5L7.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M7.5 7.5L22.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <form id="subiractividad" @submit.prevent="crearActividad()" ref="form">
-                            <div class="modal-body pt-0 px-5">
-                                <div class="row">
-                                    <div class="col">
-                                        <h4 class="fw-500 color-black mb-4" id="exampleModalLabel">Nueva Actividad</h4>
-                                    </div>
-                                </div>
-                                <input type="hidden" :value="claseSelected.id" name="clase_id">
-                                <div class="row">
-                                    <div class="form-group col-12">
-                                        <label for="finaliza" >Tipo de actividad</label>
-                                        <select class="form-input input-gray" name="tipo" v-model="actividadtipe" >
-                                            <option :value="null">Seleccione Tipo</option>
-                                            <option value="Palabras del día">Palabras del día</option>
-                                            <option value="Video de apertura">Video de apertura</option>
-                                            <option value="Actividad">Actividad</option>
-                                            <option value="Libros">Libros</option>
-                                            <option value="Mochila">Mochila</option>
-                                            <option value="Rompecabeza">Rompecabeza</option>
-                                            <option value="Memorama">Memorama</option>
-                                            <option value="Silueta">Silueta</option>
-                                        </select>                                       
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div v-if="actividadtipe==='Palabras del día'" class="form-group col-md-6 col-12">
-                                        <label for="inicia" >Subir video</label>
-                                        <input type="file" name="recurso" id="assetsFieldHandle"  />
-                                    </div>
-                                    <div v-if="actividadtipe==='Video de apertura'" class="form-group col-md-6 col-12">
-                                        <label for="inicia" >Subir video</label>
-                                        <input type="file" name="recurso" id="assetsFieldHandle"  />
-                                    </div>
-                                    <div v-if="actividadtipe==='Actividad'" class="form-group col-md-6 col-12">
-                                        <label for="inicia" >Subir Archivo</label>
-                                        <input type="file" name="recurso" id="assetsFieldHandle"  />
-                                    </div>
-                                    <div v-if="actividadtipe==='Libros'" class="form-group col-md-6 col-12">
-                                        <label for="inicia" >Subir Archivo</label>
-                                        <input type="file" name="recurso" id="assetsFieldHandle"  />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-lg btn-outline-secondary fw-500" data-dismiss="modal">Cancelar</button>
-                                <button :disabled="proceso" type="submit" class="btn btn-lg btn-primary">Agregar Actividad</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-             <!--Modal Asignacion de Membresia -->
-            <div class="modal fade" id="crearRelacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        </div>
+        <!--Modal editar clase-->
+        <div v-if="claseSelected" class="modal fade" id="editarClase" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="fw-500" id="exampleModalLabel">Asignar a Membresia</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="relacion-member" @submit.prevent="crearrelacion()" >
-                        <input type="hidden" :value="curso.id" name="curso_id">
-                        <div class="form-group col-md-12 col-12">
-                                <label for="membresia_id" >Seleccione Membresia</label>
-                                 <select name="membresia_id" v-model="membresiaSelected" >
-                                    <option :value="null">Seleccione</option>
-                                    <option :value="membresia.id" v-for="membresia in membresias" :key="'member'+membresia.id">{{membresia.nombre}}</option>
-                                </select>                               
-                        </div>                   
+                    <div class="modal-header pb-0">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.5 7.5L7.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7.5 7.5L22.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <form @submit.prevent="editarClase(claseSelected)">
+                        <div class="modal-body pt-0 px-5">
+                            <div class="row">
+                                <div class="col">
+                                    <h4 class="fw-500 color-black mb-4" id="exampleModalLabel">Editar Clase</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <label for="finaliza" >Tipo de Actividad</label>
+                                    <input type="date" class="form-input input-gray" name="inicia" v-model="claseSelected.inicia" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <label for="inicia" >Fecha de Finalizacion</label>
+                                    <input type="date" class="form-input input-gray" name="finaliza" v-model="claseSelected.finaliza" required>   
+                                </div>
+                            </div>
+                        </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button :disabled="proceso" type="submit" class="btn btn-primary">Asignar</button>
+                            <button type="button" class="btn btn-outline-secondary fw-500" data-dismiss="modal">Cancelar</button>
+                            <button :disabled="proceso" type="submit" class="btn btn-primary">Editar Clase</button>
+                        </div>
+                    </form>              
+                </div>
+            </div>
+        </div>
+         <!--Modal actividad -->
+        <div v-if="claseSelected" class="modal fade" id="crearActividad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header pb-0">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.5 7.5L7.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7.5 7.5L22.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <form id="subiractividad" @submit.prevent="crearActividad()" ref="form">
+                        <div class="modal-body pt-0 px-5">
+                            <div class="row">
+                                <div class="col">
+                                    <h4 class="fw-500 color-black mb-4" id="exampleModalLabel">Nueva Actividad</h4>
+                                </div>
+                            </div>
+                            <input type="hidden" :value="claseSelected.id" name="clase_id">
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <label for="finaliza" >Tipo de actividad</label>
+                                    <select class="form-input input-gray" name="tipo" v-model="actividadtipe" >
+                                        <option :value="null">Seleccione Tipo</option>
+                                        <option value="Palabras del día">Palabras del día</option>
+                                        <option value="Video de apertura">Video de apertura</option>
+                                        <option value="Actividad">Actividad</option>
+                                        <option value="Libros">Libros</option>
+                                        <option value="Mochila">Mochila</option>
+                                        <option value="Rompecabeza">Rompecabeza</option>
+                                        <option value="Memorama">Memorama</option>
+                                        <option value="Silueta">Silueta</option>
+                                    </select>                                       
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div v-if="actividadtipe==='Palabras del día'" class="form-group col-md-6 col-12">
+                                    <label for="inicia" >Subir video</label>
+                                    <input type="file" name="recurso" id="assetsFieldHandle"  />
+                                </div>
+                                <div v-if="actividadtipe==='Video de apertura'" class="form-group col-md-6 col-12">
+                                    <label for="inicia" >Subir video</label>
+                                    <input type="file" name="recurso" id="assetsFieldHandle"  />
+                                </div>
+                                <div v-if="actividadtipe==='Actividad'" class="form-group col-md-6 col-12">
+                                    <label for="inicia" >Subir Archivo</label>
+                                    <input type="file" name="recurso" id="assetsFieldHandle"  />
+                                </div>
+                                <div v-if="actividadtipe==='Libros'" class="form-group col-md-6 col-12">
+                                    <label for="inicia" >Subir Archivo</label>
+                                    <input type="file" name="recurso" id="assetsFieldHandle"  />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-lg btn-outline-secondary fw-500" data-dismiss="modal">Cancelar</button>
+                            <button :disabled="proceso" type="submit" class="btn btn-lg btn-primary">Agregar Actividad</button>
                         </div>
                     </form>
-                </div>              
                 </div>
             </div>
+        </div>
+         <!--Modal Asignacion de Membresia -->
+        <div class="modal fade" id="crearRelacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="fw-500" id="exampleModalLabel">Asignar a Membresia</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="relacion-member" @submit.prevent="crearrelacion()" >
+                            <input type="hidden" :value="curso.id" name="curso_id">
+                            <div class="form-group col-md-12 col-12">
+                                    <label for="membresia_id" >Seleccione Membresia</label>
+                                     <select name="membresia_id" v-model="membresiaSelected" >
+                                        <option :value="null">Seleccione</option>
+                                        <option :value="membresia.id" v-for="membresia in membresias" :key="'member'+membresia.id">{{membresia.nombre}}</option>
+                                    </select>                               
+                            </div>                   
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button :disabled="proceso" type="submit" class="btn btn-primary">Asignar</button>
+                            </div>
+                        </form>
+                    </div>              
+                </div>
             </div>
+        </div>
     </div>
 </template>
 
@@ -516,11 +487,6 @@ import Cont from './contador.vue';
             });
         },
         methods: {
-            showOptions(element, index) {
-                document.querySelector(`.popover.d-block:not(#${index})`)?.classList.replace('d-block', 'd-none')
-                $(`#${index}`).toggleClass('d-block');
-                $(`#${index}`).toggleClass('d-none');
-            },
             seleccionarModuloModal(value,action) {
                     if (action==='crear') {
                         this.moduloSelected=null;
@@ -681,35 +647,41 @@ import Cont from './contador.vue';
                      this.proceso=false;
                 });
                 }, 
-                newmember() {
+            newmember() {
                 
                 $("#crearRelacion").modal("show");
                
-                },
-                crearrelacion(){
-                           this.proceso=true;
-                           let form = $("#relacion-member")[0];
-                           let formulario = new FormData(form);
-                           var ruta ='/admin/relacion';
-                            axios.post(ruta, formulario)
-                                .then((res) => {
-                                    window.location.reload();
-                                })
-                                .catch((err) => {
-                                    this.proceso=false;
-                                    console.log(err);
-                        });
-                },
-                eliminarRelacion(relacion){
-                      this.proceso=true;
-                      var url = '/admin/eliminar-relacion/'+relacion.pivot.id;
-                      axios.delete(url).then((result) => {
+            },
+            crearrelacion(){
+               this.proceso=true;
+               let form = $("#relacion-member")[0];
+               let formulario = new FormData(form);
+               var ruta ='/admin/relacion';
+                axios.post(ruta, formulario)
+                    .then((res) => {
                         window.location.reload();
-                      }).catch((err) => {
-                        console.log(err);
+                    })
+                    .catch((err) => {
                         this.proceso=false;
-                      });
-                }              
+                        console.log(err);
+                    });
+                },
+            eliminarRelacion(relacion){
+                this.proceso=true;
+                var url = '/admin/eliminar-relacion/'+relacion.pivot.id;
+                axios.delete(url).then((result) => {
+                    window.location.reload();
+                }).catch((err) => {
+                    console.log(err);
+                    this.proceso=false;
+                  });
+                },
+            showOptions(event) {
+                let spanDeck = event.currentTarget.parentElement.firstChild;
+                console.log(document.querySelector(`.btn-deck.active:not(#${spanDeck.id})`));
+                document.querySelector(`.btn-deck.active:not(#${spanDeck.id})`)?.classList.toggle('active');
+                spanDeck.classList.toggle('active');
+            }       
         },
     }
 </script>
@@ -799,8 +771,19 @@ import Cont from './contador.vue';
         font-size: 1rem;
     }
 
+    .btn-deck {
+        position: absolute;
+        left: 31rem;
+        width: 100%;
+        transition: left 0.7s ease;
+    }
+
+    .btn-deck.active {
+        left: 5rem;
+    }
+
     .btn-options {
-        background-color: transparent;
+        background-color: #F8F8F8;
         border: none;
     }
 

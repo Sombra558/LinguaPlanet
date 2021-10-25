@@ -47547,7 +47547,11 @@ var render = function() {
           attrs: {
             x: accesory.corde_x,
             y: accesory.corde_y,
-            "xlink:href": accesory.accesorio,
+            href:
+              "" +
+              accesory.accesorio.split(".")[0] +
+              (accesory.color !== null ? accesory.color.split("#")[1] : "") +
+              ".svg",
             preserveAspectRatio: "none"
           }
         })
