@@ -38,6 +38,7 @@ const store = new Vuex.Store({
         membresias:[],
         usuarios:[],
         inscripciones:[],
+        perfiles:[],
         filterCursos: {
             curso: "",
         },
@@ -52,6 +53,10 @@ const store = new Vuex.Store({
         },
         filterInscripciones: {
             query: "",
+        },
+        filterPerfiles: {
+            query: "",
+            curso_id: null,
         },
     },
     mutations: {
@@ -70,6 +75,9 @@ const store = new Vuex.Store({
         setInscripciones(state, usuarios) {
             state.inscripciones = usuarios;
         },
+        setPerfiles(state, perfiles) {
+            state.perfiles = perfiles;
+        },
         setfilterCursos(state, data) {
             state.filterCursos[data['filter']] = data.value;
         },
@@ -84,6 +92,9 @@ const store = new Vuex.Store({
         },
         setfilterinscripciones(state, data) {
             state.filterInscripciones[data['filter']] = data.value;
+        },
+        setfilterPerfiles(state, data) {
+            state.filterPerfiles[data['filter']] = data.value;
         },
        
     },
@@ -120,6 +131,13 @@ const store = new Vuex.Store({
             let usuarios = state.inscripciones;
             if (state.filterInscripciones.query.length > 1) {
                 usuarios = usuarios.filter(r => r.user.name.toLowerCase().includes(state.filterInscripciones.query.toLowerCase()) || r.user.lastname.toLowerCase().includes(state.filterInscripciones.query.toLowerCase()));
+            }
+            return usuarios;
+        },
+        filteredPerfiles(state) {
+            let usuarios = state.perfiles;
+            if (state.filterPerfiles.query.length > 1) {
+                usuarios = usuarios.filter(r => r.apodo.toLowerCase().includes(state.filterPerfiles.query.toLowerCase()));
             }
             return usuarios;
         },

@@ -1,5 +1,5 @@
 @extends('layouts.Administrador.Admin')
 
 @section('content')
-    <reportes-padre></reportes-padre>
+    <reportes-padre :usuarios="{{$usuarios}}"></reportes-padre>
 @endsection

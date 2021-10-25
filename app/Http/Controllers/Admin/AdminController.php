@@ -17,6 +17,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Carbon\Carbon;
 
+
 class AdminController extends Controller
 {
     public function home()
@@ -125,15 +126,16 @@ class AdminController extends Controller
 
     public function reportesPadre()
     {
-        
+        $usuarios=User::get()->load('perfiles');
        
-        return view('Administrador.Reportes.Secciones.padres');
+        return view('Administrador.Reportes.Secciones.padres',compact('usuarios'));
     }
     public function reportesAlumnos()
     {
-        
+        $perfiles=PerfilEstudianteUser::get();
+        $cursos=Curso::get();
        
-        return view('Administrador.Reportes.Secciones.alumnos');
+        return view('Administrador.Reportes.Secciones.alumnos',compact('perfiles','cursos'));
     }
     public function reportesCalificaciones()
     {
