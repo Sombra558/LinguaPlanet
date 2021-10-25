@@ -26,7 +26,7 @@
                             <th>Email</th>
                             <th>Tipo</th>
                             <th>Comprobante</th>
-                            <th>Perfiles disponibles en plan</th>
+                            <th>Perfiles disponibles</th>
                             <th></th>                     
                         </tr>
                     </thead>
@@ -38,7 +38,7 @@
                             <td>{{usuario.tipo}}</td>
                             <td>{{usuario.comprobante}}</td>
                             <td>{{usuario.available}}</td>
-                            <td>
+                            <td class="px-1 w-20">
                                 <button class="transparent-button" @click.prevent="planusermodal(usuario,'editar')">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M12 20H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
