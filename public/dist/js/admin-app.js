@@ -47672,7 +47672,7 @@ var render = function() {
                               staticClass: "btn btn-lg btn-primary",
                               attrs: { disabled: _vm.proceso, type: "submit" }
                             },
-                            [_vm._v("Agregar Actividad")]
+                            [_vm._v("Agregar Clase")]
                           )
                         ])
                       ]

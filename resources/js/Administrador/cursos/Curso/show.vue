@@ -331,7 +331,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-lg btn-outline-secondary fw-500" data-dismiss="modal">Cancelar</button>
-                            <button :disabled="proceso" type="submit" class="btn btn-lg btn-primary">Agregar Actividad</button>
+                            <button :disabled="proceso" type="submit" class="btn btn-lg btn-primary">Agregar Clase</button>
                         </div>
                     </form>          
                 </div>
