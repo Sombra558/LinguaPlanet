@@ -1,6 +1,5 @@
 /node_modules
 /public/hot
-/storage/*.key
 /vendor
 .env
 .env.backup
@@ -9,11 +8,4 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-public/images/perro-accesorios.svg
-resources/js/ref2.js
-public/js/ref2.js
-public/mix-manifest.json
-public/dist/js/admin-app.js
-public/dist/js/hijo-app.js
-public/dist/js/padre-app.js
-public/js/app.js
+
