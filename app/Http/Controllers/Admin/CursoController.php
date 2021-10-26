@@ -86,7 +86,9 @@ class CursoController extends Controller
         $membresias=Membresia::get();
         $curso=Curso::find($id)->load(['modulos' => function($q){
             return $q->with(['clases'=>function($g){
-                return $g->with(['actividades']);
+                return $g->with(['actividades','premioClase'=>function($p){
+                    return $p->with('accesorio');
+                }]);
             }]);
         },'membresias']);
         return view('Administrador.Cursos.show', compact('curso','membresias','siluetas'));

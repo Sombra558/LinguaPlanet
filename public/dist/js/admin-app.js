@@ -3496,6 +3496,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3573,6 +3589,7 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.curso.modulos.push(result.data);
 
+        window.location.reload();
         _this.proceso = false;
       })["catch"](function (err) {
         console.log(err);
@@ -3646,8 +3663,8 @@ __webpack_require__.r(__webpack_exports__);
       this.proceso = true;
       var url = '/admin/clase/' + clase.id;
       axios.post(url, clase).then(function (result) {
-        $("#editarClase").modal("hide"); //window.location.reload();
-
+        $("#editarClase").modal("hide");
+        window.location.reload();
         _this5.proceso = false;
       })["catch"](function (err) {
         console.log(err);
@@ -45965,7 +45982,8 @@ var render = function() {
                                                         $event.preventDefault()
                                                         return _vm.seleccionarModuloModal(
                                                           modulo,
-                                                          "crear"
+                                                          "clase",
+                                                          modulo
                                                         )
                                                       }
                                                     }
@@ -46055,7 +46073,7 @@ var render = function() {
                                                     on: {
                                                       click: function($event) {
                                                         $event.preventDefault()
-                                                        return _vm.eliminarClase(
+                                                        return _vm.eliminarModulo(
                                                           modulo
                                                         )
                                                       }
@@ -46474,7 +46492,7 @@ var render = function() {
                                                                         $event
                                                                       ) {
                                                                         $event.preventDefault()
-                                                                        return _vm.eliminarModulo(
+                                                                        return _vm.eliminarClase(
                                                                           clase
                                                                         )
                                                                       }
@@ -47751,6 +47769,89 @@ var render = function() {
                           _c("div", { staticClass: "row" }, [
                             _c("div", { staticClass: "form-group col-12" }, [
                               _c("label", { attrs: { for: "finaliza" } }, [
+                                _vm._v("Accesorio")
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.claseSelected.premio_clase[0]
+                                          .accesorio.tipo,
+                                      expression:
+                                        "claseSelected.premio_clase[0].accesorio.tipo"
+                                    }
+                                  ],
+                                  staticClass: "form-input input-gray",
+                                  attrs: { name: "premio" },
+                                  on: {
+                                    change: function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        _vm.claseSelected.premio_clase[0]
+                                          .accesorio,
+                                        "tipo",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("option", { attrs: { value: "gorro" } }, [
+                                    _vm._v("Gorro")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "option",
+                                    { attrs: { value: "guitarra" } },
+                                    [_vm._v("Guitarra")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "yoyo" } }, [
+                                    _vm._v("Yoyo")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "gafas" } }, [
+                                    _vm._v("Gafas")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "camisa" } }, [
+                                    _vm._v("Camisa")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "option",
+                                    { attrs: { value: "bufanda" } },
+                                    [_vm._v("Bufanda")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "botas" } }, [
+                                    _vm._v("Botas")
+                                  ])
+                                ]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "form-group col-12" }, [
+                              _c("label", { attrs: { for: "finaliza" } }, [
                                 _vm._v("Tipo de Actividad")
                               ]),
                               _vm._v(" "),
@@ -48385,7 +48486,7 @@ var staticRenderFns = [
             staticClass: "fw-500 color-black mb-4",
             attrs: { id: "exampleModalLabel" }
           },
-          [_vm._v("Nueva Actividad")]
+          [_vm._v("Nueva Semana")]
         )
       ])
     ])

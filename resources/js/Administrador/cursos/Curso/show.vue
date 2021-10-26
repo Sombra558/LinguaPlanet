@@ -67,7 +67,7 @@
                                                 </div>
                                                 <div class="col-6 d-flex justify-content-end align-items-center">
                                                     <span :class="[ 'modulo', 'm'+index ,'btn-deck d-flex align-items-center']">
-                                                        <button class="transparent-button" @click.prevent="seleccionarModuloModal(modulo,'crear')">
+                                                        <button class="transparent-button" @click.prevent="seleccionarModuloModal(modulo,'clase',modulo)">
                                                             +
                                                         </button>
                                                         <button class="img-btn" @click.prevent="seleccionarModuloModal(modulo,'editar')">
@@ -79,7 +79,7 @@
                                                                 Editar
                                                             </span>
                                                         </button>
-                                                        <button class="transparent-button color-plomo" @click.prevent="eliminarClase(modulo)">
+                                                        <button class="transparent-button color-plomo" @click.prevent="eliminarModulo(modulo)">
                                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path d="M3 6H5H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                                 <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -91,7 +91,7 @@
                                                             </span>
                                                         </button>
                                                     </span>
-                                                    <button type="button"class="btn-options" @click="showOptions($event, index)" style="position: relative;">
+                                                    <button type="button" class="btn-options" @click="showOptions($event, index)" style="position: relative;">
                                                         <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <circle cx="2" cy="2" r="2" fill="#606060"/>
                                                             <circle cx="9" cy="2" r="2" fill="#606060"/>
@@ -128,7 +128,7 @@
                                                                                 Editar
                                                                             </span>
                                                                         </button>
-                                                                        <button class="transparent-button" @click.prevent="eliminarModulo(clase)">
+                                                                        <button class="transparent-button" @click.prevent="eliminarClase(clase)">
                                                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                                 <path d="M3 6H5H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                                                 <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -140,7 +140,7 @@
                                                                             </span>
                                                                         </button>
                                                                     </span>
-                                                                    <button type="button"class="btn-options" @click="showOptions($event, index)" style="position: relative;">
+                                                                    <button type="button" class="btn-options" @click="showOptions($event, index)" style="position: relative;">
                                                                         <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                             <circle cx="2" cy="2" r="2" fill="#606060"/>
                                                                             <circle cx="9" cy="2" r="2" fill="#606060"/>
@@ -297,7 +297,7 @@
                         <div class="modal-body pt-0 px-5">
                             <div class="row">
                                 <div class="col">
-                                    <h4 class="fw-500 color-black mb-4" id="exampleModalLabel">Nueva Actividad</h4>
+                                    <h4 class="fw-500 color-black mb-4" id="exampleModalLabel">Nueva Semana</h4>
                                 </div>
                             </div>
                              <div class="row">
@@ -356,6 +356,22 @@
                                     <h4 class="fw-500 color-black mb-4" id="exampleModalLabel">Editar Clase</h4>
                                 </div>
                             </div>
+                                 <div class="row">
+                                    <div class="form-group col-12">
+                                        <label for="finaliza" >Accesorio</label>
+                                        <select class="form-input input-gray" name="premio" v-model="claseSelected.premio_clase[0].accesorio.tipo" >
+                                    
+                                            <option value="gorro">Gorro</option>
+                                            <option value="guitarra">Guitarra</option>
+                                            <option value="yoyo">Yoyo</option>
+                                            <option value="gafas">Gafas</option>
+                                            <option value="camisa">Camisa</option>
+                                            <option value="bufanda">Bufanda</option>
+                                            <option value="botas">Botas</option>
+                                            
+                                        </select>                                       
+                                    </div>
+                                </div>
                             <div class="row">
                                 <div class="form-group col-12">
                                     <label for="finaliza" >Tipo de Actividad</label>
@@ -546,6 +562,7 @@ import Multiselect from 'vue-multiselect'
                    this.newmodulo.finaliza=null;
                    $("#crearModulo").modal("hide");
                    this.curso.modulos.push(result.data);
+                   window.location.reload();
                    this.proceso=false;
                 }).catch((err) => {
                     console.log(err);
@@ -612,7 +629,7 @@ import Multiselect from 'vue-multiselect'
                 var url = '/admin/clase/'+clase.id;
                 axios.post(url,clase).then((result) => {
                    $("#editarClase").modal("hide");
-                   //window.location.reload();
+                   window.location.reload();
                    this.proceso=false;
                 }).catch((err) => {
                     console.log(err);
