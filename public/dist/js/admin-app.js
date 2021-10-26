@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3394,6 +3394,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "curso-show",
@@ -3636,12 +3646,12 @@ __webpack_require__.r(__webpack_exports__);
         _this11.proceso = false;
       });
     },
-    showOptions: function showOptions(event) {
+    showOptions: function showOptions(event, index) {
       var _document$querySelect;
 
       var spanDeck = event.currentTarget.parentElement.firstChild;
-      console.log(document.querySelector(".btn-deck.active:not(#".concat(spanDeck.id, ")")));
-      (_document$querySelect = document.querySelector(".btn-deck.active:not(#".concat(spanDeck.id, ")"))) === null || _document$querySelect === void 0 ? void 0 : _document$querySelect.classList.toggle('active');
+      var oppositeSpan = spanDeck.classList[0] === 'modulo' ? 'clase' : 'modulo';
+      (_document$querySelect = document.querySelector(".btn-deck.active:not(.".concat(oppositeSpan, ", .").concat(spanDeck.classList[1], ")"))) === null || _document$querySelect === void 0 ? void 0 : _document$querySelect.classList.toggle('active');
       spanDeck.classList.toggle('active');
     }
   }
@@ -9283,7 +9293,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".nav-link[data-v-7cbf4468] {\n  border-color: #B5B5BB !important;\n  border-radius: 0;\n  font-weight: 500;\n}\n.nav-link.active[data-v-7cbf4468] {\n  border-color: #B5B5BB !important;\n  border-top: 2px solid #31348B !important;\n  border-bottom: none;\n  border-left: none;\n  color: #31348B !important;\n  background-color: #F8F8F8 !important;\n}\n#curso-contenido[data-v-7cbf4468] {\n  background-color: #F8F8F8;\n  height: 60vh;\n}\n#curso-detalles[data-v-7cbf4468] {\n  background-color: #F8F8F8;\n}\n.modal-header[data-v-7cbf4468] {\n  border-bottom: none;\n}\n.form-input[data-v-7cbf4468] {\n  padding: 9px 16px !important;\n}\n.form-group label[data-v-7cbf4468] {\n  font-weight: 500;\n  font-size: 0.9rem;\n}\n.form-input[data-v-7cbf4468]::-moz-placeholder {\n  /* Chrome, Firefox, Opera, Safari 10.1+ */\n  color: #606060 !important;\n  font-weight: 400 !important;\n  font-size: 1rem !important;\n}\n.form-input[data-v-7cbf4468]:-ms-input-placeholder {\n  /* Chrome, Firefox, Opera, Safari 10.1+ */\n  color: #606060 !important;\n  font-weight: 400 !important;\n  font-size: 1rem !important;\n}\n.form-input[data-v-7cbf4468]::placeholder {\n  /* Chrome, Firefox, Opera, Safari 10.1+ */\n  color: #606060 !important;\n  font-weight: 400 !important;\n  font-size: 1rem !important;\n}\n.form-input[data-v-7cbf4468]::-webkit-datetime-edit {\n  color: #606060 !important;\n  font-weight: 400 !important;\n  font-size: 1rem !important;\n}\n.form-input[data-v-7cbf4468]::-webkit-calendar-picker-indicator {\n  background-image: url(\"/images/calendar-dark.svg\");\n  background-origin: content-box;\n  background-size: contain;\n  height: 1.2em;\n  -webkit-margin-start: 24px;\n          margin-inline-start: 24px;\n  opacity: 1;\n  padding-bottom: 2px;\n  -webkit-padding-start: 3px;\n          padding-inline-start: 3px;\n  -webkit-padding-end: 3px;\n          padding-inline-end: 3px;\n  padding-top: 2px;\n  width: 1.2em;\n  background-repeat: no-repeat;\n  outline: none;\n}\n#assetsFieldHandle[data-v-7cbf4468]::-webkit-file-upload-button {\n  background: #F8F8F8;\n  border: 1px solid #606060;\n  box-sizing: border-box;\n  border-radius: 8px;\n  font-weight: 500;\n  padding: 0.5rem 1.5rem;\n}\n.modal-footer[data-v-7cbf4468] {\n  border-top-color: #B5B5BB;\n  background-color: #F8F8F8;\n}\n.list-modulos-header[data-v-7cbf4468] {\n  font-weight: 400;\n  font-size: 1rem;\n}\n.btn-deck[data-v-7cbf4468] {\n  position: absolute;\n  left: 31rem;\n  width: 100%;\n  transition: left 0.7s ease;\n}\n.btn-deck.active[data-v-7cbf4468] {\n  left: 5rem;\n}\n.btn-options[data-v-7cbf4468] {\n  background-color: #F8F8F8;\n  border: none;\n}\n.btn-options[data-v-7cbf4468]:hover {\n  border: 1px solid #606060;\n  box-sizing: border-box;\n  border-radius: 4px;\n}\n.img-btn[data-v-7cbf4468] {\n  color: #606060;\n  font-size: 1rem;\n}\n.block-btn[data-v-7cbf4468] {\n  display: none;\n}\n@media (max-width: 768px) {\n.btn.btn-lg[data-v-7cbf4468]:not(.btn-nuevo-modulo) {\n    display: block;\n    width: 100%;\n}\n.btn-nuevo-modulo[data-v-7cbf4468] {\n    display: none;\n}\n.block-btn[data-v-7cbf4468] {\n    display: block;\n}\n.block-btn[data-v-7cbf4468] {\n    display: block;\n}\n.edit-mobile[data-v-7cbf4468] {\n    display: block;\n}\n.edit-desktop[data-v-7cbf4468] {\n    display: none;\n}\n}", ""]);
+exports.push([module.i, "ul.nav[data-v-7cbf4468] {\n  height: 2.58rem;\n  border-bottom: none;\n  width: 100%;\n  overflow-x: auto;\n  overflow-y: hidden;\n  flex-wrap: inherit;\n  white-space: nowrap;\n}\nul.nav li.nav-item[data-v-7cbf4468] {\n  display: inline-block;\n}\n.nav[data-v-7cbf4468] {\n  border-top: 1px solid #B5B5BB;\n  border-right: 1px solid #B5B5BB;\n}\n.nav-link[data-v-7cbf4468] {\n  border-color: #B5B5BB !important;\n  border-radius: 0;\n  font-weight: 500;\n}\n.nav-link.active[data-v-7cbf4468] {\n  border-color: #B5B5BB !important;\n  border-top: 2px solid #31348B !important;\n  border-bottom: none;\n  border-left: none;\n  color: #31348B !important;\n  background-color: #F8F8F8 !important;\n}\n#curso-contenido[data-v-7cbf4468] {\n  background-color: #F8F8F8;\n  height: 60vh;\n}\n#curso-detalles[data-v-7cbf4468] {\n  background-color: #F8F8F8;\n}\n.modal-header[data-v-7cbf4468] {\n  border-bottom: none;\n}\n.form-input[data-v-7cbf4468] {\n  padding: 9px 16px !important;\n}\n.form-group label[data-v-7cbf4468] {\n  font-weight: 500;\n  font-size: 0.9rem;\n}\n.form-input[data-v-7cbf4468]::-moz-placeholder {\n  /* Chrome, Firefox, Opera, Safari 10.1+ */\n  color: #606060 !important;\n  font-weight: 400 !important;\n  font-size: 1rem !important;\n}\n.form-input[data-v-7cbf4468]:-ms-input-placeholder {\n  /* Chrome, Firefox, Opera, Safari 10.1+ */\n  color: #606060 !important;\n  font-weight: 400 !important;\n  font-size: 1rem !important;\n}\n.form-input[data-v-7cbf4468]::placeholder {\n  /* Chrome, Firefox, Opera, Safari 10.1+ */\n  color: #606060 !important;\n  font-weight: 400 !important;\n  font-size: 1rem !important;\n}\n.form-input[data-v-7cbf4468]::-webkit-datetime-edit {\n  color: #606060 !important;\n  font-weight: 400 !important;\n  font-size: 1rem !important;\n}\n.form-input[data-v-7cbf4468]::-webkit-calendar-picker-indicator {\n  background-image: url(\"/images/calendar-dark.svg\");\n  background-origin: content-box;\n  background-size: contain;\n  height: 1.2em;\n  -webkit-margin-start: 24px;\n          margin-inline-start: 24px;\n  opacity: 1;\n  padding-bottom: 2px;\n  -webkit-padding-start: 3px;\n          padding-inline-start: 3px;\n  -webkit-padding-end: 3px;\n          padding-inline-end: 3px;\n  padding-top: 2px;\n  width: 1.2em;\n  background-repeat: no-repeat;\n  outline: none;\n}\n#assetsFieldHandle[data-v-7cbf4468]::-webkit-file-upload-button {\n  background: #F8F8F8;\n  border: 1px solid #606060;\n  box-sizing: border-box;\n  border-radius: 8px;\n  font-weight: 500;\n  padding: 0.5rem 1.5rem;\n}\n.modal-footer[data-v-7cbf4468] {\n  border-top-color: #B5B5BB;\n  background-color: #F8F8F8;\n}\n.list-modulos-header[data-v-7cbf4468] {\n  font-weight: 400;\n  font-size: 1rem;\n}\n.btn-deck[data-v-7cbf4468] {\n  position: absolute;\n  left: 100%;\n  width: 55%;\n  transition: left 0.7s ease;\n}\n.btn-deck.active[data-v-7cbf4468] {\n  left: 5rem;\n}\n.btn-options[data-v-7cbf4468] {\n  background-color: #F8F8F8;\n  border: none;\n}\n.btn-options[data-v-7cbf4468]:hover {\n  border: 1px solid #606060;\n  box-sizing: border-box;\n  border-radius: 4px;\n}\n.img-btn[data-v-7cbf4468] {\n  color: #606060;\n  font-size: 1rem;\n}\n.block-btn[data-v-7cbf4468] {\n  display: none;\n}\n@media (max-width: 768px) {\n.btn.btn-lg[data-v-7cbf4468]:not(.btn-nuevo-modulo) {\n    display: block;\n    width: 100%;\n}\n.btn-nuevo-modulo[data-v-7cbf4468] {\n    display: none;\n}\n.block-btn[data-v-7cbf4468] {\n    display: block;\n}\n.block-btn[data-v-7cbf4468] {\n    display: block;\n}\n.edit-mobile[data-v-7cbf4468] {\n    display: block;\n}\n.edit-desktop[data-v-7cbf4468] {\n    display: none;\n}\n.btn-deck.active[data-v-7cbf4468] {\n    left: 1rem;\n}\n}", ""]);
 
 // exports
 
@@ -44825,7 +44835,7 @@ var render = function() {
                     : _vm._e(),
                   _vm._v(" "),
                   !_vm.curso.modulos.length
-                    ? _c("div", { staticClass: "row my-auto" }, [
+                    ? _c("div", { staticClass: "row mt-5" }, [
                         _c("div", { staticClass: "col text-center" }, [
                           _c(
                             "svg",
@@ -45027,27 +45037,103 @@ var render = function() {
                                             _c(
                                               "span",
                                               {
-                                                staticClass:
-                                                  "btn-deck d-flex align-items-center",
-                                                attrs: { id: "modulo" }
+                                                class: [
+                                                  "modulo",
+                                                  "m" + index,
+                                                  "btn-deck d-flex align-items-center"
+                                                ]
                                               },
                                               [
                                                 _c(
                                                   "button",
                                                   {
                                                     staticClass:
-                                                      "btn transparent-button",
+                                                      "transparent-button",
                                                     on: {
                                                       click: function($event) {
                                                         $event.preventDefault()
-                                                        return _vm.seleccionarClase(
+                                                        return _vm.seleccionarModuloModal(
                                                           modulo,
-                                                          "actividad"
+                                                          "crear"
                                                         )
                                                       }
                                                     }
                                                   },
-                                                  [_vm._v("Agregar Actividad")]
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                        +\n                                                    "
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "button",
+                                                  {
+                                                    staticClass: "img-btn",
+                                                    on: {
+                                                      click: function($event) {
+                                                        $event.preventDefault()
+                                                        return _vm.seleccionarModuloModal(
+                                                          modulo,
+                                                          "editar"
+                                                        )
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "svg",
+                                                      {
+                                                        attrs: {
+                                                          width: "24",
+                                                          height: "24",
+                                                          viewBox: "0 0 24 24",
+                                                          fill: "none",
+                                                          xmlns:
+                                                            "http://www.w3.org/2000/svg"
+                                                        }
+                                                      },
+                                                      [
+                                                        _c("path", {
+                                                          attrs: {
+                                                            d: "M12 20H21",
+                                                            stroke: "#606060",
+                                                            "stroke-width": "2",
+                                                            "stroke-linecap":
+                                                              "round",
+                                                            "stroke-linejoin":
+                                                              "round"
+                                                          }
+                                                        }),
+                                                        _vm._v(" "),
+                                                        _c("path", {
+                                                          attrs: {
+                                                            d:
+                                                              "M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z",
+                                                            stroke: "#606060",
+                                                            "stroke-width": "2",
+                                                            "stroke-linecap":
+                                                              "round",
+                                                            "stroke-linejoin":
+                                                              "round"
+                                                          }
+                                                        })
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "span",
+                                                      {
+                                                        staticClass:
+                                                          "ml-1 edit-desktop"
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                                            Editar\n                                                        "
+                                                        )
+                                                      ]
+                                                    )
+                                                  ]
                                                 ),
                                                 _vm._v(" "),
                                                 _c(
@@ -45131,73 +45217,15 @@ var render = function() {
                                                     _vm._v(" "),
                                                     _c(
                                                       "span",
-                                                      { staticClass: "ml-1" },
+                                                      {
+                                                        staticClass:
+                                                          "ml-1 edit-desktop"
+                                                      },
                                                       [
                                                         _vm._v(
                                                           "\n                                                            Eliminar\n                                                        "
                                                         )
                                                       ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "button",
-                                                  {
-                                                    staticClass:
-                                                      "edit-desktop img-btn",
-                                                    on: {
-                                                      click: function($event) {
-                                                        $event.preventDefault()
-                                                        return _vm.seleccionarModuloModal(
-                                                          modulo,
-                                                          "editar"
-                                                        )
-                                                      }
-                                                    }
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "svg",
-                                                      {
-                                                        attrs: {
-                                                          width: "24",
-                                                          height: "24",
-                                                          viewBox: "0 0 24 24",
-                                                          fill: "none",
-                                                          xmlns:
-                                                            "http://www.w3.org/2000/svg"
-                                                        }
-                                                      },
-                                                      [
-                                                        _c("path", {
-                                                          attrs: {
-                                                            d: "M12 20H21",
-                                                            stroke: "#606060",
-                                                            "stroke-width": "2",
-                                                            "stroke-linecap":
-                                                              "round",
-                                                            "stroke-linejoin":
-                                                              "round"
-                                                          }
-                                                        }),
-                                                        _vm._v(" "),
-                                                        _c("path", {
-                                                          attrs: {
-                                                            d:
-                                                              "M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z",
-                                                            stroke: "#606060",
-                                                            "stroke-width": "2",
-                                                            "stroke-linecap":
-                                                              "round",
-                                                            "stroke-linejoin":
-                                                              "round"
-                                                          }
-                                                        })
-                                                      ]
-                                                    ),
-                                                    _vm._v(
-                                                      "\n                                                        Editar\n                                                    "
                                                     )
                                                   ]
                                                 )
@@ -45216,7 +45244,7 @@ var render = function() {
                                                   click: function($event) {
                                                     return _vm.showOptions(
                                                       $event,
-                                                      modulo
+                                                      index
                                                     )
                                                   }
                                                 }
@@ -45316,8 +45344,7 @@ var render = function() {
                                                         _c(
                                                           "div",
                                                           {
-                                                            staticClass:
-                                                              "col-10"
+                                                            staticClass: "col-6"
                                                           },
                                                           [
                                                             _c(
@@ -45399,139 +45426,133 @@ var render = function() {
                                                           "div",
                                                           {
                                                             staticClass:
-                                                              "row py-2"
+                                                              "col-6 d-flex justify-content-end align-items-center"
                                                           },
                                                           [
                                                             _c(
-                                                              "button",
+                                                              "span",
                                                               {
-                                                                staticClass:
-                                                                  "edit-mobile img-btn",
-                                                                on: {
-                                                                  click: function(
-                                                                    $event
-                                                                  ) {
-                                                                    $event.preventDefault()
-                                                                    return _vm.seleccionarModuloModal(
-                                                                      clase,
-                                                                      "editar"
-                                                                    )
-                                                                  }
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "svg",
-                                                                  {
-                                                                    attrs: {
-                                                                      width:
-                                                                        "24",
-                                                                      height:
-                                                                        "24",
-                                                                      viewBox:
-                                                                        "0 0 24 24",
-                                                                      fill:
-                                                                        "none",
-                                                                      xmlns:
-                                                                        "http://www.w3.org/2000/svg"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("path", {
-                                                                      attrs: {
-                                                                        d:
-                                                                          "M12 20H21",
-                                                                        stroke:
-                                                                          "#606060",
-                                                                        "stroke-width":
-                                                                          "2",
-                                                                        "stroke-linecap":
-                                                                          "round",
-                                                                        "stroke-linejoin":
-                                                                          "round"
-                                                                      }
-                                                                    }),
-                                                                    _vm._v(" "),
-                                                                    _c("path", {
-                                                                      attrs: {
-                                                                        d:
-                                                                          "M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z",
-                                                                        stroke:
-                                                                          "#606060",
-                                                                        "stroke-width":
-                                                                          "2",
-                                                                        "stroke-linecap":
-                                                                          "round",
-                                                                        "stroke-linejoin":
-                                                                          "round"
-                                                                      }
-                                                                    })
-                                                                  ]
-                                                                ),
-                                                                _vm._v(
-                                                                  "\n                                                                    Editar\n                                                                "
-                                                                )
-                                                              ]
-                                                            )
-                                                          ]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "div",
-                                                          {
-                                                            staticClass:
-                                                              "row py-2"
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "col"
+                                                                class: [
+                                                                  "clase",
+                                                                  "c" + index,
+                                                                  "btn-deck d-flex align-items-center"
+                                                                ]
                                                               },
                                                               [
                                                                 _c(
                                                                   "button",
                                                                   {
                                                                     staticClass:
-                                                                      "transparent-button",
+                                                                      "btn transparent-button",
                                                                     on: {
                                                                       click: function(
                                                                         $event
                                                                       ) {
                                                                         $event.preventDefault()
-                                                                        return _vm.seleccionarModuloModal(
+                                                                        return _vm.seleccionarClase(
                                                                           clase,
-                                                                          "Clase"
+                                                                          "crear"
                                                                         )
                                                                       }
                                                                     }
                                                                   },
                                                                   [
                                                                     _vm._v(
-                                                                      "Agregar Clase"
+                                                                      "\n                                                                        +\n                                                                    "
                                                                     )
                                                                   ]
-                                                                )
-                                                              ]
-                                                            )
-                                                          ]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "div",
-                                                          {
-                                                            staticClass:
-                                                              "row py-2"
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "col"
-                                                              },
-                                                              [
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c(
+                                                                  "button",
+                                                                  {
+                                                                    staticClass:
+                                                                      "edit-mobile img-btn",
+                                                                    on: {
+                                                                      click: function(
+                                                                        $event
+                                                                      ) {
+                                                                        $event.preventDefault()
+                                                                        return _vm.seleccionarClase(
+                                                                          clase,
+                                                                          "editar"
+                                                                        )
+                                                                      }
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "svg",
+                                                                      {
+                                                                        attrs: {
+                                                                          width:
+                                                                            "24",
+                                                                          height:
+                                                                            "24",
+                                                                          viewBox:
+                                                                            "0 0 24 24",
+                                                                          fill:
+                                                                            "none",
+                                                                          xmlns:
+                                                                            "http://www.w3.org/2000/svg"
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "path",
+                                                                          {
+                                                                            attrs: {
+                                                                              d:
+                                                                                "M12 20H21",
+                                                                              stroke:
+                                                                                "#606060",
+                                                                              "stroke-width":
+                                                                                "2",
+                                                                              "stroke-linecap":
+                                                                                "round",
+                                                                              "stroke-linejoin":
+                                                                                "round"
+                                                                            }
+                                                                          }
+                                                                        ),
+                                                                        _vm._v(
+                                                                          " "
+                                                                        ),
+                                                                        _c(
+                                                                          "path",
+                                                                          {
+                                                                            attrs: {
+                                                                              d:
+                                                                                "M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z",
+                                                                              stroke:
+                                                                                "#606060",
+                                                                              "stroke-width":
+                                                                                "2",
+                                                                              "stroke-linecap":
+                                                                                "round",
+                                                                              "stroke-linejoin":
+                                                                                "round"
+                                                                            }
+                                                                          }
+                                                                        )
+                                                                      ]
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "span",
+                                                                      {
+                                                                        staticClass:
+                                                                          "ml-1 edit-desktop"
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          "\n                                                                            Editar\n                                                                        "
+                                                                        )
+                                                                      ]
+                                                                    )
+                                                                  ]
+                                                                ),
+                                                                _vm._v(" "),
                                                                 _c(
                                                                   "button",
                                                                   {
@@ -45549,23 +45570,120 @@ var render = function() {
                                                                     }
                                                                   },
                                                                   [
-                                                                    _vm._v(
-                                                                      "Eliminar"
+                                                                    _c(
+                                                                      "svg",
+                                                                      {
+                                                                        attrs: {
+                                                                          width:
+                                                                            "24",
+                                                                          height:
+                                                                            "24",
+                                                                          viewBox:
+                                                                            "0 0 24 24",
+                                                                          fill:
+                                                                            "none",
+                                                                          xmlns:
+                                                                            "http://www.w3.org/2000/svg"
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "path",
+                                                                          {
+                                                                            attrs: {
+                                                                              d:
+                                                                                "M3 6H5H21",
+                                                                              stroke:
+                                                                                "#606060",
+                                                                              "stroke-width":
+                                                                                "2",
+                                                                              "stroke-linecap":
+                                                                                "round",
+                                                                              "stroke-linejoin":
+                                                                                "round"
+                                                                            }
+                                                                          }
+                                                                        ),
+                                                                        _vm._v(
+                                                                          " "
+                                                                        ),
+                                                                        _c(
+                                                                          "path",
+                                                                          {
+                                                                            attrs: {
+                                                                              d:
+                                                                                "M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z",
+                                                                              stroke:
+                                                                                "#606060",
+                                                                              "stroke-width":
+                                                                                "2",
+                                                                              "stroke-linecap":
+                                                                                "round",
+                                                                              "stroke-linejoin":
+                                                                                "round"
+                                                                            }
+                                                                          }
+                                                                        ),
+                                                                        _vm._v(
+                                                                          " "
+                                                                        ),
+                                                                        _c(
+                                                                          "path",
+                                                                          {
+                                                                            attrs: {
+                                                                              d:
+                                                                                "M10 11V17",
+                                                                              stroke:
+                                                                                "#606060",
+                                                                              "stroke-width":
+                                                                                "2",
+                                                                              "stroke-linecap":
+                                                                                "round",
+                                                                              "stroke-linejoin":
+                                                                                "round"
+                                                                            }
+                                                                          }
+                                                                        ),
+                                                                        _vm._v(
+                                                                          " "
+                                                                        ),
+                                                                        _c(
+                                                                          "path",
+                                                                          {
+                                                                            attrs: {
+                                                                              d:
+                                                                                "M14 11V17",
+                                                                              stroke:
+                                                                                "#606060",
+                                                                              "stroke-width":
+                                                                                "2",
+                                                                              "stroke-linecap":
+                                                                                "round",
+                                                                              "stroke-linejoin":
+                                                                                "round"
+                                                                            }
+                                                                          }
+                                                                        )
+                                                                      ]
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "span",
+                                                                      {
+                                                                        staticClass:
+                                                                          "ml-1 edit-desktop"
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          "\n                                                                            Eliminar\n                                                                        "
+                                                                        )
+                                                                      ]
                                                                     )
                                                                   ]
                                                                 )
                                                               ]
-                                                            )
-                                                          ]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "div",
-                                                          {
-                                                            staticClass:
-                                                              "col-2 text-center"
-                                                          },
-                                                          [
+                                                            ),
+                                                            _vm._v(" "),
                                                             _c(
                                                               "button",
                                                               {
@@ -45584,7 +45702,7 @@ var render = function() {
                                                                   ) {
                                                                     return _vm.showOptions(
                                                                       $event,
-                                                                      clase
+                                                                      index
                                                                     )
                                                                   }
                                                                 }
@@ -45718,7 +45836,7 @@ var render = function() {
                                                                         "div",
                                                                         {
                                                                           staticClass:
-                                                                            "col-8 d-flex flex-column"
+                                                                            "col-6 d-flex flex-column"
                                                                         },
                                                                         [
                                                                           _c(
@@ -45740,7 +45858,7 @@ var render = function() {
                                                                         "div",
                                                                         {
                                                                           staticClass:
-                                                                            "col-4 text-center"
+                                                                            "col-6 text-right"
                                                                         },
                                                                         [
                                                                           _c(
@@ -46546,7 +46664,7 @@ var render = function() {
                               staticClass: "btn btn-lg btn-primary",
                               attrs: { disabled: _vm.proceso, type: "submit" }
                             },
-                            [_vm._v("Agregar Clase")]
+                            [_vm._v("Agregar Actividad")]
                           )
                         ])
                       ]
@@ -47273,7 +47391,7 @@ var staticRenderFns = [
             staticClass: "fw-500 color-black mb-4",
             attrs: { id: "exampleModalLabel" }
           },
-          [_vm._v("Nueva Clase")]
+          [_vm._v("Nueva Actividad")]
         )
       ])
     ])
@@ -65982,7 +66100,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!*************************************************!*\
   !*** multi ./resources/js/Administrador/app.js ***!
   \*************************************************/
