@@ -648,7 +648,7 @@ class PerfilEstudiante extends Controller
             $actividadus->save();
         }
     }
-    public function guardarpremio(Request $request, $id, $apodo, $clase_id){
+    public function guardarpremio(Request $request, $id, $clase_id){
         $perfil=PerfilEstudianteUser::find($id)->load(['premios']);
   
         $ganados=json_decode($request->premios);
