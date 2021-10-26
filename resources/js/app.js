@@ -21,11 +21,15 @@ Vue.component('curso-show-component', require('./Landing/Cursos/Show').default);
 Vue.component('membresia-show-component', require('./Landing/Membresia/show').default);
 Vue.component('payment-collase', require('./Landing/PaymentUtils/checkpayment').default);
 Vue.component('proccess', require('./Landing/PaymentUtils/paymetprocess').default);
+Vue.component('modalcupon', require('./Landing/PaymentUtils/cuponmodal').default);
+Vue.component('articulos', require('./Landing/PaymentUtils/InputHiddensNoTocar/articulos').default);
+Vue.component('precio', require('./Landing/PaymentUtils/precio').default);
 
 const store = new Vuex.Store({
     state: {
         user: null,
         paymentselected:null,
+        cupon:null,
     },
     mutations: {
         setUser(state, payload) {
@@ -34,6 +38,9 @@ const store = new Vuex.Store({
         setPayment(state, payment) {  
             state.paymentselected=payment;
          },
+        setCupon(state, cupon) {  
+            state.cupon=cupon;
+        },
     },
     getters: {
        

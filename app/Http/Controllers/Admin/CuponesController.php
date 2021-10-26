@@ -63,6 +63,10 @@ class CuponesController extends Controller
     {
         $cupon=Cupon::find($id)->load(['membresias'=>function($q){
             return $q->with('idioma');
+        },'usados'=>function($q){
+            return $q->with(['plan'=>function($q){
+                return $q->with('membresia');
+            }]);
         }]);
         $membresias=Membresia::get();
         return view('Administrador.Cupones.show',compact('cupon','membresias'));

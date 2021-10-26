@@ -1,5 +1,5 @@
 @extends('layouts.Administrador.Admin')
 
 @section('content')
-<cursos-edit  :planes="{{$planes}}"></cursos-create>
+<cursos-edit   :membresias="{{$membresias}}" :curso="{{$curso}}"></cursos-create>
 @endsection

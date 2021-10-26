@@ -8,7 +8,7 @@ use App\User;
 use App\Models\PerfilEstudiante\PerfilEstudianteUser;
 use App\Models\Cursos\Curso;
 use App\Models\Cursos\Cupon;
-use App\Models\Idioma\idioma;
+use App\Models\Idioma\Idioma;
 use App\Models\Membresia\Membresia;
 use App\Models\Relaciones\MembresiaCurso;
 use App\Models\Solicitudes\PlanUser;
@@ -16,6 +16,7 @@ use App\Models\Relaciones\CuponMembresia;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Carbon\Carbon;
+
 
 class AdminController extends Controller
 {
@@ -76,7 +77,7 @@ class AdminController extends Controller
     public function cupones()
     {
         
-        $cupones=Cupon::get();
+        $cupones=Cupon::get()->load(['usados']);
         return view('Administrador.Cupones.cupones', compact('cupones'));
     }
     public function relacioncuponmember(Request $request)
@@ -113,5 +114,47 @@ class AdminController extends Controller
     {
         $membresias=Membresia::get()->load(['idioma','planes']);
         return view('Administrador.Configuraciones.configuraciones', compact('membresias'));
+    }
+
+
+    public function reportes()
+    {
+        
+       
+        return view('Administrador.Reportes.reportes');
+    }
+
+    public function reportesPadre()
+    {
+        $usuarios=User::get()->load('perfiles');
+       
+        return view('Administrador.Reportes.Secciones.padres',compact('usuarios'));
+    }
+    public function reportesAlumnos()
+    {
+        $perfiles=PerfilEstudianteUser::get()->load(['padre','planes']);
+        $cursos=Curso::get();
+       
+        return view('Administrador.Reportes.Secciones.alumnos',compact('perfiles','cursos'));
+    }
+    public function reportesCalificaciones()
+    {
+        
+       
+        return view('Administrador.Reportes.Secciones.calificaciones');
+    }
+    public function reportesVentas()
+    {
+        $ventas=PlanUser::get()->load(['plan'=>function($p){
+            return $p->with('membresia');
+        },'user']);
+       $membresias=Membresia::get();
+        return view('Administrador.Reportes.Secciones.ventas',compact('ventas','membresias'));
+    }
+    public function reportesCupones()
+    {
+        $cupones=Cupon::get()->load(['usados']);
+        $membresias=Membresia::get();
+        return view('Administrador.Reportes.Secciones.cupones',compact('cupones','membresias'));
     }
 }

@@ -6,10 +6,10 @@
         <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura'" style="height: 85%;">
 				<video @ended="onEnd()" controls width="100%" height="100%">
 
-					<source src="/images/recurso/prueba.webm"
+					<source :src="'/storage/'+actividad.recurso"
 							type="video/webm">
 
-					<source src="/images/recurso/prueba.mp4"
+					<source :src="'/storage/'+actividad.recurso"
 							type="video/mp4">
 
 					Sorry, your browser doesn't support embedded videos.
@@ -135,7 +135,7 @@
 			noNextPage() {
 				
 				if (this.currentPage === this.pageCount) {
-					var url = `/home/app/${this.perfil.id}/${this.perfil.apodo}/curso/${this.curso.id}/clase/${this.actividad.clase_id}/actividad/${this.actividad.id}/realizada`;
+					var url = `/home/app/${this.perfil.id}/curso/${this.curso.id}/clase/${this.actividad.clase_id}/actividad/${this.actividad.id}/realizada`;
 					axios.get(url).then((result) => {
 						console.log(result.data);
 					}).catch((err) => {
@@ -157,7 +157,7 @@
 				this.currentPage--;
 			},
 			onEnd: function () {
-				var url = `/home/app/${this.perfil.id}/${this.perfil.apodo}/curso/${this.curso.id}/clase/${this.actividad.clase_id}/actividad/${this.actividad.id}/realizada`;
+				var url = `/home/app/${this.perfil.id}/curso/${this.curso.id}/clase/${this.actividad.clase_id}/actividad/${this.actividad.id}/realizada`;
 					axios.get(url).then((result) => {
 						console.log(result.data);
 					}).catch((err) => {

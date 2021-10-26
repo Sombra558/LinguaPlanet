@@ -31,7 +31,7 @@
                     <td>{{cupon.tipo_descuento}}</td>
                     <td>{{cupon.valor}} {{cupon.tipo_descuento==='Porcentual' ? '%' : 'USD'}}</td>
                     <td>{{cupon.cantidad}}</td>
-                    <td>--</td>
+                    <td>{{cupon.usados.length}}</td>
                     <td>{{cupon.vence}}</td>
                     <td class="p-0 w-15 align-middle text-center">
                         <button type="button"class="btn-options" @click="showOptions($event, cupon)" style="position:relative;">

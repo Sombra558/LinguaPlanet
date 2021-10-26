@@ -15,7 +15,7 @@
                     <tr class="color-black">
                         <th>Nombre del Curso</th>
                         <th>Precio</th>
-                        <th>Creado</th>
+                        <!--<th>Creado</th>-->
                         <th>Estado</th>
                         <th></th>             
                     </tr>
@@ -24,7 +24,7 @@
                 <tr v-for="(curso,index) in filteredCursos" :key="index" class="color-black">
                     <td>{{curso.titulo}}</td>
                     <td>USD</td>
-                    <td>definir</td>
+                    <!--<td>definir</td>-->
                     <td>{{curso.destacados===1 ? 'Borrador' : 'Publicado'}}</td>
                     <td class="p-0 w-15 align-middle text-center">
                         <button type="button"class="btn-options" @click="showOptions($event, curso)" style="position: relative;">
@@ -33,7 +33,7 @@
                                 <circle cx="9" cy="2" r="2" fill="#606060"/>
                                 <circle cx="16" cy="2" r="2" fill="#606060"/>
                             </svg>
-                        </button>                        
+                        </button> 
                     </td>
                 </tr>
                 </tbody>
@@ -129,6 +129,9 @@ import Searh from './search.vue';
             if (this.cursos.length>0) {
                 this.$store.commit("setCursos", this.cursos);
             };
+            $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+            });
         },
         methods: {
             eliminarCurso(curso) {
@@ -157,5 +160,41 @@ import Searh from './search.vue';
 </script>
 
 <style lang="scss" scoped>
-    
+    .btn {
+        font-weight : 400;
+    }
+
+    .btn-options {
+        background-color: transparent;
+        border: none;
+    }
+
+    .btn-options:hover {
+        border: 1px solid #606060;
+        box-sizing: border-box;
+        border-radius: 4px;
+    }
+
+    table thead th {        
+        font-weight: 500;
+        font-size: 1rem;
+    }
+
+    .table-container {
+        width : 100%;
+        height: 100%;
+        min-height: calc(100vh - 100px);
+        overflow-x : auto;
+    }
+
+    .table {
+        width : 74.3em;
+    }
+
+    @media(max-width: 768px) {
+        .btn.btn-primary {
+            display: block;
+            width: 100%;
+        }
+    }
 </style>

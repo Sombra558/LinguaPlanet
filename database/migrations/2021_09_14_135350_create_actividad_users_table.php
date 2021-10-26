@@ -15,11 +15,12 @@ class CreateActividadUsersTable extends Migration
     {
         Schema::create('actividad_users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('intentos')->nullable();
             $table->unsignedbigInteger('actividad_id');
             $table->foreign('actividad_id')->references('id')->on('actividads')->onDelete('cascade');
             $table->unsignedbigInteger('perfil_id');
             $table->foreign('perfil_id')->references('id')->on('perfil_estudiante_users')->onDelete('cascade');
-            $table->boolean('estado')->default(0);
+            $table->boolean('estado')->default(1);
             $table->timestamps();
         });
     }

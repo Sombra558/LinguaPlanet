@@ -62,9 +62,28 @@
             alert("The video has ended"+ perfil_id);
         }
     </script>
-     <script>
+    @if($actividad->tipo==='Silueta')
+    <script>
       var unityInstance = UnityLoader.instantiate("unityContainer", "/game/Silueta/Siluetas/Build/Siluetas.json", {onProgress: UnityProgress});
     </script>
+    @elseif($actividad->tipo==='Mochila')
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "/game/Mochila/Mochila/Build/Mochila.json", {onProgress: UnityProgress});
+    </script>
+     @elseif($actividad->tipo==='Memorama')
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "/game/Memorama/Memorama/Build/Memorama.json", {onProgress: UnityProgress});
+    </script>
+     @elseif($actividad->tipo==='Simon Dice')
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "/game/Simon/Simon/Build/Simon.json", {onProgress: UnityProgress});
+    </script>
+    @else
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "/game/Rompecabeza/Rompecabezas/Build/Rompecabezas.json", {onProgress: UnityProgress});
+    </script>
+    @endif
+    
     <div class="backdrop"></div>
 </body>
 </html>

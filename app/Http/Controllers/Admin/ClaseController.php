@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cursos\Clase;
+use App\Models\Relaciones\ClasePremio;
+use App\Models\Animals\Accesorios;
 use Illuminate\Http\Request;
 
 class ClaseController extends Controller
@@ -27,9 +29,17 @@ class ClaseController extends Controller
             'nombre' => $request['nombre'],
             'descripcion' => $request['descripcion'],
             'inicia' => $request['inicia'],
+            'indice' => $request['indice'],
             'finaliza' => $request['finaliza'],
             'modulo_id' => $request['modulo_id'],
         ]);
+        $accesorios=Accesorios::where('tipo',$request['premio'])->get();
+        foreach($accesorios as $pre){
+            ClasePremio::create([
+                'accesorio_id' => $pre->id,
+                'clase_id' => $clase->id,
+            ]);
+        }
         return $clase;
     }
 

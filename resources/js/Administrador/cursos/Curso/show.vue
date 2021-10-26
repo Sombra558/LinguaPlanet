@@ -27,7 +27,7 @@
                         <a class="nav-link color-black" id="usuarios-tab" data-toggle="tab" href="#usuarios" role="tab" aria-controls="usuarios" aria-selected="false">Usuarios suscritos</a>
                     </li>
                 </ul>
-                <div class="tab-content" id="myTabContent">
+                <div class="tab-content contenido" id="myTabContent">
                     <div class="tab-pane fade show active" id="curso-contenido" role="tabpanel" aria-labelledby="curso-contenido-tab">
                         <div v-if="!curso.modulos.length" class="row">
                             <div class="col">
@@ -62,7 +62,7 @@
                                                     <span class="list-modulos-header">{{modulo.nombre}}</span>
                                                     <span v-if="!modulo.clases.length" class="color-plomo">{{modulo.clases.length}} Clases - <Cont :modulo="modulo" /> Actividades</span>
                                                     <a v-else href="#" data-toggle="collapse" :data-target="`#collapse${index}`" aria-expanded="true" :aria-controls="`collapse${index}`">
-                                                        <span class="fw-400 color-plomo">{{ modulo.clases.length }} Actividades</span>
+                                                        <span class="fw-400 color-plomo">{{ modulo.clases.length }} Clases</span>
                                                     </a>
                                                 </div>
                                                 <div class="col-6 d-flex justify-content-end align-items-center">
@@ -300,9 +300,25 @@
                                     <h4 class="fw-500 color-black mb-4" id="exampleModalLabel">Nueva Actividad</h4>
                                 </div>
                             </div>
+                             <div class="row">
+                                    <div class="form-group col-12">
+                                        <label for="finaliza" >Accesorio</label>
+                                        <select class="form-input input-gray" name="premio" v-model="newclase.premio" >
+                                    
+                                            <option value="gorro">Gorro</option>
+                                            <option value="guitarra">Guitarra</option>
+                                            <option value="yoyo">Yoyo</option>
+                                            <option value="gafas">Gafas</option>
+                                            <option value="camisa">Camisa</option>
+                                            <option value="bufanda">Bufanda</option>
+                                            <option value="botas">Botas</option>
+                                            
+                                        </select>                                       
+                                    </div>
+                                </div>
                             <div class="row">
                                 <div class="form-group col-12">
-                                    <label class="color-plomo" for="finaliza" >Tipo de Actividad</label>
+                                    <label class="color-plomo" for="finaliza" >Inicia</label>
                                     <input type="date" class="form-input input-gray"  name="inicia" v-model="newclase.inicia" required>
                                 </div>    
                             </div>                            
@@ -400,19 +416,19 @@
                             <div class="row">
                                 <div v-if="actividadtipe==='Palabras del día'" class="form-group col-md-6 col-12">
                                     <label for="inicia" >Subir video</label>
-                                    <input type="file" name="recurso" id="assetsFieldHandle"  />
+                                    <input type="file" name="recurso" accept="video/*" id="assetsFieldHandle"  />
                                 </div>
                                 <div v-if="actividadtipe==='Video de apertura'" class="form-group col-md-6 col-12">
                                     <label for="inicia" >Subir video</label>
-                                    <input type="file" name="recurso" id="assetsFieldHandle"  />
+                                    <input type="file" name="recurso" accept="video/*" id="assetsFieldHandle"  />
                                 </div>
                                 <div v-if="actividadtipe==='Actividad'" class="form-group col-md-6 col-12">
                                     <label for="inicia" >Subir Archivo</label>
-                                    <input type="file" name="recurso" id="assetsFieldHandle"  />
+                                    <input type="file" name="recurso" accept="application/pdf"  id="assetsFieldHandle"  />
                                 </div>
                                 <div v-if="actividadtipe==='Libros'" class="form-group col-md-6 col-12">
                                     <label for="inicia" >Subir Archivo</label>
-                                    <input type="file" name="recurso" id="assetsFieldHandle"  />
+                                    <input type="file" name="recurso" accept="application/pdf" id="assetsFieldHandle"  />
                                 </div>
                             </div>
                         </div>
@@ -458,9 +474,10 @@
 
 <script>
 import Cont from './contador.vue';
+import Multiselect from 'vue-multiselect'
     export default {
         name:"curso-show",
-        props:['curso','membresias'],
+        props:['curso','membresias','siluetas'],
         data() {
             return {
                 tab: 'modulos',
@@ -472,8 +489,10 @@ import Cont from './contador.vue';
                     curso_id:this.curso.id,
                 },
                 newclase:{ 
+                    premio:null,
                     inicia:null,
                     finaliza:null,
+                    indice:null,
                     modulo_id:null,
                 },
                 proceso:false,
@@ -482,6 +501,7 @@ import Cont from './contador.vue';
                 newactividad:{
                     tipo:null,
                     clase_id:null,
+                    siluetas:null
                 },
                 actividadtipe:null,
                 lastFile:null,
@@ -489,7 +509,7 @@ import Cont from './contador.vue';
             }
         },
         components: {
-            Cont,
+            Cont, Multiselect,
         },
         mounted() {
             $(document).ready(function(){
@@ -497,7 +517,7 @@ import Cont from './contador.vue';
             });
         },
         methods: {
-            seleccionarModuloModal(value,action) {
+            seleccionarModuloModal(value,action,modulo) {
                     if (action==='crear') {
                         this.moduloSelected=null;
                         $("#crearModulo").modal("show");
@@ -509,6 +529,7 @@ import Cont from './contador.vue';
                     }else{
                         this.moduloSelected=value;
                         this.newclase.modulo_id=value.id;
+                        this.newclase.indice=modulo.clases.length+1;
                         setTimeout(function(){
                                 $("#crearClase").modal("show");
                         },200)
@@ -533,22 +554,13 @@ import Cont from './contador.vue';
             },
              editarModulo(modulo) {
                            this.proceso=true;
-                           console.log(modulo);
-                           let form = $("#formmodulo")[0];
-                           let formulario = new FormData(form);
-                           formulario.append("nombre", modulo.nombre);
-                           formulario.append("inicia", modulo.inicia);
-                           formulario.append("finaliza", modulo.finaliza);
-                           formulario.append("descripcion", modulo.descripcion);
-                           var ruta = '/admin/modulo/'+modulo.id;
-                            axios.put(ruta, formulario)
-                                .then((res) => {
-                                   $("#crearModulo").modal("hide");
-                                })
-                                .catch((err) => {
-                                    this.proceso=false;
-                                    console.log(err);
-                        });              
+                            var url = '/admin/modulo/'+modulo.id;
+                            axios.put(url,modulo).then((result) => {
+                                window.location.reload();
+                            }).catch((err) => {
+                                this.proceso=false;
+                                console.log(err);
+                            });
             },
               eliminarModulo(modulo) {
                 this.proceso=true;
@@ -580,7 +592,7 @@ import Cont from './contador.vue';
                         $("#crearClase").modal("show");
                 },200)
             },
-            crearClase() {
+            crearClase(modulo) {
                 this.proceso=true;
                 var url = '/admin/clase';
                 axios.post(url,this.newclase).then((result) => {           
@@ -626,6 +638,7 @@ import Cont from './contador.vue';
                     axios.post(ruta, formulario)
                         .then((res) => {
                             window.location.reload();
+                            this.proceso=false;
                         })
                         .catch((err) => {
                             this.proceso=false;

@@ -1,8 +1,9 @@
 <template>
     <div>
-        <input type="hidden" name="articulos" :value="JSON.stringify(cart)">
-        <input type="hidden" name="preciopedido" :value="precio">
-        <input type="hidden" name="value" :value="precio">
+        <input type="hidden" name="currency" value="usd">
+        <input type="hidden" name="plan_id" :value="plan.id">
+        <input type="hidden" name="value"  :value="precio"> 
+        <input v-if="cupon" type="hidden" name="cupon_id"  :value="cupon.id">    
     </div>
 </template>
 
@@ -10,35 +11,23 @@
 import { mapState } from "vuex";
     export default {
         name:"articulos",
-        mounted () {
-            var micart = localStorage.getItem('mycart');
-                if (micart) {
-                    micart = JSON.parse(micart);
-                    this.$store.commit("setCart",  micart);
-                }
-        },
-         computed: {
+        props:['plan'],
+        computed: {
         ...mapState({
-                cart: (state) => state.cart,
+                cupon: (state) => state.cupon,
         }),
       precio() {
-            var precio=0;
-            this.cart.forEach(articulo => {
-                if (articulo.tipo==='curso') {
-                    if (articulo.estadocondicionpago===1) {
-                        if (articulo.tipopago==="cuotas") {
-                            precio=precio+articulo.admision;
-                        }else{
-                            precio=precio+articulo.precio;
-                        }
-                    }else{
-                        precio=precio+articulo.precio;
-                    }     
+            var precio=this.plan.precio;
+            if (this.cupon) {
+                if (this.cupon.tipo_descuento==='Moneda') {
+                    return Number(precio - this.cupon.valor).toFixed(1);
                 }else{
-                    precio=precio + Number(articulo.precio*articulo.cantidad)
+                    return Number(precio - precio*this.cupon.valor/100).toFixed(1);
                 }
-                });
-            return precio.toFixed(1);
+            }else{
+                return precio.toFixed(1);
+            }
+            
         },
     }
         

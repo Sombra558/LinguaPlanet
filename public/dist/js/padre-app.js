@@ -3229,6 +3229,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "myperfiles-component",
@@ -3236,19 +3237,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     PerfilCard: _perfilCard__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  mounted: function mounted() {
-    var url = "http://165.22.27.174/rompecabeza/1";
-    var axiosInstance = axios.create({
-      headers: {
-        "Access-Control-Allow-Origin": "*"
-      }
-    });
-    axiosInstance.get(url).then(function (response) {
-      console.log(response);
-    })["catch"](function (e) {
-      return console.log(e);
-    });
-  },
+  mounted: function mounted() {},
   data: function data() {
     return {
       selectMode: false
@@ -3263,6 +3252,16 @@ __webpack_require__.r(__webpack_exports__);
     },
     crear: function crear() {
       window.location = '/home/perfil-user/create';
+    },
+    enviar: function enviar() {
+      fetch("http://167.172.162.54/game/2/81/actividad/561/intentos/0/realizada", {
+        mode: 'no-cors',
+        method: "GET"
+      }).then(function (r) {
+        return r.json();
+      }).then(function (respuesta) {
+        console.log(respuesta);
+      });
     }
   }
 });
@@ -3300,7 +3299,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     entrar: function entrar() {
-      window.location = '/home/app/' + this.perfil.id + '/' + this.perfil.apodo;
+      window.location = '/home/app/' + this.perfil.id;
     },
     editar: function editar() {
       window.location = "/home/perfil-user/".concat(this.perfil.id, "/edit");
@@ -62846,7 +62845,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! c:\laragon\www\lingua-planet\resources\js\Padre\app.js */"./resources/js/Padre/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\lingua_planet\resources\js\Padre\app.js */"./resources/js/Padre/app.js");
 
 
 /***/ })

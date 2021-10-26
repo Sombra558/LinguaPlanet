@@ -14,4 +14,10 @@ class Cupon extends Model
     {
       return $this->belongsToMany('App\Models\Membresia\Membresia','cupon_membresias','cupon_id')->withPivot('cupon_id','id');
     }
+
+    public function usados()
+    {
+        return $this->hasMany('App\Models\Cursos\CuponHistory');
+    }
+
 }

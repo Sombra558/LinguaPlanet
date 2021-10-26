@@ -168,9 +168,10 @@ class PerfilEstudiante extends Controller
         return view('Estudiantes.PerfilUser.armario',compact('perfil'));
     }
 
-    public function aplication($id,$apodo,$nombreURL)
+    public function aplication($id,$nombreURL)
     {
-        $idioma=Idioma::where('nombreURL',$nombreURL)->first();
+        $idioma=Idioma::where('diminutivo',$nombreURL)->first();
+       
         $cursos = collect();
         $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
             return $q->with(['plan'=>function($k){
@@ -251,9 +252,9 @@ class PerfilEstudiante extends Controller
         return view('Estudiantes.PerfilUser.show',compact('perfil'));
     }
 
-    public function aplicationCurso($id,$apodo,$nombreURL,$curso_id)
+    public function aplicationCurso($id,$nombreURL,$curso_id)
     {
-        $idioma=Idioma::where('nombreURL',$nombreURL)->first();
+        $idioma=Idioma::where('diminutivo',$nombreURL)->first();
         $now = Carbon::now();
         $curso = Curso::find($curso_id)->load(['modulos'=>function($k){
             return $k->with(['clases'=>function($p){
@@ -500,7 +501,7 @@ class PerfilEstudiante extends Controller
        
       
     }
-    public function veractividad($id,$apodo,$nombreURL,$curso_id,$clase_id,$actividad_id){
+    public function veractividad($id,$nombreURL,$curso_id,$clase_id,$actividad_id){
         $actividad=Actividad::find($actividad_id);
         $curso=Curso::find($curso_id);
         
@@ -517,7 +518,7 @@ class PerfilEstudiante extends Controller
         
     }
  
-    public function actividadrealizada($id,$apodo,$curso_id,$clase_id,$actividad_id){
+    public function actividadrealizada($id,$curso_id,$clase_id,$actividad_id){
     
         $actividadus=ActividadUser::where('actividad_id',$actividad_id)->where('perfil_id',$id)->first();
      
@@ -574,10 +575,8 @@ class PerfilEstudiante extends Controller
             $actividadus->save();
         }
     }
-    public function juegorealizado($id, $curso_id, $actividad_id){
-    
+    public function juegorealizado($id, $curso_id, $actividad_id,$valor){
         $actividadus=ActividadUser::where('actividad_id',$actividad_id)->where('perfil_id',$id)->first();
-     
         $countmisact=0;
         $actividadesCurso=collect();
         $curs=Curso::find($curso_id)->load(['modulos'=>function($j){
@@ -585,8 +584,6 @@ class PerfilEstudiante extends Controller
                 return $j->with(['actividades']);
             }]);
         }]);
-       
-
         foreach ($curs->modulos as $modulo) {
             foreach ($modulo->clases as $clase) {
                 foreach ($clase->actividades as $actividad) {
@@ -594,8 +591,6 @@ class PerfilEstudiante extends Controller
                 }
              }
         }
-    
-     
         if ($actividadus===null) {
             $actividadus = ActividadUser::create([
                 'actividad_id' => $actividad_id,
