@@ -301,7 +301,7 @@
 				this.currentPage--;
 			},
 			recibir(){
-				var url = `/home/app/${this.perfil.id}/${this.perfil.apodo}/recibir-premio/${this.contenidos.enCurso[0].id}`;
+				var url = `/home/app/${this.perfil.id}/recibir-premio/${this.contenidos.enCurso[0].id}`;
 				axios.post(url,{
 					premios:JSON.stringify(this.contenidos.enCurso[0].premio_clase),
 					color:this.colorSelected,
