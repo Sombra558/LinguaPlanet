@@ -426,6 +426,7 @@
                                         <option value="Rompecabeza">Rompecabeza</option>
                                         <option value="Memorama">Memorama</option>
                                         <option value="Silueta">Silueta</option>
+                                        <option value="Simon Dice">Simon Dice</option>
                                     </select>                                       
                                 </div>
                             </div>
