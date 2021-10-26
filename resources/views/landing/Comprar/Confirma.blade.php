@@ -31,9 +31,9 @@
         </div>
       </div>
     </div>
-    <div class="row py-4 text-center color-yellow">
+    <div class="row py-4 text-center">
       <div class="col-12">
-        <span data-toggle="modal" data-target="#exampleModal" class="h5">¿Tienes un cupon de descuento?</span>
+        <a href="#" data-toggle="modal" data-target="#exampleModal" class="h5 color-yellow">¿Tienes un cupon de descuento?</a>
       </div>
     </div>
     <div class="row justify-content-center">

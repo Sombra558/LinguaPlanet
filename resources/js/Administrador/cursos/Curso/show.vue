@@ -34,7 +34,7 @@
                                 <button class="btn btn-primary btn-lg my-4 mx-0 mx-lg-4 float-right" @click.prevent="seleccionarModuloModal(null,'crear')">Agregar Módulo</button>
                             </div>
                         </div>
-                        <div v-if="!curso.modulos.length" class="row my-auto">
+                        <div v-if="!curso.modulos.length" class="row mt-5">
                             <div class="col text-center">
                                 <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect width="60" height="60" rx="30" fill="#B5B5BB"/>
@@ -66,8 +66,19 @@
                                                     </a>
                                                 </div>
                                                 <div class="col-6 d-flex justify-content-end align-items-center">
-                                                    <span id="modulo" class="btn-deck d-flex align-items-center">
-                                                        <button class="btn transparent-button" @click.prevent="seleccionarModuloModal(modulo,'Clase',modulo)">Agregar Clase</button>
+                                                    <span :class="[ 'modulo', 'm'+index ,'btn-deck d-flex align-items-center']">
+                                                        <button class="transparent-button" @click.prevent="seleccionarModuloModal(modulo,'crear')">
+                                                            +
+                                                        </button>
+                                                        <button class="img-btn" @click.prevent="seleccionarModuloModal(modulo,'editar')">
+                                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M12 20H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                <path d="M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                            <span class="ml-1 edit-desktop">
+                                                                Editar
+                                                            </span>
+                                                        </button>
                                                         <button class="transparent-button color-plomo" @click.prevent="eliminarClase(modulo)">
                                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path d="M3 6H5H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -75,19 +86,12 @@
                                                                 <path d="M10 11V17" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                                 <path d="M14 11V17" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                             </svg>
-                                                            <span class="ml-1">
+                                                            <span class="ml-1 edit-desktop">
                                                                 Eliminar
                                                             </span>
                                                         </button>
-                                                        <button class="edit-desktop img-btn" @click.prevent="seleccionarModuloModal(modulo,'editar')">
-                                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M12 20H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                <path d="M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                            </svg>
-                                                            Editar
-                                                        </button>
                                                     </span>
-                                                    <button type="button" class="btn-options" @click="showOptions($event, modulo)" style="position: relative;">
+                                                    <button type="button"class="btn-options" @click="showOptions($event, index)" style="position: relative;">
                                                         <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <circle cx="2" cy="2" r="2" fill="#606060"/>
                                                             <circle cx="9" cy="2" r="2" fill="#606060"/>
@@ -102,35 +106,41 @@
                                                 <div class="accordion" id="accordionActividades">
                                                     <div v-for="(clase, index) in modulo.clases" :key="clase.id" class="card">
                                                         <div class="card-header" id="headingOne">
-                                                          <div class="row">
-                                                                <div class="col-10">
-                                                                    <span class="d-block fw-400">Clase/Semana {{clase.indice}}</span>
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <span class="d-block fw-400">Clase/Semana {{index+1}}</span>
                                                                     <span v-if="!clase.actividades.length" class="d-block fw-400 color-plomo">{{ clase.actividades.length }} Actividades</span>
                                                                     <a v-else href="#" data-toggle="collapse" :data-target="`#collapseActividades${index}`" aria-expanded="true" :aria-controls="`collapseActividades${index}`">
                                                                         <span class="fw-400 color-plomo">{{ clase.actividades.length }} Actividades</span>
                                                                     </a>
                                                                 </div>
-                                                                <div class="row py-2">
-                                                                    <button class="edit-mobile img-btn" @click.prevent="seleccionarModuloModal(clase,'editar')">
-                                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                            <path d="M12 20H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                            <path d="M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                        </svg>
-                                                                        Editar
-                                                                    </button>
-                                                                </div>
-                                                                <div class="row py-2">
-                                                                    <div class="col">
-                                                                        <button class="transparent-button" @click.prevent="seleccionarClase(clase,'actividad')">Agregar Actividad</button>
-                                                                    </div>                                
-                                                                </div>
-                                                                <div class="row py-2">
-                                                                    <div class="col">
-                                                                        <button class="transparent-button" @click.prevent="eliminarModulo(clase)">Eliminar</button>
-                                                                    </div>                                
-                                                                </div>
-                                                                <div class="col-2 text-center">                                                            
-                                                                    <button type="button" class="btn-options" @click="showOptions($event, clase)" style="position: relative;">
+                                                                <div class="col-6 d-flex justify-content-end align-items-center">
+                                                                    <span :class="[ 'clase', 'c'+index ,'btn-deck d-flex align-items-center']">
+                                                                        <button class="btn transparent-button" @click.prevent="seleccionarClase(clase,'crear')">
+                                                                            +
+                                                                        </button>
+                                                                        <button class="edit-mobile img-btn" @click.prevent="seleccionarClase(clase,'editar')">
+                                                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                <path d="M12 20H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                                <path d="M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                            </svg>
+                                                                            <span class="ml-1 edit-desktop">
+                                                                                Editar
+                                                                            </span>
+                                                                        </button>
+                                                                        <button class="transparent-button" @click.prevent="eliminarModulo(clase)">
+                                                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                <path d="M3 6H5H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                                <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                                <path d="M10 11V17" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                                <path d="M14 11V17" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                            </svg>
+                                                                            <span class="ml-1 edit-desktop">
+                                                                                Eliminar
+                                                                            </span>
+                                                                        </button>
+                                                                    </span>
+                                                                    <button type="button"class="btn-options" @click="showOptions($event, index)" style="position: relative;">
                                                                         <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                             <circle cx="2" cy="2" r="2" fill="#606060"/>
                                                                             <circle cx="9" cy="2" r="2" fill="#606060"/>
@@ -145,10 +155,10 @@
                                                             <ul class="list-group list-group-flush">
                                                               <li class="list-group-item list-group-item-action" v-for="(actividad) in clase.actividades" :key="actividad.id">
                                                                 <div class="row align-items-center">
-                                                                      <div class="col-8 d-flex flex-column">
+                                                                      <div class="col-6 d-flex flex-column">
                                                                         <span >{{actividad.tipo}}</span>
                                                                       </div>
-                                                                      <div class="col-4 text-center">
+                                                                      <div class="col-6 text-right">
                                                                           <button class="btn btn-sm btn-outline-secondary" @click.prevent="editarActividad(actividad)">Editar</button>
                                                                           <button class="btn btn-sm btn-outline-secondary" @click.prevent="eliminarActividad(actividad)">Eliminar</button>
                                                                       </div>
@@ -287,7 +297,7 @@
                         <div class="modal-body pt-0 px-5">
                             <div class="row">
                                 <div class="col">
-                                    <h4 class="fw-500 color-black mb-4" id="exampleModalLabel">Nueva Clase</h4>
+                                    <h4 class="fw-500 color-black mb-4" id="exampleModalLabel">Nueva Actividad</h4>
                                 </div>
                             </div>
                              <div class="row">
@@ -321,7 +331,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-lg btn-outline-secondary fw-500" data-dismiss="modal">Cancelar</button>
-                            <button :disabled="proceso" type="submit" class="btn btn-lg btn-primary">Agregar Clase</button>
+                            <button :disabled="proceso" type="submit" class="btn btn-lg btn-primary">Agregar Actividad</button>
                         </div>
                     </form>          
                 </div>
@@ -689,10 +699,10 @@ import Multiselect from 'vue-multiselect'
                     this.proceso=false;
                   });
                 },
-            showOptions(event) {
+            showOptions(event, index) {
                 let spanDeck = event.currentTarget.parentElement.firstChild;
-                console.log(document.querySelector(`.btn-deck.active:not(#${spanDeck.id})`));
-                document.querySelector(`.btn-deck.active:not(#${spanDeck.id})`)?.classList.toggle('active');
+                let oppositeSpan = spanDeck.classList[0] === 'modulo' ? 'clase' : 'modulo';
+                document.querySelector(`.btn-deck.active:not(.${oppositeSpan}, .${spanDeck.classList[1]})`)?.classList.toggle('active');
                 spanDeck.classList.toggle('active');
             }       
         },
@@ -700,6 +710,24 @@ import Multiselect from 'vue-multiselect'
 </script>
 
 <style lang="scss" scoped>
+    ul.nav {
+        height: 2.58rem;
+        border-bottom: none;
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: inherit;
+        white-space: nowrap;
+    }
+
+    ul.nav li.nav-item {
+       display: inline-block;
+    }
+    .nav {
+        border-top: 1px solid #B5B5BB;
+        border-right: 1px solid #B5B5BB;
+    }
+
     .nav-link {
         border-color: #B5B5BB !important;
         border-radius: 0;
@@ -786,8 +814,8 @@ import Multiselect from 'vue-multiselect'
 
     .btn-deck {
         position: absolute;
-        left: 31rem;
-        width: 100%;
+        left: 100%;
+        width: 55%;
         transition: left 0.7s ease;
     }
 
@@ -839,6 +867,10 @@ import Multiselect from 'vue-multiselect'
 
         .edit-desktop {
             display: none;
+        }
+
+        .btn-deck.active {
+            left: 1rem;
         }
     }
 </style>
