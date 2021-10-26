@@ -2550,7 +2550,7 @@ __webpack_require__.r(__webpack_exports__);
       });
 
       if (pro > 0) {
-        return pro / 4 * 100;
+        return pro / 7 * 100;
       } else {
         return pro;
       }

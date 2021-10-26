@@ -118,8 +118,12 @@ class PerfilEstudiante extends Controller
                         }]);
                     }]);
                   },'avatar']);
+                  $user=Auth::user()->load(['perfiles'=>function($q)
+                  {
+                      return $q->with('avatar');
+                  }]);
       
-        return view('Estudiantes.PerfilUser.preview',compact('perfil'));
+        return view('Estudiantes.PerfilUser.preview',compact('perfil','user'));
     }
 
     public function show($id)
@@ -131,8 +135,12 @@ class PerfilEstudiante extends Controller
                 }]);
             }]);
         },'avatar']);
+        $user=Auth::user()->load(['perfiles'=>function($q)
+        {
+            return $q->with('avatar');
+        }]);
 
-        return view('Estudiantes.PerfilUser.show',compact('perfil'));
+        return view('Estudiantes.PerfilUser.show',compact('perfil','user'));
     }
 
     public function premios($id)
@@ -147,8 +155,12 @@ class PerfilEstudiante extends Controller
         $perfil->load(['premios'=>function($k) use($animal){
             return $k->where('animal_id',$animal);
         }]);
+        $user=Auth::user()->load(['perfiles'=>function($q)
+        {
+            return $q->with('avatar');
+        }]);
 
-        return view('Estudiantes.PerfilUser.premios',compact('perfil'));
+        return view('Estudiantes.PerfilUser.premios',compact('perfil','user'));
     }
 
     public function armario($id)
@@ -164,14 +176,20 @@ class PerfilEstudiante extends Controller
             return $k->where('animal_id',$animal);
         }]);
      
-      
-        return view('Estudiantes.PerfilUser.armario',compact('perfil'));
+        $user=Auth::user()->load(['perfiles'=>function($q)
+        {
+            return $q->with('avatar');
+        }]);
+        return view('Estudiantes.PerfilUser.armario',compact('perfil','user'));
     }
 
     public function aplication($id,$nombreURL)
     {
         $idioma=Idioma::where('diminutivo',$nombreURL)->first();
-       
+        $user=Auth::user()->load(['perfiles'=>function($q)
+        {
+            return $q->with('avatar');
+        }]);
         $cursos = collect();
         $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
             return $q->with(['plan'=>function($k){
@@ -245,17 +263,21 @@ class PerfilEstudiante extends Controller
                 'porTransmitir' => $futuras
               ]);
             
-            return view('Estudiantes.Cursos.show',compact('curso','perfil','idioma','contenidos'));
+            return view('Estudiantes.Cursos.show',compact('curso','perfil','idioma','contenidos','user'));
         }else{
             dd('no tienes cursos en este idioma');
         }
-        return view('Estudiantes.PerfilUser.show',compact('perfil'));
+        return view('Estudiantes.PerfilUser.show',compact('perfil','user'));
     }
 
     public function aplicationCurso($id,$nombreURL,$curso_id)
     {
         $idioma=Idioma::where('diminutivo',$nombreURL)->first();
         $now = Carbon::now();
+        $user=Auth::user()->load(['perfiles'=>function($q)
+        {
+            return $q->with('avatar');
+        }]);
         $curso = Curso::find($curso_id)->load(['modulos'=>function($k){
             return $k->with(['clases'=>function($p){
                 return $p->with(['actividades','premioClase'=>function($a){
@@ -315,7 +337,7 @@ class PerfilEstudiante extends Controller
 			'porTransmitir' => $futuras
 		  ]);
         
-        return view('Estudiantes.Cursos.show',compact('curso','perfil','idioma','contenidos'));    
+        return view('Estudiantes.Cursos.show',compact('curso','perfil','idioma','contenidos','user'));    
     }
 
     /**

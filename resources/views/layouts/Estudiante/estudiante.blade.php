@@ -62,7 +62,7 @@
             <main class="flex-grow-1">
                 @yield('content')
             </main>
-            <block-sidepanel/>
+            <block-sidepanel :user="{{$user}}"/>
         </div>
     </div>
     <div class="backdrop"></div>
