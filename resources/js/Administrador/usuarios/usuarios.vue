@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h3 class="color-black">Usuarios</h3>
+        <h3 class="color-black mb-4">Usuarios</h3>
         <div class="row">
             <div class="col-12 col-lg-6">
                 <Searh :accion="tab"/>

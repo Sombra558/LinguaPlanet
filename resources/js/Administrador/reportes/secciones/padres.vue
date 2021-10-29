@@ -1,33 +1,34 @@
 <template>
     <div class="container">
-        <h3 class="color-black">Reporte de padres</h3>
+        <h3 class="color-black mb-4">Reporte de padres</h3>
         <div class="row">
             <div class="col-12 col-lg-6">
                   <Searh accion="usuarios"/>
             </div>
             <div class="col-12 col-lg-6 d-flex justify-content-center justify-content-md-end mt-3 mt-lg-0">
-               <a href="#">Exportar</a>
+               <a href="#" class="btn btn-sm btn-outline-primary d-flex justify-content-center align-items-center">
+                    <span class="fw-500">Exportar</span>
+                </a>
             </div>
         </div>
-        <table class="table mt-2 table-admin table-borderless table-striped table-com">
-                        <thead>
-                            <tr class="color-black">
-                                <th>Nombre</th>
-                                <th>Email</th>
-                                <th>Perfiles</th>
-                              
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="color-black" v-for="(usuario,index) in filteredUsuarios" :key="index">
-                                <td>{{usuario.name}} {{usuario.lastname}}</td>
-                                <td>{{usuario.email}}</td>
-                                <td>{{usuario.perfiles.length}}</td>
-                                                    
-                            </tr>
-                        </tbody>
-         </table>
-             
+        <div class="table-container">
+            <table class="table mt-4 table-admin table-borderless table-striped table-com">
+                <thead>
+                    <tr class="color-black">
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th class="text-center">Perfiles asociados</th>                  
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="color-black" v-for="(usuario,index) in filteredUsuarios" :key="index">
+                        <td>{{usuario.name}} {{usuario.lastname}}</td>
+                        <td>{{usuario.email}}</td>
+                        <td class="text-center">{{usuario.perfiles.length}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </template>
 

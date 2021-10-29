@@ -1,9 +1,9 @@
 <template>
-     <span>
-        <input v-if="accion==='usuarios'" type="text" v-model="query" class="form-control input-primary input-search border-0 w-100" placeholder="Buscar"> 
-        <input v-else-if="accion==='perfiles'" type="text" v-model="query2" class="form-control input-primary input-search border-0 w-100" placeholder="Buscar"> 
-         <input v-else-if="accion==='ventas'" type="text" v-model="query3" class="form-control input-primary input-search border-0 w-100" placeholder="Buscar"> 
-        <input v-else type="text" v-model="query2" class="form-control input-primary input-search border-0 w-100" placeholder="Buscar"> 
+    <span class="form-control input-primary input-search">
+        <input v-if="accion==='usuarios'" type="text" v-model="query" class="border-0 w-100" placeholder="Buscar"> 
+        <input v-else-if="accion==='perfiles'" type="text" v-model="query2" class="border-0 w-100" placeholder="Buscar"> 
+        <input v-else-if="accion==='ventas'" type="text" v-model="query3" class="border-0 w-100" placeholder="Buscar"> 
+        <input v-else type="text" v-model="query2" class="border-0 w-100" placeholder="Buscar"> 
     </span>
 </template>
 

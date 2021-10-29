@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="table-container">
-            <table style="margin-top:25px" class="table table-borderless table-striped table-com">
+            <table class="table mt-4 table-borderless table-striped table-com">
                 <thead>
                     <tr class="color-black">
                         <th>Nombre del Curso</th>

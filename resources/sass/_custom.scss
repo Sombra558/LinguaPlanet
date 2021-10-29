@@ -298,11 +298,20 @@ select.form-input-admin {
         display: block;
         width: 100%;
     }
-
+    .btn-admin.btn-outline-primary {
+        display: block;
+        width: 100%;
+    }
     .btn-admin.btn-lg {
         display: block;
         width: 100%;
     }
+}
+
+.select-search {
+    padding : 4px 15px 4px 15px !important;
+    border-radius: 9px !important;
+    font-weight: 400 !important;
 }
 
 .input-search {

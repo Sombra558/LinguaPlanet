@@ -11492,11 +11492,22 @@ select.form-input-admin {
     width: 100%;
   }
 
+  .btn-admin.btn-outline-primary {
+    display: block;
+    width: 100%;
+  }
+
   .btn-admin.btn-lg,
   .btn-group-lg > .btn-admin.btn {
     display: block;
     width: 100%;
   }
+}
+
+.select-search {
+  padding: 4px 15px 4px 15px !important;
+  border-radius: 9px !important;
+  font-weight: 400 !important;
 }
 
 .input-search {

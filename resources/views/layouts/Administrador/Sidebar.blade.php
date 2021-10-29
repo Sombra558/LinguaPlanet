@@ -29,7 +29,7 @@
   			</svg>
     		<span class="ml-3 nav-label">Cupones</span>
       </a>
-  	</a>
+  	</li>
   	<li class="list-group-item border-0 my-1 sidebar-item @if(request()->routeIs('admin..membresias')) active @endif">
       <a class="sidebar-link d-flex" href="/admin/membresias">
     		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,7 +38,17 @@
   			</svg>
   			<span class="ml-3 nav-label">Membresias</span>
       </a>
-		</a>
+		</li>
+    <li class="list-group-item border-0 my-1 sidebar-item @if(request()->routeIs('admin..reportes')) active @endif">
+      <a class="sidebar-link d-flex" href="/admin/reportes">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 20V10" stroke="{{ request()->routeIs('admin..reportes') ? 'white' : '#31348B' }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 20V4" stroke="{{ request()->routeIs('admin..reportes') ? 'white' : '#31348B' }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M6 20V14" stroke="{{ request()->routeIs('admin..reportes') ? 'white' : '#31348B' }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="ml-3 nav-label">Reportes</span>
+      </a>
+    </li>
 		<li class="list-group-item border-0 my-1 sidebar-item @if(request()->routeIs('admin..usuarios')) active @endif">
       <a class="sidebar-link d-flex" href="/admin/usuarios">
   			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +59,7 @@
   			</svg>
   			<span class="ml-3 nav-label">Usuarios</span>
       </a>
-		</a>
+		</li>
     <li class="list-group-item border-0 my-1 sidebar-item @if(request()->routeIs('admin..configuraciones')) active @endif">
       <a class="sidebar-link d-flex" href="/admin/configuraciones">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,6 +68,6 @@
         </svg>
         <span class="ml-3 nav-label">Configuraciones</span>
       </a>
-    </a>
+    </li>
   </ul>
 </aside>
