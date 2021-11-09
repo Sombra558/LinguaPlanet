@@ -14,7 +14,7 @@
                 <thead>
                     <tr class="color-black">
                         <th>Membresia</th>
-                        <th>Idioma</th>
+                        <th>Idiomas</th>
                         <th>Fecha de Creación</th>
                         <th></th>                 
                     </tr>
@@ -22,7 +22,7 @@
                 <tbody>
                     <tr class="color-black" v-for="(membresia,index) in filteredMembresias" :key="index">
                         <td>{{membresia.nombre}}</td>
-                        <td>{{membresia.idioma.idioma}}</td>
+                        <td><span v-for="idioma in membresia.idiomas" :key="idioma.id">{{idioma.idioma}} </span> </td>
                         <td>{{membresia.created_at}}</td>
                         <td class="p-0 w-15 align-middle text-center">
                             <button type="button" class="btn-options" @click="showOptions($event, membresia)" style="position:relative;">
@@ -65,7 +65,7 @@
                             <div class="row">
                                 <div class="form-group form-group-admin col-12">
                                     <label for="tipo_cupon" >idioma</label>
-                                    <select class="form-input form-input-admin input-primary" name="idioma_id"  v-model="newmembresia.idioma_id" required>
+                                    <select multiple class="form-input form-input-admin input-primary" name="idiomas[]"  v-model="newmembresia.idiomas" required>
                                         <option :value="null">Seleccionar</option>
                                         <option v-for="idioma in idiomas" :key="idioma.id" :value="idioma.id">{{idioma.idioma}}</option>
                                     </select>
@@ -183,8 +183,8 @@ import Searh from './search.vue';
                 membresiaSelected:null,
                 newmembresia:{
                     nombre:null,
-                    idioma_id:null,
-                    nombreURL:null,
+                    idiomas:[],
+                
                 }
             }
         },
@@ -202,7 +202,7 @@ import Searh from './search.vue';
                     .toLowerCase();
                     return this.newmembresia.nombreURL;
                 }else{
-                    return null;
+                    return 'a weno';
                 }
                
             },

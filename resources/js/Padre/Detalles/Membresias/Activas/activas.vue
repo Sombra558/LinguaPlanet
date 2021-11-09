@@ -18,7 +18,7 @@
                     <li class="list-group-item py-3" v-for="plan in membresias" :key="plan.id">
                         <div class="row">
                             <div class="text-center idioma-title text-md-left col-12 col-md-3 col-lg-4">
-                                {{plan.membresia.idioma.idioma}}
+                               <span v-for="idioma in plan.membresia.idiomas"  :key="idioma.id">{{idioma.idioma}} </span> 
                             </div>
                             <div clasS="col-12 col-md-9 col-lg-8">
                                 <div class="row">

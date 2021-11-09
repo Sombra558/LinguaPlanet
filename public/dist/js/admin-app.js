@@ -2905,15 +2905,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'create-curso',
-  props: ['membresias'],
+  props: ['membresias', 'idiomas'],
   data: function data() {
     return {
       newcurso: {
         titulo: '',
         descripcion: '',
         video: '',
+        idioma_id: null,
         nombreURL: ''
       }
     };
@@ -3022,6 +3032,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _contador_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./contador.vue */ "./resources/js/Administrador/cursos/Curso/contador.vue");
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4249,8 +4265,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       membresiaSelected: null,
       newmembresia: {
         nombre: null,
-        idioma_id: null,
-        nombreURL: null
+        idiomas: []
       }
     };
   },
@@ -4265,7 +4280,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.newmembresia.nombreURL = tituloorigi.replace(/[ ?¿!¡/\\🔴]/g, "-").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
         return this.newmembresia.nombreURL;
       } else {
-        return null;
+        return 'a weno';
       }
     }
   }),
@@ -42219,10 +42234,13 @@ var render = function() {
                 [
                   _c("h4", [_vm._v("Membresia: " + _vm._s(membresia.nombre))]),
                   _vm._v(" "),
-                  _c("p", [
-                    _vm._v("Idioma: " + _vm._s(membresia.idioma.idioma))
-                  ])
-                ]
+                  _vm._l(membresia.idiomas, function(idioma) {
+                    return _c("p", { key: idioma.id }, [
+                      _vm._v("Idioma: " + _vm._s(idioma.idioma))
+                    ])
+                  })
+                ],
+                2
               )
             ]
           ),
@@ -45634,6 +45652,59 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "form-group form-group-admin col-6" }, [
+            _c("label", { attrs: { for: "tipo_cupon" } }, [_vm._v("idioma")]),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.newcurso.idioma_id,
+                    expression: "newcurso.idioma_id"
+                  }
+                ],
+                staticClass: "form-input form-input-admin input-primary",
+                attrs: { name: "idiomas[]", required: "" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.newcurso,
+                      "idioma_id",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              [
+                _c("option", { domProps: { value: null } }, [
+                  _vm._v("Seleccionar")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.idiomas, function(idioma) {
+                  return _c(
+                    "option",
+                    { key: idioma.id, domProps: { value: idioma.id } },
+                    [_vm._v(_vm._s(idioma.idioma))]
+                  )
+                })
+              ],
+              2
+            )
+          ])
+        ]),
+        _vm._v(" "),
         _vm._m(0)
       ]
     )
@@ -47160,6 +47231,16 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("span", [_vm._v(_vm._s(_vm.curso.descripcion))])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row mb-3 color-black" }, [
+                    _c("div", { staticClass: "col-12" }, [
+                      _c("span", { staticClass: "h6 d-block" }, [
+                        _vm._v("Idioma")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(_vm.curso.idioma.idioma))])
                     ])
                   ]),
                   _vm._v(" "),
@@ -49449,7 +49530,15 @@ var render = function() {
                 return _c("tr", { key: index, staticClass: "color-black" }, [
                   _c("td", [_vm._v(_vm._s(membresia.nombre))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(membresia.idioma.idioma))]),
+                  _c(
+                    "td",
+                    _vm._l(membresia.idiomas, function(idioma) {
+                      return _c("span", { key: idioma.id }, [
+                        _vm._v(_vm._s(idioma.idioma) + " ")
+                      ])
+                    }),
+                    0
+                  ),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(membresia.created_at))]),
                   _vm._v(" "),
@@ -49672,13 +49761,17 @@ var render = function() {
                                   {
                                     name: "model",
                                     rawName: "v-model",
-                                    value: _vm.newmembresia.idioma_id,
-                                    expression: "newmembresia.idioma_id"
+                                    value: _vm.newmembresia.idiomas,
+                                    expression: "newmembresia.idiomas"
                                   }
                                 ],
                                 staticClass:
                                   "form-input form-input-admin input-primary",
-                                attrs: { name: "idioma_id", required: "" },
+                                attrs: {
+                                  multiple: "",
+                                  name: "idiomas[]",
+                                  required: ""
+                                },
                                 on: {
                                   change: function($event) {
                                     var $$selectedVal = Array.prototype.filter
@@ -49692,7 +49785,7 @@ var render = function() {
                                       })
                                     _vm.$set(
                                       _vm.newmembresia,
-                                      "idioma_id",
+                                      "idiomas",
                                       $event.target.multiple
                                         ? $$selectedVal
                                         : $$selectedVal[0]
@@ -50266,7 +50359,7 @@ var staticRenderFns = [
       _c("tr", { staticClass: "color-black" }, [
         _c("th", [_vm._v("Membresia")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Idioma")]),
+        _c("th", [_vm._v("Idiomas")]),
         _vm._v(" "),
         _c("th", [_vm._v("Fecha de Creación")]),
         _vm._v(" "),
@@ -69294,7 +69387,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! c:\laragon\www\lingua-planet\resources\js\Administrador\app.js */"./resources/js/Administrador/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\lingua_planet\resources\js\Administrador\app.js */"./resources/js/Administrador/app.js");
 
 
 /***/ })

@@ -1,5 +1,5 @@
 @extends('layouts.Administrador.Admin')
 
 @section('content')
-  <cursos-create  :membresias="{{$membresias}}"></cursos-create>
+  <cursos-create :idiomas="{{$idiomas}}"  :membresias="{{$membresias}}"></cursos-create>
 @endsection

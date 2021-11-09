@@ -3481,6 +3481,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "curso-show-component",
   props: ["idioma", "idiomas"],
@@ -52194,13 +52197,21 @@ var render = function() {
                               "div",
                               { staticClass: "card-body d-flex flex-column" },
                               [
-                                _c("img", {
-                                  staticClass: "flag-img mx-auto",
-                                  attrs: {
-                                    src: "" + _vm.idioma.src,
-                                    alt: "lingua planet " + _vm.idioma.idioma
-                                  }
-                                }),
+                                _c(
+                                  "div",
+                                  { staticClass: "row" },
+                                  _vm._l(membresia.idiomas, function(idioma) {
+                                    return _c("img", {
+                                      key: idioma.id,
+                                      staticClass: "flag-img mx-auto",
+                                      attrs: {
+                                        src: "" + idioma.src,
+                                        alt: "lingua planet " + idioma.idioma
+                                      }
+                                    })
+                                  }),
+                                  0
+                                ),
                                 _vm._v(" "),
                                 _c(
                                   "span",
@@ -52415,18 +52426,21 @@ var render = function() {
                             "d-flex mb-2 align-items-center justify-content-center"
                         },
                         [
-                          _c("img", {
-                            staticClass: "mx-1 iz-10 mini-flag-img active",
-                            attrs: {
-                              src: "" + _vm.membresia.idioma.src,
-                              alt: "membresia idioma"
-                            }
+                          _vm._l(_vm.membresia.idiomas, function(idioma) {
+                            return _c("img", {
+                              staticClass: "mx-1 iz-10 mini-flag-img active",
+                              attrs: {
+                                src: "" + idioma.src,
+                                alt: "membresia idioma"
+                              }
+                            })
                           }),
                           _vm._v(" "),
                           _c("h3", { staticClass: "bold mb-0 ml-2" }, [
                             _vm._v(_vm._s(_vm.membresia.nombre))
                           ])
-                        ]
+                        ],
+                        2
                       ),
                       _vm._v(" "),
                       _c("h4", { staticClass: "px-3 select-subtitle" }, [
@@ -52819,21 +52833,22 @@ var render = function() {
                 staticClass: "d-flex align-items-center justify-content-center"
               },
               [
-                _c("img", {
-                  staticClass: "mx-1 mini-flag-img active",
-                  attrs: {
-                    src:
-                      "/storage/images/" +
-                      _vm.membresia.idioma.diminutivo +
-                      ".svg",
-                    alt: "membresia idioma"
-                  }
+                _vm._l(_vm.membresia.idiomas, function(idio) {
+                  return _c("img", {
+                    key: "iidi-" + idio.id,
+                    staticClass: "mx-1 mini-flag-img active",
+                    attrs: {
+                      src: "/storage/images/" + idio.diminutivo + ".svg",
+                      alt: "membresia idioma"
+                    }
+                  })
                 }),
                 _vm._v(" "),
                 _c("h1", { staticClass: "mb-0 ml-3" }, [
                   _vm._v(_vm._s(_vm.membresia.nombre))
                 ])
-              ]
+              ],
+              2
             ),
             _vm._v(" "),
             _c("h3", { staticClass: "text-center" }, [
@@ -68116,8 +68131,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! c:\laragon\www\lingua-planet\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! c:\laragon\www\lingua-planet\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\lingua_planet\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\lingua_planet\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

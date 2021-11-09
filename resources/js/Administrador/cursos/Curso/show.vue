@@ -214,6 +214,12 @@
                                 <span>{{curso.descripcion}}</span>
                             </div>
                         </div>
+                          <div class="row mb-3 color-black">
+                            <div class="col-12">
+                                <span class="h6 d-block">Idioma</span>
+                                <span>{{curso.idioma.idioma}}</span>
+                            </div>
+                        </div>
                         <div class="row color-black">
                             <div class="col-12">
                                 <span class="h6 d-block">Fecha de publicación</span>

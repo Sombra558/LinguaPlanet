@@ -25,7 +25,7 @@
             <div class="collapse" :id="`collapse${this.perfil.id}`">
                 <div v-for="curs in miscursostotales"  :key="curs.curso.id" class="row mt-3">
                     <div class="col-12">
-                        <img class="flag-language mx-1" :src="curs.idioma.src">
+                        <img class="flag-language mx-1" :src="curs.curso.idioma.src">
                         <span>{{curs.curso.titulo}}</span>
                     </div>
                     <div v-if="curs.curso.modulos.length>0" class="col-7 py-3 d-flex justify-content-between">

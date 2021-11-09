@@ -96,7 +96,7 @@ class AdminController extends Controller
 
     public function membresias()
     {
-        $membresias=Membresia::get()->load(['idioma']);
+        $membresias=Membresia::get()->load(['idiomas']);
         $idiomas=Idioma::get();
         return view('Administrador.Membresias.membresia', compact('membresias','idiomas'));
     }
@@ -112,7 +112,7 @@ class AdminController extends Controller
 
     public function configuraciones()
     {
-        $membresias=Membresia::get()->load(['idioma','planes']);
+        $membresias=Membresia::get()->load(['idiomas','planes']);
         return view('Administrador.Configuraciones.configuraciones', compact('membresias'));
     }
 

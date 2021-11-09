@@ -114,7 +114,7 @@ class PerfilEstudiante extends Controller
         $perfil = PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
                     return $q->with(['plan'=>function($k){
                         return $k->with(['membresia'=>function($j){
-                            return $j->with(['cursos','idioma']);
+                            return $j->with(['cursos','idiomas']);
                         }]);
                     }]);
                   },'avatar']);
@@ -128,10 +128,11 @@ class PerfilEstudiante extends Controller
 
     public function show($id)
     {
+      
         $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
             return $q->with(['plan'=>function($k){
                 return $k->with(['membresia'=>function($j){
-                    return $j->with(['cursos','idioma']);
+                    return $j->with(['cursos','idiomas']);
                 }]);
             }]);
         },'avatar']);
@@ -185,6 +186,7 @@ class PerfilEstudiante extends Controller
 
     public function aplication($id,$nombreURL)
     {
+       
         $idioma=Idioma::where('diminutivo',$nombreURL)->first();
         $user=Auth::user()->load(['perfiles'=>function($q)
         {
@@ -194,19 +196,22 @@ class PerfilEstudiante extends Controller
         $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
             return $q->with(['plan'=>function($k){
                 return $k->with(['membresia'=>function($j){
-                    return $j->with(['cursos','idioma']);
+                    return $j->with(['cursos','idiomas']);
                 }]);
             }]);
         },'avatar','misactividades']);
 
         foreach ($perfil->planes as $plan) {
-            if ($plan->plan->membresia->idioma_id===$idioma->id) {
-                $cursostem=$plan->plan->membresia->cursos;
-                foreach ($cursostem as $tem) {
-                    $cursos->push($tem);
+          
+            foreach ($plan->plan->membresia->idiomas as $idi) {
+                if ($idi->id===$idioma->id) {
+                    $cursostem=$plan->plan->membresia->cursos;
+                    foreach ($cursostem as $tem) {
+                        $cursos->push($tem);
+                    }
                 }
+
             }
-           
         }
         if ($cursos->count()>1) {
             return view('Estudiantes.Cursos.ListaDeCursos',compact('cursos','perfil','idioma'));
@@ -218,7 +223,8 @@ class PerfilEstudiante extends Controller
                         return $a->with(['accesorio']);
                     }]);
                 }]);
-            }]);
+            },'idioma']);
+            
             $pasadas = array();
             $encurso = array();
             $futuras = array();
@@ -272,6 +278,7 @@ class PerfilEstudiante extends Controller
 
     public function aplicationCurso($id,$nombreURL,$curso_id)
     {
+    
         $idioma=Idioma::where('diminutivo',$nombreURL)->first();
         $now = Carbon::now();
         $user=Auth::user()->load(['perfiles'=>function($q)
@@ -284,11 +291,11 @@ class PerfilEstudiante extends Controller
                     return $a->with(['accesorio']);
                 }]);
             }]);
-        }]);
+        },]);
         $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
             return $q->with(['plan'=>function($k){
                 return $k->with(['membresia'=>function($j){
-                    return $j->with(['cursos','idioma']);
+                    return $j->with(['cursos','idiomas']);
                 }]);
             }]);
         },'avatar','misactividades']);
@@ -530,7 +537,7 @@ class PerfilEstudiante extends Controller
         $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
             return $q->with(['plan'=>function($k){
                 return $k->with(['membresia'=>function($j){
-                    return $j->with(['cursos','idioma']);
+                    return $j->with(['cursos','idiomas']);
                 }]);
             }]);
         },'avatar']);

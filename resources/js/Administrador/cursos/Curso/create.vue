@@ -24,6 +24,15 @@
                     <textarea name="descripcion" class="form-input input-gray"  v-model="newcurso.descripcion" cols="30" rows="10" placeholder="Ingresa una descripción al curso" required></textarea>
                 </div>
             </div>
+                  <div class="row">
+                                <div class="form-group form-group-admin col-6">
+                                    <label for="tipo_cupon" >idioma</label>
+                                    <select class="form-input form-input-admin input-primary" name="idiomas[]"  v-model="newcurso.idioma_id" required>
+                                        <option :value="null">Seleccionar</option>
+                                        <option v-for="idioma in idiomas" :key="idioma.id" :value="idioma.id">{{idioma.idioma}}</option>
+                                    </select>
+                                </div>
+                            </div>
             <div class="row justify-content-end">
                 <div class="form-group col-12 col-lg-3">
                     <input type="submit" class="btn btn-lg btn-secondary bg-plomo w-100" value="Guardar borrador">
@@ -36,14 +45,14 @@
 <script>
     export default {
         name:'create-curso',
-        props:['membresias'],
+        props:['membresias','idiomas'],
         data() {
             return {
                 newcurso: {
                     titulo:'',
                     descripcion:'',
                     video:'',
-                  
+                    idioma_id:null,
                     nombreURL:'',
 
                 }

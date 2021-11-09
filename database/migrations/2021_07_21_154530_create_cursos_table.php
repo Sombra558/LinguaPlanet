@@ -24,6 +24,8 @@ class CreateCursosTable extends Migration
             $table->date('inicia')->nullable();
             $table->text('descripcion',5000)->nullable();
             $table->boolean('destacados')->default(0);
+            $table->unsignedbigInteger('idioma_id');
+            $table->foreign('idioma_id')->references('id')->on('idiomas')->onDelete('cascade');
             $table->timestamps();
         });
     }

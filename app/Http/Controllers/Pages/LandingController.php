@@ -23,10 +23,13 @@ class LandingController extends Controller
         return view('landing.cursos.cursos',compact('idiomas'));
     }
     public function CursosShow($nombreURL){
+        
             $idiomas=Idioma::get();
             $idioma = Idioma::where('nombreURL',$nombreURL)->first();
                 if ($idioma) {
-                    $idioma->load(['membresias']);
+                    $idioma->load(['membresias'=>function($k){
+                        return $k->with('idiomas');
+                    }]);
            
                     return view('landing.cursos.show', compact('idioma','idiomas'));
                 }else {
@@ -35,11 +38,13 @@ class LandingController extends Controller
         }
 
         public function MembresiaShow($nombreURL){
+          
+           
             $idiomas=Idioma::get();
             
             $membresia = Membresia::where('nombreURL',$nombreURL)->first();
                 if ($membresia) {
-                    $membresia->load(['planes', 'idioma']);
+                    $membresia->load(['planes', 'idiomas']);
                     
                     return view('landing.membresia.show', compact('membresia','idiomas'));
                 }else {
@@ -50,10 +55,13 @@ class LandingController extends Controller
         public function payment($nombreURL){
             $idiomas=Idioma::get();
             $plan = Plan::where('nombreURL',$nombreURL)
-                        ->with('membresia.idioma:id,diminutivo,idioma,src')
+                        ->with(['membresia'=>function($i){
+                            return $i->with('idiomas');
+                        }])
                         ->first();
                         
             if ($plan) {
+             
                 return view('landing.Comprar.Confirma', compact('plan','idiomas'));
             }else {
                 return view('errors.404');

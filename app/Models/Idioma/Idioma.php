@@ -9,7 +9,8 @@ class Idioma extends Model
     protected $fillable = [
         'idioma','diminutivo','src','video','nombreURL',
     ];
-    public function membresias(){
-        return $this->hasMany('App\Models\Membresia\Membresia');
+   
+    public function membresias() {
+    	return $this->belongsToMany('App\Models\Membresia\Membresia','membresia_idiomas','idioma_id')->withPivot('idioma_id');
     }
 }

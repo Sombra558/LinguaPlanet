@@ -20,8 +20,6 @@ class CreateMembresiasTable extends Migration
             $table->enum('tipo', ['mensual', 'trimestral','anual']);
             $table->dateTime('inicia')->nullable();
             $table->dateTime('finaliza')->nullable();
-            $table->unsignedbigInteger('idioma_id');
-            $table->foreign('idioma_id')->references('id')->on('idiomas')->onDelete('cascade');
             $table->timestamps();
         });
     }

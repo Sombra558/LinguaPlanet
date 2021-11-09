@@ -57,7 +57,10 @@
                     <div class="row justify-content-center">
                         <div v-for="(membresia, index2) in offsetCarousel(key)" class="card card-course-carrousel mx-3" style="width : 15rem;">
                             <div class="card-body d-flex flex-column">
-                                <img class="flag-img mx-auto" :src="`${idioma.src}`" :alt="`lingua planet ${idioma.idioma}`">
+                                <div class="row">
+                                    <img v-for="idioma in membresia.idiomas" :key="idioma.id" class="flag-img mx-auto" :src="`${idioma.src}`" :alt="`lingua planet ${idioma.idioma}`">
+                                </div>
+                                
                                 <span class="h3 bold" style="height: 4rem;">{{ membresia.nombre }}</span>
                                
                                 <div class="mt-4 mb-3 lh">

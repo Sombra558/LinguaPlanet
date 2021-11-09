@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Models\Membresia\Membresia;
 use App\Models\Cursos\Curso;
+use App\Models\idioma\Idioma;
 
 class CursoController extends Controller
 {
@@ -28,7 +29,8 @@ class CursoController extends Controller
     public function create()
     {
        $membresias=Membresia::get();
-       return view('Administrador.Cursos.create', compact('membresias'));
+       $idiomas=Idioma::get();
+       return view('Administrador.Cursos.create', compact('membresias','idiomas'));
     }
 
     /**
@@ -60,6 +62,7 @@ class CursoController extends Controller
             'titulo' => $request['titulo'],
             'descripcion' => $request['descripcion'],
             'nombreURL' => $request['nombreURL'],
+            'idioma_id' => $request['idioma_id'],
             'destacados' => 1,
             'video' => $url,
             'linkoriginal' => $request['video'],
@@ -90,7 +93,7 @@ class CursoController extends Controller
                     return $p->with('accesorio');
                 }]);
             }]);
-        },'membresias']);
+        },'membresias','idioma']);
         return view('Administrador.Cursos.show', compact('curso','membresias','siluetas'));
     }
 

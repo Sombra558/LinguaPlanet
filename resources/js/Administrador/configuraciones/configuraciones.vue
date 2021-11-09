@@ -7,7 +7,7 @@
                 <div class="card-header" id="headingOne">
                     <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" :data-target="`#collapse${index}`" aria-expanded="true" :aria-controls="`collapse${index}`">
                         <h4>Membresia: {{membresia.nombre}}</h4>
-                        <p>Idioma: {{membresia.idioma.idioma}}</p>
+                        <p v-for="idioma in membresia.idiomas" :key="idioma.id">Idioma: {{idioma.idioma}}</p>
                     </button>
                 </div>
                 <div :id="`collapse${index}`" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">

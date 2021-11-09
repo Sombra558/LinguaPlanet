@@ -1669,9 +1669,18 @@
         },
         mounted () {
             this.perfil.planes.forEach(plan => {
-                if (this.idiomas.some(evt => evt.id===plan.plan.membresia.idioma.id)!=true) {
-                    this.idiomas.push(plan.plan.membresia.idioma);
-                }               
+				console.log(plan);
+				plan.plan.membresia.idiomas.forEach(element => {
+						if (this.idiomas.length>0) {
+							 if (this.idiomas.some(evt => evt.id===element.id)!=true) {
+								this.idiomas.push(element);
+							}     
+						}else{
+								this.idiomas.push(element);
+						}
+						 
+				});
+                        
             });
         },
     }

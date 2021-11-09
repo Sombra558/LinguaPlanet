@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Membresia\Membresia;
+use App\Models\Relaciones\MembresiaIdioma;
 use Illuminate\Http\Request;
 
 class MembresiasController extends Controller
@@ -36,11 +37,19 @@ class MembresiasController extends Controller
      */
     public function store(Request $request)
     {
+        $idiomas=$request['idiomas'];
+  
         $membresia = Membresia::create([
             'nombre' => $request['nombre'],
-            'idioma_id' => $request['idioma_id'],
             'nombreURL' => $request['nombreURL'],
         ]);
+        foreach ($idiomas as $idioma) {
+
+            MembresiaIdioma::create([
+            'membresia_id' => $membresia->id,
+            'idioma_id' => $idioma,
+        ]);
+        }
         return $membresia;
     }
 

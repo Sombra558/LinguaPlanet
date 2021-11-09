@@ -2159,9 +2159,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 
 
@@ -42479,36 +42476,8 @@ var render = function() {
                                 "\n                                Seleccione\n                            "
                               )
                             ]
-                          ),
-                          _vm._v(" "),
-                          _vm._l(_vm.idiomasg, function(idioma) {
-                            return _c(
-                              "li",
-                              {
-                                key: idioma.id,
-                                staticClass: "dropdown-item",
-                                attrs: { href: "#" },
-                                on: {
-                                  click: function($event) {
-                                    _vm.paisSelected = idioma
-                                  }
-                                }
-                              },
-                              [
-                                _c("img", {
-                                  staticClass: "flag-language",
-                                  attrs: { src: idioma.src }
-                                }),
-                                _vm._v(
-                                  "\n                                " +
-                                    _vm._s(idioma.idioma) +
-                                    "\n                            "
-                                )
-                              ]
-                            )
-                          })
-                        ],
-                        2
+                          )
+                        ]
                       )
                     ])
                   ]
@@ -44066,7 +44035,7 @@ var render = function() {
               _c("div", { staticClass: "col-12" }, [
                 _c("img", {
                   staticClass: "flag-language mx-1",
-                  attrs: { src: curs.idioma.src }
+                  attrs: { src: curs.curso.idioma.src }
                 }),
                 _vm._v(" "),
                 _c("span", [_vm._v(_vm._s(curs.curso.titulo))])
@@ -44255,13 +44224,12 @@ var render = function() {
                         staticClass:
                           "text-center idioma-title text-md-left col-12 col-md-3 col-lg-4"
                       },
-                      [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(plan.membresia.idioma.idioma) +
-                            "\n                        "
-                        )
-                      ]
+                      _vm._l(plan.membresia.idiomas, function(idioma) {
+                        return _c("span", { key: idioma.id }, [
+                          _vm._v(_vm._s(idioma.idioma) + " ")
+                        ])
+                      }),
+                      0
                     ),
                     _vm._v(" "),
                     _c(
@@ -62845,7 +62813,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! c:\laragon\www\lingua-planet\resources\js\Padre\app.js */"./resources/js/Padre/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\lingua_planet\resources\js\Padre\app.js */"./resources/js/Padre/app.js");
 
 
 /***/ })

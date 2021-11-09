@@ -12,7 +12,7 @@
                         <div class="card-body py-3 d-flex flex-column">
                             <div class="col px-0">
                                 <span class="d-flex mb-2 align-items-center justify-content-center">
-                                    <img class="mx-1 iz-10 mini-flag-img active" :src="`${membresia.idioma.src}`"  alt="membresia idioma">
+                                    <img v-for="idioma in membresia.idiomas" class="mx-1 iz-10 mini-flag-img active" :src="`${idioma.src}`"  alt="membresia idioma">
                                     <h3 class="bold mb-0 ml-2">{{membresia.nombre}}</h3>
                                 </span>
                                 <h4 class="px-3 select-subtitle">Selecciona tu membresía y comienza aprender.</h4>
@@ -114,7 +114,7 @@
                 <div class="card-body">
                     <div class="col">
                         <span class="d-flex align-items-center justify-content-center">
-                            <img class="mx-1 mini-flag-img active" :src="`/storage/images/${membresia.idioma.diminutivo}.svg`"  alt="membresia idioma">
+                            <img v-for="idio in membresia.idiomas" :key="'iidi-'+idio.id" class="mx-1 mini-flag-img active" :src="`/storage/images/${idio.diminutivo}.svg`"  alt="membresia idioma">
                             <h1 class="mb-0 ml-3">{{membresia.nombre}}</h1>
                         </span>
                         <h3 class="text-center">Selecciona tu membresía y comienza aprender.</h3>

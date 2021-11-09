@@ -42,6 +42,7 @@ class PadresViewController extends Controller
     {
         $user = Auth::user();
         $now = Carbon::now();
+        
         $perfil=PerfilEstudianteUser::find($id)->load(['avatar','misactividades','planes'=>function($q) use($now)
         {
             return $q->with(['plan'=>function($j) use($now)
@@ -59,7 +60,7 @@ class PadresViewController extends Controller
                                 ->where('finaliza', '>', $now)->with('actividades');
                             }]);
                         }]);
-                    },'idioma',]);
+                    },'idiomas',]);
                 }]);
             }]);
         }]);
@@ -69,6 +70,7 @@ class PadresViewController extends Controller
     public function detallespadrecursos()
     {
         $now = Carbon::now();
+        
         $user=Auth::user()->load(['perfiles'=>function($q) use($now)
         {
             return $q->with(['avatar','misactividades','planes'=>function($q) use($now)
@@ -79,7 +81,7 @@ class PadresViewController extends Controller
                     {
                         return $z->with(['cursos'=>function($m) use($now)
                         {
-                            return $m->with(['progresos','modulos'=>function($c) use($now)
+                            return $m->with(['progresos','idioma','modulos'=>function($c) use($now)
                             {
                                 return $c->where('inicia', '<=', $now)
                                     ->where('finaliza', '>', $now)->with(['clases'=>function($a) use($now)
@@ -88,7 +90,7 @@ class PadresViewController extends Controller
                                     ->where('finaliza', '>', $now)->with('actividades');
                                 }]);
                             }]);
-                        },'idioma']);
+                        },'idiomas']);
                     }]);
                 }]);
             }]);
@@ -96,7 +98,7 @@ class PadresViewController extends Controller
         {
             return $q->with(['membresia'=>function($k)
             {
-                return $k->with('idioma','cursos');
+                return $k->with('idiomas','cursos');
             }]);
         }]);
      
@@ -123,7 +125,7 @@ class PadresViewController extends Controller
                                     return $a->with('actividades');
                                 }]);
                             },'progresos']);
-                        },'idioma']);
+                        },'idiomas']);
                     }]);
                 }]);
             }]);
@@ -131,7 +133,7 @@ class PadresViewController extends Controller
         {
             return $q->with(['membresia'=>function($k)
             {
-                return $k->with(['idioma','cursos']);
+                return $k->with(['idiomas','cursos']);
             }]);
         }]);
         return view('Padres.Detalles.Cursos.progreso',compact('user'));
@@ -146,7 +148,7 @@ class PadresViewController extends Controller
         {
             return $q->with(['membresia'=>function($k)
             {
-                return $k->with('idioma','cursos');
+                return $k->with('idiomas','cursos');
             }]);
         }]);
         return view('Padres.Detalles.Membresias.index',compact('user'));
@@ -157,7 +159,7 @@ class PadresViewController extends Controller
         $plan = Auth::user()
                     ->planes()
                     ->with(['membresia'=>function($k) {
-                        return $k->with('idioma', 'planes');
+                        return $k->with('idiomas', 'planes');
                     }])
                     ->get()
                     ->find($plan_id);
@@ -180,7 +182,7 @@ class PadresViewController extends Controller
         {
             return $q->with(['membresia'=>function($k)
             {
-                return $k->with('idioma','cursos');
+                return $k->with('idiomas','cursos');
             }]);
         }]);
         

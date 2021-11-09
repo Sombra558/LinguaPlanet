@@ -29,10 +29,7 @@
                                 <li @click="paisSelected = 'Seleccione'" class="dropdown-item" href="#">
                                     Seleccione
                                 </li>
-                                <li v-for="idioma in idiomasg" :key="idioma.id" @click="paisSelected = idioma" class="dropdown-item" href="#">
-                                    <img :src="idioma.src" class="flag-language">
-                                    {{ idioma.idioma }}
-                                </li>
+                               <!--idiomas-->
                             </ul>
                         </div>
                     </div>
