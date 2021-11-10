@@ -128,7 +128,7 @@ class PerfilEstudiante extends Controller
 
     public function show($id)
     {
-      
+   
         $perfil=PerfilEstudianteUser::find($id)->load(['planes'=>function($q){
             return $q->with(['plan'=>function($k){
                 return $k->with(['membresia'=>function($j){
@@ -186,7 +186,7 @@ class PerfilEstudiante extends Controller
 
     public function aplication($id,$nombreURL)
     {
-       
+        
         $idioma=Idioma::where('diminutivo',$nombreURL)->first();
         $user=Auth::user()->load(['perfiles'=>function($q)
         {
@@ -207,14 +207,17 @@ class PerfilEstudiante extends Controller
                 if ($idi->id===$idioma->id) {
                     $cursostem=$plan->plan->membresia->cursos;
                     foreach ($cursostem as $tem) {
-                        $cursos->push($tem);
+                        if ($tem->idioma_id===$idioma->id) {
+                            $cursos->push($tem);
+                        }
+                        
                     }
                 }
 
             }
         }
         if ($cursos->count()>1) {
-            return view('Estudiantes.Cursos.ListaDeCursos',compact('cursos','perfil','idioma'));
+            return view('Estudiantes.Cursos.ListaDeCursos',compact('cursos','perfil','idioma','user'));
         }else if($cursos->count()===1){
             $now = Carbon::now();
             $curso = Curso::find($cursos[0]->id)->load(['modulos'=>function($k){

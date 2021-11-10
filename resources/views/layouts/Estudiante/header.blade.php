@@ -62,7 +62,7 @@
                 @else
                     @if(request()->routeIs('student.activities'))
                         <li class="nav-item mx-4">
-                            <a href="/home/app/{{ request()->route()->parameters()['id'] }}/{{ request()->route()->parameters()['apodo'] }}/idiomas">
+                            <a href="/home/app/{{ request()->route()->parameters()['id'] }}/idiomas">
                                 <img class="w-75" src="/images/earth-icon.svg">
                             </a>
                         </li>

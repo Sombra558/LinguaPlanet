@@ -103,7 +103,7 @@ class AdminController extends Controller
 
     public function usuarios()
     {
-        $membresias=Membresia::get()->load(['idioma','planes']);
+        $membresias=Membresia::get()->load(['idiomas','planes']);
         $usuarios=User::get();
         $inscripciones=PlanUser::get()->load(['user','plan']);
        
