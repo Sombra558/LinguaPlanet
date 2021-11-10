@@ -48471,14 +48471,14 @@ var render = function() {
                                   { staticClass: "form-group col-md-6 col-12" },
                                   [
                                     _c("label", { attrs: { for: "inicia" } }, [
-                                      _vm._v("Subir Archivo")
+                                      _vm._v("Subir video")
                                     ]),
                                     _vm._v(" "),
                                     _c("input", {
                                       attrs: {
                                         type: "file",
                                         name: "recurso",
-                                        accept: "application/pdf",
+                                        accept: "video/*",
                                         id: "assetsFieldHandle"
                                       }
                                     })

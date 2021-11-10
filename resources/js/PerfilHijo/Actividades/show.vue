@@ -1,9 +1,9 @@
 <template>
     <div class="body-component">
-    	<a v-if="actividad.tipo ==='Libros' || actividad.tipo ==='Actividad'" class="back" :href="prevUrl">
+    	<a v-if="actividad.tipo ==='Libros'" class="back" :href="prevUrl">
             <img class="w-75" src="/images/back-yellow.svg">
         </a>
-        <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura'" style="height: 85%;">
+        <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura' || actividad.tipo ==='Actividad'" style="height: 85%;">
 				<video @ended="onEnd()" controls width="100%" height="100%">
 
 					<source :src="'/storage/'+actividad.recurso"
@@ -21,7 +21,7 @@
 	        ></iframe>-->
         </div>
 		
-		<div v-else class="d-flex justify-content-center" :style="{'height': ( openbook || actividad.tipo === 'Actividad' ) ? '85%' : '100%'}">
+		<div v-else class="d-flex justify-content-center" :style="{'height': ( openbook ) ? '85%' : '100%'}">
 			<section v-if="actividad.tipo==='Libros'" class="content-pdf d-flex">
 				<center v-if="openbook===false" class="mx-auto my-auto">
 					<svg @click.prevent="openbook=true;" width="100%" height="100%" viewBox="0 0 432 388" fill="none" xmlns="http://www.w3.org/2000/svg">

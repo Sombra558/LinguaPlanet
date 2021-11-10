@@ -446,8 +446,8 @@
                                     <input type="file" name="recurso" accept="video/*" id="assetsFieldHandle"  />
                                 </div>
                                 <div v-if="actividadtipe==='Actividad'" class="form-group col-md-6 col-12">
-                                    <label for="inicia" >Subir Archivo</label>
-                                    <input type="file" name="recurso" accept="application/pdf"  id="assetsFieldHandle"  />
+                                    <label for="inicia" >Subir video</label>
+                                    <input type="file" name="recurso" accept="video/*" id="assetsFieldHandle"  />
                                 </div>
                                 <div v-if="actividadtipe==='Libros'" class="form-group col-md-6 col-12">
                                     <label for="inicia" >Subir Archivo</label>
