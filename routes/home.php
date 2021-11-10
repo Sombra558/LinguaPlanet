@@ -13,3 +13,6 @@ Route::view('/confirmado', 'landing.Comprar.Completado', [
 	'transactionId' => '12345678910'
 ]);
 Route::get('/aplicar-cupon/{cupon}/{plan}/{membresia}', 'PaypalController@cupon')->middleware(['auth'])->name('cupon');
+Route::post('/stripe-payments', 'StripeController@pay')->middleware(['auth'])->name('stripe-payment');
+Route::get('/stripe-payments/approval', 'StripeController@approval')->middleware(['auth'])->name('stripe-approval');
+Route::get('/stripe-payments/cancelled', 'StripeController@cancelled')->middleware(['auth'])->name('stripe-cancelled');

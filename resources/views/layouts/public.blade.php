@@ -14,7 +14,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+ 
     <!-- Fonts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Styles -->
@@ -30,6 +30,7 @@
             border-radius:50%;
         }
     </style>
+    @stack('styles')
 </head>
 <body>
     <div class="d-flex h-screen flex-column justify-content-between">        
@@ -64,6 +65,8 @@
         </span>
     </footer>
     </div>
+    <script src="{{ asset('js/app.js') }}" ></script>
+    @stack('scripts')
 </body>
 <script type="text/javascript">
   
@@ -74,4 +77,5 @@
     });
   
 </script>
+
 </html>

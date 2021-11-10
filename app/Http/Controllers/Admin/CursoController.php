@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Models\Membresia\Membresia;
 use App\Models\Cursos\Curso;
-use App\Models\idioma\Idioma;
+use App\Models\Idioma\Idioma;
 
 class CursoController extends Controller
 {

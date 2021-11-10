@@ -1,31 +1,83 @@
-<form  id="transferencia" method="post"  enctype="multipart/form-data" class="mx-2">
-    @csrf
-    <div class="input-primary d-flex flex-row align-items-center mb-4">
-        <div class="input-group-prepend pl-3">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21 5.25L12 13.5L3 5.25" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M3 5.25H21V18C21 18.1989 20.921 18.3897 20.7803 18.5303C20.6397 18.671 20.4489 18.75 20.25 18.75H3.75C3.55109 18.75 3.36032 18.671 3.21967 18.5303C3.07902 18.3897 3 18.1989 3 18V5.25Z" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M10.3638 12L3.23145 18.538" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M20.7692 18.5381L13.6367 12" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
-        <input class="form-input input-novedades" type="text" name="direccion" placeholder="direccion" require>
-    </div>
-    <div class="input-primary d-flex flex-row align-items-center mb-4">
-        <div class="input-group-prepend pl-3">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21 5.25L12 13.5L3 5.25" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M3 5.25H21V18C21 18.1989 20.921 18.3897 20.7803 18.5303C20.6397 18.671 20.4489 18.75 20.25 18.75H3.75C3.55109 18.75 3.36032 18.671 3.21967 18.5303C3.07902 18.3897 3 18.1989 3 18V5.25Z" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M10.3638 12L3.23145 18.538" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M20.7692 18.5381L13.6367 12" stroke="#31348B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
-        <input class="form-input input-novedades" type="text" name="cnumero" placeholder="numero de comprobante" require>
-    </div>
-    <div>
-        <input type="file" name="img_deposito" id="file-u" class="input-file" style="position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0;">
-        <label for="file-u" class="btn btn-block btn-success py-2">
-            <span class="h4 bold">Subir comprobante</span>
-        </label>
+@push('styles')
+<style type="text/css">
+    /**
+     * The CSS shown here will not be introduced in the Quickstart guide, but shows
+     * how you can use CSS to style your Element's container.
+     */
+    .StripeElement {
+      box-sizing: border-box;
+      height: 40px;
+      padding: 10px 12px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      background-color: white;
+      box-shadow: 0 1px 3px 0 #e6ebf1;
+      -webkit-transition: box-shadow 150ms ease;
+      transition: box-shadow 150ms ease;
+    }
+    .StripeElement--focus {
+      box-shadow: 0 1px 3px 0 #cfd7df;
+    }
+    .StripeElement--invalid {
+      border-color: #fa755a;
+    }
+    .StripeElement--webkit-autofill {
+      background-color: #fefde5 !important;
+    }
+</style>
+@endpush
+<form id="paymentFormStripe" action="{{ route('stripe-payment') }}" method="POST">
+@csrf
+    <input type="hidden" name="payment_method" id="paymentMethod">
+    <articulos :plan="{{$plan}}"></articulos>   
+    <label class="mt-3">Card details:</label>
+    
+    <div id="cardElement"></div>
+    <small class="form-text text-muted" id="cardErrors" role="alert"></small>
+   
+    <div class="text-center mt-3">
+            <button type="submit" id="payButton" class="btn btn-primary btn-lg">Pay</button>
     </div>
 </form>
+
+
+
+@push('scripts')
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    const stripe = Stripe('{{ config('services.stripe.key') }}');
+    const elements = stripe.elements({locale: 'en'});
+    const cardElement = elements.create('card');
+    cardElement.mount('#cardElement');
+</script>
+
+<script>
+    const form = document.getElementById('paymentFormStripe');
+    const payButton = document.getElementById('payButton');
+ 
+    payButton.addEventListener('click', async(e) => {
+            e.preventDefault();
+   
+            const { paymentMethod, error} = await stripe.createPaymentMethod(
+                'card', cardElement, {
+                    billing_details: {
+                        "name": "{{ auth()->user()->name }}",
+                        "email": "{{ auth()->user()->email }}"
+                    }
+                }
+            );
+            if (error) {
+                console.log('error');
+                const displayError = document.getElementById('cardErrors');
+                displayError.textContent = error.message;
+            } else {
+                console.log('correcto');
+                const tokenInput = document.getElementById('paymentMethod');
+                tokenInput.value = paymentMethod.id;
+            
+                form.submit();
+            }
+        
+    });
+</script>
+@endpush
