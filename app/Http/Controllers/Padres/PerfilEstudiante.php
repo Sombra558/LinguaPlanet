@@ -637,7 +637,7 @@ class PerfilEstudiante extends Controller
                     $calificacion= 4/$valor*10;
                     break;
                 case 'Silueta':
-                    $calificacion= 7/$valor*10;
+                    $calificacion= 5/$valor*10;
                     break;
                 case 'Simon Dice':
                     $calificacion= 9/$valor*10;
