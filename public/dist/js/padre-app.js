@@ -42219,7 +42219,7 @@ var render = function() {
       staticClass:
         "col-3 col-md-2 h4 color-plomo d-flex justify-content-center align-items-center"
     },
-    [_vm._v("calificacion")]
+    [_vm._v(_vm._s(_vm.calificacion))]
   )
 }
 var staticRenderFns = []
