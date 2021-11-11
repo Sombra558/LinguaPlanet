@@ -15,6 +15,7 @@ class CreateActividadUsersTable extends Migration
     {
         Schema::create('actividad_users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->double('calificacion',8,2)->nullable();
             $table->integer('intentos')->nullable();
             $table->unsignedbigInteger('actividad_id');
             $table->foreign('actividad_id')->references('id')->on('actividads')->onDelete('cascade');

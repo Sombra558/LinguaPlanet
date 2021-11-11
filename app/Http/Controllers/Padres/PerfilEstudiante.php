@@ -609,6 +609,7 @@ class PerfilEstudiante extends Controller
     }
     public function juegorealizado($id, $curso_id, $actividad_id,$valor){
         $actividadus=ActividadUser::where('actividad_id',$actividad_id)->where('perfil_id',$id)->first();
+        $laactividad=Actividad::find($actividad_id);
         $countmisact=0;
         $actividadesCurso=collect();
         $curs=Curso::find($curso_id)->load(['modulos'=>function($j){
@@ -624,20 +625,41 @@ class PerfilEstudiante extends Controller
              }
         }
         if ($actividadus===null) {
+            $calificacion=null;
+            switch ($laactividad->tipo) {
+                case 'Mochila':
+                    $calificacion= 9/$valor*10;
+                    break;
+                case 'Rompecabeza':
+                    $calificacion= 9/$valor*10;
+                    break;
+                case 'Memorama':
+                    $calificacion= 4/$valor*10;
+                    break;
+                case 'Silueta':
+                    $calificacion= 7/$valor*10;
+                    break;
+                case 'Simon Dice':
+                    $calificacion= 9/$valor*10;
+                    break;
+                default:
+                    $calificacion=null;
+                    break;
+            }
             $actividadus = ActividadUser::create([
                 'actividad_id' => $actividad_id,
                 'perfil_id' => $id,
                 'estado' => 1,
+                'valor' => $valor,
+                'calificacion' => $calificacion,
             ]);
-       
             $progresocurso = ProgresoCursoUser::where('curso_id',$curso_id)->where('perfil_id',$id)->first();
             if ($progresocurso===null) {
                 $progresocurso = ProgresoCursoUser::create([
                     'progreso' => 1/count($actividadesCurso),
                     'curso_id' => $curso_id,
                     'perfil_id' => $id,
-                ]);
-              
+                ]); 
             }else{
                 $perfil=PerfilEstudianteUser::find($id)->load(['misactividades']);
                 foreach ($perfil->misactividades as $act) {
@@ -650,8 +672,6 @@ class PerfilEstudiante extends Controller
                $progresocurso->progreso=$countmisact/count($actividadesCurso);
                $progresocurso->save();
             }
-
-
             return $actividadus;
         }else{
             $actividadus->estado=1;
