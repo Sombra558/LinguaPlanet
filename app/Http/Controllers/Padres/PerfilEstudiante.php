@@ -628,7 +628,7 @@ class PerfilEstudiante extends Controller
             $calificacion=null;
             switch ($laactividad->tipo) {
                 case 'Mochila':
-                    $calificacion= 9/$valor*10;
+                    $calificacion= 5/$valor*10;
                     break;
                 case 'Rompecabeza':
                     $calificacion= 9/$valor*10;
