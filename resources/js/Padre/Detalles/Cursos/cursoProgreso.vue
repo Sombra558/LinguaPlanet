@@ -143,7 +143,7 @@
                                                     </span>
                                                 </div>
                                                 <Progreso :clase="cla" :actividades="perfilSelected.misactividades" />
-                                                <span class="col-3 col-md-2 h4 color-plomo d-flex justify-content-center align-items-center">0</span>
+                                                <Calificacion :clase="cla" :actividades="perfilSelected.misactividades" />
                                             </div>
                                         </span>
                                 </li>
@@ -167,6 +167,7 @@
 import ProgesoCard from './progresoCard';
 import PerfilCard from './perfilCard';
 import Progreso from './progreSemanal.vue'
+import Calificacion from './CalificacionSemanal.vue';
 import { mapGetters } from "vuex";
     export default {
         name:"cursos-detalle-padre",
@@ -183,7 +184,7 @@ import { mapGetters } from "vuex";
             }            
         },
         components: {
-            ProgesoCard,PerfilCard,Progreso 
+            ProgesoCard,PerfilCard,Progreso ,Calificacion
         },
         mounted() {
             var value = $(".progress").attr('data-value');
