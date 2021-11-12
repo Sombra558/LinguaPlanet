@@ -1911,6 +1911,42 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Padre/Detalles/Cursos/CalificacionGlobal.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Padre/Detalles/Cursos/CalificacionGlobal.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Calificacion-Global",
+  props: ['clase', 'actividades'],
+  computed: {
+    califiacionG: function califiacionG() {
+      var acumulador = 0;
+      this.actividades.forEach(function (act) {
+        if (act.tipo === 'Mochila' || act.tipo === 'Rompecabeza' || act.tipo === 'Silueta' || act.tipo === 'Simon Dice' || act.tipo === 'Memorama') {
+          acumulador = acumulador + act.pivot.calificacion;
+        }
+      });
+
+      if (this.actividades.length > 0) {
+        return acumulador / this.actividades.length;
+      } else {
+        return 0;
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Padre/Detalles/Cursos/CalificacionSemanal.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Padre/Detalles/Cursos/CalificacionSemanal.vue?vue&type=script&lang=js& ***!
@@ -1945,6 +1981,37 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         return 0;
       }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Padre/Detalles/Cursos/Repeticiones.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Padre/Detalles/Cursos/Repeticiones.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "repeticion",
+  props: ['clase', 'actividades'],
+  computed: {
+    repeticiones: function repeticiones() {
+      var acumulador = 0;
+      this.actividades.forEach(function (act) {
+        if (act.tipo === 'Mochila' || act.tipo === 'Rompecabeza' || act.tipo === 'Silueta' || act.tipo === 'Simon Dice' || act.tipo === 'Memorama') {
+          acumulador = acumulador + act.pivot.repeticiones;
+        }
+      });
+      return acumulador;
     }
   }
 });
@@ -2028,7 +2095,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _perfilCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./perfilCard */ "./resources/js/Padre/Detalles/Cursos/perfilCard.vue");
 /* harmony import */ var _progreSemanal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./progreSemanal.vue */ "./resources/js/Padre/Detalles/Cursos/progreSemanal.vue");
 /* harmony import */ var _CalificacionSemanal_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CalificacionSemanal.vue */ "./resources/js/Padre/Detalles/Cursos/CalificacionSemanal.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _Repeticiones_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Repeticiones.vue */ "./resources/js/Padre/Detalles/Cursos/Repeticiones.vue");
+/* harmony import */ var _CalificacionGlobal_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CalificacionGlobal.vue */ "./resources/js/Padre/Detalles/Cursos/CalificacionGlobal.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2205,6 +2274,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "cursos-detalle-padre",
   props: ['user'],
@@ -2222,7 +2293,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     ProgesoCard: _progresoCard__WEBPACK_IMPORTED_MODULE_0__["default"],
     PerfilCard: _perfilCard__WEBPACK_IMPORTED_MODULE_1__["default"],
     Progreso: _progreSemanal_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    Calificacion: _CalificacionSemanal_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    Calificacion: _CalificacionSemanal_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    Repeticiones: _Repeticiones_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    CalificacionG: _CalificacionGlobal_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
   mounted: function mounted() {
     var value = $(".progress").attr('data-value');
@@ -2242,7 +2315,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return percentage / 100 * 360;
     }
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapGetters"])(["filteredCursos"])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_6__["mapGetters"])(["filteredCursos"])),
   methods: {
     seleccionarPerfil: function seleccionarPerfil(value) {
       var self = this;
@@ -42198,6 +42271,32 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Padre/Detalles/Cursos/CalificacionGlobal.vue?vue&type=template&id=4538cea0&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Padre/Detalles/Cursos/CalificacionGlobal.vue?vue&type=template&id=4538cea0&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("span", { staticClass: "h4" }, [
+    _vm._v(_vm._s(_vm.califiacionG.toFixed(2)))
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Padre/Detalles/Cursos/CalificacionSemanal.vue?vue&type=template&id=2b906bb6&scoped=true&":
 /*!*********************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Padre/Detalles/Cursos/CalificacionSemanal.vue?vue&type=template&id=2b906bb6&scoped=true& ***!
@@ -42221,6 +42320,30 @@ var render = function() {
     },
     [_vm._v(_vm._s(_vm.calificacion.toFixed(2)))]
   )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Padre/Detalles/Cursos/Repeticiones.vue?vue&type=template&id=bf94fe08&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Padre/Detalles/Cursos/Repeticiones.vue?vue&type=template&id=bf94fe08&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("span", { staticClass: "h4" }, [_vm._v(_vm._s(_vm.repeticiones))])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -42812,9 +42935,53 @@ var render = function() {
                                     ]
                                   ),
                                   _vm._v(" "),
-                                  _vm._m(2, true),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3"
+                                    },
+                                    [
+                                      _c(
+                                        "h5",
+                                        { staticClass: "bold text-primary" },
+                                        [_vm._v("Juegos Ganados")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("Repeticiones", {
+                                        attrs: {
+                                          clase: _vm.cla,
+                                          actividades:
+                                            _vm.perfilSelected.misactividades
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
                                   _vm._v(" "),
-                                  _vm._m(3, true)
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3"
+                                    },
+                                    [
+                                      _c(
+                                        "h5",
+                                        { staticClass: "bold text-primary" },
+                                        [_vm._v("Calificación promedio")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("CalificacionG", {
+                                        attrs: {
+                                          clase: _vm.cla,
+                                          actividades:
+                                            _vm.perfilSelected.misactividades
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
                                 ]
                               )
                             ]
@@ -42829,7 +42996,7 @@ var render = function() {
                       ? _c("div", { staticClass: "resultados px-lg-4" }, [
                           _c("div", { staticClass: "col-12" }, [
                             _c("div", { staticClass: "row mt-3" }, [
-                              _vm._m(4, true),
+                              _vm._m(2, true),
                               _vm._v(" "),
                               _c("div", { staticClass: "col-12" }, [
                                 _c("div", { staticClass: "row" }, [
@@ -42841,7 +43008,7 @@ var render = function() {
                                             "list-group list-group-flush flex-grow-1"
                                         },
                                         [
-                                          _vm._m(5, true),
+                                          _vm._m(3, true),
                                           _vm._v(" "),
                                           _vm._l(curso.modulos, function(
                                             modulo
@@ -43096,44 +43263,6 @@ var staticRenderFns = [
     return _c("span", { staticClass: "progress-right" }, [
       _c("span", { staticClass: "progress-bar border-warning" })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3"
-      },
-      [
-        _c("h5", { staticClass: "bold text-primary" }, [
-          _vm._v("Juegos Ganados")
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "h4" }, [_vm._v("0")])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3"
-      },
-      [
-        _c("h5", { staticClass: "bold text-primary" }, [
-          _vm._v("Calificación promedio")
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "h4" }, [_vm._v("0")])
-      ]
-    )
   },
   function() {
     var _vm = this
@@ -61083,6 +61212,75 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/Padre/Detalles/Cursos/CalificacionGlobal.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/Padre/Detalles/Cursos/CalificacionGlobal.vue ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CalificacionGlobal_vue_vue_type_template_id_4538cea0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CalificacionGlobal.vue?vue&type=template&id=4538cea0&scoped=true& */ "./resources/js/Padre/Detalles/Cursos/CalificacionGlobal.vue?vue&type=template&id=4538cea0&scoped=true&");
+/* harmony import */ var _CalificacionGlobal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CalificacionGlobal.vue?vue&type=script&lang=js& */ "./resources/js/Padre/Detalles/Cursos/CalificacionGlobal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CalificacionGlobal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CalificacionGlobal_vue_vue_type_template_id_4538cea0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CalificacionGlobal_vue_vue_type_template_id_4538cea0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "4538cea0",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Padre/Detalles/Cursos/CalificacionGlobal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Padre/Detalles/Cursos/CalificacionGlobal.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/Padre/Detalles/Cursos/CalificacionGlobal.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CalificacionGlobal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CalificacionGlobal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Padre/Detalles/Cursos/CalificacionGlobal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CalificacionGlobal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Padre/Detalles/Cursos/CalificacionGlobal.vue?vue&type=template&id=4538cea0&scoped=true&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/Padre/Detalles/Cursos/CalificacionGlobal.vue?vue&type=template&id=4538cea0&scoped=true& ***!
+  \**************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalificacionGlobal_vue_vue_type_template_id_4538cea0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CalificacionGlobal.vue?vue&type=template&id=4538cea0&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Padre/Detalles/Cursos/CalificacionGlobal.vue?vue&type=template&id=4538cea0&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalificacionGlobal_vue_vue_type_template_id_4538cea0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalificacionGlobal_vue_vue_type_template_id_4538cea0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/Padre/Detalles/Cursos/CalificacionSemanal.vue":
 /*!********************************************************************!*\
   !*** ./resources/js/Padre/Detalles/Cursos/CalificacionSemanal.vue ***!
@@ -61147,6 +61345,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalificacionSemanal_vue_vue_type_template_id_2b906bb6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalificacionSemanal_vue_vue_type_template_id_2b906bb6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/Padre/Detalles/Cursos/Repeticiones.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/Padre/Detalles/Cursos/Repeticiones.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Repeticiones_vue_vue_type_template_id_bf94fe08_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Repeticiones.vue?vue&type=template&id=bf94fe08&scoped=true& */ "./resources/js/Padre/Detalles/Cursos/Repeticiones.vue?vue&type=template&id=bf94fe08&scoped=true&");
+/* harmony import */ var _Repeticiones_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Repeticiones.vue?vue&type=script&lang=js& */ "./resources/js/Padre/Detalles/Cursos/Repeticiones.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Repeticiones_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Repeticiones_vue_vue_type_template_id_bf94fe08_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Repeticiones_vue_vue_type_template_id_bf94fe08_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "bf94fe08",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Padre/Detalles/Cursos/Repeticiones.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Padre/Detalles/Cursos/Repeticiones.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/Padre/Detalles/Cursos/Repeticiones.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Repeticiones_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Repeticiones.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Padre/Detalles/Cursos/Repeticiones.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Repeticiones_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Padre/Detalles/Cursos/Repeticiones.vue?vue&type=template&id=bf94fe08&scoped=true&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/Padre/Detalles/Cursos/Repeticiones.vue?vue&type=template&id=bf94fe08&scoped=true& ***!
+  \********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Repeticiones_vue_vue_type_template_id_bf94fe08_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Repeticiones.vue?vue&type=template&id=bf94fe08&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Padre/Detalles/Cursos/Repeticiones.vue?vue&type=template&id=bf94fe08&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Repeticiones_vue_vue_type_template_id_bf94fe08_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Repeticiones_vue_vue_type_template_id_bf94fe08_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

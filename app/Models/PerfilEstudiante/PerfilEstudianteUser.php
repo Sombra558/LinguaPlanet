@@ -27,7 +27,7 @@ class PerfilEstudianteUser extends Model
   }
   public function misactividades()
   {
-    return $this->belongsToMany('App\Models\Cursos\Actividad','actividad_users','perfil_id')->withPivot('estado','id','intentos','calificacion');
+    return $this->belongsToMany('App\Models\Cursos\Actividad','actividad_users','perfil_id')->withPivot('estado','id','intentos','calificacion','repeticiones');
   }
   
 }

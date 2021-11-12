@@ -17,6 +17,7 @@ class CreateActividadUsersTable extends Migration
             $table->bigIncrements('id');
             $table->double('calificacion',8,2)->nullable();
             $table->integer('intentos')->nullable();
+            $table->integer('repeticiones')->nullable();
             $table->unsignedbigInteger('actividad_id');
             $table->foreign('actividad_id')->references('id')->on('actividads')->onDelete('cascade');
             $table->unsignedbigInteger('perfil_id');

@@ -8,7 +8,7 @@ class ActividadUser extends Model
 {
     protected $table= 'actividad_users';
     protected $fillable = [
-        'actividad_id','perfil_id','calificacion','intentos'
+        'actividad_id','perfil_id','calificacion','intentos','repeticiones',
     ];
     public function actividadclase() {
     	return $this->belongsTo('App\Models\Cursos\Actividad','actividad_id');

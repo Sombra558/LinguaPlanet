@@ -651,6 +651,7 @@ class PerfilEstudiante extends Controller
                 'perfil_id' => $id,
                 'estado' => 1,
                 'intentos' => $valor,
+                'repeticiones' => 1,
                 'calificacion' => $calificacion,
             ]);
             $progresocurso = ProgresoCursoUser::where('curso_id',$curso_id)->where('perfil_id',$id)->first();
@@ -675,6 +676,7 @@ class PerfilEstudiante extends Controller
             return $actividadus;
         }else{
             $actividadus->estado=1;
+            $actividadus->repeticiones= $actividadus->repeticiones+1;
             $actividadus->save();
         }
     }

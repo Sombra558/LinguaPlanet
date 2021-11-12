@@ -95,11 +95,11 @@
                                             </div>
                                             <div class="item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3">
                                                 <h5 class="bold text-primary">Juegos Ganados</h5>
-                                                <span class="h4">0</span>
+                                                <Repeticiones :clase="cla" :actividades="perfilSelected.misactividades" />
                                             </div>
                                             <div class="item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3">
                                                 <h5 class="bold text-primary">Calificación promedio</h5>
-                                                <span class="h4">0</span>
+                                                 <CalificacionG :clase="cla" :actividades="perfilSelected.misactividades" />
                                             </div>
                                         </div>
                                     </div>
@@ -168,6 +168,8 @@ import ProgesoCard from './progresoCard';
 import PerfilCard from './perfilCard';
 import Progreso from './progreSemanal.vue'
 import Calificacion from './CalificacionSemanal.vue';
+import Repeticiones from './Repeticiones.vue';
+import CalificacionG from './CalificacionGlobal.vue';
 import { mapGetters } from "vuex";
     export default {
         name:"cursos-detalle-padre",
@@ -184,7 +186,7 @@ import { mapGetters } from "vuex";
             }            
         },
         components: {
-            ProgesoCard,PerfilCard,Progreso ,Calificacion
+            ProgesoCard,PerfilCard,Progreso ,Calificacion, Repeticiones, CalificacionG
         },
         mounted() {
             var value = $(".progress").attr('data-value');
