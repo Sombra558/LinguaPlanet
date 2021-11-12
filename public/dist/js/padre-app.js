@@ -1930,14 +1930,16 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     califiacionG: function califiacionG() {
       var acumulador = 0;
+      var pro = 0;
       this.actividades.forEach(function (act) {
         if (act.tipo === 'Mochila' || act.tipo === 'Rompecabeza' || act.tipo === 'Silueta' || act.tipo === 'Simon Dice' || act.tipo === 'Memorama') {
           acumulador = acumulador + act.pivot.calificacion;
+          pro = pro + 1;
         }
       });
 
-      if (this.actividades.length > 0) {
-        return acumulador / this.actividades.length;
+      if (pro > 0) {
+        return acumulador / pro;
       } else {
         return 0;
       }
