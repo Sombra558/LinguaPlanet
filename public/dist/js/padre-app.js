@@ -1925,7 +1925,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "progresoSemanal",
+  name: "Calificacion",
   props: ['clase', 'actividades'],
   computed: {
     calificacion: function calificacion() {
