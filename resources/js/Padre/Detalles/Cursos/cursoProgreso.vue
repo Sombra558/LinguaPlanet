@@ -17,8 +17,9 @@
             </div>
         </div>
         <div v-if="perfilSelected" class="progreso px-lg-4">
+     
             <div class="col-12">
-                <div class="row mt-3">
+                    <!--<div class="row mt-3">
                     <div class="col-6 col-md-4 my-2 d-flex align-items-center">
                         <div class="dropdown">
                             <span class="l-select dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -29,7 +30,7 @@
                                 <li @click="paisSelected = 'Seleccione'" class="dropdown-item" href="#">
                                     Seleccione
                                 </li>
-                               <!--idiomas-->
+                               
                             </ul>
                         </div>
                     </div>
@@ -57,7 +58,8 @@
                             <span class="h5">Exportar</span>
                         </button>
                     </div>
-                </div>
+                </div>-->
+               
                 <div  v-for="curso in filteredCursos" :key="curso.id" class="row mt-3">
                     
                     <div class="col-12">
