@@ -43889,7 +43889,7 @@ var render = function() {
                           _c("span", { staticClass: "h5" }, [
                             _c("img", {
                               staticClass: "flag-language mx-1",
-                              attrs: { src: curso.idioma.src }
+                              attrs: { src: curso.curso.idioma.src }
                             }),
                             _vm._v(
                               "\n                                         " +

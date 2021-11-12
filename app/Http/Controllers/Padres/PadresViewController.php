@@ -59,7 +59,7 @@ class PadresViewController extends Controller
                                 return $a->where('inicia', '<=', $now)
                                 ->where('finaliza', '>', $now)->with('actividades');
                             }]);
-                        }]);
+                        },'idioma']);
                     },'idiomas',]);
                 }]);
             }]);

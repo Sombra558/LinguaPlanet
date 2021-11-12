@@ -84,7 +84,7 @@
                                 <div class="card-body p-0">
                                     <div class="col-12 p-0 d-flex justify-content-between">
                                         <span class="h5">
-                                            <img class="flag-language mx-1" :src="curso.idioma.src">
+                                            <img class="flag-language mx-1" :src="curso.curso.idioma.src">
                                              {{curso.curso.titulo}}
                                         </span>                                    
                                         <!--No es posible
