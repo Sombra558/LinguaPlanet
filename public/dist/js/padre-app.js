@@ -42219,7 +42219,7 @@ var render = function() {
       staticClass:
         "col-3 col-md-2 h4 color-plomo d-flex justify-content-center align-items-center"
     },
-    [_vm._v(_vm._s(_vm.calificacion))]
+    [_vm._v(_vm._s(_vm.calificacion.toFixed(2)))]
   )
 }
 var staticRenderFns = []
@@ -42854,8 +42854,7 @@ var render = function() {
                                                   "list-group-item py-1"
                                               },
                                               _vm._l(modulo.clases, function(
-                                                cla,
-                                                index
+                                                cla
                                               ) {
                                                 return _c(
                                                   "span",
@@ -42882,7 +42881,7 @@ var render = function() {
                                                             _vm._v(
                                                               "Semana " +
                                                                 _vm._s(
-                                                                  index + 1
+                                                                  cla.indice
                                                                 )
                                                             )
                                                           ]

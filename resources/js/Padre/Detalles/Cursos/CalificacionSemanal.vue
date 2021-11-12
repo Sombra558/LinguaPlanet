@@ -1,5 +1,5 @@
 <template>
-      <span class="col-3 col-md-2 h4 color-plomo d-flex justify-content-center align-items-center">{{calificacion}}</span>
+      <span class="col-3 col-md-2 h4 color-plomo d-flex justify-content-center align-items-center">{{calificacion.toFixed(2)}}</span>
 </template>
 
 <script>

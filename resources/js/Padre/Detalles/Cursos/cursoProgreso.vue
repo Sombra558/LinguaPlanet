@@ -125,9 +125,9 @@
                                 </li>
                                 
                                 <li v-for="modulo in curso.modulos" :key="modulo.id" class="list-group-item py-1" >
-                                        <span v-for="(cla, index ) in modulo.clases" :key="cla.id" class="list-group-item py-1">
+                                        <span v-for="cla  in modulo.clases" :key="cla.id" class="list-group-item py-1">
                                             <div class="row justify-content-between align-items-center">
-                                                <span class="col-12 col-md-4">Semana {{ index + 1  }}</span>
+                                                <span class="col-12 col-md-4">Semana {{ cla.indice }}</span>
                                                 <div class="col-9 col-md-4">
                                                     <span v-for="actividad in cla.actividades" :key="actividad.id" class="mr-4">
                                                     
