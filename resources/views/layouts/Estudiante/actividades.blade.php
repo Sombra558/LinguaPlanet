@@ -10,6 +10,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel='stylesheet' href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="/game/Silueta/Siluetas/TemplateData/style.css">
     <script src="/game/Silueta/Siluetas/TemplateData/UnityProgress.js"></script>
     <script src="/game/Silueta/Siluetas/Build/UnityLoader.js"></script>
