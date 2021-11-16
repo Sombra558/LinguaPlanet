@@ -187,7 +187,7 @@
 						<stop offset="1" stop-color="white" stop-opacity="0.1"/>
 						</linearGradient>
 						</defs>
-						<image x="45" y="75" :href="`${premioSelected.accesorio.split('.')[0]}${colorSelected !== '#FCD13A' ? colorSelected.split('#')[1] : '' }.svg`"/>
+						<image x="63" y="60" width="170" height="170" :href="`${premioSelected.accesorio.split('.')[0]}${colorSelected !== '#FCD13A' ? colorSelected.split('#')[1] : '' }.svg`"/>
 					</svg>
 				</div>
 				<div class="row justify-content-center mt-4">
