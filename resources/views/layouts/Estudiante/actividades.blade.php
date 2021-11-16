@@ -9,9 +9,9 @@
     <script src="{{ asset('dist/js/hijo-app.js') }}" defer></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel='stylesheet' href="{{ asset('css/styles.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  
+
+   
     <script src="/game/Silueta/Siluetas/TemplateData/UnityProgress.js"></script>
     <script src="/game/Silueta/Siluetas/Build/UnityLoader.js"></script>
 </head>
