@@ -15,6 +15,9 @@ Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
 	Route::post('/actualizar-avatar/{id}', 'Padres\PerfilEstudiante@guardaravatar')->name('update-avatar');
 	Route::post('/perfil-user/{id}', 'Padres\PerfilEstudiante@updateperfil');
 	Route::post('/asignar-plan', 'Padres\PerfilEstudiante@asignarplan');
+	Route::post('/generar-certificado', 'Padres\CertificadoController@store');
+	Route::get('/mi-certificado-descargar/{codigo}/{curso}','Padres\CertificadoController@dergargarcertificado');
+
 
 	Route::resource('/perfil-user', 'Padres\PerfilEstudiante');
 

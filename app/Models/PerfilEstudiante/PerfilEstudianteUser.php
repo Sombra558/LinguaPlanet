@@ -29,5 +29,8 @@ class PerfilEstudianteUser extends Model
   {
     return $this->belongsToMany('App\Models\Cursos\Actividad','actividad_users','perfil_id')->withPivot('estado','id','intentos','calificacion','repeticiones');
   }
+  public function certificados(){
+    return $this->hasMany('App\Models\Certificado\Certificado','perfil_id');
+}
   
 }

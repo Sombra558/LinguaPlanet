@@ -2071,11 +2071,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "cursos-detalle-padre",
   props: ['user'],
+  data: function data() {
+    return {
+      perfilSelected: null,
+      cursosperfil: []
+    };
+  },
+  methods: {
+    seleccionar: function seleccionar(value) {
+      var _this = this;
+
+      this.cursosperfil = [];
+      this.perfilSelected = value;
+      this.perfilSelected.planes.forEach(function (plan) {
+        plan.plan.membresia.cursos.forEach(function (curso) {
+          _this.cursosperfil.push(curso);
+        });
+      });
+    },
+    generar: function generar(perfil, curso) {
+      console.log(perfil + '-' + curso);
+      var url = '/home/generar-certificado';
+      axios.post(url, {
+        perfil_id: perfil,
+        curso_id: curso
+      }).then(function (result) {
+        window.location.reload();
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    visualizar: function visualizar(certificados, curso) {
+      var codigo = null;
+      certificados.some(function (cert) {
+        if (cert.curso_id === curso) {
+          codigo = cert.codigo;
+        }
+      });
+
+      if (codigo) {
+        var url = '/home/mi-certificado-descargar/' + codigo + '/' + curso;
+        window.location = url;
+      }
+    }
+  },
   components: {
     ProgesoCard: _progresoCard__WEBPACK_IMPORTED_MODULE_0__["default"],
     PerfilCard: _perfilCard__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -42415,14 +42464,25 @@ var render = function() {
         _c(
           "div",
           { staticClass: "col-12 mt-3 d-flex" },
-          _vm._l(4, function(o) {
+          _vm._l(_vm.user.perfiles, function(perfil) {
             return _c(
               "button",
               {
+                key: perfil.id,
                 staticClass: "btn gray-back px-3 py-2 mx-2",
-                staticStyle: { "border-radius": "50px" }
+                staticStyle: { "border-radius": "50px" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.seleccionar(perfil)
+                  }
+                }
               },
-              [_c("span", { staticClass: "h5" }, [_vm._v("Christopher")])]
+              [
+                _c("span", { staticClass: "h5" }, [
+                  _vm._v(_vm._s(perfil.apodo))
+                ])
+              ]
             )
           }),
           0
@@ -42430,92 +42490,165 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "certificados" }, [
-      _c(
-        "div",
-        { staticClass: "row mt-4" },
-        _vm._l(3, function(i) {
-          return _c(
+    _vm.perfilSelected
+      ? _c("div", { staticClass: "certificados" }, [
+          _c(
             "div",
-            { staticClass: "col-sm-12 col-md-6 col-lg-6 mb-3" },
-            [
-              _c(
+            { staticClass: "row mt-4" },
+            _vm._l(_vm.cursosperfil, function(curso) {
+              return _c(
                 "div",
                 {
-                  staticClass: "card card-rounded",
-                  staticStyle: { "min-height": "150px" }
+                  key: curso.id,
+                  staticClass: "col-sm-12 col-md-6 col-lg-6 mb-3"
                 },
                 [
                   _c(
-                    "span",
+                    "div",
                     {
-                      staticClass:
-                        "m-0 d-flex flex-inline justify-content-between"
+                      staticClass: "card card-rounded",
+                      staticStyle: { "min-height": "150px" }
                     },
                     [
-                      _c("h3", [_vm._v("Curso de Ingles")]),
-                      _vm._v(" "),
                       _c(
-                        "svg",
+                        "span",
                         {
-                          staticClass: "mr-3",
-                          attrs: {
-                            width: "24",
-                            height: "24",
-                            viewBox: "0 0 24 24",
-                            fill: "none",
-                            xmlns: "http://www.w3.org/2000/svg"
-                          }
+                          staticClass:
+                            "m-0 d-flex flex-inline justify-content-between"
                         },
                         [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15",
-                              stroke: "#31348B",
-                              "stroke-width": "2",
-                              "stroke-linecap": "round",
-                              "stroke-linejoin": "round"
-                            }
-                          }),
+                          _c("h3", [_vm._v(_vm._s(curso.titulo))]),
                           _vm._v(" "),
-                          _c("path", {
-                            attrs: {
-                              d: "M7 10L12 15L17 10",
-                              stroke: "#31348B",
-                              "stroke-width": "2",
-                              "stroke-linecap": "round",
-                              "stroke-linejoin": "round"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("path", {
-                            attrs: {
-                              d: "M12 15V3",
-                              stroke: "#31348B",
-                              "stroke-width": "2",
-                              "stroke-linecap": "round",
-                              "stroke-linejoin": "round"
-                            }
+                          _vm.perfilSelected.certificados.some(function(cert) {
+                            return cert.curso_id === curso.id
                           })
+                            ? _c(
+                                "svg",
+                                {
+                                  staticClass: "mr-3",
+                                  attrs: {
+                                    width: "24",
+                                    height: "24",
+                                    viewBox: "0 0 24 24",
+                                    fill: "none",
+                                    xmlns: "http://www.w3.org/2000/svg"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.visualizar(
+                                        _vm.perfilSelected.certificados,
+                                        curso.id
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15",
+                                      stroke: "#31348B",
+                                      "stroke-width": "2",
+                                      "stroke-linecap": "round",
+                                      "stroke-linejoin": "round"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    attrs: {
+                                      d: "M7 10L12 15L17 10",
+                                      stroke: "#31348B",
+                                      "stroke-width": "2",
+                                      "stroke-linecap": "round",
+                                      "stroke-linejoin": "round"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    attrs: {
+                                      d: "M12 15V3",
+                                      stroke: "#31348B",
+                                      "stroke-width": "2",
+                                      "stroke-linecap": "round",
+                                      "stroke-linejoin": "round"
+                                    }
+                                  })
+                                ]
+                              )
+                            : _c(
+                                "svg",
+                                {
+                                  staticClass: "mr-3",
+                                  attrs: {
+                                    width: "24",
+                                    height: "24",
+                                    viewBox: "0 0 24 24",
+                                    fill: "none",
+                                    xmlns: "http://www.w3.org/2000/svg"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.generar(
+                                        _vm.perfilSelected.id,
+                                        curso.id
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15",
+                                      stroke: "#31348B",
+                                      "stroke-width": "2",
+                                      "stroke-linecap": "round",
+                                      "stroke-linejoin": "round"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    attrs: {
+                                      d: "M7 10L12 15L17 10",
+                                      stroke: "#31348B",
+                                      "stroke-width": "2",
+                                      "stroke-linecap": "round",
+                                      "stroke-linejoin": "round"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    attrs: {
+                                      d: "M12 15V3",
+                                      stroke: "#31348B",
+                                      "stroke-width": "2",
+                                      "stroke-linecap": "round",
+                                      "stroke-linejoin": "round"
+                                    }
+                                  })
+                                ]
+                              )
                         ]
-                      )
+                      ),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "color-plomo" }, [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(curso.created_at) +
+                            "\n                    "
+                        )
+                      ])
                     ]
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "color-plomo" }, [
-                    _vm._v(
-                      "\n                        30 de Julio de 2021\n                    "
-                    )
-                  ])
+                  )
                 ]
               )
-            ]
+            }),
+            0
           )
-        }),
-        0
-      )
-    ])
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
@@ -63006,7 +63139,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! c:\laragon\www\lingua-planet\resources\js\Padre\app.js */"./resources/js/Padre/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\lingua_planet\resources\js\Padre\app.js */"./resources/js/Padre/app.js");
 
 
 /***/ })

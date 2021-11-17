@@ -177,12 +177,18 @@ class PadresViewController extends Controller
     {
         $user=Auth::user()->load(['perfiles'=>function($q)
         {
-            return $q->with('avatar','planes');
-        },'planes'=>function($q)
-        {
-            return $q->with(['membresia'=>function($k)
+            return $q->with(['avatar','certificados','planes'=>function($q)
             {
-                return $k->with('idiomas','cursos');
+                return $q->with(['plan'=>function($k)
+                {
+                    return $k->with(['membresia'=>function($j)
+                    {
+                        return $j->with(['cursos'=>function($j)
+                        {
+                            return $j->where('certificado',1);
+                        }]);
+                    }]);
+                }]);
             }]);
         }]);
         
