@@ -18,12 +18,28 @@
                     <input type="text" v-model="curso.video" name="video" placeholder="Ingresa el link del trailer del curso" class="form-input input-gray">
                 </div>
             </div>
+               <div class="row">
+                <div class="form-group col-12 col-lg-6">
+                     <label><input type="checkbox" v-model="curso.certificado" name="certificado" value="first_checkbox"> Certificado</label><br>
+                        
+                </div>
+            </div>
+          
             <div class="row">
                 <div class="form-group col-12 col-lg-6">
                     <label for="titulo" >Descripcion</label>
                     <textarea name="descripcion" class="form-input input-gray"  v-model="curso.descripcion" cols="30" rows="10" placeholder="Ingresa una descripción al curso" required></textarea>
                 </div>
             </div>
+                   <div class="row">
+                                <div class="form-group form-group-admin col-6">
+                                    <label for="tipo_cupon" >idioma</label>
+                                    <select class="form-input form-input-admin input-primary" name="idiomas[]"  v-model="curso.idioma_id" required>
+                                        <option :value="null">Seleccionar</option>
+                                        <option v-for="idioma in idiomas" :key="idioma.id" :value="idioma.id">{{idioma.idioma}}</option>
+                                    </select>
+                                </div>
+                            </div>
             <div class="row justify-content-end">
                 <div class="form-group col-12 col-lg-3">
                     <input type="submit" class="btn btn-lg btn-secondary bg-plomo w-100" value="Guardar borrador">
@@ -36,7 +52,7 @@
 <script>
     export default {
         name:'create-curso',
-        props:['membresias','curso'],
+        props:['membresias','curso','idiomas'],
         data() {
             return {
               

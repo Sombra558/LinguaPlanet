@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 class Curso extends Model
 {
     protected $fillable = [
-        'titulo', 'descripcion','video','destacados','inicia','img','img_min','nombreURL','linkoriginal','idioma_id',
+        'titulo', 'descripcion','video','destacados','inicia','img','img_min','nombreURL','linkoriginal','idioma_id','certificado',
     ];
     protected $appends = [
         'video_source',

@@ -106,9 +106,9 @@ class CursoController extends Controller
     public function edit($id)
     {
         $curso=Curso::find($id);
-        
+        $idiomas=Idioma::get();
         $membresias=Membresia::get();
-        return view('Administrador.Cursos.edit', compact('membresias','curso'));
+        return view('Administrador.Cursos.edit', compact('membresias','curso','idiomas'));
     }
 
     /**
@@ -145,6 +145,8 @@ class CursoController extends Controller
             'destacados' => 1,
             'video' => $url,
             'linkoriginal' => $request['video'],
+            'idioma_id' => $request['idioma_id'],
+            'certificado' => $request['certificado'],
         ]);
         return $curso;
     }

@@ -2993,9 +2993,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'create-curso',
-  props: ['membresias', 'curso'],
+  props: ['membresias', 'curso', 'idiomas'],
   data: function data() {
     return {};
   },
@@ -45858,6 +45874,59 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "form-group col-12 col-lg-6" }, [
+            _c("label", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.curso.certificado,
+                    expression: "curso.certificado"
+                  }
+                ],
+                attrs: {
+                  type: "checkbox",
+                  name: "certificado",
+                  value: "first_checkbox"
+                },
+                domProps: {
+                  checked: Array.isArray(_vm.curso.certificado)
+                    ? _vm._i(_vm.curso.certificado, "first_checkbox") > -1
+                    : _vm.curso.certificado
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.curso.certificado,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = "first_checkbox",
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 &&
+                          _vm.$set(_vm.curso, "certificado", $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          _vm.$set(
+                            _vm.curso,
+                            "certificado",
+                            $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                          )
+                      }
+                    } else {
+                      _vm.$set(_vm.curso, "certificado", $$c)
+                    }
+                  }
+                }
+              }),
+              _vm._v(" Certificado")
+            ]),
+            _c("br")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "form-group col-12 col-lg-6" }, [
             _c("label", { attrs: { for: "titulo" } }, [_vm._v("Descripcion")]),
             _vm._v(" "),
             _c("textarea", {
@@ -45887,6 +45956,59 @@ var render = function() {
                 }
               }
             })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "form-group form-group-admin col-6" }, [
+            _c("label", { attrs: { for: "tipo_cupon" } }, [_vm._v("idioma")]),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.curso.idioma_id,
+                    expression: "curso.idioma_id"
+                  }
+                ],
+                staticClass: "form-input form-input-admin input-primary",
+                attrs: { name: "idiomas[]", required: "" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.curso,
+                      "idioma_id",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              [
+                _c("option", { domProps: { value: null } }, [
+                  _vm._v("Seleccionar")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.idiomas, function(idioma) {
+                  return _c(
+                    "option",
+                    { key: idioma.id, domProps: { value: idioma.id } },
+                    [_vm._v(_vm._s(idioma.idioma))]
+                  )
+                })
+              ],
+              2
+            )
           ])
         ]),
         _vm._v(" "),
