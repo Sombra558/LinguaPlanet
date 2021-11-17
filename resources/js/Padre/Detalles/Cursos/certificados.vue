@@ -86,7 +86,8 @@ import PerfilCard from './perfilCard';
                 })
                 if (codigo) {
                     var url ='/home/mi-certificado-descargar/'+codigo+'/'+curso;
-                    window.location=url;            
+                     window.open(url, '_blank');
+                      
                 }
                 
                 

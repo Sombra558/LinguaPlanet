@@ -2121,7 +2121,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (codigo) {
         var url = '/home/mi-certificado-descargar/' + codigo + '/' + curso;
-        window.location = url;
+        window.open(url, '_blank');
       }
     }
   },
