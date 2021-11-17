@@ -19,7 +19,7 @@
                   <img class="flag-img" src="{{ $idioma->src }}">
                     
                     
-                    <span class="h3 mb-0 bold ml-2">{{ $idioma->idioma }}</span>
+                    <!--<span class="h3 mb-0 bold ml-2">{{ $idioma->idioma }}</span>-->
                  
               @endforeach
               </div>
