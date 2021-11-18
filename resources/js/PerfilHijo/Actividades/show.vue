@@ -71,7 +71,7 @@
 	                <span class="nickname-header">{{ perfil.apodo }}</span>
 	            </div>
             </div>            
-            <div class="col-6 col-md-4 d-flex" v-if="actividad.tipo !=='Palabras del día' && actividad.tipo !=='Video de apertura'">
+            <div class="col-6 col-md-4 d-flex" v-if="actividad.tipo !=='Palabras del día' && actividad.tipo !=='Video de apertura' && actividad.tipo !=='Actividad'">
             	<button class="arrow-btn mx-auto" :disabled="noPrevPage" @click.prevent="anterior()">
             		<svg viewBox="7 5 70 70" class="w-100 h-100">
             			<path xmlns="http://www.w3.org/2000/svg" d="M20.9341 43.6213C19.7626 42.4497 19.7626 40.5503 20.9341 39.3787L40.026 20.2868C41.1976 19.1152 43.0971 19.1152 44.2687 20.2868C45.4402 21.4584 45.4402 23.3579 44.2687 24.5294L27.2981 41.5L44.2687 58.4706C45.4402 59.6421 45.4402 61.5416 44.2687 62.7132C43.0971 63.8848 41.1976 63.8848 40.026 62.7132L20.9341 43.6213ZM59.9443 44.5L23.0555 44.5V38.5L59.9443 38.5V44.5Z" fill="#010112"/>
