@@ -43,24 +43,23 @@
 					</svg>
 				</center>
 				<article v-else class="visor-pdf">
-					<pdf style="heigth:100%; width:100%;" 
+					<pdf  
+						style="display: inline-block; width: 50%"
 						:src="'/storage/'+actividad.recurso"
 						:page="currentPage"
 						@num-pages="pageCount = $event"
 						@page-loaded="currentPage = $event"
 					/>
-				</article>
-			</section>
-			<section v-else class="content-pdf d-flex">
-				<article class="visor-pdf">
-					<pdf style="width:100%;" 
+					<pdf  
+						style="display: inline-block; width: 50%"
+						
 						:src="'/storage/'+actividad.recurso"
-						:page="currentPage"
-						@num-pages="pageCount = $event"
-						@page-loaded="currentPage = $event"
+						:page="currentPage+1"
+					
 					/>
 				</article>
 			</section>
+		
 		</div>
         <div v-if="actividad.tipo !=='Libros' || (actividad.tipo ==='Libros' && openbook)" class="d-flex bg-white align-items-center px-2 px-md-4" style="height:15%;">
         	<div class="col-6 col-md-4">
@@ -83,7 +82,7 @@
             		</svg>   		
             	</button>
             </div>
-            <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura'" class="ml-auto col-3 text-center">
+            <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura' || actividad.tipo ==='Actividad'" class="ml-auto col-3 text-center">
             	<a :href="prevUrl">
 		            <img class="w-25 w-md-40 w-sm-75" src="/images/back-yellow.svg">
 		        </a>
@@ -97,13 +96,9 @@
 
 <script>
 	import pdf from "vue-pdf";
-
-	
-
     export default {
         name:"actividad-show",
-        props:['perfil','actividad','curso'],
-	
+        props:['perfil','actividad','curso'],	
         data() {
 			return {
 				actividadSelected: null,
@@ -134,7 +129,7 @@
 			},
 			noNextPage() {
 				
-				if (this.currentPage === this.pageCount) {
+				if (this.currentPage >= this.pageCount) {
 					var url = `/home/app/${this.perfil.id}/curso/${this.curso.id}/clase/${this.actividad.clase_id}/actividad/${this.actividad.id}/realizada`;
 					axios.get(url).then((result) => {
 						console.log(result.data);
@@ -151,10 +146,12 @@
 		},
 		methods: {
 			siguiente(){
-				this.currentPage++;
+				if (this.currentPage <= this.pageCount) {
+				this.currentPage=this.currentPage+2;
+				}
 			},
 			anterior(){				
-				this.currentPage--;
+				this.currentPage=this.currentPage-2;
 			},
 			onEnd: function () {
 				var url = `/home/app/${this.perfil.id}/curso/${this.curso.id}/clase/${this.actividad.clase_id}/actividad/${this.actividad.id}/realizada`;
@@ -197,7 +194,8 @@
 	}
 
 	.visor-pdf {
-		width: 57.9em;
+		width: 100%;
+		display: flex;
 	}
 
 	.content-pdf {
