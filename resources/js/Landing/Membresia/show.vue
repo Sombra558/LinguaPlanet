@@ -57,7 +57,7 @@
                                                 <li class="li-benefits text-secondary">Certificado de finalización.</li>
                                                 <li class="li-benefits text-secondary">Clases nuevas semanales.</li>
                                             </ul>
-                                            <a :href="`/comprar/plan/${plan.nombreURL}`" class="btn w-50 py-2 btn-primary-red mx-auto">
+                                            <a :href="`/comprar/plan/${plan.id}/${plan.nombreURL}`" class="btn w-50 py-2 btn-primary-red mx-auto">
                                             <span class="h5 bold mb-0">Comprar</span></a>
                                         </div>
                                     </div>

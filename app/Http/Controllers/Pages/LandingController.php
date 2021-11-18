@@ -52,9 +52,9 @@ class LandingController extends Controller
                 }
         }
 
-        public function payment($nombreURL){
+        public function payment($id,$nombreURL){
             $idiomas=Idioma::get();
-            $plan = Plan::where('nombreURL',$nombreURL)
+            $plan = Plan::where('nombreURL',$nombreURL)->where('id',$id)
                         ->with(['membresia'=>function($i){
                             return $i->with('idiomas');
                         }])

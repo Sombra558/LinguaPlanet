@@ -52609,6 +52609,8 @@ var render = function() {
                                             attrs: {
                                               href:
                                                 "/comprar/plan/" +
+                                                plan.id +
+                                                "/" +
                                                 plan.nombreURL
                                             }
                                           },
