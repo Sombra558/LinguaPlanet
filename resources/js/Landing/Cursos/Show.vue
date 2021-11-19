@@ -16,7 +16,9 @@
             >
             </iframe>
         </div>
-        <h1 class="course-show-header mb-4">Tus hijos aprenden {{ idioma.idioma }} con lingua planet</h1>
+        <h1 class="course-show-header mb-4">
+            Tus hijos aprenden {{ idioma.idioma }} con lingua planet
+        </h1>
         <!-- Carousel movil -->
         <div id="carouselMIndicators" class="carousel slide mobile-display pt-4" data-ride="false" data-interval="false">
             <ol class="carousel-indicators">
@@ -57,18 +59,29 @@
                     <div class="row justify-content-center">
                         <div v-for="(membresia, index2) in offsetCarousel(key)" class="card card-course-carrousel mx-3" style="width : 15rem;">
                             <div class="card-body d-flex flex-column">
-                                <div class="row">
-                                    <img v-for="idioma in membresia.idiomas" :key="idioma.id" class="flag-img mx-auto" :src="`${idioma.src}`" :alt="`lingua planet ${idioma.idioma}`">
+                                <div class="row h-50">
+                                    <img v-for="idioma in membresia.idiomas" :key="idioma.id" class="flag-img mx-auto my-2" :src="`${idioma.src}`" :alt="`lingua planet ${idioma.idioma}`">
+                                </div>                                
+                                <div class="mb-3">
+                                    <h3 class="bold mt-2">
+                                        {{membresia.nombre}}
+                                    </h3>
+                                    <span class="mt-3 mb-2 color-plomo">Pago {{ membresia.tipo }}</span>
                                 </div>
-                                
-                                <span class="h3 bold" style="height: 4rem;">{{ membresia.nombre }}</span>
-                               
-                                <div class="mt-4 mb-3 lh">
-                                    <span class="h5">Tendrás acceso a:</span>
-                                    <h4>Dashboard de seguimiento</h4>
-                                    <h4>Clases offline</h4>
+                                <div class="row mt-3">
+                                    <div class="col">
+                                        <span class="color-plomo fw-500" style="font-size: 1rem;">
+                                            Tendrás acceso a:
+                                        </span>                                      
+                                        <ul class="list-group mx-auto mt-2 color-plomo">
+                                            <li class="li-benefits">Dashboard de seguimiento</li>
+                                            <li class="li-benefits">Clases offline</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <a :href="`/membresia/${membresia.nombreURL}`" class="btn btn-buy btn-success mx-auto"><span class="h4 bold mb-0">Comprar</span></a>
+                                <a :href="`/membresia/${membresia.nombreURL}`" class="btn mt-3 px-4 btn-buy btn-success mx-auto">
+                                    <span class="h5 mb-0">Comprar</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -108,6 +121,11 @@
         line-height: 4;
     }
 
+    .li-benefits {
+        list-style: none;
+        line-height : 40px;
+    }
+
     .mini-flag-img {
         opacity: 0.5;
     }
@@ -126,10 +144,6 @@
 
     .card.card-course-carrousel:hover div{
         color : white !important;
-    }
-
-    .card-body div {
-        color : #606060;
     }
 
     .carousel-indicators {

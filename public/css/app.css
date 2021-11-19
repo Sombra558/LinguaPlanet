@@ -12004,9 +12004,8 @@ h1.course-show-header {
 
 .card .flag-img {
   opacity: 0.86;
-  margin: 1rem;
-  width: 60px;
-  height: 60px;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .card-course-deck {
@@ -12041,7 +12040,6 @@ h1.course-show-header {
 
 .card-course-carrousel .btn-buy {
   border-radius: 8px;
-  padding: 0.8rem 2rem 0.8rem 2rem;
 }
 
 .card-course-carrousel .btn-buy h1 {

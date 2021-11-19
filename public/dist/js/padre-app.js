@@ -2318,10 +2318,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -42951,7 +42947,12 @@ var render = function() {
                                                 {
                                                   key: cla.id,
                                                   staticClass:
-                                                    "list-group-item py-1"
+                                                    "list-group-item py-1 b-top-0",
+                                                  staticStyle: {
+                                                    "border-top": "0",
+                                                    "border-left": "0",
+                                                    "border-right": "0"
+                                                  }
                                                 },
                                                 [
                                                   _c(
@@ -42965,7 +42966,7 @@ var render = function() {
                                                         "span",
                                                         {
                                                           staticClass:
-                                                            "col-12 col-md-4"
+                                                            "col-12 col-md-3"
                                                         },
                                                         [
                                                           _vm._v(
@@ -42979,7 +42980,7 @@ var render = function() {
                                                         "div",
                                                         {
                                                           staticClass:
-                                                            "col-9 col-md-4"
+                                                            "col-9 col-md-5"
                                                         },
                                                         _vm._l(
                                                           cla.actividades,
@@ -43200,13 +43201,13 @@ var staticRenderFns = [
           "list-group-item d-none py-1 color-plomo d-md-flex justify-content-between align-items-center"
       },
       [
-        _c("span", { staticClass: "col-4 h6 bold" }, [_vm._v("Fecha")]),
+        _c("span", { staticClass: "col-3 h6 bold" }, [_vm._v("Fecha")]),
         _vm._v(" "),
-        _c("span", { staticClass: "col-4 h6 bold" }, [
+        _c("span", { staticClass: "col-5 h6 bold" }, [
           _vm._v("Actividades Completadas")
         ]),
         _vm._v(" "),
-        _c("span", { staticClass: "col-2 h6 bold" }, [
+        _c("span", { staticClass: "col-2 h6 bold text-center" }, [
           _vm._v("Progreso Semanal")
         ]),
         _vm._v(" "),
@@ -63139,7 +63140,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\lingua_planet\resources\js\Padre\app.js */"./resources/js/Padre/app.js");
+module.exports = __webpack_require__(/*! c:\laragon\www\lingua-planet\resources\js\Padre\app.js */"./resources/js/Padre/app.js");
 
 
 /***/ })

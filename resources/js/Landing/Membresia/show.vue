@@ -9,20 +9,24 @@
             <div class="row mt-4">
                 <div class="col-3">
                     <div class="card h-100 gray-back">
-                        <div class="card-body py-3 d-flex flex-column">
+                        <div class="card-body py-5 d-flex flex-column">
                             <div class="col px-0">
-                                <span class="d-flex mb-2 align-items-center justify-content-center">
-                                    <img v-for="idioma in membresia.idiomas" class="mx-1 iz-10 mini-flag-img active" :src="`${idioma.src}`"  alt="membresia idioma">
-                                    <h3 class="bold mb-0 ml-2">{{membresia.nombre}}</h3>
+                                <span class="mb-2 d-flex flex-column align-items-center justify-content-center">
+                                    <article class="text-center">
+                                        <img v-for="idioma in membresia.idiomas" class="mx-1 iz-15 mini-flag-img active" :src="`${idioma.src}`"  alt="membresia idioma">
+                                    </article>
+                                    <h3 class="bold mt-2">{{membresia.nombre}}</h3>
                                 </span>
-                                <h4 class="px-3 select-subtitle">Selecciona tu membresía y comienza aprender.</h4>
+                                <h4 class="px-3 select-subtitle text-center">Selecciona tu membresía y comienza aprender.</h4>
                             </div>
-                            <div class="col px-0">
-                                <span class="d-flex mb-2 span-payment-methods">
+                            <div class="col d-flex flex-column align-items-center justify-content-end px-0 text-center">
+                                <span class="d-block mb-2 w-80 span-payment-methods">
                                     Aceptamos múltiples metodos de pago.
                                 </span>
-                                <img class="mx-1" src="/images/stripe-logo.svg"  alt="membresia idioma">
-                                <img class="mx-1" src="/images/paypal-logo.svg"  alt="membresia idioma">
+                                <article class="mt-2">
+                                    <img class="mx-1" src="/images/stripe-logo.svg"  alt="membresia idioma">
+                                    <img class="mx-1" src="/images/paypal-logo.svg"  alt="membresia idioma">
+                                </article>
                             </div>
                         </div>
                     </div>
@@ -45,20 +49,35 @@
                         <div class="carousel-inner">
                             <div v-for="(key, index) in keysArray.filter(e => e % limit === 0 )" :key="'wCard'+index" :class="[ 'carousel-item', index === 0 ? 'active' : null ]">
                                 <div class="row justify-content-center">
-                                    <div v-for="(plan) in offsetCarousel(key)" class="card card-membership-web mx-3" style="width : 15rem;">
-                                        <div class="card-header border-0 text-center py-3">{{ plan.nombre }}</div>
+                                    <div v-for="(plan) in offsetCarousel(key)" class="card card-membership-web mx-3 py-5" style="width : 17rem;">
                                         <div class="card-body px-1 d-flex flex-column text-center">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <span class="badge badge-pill bg-gray text-white px-4">
+                                                        <h3 class="m-0">
+                                                            {{ plan.nombre }}
+                                                        </h3>
+                                                    </span>        
+                                                </div>                                                
+                                            </div>                                            
+                                            <span class="mt-3 mb-2 color-plomo">Pago {{ plan.tipo }}</span>
                                             <span class="price-web">
                                                 {{ plan.precio.toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) }}
                                             </span>
-                                            <span class="h4">Pago {{ plan.tipo }}</span>
-                                            <ul class="text-left w-80 mx-auto mt-4">
-                                                <li class="li-benefits text-secondary"><span class="text-primary bold">{{plan.stock}} perfil</span> de estudiante en la plataforma.</li>
-                                                <li class="li-benefits text-secondary">Certificado de finalización.</li>
-                                                <li class="li-benefits text-secondary">Clases nuevas semanales.</li>
-                                            </ul>
-                                            <a :href="`/comprar/plan/${plan.id}/${plan.nombreURL}`" class="btn w-50 py-2 btn-primary-red mx-auto">
-                                            <span class="h5 bold mb-0">Comprar</span></a>
+                                            <div class="row mt-3">
+                                                <div class="col">
+                                                    <span class="color-plomo fw-500">
+                                                        Tendrás acceso a:
+                                                    </span>                                      
+                                                    <ul class="list-group mx-auto mt-2 color-plomo">
+                                                        <li class="li-benefits">Dashboard de seguimiento</li>
+                                                        <li class="li-benefits">Clases offline</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <a :href="`/comprar/plan/${plan.id}/${plan.nombreURL}`" class="btn px-4 py-2 btn-success mx-auto">
+                                                <span class="h5 mb-0">Comprar</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -73,7 +92,6 @@
                          <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Plan</h4></div>
                             <div  v-for="plan in membresia.planes" :key="'descripcion-0-plan-'+plan.id" class="w-38 text-center p-3"><span class="h4 bold">{{plan.nombre}}</span></div>
-                          
                         </li>
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Estudiantes con acceso a la plataforma</h4></div>
@@ -103,71 +121,92 @@
                         <li class="d-flex align-items-center p-2">
                             <div class="w-24"><h4 class="mb-0">Clases en full HD</h4></div>
                             <div v-for="plan in membresia.planes" :key="'descripcion-5-plan-'+plan.id" class="w-38 text-center"><img class="mx-1" src="/images/check.svg"></div>
-                            
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="mobile-display">
-            <div class="card gray-back">
-                <div class="card-body">
-                    <div class="col">
-                        <span class="d-flex align-items-center justify-content-center">
-                            <img v-for="idio in membresia.idiomas" :key="'iidi-'+idio.id" class="mx-1 mini-flag-img active" :src="`/storage/images/${idio.diminutivo}.svg`"  alt="membresia idioma">
-                            <h1 class="mb-0 ml-3">{{membresia.nombre}}</h1>
+            <div class="card gray-back my-4">
+                <div class="card-body py-5">
+                    <div class="col text-center">
+                        <span class="d-flex flex-column align-items-center justify-content-center">
+                            <article class="text-center w-100">
+                                <img v-for="idio in membresia.idiomas" :key="'iidi-'+idio.id" class="mx-1 iz-15 mini-flag-img active" :src="idio.src"  alt="membresia idioma">
+                            </article>
+                            <h1 class="my-3">{{membresia.nombre}}</h1>
                         </span>
-                        <h3 class="text-center">Selecciona tu membresía y comienza aprender.</h3>
-                    </div>  
+                        <h4 class="fw-500 px-3">Selecciona tu membresía y comienza aprender.</h4>
+                    </div>
+                    <div class="col mt-5 d-flex flex-column align-items-center justify-content-end text-center">
+                        <span class="fw-500 d-block mb-2 w-75 span-payment-methods">
+                            Aceptamos múltiples metodos de pago.
+                        </span>
+                        <article class="mt-2 w-100">
+                            <img class="mx-2 iz-25" src="/images/stripe-logo.svg"  alt="membresia idioma">
+                            <img class="mx-2 iz-25" src="/images/paypal-logo.svg"  alt="membresia idioma">
+                        </article>
+                    </div>
                 </div>
-                <nav>
-                  <div class="nav nav-tabs d-flex text-center" id="nav-tab" role="tablist">
-                    <a v-for="(plan, key) in membresia.planes" :class="[ 'nav-link flex-fill', key === 0 ? 'active' : null ]" :id="`nav-${plan.id}-tab`" data-toggle="tab" :href="`#nav-${plan.id}`" role="tab" :aria-controls="`#nav-${plan.id}`" :aria-selected="key === 0 ? true : false">{{ plan.nombre }}</a>
-                  </div>
-                </nav>
-                <div class="tab-content bg-white" id="nav-tabContent">
-                    <div v-for="(plan, key) in membresia.planes" :class="[ 'tab-pane fade', key === 0 ? 'show active' : null ]" :id="`nav-${plan.id}`" role="tabpanel" :aria-labelledby="`nav-${plan.id}-tab`">
-                        <div class="card-membership-mobile text-center">
-                            <div class="d-flex flex-column">
-                                <span class="price-mobile">
-                                    {{ plan.precio.toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) }}
-                                </span>
-                                <span class="h4">Pago {{ plan.tipo }}</span>
-                                <ul class="text-left w-80 mx-auto">
-                                    <li><span class="text-primary bold">1 perfil</span> de estudiante en la plataforma.</li>
-                                    <li>Certificado de finalización.</li>
-                                    <li>Clases nuevas semanales.</li>
+            </div>
+            <nav>
+              <div class="nav nav-tabs d-flex text-center" id="nav-tab" role="tablist">
+                <a v-for="(plan, key) in membresia.planes" :class="[ 'nav-link flex-fill', key === 0 ? 'active' : null ]" :id="`nav-${plan.id}-tab`" data-toggle="tab" :href="`#nav-${plan.id}`" role="tab" :aria-controls="`#nav-${plan.id}`" :aria-selected="key === 0 ? true : false">{{ plan.nombre }}</a>
+              </div>
+            </nav>
+            <div class="tab-content bg-white" id="nav-tabContent">
+                <div v-for="(plan, key) in membresia.planes" :class="[ 'tab-pane fade', key === 0 ? 'show active' : null ]" :id="`nav-${plan.id}`" role="tabpanel" :aria-labelledby="`nav-${plan.id}-tab`">
+                    <div class="card-membership-mobile text-center py-5">
+                        <div class="d-flex flex-column">
+                            <h3 class="fw-600">
+                                {{ membresia.nombre }}
+                            </h3>
+                            <span class="my-2 color-plomo">Pago {{ plan.tipo }}</span>
+                            <span class="price-mobile">
+                                {{ plan.precio.toLocaleString('de-DE', { style: 'currency', currency: 'USD' }) }}
+                            </span>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <span class="color-plomo fw-500" style="font-size: 1rem;">
+                                    Tendrás acceso a:
+                                </span>                                      
+                                <ul class="list-group mx-auto mt-2 color-plomo">
+                                    <li class="li-benefits">Dashboard de seguimiento</li>
+                                    <li class="li-benefits">Clases offline</li>
                                 </ul>
                             </div>
-                            <a class="btn btn-primary-red px-5 mt-3 mb-2" href="">Comprar</a>
                         </div>
-                        <ul class="membership-details mx-4">
-                            <li class="d-flex align-items-center py-2">
-                                <div class="w-75"><h3 class="mb-0">Estudiantes con acceso a la plataforma</h3></div>
-                                <div class="w-25 text-center p-4"><span class="h4 bold">1</span></div>
-                            </li>
-                            <li class="d-flex align-items-center py-2">
-                                <div class="w-75"><h3 class="mb-0">Panel de monitoreo para padres</h3></div>
-                                <div class="w-25 text-center"><img class="mx-1" src="/storage/images/check.svg"></div>
-                            </li>
-                            <li class="d-flex align-items-center py-2">
-                                <div class="w-75"><h3 class="mb-0">Clases nuevas semanales</h3></div>
-                                <div class="w-25 text-center p-4"><img class="mx-1" src="/storage/images/check.svg"></div>
-                            </li>
-                            <li class="d-flex align-items-center py-2">
-                                <div class="w-75"><h3 class="mb-0">Juegos educativos</h3></div>
-                                <div class="w-25 text-center p-4"><img class="mx-1" src="/storage/images/check.svg"></div>
-                            </li>
-                            <li class="d-flex align-items-center py-2">
-                                <div class="w-75"><h3 class="mb-0">Certificado de finalización</h3></div>
-                                <div class="w-25 text-center p-4"><img class="mx-1" src="/storage/images/check.svg"></div>
-                            </li>
-                            <li class="d-flex align-items-center py-2">
-                                <div class="w-75"><h3 class="mb-0">Clases en full HD</h3></div>
-                                <div class="w-25 text-center p-4"><img class="mx-1" src="/storage/images/check.svg"></div>
-                            </li>
-                        </ul>
+                        <a :href="`/comprar/plan/${plan.id}/${plan.nombreURL}`" class="btn my-2 px-4 py-2 btn-success mx-auto">
+                            <span class="h5 mb-0">Comprar</span>
+                        </a>
                     </div>
+                    <ul class="membership-details mx-4">
+                        <li class="d-flex align-items-center py-2">
+                            <div class="w-75"><h3 class="mb-0">Estudiantes con acceso a la plataforma</h3></div>
+                            <div class="w-25 text-center p-4"><span class="h4 bold">1</span></div>
+                        </li>
+                        <li class="d-flex align-items-center py-2">
+                            <div class="w-75"><h3 class="mb-0">Panel de monitoreo para padres</h3></div>
+                            <div class="w-25 text-center"><img class="mx-1" src="/images/check.svg"></div>
+                        </li>
+                        <li class="d-flex align-items-center py-2">
+                            <div class="w-75"><h3 class="mb-0">Clases nuevas semanales</h3></div>
+                            <div class="w-25 text-center p-4"><img class="mx-1" src="/images/check.svg"></div>
+                        </li>
+                        <li class="d-flex align-items-center py-2">
+                            <div class="w-75"><h3 class="mb-0">Juegos educativos</h3></div>
+                            <div class="w-25 text-center p-4"><img class="mx-1" src="/images/check.svg"></div>
+                        </li>
+                        <li class="d-flex align-items-center py-2">
+                            <div class="w-75"><h3 class="mb-0">Certificado de finalización</h3></div>
+                            <div class="w-25 text-center p-4"><img class="mx-1" src="/images/check.svg"></div>
+                        </li>
+                        <li class="d-flex align-items-center py-2">
+                            <div class="w-75"><h3 class="mb-0">Clases en full HD</h3></div>
+                            <div class="w-25 text-center p-4"><img class="mx-1" src="/images/check.svg"></div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -202,15 +241,18 @@
 </script>
 
 <style lang="scss" scoped>
+
+    .mobile-display .card.gray-back {
+        border-radius: 8px;
+    }
+
     .li-benefits {
-        text-indent : -4px;
-        margin-left : -2em;
-        font-size : 0.8rem;
+        list-style: none;
         line-height : 40px;
     }
 
     .span-payment-methods{
-        font-size : 0.85rem;
+        font-size : 0.95rem;
     }
 
     .select-subtitle {
@@ -221,38 +263,27 @@
 
     .card-membership-web {
         background: #FFFFFF;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
     }
 
-    .card-membership-web .card-header {
-        background-color : #31348B;
-        color : white;
-        border-radius: 12px 12px 0 0;
-        transition: background-color 0.3s linear;
-    }
-
-    .card-membership-web:hover .card-header {
+    .card-membership-web:hover .badge-pill {
         background-color: #FAB500;
-        color : #31348B;
     }
 
     .price-web {
         font-style: normal;
-        font-weight: 500;
-        font-size: 30px;
+        font-weight: 600;
+        font-size: 2.5rem;
         line-height: 48px;
         margin-bottom: 0;
     }
 
     .price-mobile {
         font-style: normal;
-        font-weight: 700;
-        font-size: 32px;
+        font-weight: 600;
+        font-size: 2.5rem;
         line-height: 48px;
-    }
-
-    .card-membership-mobile ul li{
-        margin: 15px 0 0 0;
     }
 
     .membership-details {

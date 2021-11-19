@@ -120,36 +120,32 @@
                         <div class="row">
                             <ul v-if="curso.modulos.length>0" class="list-group list-group-flush flex-grow-1">
                                 <li class="list-group-item d-none py-1 color-plomo d-md-flex justify-content-between align-items-center">
-                                    <span class="col-4 h6 bold">Fecha</span>
-                                    <span class="col-4 h6 bold">Actividades Completadas</span>
-                                     <span class="col-2 h6 bold">Progreso Semanal</span>
+                                    <span class="col-3 h6 bold">Fecha</span>
+                                    <span class="col-5 h6 bold">Actividades Completadas</span>
+                                    <span class="col-2 h6 bold text-center">Progreso Semanal</span>
                                     <span class="col-2 h6 bold text-center">Calificación</span>
-                                </li>
-                                
+                                </li>                                
                                 <li v-for="modulo in curso.modulos" :key="modulo.id" class="list-group-item py-1" >
-                                        <span v-for="cla  in modulo.clases" :key="cla.id" class="list-group-item py-1">
-                                            <div class="row justify-content-between align-items-center">
-                                                <span class="col-12 col-md-4">Semana {{ cla.indice }}</span>
-                                                <div class="col-9 col-md-4">
-                                                    <span v-for="actividad in cla.actividades" :key="actividad.id" class="mr-4">
-                                                    
-                                                       <svg v-if="perfilSelected.misactividades.some(evt => evt.pivot.actividad_id===actividad.id)" width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <rect width="26" height="26" rx="13" fill="#00A53F"/>
-                                                            <path d="M19.6666 8L10.4999 17.1667L6.33325 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        </svg>
-                                                      
-                                                        <svg  v-else width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <rect width="26" height="26" rx="13" fill="#B5B5BB"/>
-                                                            <path d="M19.6668 8L10.5002 17.1667L6.3335 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        </svg>
-                                                    </span>
-                                                </div>
-                                                <Progreso :clase="cla" :actividades="perfilSelected.misactividades" />
-                                                <Calificacion :clase="cla" :actividades="perfilSelected.misactividades" />
+                                    <span v-for="cla  in modulo.clases" :key="cla.id" class="list-group-item py-1 b-top-0" style="border-top:0; border-left:0; border-right:0;">
+                                        <div class="row justify-content-between align-items-center">
+                                            <span class="col-12 col-md-3">Semana {{ cla.indice }}</span>
+                                            <div class="col-9 col-md-5">
+                                                <span v-for="actividad in cla.actividades" :key="actividad.id" class="mr-4">
+                                                   <svg v-if="perfilSelected.misactividades.some(evt => evt.pivot.actividad_id===actividad.id)" width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="26" height="26" rx="13" fill="#00A53F"/>
+                                                        <path d="M19.6666 8L10.4999 17.1667L6.33325 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>                                                  
+                                                    <svg  v-else width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="26" height="26" rx="13" fill="#B5B5BB"/>
+                                                        <path d="M19.6668 8L10.5002 17.1667L6.3335 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
                                             </div>
-                                        </span>
-                                </li>
-                            
+                                            <Progreso :clase="cla" :actividades="perfilSelected.misactividades" />
+                                            <Calificacion :clase="cla" :actividades="perfilSelected.misactividades" />
+                                        </div>
+                                    </span>
+                                </li>                            
                             </ul>
                         </div>                
                     </div>

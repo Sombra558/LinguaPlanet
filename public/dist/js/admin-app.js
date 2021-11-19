@@ -69509,7 +69509,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\lingua_planet\resources\js\Administrador\app.js */"./resources/js/Administrador/app.js");
+module.exports = __webpack_require__(/*! c:\laragon\www\lingua-planet\resources\js\Administrador\app.js */"./resources/js/Administrador/app.js");
 
 
 /***/ })
