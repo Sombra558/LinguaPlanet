@@ -10,7 +10,7 @@
 		        	</div>
 		        	<div class="card-body" style="padding-top: 8%;">
 		    			<div class="premios-container row row-cols-2 row-cols-md-5">
-							<div class="col mb-3" v-for="i in perfil.premios" :key="i.id">
+							<div v-for="i in perfil.premios" class="col mb-3" :key="i.id">
 						    	<div class="card premio">
 						    		<div class="card-body">
 										<img width="125" height="125" :src="`${i.accesorio.split('.')[0]}${i.pivot.color !== null ? i.pivot.color.split('#')[1] : ''}.svg`" alt="accesorio">

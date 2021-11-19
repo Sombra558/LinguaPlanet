@@ -266,5 +266,30 @@ import Searh from './search.vue';
 </script>
 
 <style lang="scss" scoped>
-    
+    .form-input-admin {
+        &::-webkit-scrollbar{
+            width: 20px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #31348B;
+            border-left: 9px solid #ffffff00;
+            border-right: 9px solid #ffffff00;
+            background-clip: content-box;
+            border-radius: 25px;
+        }
+
+        &::-webkit-scrollbar-thumb{
+            background: #31348B;
+            border-left: 7px solid #ffffff00;
+            border-right: 7px solid #ffffff00;
+            background-clip: content-box;
+            border-radius: 8px;
+        }
+    }
+    .form-input-admin{
+    select:-internal-list-box option:checked {
+        background-color: -internal-light-dark(red, red);
+        color: -internal-light-dark(red, red);
+    }}
 </style>

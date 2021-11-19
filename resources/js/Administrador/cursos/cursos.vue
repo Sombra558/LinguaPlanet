@@ -21,21 +21,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr v-for="(curso,index) in filteredCursos" :key="index" class="color-black">
-                    <td>{{curso.titulo}}</td>
-                    <td>USD</td>
-                    <!--<td>definir</td>-->
-                    <td>{{curso.destacados===1 ? 'Borrador' : 'Publicado'}}</td>
-                    <td class="p-0 w-15 align-middle text-center">
-                        <button type="button"class="btn-options" @click="showOptions($event, curso)" style="position: relative;">
-                            <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="2" cy="2" r="2" fill="#606060"/>
-                                <circle cx="9" cy="2" r="2" fill="#606060"/>
-                                <circle cx="16" cy="2" r="2" fill="#606060"/>
-                            </svg>
-                        </button> 
-                    </td>
-                </tr>
+                    <tr v-for="(curso,index) in filteredCursos" :key="index" class="color-black">
+                        <td>{{curso.titulo}}</td>
+                        <td>USD</td>
+                        <!--<td>definir</td>-->
+                        <td>{{curso.destacados===1 ? 'Borrador' : 'Publicado'}}</td>
+                        <td class="p-0 w-15 align-middle text-center">
+                            <button type="button"class="btn-options" @click="showOptions($event, curso)" style="position: relative;">
+                                <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="2" cy="2" r="2" fill="#606060"/>
+                                    <circle cx="9" cy="2" r="2" fill="#606060"/>
+                                    <circle cx="16" cy="2" r="2" fill="#606060"/>
+                                </svg>
+                            </button> 
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
