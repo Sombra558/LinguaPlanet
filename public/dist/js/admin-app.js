@@ -3545,6 +3545,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -48724,92 +48733,158 @@ var render = function() {
         [
           _c(
             "div",
-            { staticClass: "modal-dialog", attrs: { role: "document" } },
+            {
+              staticClass: "modal-dialog modal-dialog-centered",
+              attrs: { role: "document" }
+            },
             [
               _c("div", { staticClass: "modal-content" }, [
-                _vm._m(7),
-                _vm._v(" "),
-                _c("div", { staticClass: "modal-body" }, [
-                  _c(
-                    "form",
-                    {
-                      attrs: { id: "relacion-member" },
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          return _vm.crearrelacion()
+                _c(
+                  "div",
+                  { staticClass: "modal-header modal-header-admin pb-0" },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "close",
+                        attrs: {
+                          type: "button",
+                          "data-dismiss": "modal",
+                          "aria-label": "Close"
                         }
-                      }
-                    },
-                    [
-                      _c("input", {
-                        attrs: { type: "hidden", name: "curso_id" },
-                        domProps: { value: _vm.curso.id }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "form-group col-md-12 col-12" },
-                        [
-                          _c("label", { attrs: { for: "membresia_id" } }, [
-                            _vm._v("Seleccione Membresia")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.membresiaSelected,
-                                  expression: "membresiaSelected"
-                                }
-                              ],
-                              attrs: { name: "membresia_id" },
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.membresiaSelected = $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            attrs: {
+                              width: "30",
+                              height: "30",
+                              viewBox: "0 0 30 30",
+                              fill: "none",
+                              xmlns: "http://www.w3.org/2000/svg"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d: "M22.5 7.5L7.5 22.5",
+                                stroke: "#010112",
+                                "stroke-width": "2",
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round"
                               }
-                            },
-                            [
-                              _c("option", { domProps: { value: null } }, [
-                                _vm._v("Seleccione")
-                              ]),
-                              _vm._v(" "),
-                              _vm._l(_vm.membresias, function(membresia) {
-                                return _c(
-                                  "option",
-                                  {
-                                    key: "member" + membresia.id,
-                                    domProps: { value: membresia.id }
-                                  },
-                                  [_vm._v(_vm._s(membresia.nombre))]
-                                )
-                              })
-                            ],
-                            2
-                          )
-                        ]
-                      ),
+                            }),
+                            _vm._v(" "),
+                            _c("path", {
+                              attrs: {
+                                d: "M7.5 7.5L22.5 22.5",
+                                stroke: "#010112",
+                                "stroke-width": "2",
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "form",
+                  {
+                    attrs: { id: "relacion-member" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.crearrelacion()
+                      }
+                    }
+                  },
+                  [
+                    _c("input", {
+                      attrs: { type: "hidden", name: "curso_id" },
+                      domProps: { value: _vm.curso.id }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-body pt-0 px-5" }, [
+                      _vm._m(7),
                       _vm._v(" "),
-                      _c("div", { staticClass: "modal-footer" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c(
+                          "div",
+                          { staticClass: "form-group col-md-12 col-12" },
+                          [
+                            _c("label", { attrs: { for: "membresia_id" } }, [
+                              _vm._v("Seleccione Membresia")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.membresiaSelected,
+                                    expression: "membresiaSelected"
+                                  }
+                                ],
+                                staticClass:
+                                  "form-input form-input-admin input-primary",
+                                attrs: { name: "membresia_id" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.membresiaSelected = $event.target
+                                      .multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              [
+                                _c("option", { domProps: { value: null } }, [
+                                  _vm._v("Seleccione")
+                                ]),
+                                _vm._v(" "),
+                                _vm._l(_vm.membresias, function(membresia) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: "member" + membresia.id,
+                                      domProps: { value: membresia.id }
+                                    },
+                                    [_vm._v(_vm._s(membresia.nombre))]
+                                  )
+                                })
+                              ],
+                              2
+                            )
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "modal-footer modal-footer-admin" },
+                      [
                         _c(
                           "button",
                           {
-                            staticClass: "btn btn-secondary",
+                            staticClass:
+                              "btn btn-admin btn-lg btn-outline-secondary",
                             attrs: { type: "button", "data-dismiss": "modal" }
                           },
                           [_vm._v("Cancelar")]
@@ -48818,15 +48893,15 @@ var render = function() {
                         _c(
                           "button",
                           {
-                            staticClass: "btn btn-primary",
+                            staticClass: "btn btn-admin btn-lg btn-primary",
                             attrs: { disabled: _vm.proceso, type: "submit" }
                           },
                           [_vm._v("Asignar")]
                         )
-                      ])
-                    ]
-                  )
-                ])
+                      ]
+                    )
+                  ]
+                )
               ])
             ]
           )
@@ -48983,23 +49058,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c("h5", { staticClass: "fw-500", attrs: { id: "exampleModalLabel" } }, [
-        _vm._v("Asignar a Membresia")
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }, [
+        _c(
+          "h3",
+          {
+            staticClass: "fw-500 color-black mb-4",
+            attrs: { id: "exampleModalLabel" }
+          },
+          [_vm._v("Asignar a Membresia")]
+        )
+      ])
     ])
   }
 ]

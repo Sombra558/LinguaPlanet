@@ -465,30 +465,39 @@
         </div>
          <!--Modal Asignacion de Membresia -->
         <div class="modal fade" id="crearRelacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="fw-500" id="exampleModalLabel">Asignar a Membresia</h5>
+                    <div class="modal-header modal-header-admin pb-0">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.5 7.5L7.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7.5 7.5L22.5 22.5" stroke="#010112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <form id="relacion-member" @submit.prevent="crearrelacion()" >
-                            <input type="hidden" :value="curso.id" name="curso_id">
-                            <div class="form-group col-md-12 col-12">
+                    <form id="relacion-member" @submit.prevent="crearrelacion()" >
+                        <input type="hidden" :value="curso.id" name="curso_id">
+                        <div class="modal-body pt-0 px-5">
+                            <div class="row">
+                                <div class="col">
+                                    <h3 class="fw-500 color-black mb-4" id="exampleModalLabel">Asignar a Membresia</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12 col-12">
                                     <label for="membresia_id" >Seleccione Membresia</label>
-                                     <select name="membresia_id" v-model="membresiaSelected" >
+                                    <select name="membresia_id" class="form-input form-input-admin input-primary" v-model="membresiaSelected" >
                                         <option :value="null">Seleccione</option>
                                         <option :value="membresia.id" v-for="membresia in membresias" :key="'member'+membresia.id">{{membresia.nombre}}</option>
                                     </select>                               
-                            </div>                   
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <button :disabled="proceso" type="submit" class="btn btn-primary">Asignar</button>
+                                </div>
                             </div>
-                        </form>
-                    </div>              
+                        </div>
+                        <div class="modal-footer modal-footer-admin">
+                            <button type="button" class="btn btn-admin btn-lg btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                            <button :disabled="proceso" type="submit" class="btn btn-admin btn-lg btn-primary">Asignar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
