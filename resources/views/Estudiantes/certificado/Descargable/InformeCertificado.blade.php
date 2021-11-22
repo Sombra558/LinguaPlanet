@@ -1,13 +1,17 @@
 <!doctype html>
-
 <html lang="en">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{$certificado->curso->titulo}}</title>
+        
+    <style>
+        body {
+            font-family: "Nunito", sans-serif !important;
+        }
+    </style>
 </head>
 <body style="position: relative;">
     <img style="position: absolute; top: -50px; width: 100%; height: 795px;" src="{{ 'data:image/svg+xml;base64,'.base64_encode('<svg width="842" height="595" viewBox="0 0 842 595" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

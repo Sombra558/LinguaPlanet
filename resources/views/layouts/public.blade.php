@@ -9,14 +9,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
- 
-    <!-- Fonts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
@@ -28,6 +26,10 @@
             width: 58.03px;
             height: 36.39px;
             border-radius:50%;
+        }
+
+        body {
+            font-family: "Nunito", sans-serif !important;
         }
     </style>
     @stack('styles')
