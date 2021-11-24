@@ -7,14 +7,18 @@
     <title>{{$actividad->tipo}}</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('dist/js/hijo-app.js') }}" defer></script>
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 
-   
     <script src="/game/Silueta/Siluetas/TemplateData/UnityProgress.js"></script>
     <script src="/game/Silueta/Siluetas/Build/UnityLoader.js"></script>
+
+    <style>
+        body {
+            font-family: "Nunito", sans-serif !important;
+        }
+    </style>
 </head>
 <body class="bg-primary @if(request()->routeIs('student.premios') || request()->routeIs('student.armario')) background-component @endif">
     <div class="d-flex h-screen flex-column justify-content-between">

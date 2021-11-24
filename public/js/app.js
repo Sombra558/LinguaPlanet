@@ -3484,6 +3484,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "curso-show-component",
   props: ["idioma", "idiomas"],
@@ -3510,6 +3523,45 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8531,7 +8583,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".lh[data-v-6e45ef0f] {\n  line-height: 4;\n}\n.mini-flag-img[data-v-6e45ef0f] {\n  opacity: 0.5;\n}\n.mini-flag-img.active[data-v-6e45ef0f] {\n  opacity: 1;\n  width: 5rem;\n  border: 3px solid black;\n  border-radius: 50px;\n}\n.card.card-course-carrousel[data-v-6e45ef0f]:hover {\n  background-color: #31348B;\n  transition: background-color 0.3s linear;\n}\n.card.card-course-carrousel:hover div[data-v-6e45ef0f] {\n  color: white !important;\n}\n.card-body div[data-v-6e45ef0f] {\n  color: #606060;\n}\n.carousel-indicators[data-v-6e45ef0f] {\n  position: absolute;\n  top: 0%;\n  bottom: 100%;\n}\n.carousel-control-icon[data-v-6e45ef0f] {\n  background-color: #31348B;\n  padding: 20px;\n  border-radius: 10px;\n}\n.carousel-indicators li[data-v-6e45ef0f] {\n  background-color: #31348B;\n}", ""]);
+exports.push([module.i, ".lh[data-v-6e45ef0f] {\n  line-height: 4;\n}\n.li-benefits[data-v-6e45ef0f] {\n  list-style: none;\n  line-height: 40px;\n}\n.mini-flag-img[data-v-6e45ef0f] {\n  opacity: 0.5;\n}\n.mini-flag-img.active[data-v-6e45ef0f] {\n  opacity: 1;\n  width: 5rem;\n  border: 3px solid black;\n  border-radius: 50px;\n}\n.card.card-course-carrousel[data-v-6e45ef0f]:hover {\n  background-color: #31348B;\n  transition: background-color 0.3s linear;\n}\n.card.card-course-carrousel:hover div[data-v-6e45ef0f] {\n  color: white !important;\n}\n.carousel-indicators[data-v-6e45ef0f] {\n  position: absolute;\n  top: 0%;\n  bottom: 100%;\n}\n.carousel-control-icon[data-v-6e45ef0f] {\n  background-color: #31348B;\n  padding: 20px;\n  border-radius: 10px;\n}\n.carousel-indicators li[data-v-6e45ef0f] {\n  background-color: #31348B;\n}", ""]);
 
 // exports
 
@@ -8550,7 +8602,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".li-benefits[data-v-3a5f66d2] {\n  text-indent: -4px;\n  margin-left: -2em;\n  font-size: 0.8rem;\n  line-height: 40px;\n}\n.span-payment-methods[data-v-3a5f66d2] {\n  font-size: 0.85rem;\n}\n.select-subtitle[data-v-3a5f66d2] {\n  font-size: 0.8rem;\n  font-weight: 500;\n  line-height: 20px;\n}\n.card-membership-web[data-v-3a5f66d2] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\n}\n.card-membership-web .card-header[data-v-3a5f66d2] {\n  background-color: #31348B;\n  color: white;\n  border-radius: 12px 12px 0 0;\n  transition: background-color 0.3s linear;\n}\n.card-membership-web:hover .card-header[data-v-3a5f66d2] {\n  background-color: #FAB500;\n  color: #31348B;\n}\n.price-web[data-v-3a5f66d2] {\n  font-style: normal;\n  font-weight: 500;\n  font-size: 30px;\n  line-height: 48px;\n  margin-bottom: 0;\n}\n.price-mobile[data-v-3a5f66d2] {\n  font-style: normal;\n  font-weight: 700;\n  font-size: 32px;\n  line-height: 48px;\n}\n.card-membership-mobile ul li[data-v-3a5f66d2] {\n  margin: 15px 0 0 0;\n}\n.membership-details[data-v-3a5f66d2] {\n  padding: 0;\n}\n.membership-details li[data-v-3a5f66d2] {\n  list-style: none;\n  border-bottom: 1px solid #B5B5BB;\n}\n.membership-details li h4[data-v-3a5f66d2] {\n  font-size: 1rem;\n  font-weight: 500;\n}\n.w-24[data-v-3a5f66d2] {\n  width: 24% !important;\n}\n.w-38[data-v-3a5f66d2] {\n  width: 38% !important;\n}\n.carousel-indicators[data-v-3a5f66d2] {\n  position: absolute;\n  top: 0%;\n  bottom: 100%;\n}\n.carousel-control-icon[data-v-3a5f66d2] {\n  background-color: #31348B;\n  padding: 20px;\n  border-radius: 10px;\n}\n.carousel-indicators li[data-v-3a5f66d2] {\n  background-color: #31348B;\n}", ""]);
+exports.push([module.i, ".mobile-display .card.gray-back[data-v-3a5f66d2] {\n  border-radius: 8px;\n}\n.li-benefits[data-v-3a5f66d2] {\n  list-style: none;\n  line-height: 40px;\n}\n.span-payment-methods[data-v-3a5f66d2] {\n  font-size: 0.95rem;\n}\n.select-subtitle[data-v-3a5f66d2] {\n  font-size: 0.8rem;\n  font-weight: 500;\n  line-height: 20px;\n}\n.card-membership-web[data-v-3a5f66d2] {\n  background: #FFFFFF;\n  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.1);\n  border-radius: 12px;\n}\n.card-membership-web:hover .badge-pill[data-v-3a5f66d2] {\n  background-color: #FAB500;\n}\n.price-web[data-v-3a5f66d2] {\n  font-style: normal;\n  font-weight: 600;\n  font-size: 2.5rem;\n  line-height: 48px;\n  margin-bottom: 0;\n}\n.price-mobile[data-v-3a5f66d2] {\n  font-style: normal;\n  font-weight: 600;\n  font-size: 2.5rem;\n  line-height: 48px;\n}\n.membership-details[data-v-3a5f66d2] {\n  padding: 0;\n}\n.membership-details li[data-v-3a5f66d2] {\n  list-style: none;\n  border-bottom: 1px solid #B5B5BB;\n}\n.membership-details li h4[data-v-3a5f66d2] {\n  font-size: 1rem;\n  font-weight: 500;\n}\n.w-24[data-v-3a5f66d2] {\n  width: 24% !important;\n}\n.w-38[data-v-3a5f66d2] {\n  width: 38% !important;\n}\n.carousel-indicators[data-v-3a5f66d2] {\n  position: absolute;\n  top: 0%;\n  bottom: 100%;\n}\n.carousel-control-icon[data-v-3a5f66d2] {\n  background-color: #31348B;\n  padding: 20px;\n  border-radius: 10px;\n}\n.carousel-indicators li[data-v-3a5f66d2] {\n  background-color: #31348B;\n}", ""]);
 
 // exports
 
@@ -52038,9 +52090,9 @@ var render = function() {
       _vm._v(" "),
       _c("h1", { staticClass: "course-show-header mb-4" }, [
         _vm._v(
-          "Tus hijos aprenden " +
+          "\n        Tus hijos aprenden " +
             _vm._s(_vm.idioma.idioma) +
-            " con lingua planet"
+            " con lingua planet\n    "
         )
       ]),
       _vm._v(" "),
@@ -52199,11 +52251,11 @@ var render = function() {
                               [
                                 _c(
                                   "div",
-                                  { staticClass: "row" },
+                                  { staticClass: "row h-50" },
                                   _vm._l(membresia.idiomas, function(idioma) {
                                     return _c("img", {
                                       key: idioma.id,
-                                      staticClass: "flag-img mx-auto",
+                                      staticClass: "flag-img mx-auto my-2",
                                       attrs: {
                                         src: "" + idioma.src,
                                         alt: "lingua planet " + idioma.idioma
@@ -52213,14 +52265,21 @@ var render = function() {
                                   0
                                 ),
                                 _vm._v(" "),
-                                _c(
-                                  "span",
-                                  {
-                                    staticClass: "h3 bold",
-                                    staticStyle: { height: "4rem" }
-                                  },
-                                  [_vm._v(_vm._s(membresia.nombre))]
-                                ),
+                                _c("div", { staticClass: "mb-3" }, [
+                                  _c("h3", { staticClass: "bold mt-2" }, [
+                                    _vm._v(
+                                      "\n                                    " +
+                                        _vm._s(membresia.nombre) +
+                                        "\n                                "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "span",
+                                    { staticClass: "mt-3 mb-2 color-plomo" },
+                                    [_vm._v("Pago " + _vm._s(membresia.tipo))]
+                                  )
+                                ]),
                                 _vm._v(" "),
                                 _vm._m(3, true),
                                 _vm._v(" "),
@@ -52228,17 +52287,15 @@ var render = function() {
                                   "a",
                                   {
                                     staticClass:
-                                      "btn btn-buy btn-success mx-auto",
+                                      "btn mt-3 px-4 btn-buy btn-success mx-auto",
                                     attrs: {
                                       href: "/membresia/" + membresia.nombreURL
                                     }
                                   },
                                   [
-                                    _c(
-                                      "span",
-                                      { staticClass: "h4 bold mb-0" },
-                                      [_vm._v("Comprar")]
-                                    )
+                                    _c("span", { staticClass: "h5 mb-0" }, [
+                                      _vm._v("Comprar")
+                                    ])
                                   ]
                                 )
                               ]
@@ -52328,12 +52385,29 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mt-4 mb-3 lh" }, [
-      _c("span", { staticClass: "h5" }, [_vm._v("Tendrás acceso a:")]),
-      _vm._v(" "),
-      _c("h4", [_vm._v("Dashboard de seguimiento")]),
-      _vm._v(" "),
-      _c("h4", [_vm._v("Clases offline")])
+    return _c("div", { staticClass: "row mt-3" }, [
+      _c("div", { staticClass: "col" }, [
+        _c(
+          "span",
+          {
+            staticClass: "color-plomo fw-500",
+            staticStyle: { "font-size": "1rem" }
+          },
+          [
+            _vm._v(
+              "\n                                        Tendrás acceso a:\n                                    "
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c("ul", { staticClass: "list-group mx-auto mt-2 color-plomo" }, [
+          _c("li", { staticClass: "li-benefits" }, [
+            _vm._v("Dashboard de seguimiento")
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "li-benefits" }, [_vm._v("Clases offline")])
+        ])
+      ])
     ])
   },
   function() {
@@ -52416,36 +52490,42 @@ var render = function() {
               _c("div", { staticClass: "card h-100 gray-back" }, [
                 _c(
                   "div",
-                  { staticClass: "card-body py-3 d-flex flex-column" },
+                  { staticClass: "card-body py-5 d-flex flex-column" },
                   [
                     _c("div", { staticClass: "col px-0" }, [
                       _c(
                         "span",
                         {
                           staticClass:
-                            "d-flex mb-2 align-items-center justify-content-center"
+                            "mb-2 d-flex flex-column align-items-center justify-content-center"
                         },
                         [
-                          _vm._l(_vm.membresia.idiomas, function(idioma) {
-                            return _c("img", {
-                              staticClass: "mx-1 iz-10 mini-flag-img active",
-                              attrs: {
-                                src: "" + idioma.src,
-                                alt: "membresia idioma"
-                              }
-                            })
-                          }),
+                          _c(
+                            "article",
+                            { staticClass: "text-center" },
+                            _vm._l(_vm.membresia.idiomas, function(idioma) {
+                              return _c("img", {
+                                staticClass: "mx-1 iz-15 mini-flag-img active",
+                                attrs: {
+                                  src: "" + idioma.src,
+                                  alt: "membresia idioma"
+                                }
+                              })
+                            }),
+                            0
+                          ),
                           _vm._v(" "),
-                          _c("h3", { staticClass: "bold mb-0 ml-2" }, [
+                          _c("h3", { staticClass: "bold mt-2" }, [
                             _vm._v(_vm._s(_vm.membresia.nombre))
                           ])
-                        ],
-                        2
+                        ]
                       ),
                       _vm._v(" "),
-                      _c("h4", { staticClass: "px-3 select-subtitle" }, [
-                        _vm._v("Selecciona tu membresía y comienza aprender.")
-                      ])
+                      _c(
+                        "h4",
+                        { staticClass: "px-3 select-subtitle text-center" },
+                        [_vm._v("Selecciona tu membresía y comienza aprender.")]
+                      )
                     ]),
                     _vm._v(" "),
                     _vm._m(1)
@@ -52496,19 +52576,10 @@ var render = function() {
                                   "div",
                                   {
                                     staticClass:
-                                      "card card-membership-web mx-3",
-                                    staticStyle: { width: "15rem" }
+                                      "card card-membership-web mx-3 py-5",
+                                    staticStyle: { width: "17rem" }
                                   },
                                   [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "card-header border-0 text-center py-3"
-                                      },
-                                      [_vm._v(_vm._s(plan.nombre))]
-                                    ),
-                                    _vm._v(" "),
                                     _c(
                                       "div",
                                       {
@@ -52516,6 +52587,39 @@ var render = function() {
                                           "card-body px-1 d-flex flex-column text-center"
                                       },
                                       [
+                                        _c("div", { staticClass: "row" }, [
+                                          _c("div", { staticClass: "col" }, [
+                                            _c(
+                                              "span",
+                                              {
+                                                staticClass:
+                                                  "badge badge-pill bg-gray text-white px-4"
+                                              },
+                                              [
+                                                _c(
+                                                  "h3",
+                                                  { staticClass: "m-0" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                        " +
+                                                        _vm._s(plan.nombre) +
+                                                        "\n                                                    "
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass: "mt-3 mb-2 color-plomo"
+                                          },
+                                          [_vm._v("Pago " + _vm._s(plan.tipo))]
+                                        ),
+                                        _vm._v(" "),
                                         _c(
                                           "span",
                                           { staticClass: "price-web" },
@@ -52536,76 +52640,13 @@ var render = function() {
                                           ]
                                         ),
                                         _vm._v(" "),
-                                        _c("span", { staticClass: "h4" }, [
-                                          _vm._v("Pago " + _vm._s(plan.tipo))
-                                        ]),
-                                        _vm._v(" "),
-                                        _c(
-                                          "ul",
-                                          {
-                                            staticClass:
-                                              "text-left w-80 mx-auto mt-4"
-                                          },
-                                          [
-                                            _c(
-                                              "li",
-                                              {
-                                                staticClass:
-                                                  "li-benefits text-secondary"
-                                              },
-                                              [
-                                                _c(
-                                                  "span",
-                                                  {
-                                                    staticClass:
-                                                      "text-primary bold"
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(plan.stock) +
-                                                        " perfil"
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(
-                                                  " de estudiante en la plataforma."
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "li",
-                                              {
-                                                staticClass:
-                                                  "li-benefits text-secondary"
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "Certificado de finalización."
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "li",
-                                              {
-                                                staticClass:
-                                                  "li-benefits text-secondary"
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "Clases nuevas semanales."
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        ),
+                                        _vm._m(4, true),
                                         _vm._v(" "),
                                         _c(
                                           "a",
                                           {
                                             staticClass:
-                                              "btn w-50 py-2 btn-primary-red mx-auto",
+                                              "btn px-4 py-2 btn-success mx-auto",
                                             attrs: {
                                               href:
                                                 "/comprar/plan/" +
@@ -52617,7 +52658,7 @@ var render = function() {
                                           [
                                             _c(
                                               "span",
-                                              { staticClass: "h5 bold mb-0" },
+                                              { staticClass: "h5 mb-0" },
                                               [_vm._v("Comprar")]
                                             )
                                           ]
@@ -52650,7 +52691,7 @@ var render = function() {
                     "li",
                     { staticClass: "d-flex align-items-center p-2" },
                     [
-                      _vm._m(4),
+                      _vm._m(5),
                       _vm._v(" "),
                       _vm._l(_vm.membresia.planes, function(plan) {
                         return _c(
@@ -52674,7 +52715,7 @@ var render = function() {
                     "li",
                     { staticClass: "d-flex align-items-center p-2" },
                     [
-                      _vm._m(5),
+                      _vm._m(6),
                       _vm._v(" "),
                       _vm._l(_vm.membresia.planes, function(plan) {
                         return _c(
@@ -52698,7 +52739,7 @@ var render = function() {
                     "li",
                     { staticClass: "d-flex align-items-center p-2" },
                     [
-                      _vm._m(6),
+                      _vm._m(7),
                       _vm._v(" "),
                       _vm._l(_vm.membresia.planes, function(plan) {
                         return _c(
@@ -52723,7 +52764,7 @@ var render = function() {
                     "li",
                     { staticClass: "d-flex align-items-center p-2" },
                     [
-                      _vm._m(7),
+                      _vm._m(8),
                       _vm._v(" "),
                       _vm._l(_vm.membresia.planes, function(plan) {
                         return _c(
@@ -52748,7 +52789,7 @@ var render = function() {
                     "li",
                     { staticClass: "d-flex align-items-center p-2" },
                     [
-                      _vm._m(8),
+                      _vm._m(9),
                       _vm._v(" "),
                       _vm._l(_vm.membresia.planes, function(plan) {
                         return _c(
@@ -52773,7 +52814,7 @@ var render = function() {
                     "li",
                     { staticClass: "d-flex align-items-center p-2" },
                     [
-                      _vm._m(9),
+                      _vm._m(10),
                       _vm._v(" "),
                       _vm._l(_vm.membresia.planes, function(plan) {
                         return _c(
@@ -52798,7 +52839,7 @@ var render = function() {
                     "li",
                     { staticClass: "d-flex align-items-center p-2" },
                     [
-                      _vm._m(10),
+                      _vm._m(11),
                       _vm._v(" "),
                       _vm._l(_vm.membresia.planes, function(plan) {
                         return _c(
@@ -52826,128 +52867,146 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "mobile-display" }, [
-      _c("div", { staticClass: "card gray-back" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _c("div", { staticClass: "col" }, [
+      _c("div", { staticClass: "card gray-back my-4" }, [
+        _c("div", { staticClass: "card-body py-5" }, [
+          _c("div", { staticClass: "col text-center" }, [
             _c(
               "span",
               {
-                staticClass: "d-flex align-items-center justify-content-center"
-              },
-              [
-                _vm._l(_vm.membresia.idiomas, function(idio) {
-                  return _c("img", {
-                    key: "iidi-" + idio.id,
-                    staticClass: "mx-1 mini-flag-img active",
-                    attrs: {
-                      src: "/storage/images/" + idio.diminutivo + ".svg",
-                      alt: "membresia idioma"
-                    }
-                  })
-                }),
-                _vm._v(" "),
-                _c("h1", { staticClass: "mb-0 ml-3" }, [
-                  _vm._v(_vm._s(_vm.membresia.nombre))
-                ])
-              ],
-              2
-            ),
-            _vm._v(" "),
-            _c("h3", { staticClass: "text-center" }, [
-              _vm._v("Selecciona tu membresía y comienza aprender.")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("nav", [
-          _c(
-            "div",
-            {
-              staticClass: "nav nav-tabs d-flex text-center",
-              attrs: { id: "nav-tab", role: "tablist" }
-            },
-            _vm._l(_vm.membresia.planes, function(plan, key) {
-              return _c(
-                "a",
-                {
-                  class: ["nav-link flex-fill", key === 0 ? "active" : null],
-                  attrs: {
-                    id: "nav-" + plan.id + "-tab",
-                    "data-toggle": "tab",
-                    href: "#nav-" + plan.id,
-                    role: "tab",
-                    "aria-controls": "#nav-" + plan.id,
-                    "aria-selected": key === 0 ? true : false
-                  }
-                },
-                [_vm._v(_vm._s(plan.nombre))]
-              )
-            }),
-            0
-          )
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "tab-content bg-white",
-            attrs: { id: "nav-tabContent" }
-          },
-          _vm._l(_vm.membresia.planes, function(plan, key) {
-            return _c(
-              "div",
-              {
-                class: ["tab-pane fade", key === 0 ? "show active" : null],
-                attrs: {
-                  id: "nav-" + plan.id,
-                  role: "tabpanel",
-                  "aria-labelledby": "nav-" + plan.id + "-tab"
-                }
+                staticClass:
+                  "d-flex flex-column align-items-center justify-content-center"
               },
               [
                 _c(
-                  "div",
-                  { staticClass: "card-membership-mobile text-center" },
-                  [
-                    _c("div", { staticClass: "d-flex flex-column" }, [
-                      _c("span", { staticClass: "price-mobile" }, [
-                        _vm._v(
-                          "\n                                " +
-                            _vm._s(
-                              plan.precio.toLocaleString("de-DE", {
-                                style: "currency",
-                                currency: "USD"
-                              })
-                            ) +
-                            "\n                            "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "h4" }, [
-                        _vm._v("Pago " + _vm._s(plan.tipo))
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(11, true)
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "btn btn-primary-red px-5 mt-3 mb-2",
-                        attrs: { href: "" }
-                      },
-                      [_vm._v("Comprar")]
-                    )
-                  ]
+                  "article",
+                  { staticClass: "text-center w-100" },
+                  _vm._l(_vm.membresia.idiomas, function(idio) {
+                    return _c("img", {
+                      key: "iidi-" + idio.id,
+                      staticClass: "mx-1 iz-15 mini-flag-img active",
+                      attrs: { src: idio.src, alt: "membresia idioma" }
+                    })
+                  }),
+                  0
                 ),
                 _vm._v(" "),
-                _vm._m(12, true)
+                _c("h1", { staticClass: "my-3" }, [
+                  _vm._v(_vm._s(_vm.membresia.nombre))
+                ])
               ]
+            ),
+            _vm._v(" "),
+            _c("h4", { staticClass: "fw-500 px-3" }, [
+              _vm._v("Selecciona tu membresía y comienza aprender.")
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(12)
+        ])
+      ]),
+      _vm._v(" "),
+      _c("nav", [
+        _c(
+          "div",
+          {
+            staticClass: "nav nav-tabs d-flex text-center",
+            attrs: { id: "nav-tab", role: "tablist" }
+          },
+          _vm._l(_vm.membresia.planes, function(plan, key) {
+            return _c(
+              "a",
+              {
+                class: ["nav-link flex-fill", key === 0 ? "active" : null],
+                attrs: {
+                  id: "nav-" + plan.id + "-tab",
+                  "data-toggle": "tab",
+                  href: "#nav-" + plan.id,
+                  role: "tab",
+                  "aria-controls": "#nav-" + plan.id,
+                  "aria-selected": key === 0 ? true : false
+                }
+              },
+              [_vm._v(_vm._s(plan.nombre))]
             )
           }),
           0
         )
-      ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "tab-content bg-white",
+          attrs: { id: "nav-tabContent" }
+        },
+        _vm._l(_vm.membresia.planes, function(plan, key) {
+          return _c(
+            "div",
+            {
+              class: ["tab-pane fade", key === 0 ? "show active" : null],
+              attrs: {
+                id: "nav-" + plan.id,
+                role: "tabpanel",
+                "aria-labelledby": "nav-" + plan.id + "-tab"
+              }
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "card-membership-mobile text-center py-5" },
+                [
+                  _c("div", { staticClass: "d-flex flex-column" }, [
+                    _c("h3", { staticClass: "fw-600" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.membresia.nombre) +
+                          "\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "my-2 color-plomo" }, [
+                      _vm._v("Pago " + _vm._s(plan.tipo))
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "price-mobile" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(
+                            plan.precio.toLocaleString("de-DE", {
+                              style: "currency",
+                              currency: "USD"
+                            })
+                          ) +
+                          "\n                        "
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(13, true),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn my-2 px-4 py-2 btn-success mx-auto",
+                      attrs: {
+                        href: "/comprar/plan/" + plan.id + "/" + plan.nombreURL
+                      }
+                    },
+                    [
+                      _c("span", { staticClass: "h5 mb-0" }, [
+                        _vm._v("Comprar")
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(14, true)
+            ]
+          )
+        }),
+        0
+      )
     ])
   ])
 }
@@ -52971,23 +53030,32 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col px-0" }, [
-      _c("span", { staticClass: "d-flex mb-2 span-payment-methods" }, [
-        _vm._v(
-          "\n                                Aceptamos múltiples metodos de pago.\n                            "
-        )
-      ]),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "mx-1",
-        attrs: { src: "/images/stripe-logo.svg", alt: "membresia idioma" }
-      }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "mx-1",
-        attrs: { src: "/images/paypal-logo.svg", alt: "membresia idioma" }
-      })
-    ])
+    return _c(
+      "div",
+      {
+        staticClass:
+          "col d-flex flex-column align-items-center justify-content-end px-0 text-center"
+      },
+      [
+        _c("span", { staticClass: "d-block mb-2 w-80 span-payment-methods" }, [
+          _vm._v(
+            "\n                                Aceptamos múltiples metodos de pago.\n                            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("article", { staticClass: "mt-2" }, [
+          _c("img", {
+            staticClass: "mx-1",
+            attrs: { src: "/images/stripe-logo.svg", alt: "membresia idioma" }
+          }),
+          _vm._v(" "),
+          _c("img", {
+            staticClass: "mx-1",
+            attrs: { src: "/images/paypal-logo.svg", alt: "membresia idioma" }
+          })
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -53036,6 +53104,28 @@ var staticRenderFns = [
         _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row mt-3" }, [
+      _c("div", { staticClass: "col" }, [
+        _c("span", { staticClass: "color-plomo fw-500" }, [
+          _vm._v(
+            "\n                                                    Tendrás acceso a:\n                                                "
+          )
+        ]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "list-group mx-auto mt-2 color-plomo" }, [
+          _c("li", { staticClass: "li-benefits" }, [
+            _vm._v("Dashboard de seguimiento")
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "li-benefits" }, [_vm._v("Clases offline")])
+        ])
+      ])
+    ])
   },
   function() {
     var _vm = this
@@ -53101,15 +53191,64 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "text-left w-80 mx-auto" }, [
-      _c("li", [
-        _c("span", { staticClass: "text-primary bold" }, [_vm._v("1 perfil")]),
-        _vm._v(" de estudiante en la plataforma.")
-      ]),
-      _vm._v(" "),
-      _c("li", [_vm._v("Certificado de finalización.")]),
-      _vm._v(" "),
-      _c("li", [_vm._v("Clases nuevas semanales.")])
+    return _c(
+      "div",
+      {
+        staticClass:
+          "col mt-5 d-flex flex-column align-items-center justify-content-end text-center"
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "fw-500 d-block mb-2 w-75 span-payment-methods" },
+          [
+            _vm._v(
+              "\n                        Aceptamos múltiples metodos de pago.\n                    "
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c("article", { staticClass: "mt-2 w-100" }, [
+          _c("img", {
+            staticClass: "mx-2 iz-25",
+            attrs: { src: "/images/stripe-logo.svg", alt: "membresia idioma" }
+          }),
+          _vm._v(" "),
+          _c("img", {
+            staticClass: "mx-2 iz-25",
+            attrs: { src: "/images/paypal-logo.svg", alt: "membresia idioma" }
+          })
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row mt-3" }, [
+      _c("div", { staticClass: "col" }, [
+        _c(
+          "span",
+          {
+            staticClass: "color-plomo fw-500",
+            staticStyle: { "font-size": "1rem" }
+          },
+          [
+            _vm._v(
+              "\n                                Tendrás acceso a:\n                            "
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c("ul", { staticClass: "list-group mx-auto mt-2 color-plomo" }, [
+          _c("li", { staticClass: "li-benefits" }, [
+            _vm._v("Dashboard de seguimiento")
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "li-benefits" }, [_vm._v("Clases offline")])
+        ])
+      ])
     ])
   },
   function() {
@@ -53139,7 +53278,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "w-25 text-center" }, [
           _c("img", {
             staticClass: "mx-1",
-            attrs: { src: "/storage/images/check.svg" }
+            attrs: { src: "/images/check.svg" }
           })
         ])
       ]),
@@ -53152,7 +53291,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "w-25 text-center p-4" }, [
           _c("img", {
             staticClass: "mx-1",
-            attrs: { src: "/storage/images/check.svg" }
+            attrs: { src: "/images/check.svg" }
           })
         ])
       ]),
@@ -53165,7 +53304,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "w-25 text-center p-4" }, [
           _c("img", {
             staticClass: "mx-1",
-            attrs: { src: "/storage/images/check.svg" }
+            attrs: { src: "/images/check.svg" }
           })
         ])
       ]),
@@ -53180,7 +53319,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "w-25 text-center p-4" }, [
           _c("img", {
             staticClass: "mx-1",
-            attrs: { src: "/storage/images/check.svg" }
+            attrs: { src: "/images/check.svg" }
           })
         ])
       ]),
@@ -53193,7 +53332,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "w-25 text-center p-4" }, [
           _c("img", {
             staticClass: "mx-1",
-            attrs: { src: "/storage/images/check.svg" }
+            attrs: { src: "/images/check.svg" }
           })
         ])
       ])
@@ -68133,8 +68272,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\lingua_planet\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\lingua_planet\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! c:\laragon\www\lingua-planet\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! c:\laragon\www\lingua-planet\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

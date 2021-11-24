@@ -11,14 +11,10 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('dist/js/padre-app.js') }}" defer></script>
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
+
     <style type="text/css">
         .backdrop.show {
             position : fixed;
@@ -37,7 +33,13 @@
                 background-repeat : no-repeat;
             }
         @endunless
+        
+        body {
+            font-family: "Nunito", sans-serif !important;
+        }
     </style>
+</head>
+<body>    
     <div class="d-flex h-screen flex-column @unless(explode('.', request()->route()->action['as'])[0] === 'perfil-user') justify-content-between @endunless">
 
         @include('layouts.Padres.navbar')

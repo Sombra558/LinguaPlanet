@@ -21,21 +21,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr v-for="(curso,index) in filteredCursos" :key="index" class="color-black">
-                    <td>{{curso.titulo}}</td>
-                    <td>USD</td>
-                    <!--<td>definir</td>-->
-                    <td>{{curso.destacados===1 ? 'Borrador' : 'Publicado'}}</td>
-                    <td class="p-0 w-15 align-middle text-center">
-                        <button type="button"class="btn-options" @click="showOptions($event, curso)" style="position: relative;">
-                            <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="2" cy="2" r="2" fill="#606060"/>
-                                <circle cx="9" cy="2" r="2" fill="#606060"/>
-                                <circle cx="16" cy="2" r="2" fill="#606060"/>
-                            </svg>
-                        </button> 
-                    </td>
-                </tr>
+                    <tr v-for="(curso,index) in filteredCursos" :key="index" class="color-black">
+                        <td>{{curso.titulo}}</td>
+                        <td>USD</td>
+                        <!--<td>definir</td>-->
+                        <td>{{curso.destacados===1 ? 'Borrador' : 'Publicado'}}</td>
+                        <td class="p-0 w-15 align-middle text-center">
+                            <button type="button"class="btn-options" @click="showOptions($event, curso)" style="position: relative;">
+                                <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="2" cy="2" r="2" fill="#606060"/>
+                                    <circle cx="9" cy="2" r="2" fill="#606060"/>
+                                    <circle cx="16" cy="2" r="2" fill="#606060"/>
+                                </svg>
+                            </button> 
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -44,7 +44,7 @@
             <div class="popover-body px-4">
                 <div class="row py-2">
                     <div class="col">
-                        <a :href="`/admin/curso/${cursoSelected.id}`" class="color-black">
+                        <a :href="`/admin/curso/${cursoSelected.id}`" class="popover-btn color-black">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 20H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="row py-2">
                     <div class="col">
-                        <a :href="`/admin/curso/${cursoSelected.id}/edit`" class="color-black">
+                        <a :href="`/admin/curso/${cursoSelected.id}/edit`" class="popover-btn color-black">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 20H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -70,7 +70,7 @@
                 </div>
                 <div class="row py-2">
                     <div class="col">
-                        <a @click.prevent="eliminarCurso(cursoSelected)" href="#" class="color-black">
+                        <a @click.prevent="eliminarCurso(cursoSelected)" href="#" class="popover-btn color-black">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3 6H5H21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -85,7 +85,7 @@
                 </div>
                 <div class="row py-2">
                     <div class="col">
-                        <a href="#" class="color-black">
+                        <a href="#" class="popover-btn color-black">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M8.5 11C10.7091 11 12.5 9.20914 12.5 7C12.5 4.79086 10.7091 3 8.5 3C6.29086 3 4.5 4.79086 4.5 7C4.5 9.20914 6.29086 11 8.5 11Z" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -125,12 +125,21 @@ import Searh from './search.vue';
             $(document).ready(function(){
               $('[data-toggle="popover"]').popover();
             });
-
             if (this.cursos.length>0) {
                 this.$store.commit("setCursos", this.cursos);
             };
             $(document).ready(function(){
               $('[data-toggle="popover"]').popover();
+            });
+
+            const target = document.querySelector('.popover');
+
+            document.addEventListener('click', (event) => {
+                const withinBoundaries = event.composedPath().includes(target)
+                console.log(target.classList);
+                if (!withinBoundaries && target.classList.contains('d-block')){
+                    this.showOptions();
+                }
             });
         },
         methods: {
@@ -144,8 +153,19 @@ import Searh from './search.vue';
                      this.proceso=false;
                 });
             },
-            showOptions(event, curso) {
+            showOptions(event = null, curso = null) {
                 
+
+                if(!event) {
+                    document.querySelector(`.popover`).style.top = 0;
+                    document.querySelector(`.popover`).style.left = 0;
+                    this.cursoSelected = {};
+                    $(`.popover`).toggleClass('d-block');
+                    $(`.popover`).toggleClass('d-none');
+                    return false;
+                }
+                event.stopPropagation();
+
                 let e = $(event.currentTarget).position();
                 
                 document.querySelector(`.popover`).style.position = 'absolute';
@@ -160,6 +180,11 @@ import Searh from './search.vue';
 </script>
 
 <style lang="scss" scoped>
+    
+    .popover-btn:hover {
+        text-decoration: none;
+    }
+
     .btn {
         font-weight : 400;
     }
