@@ -3554,6 +3554,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3797,7 +3800,7 @@ __webpack_require__.r(__webpack_exports__);
         _this11.proceso = false;
       });
     },
-    showOptions: function showOptions(event, index) {
+    showOptions: function showOptions(event) {
       var _document$querySelect;
 
       var spanDeck = event.currentTarget.parentElement.firstChild;
@@ -3948,6 +3951,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["filteredCursos"])),
   mounted: function mounted() {
+    var _this = this;
+
     $(document).ready(function () {
       $('[data-toggle="popover"]').popover();
     });
@@ -3960,10 +3965,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     $(document).ready(function () {
       $('[data-toggle="popover"]').popover();
     });
+    var target = document.querySelector('.popover');
+    document.addEventListener('click', function (event) {
+      var withinBoundaries = event.composedPath().includes(target);
+      console.log(target.classList);
+
+      if (!withinBoundaries && target.classList.contains('d-block')) {
+        _this.showOptions();
+      }
+    });
   },
   methods: {
     eliminarCurso: function eliminarCurso(curso) {
-      var _this = this;
+      var _this2 = this;
 
       this.proceso = true;
       var url = '/admin/curso/' + curso.id;
@@ -3971,10 +3985,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         window.location.reload();
       })["catch"](function (err) {
         console.log(err);
-        _this.proceso = false;
+        _this2.proceso = false;
       });
     },
-    showOptions: function showOptions(event, curso) {
+    showOptions: function showOptions() {
+      var event = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      var curso = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      if (!event) {
+        document.querySelector(".popover").style.top = 0;
+        document.querySelector(".popover").style.left = 0;
+        this.cursoSelected = {};
+        $(".popover").toggleClass('d-block');
+        $(".popover").toggleClass('d-none');
+        return false;
+      }
+
+      event.stopPropagation();
       var e = $(event.currentTarget).position();
       document.querySelector(".popover").style.position = 'absolute';
       document.querySelector(".popover").style.top = e.top + 28 + 'px';
@@ -10062,7 +10089,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "ul.nav[data-v-7cbf4468] {\n  height: 2.58rem;\n  border-bottom: none;\n  width: 100%;\n  overflow-x: auto;\n  overflow-y: hidden;\n  flex-wrap: inherit;\n  white-space: nowrap;\n}\nul.nav li.nav-item[data-v-7cbf4468] {\n  display: inline-block;\n}\n.nav[data-v-7cbf4468] {\n  border-top: 1px solid #B5B5BB;\n  border-right: 1px solid #B5B5BB;\n}\n.nav-link[data-v-7cbf4468] {\n  border-color: #B5B5BB !important;\n  border-radius: 0;\n  font-weight: 500;\n}\n.nav-link.active[data-v-7cbf4468] {\n  border-color: #B5B5BB !important;\n  border-top: 2px solid #31348B !important;\n  border-bottom: none;\n  border-left: none;\n  color: #31348B !important;\n  background-color: #F8F8F8 !important;\n}\n#curso-contenido[data-v-7cbf4468] {\n  background-color: #F8F8F8;\n  height: 60vh;\n}\n#curso-detalles[data-v-7cbf4468] {\n  background-color: #F8F8F8;\n}\n.modal-header[data-v-7cbf4468] {\n  border-bottom: none;\n}\n.form-input[data-v-7cbf4468] {\n  padding: 9px 16px !important;\n}\n.form-group label[data-v-7cbf4468] {\n  font-weight: 500;\n  font-size: 0.9rem;\n}\n.form-input[data-v-7cbf4468]::-moz-placeholder {\n  /* Chrome, Firefox, Opera, Safari 10.1+ */\n  color: #606060 !important;\n  font-weight: 400 !important;\n  font-size: 1rem !important;\n}\n.form-input[data-v-7cbf4468]:-ms-input-placeholder {\n  /* Chrome, Firefox, Opera, Safari 10.1+ */\n  color: #606060 !important;\n  font-weight: 400 !important;\n  font-size: 1rem !important;\n}\n.form-input[data-v-7cbf4468]::placeholder {\n  /* Chrome, Firefox, Opera, Safari 10.1+ */\n  color: #606060 !important;\n  font-weight: 400 !important;\n  font-size: 1rem !important;\n}\n.form-input[data-v-7cbf4468]::-webkit-datetime-edit {\n  color: #606060 !important;\n  font-weight: 400 !important;\n  font-size: 1rem !important;\n}\n.form-input[data-v-7cbf4468]::-webkit-calendar-picker-indicator {\n  background-image: url(\"/images/calendar-dark.svg\");\n  background-origin: content-box;\n  background-size: contain;\n  height: 1.2em;\n  -webkit-margin-start: 24px;\n          margin-inline-start: 24px;\n  opacity: 1;\n  padding-bottom: 2px;\n  -webkit-padding-start: 3px;\n          padding-inline-start: 3px;\n  -webkit-padding-end: 3px;\n          padding-inline-end: 3px;\n  padding-top: 2px;\n  width: 1.2em;\n  background-repeat: no-repeat;\n  outline: none;\n}\n#assetsFieldHandle[data-v-7cbf4468]::-webkit-file-upload-button {\n  background: #F8F8F8;\n  border: 1px solid #606060;\n  box-sizing: border-box;\n  border-radius: 8px;\n  font-weight: 500;\n  padding: 0.5rem 1.5rem;\n}\n.modal-footer[data-v-7cbf4468] {\n  border-top-color: #B5B5BB;\n  background-color: #F8F8F8;\n}\n.list-modulos-header[data-v-7cbf4468] {\n  font-weight: 400;\n  font-size: 1rem;\n}\n.btn-deck[data-v-7cbf4468] {\n  position: absolute;\n  left: 100%;\n  width: 55%;\n  transition: left 0.7s ease;\n}\n.btn-deck.active[data-v-7cbf4468] {\n  left: 5rem;\n}\n.btn-options[data-v-7cbf4468] {\n  background-color: #F8F8F8;\n  border: none;\n}\n.btn-options[data-v-7cbf4468]:hover {\n  border: 1px solid #606060;\n  box-sizing: border-box;\n  border-radius: 4px;\n}\n.img-btn[data-v-7cbf4468] {\n  color: #606060;\n  font-size: 1rem;\n}\n.block-btn[data-v-7cbf4468] {\n  display: none;\n}\n@media (max-width: 768px) {\n.btn.btn-lg[data-v-7cbf4468]:not(.btn-nuevo-modulo) {\n    display: block;\n    width: 100%;\n}\n.btn-nuevo-modulo[data-v-7cbf4468] {\n    display: none;\n}\n.block-btn[data-v-7cbf4468] {\n    display: block;\n}\n.block-btn[data-v-7cbf4468] {\n    display: block;\n}\n.edit-mobile[data-v-7cbf4468] {\n    display: block;\n}\n.edit-desktop[data-v-7cbf4468] {\n    display: none;\n}\n.btn-deck.active[data-v-7cbf4468] {\n    left: 1rem;\n}\n}", ""]);
+exports.push([module.i, "ul.nav[data-v-7cbf4468] {\n  height: 2.58rem;\n  border-bottom: none;\n  width: 100%;\n  overflow-x: auto;\n  overflow-y: hidden;\n  flex-wrap: inherit;\n  white-space: nowrap;\n}\nul.nav li.nav-item[data-v-7cbf4468] {\n  display: inline-block;\n}\n.nav[data-v-7cbf4468] {\n  border-top: 1px solid #B5B5BB;\n  border-right: 1px solid #B5B5BB;\n}\n.nav-link[data-v-7cbf4468] {\n  border-color: #B5B5BB !important;\n  border-radius: 0;\n  font-weight: 500;\n}\n.nav-link.active[data-v-7cbf4468] {\n  border-color: #B5B5BB !important;\n  border-top: 2px solid #31348B !important;\n  border-bottom: none;\n  border-left: none;\n  color: #31348B !important;\n  background-color: #F8F8F8 !important;\n}\n#curso-contenido[data-v-7cbf4468] {\n  background-color: #F8F8F8;\n  height: 60vh;\n}\n#curso-detalles[data-v-7cbf4468] {\n  background-color: #F8F8F8;\n}\n.modal-header[data-v-7cbf4468] {\n  border-bottom: none;\n}\n.form-input[data-v-7cbf4468] {\n  padding: 9px 16px !important;\n}\n.form-group label[data-v-7cbf4468] {\n  font-weight: 500;\n  font-size: 0.9rem;\n}\n.form-input[data-v-7cbf4468]::-moz-placeholder {\n  /* Chrome, Firefox, Opera, Safari 10.1+ */\n  color: #606060 !important;\n  font-weight: 400 !important;\n  font-size: 1rem !important;\n}\n.form-input[data-v-7cbf4468]:-ms-input-placeholder {\n  /* Chrome, Firefox, Opera, Safari 10.1+ */\n  color: #606060 !important;\n  font-weight: 400 !important;\n  font-size: 1rem !important;\n}\n.form-input[data-v-7cbf4468]::placeholder {\n  /* Chrome, Firefox, Opera, Safari 10.1+ */\n  color: #606060 !important;\n  font-weight: 400 !important;\n  font-size: 1rem !important;\n}\n.form-input[data-v-7cbf4468]::-webkit-datetime-edit {\n  color: #606060 !important;\n  font-weight: 400 !important;\n  font-size: 1rem !important;\n}\n.form-input[data-v-7cbf4468]::-webkit-calendar-picker-indicator {\n  background-image: url(\"/images/calendar-dark.svg\");\n  background-origin: content-box;\n  background-size: contain;\n  height: 1.2em;\n  -webkit-margin-start: 24px;\n          margin-inline-start: 24px;\n  opacity: 1;\n  padding-bottom: 2px;\n  -webkit-padding-start: 3px;\n          padding-inline-start: 3px;\n  -webkit-padding-end: 3px;\n          padding-inline-end: 3px;\n  padding-top: 2px;\n  width: 1.2em;\n  background-repeat: no-repeat;\n  outline: none;\n}\n#assetsFieldHandle[data-v-7cbf4468]::-webkit-file-upload-button {\n  background: #F8F8F8;\n  border: 1px solid #606060;\n  box-sizing: border-box;\n  border-radius: 8px;\n  font-weight: 500;\n  padding: 0.5rem 1.5rem;\n}\n.modal-footer[data-v-7cbf4468] {\n  border-top-color: #B5B5BB;\n  background-color: #F8F8F8;\n}\n.list-modulos-header[data-v-7cbf4468] {\n  font-weight: 400;\n  font-size: 1rem;\n}\n.btn-deck[data-v-7cbf4468] {\n  display: none;\n  transition: opacity 0.4s ease-out;\n  opacity: 0;\n}\n.btn-deck.active[data-v-7cbf4468] {\n  opacity: 1;\n  display: block;\n}\n.btn-options[data-v-7cbf4468] {\n  background-color: #F8F8F8;\n  border: none;\n}\n.btn-options[data-v-7cbf4468]:hover {\n  border: 1px solid #606060;\n  box-sizing: border-box;\n  border-radius: 4px;\n}\n.img-btn[data-v-7cbf4468] {\n  color: #606060;\n  font-size: 1rem;\n}\n.block-btn[data-v-7cbf4468] {\n  display: none;\n}\n@media (max-width: 768px) {\n.btn.btn-lg[data-v-7cbf4468]:not(.btn-nuevo-modulo) {\n    display: block;\n    width: 100%;\n}\n.btn-nuevo-modulo[data-v-7cbf4468] {\n    display: none;\n}\n.block-btn[data-v-7cbf4468] {\n    display: block;\n}\n.block-btn[data-v-7cbf4468] {\n    display: block;\n}\n.edit-mobile[data-v-7cbf4468] {\n    display: block;\n}\n.edit-desktop[data-v-7cbf4468] {\n    display: none;\n}\n.btn-deck.active[data-v-7cbf4468] {\n    left: 1rem;\n}\n}", ""]);
 
 // exports
 
@@ -10081,7 +10108,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".btn[data-v-5da7338f] {\n  font-weight: 400;\n}\n.btn-options[data-v-5da7338f] {\n  background-color: transparent;\n  border: none;\n}\n.btn-options[data-v-5da7338f]:hover {\n  border: 1px solid #606060;\n  box-sizing: border-box;\n  border-radius: 4px;\n}\ntable thead th[data-v-5da7338f] {\n  font-weight: 500;\n  font-size: 1rem;\n}\n.table-container[data-v-5da7338f] {\n  width: 100%;\n  height: 100%;\n  min-height: calc(100vh - 100px);\n  overflow-x: auto;\n}\n.table[data-v-5da7338f] {\n  width: 74.3em;\n}\n@media (max-width: 768px) {\n.btn.btn-primary[data-v-5da7338f] {\n    display: block;\n    width: 100%;\n}\n}", ""]);
+exports.push([module.i, ".popover-btn[data-v-5da7338f]:hover {\n  text-decoration: none;\n}\n.btn[data-v-5da7338f] {\n  font-weight: 400;\n}\n.btn-options[data-v-5da7338f] {\n  background-color: transparent;\n  border: none;\n}\n.btn-options[data-v-5da7338f]:hover {\n  border: 1px solid #606060;\n  box-sizing: border-box;\n  border-radius: 4px;\n}\ntable thead th[data-v-5da7338f] {\n  font-weight: 500;\n  font-size: 1rem;\n}\n.table-container[data-v-5da7338f] {\n  width: 100%;\n  height: 100%;\n  min-height: calc(100vh - 100px);\n  overflow-x: auto;\n}\n.table[data-v-5da7338f] {\n  width: 74.3em;\n}\n@media (max-width: 768px) {\n.btn.btn-primary[data-v-5da7338f] {\n    display: block;\n    width: 100%;\n}\n}", ""]);
 
 // exports
 
@@ -46334,73 +46361,63 @@ var render = function() {
                                     },
                                     [
                                       _c("div", { staticClass: "row" }, [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-6 d-flex flex-column"
-                                          },
-                                          [
-                                            _c(
-                                              "span",
-                                              {
-                                                staticClass:
-                                                  "list-modulos-header"
-                                              },
-                                              [_vm._v(_vm._s(modulo.nombre))]
-                                            ),
-                                            _vm._v(" "),
-                                            !modulo.clases.length
-                                              ? _c(
-                                                  "span",
-                                                  {
-                                                    staticClass: "color-plomo"
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(
-                                                        modulo.clases.length
-                                                      ) + " Clases - "
-                                                    ),
-                                                    _c("Cont", {
-                                                      attrs: { modulo: modulo }
-                                                    }),
-                                                    _vm._v(" Actividades")
-                                                  ],
-                                                  1
-                                                )
-                                              : _c(
-                                                  "a",
-                                                  {
-                                                    attrs: {
-                                                      href: "#",
-                                                      "data-toggle": "collapse",
-                                                      "data-target":
-                                                        "#collapse" + index,
-                                                      "aria-expanded": "true",
-                                                      "aria-controls":
-                                                        "collapse" + index
-                                                    }
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "span",
-                                                      {
-                                                        staticClass:
-                                                          "fw-400 color-plomo"
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          _vm._s(
-                                                            modulo.clases.length
-                                                          ) + " Clases"
-                                                        )
-                                                      ]
-                                                    )
-                                                  ]
-                                                )
-                                          ]
-                                        ),
+                                        _c("div", { staticClass: "col-6" }, [
+                                          modulo.clases.length
+                                            ? _c(
+                                                "a",
+                                                {
+                                                  attrs: {
+                                                    href: "#",
+                                                    "data-toggle": "collapse",
+                                                    "data-target":
+                                                      "#collapse" + index,
+                                                    "aria-expanded": "true",
+                                                    "aria-controls":
+                                                      "collapse" + index
+                                                  }
+                                                },
+                                                [
+                                                  _c(
+                                                    "span",
+                                                    {
+                                                      staticClass:
+                                                        "list-modulos-header"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(modulo.nombre)
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            : _c(
+                                                "span",
+                                                {
+                                                  staticClass:
+                                                    "list-modulos-header"
+                                                },
+                                                [_vm._v(_vm._s(modulo.nombre))]
+                                              ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "span",
+                                            {
+                                              staticClass: "d-block color-plomo"
+                                            },
+                                            [
+                                              _vm._v(
+                                                _vm._s(modulo.clases.length) +
+                                                  " Clases - "
+                                              ),
+                                              _c("Cont", {
+                                                attrs: { modulo: modulo }
+                                              }),
+                                              _vm._v(" Actividades")
+                                            ],
+                                            1
+                                          )
+                                        ]),
                                         _vm._v(" "),
                                         _c(
                                           "div",
@@ -46423,7 +46440,7 @@ var render = function() {
                                                   "button",
                                                   {
                                                     staticClass:
-                                                      "transparent-button",
+                                                      "transparent-button color-plomo",
                                                     on: {
                                                       click: function($event) {
                                                         $event.preventDefault()
@@ -46437,7 +46454,19 @@ var render = function() {
                                                   },
                                                   [
                                                     _vm._v(
-                                                      "\n                                                        +\n                                                    "
+                                                      "\n                                                        +\n                                                        "
+                                                    ),
+                                                    _c(
+                                                      "span",
+                                                      {
+                                                        staticClass:
+                                                          "edit-desktop"
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                                            Agregar\n                                                        "
+                                                        )
+                                                      ]
                                                     )
                                                   ]
                                                 ),
@@ -46501,7 +46530,7 @@ var render = function() {
                                                       "span",
                                                       {
                                                         staticClass:
-                                                          "ml-1 edit-desktop"
+                                                          "edit-desktop"
                                                       },
                                                       [
                                                         _vm._v(
@@ -46515,8 +46544,7 @@ var render = function() {
                                                 _c(
                                                   "button",
                                                   {
-                                                    staticClass:
-                                                      "transparent-button color-plomo",
+                                                    staticClass: "img-btn",
                                                     on: {
                                                       click: function($event) {
                                                         $event.preventDefault()
@@ -46595,7 +46623,7 @@ var render = function() {
                                                       "span",
                                                       {
                                                         staticClass:
-                                                          "ml-1 edit-desktop"
+                                                          "edit-desktop"
                                                       },
                                                       [
                                                         _vm._v(
@@ -46619,8 +46647,7 @@ var render = function() {
                                                 on: {
                                                   click: function($event) {
                                                     return _vm.showOptions(
-                                                      $event,
-                                                      index
+                                                      $event
                                                     )
                                                   }
                                                 }
@@ -47077,8 +47104,7 @@ var render = function() {
                                                                     $event
                                                                   ) {
                                                                     return _vm.showOptions(
-                                                                      $event,
-                                                                      index
+                                                                      $event
                                                                     )
                                                                   }
                                                                 }
@@ -49213,7 +49239,7 @@ var render = function() {
                 _c(
                   "a",
                   {
-                    staticClass: "color-black",
+                    staticClass: "popover-btn color-black",
                     attrs: { href: "/admin/curso/" + _vm.cursoSelected.id }
                   },
                   [
@@ -49267,7 +49293,7 @@ var render = function() {
                 _c(
                   "a",
                   {
-                    staticClass: "color-black",
+                    staticClass: "popover-btn color-black",
                     attrs: {
                       href: "/admin/curso/" + _vm.cursoSelected.id + "/edit"
                     }
@@ -49323,7 +49349,7 @@ var render = function() {
                 _c(
                   "a",
                   {
-                    staticClass: "color-black",
+                    staticClass: "popover-btn color-black",
                     attrs: { href: "#" },
                     on: {
                       click: function($event) {
@@ -49400,69 +49426,76 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "row py-2" }, [
               _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "color-black", attrs: { href: "#" } }, [
-                  _c(
-                    "svg",
-                    {
-                      attrs: {
-                        width: "24",
-                        height: "24",
-                        viewBox: "0 0 24 24",
-                        fill: "none",
-                        xmlns: "http://www.w3.org/2000/svg"
-                      }
-                    },
-                    [
-                      _c("path", {
+                _c(
+                  "a",
+                  {
+                    staticClass: "popover-btn color-black",
+                    attrs: { href: "#" }
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
                         attrs: {
-                          d:
-                            "M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21",
-                          stroke: "#606060",
-                          "stroke-width": "2",
-                          "stroke-linecap": "round",
-                          "stroke-linejoin": "round"
+                          width: "24",
+                          height: "24",
+                          viewBox: "0 0 24 24",
+                          fill: "none",
+                          xmlns: "http://www.w3.org/2000/svg"
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("path", {
-                        attrs: {
-                          d:
-                            "M8.5 11C10.7091 11 12.5 9.20914 12.5 7C12.5 4.79086 10.7091 3 8.5 3C6.29086 3 4.5 4.79086 4.5 7C4.5 9.20914 6.29086 11 8.5 11Z",
-                          stroke: "#606060",
-                          "stroke-width": "2",
-                          "stroke-linecap": "round",
-                          "stroke-linejoin": "round"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("path", {
-                        attrs: {
-                          d: "M20 8V14",
-                          stroke: "#606060",
-                          "stroke-width": "2",
-                          "stroke-linecap": "round",
-                          "stroke-linejoin": "round"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("path", {
-                        attrs: {
-                          d: "M23 11H17",
-                          stroke: "#606060",
-                          "stroke-width": "2",
-                          "stroke-linecap": "round",
-                          "stroke-linejoin": "round"
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "ml-1" }, [
-                    _vm._v(
-                      "\n                            Inscribir Usuarios\n                        "
-                    )
-                  ])
-                ])
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21",
+                            stroke: "#606060",
+                            "stroke-width": "2",
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M8.5 11C10.7091 11 12.5 9.20914 12.5 7C12.5 4.79086 10.7091 3 8.5 3C6.29086 3 4.5 4.79086 4.5 7C4.5 9.20914 6.29086 11 8.5 11Z",
+                            stroke: "#606060",
+                            "stroke-width": "2",
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("path", {
+                          attrs: {
+                            d: "M20 8V14",
+                            stroke: "#606060",
+                            "stroke-width": "2",
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("path", {
+                          attrs: {
+                            d: "M23 11H17",
+                            stroke: "#606060",
+                            "stroke-width": "2",
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round"
+                          }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "ml-1" }, [
+                      _vm._v(
+                        "\n                            Inscribir Usuarios\n                        "
+                      )
+                    ])
+                  ]
+                )
               ])
             ])
           ])
