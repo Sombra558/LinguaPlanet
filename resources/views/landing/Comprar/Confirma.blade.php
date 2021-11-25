@@ -43,6 +43,7 @@
     <div class="row justify-content-center">
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <div class="card-rounded gray-back p-3">
+          
           <div class="form-group" id="toggler">
             <div id="efectivoCollapse" class="collapse" data-parent="#toggler" >
               @includeIf('components.efectivo-collapse')
