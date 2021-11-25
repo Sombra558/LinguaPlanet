@@ -17,8 +17,7 @@
               <div class="col-6 d-flex align-items-center px-0">
               @foreach ($plan->membresia->idiomas as $idioma)
                   <img class="flag-img" src="{{ $idioma->src }}">
-                    
-                    
+
                     <!--<span class="h3 mb-0 bold ml-2">{{ $idioma->idioma }}</span>-->
                  
               @endforeach
