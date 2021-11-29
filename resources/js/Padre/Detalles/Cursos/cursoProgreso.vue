@@ -1,4 +1,4 @@
-<template>
+    <template>
     <div class="container">
         <div class="perfiles px-lg-4 mt-4">
             <div class="col-12">
@@ -16,7 +16,7 @@
                 </button>                    
             </div>
         </div>
-        <div v-if="perfilSelected" class="progreso px-lg-4">
+        <div v-show="perfilSelected" class="progreso px-lg-4">
             <div class="col-12">
                     <!--<div class="row mt-3">
                     <div class="col-6 col-md-4 my-2 d-flex align-items-center">
@@ -57,20 +57,20 @@
                             <span class="h5">Exportar</span>
                         </button>
                     </div>
-                </div>-->               
-                <div  v-for="(curso, index) in filteredCursos" :key="curso.id" class="row mt-3">
+                </div>-->
+                <div v-for="(curso, index) in filteredCursos" :key="curso.id" :id="`row-curso${curso.id}`" class="row mt-3">
                     <div class="col-12">                       
                         <div class="card gray-back">
                             <div class="card-body">
                                 <a data-toggle="collapse" :href="`#collapseCurso${index}`" role="button" aria-expanded="false" :aria-controls="`collapseCurso${index}`">
                                 <div class="row">
                                     <div class="col-12 col-lg-2">
-                                        <div class="progress mx-auto" data-value='50'>
+                                        <div class="progress mx-auto" :data-value='curso.progreso'>
                                             <span class="progress-left">
-                                                <span class="progress-bar border-warning"></span>
+                                                <span class="progress-bar border-warning" :style="{'transform' : curso.progreso > 50 && `rotate(${percentageToDegrees(curso.progreso - 50)}deg)`}"></span>
                                             </span>
                                             <span class="progress-right">
-                                                <span class="progress-bar border-warning"></span>
+                                                <span class="progress-bar border-warning" :style="{'transform' : ( curso.progreso > 0 && curso.progreso > 50 ? 'rotate(180deg)' : `rotate(${percentageToDegrees(curso.progreso)}deg)` )}"></span>
                                             </span>
                                             <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
                                                 <div class="h2 font-weight-bold">
@@ -97,7 +97,7 @@
                                             </div>
                                             <div class="item-progress text-md-center text-lg-left col-12 col-md-6 col-lg-3">
                                                 <h5 class="bold text-primary">Calificación promedio</h5>
-                                                 <CalificacionG :clase="cla" :actividades="perfilSelected.misactividades" />
+                                                <CalificacionG :clase="cla" :actividades="perfilSelected.misactividades" />
                                             </div>
                                         </div>
                                     </div>
@@ -181,29 +181,14 @@ import { mapGetters } from "vuex";
         components: {
             ProgesoCard,PerfilCard,Progreso ,Calificacion, Repeticiones, CalificacionG
         },
-        mounted() {
-            var value = $(".progress").attr('data-value');
-            var left = $(".progress").find('.progress-left .progress-bar');
-            var right = $(".progress").find('.progress-right .progress-bar');
-                
-            if (value > 0) {
-              if (value <= 50) {
-                right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
-              } else {
-                right.css('transform', 'rotate(180deg)')
-                left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
-              }
-            }
-
-            function percentageToDegrees(percentage) {
-                return percentage / 100 * 360;
-            }
-        },
         computed: {
             ...mapGetters(["filteredCursos"]),
         },
         methods: {
-            seleccionarPerfil(value) {
+            percentageToDegrees (percentage) {
+                return percentage / 100 * 360;
+            },
+            seleccionarPerfil (value) {
                 var self=this;
                 self.perfilcursosgenerales=[],
                 self.$store.commit("setCursos", self.perfilcursosgenerales);
@@ -215,8 +200,7 @@ import { mapGetters } from "vuex";
                             }
                     }else{
                           self.idiomasg.push(plan.plan.membresia.idioma);
-                    }
-                    
+                    }                   
                     
                     plan.plan.membresia.cursos.forEach(curso => {
                         var tempro = 0;

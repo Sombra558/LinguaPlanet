@@ -11550,26 +11550,26 @@ select.form-input-admin {
   width: 100%;
 }
 
-.dropdown-menu-right :first-child::after {
+.dropdown-menu-right :first-child::before {
   content: "";
   background: #B5B5BB;
   position: absolute;
   top: 61px;
-  left: 22px;
-  height: 1px;
+  left: 10px;
+  height: 2px;
   width: 87%;
-  opacity: 0.1;
+  opacity: 0.02;
 }
 
-.dropdown-menu-right a:last-child::after {
+.dropdown-menu-right a:last-child::before {
   content: "";
   background: #B5B5BB;
   position: absolute;
-  bottom: 39px;
-  left: 22px;
+  bottom: 43px;
+  left: 10px;
   height: 2px;
   width: 87%;
-  opacity: 0.2;
+  opacity: 0.1;
 }
 
 .navbar-toggler {

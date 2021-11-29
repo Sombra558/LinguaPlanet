@@ -73,7 +73,7 @@
                             <a class="dropdown-item mt-1" href="{{ route('padre.pagos') }}">
                                 <span class="color-plomo">Pagos</span>
                             </a>
-                            <a class="dropdown-item pt-2" href="{{ route('logout') }}" 
+                            <a class="dropdown-item mt-2" href="{{ route('logout') }}" 
                                 onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();"
                             >

@@ -2341,26 +2341,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     Repeticiones: _Repeticiones_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     CalificacionG: _CalificacionGlobal_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
-  mounted: function mounted() {
-    var value = $(".progress").attr('data-value');
-    var left = $(".progress").find('.progress-left .progress-bar');
-    var right = $(".progress").find('.progress-right .progress-bar');
-
-    if (value > 0) {
-      if (value <= 50) {
-        right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)');
-      } else {
-        right.css('transform', 'rotate(180deg)');
-        left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)');
-      }
-    }
-
-    function percentageToDegrees(percentage) {
-      return percentage / 100 * 360;
-    }
-  },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_6__["mapGetters"])(["filteredCursos"])),
   methods: {
+    percentageToDegrees: function percentageToDegrees(percentage) {
+      return percentage / 100 * 360;
+    },
     seleccionarPerfil: function seleccionarPerfil(value) {
       var self = this;
       self.perfilcursosgenerales = [], self.$store.commit("setCursos", self.perfilcursosgenerales);
@@ -2422,6 +2407,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _progresoCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./progresoCard */ "./resources/js/Padre/Detalles/Cursos/progresoCard.vue");
 /* harmony import */ var _perfilCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./perfilCard */ "./resources/js/Padre/Detalles/Cursos/perfilCard.vue");
+//
+//
+//
+//
 //
 //
 //
@@ -2726,6 +2715,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -9182,7 +9173,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.progress[data-v-fe66b236] {\n    width : 85%;\n    display : inline-flex;\n    margin-top : 6px;\n    height : 16px;\n    border-radius : 50px;\n}\n.flag-language[data-v-fe66b236] {\n    width : 20px;\n    border : 1px solid white;\n    border-radius : 50px;\n}\n.card-progreso[data-v-fe66b236]{\n    width: 100%;\n}\n@media(max-width : 768px) {\n.deployBtn[data-v-fe66b236] { display : none;\n}\n}\n", ""]);
+exports.push([module.i, "\n.btn[data-v-fe66b236] {\n    border-radius: 12px;\n}\n.progress-value[data-v-fe66b236] {\n    font-size: 1.2rem;\n    height: 2.2rem;\n    border-left: 1px solid gray;\n    min-width: 3.6rem;\n}\n.progress[data-v-fe66b236] {\n    width : 85%;\n    display : inline-flex;\n    height : 16px;\n    border-radius : 50px;\n}\n.flag-language[data-v-fe66b236] {\n    width : 1.5rem;\n    border-radius : 50px;\n}\n.card-progreso[data-v-fe66b236]{\n    width: 100%;\n}\n@media(max-width : 768px) {\n.deployBtn[data-v-fe66b236] { display : none;\n}\n}\n", ""]);
 
 // exports
 
@@ -42736,13 +42727,32 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm.perfilSelected
-      ? _c("div", { staticClass: "progreso px-lg-4" }, [
-          _c(
-            "div",
-            { staticClass: "col-12" },
-            _vm._l(_vm.filteredCursos, function(curso, index) {
-              return _c("div", { key: curso.id, staticClass: "row mt-3" }, [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.perfilSelected,
+            expression: "perfilSelected"
+          }
+        ],
+        staticClass: "progreso px-lg-4"
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "col-12" },
+          _vm._l(_vm.filteredCursos, function(curso, index) {
+            return _c(
+              "div",
+              {
+                key: curso.id,
+                staticClass: "row mt-3",
+                attrs: { id: "row-curso" + curso.id }
+              },
+              [
                 _c("div", { staticClass: "col-12" }, [
                   _c("div", { staticClass: "card gray-back" }, [
                     _c("div", { staticClass: "card-body" }, [
@@ -42764,12 +42774,46 @@ var render = function() {
                                 "div",
                                 {
                                   staticClass: "progress mx-auto",
-                                  attrs: { "data-value": "50" }
+                                  attrs: { "data-value": curso.progreso }
                                 },
                                 [
-                                  _vm._m(0, true),
+                                  _c("span", { staticClass: "progress-left" }, [
+                                    _c("span", {
+                                      staticClass:
+                                        "progress-bar border-warning",
+                                      style: {
+                                        transform:
+                                          curso.progreso > 50 &&
+                                          "rotate(" +
+                                            _vm.percentageToDegrees(
+                                              curso.progreso - 50
+                                            ) +
+                                            "deg)"
+                                      }
+                                    })
+                                  ]),
                                   _vm._v(" "),
-                                  _vm._m(1, true),
+                                  _c(
+                                    "span",
+                                    { staticClass: "progress-right" },
+                                    [
+                                      _c("span", {
+                                        staticClass:
+                                          "progress-bar border-warning",
+                                        style: {
+                                          transform:
+                                            curso.progreso > 0 &&
+                                            curso.progreso > 50
+                                              ? "rotate(180deg)"
+                                              : "rotate(" +
+                                                _vm.percentageToDegrees(
+                                                  curso.progreso
+                                                ) +
+                                                "deg)"
+                                        }
+                                      })
+                                    ]
+                                  ),
                                   _vm._v(" "),
                                   _c(
                                     "div",
@@ -42936,7 +42980,7 @@ var render = function() {
                       ? _c("div", { staticClass: "resultados px-lg-4" }, [
                           _c("div", { staticClass: "col-12" }, [
                             _c("div", { staticClass: "row mt-3" }, [
-                              _vm._m(2, true),
+                              _vm._m(0, true),
                               _vm._v(" "),
                               _c("div", { staticClass: "col-12" }, [
                                 _c("div", { staticClass: "row" }, [
@@ -42948,7 +42992,7 @@ var render = function() {
                                             "list-group list-group-flush flex-grow-1"
                                         },
                                         [
-                                          _vm._m(3, true),
+                                          _vm._m(1, true),
                                           _vm._v(" "),
                                           _vm._l(curso.modulos, function(
                                             modulo
@@ -43184,31 +43228,16 @@ var render = function() {
                       : _vm._e()
                   ]
                 )
-              ])
-            }),
-            0
-          )
-        ])
-      : _vm._e()
+              ]
+            )
+          }),
+          0
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "progress-left" }, [
-      _c("span", { staticClass: "progress-bar border-warning" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "progress-right" }, [
-      _c("span", { staticClass: "progress-bar border-warning" })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -43303,7 +43332,13 @@ var render = function() {
                   staticClass: "text-white",
                   attrs: { href: "/home/detalles-pagos/membresias" }
                 },
-                [_vm._v("Membresias Activas " + _vm._s(_vm.user.planes.length))]
+                [
+                  _vm._v(
+                    "\n                        Membresias Activas " +
+                      _vm._s(_vm.user.planes.length) +
+                      "\n                    "
+                  )
+                ]
               )
             ])
           ]),
@@ -44070,84 +44105,90 @@ var render = function() {
             "div",
             {
               staticClass:
-                "col-sm-6 col-lg-4 col-6 d-flex justify-content-between align-items-center"
+                "col-sm-6 col-lg-5 col-6 d-flex justify-content-between align-items-center"
             },
             [
-              _c("span", { staticClass: "h4" }, [
+              _c("span", { staticClass: "h4 m-0" }, [
                 _vm._v(_vm._s(_vm.perfil.apodo))
               ]),
               _vm._v(" "),
               _c(
                 "span",
                 {
-                  staticClass: "mb-0 pl-3",
-                  staticStyle: { "border-left": "1px solid gray" }
+                  staticClass:
+                    "mb-0 pl-3 progress-value d-flex align-items-center"
                 },
-                [_vm._v(_vm._s(_vm.progreso.toFixed(2)) + "%")]
+                [_vm._v(_vm._s(_vm.progreso) + "%")]
               )
             ]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-sm-6 col-lg-8 col-6" }, [
-            _c("div", { staticClass: "progress ml-2" }, [
-              _c("div", {
-                staticClass: "progress-bar bg-success",
-                style:
-                  "border-radius : 50px; width:" +
-                  _vm.progreso.toFixed(2) +
-                  "%",
-                attrs: {
-                  role: "progressbar",
-                  "aria-valuenow": "50",
-                  "aria-valuemin": "0",
-                  "aria-valuemax": "100"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary p-0 deployBtn",
-                attrs: {
-                  "data-toggle": "collapse",
-                  "data-target": "#collapse" + this.perfil.id,
-                  "aria-expanded": "false",
-                  "aria-controls": "collapseExample"
-                },
-                on: {
-                  click: function($event) {
-                    _vm.deployActivities = !_vm.deployActivities
+          _c(
+            "div",
+            {
+              staticClass: "col-sm-6 col-lg-7 col-6 d-flex align-items-center"
+            },
+            [
+              _c("div", { staticClass: "progress" }, [
+                _c("div", {
+                  staticClass: "progress-bar bg-success",
+                  style:
+                    "border-radius : 50px; width:" +
+                    _vm.progreso.toFixed(2) +
+                    "%",
+                  attrs: {
+                    role: "progressbar",
+                    "aria-valuenow": "50",
+                    "aria-valuemin": "0",
+                    "aria-valuemax": "100"
                   }
-                }
-              },
-              [
-                _c(
-                  "svg",
-                  {
-                    attrs: {
-                      width: "26",
-                      height: "26",
-                      viewBox: "0 0 26 26",
-                      fill: "none",
-                      xmlns: "http://www.w3.org/2000/svg"
-                    }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary p-0 mx-4 deployBtn",
+                  attrs: {
+                    "data-toggle": "collapse",
+                    "data-target": "#collapse" + this.perfil.id,
+                    "aria-expanded": "false",
+                    "aria-controls": "collapseExample"
                   },
-                  [
-                    _c("path", {
+                  on: {
+                    click: function($event) {
+                      _vm.deployActivities = !_vm.deployActivities
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "svg",
+                    {
                       attrs: {
-                        d: "M21.125 9.75L13 17.875L4.875 9.75",
-                        stroke: "white",
-                        "stroke-width": "2",
-                        "stroke-linecap": "round",
-                        "stroke-linejoin": "round"
+                        width: "26",
+                        height: "26",
+                        viewBox: "0 0 26 26",
+                        fill: "none",
+                        xmlns: "http://www.w3.org/2000/svg"
                       }
-                    })
-                  ]
-                )
-              ]
-            )
-          ])
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          d: "M21.125 9.75L13 17.875L4.875 9.75",
+                          stroke: "white",
+                          "stroke-width": "2",
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round"
+                        }
+                      })
+                    ]
+                  )
+                ]
+              )
+            ]
+          )
         ]),
         _vm._v(" "),
         _vm.deployActivities
@@ -44158,13 +44199,13 @@ var render = function() {
         _vm._v(" "),
         !_vm.deployActivities
           ? _c(
-              "p",
+              "span",
               { staticClass: "card-text" },
-              _vm._l(_vm.miscursostotales, function(curso) {
+              _vm._l(_vm.miscursostotales, function(curso, index) {
                 return _c("img", {
                   key: curso.curso.id,
-                  staticClass: "flag-language mx-1",
-                  attrs: { src: curso.idioma.src }
+                  class: ["flag-language", { "mx-1": index > 0 }],
+                  attrs: { src: curso.curso.idioma.src }
                 })
               }),
               0
@@ -44200,7 +44241,7 @@ var render = function() {
                             "span",
                             {
                               staticClass:
-                                "col-12  py-3 d-flex justify-content-between"
+                                "col-12 py-3 d-flex justify-content-between"
                             },
                             _vm._l(
                               curs.curso.modulos[0].clases[0].actividades,
@@ -44312,8 +44353,10 @@ var render = function() {
                           }
                         },
                         [
-                          _c("span", { staticClass: "h6" }, [
-                            _vm._v("Ver contenido")
+                          _c("span", { staticClass: "fw-600" }, [
+                            _vm._v(
+                              "\n                            Ver contenidos\n                        "
+                            )
                           ])
                         ]
                       )
@@ -44854,7 +44897,7 @@ var render = function() {
           _vm._v(" "),
           _c("p", { staticClass: "fw-400" }, [
             _vm._v(
-              "\n                    Suscribción hasta el " +
+              "\n                    Suscripción hasta el " +
                 _vm._s(
                   new Date(
                     _vm.pago.membresia.finaliza
