@@ -18,7 +18,7 @@
                 <div class="col-6 col-md-4 col-lg-3">
                     <h3 class="title mb-3">Detalles de pago</h3>
                     <p class="fw-400">
-                        Suscribción hasta el {{ new Date(pago.membresia.finaliza).toLocaleDateString('es-ES', {year: 'numeric', month: 'long', day: 'numeric' }) }}
+                        Suscripción hasta el {{ new Date(pago.membresia.finaliza).toLocaleDateString('es-ES', {year: 'numeric', month: 'long', day: 'numeric' }) }}
                     </p>
                 </div>
                 <div class="col-12 col-md-4 col-lg-3 text-center d-flex flex-column">
