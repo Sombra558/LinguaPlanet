@@ -8,7 +8,11 @@
             <div class="account-overview col-xs-12 col-sm-12 col-md-12 col-lg-4 d-flex flex-column text-center">
                 <div class="my-4">
                     <h3 class="mb-4">{{user.name}} {{user.lastname}}</h3>
-                    <span class="badge-pill badge-primary p-2 px-3"><a class="text-white" href="/home/detalles-pagos/membresias">Membresias Activas {{user.planes.length}}</a></span>
+                    <span class="badge-pill badge-primary p-2 px-3">
+                        <a class="text-white" href="/home/detalles-pagos/membresias">
+                            Membresias Activas {{user.planes.length}}
+                        </a>
+                    </span>
                 </div>
                 <hr class="divider mb-0">
                 <div class="p-5">
