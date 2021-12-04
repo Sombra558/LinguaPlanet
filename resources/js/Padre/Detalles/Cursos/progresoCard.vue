@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-5 col-6 d-flex justify-content-between align-items-center">
                     <span class="h4 m-0">{{ perfil.apodo }}</span>
-                    <span class="mb-0 pl-3 progress-value d-flex align-items-center">{{ progreso }}%</span>
+                    <span class="mb-0 pl-3 progress-value d-flex align-items-center">{{ progreso.toFixed(1) }}%</span>
                 </div>
                 <div class="col-sm-6 col-lg-7 col-6 d-flex align-items-center">
                     <div class="progress">
