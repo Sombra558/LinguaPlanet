@@ -44118,7 +44118,7 @@ var render = function() {
                   staticClass:
                     "mb-0 pl-3 progress-value d-flex align-items-center"
                 },
-                [_vm._v(_vm._s(_vm.progreso) + "%")]
+                [_vm._v(_vm._s(_vm.progreso.toFixed(1)) + "%")]
               )
             ]
           ),
