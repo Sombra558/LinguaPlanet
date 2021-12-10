@@ -44,28 +44,28 @@
             </main>
         </div>
         <footer class="d-flex flex-column align-items-center justify-content-center">
-        <ul class="footer-list d-flex flex-row justify-content-around w-50 mb-0">
-            <li>
-                <a class="footer-link" href="https://lingua.alaxatech.com/">{{ __('Home') }}</a>
-            </li>
-            <li>
-                <a class="footer-link" href="{{ route('courses.index') }}">{{ __('Courses') }}</a>
-            </li>
-            <li>
-                <a class="footer-link" href="https://lingua.alaxatech.com/contactanos/">{{ __('About us') }}</a>
-            </li>
-            <li>
-                <a class="footer-link" href="#">{{ __('Cookies policies') }}</a>
-            </li>
-            <li>
-                <a class="footer-link" href="#">{{ __('Terms of use') }}</a>
-            </li>
-        </ul>
-        <hr class="footer-divider mb-0">
-        <span class="my-4">
-            ©{{ Date('Y') }} Lingua Planet. {{ __('All rights reserved.') }}
-        </span>
-    </footer>
+            <div class="footer-list px-5 row justify-content-center px-md-0 w-md-100 mb-0 text-center">
+                <article class="col-auto">
+                    <a class="footer-link" href="https://lingua.alaxatech.com/">{{ __('Home') }}</a>
+                </article>
+                <article class="col-auto">
+                    <a class="footer-link" href="{{ route('courses.index') }}">{{ __('Courses') }}</a>
+                </article>
+                <article class="col-auto">
+                    <a class="footer-link" href="https://lingua.alaxatech.com/contactanos/">{{ __('About us') }}</a>
+                </article>
+                <article class="col-auto">
+                    <a class="footer-link" href="#">{{ __('Cookies policies') }}</a>
+                </article>
+                <article class="col-auto">
+                    <a class="footer-link" href="#">{{ __('Terms of use') }}</a>
+                </article>
+            </div>
+            <hr class="footer-divider mb-0">
+            <span class="my-4">
+                ©{{ Date('Y') }} Lingua Planet. {{ __('All rights reserved.') }}
+            </span>
+        </footer>
     </div>
     <script src="{{ asset('js/app.js') }}" ></script>
     @stack('scripts')
