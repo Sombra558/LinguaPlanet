@@ -12,7 +12,7 @@
                 </div>
                 @endif
             </span>
-            <a class="navbar-brand m-0" href="{{ url('/') }}">
+            <a class="navbar-brand m-0" href="{{ url('https://wabim.com') }}">
                 <img style="width: 90px; height: 90px;" src="{{ asset('/images/logo.svg') }}" class="logo light" alt="{{ config('app.name', 'Laravel') }}">
                 <img style="width: 90px; height: 90px;" src="{{ asset('/images/blue-logo.svg') }}" class="logo blue" alt="{{ config('app.name', 'Laravel') }}">
             </a>
@@ -28,7 +28,7 @@
         </div>
     @else
         <div class="container d-flex">
-            <a class="navbar-brand m-0" href="https://lingua.alaxatech.com">
+            <a class="navbar-brand m-0" href="https://wabim.com">
                 <img src="{{ asset('/images/logo.svg') }}" class="logo" alt="{{ config('app.name', 'Laravel') }}">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

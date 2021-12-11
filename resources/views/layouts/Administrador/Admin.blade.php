@@ -21,7 +21,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
                 <span class="w-50">
-                    <a class="navbar-brand ml-3 mr-0 mr-md-5" href="{{ url('/') }}">
+                    <a class="navbar-brand ml-3 mr-0 mr-md-5" href="{{ url('/home') }}">
                         <img style="width: 90px; height: 90px;" src="{{ asset('/images/logo.svg') }}" class="logo" alt="{{ config('app.name', 'Laravel') }}">
                     </a>
                     <button class="transparent-button ml-0 ml-lg-5" id="sidebarToggle" type="button">

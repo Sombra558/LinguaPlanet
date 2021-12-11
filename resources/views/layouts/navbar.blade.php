@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white">
     <div class="container">
-        <a class="navbar-brand m-0" href="https://lingua.alaxatech.com">
+        <a class="navbar-brand m-0" href="https://wabim.com">
             <img src="{{ asset('/images/logo.svg') }}" class="logo light" alt="{{ config('app.name', 'Laravel') }}">
             <img src="{{ asset('/images/blue-logo.svg') }}" class="logo blue" alt="{{ config('app.name', 'Laravel') }}">
         </a>
@@ -17,16 +17,16 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item" >
-                    <a class="nav-link text-primary" href="https://lingua.alaxatech.com/">{{ __('Home') }}</a>
+                    <a class="nav-link text-primary" href="https://wabim.com">{{ __('Home') }}</a>
                 </li>
                 <li class="nav-item" >
                     <a class="nav-link text-primary" href="{{ route('courses.index') }}">{{ __('Courses') }}</a>
                 </li>
                 <li class="nav-item" >
-                    <a class="nav-link text-primary" href="https://lingua.alaxatech.com/acerca-de-nosotros/">{{ __('About') }}</a>
+                    <a class="nav-link text-primary" href="https://wabim.com/acerca-de-nosotros/">{{ __('About') }}</a>
                 </li>
                 <li class="nav-item" >
-                    <a class="nav-link text-primary" href="https://lingua.alaxatech.com/contactanos/">{{ __('Contact us') }}</a>
+                    <a class="nav-link text-primary" href="https://wabim.com/contactanos/">{{ __('Contact us') }}</a>
                 </li>
             </ul>
             <!-- Right Side Of Navbar -->
