@@ -12,7 +12,7 @@
   
 
     <script src="/game/Silueta/Siluetas/Build/Siluetas.loader.js"></script>
-  
+    <script src="/game/Memorama/Memorama/Build/Memorama.loader.js"></script>
  
 
     <style>
@@ -88,7 +88,18 @@
     </script>
      @elseif($actividad->tipo==='Memorama')
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "/game/Memorama/Memorama/Build/Memorama.json", {onProgress: UnityProgress});
+        createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "/game/Memorama/Memorama/Build/Memorama.data",
+        frameworkUrl: "/game/Memorama/Memorama/Build/Memorama.framework.js",
+        codeUrl: "/game/Memorama/Memorama/Build/Memorama.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Abstract Studios Mx",
+        productName: "Lingua-Planet",
+        productVersion: "1.0",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      });
+   
     </script>
      @elseif($actividad->tipo==='Simon Dice')
     <script>
