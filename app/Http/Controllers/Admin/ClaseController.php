@@ -59,10 +59,23 @@ class ClaseController extends Controller
     public function update(Request $request, $id)
     {
         $clase = Clase::find($id);
-        dd($request['editando']);
+     
         $clase->inicia=$request['inicia'];
         $clase->finaliza=$request['finaliza'];
         $clase->save();
+        $accesorios=Accesorios::where('tipo',$request['premio_clase'][0]['accesorio']['tipo'])->get();
+        $premios=ClasePremio::where('clase_id',$clase->id)->get();
+
+
+        for ($i=0; $i < 5; $i++) { 
+           
+            $premios[$i]->update([
+                'accesorio_id' =>  $accesorios[$i]->id,
+                'clase_id' => $clase->id,
+            ]);
+        }
+
+     
         return $clase;
     }
     

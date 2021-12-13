@@ -18,6 +18,7 @@ class CreateActividadsTable extends Migration
             $table->enum('tipo', ['Palabras del día','Video de apertura','Actividad','Libros','Mochila','Rompecabeza','Memorama','Silueta','Simon Dice']);
             $table->text('icom')->nullable();
             $table->text('recurso')->nullable();
+            $table->integer('juego_id')->default(1);
             $table->unsignedbigInteger('clase_id');
             $table->foreign('clase_id')->references('id')->on('clases')->onDelete('cascade');
             $table->timestamps();

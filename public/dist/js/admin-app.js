@@ -3557,6 +3557,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3707,7 +3723,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.proceso = true;
       var url = '/admin/clase/' + clase.id;
-      axios.post(url, clase).then(function (result) {
+      axios.put(url, clase).then(function (result) {
         $("#editarClase").modal("hide");
         window.location.reload();
         _this5.proceso = false;
@@ -48709,6 +48725,89 @@ var render = function() {
                                         id: "assetsFieldHandle"
                                       }
                                     })
+                                  ]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.actividadtipe === "Rompecabeza"
+                              ? _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-6 col-12" },
+                                  [
+                                    _c(
+                                      "select",
+                                      {
+                                        staticClass: "form-input input-gray",
+                                        attrs: { name: "juego_id" }
+                                      },
+                                      [
+                                        _c(
+                                          "option",
+                                          { domProps: { value: null } },
+                                          [_vm._v("Seleccione Tipo")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "option",
+                                          { domProps: { value: 1 } },
+                                          [_vm._v("Ballena")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "option",
+                                          { domProps: { value: 2 } },
+                                          [_vm._v("Camisa")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "option",
+                                          { domProps: { value: 3 } },
+                                          [_vm._v("Corazon")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "option",
+                                          { domProps: { value: 4 } },
+                                          [_vm._v("Estrella")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "option",
+                                          { domProps: { value: 5 } },
+                                          [_vm._v("Flor")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "option",
+                                          { domProps: { value: 6 } },
+                                          [_vm._v("Lazo")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "option",
+                                          { domProps: { value: 7 } },
+                                          [_vm._v("Manzana")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "option",
+                                          { domProps: { value: 8 } },
+                                          [_vm._v("Pasto")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "option",
+                                          { domProps: { value: 9 } },
+                                          [_vm._v("Pera")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "option",
+                                          { domProps: { value: 10 } },
+                                          [_vm._v("Sol")]
+                                        )
+                                      ]
+                                    )
                                   ]
                                 )
                               : _vm._e()

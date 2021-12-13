@@ -9,10 +9,11 @@
     <script src="{{ asset('dist/js/hijo-app.js') }}" defer></script>
     
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+  
 
-    <script src="/game/Silueta/Siluetas/TemplateData/UnityProgress.js"></script>
-    <script src="/game/Silueta/Siluetas/Build/UnityLoader.js"></script>
+    <script src="/game/Silueta/Siluetas/Build/Siluetas.loader.js"></script>
+  
+ 
 
     <style>
         body {
@@ -54,7 +55,7 @@
             </div>
         </div>
         @else
-         <div class="h-100 d-flex justify-content-center align-items-center" id="unityContainer" ></div>
+         <canvas class="h-100 d-flex justify-content-center align-items-center" id="unity-canvas" style="height: 1080px; background: #231F20"></canvas>
         @endif
     </div>
     <script type="text/javascript">
@@ -70,7 +71,16 @@
     </script>
     @if($actividad->tipo==='Silueta')
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "/game/Silueta/Siluetas/Build/Siluetas.json", {onProgress: UnityProgress});
+       createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "/game/Silueta/Siluetas/Build/Siluetas.data",
+        frameworkUrl: "/game/Silueta/Siluetas/Build/Siluetas.framework.js",
+        codeUrl: "/game/Silueta/Siluetas/Build/Siluetas.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Abstract Studios Mx",
+        productName: "Lingua-Planet",
+        productVersion: "1.0",
+   
+      });
     </script>
     @elseif($actividad->tipo==='Mochila')
     <script>

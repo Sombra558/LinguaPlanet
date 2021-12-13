@@ -60,6 +60,7 @@ class ActividadController extends Controller
                 'tipo' => $request->tipo,
                 'icom'=>'/images/actividades/rompecabeza.svg',
                 'clase_id' => $request->clase_id,
+                'juego_id' => $request->juego_id,
               
             ]);
 

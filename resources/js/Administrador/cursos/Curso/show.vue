@@ -456,6 +456,22 @@
                                     <label for="inicia" >Subir Archivo</label>
                                     <input type="file" name="recurso" accept="application/pdf" id="assetsFieldHandle"  />
                                 </div>
+                                <div class="form-group col-md-6 col-12" v-if="actividadtipe==='Rompecabeza'">
+                                     <select class="form-input input-gray" name="juego_id"  >
+                                        <option :value="null">Seleccione Tipo</option>
+                                        <option :value="1">Ballena</option>
+                                        <option :value="2">Camisa</option>
+                                        <option :value="3">Corazon</option>
+                                        <option :value="4">Estrella</option>
+                                        <option :value="5">Flor</option>
+                                        <option :value="6">Lazo</option>
+                                        <option :value="7">Manzana</option>
+                                        <option :value="8">Pasto</option>
+                                        <option :value="9">Pera</option>
+                                        <option :value="10">Sol</option>
+                                    </select>        
+
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -646,7 +662,7 @@ import Multiselect from 'vue-multiselect'
              editarClase(clase) {
                 this.proceso=true;
                 var url = '/admin/clase/'+clase.id;
-                axios.post(url,clase).then((result) => {
+                axios.put(url,clase).then((result) => {
                    $("#editarClase").modal("hide");
                    window.location.reload();
                    this.proceso=false;
