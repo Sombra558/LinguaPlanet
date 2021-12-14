@@ -84,7 +84,17 @@
     </script>
     @elseif($actividad->tipo==='Mochila')
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "/game/Mochila/Mochila/Build/Mochila.json", {onProgress: UnityProgress});
+         createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "/game/Mochila/Mochila/Build/Mochila.data",
+        frameworkUrl: "/game/Mochila/Mochila/Build/Mochila.framework.js",
+        codeUrl: "/game/Mochila/Mochila/Build/Mochila.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Abstract Studios Mx",
+        productName: "Lingua-Planet",
+        productVersion: "1.0",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      });
     </script>
      @elseif($actividad->tipo==='Memorama')
     <script>
@@ -103,11 +113,49 @@
     </script>
      @elseif($actividad->tipo==='Simon Dice')
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "/game/Simon/Simon/Build/Simon.json", {onProgress: UnityProgress});
+         if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+      }
+
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "/game/Simon/Simon/Build/Simon.data",
+        frameworkUrl: "/game/Simon/Simon/Build/Simon.framework.js",
+        codeUrl: "/game/Simon/Simon/Build/Simon.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Abstract Studios Mx",
+        productName: "Lingua-Planet",
+        productVersion: "1.0",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      });
+
     </script>
     @else
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "/game/Rompecabeza/Rompecabezas/Build/Rompecabezas.json", {onProgress: UnityProgress});
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+      }
+
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "/game/Rompecabeza/Rompecabezas/Build/Rompecabezas.data",
+        frameworkUrl: "/game/Rompecabeza/Rompecabezas/Build/Rompecabezas.framework.js",
+        codeUrl: "/game/Rompecabeza/Rompecabezas/Build/Rompecabezas.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Abstract Studios Mx",
+        productName: "Lingua-Planet",
+        productVersion: "1.0",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      });
+    
     </script>
     @endif
     
