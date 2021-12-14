@@ -82,7 +82,7 @@
             		</svg>   		
             	</button>
             </div>
-            <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura' || actividad.tipo ==='Actividad'" class="ml-auto col-3 text-center">
+            <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura' || actividad.tipo ==='Actividad' || actividad.tipo ==='Libro'" class="ml-auto col-3 text-center">
             	<a :href="prevUrl">
 		            <img class="w-25 w-md-40 w-sm-75" src="/images/back-yellow.svg">
 		        </a>
