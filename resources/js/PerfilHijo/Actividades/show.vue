@@ -1,6 +1,6 @@
 <template>
     <div class="body-component">
-    	<a v-if="actividad.tipo ==='Libros'" class="back" :href="prevUrl">
+    	<a style="z-index:2;" v-if="actividad.tipo ==='Libros'" class="back" :href="prevUrl">
             <img class="w-75" src="/images/back-yellow.svg">
         </a>
         <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura' || actividad.tipo ==='Actividad'" style="height: 85%;">
@@ -82,7 +82,7 @@
             		</svg>   		
             	</button>
             </div>
-            <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura' || actividad.tipo ==='Actividad' || actividad.tipo ==='Libro'" class="ml-auto col-3 text-center">
+            <div v-if="actividad.tipo==='Palabras del día'|| actividad.tipo ==='Video de apertura' || actividad.tipo ==='Actividad'" class="ml-auto col-3 text-center">
             	<a :href="prevUrl">
 		            <img class="w-25 w-md-40 w-sm-75" src="/images/back-yellow.svg">
 		        </a>
