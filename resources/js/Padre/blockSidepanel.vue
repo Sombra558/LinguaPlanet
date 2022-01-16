@@ -18,6 +18,7 @@
                     <input class="input-validation-father" v-model="value1" type="password" name="number">
                 </div>
                 <button @click.prevent="acceder()" class="btn btn-primary-red"><span class="h4 px-2">Acceder</span></button>
+                <button @click.prevent="recuperar()" class="btn btn-primary"><span class="h4 px-2">Recuperar</span></button>
             </div>
         </div>
     </div>
@@ -102,7 +103,17 @@
             cerrar(){
                 $('.backdrop').toggleClass('show');
                 $('.left-panel').toggleClass('show');
-            }
+            },
+            recuperar() {
+            var urlverifica = `/recuperar-frase`;
+            axios.post(urlverifica).then((res) => {
+                    //window.location.reload();
+            }).catch((err) => {
+                    console.log(err);
+            });
+           
+        
+    }
 
         },
     }

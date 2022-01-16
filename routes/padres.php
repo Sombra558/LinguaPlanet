@@ -1,5 +1,6 @@
 <?php
 Route::get('/game/{perfil_id}/{curso_id}/actividad/{actividad_id}/intentos/{valor}/realizada', 'Padres\PerfilEstudiante@juegorealizado');
+Route::post('/recuperar-frase', 'Padres\PadresViewController@recuperar')->name('frase');
 Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
 	Route::get('/', 'Padres\PadresViewController@home')->name('home');
 

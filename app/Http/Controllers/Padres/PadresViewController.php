@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
-
+use Illuminate\Support\Facades\Mail;
 use App\Models\PerfilEstudiante\PerfilEstudianteUser;
 use Carbon\Carbon;
 
@@ -194,5 +194,17 @@ class PadresViewController extends Controller
         
         return view('Padres.Detalles.Cursos.certificados',compact('user'));
     }
+    public function recuperar()
+    {
+        $user=Auth::user();
+        $data = [
+            'frase' => $user->frase,
+        ];
+     
+        Mail::send('mails.Suscripcion', $data, function($message) use ($data,$user) {
+            $message->to($user->email,$data['frase'])->subject('Frase de Acceso');
+        });
+        return $data;
+	}
     
 }

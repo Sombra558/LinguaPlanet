@@ -4285,6 +4285,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "block-sidepanel",
   props: ['user'],
@@ -4348,6 +4349,13 @@ __webpack_require__.r(__webpack_exports__);
     cerrar: function cerrar() {
       $('.backdrop').toggleClass('show');
       $('.left-panel').toggleClass('show');
+    },
+    recuperar: function recuperar() {
+      var urlverifica = "/recuperar-frase";
+      axios.post(urlverifica).then(function (res) {//window.location.reload();
+      })["catch"](function (err) {
+        console.log(err);
+      });
     }
   }
 });
@@ -47659,6 +47667,20 @@ var render = function() {
             }
           },
           [_c("span", { staticClass: "h4 px-2" }, [_vm._v("Acceder")])]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.recuperar()
+              }
+            }
+          },
+          [_c("span", { staticClass: "h4 px-2" }, [_vm._v("Recuperar")])]
         )
       ])
     ])
