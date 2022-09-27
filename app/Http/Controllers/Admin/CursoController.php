@@ -78,9 +78,9 @@ class CursoController extends Controller
      */
     public function show($id)
     {
-         $baseUrl="https://games.wabim.com/get-silueta/1/en";
-         $client = new Client(['base_uri' => 'https://games.wabim.com/']);  
-         $response = $client->request('GET', 'https://games.wabim.com/get-silueta/1/en'); 
+         $baseUrl="https://games.linguaplanet.com.mx/get-silueta/1/en";
+         $client = new Client(['base_uri' => 'https://games.linguaplanet.com.mx/']);  
+         $response = $client->request('GET', 'https://games.linguaplanet.com.mx/get-silueta/1/en'); 
          $body = $response->getBody();
          $content =$body->getContents();
          $arr = json_decode($content);
