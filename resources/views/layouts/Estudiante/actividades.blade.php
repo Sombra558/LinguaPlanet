@@ -122,9 +122,9 @@
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "/game/Simon/Simon/Build/Simon.data",
-        frameworkUrl: "/game/Simon/Simon/Build/Simon.framework.js",
-        codeUrl: "/game/Simon/Simon/Build/Simon.wasm",
+        dataUrl: "/game/Simon/Simon/Build/Simondice.data",
+        frameworkUrl: "/game/Simon/Simon/Build/Simondice.framework.js",
+        codeUrl: "/game/Simon/Simon/Build/Simondice.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Abstract Studios Mx",
         productName: "Lingua-Planet",
