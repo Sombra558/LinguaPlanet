@@ -1,5 +1,5 @@
 <?php
-Route::get('/game/{perfil_id}/{curso_id}/actividad/{actividad_id}/intentos/{valor}/realizada', 'Padres\PerfilEstudiante@juegorealizado');
+Route::get('/{perfil_id}/{curso_id}/actividad/{actividad_id}/intentos/{valor}/realizada', 'Padres\PerfilEstudiante@juegorealizado');
 Route::post('/recuperar-frase', 'Padres\PadresViewController@recuperar')->name('frase');
 Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
 	Route::get('/', 'Padres\PadresViewController@home')->name('home');
@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth'],'prefix' => 'home'], function () {
 	    Route::get('/premios', 'Padres\PerfilEstudiante@premios')->name('student.premios');
 	    Route::get('/armario', 'Padres\PerfilEstudiante@armario')->name('student.armario');
 	    Route::get('/idiomas/{nombreURL}', 'Padres\PerfilEstudiante@aplication');
-		Route::get('/{curso_id}/{clase_id}/actividad/{actividad_id}/realizada', 'Padres\PerfilEstudiante@actividadrealizada')->name('student.actividad.realizada');
+		Route::get('/curso/{curso_id}/clase/{clase_id}/actividad/{actividad_id}/realizada', 'Padres\PerfilEstudiante@actividadrealizada')->name('student.actividad.realizada');
 	    Route::get('/idiomas/{nombreURL}/{curso_id}', 'Padres\PerfilEstudiante@aplicationCurso')->name('student.activities');
 		Route::group([ 'prefix' => '/idiomas/{nombreURL}/{curso_id}/clase/{clase_id}/actividad/{actividad_id}'], function() {
 			Route::get('/', 'Padres\PerfilEstudiante@veractividad')->name('student.actividad');
