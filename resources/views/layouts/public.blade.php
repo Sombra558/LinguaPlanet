@@ -46,13 +46,13 @@
         <footer class="d-flex flex-column align-items-center justify-content-center">
             <div class="footer-list px-5 row justify-content-center px-md-0 w-md-100 mb-0 text-center">
                 <article class="col-auto">
-                    <a class="footer-link" href="https://wabim.com">{{ __('Home') }}</a>
+                    <a class="footer-link" href="https://linguaplanet.com.mx">{{ __('Home') }}</a>
                 </article>
                 <article class="col-auto">
                     <a class="footer-link" href="{{ route('courses.index') }}">{{ __('Courses') }}</a>
                 </article>
                 <article class="col-auto">
-                    <a class="footer-link" href="https://wabim.com/contactanos/">{{ __('About us') }}</a>
+                    <a class="footer-link" href="https://linguaplanet.com.mx/contactanos/">{{ __('About us') }}</a>
                 </article>
                 <article class="col-auto">
                     <a class="footer-link" href="#">{{ __('Cookies policies') }}</a>
